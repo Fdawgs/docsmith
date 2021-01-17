@@ -4,7 +4,7 @@
 	"description": "RESTful API web service for converting clinical documents/files",
 	"main": "src/app.js",
 	"repository": "git+https://github.com/Fdawgs/doc-conversion-service-next.git",
-	"author": "Frazer Smith",
+	"author": "Frazer Smith <frazer.dev@outlook.com>",
 	"license": "MIT",
 	"engines": {
 		"node": ">=10.22.0"
@@ -20,7 +20,7 @@
 		"lint:prettier:ci": "prettier . --check --ignore-path .gitignore",
 		"start": "node .",
 		"start:dev": "nodemon | pino-pretty --colorize",
-		"test": "yarn lint && yarn jest"
+		"test": "npm run lint && npm run jest"
 	},
 	"jest": {
 		"clearMocks": true,
