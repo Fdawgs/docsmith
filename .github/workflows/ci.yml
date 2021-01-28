@@ -1,0 +1,138 @@
+name: CI
+
+on:
+    push:
+        paths-ignore:
+            - "docs/**"
+            - "*.md"
+    pull_request:
+        paths-ignore:
+            - "docs/**"
+            - "*.md"
+
+jobs:
+    lint:
+        name: Lint Code
+        if: github.event.pull_request.draft == false
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: 14.x
+            - name: Get NPM Cache Directory
+              id: npm-cache-dir
+              run: |
+                  echo "::set-output name=dir::$(npm config get cache)"
+            - uses: actions/cache@v2
+              id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+              with:
+                  path: ${{ steps.npm-cache-dir.outputs.dir }}
+                  key: ${{ runner.os }}-${{ matrix.node-version }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-${{ matrix.node-version }}-node-
+            - name: Install
+              run: npm ci --ignore-scripts
+            - name: Run ESLint
+              run: npm run lint
+            - name: Run Prettier
+              run: npm run lint:prettier:ci
+            - name: Run License Checker
+              run: npm run license-checker
+            - name: Run Lockfile Linter
+              run: npx lockfile-lint --path package-lock.json --type npm --allowed-hosts npm --validate-https
+
+    unit-tests:
+        name: Unit Tests
+        if: github.event.pull_request.draft == false
+        strategy:
+            matrix:
+                node-version: [10.x, 12.x, 14.x]
+                os: [macos-latest, ubuntu-latest, windows-latest]
+        runs-on: ${{ matrix.os }}
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Get NPM Cache Directory
+              id: npm-cache-dir
+              run: |
+                  echo "::set-output name=dir::$(npm config get cache)"
+            - uses: actions/cache@v2
+              id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+              with:
+                  path: ${{ steps.npm-cache-dir.outputs.dir }}
+                  key: ${{ runner.os }}-${{ matrix.node-version }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-${{ matrix.node-version }}-node-
+            - name: Install
+              run: npm ci --ignore-scripts
+            - name: Run Tests
+              run: |
+                  cp .env.template .env
+                  npm run jest-coverage
+            - name: Coveralls Parallel
+              uses: coverallsapp/github-action@v1.1.2
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  parallel: true
+                  flag-name: run-${{ matrix.node-version }}-${{ matrix.os }}
+
+    lint-docker-file:
+        name: Lint Dockerfile
+        if: github.event.pull_request.draft == false
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: brpaz/hadolint-action@v1.3.1
+              with:
+                  dockerfile: Dockerfile
+
+    # docker-tests:
+    #     name: Docker Build Tests
+    #     if: github.event.pull_request.draft == false
+    #     needs: lint-docker-file
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - uses: actions/checkout@v2
+    #         - name: Build and Start App
+    #           run: |
+    #               docker build --build-arg NODE_ENV=test -t doc-conversion-api .
+    #               docker run --network --publish 8204:8204 doc-conversion-api
+
+    docker-compose-tests:
+        name: Docker Compose Build Tests
+        if: github.event.pull_request.draft == false
+        needs: lint-docker-file
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Build and Start App
+              run: |
+                  cp .env.template .env
+                  NODE_ENV=test docker-compose up --detach
+
+    coverage:
+        name: Aggregate Coverage Calculations
+        if: github.event.pull_request.draft == false
+        needs: unit-tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Coveralls Finished
+              uses: coverallsapp/github-action@v1.1.2
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  parallel-finished: true
+
+    automerge:
+        name: Automatically Merge Dependabot Pull Requests
+        if: github.event.pull_request.draft == false
+        needs: [lint, unit-tests, docker-compose-tests]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: fastify/github-action-merge-dependabot@v1.1.1
+              if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
