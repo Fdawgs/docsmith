@@ -19,7 +19,6 @@ It was initially created to replace a previously purchased PDF-to-HTML conversio
 ## Prerequisites
 
 -   [Node.js](https://nodejs.org/en/)
-
 -   Linux only: latest available `poppler-data` and `poppler-utils` binaries
 -   Linux and macOS only: latest available `unrtf` binary
 
