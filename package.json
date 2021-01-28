@@ -32,6 +32,10 @@
 			"src/**/*.js",
 			"!src/app.js"
 		],
+		"coverageReporters": [
+			"text",
+			"lcovonly"
+		],
 		"resetMocks": true,
 		"testEnvironment": "node",
 		"testTimeout": 10000
