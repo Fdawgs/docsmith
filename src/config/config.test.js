@@ -70,8 +70,6 @@ describe("configuration", () => {
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
-			methods: ["Accept"],
-			allowedHeaders: ["GET", "OPTIONS"],
 		});
 
 		expect(config.poppler).toEqual(
@@ -125,8 +123,6 @@ describe("configuration", () => {
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
-			methods: ["Accept"],
-			allowedHeaders: ["GET", "OPTIONS"],
 		});
 	});
 
@@ -134,6 +130,10 @@ describe("configuration", () => {
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.random.number();
 		const CORS_ORIGIN = "https://ydh.nhs.uk";
+		const CORS_METHODS = "GET";
+		const CORS_ALLOWED_HEADERS =
+			"Accept, Authorization, Content-Type, Origin, X-Requested-With";
+		const CORS_EXPOSED_HEADERS = "Location";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -144,6 +144,9 @@ describe("configuration", () => {
 			SERVICE_HOST,
 			SERVICE_PORT,
 			CORS_ORIGIN,
+			CORS_METHODS,
+			CORS_ALLOWED_HEADERS,
+			CORS_EXPOSED_HEADERS,
 			LOG_LEVEL,
 		});
 
@@ -156,8 +159,9 @@ describe("configuration", () => {
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
-			methods: ["Accept"],
-			allowedHeaders: ["GET", "OPTIONS"],
+			methods: CORS_METHODS,
+			allowedHeaders: CORS_ALLOWED_HEADERS,
+			exposedHeaders: CORS_EXPOSED_HEADERS,
 		});
 	});
 
