@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+    app:
+        container_name: doc-conversion-api
+        build:
+            context: .
+        env_file: .env
+        ports:
+            - 127.0.0.1:${SERVICE_PORT:-8204}:${SERVICE_PORT:-8204}
