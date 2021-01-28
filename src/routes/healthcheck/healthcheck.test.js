@@ -20,7 +20,7 @@ describe("register", () => {
 			server.close();
 		});
 
-		test("Should return documents from register", async () => {
+		test("Should return `ok`", async () => {
 			const response = await server.inject({
 				method: "GET",
 				url: "/healthcheck",
