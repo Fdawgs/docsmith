@@ -2,6 +2,7 @@
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/doc-conversion-service-next.svg)](https://github.com/Fdawgs/doc-conversion-service-next/releases/latest/)
 ![CI](https://github.com/Fdawgs/doc-conversion-service-next/workflows/CI/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/doc-conversion-service-next/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/doc-conversion-service-next?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/doc-conversion-service-next/badge.svg)](https://snyk.io/test/github/Fdawgs/doc-conversion-service-next) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFdawgs%2Fdoc-conversion-service-next.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFdawgs%2Fdoc-conversion-service-next?ref=badge_shield)
 
 > RESTful API for converting clinical documents/files
 
@@ -79,3 +80,6 @@ Please see [CONTRIBUTING.md](https://github.com/Fdawgs/doc-conversion-service-ne
 ## License
 
 `doc-conversion-service-next` is licensed under the [MIT](https://github.com/Fdawgs/doc-conversion-service-next/blob/master/LICENSE) license.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFdawgs%2Fdoc-conversion-service-next.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FFdawgs%2Fdoc-conversion-service-next?ref=badge_large)
