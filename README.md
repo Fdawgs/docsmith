@@ -68,7 +68,7 @@ If you are unable to deploy this into production using Docker, it is recommended
 
 #### To Install as a Windows Service:
 
-Yeovil District Hospital NHSFT is heavily entrenched in Microsoft's ecosystem; utilise [pm2-installer](https://github.com/jessety/pm2-installer) to easily install PM2 as a Windows service.
+If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jessety/pm2-installer) to install PM2 as a Windows service.
 
 **Note:** PM2 has been configured to automatically restart the application if modifications are made to `.env`.
 
