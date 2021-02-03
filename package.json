@@ -62,7 +62,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/config-conventional": "^11.0.0",
-		"autocannon": "^7.0.1",
+		"autocannon": "^7.0.3",
 		"conventional-changelog-cli": "^2.1.1",
 		"eslint": "^7.19.0",
 		"eslint-config-airbnb-base": "^14.2.1",
