@@ -99,7 +99,7 @@
 		"htmltidy2": "^0.3.0",
 		"http-errors": "^1.8.0",
 		"jsdom": "^16.4.0",
-		"node-poppler": "^2.1.2",
+		"node-poppler": "^2.2.0",
 		"node-unrtf": "^1.0.6",
 		"pino": "^6.10.0",
 		"tesseract.js": "^2.1.4"
