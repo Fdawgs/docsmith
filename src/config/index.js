@@ -107,7 +107,7 @@ async function getConfig() {
 		swagger: {
 			routePrefix: "/docs",
 			exposeRoute: true,
-			swagger: {
+			openapi: {
 				info: {
 					title: name,
 					description,
@@ -122,19 +122,22 @@ async function getConfig() {
 					},
 					version,
 				},
+				components: {
+					securitySchemes: {
+						bearerToken: {
+							type: "apiKey",
+							name: "Authorization",
+							in: "header",
+							bearerFormat: "bearer token",
+						},
+					},
+				},
 				tags: [
 					{
 						name: "System Administration",
 						description: "",
 					},
 				],
-				securityDefinitions: {
-					bearer_token: {
-						type: "apiKey",
-						name: "Authorization",
-						in: "header",
-					},
-				},
 			},
 		},
 		htmltidy: {
