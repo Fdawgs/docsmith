@@ -12,6 +12,8 @@ const healthcheckGetSchema = {
 	tags,
 	summary:
 		"Used by monitoring software to poll and confirm the API is running",
+	operationId: "getHealthcheck",
+	produces: ["text/plain"],
 	response: {
 		200: S.string().const("ok"),
 	},
