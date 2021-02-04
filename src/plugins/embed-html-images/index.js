@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-non-literal-fs-filename */
 const fp = require("fastify-plugin");
 const fs = require("fs");
 const { JSDOM } = require("jsdom");
@@ -24,6 +25,7 @@ async function plugin(server, options) {
 		const dom = new JSDOM(html);
 		const images = dom.window.document.querySelectorAll("img");
 		let directory = options.poppler.tempDirectory;
+		// Add trailing slash if missing
 		directory += directory.endsWith("/") ? "" : "/";
 
 		images.forEach((element) => {

@@ -1,4 +1,4 @@
-const { cloneDeep } = require('lodash');
+const { cloneDeep } = require("lodash");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -17,11 +17,10 @@ describe("Embed-HTML-Images plugin", () => {
 	beforeEach(() => {
 		server = Fastify();
 
-        server.addContentTypeParser("text/html", async (req, payload) => {
-            const res = await raw(payload);
-    
-            return res;
-        });
+		server.addContentTypeParser("text/html", async (req, payload) => {
+			const res = await raw(payload);
+			return res;
+		});
 	});
 
 	afterEach(() => {
@@ -30,11 +29,9 @@ describe("Embed-HTML-Images plugin", () => {
 
 	test("Should embed images into HTML", async () => {
 		const altConfig = cloneDeep(config);
-		altConfig.poppler.tempDirectory = './test_resources/test_files/';
+		altConfig.poppler.tempDirectory = "./test_resources/test_files/";
 		server.post("/", (req, res) => {
-			res.send(server.embedHtmlImages(
-				req.body,
-			));
+			res.send(server.embedHtmlImages(req.body));
 		});
 		server.register(plugin, altConfig);
 
@@ -42,14 +39,14 @@ describe("Embed-HTML-Images plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-                "./test_resources/test_files/tester_bullet_issues-html.html",
-                { encoding: "UTF-8" }
+				"./test_resources/test_files/tester_bullet_issues-html.html",
+				{ encoding: "UTF-8" }
 			),
 			headers: {
-				'content-type': 'text/html'
-			}
-        });
-        
+				"content-type": "text/html",
+			},
+		});
+
 		expect(/alt=""/gm.exec(response.payload)).toBeNull();
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
@@ -57,12 +54,9 @@ describe("Embed-HTML-Images plugin", () => {
 
 	test("Should embed images into HTML and remove alt attribute from img tags", async () => {
 		const altConfig = cloneDeep(config);
-		altConfig.poppler.tempDirectory = './test_resources/test_files/';
+		altConfig.poppler.tempDirectory = "./test_resources/test_files/";
 		server.post("/", (req, res) => {
-			res.send(server.embedHtmlImages(
-				req.body,
-				true
-			));
+			res.send(server.embedHtmlImages(req.body, true));
 		});
 		server.register(plugin, altConfig);
 
@@ -70,14 +64,14 @@ describe("Embed-HTML-Images plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-                "./test_resources/test_files/tester_bullet_issues-html.html",
-                { encoding: "UTF-8" }
+				"./test_resources/test_files/tester_bullet_issues-html.html",
+				{ encoding: "UTF-8" }
 			),
 			headers: {
-				'content-type': 'text/html'
-			}
-        });
-        
+				"content-type": "text/html",
+			},
+		});
+
 		expect(/alt=""/gm.exec(response.payload)).not.toBeNull();
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
@@ -85,11 +79,9 @@ describe("Embed-HTML-Images plugin", () => {
 
 	test("Should embed images into HTML and add trailing slash if missing from directory", async () => {
 		const altConfig = cloneDeep(config);
-		altConfig.poppler.tempDirectory = './test_resources/test_files';
+		altConfig.poppler.tempDirectory = "./test_resources/test_files";
 		server.post("/", (req, res) => {
-			res.send(server.embedHtmlImages(
-				req.body
-			));
+			res.send(server.embedHtmlImages(req.body));
 		});
 		server.register(plugin, altConfig);
 
@@ -97,13 +89,13 @@ describe("Embed-HTML-Images plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-                "./test_resources/test_files/tester_bullet_issues-html.html",
-                { encoding: "UTF-8" }
+				"./test_resources/test_files/tester_bullet_issues-html.html",
+				{ encoding: "UTF-8" }
 			),
 			headers: {
-				'content-type': 'text/html'
-			}
-        });
+				"content-type": "text/html",
+			},
+		});
 
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
@@ -111,10 +103,7 @@ describe("Embed-HTML-Images plugin", () => {
 
 	test("Should continue if it cannot find images to embed in specified directory", async () => {
 		server.post("/", (req, res) => {
-			res.send(server.embedHtmlImages(
-				req.body,
-				true
-			));
+			res.send(server.embedHtmlImages(req.body, true));
 		});
 		server.register(plugin, config);
 
@@ -122,16 +111,15 @@ describe("Embed-HTML-Images plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-                "./test_resources/test_files/tester_bullet_issues-html.html",
-                { encoding: "UTF-8" }
+				"./test_resources/test_files/tester_bullet_issues-html.html",
+				{ encoding: "UTF-8" }
 			),
 			headers: {
-				'content-type': 'text/html'
-			}
-        });
+				"content-type": "text/html",
+			},
+		});
 
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 	});
-
 });
