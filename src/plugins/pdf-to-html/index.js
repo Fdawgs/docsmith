@@ -2,6 +2,7 @@
 /* eslint-disable security/detect-object-injection */
 /* eslint-disable no-restricted-globals */
 const createError = require("http-errors");
+const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const fs = require("fs");
 const fsp = require("fs").promises;
@@ -129,8 +130,15 @@ async function plugin(server, options) {
 			for (let index = 1; index < metas.length; index += 1) {
 				metas[index].parentNode.removeChild(metas[index]);
 			}
-			req.pdfToHtmlResults.body =
-				dom.window.document.documentElement.outerHTML;
+
+			/**
+			 * `fixUtf8` function replaces most common incorrectly converted
+			 * Windows-1252 to UTF-8 results with HTML equivalents.
+			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
+			 */
+			req.pdfToHtmlResults.body = fixUtf8(
+				dom.window.document.documentElement.outerHTML
+			);
 			req.pdfToHtmlResults.docLocation = {
 				directory: this.config.tempDirectory,
 				html: tempHtmlFile,

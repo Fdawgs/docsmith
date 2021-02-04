@@ -6,6 +6,12 @@ const raw = require("raw-body");
 const plugin = require(".");
 const getConfig = require("../../config");
 
+/**
+ * Used to check that common incorrectly converted Windows-1252
+ * to UTF-8 values are removed by the `fix-utf8` module
+ */
+const artifacts = /â‚¬|â€š|Æ’|â€ž|â€¦|â€¡|Ë†|â€°|â€¹|Å½|â€˜|â€™|â€œ|â€¢|â€“|â€”|Ëœ|Å¡|Å¾|Å¸|Â¯|Â·|Â´|Â°|Ã‚|ï‚·|âˆš|�|Ã€|Ãƒ|Ã„|Ã…|Ã†|Ã‡|Ãˆ|Ã‰|ÃŠ|Ã‹|ÃŒ|ÃŽ|Ã‘|Ã’|Ã“|Ã”|Ã•|Ã–|Ã—|Ã˜|Ã™|Ãš|Ã›|Ãœ|Ãž|ÃŸ|Ã¡|Ã¢|Ã£|Ã¤|Ã¥|Ã¦|Ã§|Ã¨|Ã©|Ãª|Ã«|Ã¬|Ã­|Ã®|Ã¯|Ã°|Ã±|Ã²|Ã³|Ã´|Ãµ|Ã¶|Ã·|Ã¸|Ã¹|Ãº|Ã»|Ã¼|Ã½|Ã¾|Ã¿|â‰¤|â‰¥|Â|Ã|â€|�/g;
+
 describe("PDF-to-HTML conversion plugin", () => {
 	let config;
 	let server;
@@ -53,6 +59,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(typeof response.body).toBe("string");
+		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
 		expect(typeof response.docLocation).toBe("object");
 		expect(fs.existsSync(response.docLocation.html)).toBe(false);
