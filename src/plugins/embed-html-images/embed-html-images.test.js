@@ -47,6 +47,9 @@ describe("Embed-HTML-Images plugin", () => {
 			},
 		});
 
+		expect(
+			/src="tester_bullet_issues001.png"/gm.exec(response.payload)
+		).toBeNull();
 		expect(/alt=""/gm.exec(response.payload)).toBeNull();
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
@@ -72,6 +75,9 @@ describe("Embed-HTML-Images plugin", () => {
 			},
 		});
 
+		expect(
+			/src="tester_bullet_issues001.png"/gm.exec(response.payload)
+		).toBeNull();
 		expect(/alt=""/gm.exec(response.payload)).not.toBeNull();
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
@@ -97,6 +103,9 @@ describe("Embed-HTML-Images plugin", () => {
 			},
 		});
 
+		expect(
+			/src="tester_bullet_issues001.png"/gm.exec(response.payload)
+		).toBeNull();
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 	});
