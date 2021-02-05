@@ -10,6 +10,11 @@ const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
 
+// Import local decorator plugins
+const embedHtmlImages = require('./plugins/embed-html-images');
+const tidyCss = require('./plugins/tidy-css');
+const tidyHtml = require('./plugins/tidy-html');
+
 // Import healthcheck route
 const healthCheck = require("./routes/healthcheck");
 
@@ -20,7 +25,7 @@ const healthCheck = require("./routes/healthcheck");
  * @param {object} config - Fastify configuration values
  */
 async function plugin(server, config) {
-	// Enable plugins
+	// Register plugins
 	server
 		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 		.register(cors, config.cors)
@@ -45,6 +50,9 @@ async function plugin(server, config) {
 		}))
 
 		.register(healthCheck)
+		.register(embedHtmlImages, config)
+		.register(tidyCss)
+		.register(tidyHtml)
 
 		/**
 		 * Encapsulate plugins and routes into secured child context, so that swagger
