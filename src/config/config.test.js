@@ -3,7 +3,7 @@ const fs = require("fs");
 const glob = require("glob");
 const getConfig = require(".");
 
-describe("configuration", () => {
+describe("Configuration", () => {
 	const currentEnv = { ...process.env };
 
 	beforeAll(() => {
