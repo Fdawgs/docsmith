@@ -8,15 +8,15 @@ const tags = ["System Administration"];
  *
  * This validation protects against XSS and HPP attacks.
  */
-const healthcheckGetSchema = {
+const pdfToHtmlPostSchema = {
 	tags,
 	summary:
 		"Used by monitoring software to poll and confirm the API is running",
-	operationId: "getHealthcheck",
-	produces: ["text/plain"],
+	operationId: "postPdfToHtml",
+	produces: ["text/html"],
 	response: {
-		200: S.string().const("ok"),
+		200: S.string(),
 	},
 };
 
-module.exports = { healthcheckGetSchema };
+module.exports = { pdfToHtmlPostSchema };

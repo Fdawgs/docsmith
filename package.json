@@ -17,9 +17,9 @@
 		"benchmark": "autocannon -H \"Authorization:Bearer testtoken\" \"http://0.0.0.0:8204/healthcheck\"",
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"jest": "jest --detectOpenHandles --runInBand",
-		"jest-coverage": "jest --coverage --runInBand",
+		"jest:coverage": "jest --coverage --runInBand",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
-		"lint:licenses": "license-checker --production --summary",
+		"lint:licenses": "license-checker --direct --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Unlicense\" --production --summary",
 		"lint:prettier": "prettier . --write --ignore-path .gitignore",
 		"lint:prettier:ci": "prettier . --check --ignore-path .gitignore",
 		"start": "node .",
@@ -46,6 +46,7 @@
 			"SUPPRESS_SUPPORT": 1
 		},
 		"ignore": [
+			"src/temp",
 			"test_resources"
 		],
 		"verbose": true,
@@ -74,6 +75,7 @@
 		"eslint-plugin-security": "^1.4.0",
 		"faker": "^5.2.0",
 		"glob": "^7.1.6",
+		"is-html": "^2.0.0",
 		"jest": "^26.6.3",
 		"license-checker": "^25.0.1",
 		"lodash": "^4.17.20",
@@ -89,13 +91,15 @@
 		"fastify-autoload": "^3.4.2",
 		"fastify-bearer-auth": "^5.0.2",
 		"fastify-cors": "^5.2.0",
-		"fastify-helmet": "^5.2.0",
 		"fastify-disablecache": "^1.0.3",
+		"fastify-helmet": "^5.2.0",
 		"fastify-plugin": "^3.0.0",
 		"fastify-swagger": "^4.0.1",
 		"file-stream-rotator": "^0.5.7",
+		"file-type": "^16.2.0",
 		"fix-utf8": "^1.1.1",
 		"fluent-json-schema": "^2.0.3",
+		"glob": "^7.1.6",
 		"helmet": "^4.4.1",
 		"htmltidy2": "^0.3.0",
 		"http-errors": "^1.8.0",
@@ -103,6 +107,8 @@
 		"node-poppler": "^2.2.0",
 		"node-unrtf": "^1.0.7",
 		"pino": "^6.10.0",
-		"tesseract.js": "^2.1.4"
+		"raw-body": "^2.4.1",
+		"tesseract.js": "^2.1.4",
+		"uuid": "^8.3.2"
 	}
 }

@@ -79,7 +79,7 @@ jobs:
               run: |
                   brew install unrtf poppler
                   cp .env.template .env
-                  npm run jest-coverage
+                  npm run jest:coverage
             - name: Run Ubuntu Tests
               if: matrix.os == 'ubuntu-latest'
               env:
@@ -88,12 +88,12 @@ jobs:
               run: |
                   sudo apt-get -y install poppler-data poppler-utils unrtf
                   cp .env.template .env
-                  npm run jest-coverage
+                  npm run jest:coverage
             - name: Run Windows Tests
               if: matrix.os == 'windows-latest'
               run: |
                   cp .env.template .env
-                  npm run jest-coverage
+                  npm run jest:coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@v1.1.2
               with:
