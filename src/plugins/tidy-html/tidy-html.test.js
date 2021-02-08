@@ -39,17 +39,21 @@ describe("Tidy-CSS Plugin", () => {
 			},
 		});
 
-        const dom = new JSDOM(response.payload);
+		const dom = new JSDOM(response.payload);
 
-        expect(dom.window.document.querySelector("html").getAttribute('lang')).toBe('en');
-        expect(dom.window.document.querySelector("html").getAttribute('xml:lang')).toBe('en');
+		expect(
+			dom.window.document.querySelector("html").getAttribute("lang")
+		).toBe("en");
+		expect(
+			dom.window.document.querySelector("html").getAttribute("xml:lang")
+		).toBe("en");
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 	});
 
 	test("Should tidy HTML and set language", async () => {
 		server.post("/", async (req, res) => {
-			res.send(await server.tidyHtml(req.body, 'fr'));
+			res.send(await server.tidyHtml(req.body, "fr"));
 		});
 		server.register(plugin);
 
@@ -65,12 +69,15 @@ describe("Tidy-CSS Plugin", () => {
 			},
 		});
 
-        const dom = new JSDOM(response.payload);
+		const dom = new JSDOM(response.payload);
 
-        expect(dom.window.document.querySelector("html").getAttribute('lang')).toBe('fr');
-        expect(dom.window.document.querySelector("html").getAttribute('xml:lang')).toBe('fr');
+		expect(
+			dom.window.document.querySelector("html").getAttribute("lang")
+		).toBe("fr");
+		expect(
+			dom.window.document.querySelector("html").getAttribute("xml:lang")
+		).toBe("fr");
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 	});
-
 });
