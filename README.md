@@ -1,7 +1,10 @@
 # doc-conversion-service-next
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/doc-conversion-service-next.svg)](https://github.com/Fdawgs/doc-conversion-service-next/releases/latest/)
-![CI](https://github.com/Fdawgs/doc-conversion-service-next/workflows/CI/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/doc-conversion-service-next/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/doc-conversion-service-next?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/doc-conversion-service-next/badge.svg)](https://snyk.io/test/github/Fdawgs/doc-conversion-service-next) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
+![CI](https://github.com/Fdawgs/doc-conversion-service-next/workflows/CI/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/doc-conversion-service-next/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/doc-conversion-service-next?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/doc-conversion-service-next/badge.svg)](https://snyk.io/test/github/Fdawgs/doc-conversion-service-next)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 > RESTful API for converting clinical documents/files
 
