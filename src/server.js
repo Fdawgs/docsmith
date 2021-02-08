@@ -11,9 +11,9 @@ const disableCache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
 
 // Import local decorator plugins
-const embedHtmlImages = require('./plugins/embed-html-images');
-const tidyCss = require('./plugins/tidy-css');
-const tidyHtml = require('./plugins/tidy-html');
+const embedHtmlImages = require("./plugins/embed-html-images");
+const tidyCss = require("./plugins/tidy-css");
+const tidyHtml = require("./plugins/tidy-html");
 
 // Import healthcheck route
 const healthCheck = require("./routes/healthcheck");
