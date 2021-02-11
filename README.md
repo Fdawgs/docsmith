@@ -30,7 +30,7 @@ It was initially created to replace a previously purchased PDF-to-HTML conversio
 ### Standard Deployment
 
 1. Navigate to the repo
-2. Run `npm install --production` to install dependencies
+2. Run `npm install --ignore-scripts --production` to install dependencies
 3. Make a copy of `.env.template` in the root directory and rename to `.env`
 4. Configure the application using the environment variables in `.env`
 5. Run `npm start`
@@ -62,7 +62,7 @@ This requires [Docker](https://www.docker.com/products) installed.
 If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
 1. Navigate to the repo
-2. Run `npm install --production` to install dependencies
+2. Run `npm install --ignore-scripts --production` to install dependencies
 3. Make a copy of `.env.template` in the root directory and rename to `.env`
 4. Configure the application using the global variables in `.env`
 5. Run `npm install -g pm2` to install pm2 globally
