@@ -42,6 +42,18 @@ jobs:
             - name: Run Lockfile Linter
               run: npx lockfile-lint --path package-lock.json --type npm --allowed-hosts npm --validate-https
 
+    commit-lint:
+        name: Lint Commit Messages
+        if: github.event.pull_request.draft == false
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - uses: wagoid/commitlint-github-action@v2.0.3
+              with:
+                  configFile: ./package.json
+
     unit-tests:
         name: Unit Tests
         if: github.event.pull_request.draft == false
