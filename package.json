@@ -19,7 +19,7 @@
 		"jest": "jest --detectOpenHandles --runInBand",
 		"jest:coverage": "jest --coverage --runInBand",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
-		"lint:licenses": "license-checker --direct --onlyAllow=\"0BSD;Apache-2.0;BSD;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Unlicense\" --production --summary",
+		"lint:licenses": "license-checker --direct --excludePackages=\"tesseract.js-core@2.2.0\" --onlyAllow=\"0BSD;Apache-2.0;BSD;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Unlicense\" --production --summary",
 		"lint:prettier": "prettier . --write --ignore-path .gitignore",
 		"lint:prettier:ci": "prettier . --check --ignore-path .gitignore",
 		"start": "node .",
