@@ -66,4 +66,4 @@ When cutting a release, the following steps need to be performed:
 
 ## Issues
 
-Please file your issues [here](https://github.com/Fdawgs/doc-conversion-service-next/issues) and try to provide as much information in the template as possible/relevant.
+Please file your issues [here](https://github.com/Fdawgs/doccon/issues) and try to provide as much information in the template as possible/relevant.

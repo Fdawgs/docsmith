@@ -1,9 +1,9 @@
-# doc-conversion-service-next
+# doccon
 
-[![GitHub Release](https://img.shields.io/github/release/Fdawgs/doc-conversion-service-next.svg)](https://github.com/Fdawgs/doc-conversion-service-next/releases/latest/)
-![CI](https://github.com/Fdawgs/doc-conversion-service-next/workflows/CI/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/doc-conversion-service-next/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/doc-conversion-service-next?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/doc-conversion-service-next/badge.svg)](https://snyk.io/test/github/Fdawgs/doc-conversion-service-next)
+[![GitHub Release](https://img.shields.io/github/release/Fdawgs/doccon.svg)](https://github.com/Fdawgs/doccon/releases/latest/)
+![CI](https://github.com/Fdawgs/doccon/workflows/CI/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/doccon/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/doccon?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/doccon/badge.svg)](https://snyk.io/test/github/Fdawgs/doccon)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 > RESTful API for converting clinical documents/files
@@ -77,8 +77,8 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 ## Contributing
 
-Please see [CONTRIBUTING.md](https://github.com/Fdawgs/doc-conversion-service-next/blob/master/CONTRIBUTING.md) for more details regarding contributing to this project.
+Please see [CONTRIBUTING.md](./CONTRIBUTING) for more details regarding contributing to this project.
 
 ## License
 
-`doc-conversion-service-next` is licensed under the [MIT](https://github.com/Fdawgs/doc-conversion-service-next/blob/master/LICENSE) license.
+`doccon` is licensed under the [MIT](./LICENSE) license.
