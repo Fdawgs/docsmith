@@ -99,7 +99,7 @@
 	"dependencies": {
 		"cssom": "^0.4.4",
 		"dotenv": "^8.2.0",
-		"env-schema": "^2.0.1",
+		"env-schema": "^2.1.0",
 		"fastify": "^3.11.0",
 		"fastify-autoload": "^3.4.2",
 		"fastify-bearer-auth": "^5.1.0",
