@@ -162,7 +162,7 @@ jobs:
     automerge:
         name: Automatically Merge Dependabot Pull Requests
         if: github.event.pull_request.draft == false
-        needs: [lint, unit-tests, docker-compose-tests]
+        needs: [commit-lint, docker-compose-tests, lint, unit-tests]
         runs-on: ubuntu-latest
         steps:
             - uses: fastify/github-action-merge-dependabot@v1.1.1
