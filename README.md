@@ -77,7 +77,7 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 ## Contributing
 
-Please see [CONTRIBUTING.md](./CONTRIBUTING) for more details regarding contributing to this project.
+Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for more details regarding contributing to this project.
 
 ## License
 
