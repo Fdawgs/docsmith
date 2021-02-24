@@ -1,12 +1,12 @@
 {
-	"name": "doc-conversion-service-next",
+	"name": "doccon",
 	"version": "0.0.2",
 	"description": "RESTful API for converting clinical documents/files",
 	"main": "src/app.js",
-	"repository": "git+https://github.com/Fdawgs/doc-conversion-service-next.git",
-	"homepage": "https://github.com/Fdawgs/doc-conversion-service-next",
+	"repository": "git+https://github.com/Fdawgs/doccon.git",
+	"homepage": "https://github.com/Fdawgs/doccon",
 	"bugs": {
-		"url": "https://github.com/Fdawgs/doc-conversion-service-next/issues"
+		"url": "https://github.com/Fdawgs/doccon/issues"
 	},
 	"license": "MIT",
 	"author": "Frazer Smith <frazer.dev@outlook.com>",

@@ -118,7 +118,7 @@ async function getConfig() {
 					license: {
 						name: license,
 						url:
-							"https://raw.githubusercontent.com/Fdawgs/doc-conversion-service-next/master/LICENSE",
+							"https://raw.githubusercontent.com/Fdawgs/doccon/master/LICENSE",
 					},
 					version,
 				},
