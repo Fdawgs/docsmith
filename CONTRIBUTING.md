@@ -53,17 +53,6 @@ Prior to submitting a pull request back to the main repository, please make sure
 2. Run `npm test` to check the code adheres to the defined style and that it passes the Jest tests
 3. Run `npm run lint:prettier` to run the Prettier code formatter over the code
 
-## Release Process
-
-When cutting a release, the following steps need to be performed:
-
-1. Create a release branch with the convention `release/x.x.x`
-2. `package.json` needs to have a version update based on the content being released, remembering to adhere to semantic versioning
-3. Generate the changelog with `npm run changelog`
-4. Create a tag for the version; the naming convention is the version (vx.x.x)
-5. Push the tag to the repository
-6. Draft a release in the release tab with release notes, copying the notes from the changelog
-
 ## Issues
 
 Please file your issues [here](https://github.com/Fdawgs/doccon/issues) and try to provide as much information in the template as possible/relevant.
