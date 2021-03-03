@@ -19,8 +19,8 @@
 		"jest:coverage": "jest --coverage --runInBand",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
 		"lint:licenses": "license-checker --direct --excludePackages=\"tesseract.js-core@2.2.0\" --onlyAllow=\"0BSD;Apache-2.0;BSD;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Unlicense\" --production --summary",
-		"lint:prettier": "prettier \"**/!(CHANGELOG.md|package.json)\" --write --ignore-path .gitignore --ignore-unknown",
-		"lint:prettier:ci": "prettier \"**/!(CHANGELOG.md|package.json)\"  --check --ignore-path .gitignore --ignore-unknown",
+		"lint:prettier": "prettier . --write --ignore-unknown",
+		"lint:prettier:ci": "prettier . --check --ignore-unknown",
 		"start": "node .",
 		"start:dev": "nodemon | pino-pretty --colorize",
 		"test": "npm run lint && npm run jest"
