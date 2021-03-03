@@ -1,0 +1,20 @@
+name: CD
+
+on:
+    push:
+        branches:
+            - master
+    # Allows this workflow to be run manually from the Actions tab
+    workflow_dispatch:
+
+jobs:
+    release:
+        name: Create/Update Release Pull Request
+        runs-on: ubuntu-latest
+        steps:
+            - name: Release Please
+              id: release
+              uses: GoogleCloudPlatform/release-please-action@v2.20.1
+              with:
+                  changelog-types: '[ { "type": "feat", "section": "Features", "hidden": false }, { "type": "fix", "section": "Bug Fixes", "hidden": false }, { "type": "build", "section": "Dependencies", "hidden": false }, { "type": "chore", "section": "Miscellaneous", "hidden": false }, { "type": "ci", "section": "Miscellaneous", "hidden": false }, { "type": "perf", "section": "Performance", "hidden": false }, { "type": "refactor", "section": "Miscellaneous", "hidden": false }, { "type": "style", "section": "Miscellaneous", "hidden": false }, { "type": "docs", "section": "Documentation", "hidden": false }]'
+                  release-type: node
