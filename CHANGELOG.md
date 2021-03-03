@@ -1,4 +1,8 @@
-## <small>0.0.2 (2021-02-18)</small>
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+### [0.0.2](https://www.github.com/Fdawgs/doccon/compare/v0.0.1...v0.0.2) (2021-02-18)
 
 -   docs: shorten links ([a02f9f6](https://github.com/Fdawgs/doccon/commit/a02f9f6))
 -   docs(contributing): add documentation style ([3a42706](https://github.com/Fdawgs/doccon/commit/3a42706))
@@ -32,7 +36,7 @@
 -   ci(dependabot): ignore husky updates ([1a70ed0](https://github.com/Fdawgs/doccon/commit/1a70ed0))
 -   style(readme): add linebreaks between badges ([8c3231c](https://github.com/Fdawgs/doccon/commit/8c3231c))
 
-## <small>0.0.1 (2021-02-08)</small>
+### 0.0.1 (2021-02-08)
 
 -   chore: add basic route ([179cac8](https://github.com/Fdawgs/doccon/commit/179cac8))
 -   chore: add config and template files ([42f6f20](https://github.com/Fdawgs/doccon/commit/42f6f20))
