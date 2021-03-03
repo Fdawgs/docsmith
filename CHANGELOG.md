@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file.
 
+### [0.0.3](https://www.github.com/Fdawgs/doccon/compare/v0.0.2...v0.0.3) (2021-03-03)
+
+
+### Documentation
+
+* **readme:** fix broken link ([283583d](https://www.github.com/Fdawgs/doccon/commit/283583d22b03f98573091490cf08292bfdbb2b6b))
+
+
+### Dependencies
+
+* **dependabot:** set commit message prefix; lower pull limit ([856c587](https://www.github.com/Fdawgs/doccon/commit/856c58799c5057bddb71241ac0b469b5ddd6b9e8))
+* **deps-dev:** bump @commitlint/cli from 11.0.0 to 12.0.1 ([#51](https://www.github.com/Fdawgs/doccon/issues/51)) ([ef625c2](https://www.github.com/Fdawgs/doccon/commit/ef625c2c2910fd9a3143e7f9a7ff667d4ffbfa0a))
+* **deps-dev:** bump @commitlint/config-conventional ([3347150](https://www.github.com/Fdawgs/doccon/commit/3347150c0d54702cde50810aa473d74eb3df5753))
+* **deps-dev:** bump eslint from 7.20.0 to 7.21.0 ([#52](https://www.github.com/Fdawgs/doccon/issues/52)) ([b9e5971](https://www.github.com/Fdawgs/doccon/commit/b9e59715316c8e87f694bf530f627d117fd0b76b))
+* **deps-dev:** bump eslint-config-prettier from 7.2.0 to 8.1.0 ([e75361c](https://www.github.com/Fdawgs/doccon/commit/e75361c7783b024be267fd7f18333d05557d0b64))
+* **deps-dev:** bump eslint-plugin-jsdoc from 32.0.2 to 32.2.0 ([#49](https://www.github.com/Fdawgs/doccon/issues/49)) ([d4b48ee](https://www.github.com/Fdawgs/doccon/commit/d4b48eede00854589862671a6e2afda697c2dc1f))
+* **deps-dev:** bump lodash from 4.17.20 to 4.17.21 ([#54](https://www.github.com/Fdawgs/doccon/issues/54)) ([c34363d](https://www.github.com/Fdawgs/doccon/commit/c34363de542f1bdd22beb60941dd2dcefdf5e19b))
+* **deps:** bump fastify-autoload from 3.4.2 to 3.5.2 ([#53](https://www.github.com/Fdawgs/doccon/issues/53)) ([e87fb6c](https://www.github.com/Fdawgs/doccon/commit/e87fb6c2d72d490f7700714173cc4d90cbffe7db))
+* **deps:** bump fluent-json-schema from 2.0.3 to 2.0.4 ([#50](https://www.github.com/Fdawgs/doccon/issues/50)) ([86ad7e5](https://www.github.com/Fdawgs/doccon/commit/86ad7e56bbf8272b3646f4f8b0915db87c40f343))
+* **deps:** bump wagoid/commitlint-github-action from v2.2.3 to v3.0.1 ([9166abf](https://www.github.com/Fdawgs/doccon/commit/9166abfbe3a65d904428d24d43458c70be6ca999))
+* **deps:** specify minor and hotfix versions ([51bfda0](https://www.github.com/Fdawgs/doccon/commit/51bfda0ef7814367b40f6c6c51149e95414e82d0))
+
+
+### Miscellaneous
+
+* add link check workflow ([1934a77](https://www.github.com/Fdawgs/doccon/commit/1934a7739d5666c19dd5e53b0890584a8c88538e))
+* automate release and changelog generation ([8e39a57](https://www.github.com/Fdawgs/doccon/commit/8e39a579632b082a42f98745e0ad867565ebc9f2))
+* **codeql:** remove autobuild action ([97da309](https://www.github.com/Fdawgs/doccon/commit/97da3098222d9d2475bc836f1e61099b0db02b83))
+* **linkcheck:** extend ignored urls ([00cc7a2](https://www.github.com/Fdawgs/doccon/commit/00cc7a2d360f69c80202e0c080df299cc1c8cb85))
+* **lint-check:** compress patterns ([d93527e](https://www.github.com/Fdawgs/doccon/commit/d93527ed40a0954615e521ff416ba4aa8aede364))
+* **prettier:** create separate files to allow for CI/CD to use prettier config ([#56](https://www.github.com/Fdawgs/doccon/issues/56)) ([5dfdcc7](https://www.github.com/Fdawgs/doccon/commit/5dfdcc7caf87f06c1940b273b8cc4388291a1f2c))
+* replace stalebot with github action ([6307221](https://www.github.com/Fdawgs/doccon/commit/6307221cf390dfddab5d0a308faadbda8a1c010d))
+* require `commit-lint` job to pass before automerge ([d52c5e9](https://www.github.com/Fdawgs/doccon/commit/d52c5e97bf8d02a597933c04534762c541728b6e))
+* update repo name and links ([022c44c](https://www.github.com/Fdawgs/doccon/commit/022c44c0dff50dabbea2d7ac198292af9c22924b))
+* **vscode:** remove conflicting prettier ext setting ([6668a8b](https://www.github.com/Fdawgs/doccon/commit/6668a8bff4f6df541a68988e14f3d459b403ede7))
+* **workflows:** move release steps into `cd` workflow ([2c85cfe](https://www.github.com/Fdawgs/doccon/commit/2c85cfebe4badfcf1e53d2798f65866c00adb5f7))
+* **workflows:** remove redundant comments ([6fa604c](https://www.github.com/Fdawgs/doccon/commit/6fa604c123cf9bbc842c58aa6c0ae4ec70803454))
+* **workflows:** rename spellcheck workflow ([dcd27cf](https://www.github.com/Fdawgs/doccon/commit/dcd27cf0adc718b71dfd4bb3a8b4e517921e9538))
+* **workflows:** tidy node-version syntax ([ad3128d](https://www.github.com/Fdawgs/doccon/commit/ad3128d3f4cdb94427fb0c29b90ecb15c7d95715))
+
 ### [0.0.2](https://www.github.com/Fdawgs/doccon/compare/v0.0.1...v0.0.2) (2021-02-18)
 
 -   docs: shorten links ([a02f9f6](https://github.com/Fdawgs/doccon/commit/a02f9f6))
