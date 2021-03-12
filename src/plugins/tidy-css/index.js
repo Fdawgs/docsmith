@@ -3,8 +3,8 @@ const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds function that uses HTMLTidy2 to
- * parse and tidy HTML passed.
+ * @description Decorator plugin that adds function that parses
+ * and tidies CSS passed.
  * @param {Function} server - Fastify instance.
  */
 async function plugin(server) {
