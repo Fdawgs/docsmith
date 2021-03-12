@@ -15,7 +15,8 @@ const pdfToHtmlPostSchema = {
 	operationId: "postPdfToHtml",
 	consumes: ["application/pdf"],
 	produces: ["text/html"],
-	body: S.string().contentMediaType("application/pdf"),
+	// TODO: resolve binary body
+	// body: S.string().contentMediaType("application/pdf"),
 	query: S.object()
 		.prop(
 			"backgroundColor",
