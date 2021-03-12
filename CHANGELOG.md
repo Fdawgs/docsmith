@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+### [0.0.4](https://www.github.com/Fdawgs/doccon/compare/v0.0.3...v0.0.4) (2021-03-12)
+
+
+### Miscellaneous
+
+* **workflows:** rename ci and perf sections ([b316fab](https://www.github.com/Fdawgs/doccon/commit/b316fab6d34ecb92b0f141a3eda1cb4ff57038ae))
+
+
+### Dependencies
+
+* bump dependencies ([42736d5](https://www.github.com/Fdawgs/doccon/commit/42736d5ab7ab947435e4f1d4336d3d4525f75d1a))
+
 ### [0.0.3](https://www.github.com/Fdawgs/doccon/compare/v0.0.2...v0.0.3) (2021-03-03)
 
 
