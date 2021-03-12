@@ -40,12 +40,11 @@ async function route(server, options) {
 		url: "/",
 		schema: pdfTohtmlPostSchema,
 		async handler(req, res) {
-			let result = server.embedHtmlImages(
-				req.pdfToHtmlResults.body,
-				true
+			const result = server.tidyCss(
+				await server.tidyHtml(
+					server.embedHtmlImages(req.pdfToHtmlResults.body, true)
+				)
 			);
-
-			result = server.tidyCss(await server.tidyHtml(result));
 
 			res.send(result);
 		},
