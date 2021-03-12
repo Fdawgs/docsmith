@@ -3,12 +3,10 @@
 /* eslint-disable no-restricted-globals */
 const autoParse = require("auto-parse");
 const createError = require("http-errors");
-const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const fs = require("fs");
 const fsp = require("fs").promises;
 const glob = require("glob");
-const { JSDOM } = require("jsdom");
 const path = require("path");
 const { Poppler } = require("node-poppler");
 const { v4 } = require("uuid");
@@ -16,28 +14,28 @@ const { v4 } = require("uuid");
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Poppler to convert Buffer or string of
- * PDF file in `req.body` to HTML and places both files in a temporary directory.
- * `req` object is decorated with `pdfToHtmlResults` object detailing document
+ * PDF file in `req.body` to TXT and places PDF file in a temporary directory.
+ * `req` object is decorated with `pdfToTxtResults` object detailing document
  * location, contents etc.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Fastify config values.
  * @param {string} options.poppler.binPath - Obfuscation values.
  * @param {string} options.poppler.encoding - Sets the encoding to use for text output.
- * @param {object=} options.poppler.pdfToHtmlOptions - Refer to
- * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToHtml
+ * @param {object=} options.poppler.pdfToTxtOptions - Refer to
+ * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToText
  * for options.
  * @param {string} options.poppler.tempDirectory - directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
-		req.pdfToHtmlResults = { body: undefined, docLocation: {} };
+		req.pdfToTxtResults = { body: undefined, docLocation: {} };
 	});
 
 	server.addHook("onResponse", (req) => {
 		// Remove files from temp directory after response sent
 		const files = glob.sync(
-			`${req.pdfToHtmlResults.docLocation.directory}/${req.pdfToHtmlResults.docLocation.id}*`
+			`${req.pdfToTxtResults.docLocation.directory}/${req.pdfToTxtResults.docLocation.id}*`
 		);
 		files.forEach((file) => {
 			fs.unlinkSync(file);
@@ -46,14 +44,17 @@ async function plugin(server, options) {
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
+			// `pdfToText` Poppler function still attempts to parse empty bodies/input and produces results
+			// so catch them here
+			if (req.body === undefined || Object.keys(req.body).length === 0) {
+				throw new Error();
+			}
+
 			// Define any default settings the middleware should have to get up and running
 			const defaultConfig = {
 				binPath: undefined,
 				encoding: "UTF-8",
-				pdfToHtmlOptions: {
-					complexOutput: true,
-					singlePage: true,
-				},
+				pdfToTxtOptions: {},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
 			this.config = Object.assign(defaultConfig, options.poppler);
@@ -63,23 +64,29 @@ async function plugin(server, options) {
 			 * as some of the params may be used in other plugins
 			 */
 			const query = { ...req.query };
-			const pdfToHtmlAcceptedParams = [
-				"exchangePdfLinks",
-				"extractHidden",
+			const pdfToTxtAcceptedParams = [
+				"boundingBoxXhtml",
+				"boundingBoxXhtmlLayout",
+				"cropHeight",
+				"cropWidth",
+				"cropXAxis",
+				"cropYAxis",
+				"eolConvention",
 				"firstPageToConvert",
-				"ignoreImages",
-				"imageFormat",
+				"fixedWidthLayout",
+				"generateHtmlMetaFile",
 				"lastPageToConvert",
-				"noDrm",
-				"noMergeParagraph",
+				"listEncodingOptions",
+				"maintainLayout",
+				"noDiagonalText",
+				"noPageBreaks",
 				"outputEncoding",
 				"ownerPassword",
+				"rawLayout",
 				"userPassword",
-				"wordBreakThreshold",
-				"zoom",
 			];
 			Object.keys(query).forEach((value) => {
-				if (!pdfToHtmlAcceptedParams.includes(value)) {
+				if (!pdfToTxtAcceptedParams.includes(value)) {
 					delete query[value];
 				} else {
 					/**
@@ -89,7 +96,7 @@ async function plugin(server, options) {
 					query[value] = autoParse(query[value]);
 				}
 			});
-			Object.assign(this.config.pdfToHtmlOptions, query);
+			Object.assign(this.config.pdfToTxtOptions, query);
 
 			// Create temp directory if missing
 			try {
@@ -101,45 +108,36 @@ async function plugin(server, options) {
 			// Build temporary files for Poppler and following plugins to read from
 			const id = v4();
 			const tempPdfFile = `${this.config.tempDirectory}${id}.pdf`;
-			const tempHtmlFile = `${this.config.tempDirectory}${id}-html.html`;
 			await fsp.writeFile(tempPdfFile, req.body);
 			const poppler = new Poppler(this.config.binPath);
-			await poppler.pdfToHtml(tempPdfFile, this.config.pdfToHtmlOptions);
 
-			// Remove excess title and meta tags left behind by Poppler
-			const dom = new JSDOM(
-				await fsp.readFile(tempHtmlFile, {
-					encoding: this.config.encoding,
-				})
+			req.pdfToTxtResults.body = await poppler.pdfToText(
+				tempPdfFile,
+				undefined,
+				this.config.pdfToTxtOptions
 			);
-			const titles = dom.window.document.querySelectorAll("title");
-			for (let index = 1; index < titles.length; index += 1) {
-				titles[index].parentNode.removeChild(titles[index]);
-			}
-			const metas = dom.window.document.querySelectorAll("meta");
-			for (let index = 1; index < metas.length; index += 1) {
-				metas[index].parentNode.removeChild(metas[index]);
-			}
-
-			/**
-			 * `fixUtf8` function replaces most common incorrectly converted
-			 * Windows-1252 to UTF-8 results with HTML equivalents.
-			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
-			 */
-			req.pdfToHtmlResults.body = fixUtf8(
-				dom.window.document.documentElement.outerHTML
-			);
-			req.pdfToHtmlResults.docLocation = {
+			req.pdfToTxtResults.docLocation = {
 				directory: this.config.tempDirectory,
-				html: tempHtmlFile,
 				id,
 				pdf: tempPdfFile,
 			};
 
+			// Certain querystring options alter output to HTML rather than TXT
+			let contentType = "text/plain";
+			if (
+				query.boundingBoxXhtml ||
+				query.boundingBoxXhtmlLayout ||
+				query.generateHtmlMetaFile
+			) {
+				contentType = "text/html";
+				req.pdfToTxtResults.body = await server.tidyHtml(
+					req.pdfToTxtResults.body
+				);
+			}
 			res.header(
 				"content-type",
-				`text/html; charset=${
-					this.config.pdfToHtmlOptions.outputEncoding ||
+				`${contentType}; charset=${
+					this.config.pdfToTxtOptions.outputEncoding ||
 					this.config.encoding
 				}`
 			);

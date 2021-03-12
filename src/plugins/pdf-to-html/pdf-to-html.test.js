@@ -30,7 +30,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 			return res;
 		});
 
-		server.post("/", (req, res) => {
+		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");
 			res.send(req.pdfToHtmlResults);
 		});
@@ -50,8 +50,8 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: "2",
-				ignoreImages: "false",
+				lastPageToConvert: 2,
+				ignoreImages: false,
 			},
 			headers: {
 				"content-type": "application/pdf",
@@ -75,9 +75,9 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 			method: "POST",
 			url: "/",
 			query: {
-				firstPageToConvert: "1",
-				ignoreImages: "true",
-				lastPageToConvert: "1",
+				firstPageToConvert: 1,
+				ignoreImages: true,
+				lastPageToConvert: 1,
 				test: "test",
 			},
 			body: fs.readFileSync(

@@ -22,7 +22,7 @@
     "lint:prettier": "prettier . --write --ignore-unknown",
     "lint:prettier:ci": "prettier . --check --ignore-unknown",
     "start": "node .",
-    "start:dev": "nodemon | pino-pretty --colorize",
+    "start:dev": "nodemon",
     "test": "npm run lint && npm run jest"
   },
   "commitlint": {
@@ -89,6 +89,7 @@
     "prettier": "2.2.1"
   },
   "dependencies": {
+    "auto-parse": "^1.8.0",
     "cssom": "^0.4.4",
     "dotenv": "^8.2.0",
     "env-schema": "^3.0.1",

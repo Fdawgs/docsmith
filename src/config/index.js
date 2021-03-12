@@ -193,6 +193,10 @@ async function getConfig() {
 		});
 	}
 
+	if (env.NODE_ENV !== "PRODUCTION" && !env.LOG_ROTATION_FILENAME) {
+		config.fastifyInit.logger.prettyPrint = true;
+	}
+
 	if (env.AUTH_BEARER_TOKEN_ARRAY) {
 		const keys = new Set();
 		JSON.parse(env.AUTH_BEARER_TOKEN_ARRAY).forEach((element) => {
