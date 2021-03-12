@@ -43,7 +43,11 @@ async function route(server, options) {
 			const result = server.tidyCss(
 				await server.tidyHtml(
 					server.embedHtmlImages(req.pdfToHtmlResults.body, true)
-				)
+				),
+				{
+					fonts: req.query.fonts,
+					backgroundColor: req.query.backgroundColor,
+				}
 			);
 
 			res.send(result);
