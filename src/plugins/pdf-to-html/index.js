@@ -1,6 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable security/detect-object-injection */
 /* eslint-disable no-restricted-globals */
+const autoParse = require("auto-parse");
 const createError = require("http-errors");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
@@ -80,27 +81,16 @@ async function plugin(server, options) {
 			Object.keys(query).forEach((value) => {
 				if (!pdfToHtmlAcceptedParams.includes(value)) {
 					delete query[value];
+				} else {
+					/**
+					 * Convert query string params to literal values to
+					 * allow Poppler module to use them
+					 */
+					query[value] = autoParse(query[value]);
 				}
 			});
+			Object.assign(this.config.pdfToHtmlOptions, query);
 
-			/**
-			 * Convert query string params to literal values to
-			 * allow Poppler module to use them
-			 */
-			Object.keys(query).forEach((value) => {
-				if (query[value] === "false") {
-					query[value] = false;
-				} else if (query[value] === "true") {
-					query[value] = true;
-				} else if (!isNaN(query[value])) {
-					query[value] = parseFloat(query[value]);
-				}
-			});
-
-			this.config.pdftoHtmlOptions = Object.assign(
-				this.config.pdfToHtmlOptions,
-				query
-			);
 			// Create temp directory if missing
 			try {
 				await fsp.access(this.config.tempDirectory);
