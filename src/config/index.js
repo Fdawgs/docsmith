@@ -134,6 +134,11 @@ async function getConfig() {
 				},
 				tags: [
 					{
+						name: "PDF",
+						description:
+							"Endpoints used for the conversion of PDF documents",
+					},
+					{
 						name: "System Administration",
 						description: "",
 					},

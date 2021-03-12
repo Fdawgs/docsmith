@@ -4,7 +4,7 @@ const fileType = require("file-type");
 // Import plugins
 const pdfToHtml = require("../../../plugins/pdf-to-html");
 
-const { pdfTohtmlPostSchema } = require("./schema");
+const { pdfToHtmlPostSchema } = require("./schema");
 
 /**
  * @author Frazer Smith
@@ -38,14 +38,17 @@ async function route(server, options) {
 	server.route({
 		method: "POST",
 		url: "/",
-		schema: pdfTohtmlPostSchema,
+		schema: pdfToHtmlPostSchema,
 		async handler(req, res) {
-			let result = server.embedHtmlImages(
-				req.pdfToHtmlResults.body,
-				true
+			const result = server.tidyCss(
+				await server.tidyHtml(
+					server.embedHtmlImages(req.pdfToHtmlResults.body, true)
+				),
+				{
+					fonts: req.query.fonts,
+					backgroundColor: req.query.backgroundColor,
+				}
 			);
-
-			result = server.tidyCss(await server.tidyHtml(result));
 
 			res.send(result);
 		},
