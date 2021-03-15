@@ -193,6 +193,11 @@ async function getConfig() {
 		});
 	}
 
+	/**
+	 * Pretty output to stdout out if not in production.
+	 * Replaces using `pino-pretty` in scripts, as it does not play
+	 * well with Nodemon
+	 */
 	if (env.NODE_ENV !== "PRODUCTION" && !env.LOG_ROTATION_FILENAME) {
 		config.fastifyInit.logger.prettyPrint = true;
 	}
