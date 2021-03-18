@@ -117,8 +117,11 @@ dist
 
 # Auto generated files
 package.json
-package-lock.json
 CHANGELOG.md
+
+# lock files
+package-lock.json
+yarn.lock
 
 # Test files
 test_resources/test_log*
