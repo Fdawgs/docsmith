@@ -99,7 +99,7 @@ const pdfToTxtPostSchema = {
 		.prop(
 			"noPageBreaks",
 			S.boolean().description(
-				"Don't insert page breaks (form feed characters) between pages"
+				"Do not insert page breaks (form feed characters) between pages"
 			)
 		)
 		.prop(
