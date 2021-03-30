@@ -2,6 +2,64 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.0](https://www.github.com/Fdawgs/doccon/compare/v0.0.3...v0.1.0) (2021-03-30)
+
+
+### Features
+
+* **routes/pdf/html:** add schema ([57af27e](https://www.github.com/Fdawgs/doccon/commit/57af27e95893a809ac114df87a9161edc5fff4aa))
+* **routes/pdf/txt:** add pdf-to-txt route and plugin ([56fb784](https://www.github.com/Fdawgs/doccon/commit/56fb784d69dae872e369220efe2b22305ea57bc1))
+
+
+### Bug Fixes
+
+* **routes/pdf/html:** options not passed to `tidyCss` function ([f0ba18d](https://www.github.com/Fdawgs/doccon/commit/f0ba18dfff4d2a2360db443897d8e13ccb680c23))
+* **routes/pdf/html:** remove body from schema validation ([a8e640a](https://www.github.com/Fdawgs/doccon/commit/a8e640a7e4123ad0e97e7933ca43f72900176687))
+
+
+### Continuous Integration
+
+* **automerge:** move automerge job into new workflow ([400b525](https://www.github.com/Fdawgs/doccon/commit/400b525c2bc6258d461496747f7dcb1bb9f66121))
+* **ci:** ignore dependabot prs for commit message linting ([e6620d1](https://www.github.com/Fdawgs/doccon/commit/e6620d191a614fb1742877fb5cb2ee4eb75b0957))
+* **stale:** shorten workflow name ([4d392aa](https://www.github.com/Fdawgs/doccon/commit/4d392aa1c470b9b115dbfe8d0eba2f61c34f4945))
+* **workflows:** run only on push and pulls to master branch ([d8eae28](https://www.github.com/Fdawgs/doccon/commit/d8eae2892377a9d25d1a52b92c91ba7ed8812c95))
+
+
+### Dependencies
+
+* bump dependencies ([42736d5](https://www.github.com/Fdawgs/doccon/commit/42736d5ab7ab947435e4f1d4336d3d4525f75d1a))
+* **deps-dev:** bump eslint from 7.21.0 to 7.23.0 ([d051c24](https://www.github.com/Fdawgs/doccon/commit/d051c242378709db742a3d2ae18bf06ecd4fb15b))
+* **deps-dev:** bump eslint-plugin-jest from 24.2.1 to 24.3.2 ([3811902](https://www.github.com/Fdawgs/doccon/commit/38119025437a8f90b3ca8b6c7594c1427a4d51f0))
+* **deps-dev:** bump eslint-plugin-jsdoc from 32.2.0 to 32.3.0 ([caae061](https://www.github.com/Fdawgs/doccon/commit/caae061d5dc89a1ae1be6f3a43daaa58ad2b67e1))
+* **deps-dev:** bump faker from 5.4.0 to 5.5.1 ([4f7fd4a](https://www.github.com/Fdawgs/doccon/commit/4f7fd4a88c2740c5062bc89c7341b3573a4ffd46))
+* **deps-dev:** bump husky from 4.3.8 to 6.0.0 ([44ba684](https://www.github.com/Fdawgs/doccon/commit/44ba68491a528f5eaec726b56c18ad5141b80063))
+* **deps:** bump actions/stale from v3.0.17 to v3.0.18 ([f2f5ce9](https://www.github.com/Fdawgs/doccon/commit/f2f5ce96ebf88415a3aab912c1374ff8e2c8f906))
+* **deps:** bump fastify from 3.14.0 to 3.14.1 ([4d7cc7c](https://www.github.com/Fdawgs/doccon/commit/4d7cc7c9c73c0ac9dba15725000f21fe614c5a78))
+* **deps:** bump fastify-disablecache from 1.0.5 to 1.0.6 ([e192d2c](https://www.github.com/Fdawgs/doccon/commit/e192d2c54ae81953572a36b05e9e71b661e5b049))
+* **deps:** bump fastify-helmet from 5.3.0 to 5.3.1 ([8fab790](https://www.github.com/Fdawgs/doccon/commit/8fab790cf3f120f946df0a1a67c90cf0bd023ac5))
+* **deps:** bump fastify-swagger from 4.4.1 to 4.4.2 ([79819b7](https://www.github.com/Fdawgs/doccon/commit/79819b7c5df0314e1f51a5996be05cb40de8dd4d))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([61d0766](https://www.github.com/Fdawgs/doccon/commit/61d0766737824b27d87daa1ec833b0763f66a7e5))
+* **deps:** bump jsdom from 16.5.0 to 16.5.2 ([2d52f5a](https://www.github.com/Fdawgs/doccon/commit/2d52f5a0e672e13d75337b2031fc30c5e6decadc))
+* **deps:** bump node-poppler from 2.4.0 to 2.4.1 ([6b5e9b4](https://www.github.com/Fdawgs/doccon/commit/6b5e9b49f03dc53ae25abd722502d7f7ada261cc))
+* **deps:** bump node-unrtf from 1.1.0 to 1.1.1 ([f1479b8](https://www.github.com/Fdawgs/doccon/commit/f1479b89c6bf421a8ef4cb10f4ec3d839a7dc3cc))
+* **deps:** bump pino from 6.11.1 to 6.11.2 ([7fc184c](https://www.github.com/Fdawgs/doccon/commit/7fc184c8f3918ac471492f1078801998238986e4))
+* **deps:** bump typoci/spellcheck-action from v0.3.0 to v0.4.0 ([de7b33e](https://www.github.com/Fdawgs/doccon/commit/de7b33e1c0dc6715e889bb1f1210c60767aaafe3))
+* **deps:** bump wagoid/commitlint-github-action from v3.0.1 to v3.0.6 ([99e8247](https://www.github.com/Fdawgs/doccon/commit/99e8247b4566aa46716fb22e8efe02d953ea0a32))
+* **docker:** remove now optional `version` value ([1ffbfbe](https://www.github.com/Fdawgs/doccon/commit/1ffbfbe1917a6cdecf2cf3935f06ebd84ad7f55c))
+
+
+### Miscellaneous
+
+* **config:** document purpose of `if...` statement ([ddee5be](https://www.github.com/Fdawgs/doccon/commit/ddee5be0bf428030562730c3bf9c09a8fab5018a))
+* **config:** move `pino-pretty` config out of script ([5ad9d1b](https://www.github.com/Fdawgs/doccon/commit/5ad9d1b8608a2217761b5b4a5fcc9cae36e29336))
+* **plugins/tidy-css:** update inaccurate description ([65b99cc](https://www.github.com/Fdawgs/doccon/commit/65b99cc71119713ae3a589d317aece18071a5022))
+* **plugins:** add querystring parsing ([ce7bfc5](https://www.github.com/Fdawgs/doccon/commit/ce7bfc59a230d2b07ab2f48a34b8c243ed94f0e1))
+* **prettierignore:** add yarn lock file ([6b45363](https://www.github.com/Fdawgs/doccon/commit/6b45363fbfdb98dbd906feeea892a427916089d8))
+* remove contraction usage in comments ([aa0cb08](https://www.github.com/Fdawgs/doccon/commit/aa0cb08237e581fd6d2f48613be7bf4b8b97ed28))
+* **routes/pdf/html:** replace `let` with `const` ([30b71db](https://www.github.com/Fdawgs/doccon/commit/30b71dbf187e492c001a1665eb98f98adf243ee2))
+* **tests:** standardise test file names ([ecbd01c](https://www.github.com/Fdawgs/doccon/commit/ecbd01c099350e9869c56c56199e58356011abd8))
+* **workflows:** rename ci and perf sections ([b316fab](https://www.github.com/Fdawgs/doccon/commit/b316fab6d34ecb92b0f141a3eda1cb4ff57038ae))
+
 ### [0.0.3](https://www.github.com/Fdawgs/doccon/compare/v0.0.2...v0.0.3) (2021-03-03)
 
 
