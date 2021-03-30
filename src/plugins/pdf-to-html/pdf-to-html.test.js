@@ -91,13 +91,14 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(typeof response.body).toBe("string");
+		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
 		expect(typeof response.docLocation).toBe("object");
 		expect(fs.existsSync(response.docLocation.html)).toBe(false);
 		expect(fs.existsSync(config.poppler.tempDirectory)).toBe(true);
 	});
 
-	test("Should return HTTP 400 error if PDF file missing", async () => {
+	test("Should return HTTP 400 error if PDF file is missing", async () => {
 		server.register(plugin, config);
 
 		const response = await server.inject({
