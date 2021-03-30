@@ -60,7 +60,9 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 
 		response = JSON.parse(response.payload);
 
-		expect(typeof response.body).toBe("string");
+		expect(response.body).toEqual(
+			expect.stringContaining("The&nbsp;NHS&nbsp;Constitution")
+		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
 		expect(typeof response.docLocation).toBe("object");
@@ -75,9 +77,9 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 			method: "POST",
 			url: "/",
 			query: {
-				firstPageToConvert: 1,
+				firstPageToConvert: 2,
 				ignoreImages: true,
-				lastPageToConvert: 1,
+				lastPageToConvert: 2,
 				test: "test",
 			},
 			body: fs.readFileSync(
@@ -90,7 +92,9 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 
 		response = JSON.parse(response.payload);
 
-		expect(typeof response.body).toBe("string");
+		expect(response.body).toEqual(
+			expect.stringContaining("The&nbsp;NHS&nbsp;Constitution")
+		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
 		expect(typeof response.docLocation).toBe("object");

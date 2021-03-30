@@ -36,8 +36,8 @@ describe("PDF-to-TXT route", () => {
 		expect(response.payload).toEqual(
 			expect.stringContaining("The NHS Constitution")
 		);
-		expect(response.statusCode).toEqual(200);
 		expect(isHtml(response.payload)).toBe(false);
+		expect(response.statusCode).toEqual(200);
 	});
 
 	test("Should return 415 error code if file is missing", async () => {
