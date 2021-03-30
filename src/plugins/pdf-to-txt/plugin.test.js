@@ -89,7 +89,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	// 	expect(fs.existsSync(config.poppler.tempDirectory)).toBe(true);
 	// });
 
-	test("Should return HTTP 400 error if PDF file missing", async () => {
+	test("Should return HTTP 400 error if PDF file is missing", async () => {
 		server.register(plugin, config);
 
 		const response = await server.inject({

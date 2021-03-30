@@ -24,7 +24,7 @@ describe("Configuration", () => {
 
 	test("Should return values according to environment variables - SSL enabled and CORS disabled", async () => {
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
@@ -102,7 +102,7 @@ describe("Configuration", () => {
 
 	test("Should return values according to environment variables - PFX enabled and CORS enabled", async () => {
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const HTTPS_PFX_FILE_PATH =
 			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
@@ -141,7 +141,7 @@ describe("Configuration", () => {
 
 	test("Should return values according to environment variables - HTTPS disabled and CORS set to value", async () => {
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const CORS_ORIGIN = "https://ydh.nhs.uk";
 		const CORS_METHODS = "GET";
 		const CORS_ALLOWED_HEADERS =
@@ -180,7 +180,7 @@ describe("Configuration", () => {
 
 	test("Should throw error if invalid PFX file path", async () => {
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const HTTPS_PFX_FILE_PATH = "./test_resources/test_ssl_cert/error.pfx";
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
@@ -204,7 +204,7 @@ describe("Configuration", () => {
 
 	test("Should throw error if invalid SSL cert file path", async () => {
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const HTTPS_SSL_CERT_PATH = "./test_resources/test_ssl_cert/error.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/error.key";
 		const CORS_ORIGIN = true;
