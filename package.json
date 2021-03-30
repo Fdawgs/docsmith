@@ -95,7 +95,7 @@
 		"fastify-disablecache": "^1.0.6",
 		"fastify-helmet": "^5.3.1",
 		"fastify-plugin": "^3.0.0",
-		"fastify-swagger": "^4.4.1",
+		"fastify-swagger": "^4.4.2",
 		"file-stream-rotator": "^0.5.7",
 		"file-type": "^16.3.0",
 		"fix-utf8": "^1.1.1",
