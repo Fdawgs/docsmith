@@ -47,6 +47,13 @@ async function plugin(server, config) {
 					),
 				},
 			},
+			referrerPolicy: {
+				/**
+				 * "no-referrer" will only be used as a fallback if "strict-origin-when-cross-origin"
+				 * is not supported by the browser
+				 */
+				policy: ["no-referrer", "strict-origin-when-cross-origin"],
+			},
 		}))
 
 		// Basic healthcheck route to ping
