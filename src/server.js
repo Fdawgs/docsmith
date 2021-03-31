@@ -57,13 +57,14 @@ async function plugin(server, config) {
 
 		// Basic healthcheck route to ping
 		.register(healthCheck)
+
 		.register(embedHtmlImages, config)
 		.register(tidyCss)
 		.register(tidyHtml)
 
 		/**
-		 * Encapsulate plugins and routes into secured child context, so that swagger
-		 * route does not inherit bearer token auth plugin
+		 * Encapsulate plugins and routes into secured child context, so that swagger and
+		 * healthcheck routes do not inherit bearer token auth
 		 */
 		.register(async (securedContext) => {
 			securedContext
