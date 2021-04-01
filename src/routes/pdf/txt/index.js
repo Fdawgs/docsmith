@@ -2,6 +2,7 @@ const { UnsupportedMediaType } = require("http-errors");
 const fileType = require("file-type");
 
 // Import plugins
+const cors = require("fastify-cors");
 const pdfToTxt = require("../../../plugins/pdf-to-txt");
 
 const { pdfToTxtPostSchema } = require("./schema");
@@ -32,6 +33,9 @@ async function route(server, options) {
 			}
 		}
 	);
+
+	// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+	server.register(cors, { ...options.cors, methods: ["POST"] });
 
 	server.register(pdfToTxt, options);
 

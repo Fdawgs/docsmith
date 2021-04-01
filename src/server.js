@@ -4,7 +4,6 @@ const path = require("path");
 
 // Import plugins
 const bearer = require("fastify-bearer-auth");
-const cors = require("fastify-cors");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
@@ -26,9 +25,6 @@ const healthCheck = require("./routes/healthcheck");
 async function plugin(server, config) {
 	// Register plugins
 	server
-		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-		.register(cors, config.cors)
-
 		.register(disableCache)
 
 		.register(swagger, config.swagger)
