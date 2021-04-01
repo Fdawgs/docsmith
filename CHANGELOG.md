@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0](https://www.github.com/Fdawgs/doccon/compare/v0.1.0...v0.2.0) (2021-04-01)
+
+
+### Features
+
+* **server:** use `strict-origin-when-cross-origin` referrer policy ([22b5311](https://www.github.com/Fdawgs/doccon/commit/22b5311122ec2fb0306e46c605274d5f9f581f6b))
+
+
+### Bug Fixes
+
+* **config:** comma-delimited string support for cors origin value ([4e74ecd](https://www.github.com/Fdawgs/doccon/commit/4e74ecdb25044fab8ba552aef9d8a63878867d22))
+* **docker:** use node command over npm ([74c019d](https://www.github.com/Fdawgs/doccon/commit/74c019d484384a7476c278f45cfc482484954503))
+
+
+### Miscellaneous
+
+* **env.template:** add note discouraging reflecting cors origin ([e6dcc90](https://www.github.com/Fdawgs/doccon/commit/e6dcc9076867e3e176a86095397bcc3ff74fcd75))
+* **server:** clarify on secure child context ([b61c870](https://www.github.com/Fdawgs/doccon/commit/b61c87095f6aa065c850b968e5731ef85cd986f1))
+* **server:** use new exposed CSP dir from `fastify-helmet` ([9fcdf75](https://www.github.com/Fdawgs/doccon/commit/9fcdf75c410499f2add833a6563438e4f92f9987))
+
+
+### Dependencies
+
+* **deps-dev:** bump faker from 5.5.1 to 5.5.2 ([49993fc](https://www.github.com/Fdawgs/doccon/commit/49993fc69dc42232bab067c997b3b6739b663693))
+* **deps:** bump actions/github-script from v3.1.0 to v3.1.1 ([99d3582](https://www.github.com/Fdawgs/doccon/commit/99d35820a94bcfe5b0b7856c49a21eb92a069d36))
+
 ## [0.1.0](https://www.github.com/Fdawgs/doccon/compare/v0.0.3...v0.1.0) (2021-03-30)
 
 
