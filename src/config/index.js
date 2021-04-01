@@ -10,16 +10,28 @@ const { name, description, license, version } = require("../../package.json");
 
 /**
  * @author Frazer Smith
- * @description Convert string boolean to boolean.
+ * @description Convert string boolean to boolean
+ * or comma-delimited string to array.
  * @param {string} param - CORS parameter.
- * @returns {string|boolean} CORS parameter.
+ * @returns {boolean|Array|string} CORS parameter.
  */
 function parseCorsParameter(param) {
-	if (param === "true") {
+	if (param.trim() === "true") {
 		return true;
 	}
-	if (param === "false") {
+	if (param.trim() === "false") {
 		return false;
+	}
+	if (param.includes(",")) {
+		const paramArray = [];
+		param
+			.trim()
+			.split(",")
+			.forEach((value) => {
+				paramArray.push(value.trim());
+			});
+
+		return paramArray;
 	}
 	return param;
 }
