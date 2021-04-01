@@ -147,7 +147,7 @@ describe("Configuration", () => {
 		});
 	});
 
-	test("Should return values according to environment variables - HTTPS disabled and CORS set to value", async () => {
+	test("Should return values according to environment variables - HTTPS disabled and CORS set to string value", async () => {
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.datatype.number();
 		const CORS_ORIGIN = "https://ydh.nhs.uk";
@@ -180,6 +180,49 @@ describe("Configuration", () => {
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
+			methods: CORS_METHODS,
+			allowedHeaders: CORS_ALLOWED_HEADERS,
+			exposedHeaders: CORS_EXPOSED_HEADERS,
+		});
+	});
+
+	test("Should return values according to environment variables - HTTPS disabled and CORS set to comma-delimited string value", async () => {
+		const SERVICE_HOST = faker.internet.ip();
+		const SERVICE_PORT = faker.datatype.number();
+		const CORS_ORIGIN =
+			"https://test1.ydh.nhs.uk, https://test2.ydh.nhs.uk";
+		const CORS_METHODS = "GET";
+		const CORS_ALLOWED_HEADERS =
+			"Accept, Authorization, Content-Type, Origin, X-Requested-With";
+		const CORS_EXPOSED_HEADERS = "Location";
+		const LOG_LEVEL = faker.random.arrayElement([
+			"debug",
+			"warn",
+			"silent",
+		]);
+
+		Object.assign(process.env, {
+			SERVICE_HOST,
+			SERVICE_PORT,
+			CORS_ORIGIN,
+			CORS_METHODS,
+			CORS_ALLOWED_HEADERS,
+			CORS_EXPOSED_HEADERS,
+			LOG_LEVEL,
+		});
+
+		const config = await getConfig();
+
+		expect(config.fastify).toEqual({
+			host: SERVICE_HOST,
+			port: SERVICE_PORT,
+		});
+
+		expect(config.cors).toEqual({
+			origin: expect.arrayContaining([
+				"https://test1.ydh.nhs.uk",
+				"https://test2.ydh.nhs.uk",
+			]),
 			methods: CORS_METHODS,
 			allowedHeaders: CORS_ALLOWED_HEADERS,
 			exposedHeaders: CORS_EXPOSED_HEADERS,
