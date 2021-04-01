@@ -5,7 +5,6 @@ const path = require("path");
 // Import plugins
 const bearer = require("fastify-bearer-auth");
 const cors = require("fastify-cors");
-const helmConfig = require("helmet");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
@@ -38,7 +37,7 @@ async function plugin(server, config) {
 		.register(helmet, (instance) => ({
 			contentSecurityPolicy: {
 				directives: {
-					...helmConfig.contentSecurityPolicy.getDefaultDirectives(),
+					...helmet.contentSecurityPolicy.getDefaultDirectives(),
 					"form-action": ["'self'"],
 					"img-src": ["'self'", "data:", "validator.swagger.io"],
 					"script-src": ["'self'"].concat(instance.swaggerCSP.script),
@@ -47,17 +46,25 @@ async function plugin(server, config) {
 					),
 				},
 			},
+			referrerPolicy: {
+				/**
+				 * "no-referrer" will only be used as a fallback if "strict-origin-when-cross-origin"
+				 * is not supported by the browser
+				 */
+				policy: ["no-referrer", "strict-origin-when-cross-origin"],
+			},
 		}))
 
 		// Basic healthcheck route to ping
 		.register(healthCheck)
+
 		.register(embedHtmlImages, config)
 		.register(tidyCss)
 		.register(tidyHtml)
 
 		/**
-		 * Encapsulate plugins and routes into secured child context, so that swagger
-		 * route does not inherit bearer token auth plugin
+		 * Encapsulate plugins and routes into secured child context, so that swagger and
+		 * healthcheck routes do not inherit bearer token auth
 		 */
 		.register(async (securedContext) => {
 			securedContext

@@ -15,4 +15,4 @@ RUN npm ci --ignore-scripts && npm cache clean --force
 # Node images provide 'node' unprivileged user to run apps and prevent
 # privilege escalation attacks
 USER node
-CMD ["npm", "start"]
+CMD ["node", "."]
