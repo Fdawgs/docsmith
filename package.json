@@ -61,7 +61,7 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.0.1",
+    "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "autocannon": "^7.0.5",
     "eslint": "^7.23.0",
