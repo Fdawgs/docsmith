@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0](https://www.github.com/Fdawgs/doccon/compare/v0.1.0...v1.0.0) (2021-04-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* `CORS_METHODS` env variable removed
+
+### Features
+
+* add support for cors preflight requests ([e97d974](https://www.github.com/Fdawgs/doccon/commit/e97d9747034bc10f9a37743770d821b38d34f254))
+* **config:** support `access-control-allow-credentials` cors header ([cc8a89c](https://www.github.com/Fdawgs/doccon/commit/cc8a89cf6ac5209a8b1bf90ca92d3d87d1b9339c))
+* **server:** use `strict-origin-when-cross-origin` referrer policy ([22b5311](https://www.github.com/Fdawgs/doccon/commit/22b5311122ec2fb0306e46c605274d5f9f581f6b))
+
+
+### Bug Fixes
+
+* **config:** comma-delimited string support for cors origin value ([4e74ecd](https://www.github.com/Fdawgs/doccon/commit/4e74ecdb25044fab8ba552aef9d8a63878867d22))
+* **docker:** use node command over npm ([74c019d](https://www.github.com/Fdawgs/doccon/commit/74c019d484384a7476c278f45cfc482484954503))
+
+
+### Miscellaneous
+
+* **env.template:** add note discouraging reflecting cors origin ([e6dcc90](https://www.github.com/Fdawgs/doccon/commit/e6dcc9076867e3e176a86095397bcc3ff74fcd75))
+* **server:** clarify on secure child context ([b61c870](https://www.github.com/Fdawgs/doccon/commit/b61c87095f6aa065c850b968e5731ef85cd986f1))
+* **server:** use new exposed CSP dir from `fastify-helmet` ([9fcdf75](https://www.github.com/Fdawgs/doccon/commit/9fcdf75c410499f2add833a6563438e4f92f9987))
+
+
+### Continuous Integration
+
+* add cleanup-run job ([707c983](https://www.github.com/Fdawgs/doccon/commit/707c9838129cde58c77c185eddab297465228861))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 12.0.1 to 12.1.1 ([fbf78ef](https://www.github.com/Fdawgs/doccon/commit/fbf78ef41b130a8c7c3fa4dc332d568755dd9f6e))
+* **deps-dev:** bump @commitlint/config-conventional ([b111594](https://www.github.com/Fdawgs/doccon/commit/b111594da8e5339fe8d240b2d71c1be87c04089b))
+* **deps-dev:** bump eslint-plugin-jest from 24.3.2 to 24.3.4 ([397e2d3](https://www.github.com/Fdawgs/doccon/commit/397e2d349504b8a743c3fe9b6432cc89f58e600c))
+* **deps-dev:** bump faker from 5.5.1 to 5.5.2 ([49993fc](https://www.github.com/Fdawgs/doccon/commit/49993fc69dc42232bab067c997b3b6739b663693))
+* **deps:** bump actions/github-script from v3.1.0 to v3.1.1 ([99d3582](https://www.github.com/Fdawgs/doccon/commit/99d35820a94bcfe5b0b7856c49a21eb92a069d36))
+* **deps:** bump fastify-swagger from 4.4.2 to 4.5.0 ([0c6fae8](https://www.github.com/Fdawgs/doccon/commit/0c6fae8ce37e912f4b1187f521c338c93677fcd0))
+* **deps:** bump wagoid/commitlint-github-action from v3.0.6 to v3.1.0 ([35a6613](https://www.github.com/Fdawgs/doccon/commit/35a661383d3227ea26136f356ede71319c7f4daa))
+
 ## [0.1.0](https://www.github.com/Fdawgs/doccon/compare/v0.0.3...v0.1.0) (2021-03-30)
 
 
