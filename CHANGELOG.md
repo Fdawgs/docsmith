@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.1](https://www.github.com/Fdawgs/doccon/compare/v1.0.0...v1.0.1) (2021-04-14)
+
+
+### Continuous Integration
+
+* do not run coveralls steps/jobs on forks ([1772604](https://www.github.com/Fdawgs/doccon/commit/1772604e6abab87b680ff0257100156dc1ec8955))
+* **link-check:** fix skip regex ([a550745](https://www.github.com/Fdawgs/doccon/commit/a5507458bad35176c2c7331285c3c1eaffb426dd))
+
 ## [1.0.0](https://www.github.com/Fdawgs/doccon/compare/v0.1.0...v1.0.0) (2021-04-06)
 
 
