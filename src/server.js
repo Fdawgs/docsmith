@@ -7,6 +7,7 @@ const bearer = require("fastify-bearer-auth");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
+const underPressure = require("under-pressure");
 
 // Import local decorator plugins
 const embedHtmlImages = require("./plugins/embed-html-images");
@@ -26,6 +27,14 @@ async function plugin(server, config) {
 	// Register plugins
 	server
 		.register(disableCache)
+
+		// Process load and 503 response handling
+		.register(underPressure, {
+			maxEventLoopDelay: 1000,
+			maxHeapUsedBytes: 100000000,
+			maxRssBytes: 100000000,
+			maxEventLoopUtilization: 0.98,
+		})
 
 		.register(swagger, config.swagger)
 
