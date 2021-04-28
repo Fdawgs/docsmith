@@ -18,7 +18,7 @@ Other processes and specifications that are in use in this repository are:
 As noted in the prerequisites section of the readme file, this project requires that you have Node.js installed.
 
 With those in place, you can fork the repository, clone it, and then run `npm install` to install all development dependencies.
-Make a copy of `.env.template` in the root directory and rename to `.env`, configuring the environment variables as required.
+Make a copy of `.env.template` in the root directory and rename it to `.env`, configuring the environment variables as required.
 
 ### Development Workflow
 

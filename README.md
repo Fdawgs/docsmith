@@ -31,7 +31,7 @@ It was initially created to replace a previously purchased PDF-to-HTML conversio
 
 1. Navigate to the repo
 2. Run `npm install --ignore-scripts --production` to install dependencies
-3. Make a copy of `.env.template` in the root directory and rename to `.env`
+3. Make a copy of `.env.template` in the root directory and rename it to `.env`
 4. Configure the application using the environment variables in `.env`
 5. Run `npm start`
 
@@ -53,7 +53,7 @@ You can now navigate to http://0.0.0.0:8204/docs to see the API documentation!
 
 This requires [Docker](https://www.docker.com/products) installed.
 
-1. Make a copy of `.env.template` in the root directory and rename to `.env`
+1. Make a copy of `.env.template` in the root directory and rename it to `.env`
 2. Configure the application using the global variables in `.env`
 3. Run `docker-compose up`
 
@@ -63,7 +63,7 @@ If you are unable to deploy this into production using Docker, it is recommended
 
 1. Navigate to the repo
 2. Run `npm install --ignore-scripts --production` to install dependencies
-3. Make a copy of `.env.template` in the root directory and rename to `.env`
+3. Make a copy of `.env.template` in the root directory and rename it to `.env`
 4. Configure the application using the global variables in `.env`
 5. Run `npm install -g pm2` to install pm2 globally
 6. Launch application with `pm2 start .pm2.config.js`
