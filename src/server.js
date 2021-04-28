@@ -6,6 +6,7 @@ const path = require("path");
 const bearer = require("fastify-bearer-auth");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
+const flocOff = require("fastify-floc-off");
 const rateLimit = require("fastify-rate-limit");
 const swagger = require("fastify-swagger");
 const underPressure = require("under-pressure");
@@ -28,6 +29,8 @@ async function plugin(server, config) {
 	// Register plugins
 	server
 		.register(disableCache)
+
+		.register(flocOff)
 
 		// Process load and 503 response handling
 		.register(underPressure, config.processLoad)
