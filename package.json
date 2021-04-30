@@ -92,7 +92,7 @@
     "fastify-autoload": "^3.7.1",
     "fastify-bearer-auth": "^5.1.0",
     "fastify-cors": "^6.0.0",
-    "fastify-disablecache": "^1.0.6",
+    "fastify-disablecache": "^2.0.0",
     "fastify-floc-off": "^1.0.0",
     "fastify-helmet": "^5.3.1",
     "fastify-plugin": "^3.0.0",
