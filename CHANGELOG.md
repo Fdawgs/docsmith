@@ -2,6 +2,71 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0](https://www.github.com/Fdawgs/doccon/compare/v1.0.0...v2.0.0) (2021-04-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove support for nodejs v10, as it is EOL as of 2021-04-30
+
+### Features
+
+* **config:** allow for rate and process limits to be user configured ([b90829e](https://www.github.com/Fdawgs/doccon/commit/b90829e6ff6d3ab6fbd7f018d8110658b66054b0))
+* **server:** add process-load/503 handling ([df5e17c](https://www.github.com/Fdawgs/doccon/commit/df5e17c6cf04def7f7afc7a9e55b8b2c3dbd1950))
+* **server:** add rate limiter ([f0f531a](https://www.github.com/Fdawgs/doccon/commit/f0f531a3085233787ea7f20b2849b8d9eca5a2ff))
+* **server:** disable google floc support ([1e630cd](https://www.github.com/Fdawgs/doccon/commit/1e630cd88727bdb6d383cf9fd00159fa3eac8446))
+
+
+### Bug Fixes
+
+* **env:** add missing cors_allow_credentials variable ([3243de8](https://www.github.com/Fdawgs/doccon/commit/3243de8b0bfb185476d7f7ed8507a664177a6b69))
+* **routes:** hide options routes from swagger docs ([e939c6e](https://www.github.com/Fdawgs/doccon/commit/e939c6e292e358c66dbed8a58ae80c517303a82b))
+
+
+### Continuous Integration
+
+* add nodejs v16 to unit test matrix ([afd12cb](https://www.github.com/Fdawgs/doccon/commit/afd12cb03cd069386ae25dda6e514573d3fac522))
+* do not run coveralls steps/jobs on forks ([1772604](https://www.github.com/Fdawgs/doccon/commit/1772604e6abab87b680ff0257100156dc1ec8955))
+* **link-check:** fix skip regex ([a550745](https://www.github.com/Fdawgs/doccon/commit/a5507458bad35176c2c7331285c3c1eaffb426dd))
+* **typoci:** add "pino" to excluded words ([1ad49f7](https://www.github.com/Fdawgs/doccon/commit/1ad49f7f00f8e1fb7ecfac58c61c025ff6669cd8))
+
+
+### Miscellaneous
+
+* **env:** add whitespace ([9f54234](https://www.github.com/Fdawgs/doccon/commit/9f5423473bcca2153d99772abedd280d6abdc6c6))
+* remove support for nodejs v10 ([8160087](https://www.github.com/Fdawgs/doccon/commit/8160087c3a99c277f1eee8001c84e8aeafce973c))
+
+
+### Documentation
+
+* grammar and readability fixes ([b5a5cb5](https://www.github.com/Fdawgs/doccon/commit/b5a5cb541dd9abd5517d39b967d68329b9fd6fd2))
+
+
+### Dependencies
+
+* **deps-dev:** bump autocannon from 7.0.5 to 7.2.0 ([84859b3](https://www.github.com/Fdawgs/doccon/commit/84859b3418580663e7b33fbcfd4ae38396a9d13e))
+* **deps-dev:** bump eslint from 7.23.0 to 7.25.0 ([f8aef5d](https://www.github.com/Fdawgs/doccon/commit/f8aef5db994a73c9c257132415730561a4cf8735))
+* **deps-dev:** bump eslint-config-prettier from 8.1.0 to 8.3.0 ([89cd18d](https://www.github.com/Fdawgs/doccon/commit/89cd18d5f5cc07a07dd72bb848e62ca0ea98a2dd))
+* **deps-dev:** bump eslint-plugin-jest from 24.3.4 to 24.3.6 ([21b7774](https://www.github.com/Fdawgs/doccon/commit/21b7774b04089581bcde8ea7742fefa246d10caa))
+* **deps-dev:** bump eslint-plugin-jsdoc from 32.3.0 to 33.0.0 ([67675e7](https://www.github.com/Fdawgs/doccon/commit/67675e795ab2c87a2383df5cbe076e33b012df83))
+* **deps-dev:** bump eslint-plugin-promise from 4.3.1 to 5.1.0 ([4fc40c4](https://www.github.com/Fdawgs/doccon/commit/4fc40c47582eeeeab46724cf4add869d6b114fd8))
+* **deps-dev:** bump faker from 5.5.2 to 5.5.3 ([90364df](https://www.github.com/Fdawgs/doccon/commit/90364df838a892edd8c51e22db64b97ab6c906c4))
+* **deps:** bump actions/cache from v2.1.4 to v2.1.5 ([9da2f5c](https://www.github.com/Fdawgs/doccon/commit/9da2f5c8eb283aa12f9be99e3d95f575f0a7c1b0))
+* **deps:** bump actions/github-script from v3.1.1 to v4.0.2 ([f4c710d](https://www.github.com/Fdawgs/doccon/commit/f4c710df1c1c1ec61201077f27d4138f9b77569c))
+* **deps:** bump actions/upload-artifact from v2.2.2 to v2.2.3 ([e88d734](https://www.github.com/Fdawgs/doccon/commit/e88d734606c9175116e3d4713c6605f94403f1b2))
+* **deps:** bump brpaz/hadolint-action from v1.3.1 to v1.4.0 ([961f53f](https://www.github.com/Fdawgs/doccon/commit/961f53f1e899b58c85450d4f765b9faeb8814b65))
+* **deps:** bump fastify from 3.14.1 to 3.15.0 ([47cf69f](https://www.github.com/Fdawgs/doccon/commit/47cf69f9dfba5b351e4ea34493d4979d171efa3e))
+* **deps:** bump fastify-autoload from 3.6.0 to 3.7.1 ([a17afc1](https://www.github.com/Fdawgs/doccon/commit/a17afc1298bbc4bdab938b0f6a21a3fbab04b3f2))
+* **deps:** bump fastify-cors from 5.2.0 to 6.0.0 ([0867803](https://www.github.com/Fdawgs/doccon/commit/08678035875737bc255451d8c1812e3f1e3f1e41))
+* **deps:** bump fastify-disablecache from 1.0.6 to 2.0.0 ([7a4be40](https://www.github.com/Fdawgs/doccon/commit/7a4be4039383705e1d0d347dc310dbcbd958916a))
+* **deps:** bump fastify-swagger from 4.5.0 to 4.7.0 ([69168bb](https://www.github.com/Fdawgs/doccon/commit/69168bbf1e459976014cfdcb9a876845a9e6a1ac))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([bd8b7d9](https://www.github.com/Fdawgs/doccon/commit/bd8b7d9cdc1d9df973c527d6788a57c72edad55a))
+* **deps:** bump jsdom from 16.5.2 to 16.5.3 ([fead6c2](https://www.github.com/Fdawgs/doccon/commit/fead6c2197b438870ba5ac072dd8f40fa37a1585))
+* **deps:** bump node-poppler from 2.4.1 to 3.0.0 ([22f815a](https://www.github.com/Fdawgs/doccon/commit/22f815a383b8124645d8bd266e8df2c766a4a9ee))
+* **deps:** bump node-unrtf from 1.1.1 to 2.0.0 ([8dc5099](https://www.github.com/Fdawgs/doccon/commit/8dc50991f5cd36bfb186b672d7e8489a9b835157))
+* **deps:** bump pino from 6.11.2 to 6.11.3 ([ccdc74c](https://www.github.com/Fdawgs/doccon/commit/ccdc74c449c22592739ada5210e236a3c23cd28c))
+* **deps:** bump typoci/spellcheck-action from v0.4.0 to v1.1.0 ([dcd73cf](https://www.github.com/Fdawgs/doccon/commit/dcd73cf4902bcc4b3fa618962f2eb6dfdd8e9652))
+
 ## [1.0.0](https://www.github.com/Fdawgs/doccon/compare/v0.1.0...v1.0.0) (2021-04-06)
 
 
