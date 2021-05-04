@@ -25,17 +25,23 @@ It was initially created to replace a previously purchased PDF-to-HTML conversio
 -   Linux only: latest available `poppler-data` and `poppler-utils` binaries
 -   Linux and macOS only: latest available `unrtf` binary
 
+## Setup
+
+Perform the following steps before deployment:
+
+1. Clone the repo
+2. Navigate to the project directory
+3. Run `npm install --ignore-scripts --production` to install dependencies
+4. Make a copy of `.env.template` in the root directory and rename it to `.env`
+5. Configure the application using the environment variables in `.env`
+
 ## Deployment
 
 ### Standard Deployment
 
-1. Navigate to the repo
-2. Run `npm install --ignore-scripts --production` to install dependencies
-3. Make a copy of `.env.template` in the root directory and rename it to `.env`
-4. Configure the application using the environment variables in `.env`
-5. Run `npm start`
+1. Run `npm start`
 
-The service should now be up and running on the port set in the config. You should see the following output in stdout or the log file specified using the `LOG_ROTATION_FILENAME` environment variable:
+The service should be up and running on the port set in the config. You should see the following output in stdout or the log file specified using the `LOG_ROTATION_FILENAME` environment variable:
 
 ```json
 {
@@ -53,21 +59,15 @@ You can now navigate to http://0.0.0.0:8204/docs to see the API documentation!
 
 This requires [Docker](https://www.docker.com/products) installed.
 
-1. Make a copy of `.env.template` in the root directory and rename it to `.env`
-2. Configure the application using the global variables in `.env`
-3. Run `docker-compose up`
+1. Run `docker-compose up`
 
 ### Deploying Using PM2
 
 If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
-1. Navigate to the repo
-2. Run `npm install --ignore-scripts --production` to install dependencies
-3. Make a copy of `.env.template` in the root directory and rename it to `.env`
-4. Configure the application using the global variables in `.env`
-5. Run `npm install -g pm2` to install pm2 globally
-6. Launch application with `pm2 start .pm2.config.js`
-7. Check the application has been deployed using `pm2 list` or `pm2 monit`
+1. Run `npm install -g pm2` to install pm2 globally
+2. Launch application with `pm2 start .pm2.config.js`
+3. Check the application has been deployed using `pm2 list` or `pm2 monit`
 
 #### To Install as a Windows Service:
 
@@ -77,7 +77,10 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 ## Contributing
 
-Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for more details regarding contributing to this project.
+Contributions are welcome and any help that can be offered is greatly appreciated!
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to get started.
+Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when contributing.
 
 ## License
 
