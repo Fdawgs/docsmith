@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.0.1](https://www.github.com/Fdawgs/doccon/compare/v2.0.0...v2.0.1) (2021-05-04)
+
+
+### Dependencies
+
+* **deps:** bump fastify from 3.15.0 to 3.15.1 ([2bd34e3](https://www.github.com/Fdawgs/doccon/commit/2bd34e39ad4e31f8f56fc582f72ff968e5be20fd))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([de4e042](https://www.github.com/Fdawgs/doccon/commit/de4e042de480de97c036500f95527d7efbae138a))
+
+
+### Documentation
+
+* **readme:** compress duplicate setup steps into a single section ([#139](https://www.github.com/Fdawgs/doccon/issues/139)) ([c9e8acb](https://www.github.com/Fdawgs/doccon/commit/c9e8acb1be2efe8426e7348cf2e048eaea3490c5))
+
 ## [2.0.0](https://www.github.com/Fdawgs/doccon/compare/v1.0.0...v2.0.0) (2021-04-30)
 
 
