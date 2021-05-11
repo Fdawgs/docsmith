@@ -12,10 +12,8 @@
 
 This RESTful API converts files from:
 
--   PDF or RTF to HTML
+-   PDF to HTML
 -   PDF to TXT
--   Any file format to [Binary](https://www.hl7.org/fhir/STU3/binary.html) STU3 (3.0.1) HL7® FHIR® resource adhering to its [NHS INTEROPen CareConnect profile](https://nhsconnect.github.io/CareConnectAPI/api_documents_binary.html)
--   Any file format to [DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html) STU3 (3.0.1) HL7® FHIR® resource adhering to its [NHS INTEROPen CareConnect profile](https://nhsconnect.github.io/CareConnectAPI/api_documents_documentreference.html)
 
 It was initially created to replace a previously purchased PDF-to-HTML conversion tool at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/). The tool, that was no longer supported, would produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries were receiving these documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and were unable to read a number of them, leading to requests for the original document to be faxed over.
 
