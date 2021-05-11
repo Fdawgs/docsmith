@@ -150,11 +150,7 @@ describe("Configuration", () => {
 		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = "";
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
-		const LOG_LEVEL = faker.random.arrayElement([
-			"debug",
-			"warn",
-			"silent",
-		]);
+		const LOG_LEVEL = "";
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
@@ -194,7 +190,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger).toEqual(
 			expect.objectContaining({
 				formatters: { level: expect.any(Function) },
-				level: LOG_LEVEL,
+				level: "info",
 				serializers: {
 					req: expect.any(Function),
 					res: expect.any(Function),
