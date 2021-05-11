@@ -90,6 +90,12 @@ describe("Configuration", () => {
 				stream: expect.any(Object),
 			})
 		);
+		expect(config.fastifyInit.logger.formatters.level()).toEqual({
+			level: undefined,
+		});
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toEqual(
+			',"time"'
+		);
 
 		expect(config.fastifyInit.https).toEqual({
 			cert: expect.any(Buffer),
@@ -110,6 +116,119 @@ describe("Configuration", () => {
 		expect(config.rateLimit).toEqual({
 			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
 			max: RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
+			timeWindow: 60000,
+		});
+
+		expect(config.poppler).toEqual(
+			expect.objectContaining({
+				encoding: "UTF-8",
+				binPath: POPPLER_BINARY_PATH,
+				tempDirectory: expect.any(String),
+			})
+		);
+
+		expect(config.unrtf).toEqual(
+			expect.objectContaining({
+				binPath: UNRTF_BINARY_PATH,
+				tempDirectory: expect.any(String),
+			})
+		);
+	});
+
+	test("Should return values according to environment variables and use defaults if values missing", async () => {
+		const SERVICE_HOST = faker.internet.ip();
+		const SERVICE_PORT = faker.datatype.number();
+		const HTTPS_SSL_CERT_PATH =
+			"./test_resources/test_ssl_cert/server.cert";
+		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
+		const CORS_ORIGIN = false;
+		const CORS_ALLOWED_HEADERS = "";
+		const CORS_ALLOW_CREDENTIALS = "";
+		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = "";
+		const PROC_LOAD_MAX_HEAP_USED_BYTES = "";
+		const PROC_LOAD_MAX_RSS_BYTES = "";
+		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = "";
+		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
+		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
+		const LOG_LEVEL = faker.random.arrayElement([
+			"debug",
+			"warn",
+			"silent",
+		]);
+		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const AUTH_BEARER_TOKEN_ARRAY =
+			'[{"service": "test", "value": "testtoken"}]';
+		const POPPLER_BINARY_PATH = "/usr/bin";
+		const UNRTF_BINARY_PATH = "/usr/bin";
+
+		Object.assign(process.env, {
+			SERVICE_HOST,
+			SERVICE_PORT,
+			HTTPS_SSL_CERT_PATH,
+			HTTPS_SSL_KEY_PATH,
+			CORS_ORIGIN,
+			CORS_ALLOWED_HEADERS,
+			CORS_ALLOW_CREDENTIALS,
+			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
+			PROC_LOAD_MAX_HEAP_USED_BYTES,
+			PROC_LOAD_MAX_RSS_BYTES,
+			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
+			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
+			RATE_LIMIT_EXCLUDED_ARRAY,
+			LOG_LEVEL,
+			LOG_ROTATION_FILENAME,
+			AUTH_BEARER_TOKEN_ARRAY,
+			POPPLER_BINARY_PATH,
+			UNRTF_BINARY_PATH,
+		});
+
+		const config = await getConfig();
+
+		expect(config.authKeys).toContain("testtoken");
+
+		expect(config.fastify).toEqual({
+			host: SERVICE_HOST,
+			port: SERVICE_PORT,
+		});
+
+		expect(config.fastifyInit.logger).toEqual(
+			expect.objectContaining({
+				formatters: { level: expect.any(Function) },
+				level: LOG_LEVEL,
+				serializers: {
+					req: expect.any(Function),
+					res: expect.any(Function),
+				},
+				timestamp: expect.any(Function),
+				stream: expect.any(Object),
+			})
+		);
+		expect(config.fastifyInit.logger.formatters.level()).toEqual({
+			level: undefined,
+		});
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toEqual(
+			',"time"'
+		);
+
+		expect(config.fastifyInit.https).toEqual({
+			cert: expect.any(Buffer),
+			key: expect.any(Buffer),
+		});
+
+		expect(config.cors).toEqual({
+			origin: CORS_ORIGIN,
+		});
+
+		expect(config.processLoad).toEqual({
+			maxEventLoopDelay: 0,
+			maxHeapUsedBytes: 0,
+			maxRssBytes: 0,
+			maxEventLoopUtilization: 0,
+		});
+
+		expect(config.rateLimit).toEqual({
+			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
+			max: 1000,
 			timeWindow: 60000,
 		});
 
