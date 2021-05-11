@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.0.2](https://www.github.com/Fdawgs/doccon/compare/v2.0.1...v2.0.2) (2021-05-11)
+
+
+### Bug Fixes
+
+* **config:** `LOG_LEVEL` env variable validation ([404568f](https://www.github.com/Fdawgs/doccon/commit/404568f7b4234cd53c33f14c3bd264ff1ecfeb2e))
+
+
+### Documentation
+
+* **readme:** remove in-progress features from confirmed features list ([3cbc55c](https://www.github.com/Fdawgs/doccon/commit/3cbc55c909f2746fc31ac003bff68d24acd5d334))
+
+
+### Continuous Integration
+
+* **link-check:** run once a week on monday ([5a08a45](https://www.github.com/Fdawgs/doccon/commit/5a08a455a9c981702e395ad2a0323c0ecc4a3af7))
+
+
+### Dependencies
+
+* **deps-dev:** bump autocannon from 7.2.0 to 7.3.0 ([4497f48](https://www.github.com/Fdawgs/doccon/commit/4497f48990a54108b90138a777f318bb22dc3a3d))
+* **deps-dev:** bump eslint from 7.25.0 to 7.26.0 ([595cf33](https://www.github.com/Fdawgs/doccon/commit/595cf33a16b8c5825a86cba8079b8b10b51edb73))
+* **deps-dev:** bump eslint-plugin-jsdoc from 33.0.0 to 34.0.1 ([8374837](https://www.github.com/Fdawgs/doccon/commit/837483767fbab5a41b373f4bcade4f1700b0e74c))
+* **deps-dev:** bump pino-pretty from 4.7.1 to 4.8.0 ([6e3c02d](https://www.github.com/Fdawgs/doccon/commit/6e3c02d935a7b77b3df19c9344e1ac0eb1a91369))
+* **deps-dev:** bump prettier from 2.2.1 to 2.3.0 ([#154](https://www.github.com/Fdawgs/doccon/issues/154)) ([9d09ef3](https://www.github.com/Fdawgs/doccon/commit/9d09ef32b56f448466371978d57b17d45972ff83))
+* **deps:** bump brpaz/hadolint-action from 1.4.0 to 1.5.0 ([700b61a](https://www.github.com/Fdawgs/doccon/commit/700b61a4565c8091bdabf37448e50051a04557e2))
+* **deps:** bump dotenv from 8.2.0 to 9.0.2 ([8b8a2e7](https://www.github.com/Fdawgs/doccon/commit/8b8a2e742b0036694f250a58dc054407aae35160))
+* **deps:** bump fastify-cors from 6.0.0 to 6.0.1 ([dc50e48](https://www.github.com/Fdawgs/doccon/commit/dc50e482dafb2967a9c63ce9f544979ecc07416a))
+* **deps:** bump fastify-floc-off from 1.0.0 to 1.0.1 ([61ab850](https://www.github.com/Fdawgs/doccon/commit/61ab8503ed85d9399393349c70a2aedf6396b565))
+* **deps:** bump file-type from 16.3.0 to 16.4.0 ([d6ec7c1](https://www.github.com/Fdawgs/doccon/commit/d6ec7c1812eec7a4553e5115ab7d7baf11157c49))
+* **deps:** bump fluent-json-schema from 2.0.4 to 3.0.0 ([08d7a65](https://www.github.com/Fdawgs/doccon/commit/08d7a655a2dc6de968ce8e5cfbdd4809a609b9da))
+* **deps:** bump glob from 7.1.6 to 7.1.7 ([4d84537](https://www.github.com/Fdawgs/doccon/commit/4d8453742f8fe150338c77dca83e664fdc67caec))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([19c969a](https://www.github.com/Fdawgs/doccon/commit/19c969a68510ad73b6b93aac8e0fcf15c116ced7))
+* **deps:** bump wagoid/commitlint-github-action from 3.1.0 to 3.1.3 ([02b517d](https://www.github.com/Fdawgs/doccon/commit/02b517d6e89ce2417cb5c8826b6382ff6191d72f))
+
 ### [2.0.1](https://www.github.com/Fdawgs/doccon/compare/v2.0.0...v2.0.1) (2021-05-04)
 
 
