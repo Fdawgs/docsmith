@@ -165,8 +165,7 @@ async function getConfig() {
 					},
 					license: {
 						name: license,
-						url:
-							"https://raw.githubusercontent.com/Fdawgs/doccon/master/LICENSE",
+						url: "https://raw.githubusercontent.com/Fdawgs/doccon/master/LICENSE",
 					},
 					version,
 				},
