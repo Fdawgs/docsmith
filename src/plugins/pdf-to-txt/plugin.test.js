@@ -6,13 +6,12 @@ const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
 const plugin = require(".");
+const tidyHtml = require("../tidy-html");
 const getConfig = require("../../config");
 
 describe("PDF-to-TXT Conversion Plugin", () => {
 	let config;
 	let server;
-
-	// TODO Add afterall to remove leftover PDFs from ./temp
 
 	beforeAll(async () => {
 		config = await getConfig();
@@ -20,6 +19,8 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 
 	beforeEach(() => {
 		server = Fastify();
+
+		server.register(tidyHtml);
 
 		server.addContentTypeParser("application/pdf", async (req, payload) => {
 			const res = await raw(payload);
@@ -36,58 +37,80 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		server.close();
 	});
 
-	// test("Should convert PDF file to TXT and place in specified directory", async () => {
-	// 	server.register(plugin, config);
+	test("Should convert PDF file to TXT", async () => {
+		server.register(plugin, config);
 
-	// 	let response = await server.inject({
-	// 		method: "POST",
-	// 		url: "/",
-	// 		body: fs.readFileSync(
-	// 			"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-	// 		),
-	// 		query: {
-	// 			lastPageToConvert: 2,
-	// 		},
-	// 		headers: {
-	// 			"content-type": "application/pdf",
-	// 		},
-	// 	});
+		let response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				lastPageToConvert: 2,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
 
-	// 	response = JSON.parse(response.payload);
+		response = JSON.parse(response.payload);
 
-	// 	expect(typeof response.body).toBe("string");
-	// 	expect(isHtml(response.body)).toBe(false);
-	// 	expect(typeof response.docLocation).toBe("object");
-	// 	expect(fs.existsSync(config.poppler.tempDirectory)).toBe(true);
-	// });
+		expect(response.body).toEqual(expect.stringContaining("for England"));
+		expect(typeof response.body).toBe("string");
+		expect(isHtml(response.body)).toBe(false);
+	});
 
-	// test("Should ignore invalid `test` query string params and convert PDF file to HTML", async () => {
-	// 	server.register(plugin, config);
+	test("Should ignore invalid `test` query string params and convert PDF file to TXT", async () => {
+		server.register(plugin, config);
 
-	// 	let response = await server.inject({
-	// 		method: "POST",
-	// 		url: "/",
-	// 		query: {
-	// 			firstPageToConvert: 1,
-	// 			lastPageToConvert: 1,
-	// 			test: "test",
-	// 		},
-	// 		body: fs.readFileSync(
-	// 			"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-	// 		),
-	// 		headers: {
-	// 			"content-type": "application/pdf",
-	// 		},
-	// 	});
+		let response = await server.inject({
+			method: "POST",
+			url: "/",
+			query: {
+				firstPageToConvert: 1,
+				lastPageToConvert: 1,
+				test: "test",
+			},
+			body: fs.readFileSync(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
 
-	// 	response = JSON.parse(response.payload);
+		response = JSON.parse(response.payload);
 
-	// 	expect(typeof response.body).toBe("string");
-	// 	expect(isHtml(response.body)).toBe(true);
-	// 	expect(typeof response.docLocation).toBe("object");
-	// 	expect(fs.existsSync(response.docLocation.html)).toBe(false);
-	// 	expect(fs.existsSync(config.poppler.tempDirectory)).toBe(true);
-	// });
+		expect(response.body).toEqual(expect.stringContaining("for England"));
+		expect(typeof response.body).toBe("string");
+		expect(isHtml(response.body)).toBe(false);
+	});
+
+	test("Should convert PDF file to TXT wrapped in HTML", async () => {
+		server.register(plugin, config);
+
+		let response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				generateHtmlMetaFile: "true",
+				lastPageToConvert: 2,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		response = JSON.parse(response.payload);
+
+		expect(response.body).toEqual(expect.stringContaining("for England"));
+		expect(typeof response.body).toBe("string");
+		expect(isHtml(response.body)).toBe(true);
+	});
 
 	test("Should return HTTP 400 error if PDF file is missing", async () => {
 		server.register(plugin, config);
