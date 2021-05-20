@@ -6,7 +6,6 @@ const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
 const plugin = require(".");
-const tidyHtml = require("../tidy-html");
 const getConfig = require("../../config");
 
 describe("PDF-to-TXT Conversion Plugin", () => {
@@ -19,8 +18,6 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 
 	beforeEach(() => {
 		server = Fastify();
-
-		server.register(tidyHtml);
 
 		server.addContentTypeParser("application/pdf", async (req, payload) => {
 			const res = await raw(payload);
@@ -97,7 +94,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				generateHtmlMetaFile: "true",
+				generateHtmlMetaFile: true,
 				lastPageToConvert: 2,
 			},
 			headers: {

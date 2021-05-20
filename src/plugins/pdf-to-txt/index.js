@@ -100,9 +100,6 @@ async function plugin(server, options) {
 				query.generateHtmlMetaFile
 			) {
 				contentType = "text/html";
-				req.pdfToTxtResults.body = await server.tidyHtml(
-					req.pdfToTxtResults.body
-				);
 			}
 			res.header(
 				"content-type",
