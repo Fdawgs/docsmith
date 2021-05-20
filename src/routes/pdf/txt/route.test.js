@@ -4,6 +4,8 @@ const isHtml = require("is-html");
 const plugin = require(".");
 const getConfig = require("../../../config");
 
+const tidyHtml = require("../../../plugins/tidy-html");
+
 describe("PDF-to-TXT route", () => {
 	let options;
 	let server;
@@ -11,7 +13,7 @@ describe("PDF-to-TXT route", () => {
 	beforeAll(async () => {
 		options = await getConfig();
 
-		server = Fastify();
+		server = Fastify().register(tidyHtml);
 		server.register(plugin, options);
 
 		await server.ready();
@@ -37,6 +39,28 @@ describe("PDF-to-TXT route", () => {
 			expect.stringContaining("The NHS Constitution")
 		);
 		expect(isHtml(response.payload)).toBe(false);
+		expect(response.statusCode).toEqual(200);
+	});
+
+	test("Should return PDF file converted to TXT wrapped in HTML", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				generateHtmlMetaFile: true,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		expect(response.payload).toEqual(
+			expect.stringContaining("The NHS Constitution")
+		);
+		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toEqual(200);
 	});
 

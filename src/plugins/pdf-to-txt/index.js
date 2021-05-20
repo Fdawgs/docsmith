@@ -4,12 +4,8 @@
 const autoParse = require("auto-parse");
 const createError = require("http-errors");
 const fp = require("fastify-plugin");
-const fs = require("fs");
-const fsp = require("fs").promises;
-const glob = require("glob");
 const path = require("path");
 const { Poppler } = require("node-poppler");
-const { v4 } = require("uuid");
 
 /**
  * @author Frazer Smith
@@ -30,16 +26,6 @@ const { v4 } = require("uuid");
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
 		req.pdfToTxtResults = { body: undefined, docLocation: {} };
-	});
-
-	server.addHook("onResponse", (req) => {
-		// Remove files from temp directory after response sent
-		const files = glob.sync(
-			`${req.pdfToTxtResults.docLocation.directory}/${req.pdfToTxtResults.docLocation.id}*`
-		);
-		files.forEach((file) => {
-			fs.unlinkSync(file);
-		});
 	});
 
 	server.addHook("preHandler", async (req, res) => {
@@ -98,29 +84,13 @@ async function plugin(server, options) {
 			});
 			Object.assign(this.config.pdfToTxtOptions, query);
 
-			// Create temp directory if missing
-			try {
-				await fsp.access(this.config.tempDirectory);
-			} catch (err) {
-				await fsp.mkdir(this.config.tempDirectory);
-			}
-
-			// Build temporary files for Poppler and following plugins to read from
-			const id = v4();
-			const tempPdfFile = `${this.config.tempDirectory}${id}.pdf`;
-			await fsp.writeFile(tempPdfFile, req.body);
 			const poppler = new Poppler(this.config.binPath);
 
 			req.pdfToTxtResults.body = await poppler.pdfToText(
-				tempPdfFile,
+				req.body,
 				undefined,
 				this.config.pdfToTxtOptions
 			);
-			req.pdfToTxtResults.docLocation = {
-				directory: this.config.tempDirectory,
-				id,
-				pdf: tempPdfFile,
-			};
 
 			// Certain querystring options alter output to HTML rather than TXT
 			let contentType = "text/plain";
@@ -130,9 +100,6 @@ async function plugin(server, options) {
 				query.generateHtmlMetaFile
 			) {
 				contentType = "text/html";
-				req.pdfToTxtResults.body = await server.tidyHtml(
-					req.pdfToTxtResults.body
-				);
 			}
 			res.header(
 				"content-type",

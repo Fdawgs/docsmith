@@ -48,7 +48,17 @@ async function route(server, options) {
 		url: "/",
 		schema: pdfToTxtPostSchema,
 		async handler(req, res) {
-			const result = req.pdfToTxtResults.body;
+			let result;
+			if (
+				req.query.boundingBoxXhtml ||
+				req.query.boundingBoxXhtmlLayout ||
+				req.query.generateHtmlMetaFile
+			) {
+				result = await server.tidyHtml(req.pdfToTxtResults.body);
+			} else {
+				result = req.pdfToTxtResults.body;
+			}
+
 			res.send(result);
 		},
 	});
