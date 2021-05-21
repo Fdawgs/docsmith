@@ -17,8 +17,6 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 	let config;
 	let server;
 
-	// TODO Add afterall to remove leftover PDFs from ./temp
-
 	beforeAll(async () => {
 		config = await getConfig();
 	});
@@ -39,6 +37,10 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 
 	afterEach(() => {
 		server.close();
+	});
+
+	afterAll(() => {
+		fs.rmdir(config.poppler.tempDirectory, { recursive: true }, () => {});
 	});
 
 	test("Should convert PDF file to HTML and place in specified directory", async () => {

@@ -1,6 +1,5 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable security/detect-object-injection */
-/* eslint-disable no-restricted-globals */
 const autoParse = require("auto-parse");
 const createError = require("http-errors");
 const fixUtf8 = require("fix-utf8");
@@ -98,17 +97,21 @@ async function plugin(server, options) {
 				await fsp.mkdir(this.config.tempDirectory);
 			}
 
-			// Build temporary files for Poppler and following plugins to read from
+			// Build temporary file for Poppler to write to, and following plugins to read from
 			const id = v4();
-			const tempPdfFile = `${this.config.tempDirectory}${id}.pdf`;
-			const tempHtmlFile = `${this.config.tempDirectory}${id}-html.html`;
-			await fsp.writeFile(tempPdfFile, req.body);
+			const tempHtmlFile = `${this.config.tempDirectory}${id}`;
+
 			const poppler = new Poppler(this.config.binPath);
-			await poppler.pdfToHtml(tempPdfFile, this.config.pdfToHtmlOptions);
+			await poppler.pdfToHtml(
+				req.body,
+				`${tempHtmlFile}.html`,
+				this.config.pdfToHtmlOptions
+			);
 
 			// Remove excess title and meta tags left behind by Poppler
+			// Poppler appends `-html` to the file name, thus the template literal here
 			const dom = new JSDOM(
-				await fsp.readFile(tempHtmlFile, {
+				await fsp.readFile(`${tempHtmlFile}-html.html`, {
 					encoding: this.config.encoding,
 				})
 			);
@@ -129,11 +132,11 @@ async function plugin(server, options) {
 			req.pdfToHtmlResults.body = fixUtf8(
 				dom.window.document.documentElement.outerHTML
 			);
+
 			req.pdfToHtmlResults.docLocation = {
 				directory: this.config.tempDirectory,
 				html: tempHtmlFile,
 				id,
-				pdf: tempPdfFile,
 			};
 
 			res.header(

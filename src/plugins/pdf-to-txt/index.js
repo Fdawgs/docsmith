@@ -1,10 +1,7 @@
-/* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable security/detect-object-injection */
-/* eslint-disable no-restricted-globals */
 const autoParse = require("auto-parse");
 const createError = require("http-errors");
 const fp = require("fastify-plugin");
-const path = require("path");
 const { Poppler } = require("node-poppler");
 
 /**
@@ -41,7 +38,6 @@ async function plugin(server, options) {
 				binPath: undefined,
 				encoding: "UTF-8",
 				pdfToTxtOptions: {},
-				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
 			this.config = Object.assign(defaultConfig, options.poppler);
 
