@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.0.3](https://www.github.com/Fdawgs/doccon/compare/v2.0.2...v2.0.3) (2021-05-21)
+
+
+### Continuous Integration
+
+* fix key usage in `action/setup-node` ([f8ccbe1](https://www.github.com/Fdawgs/doccon/commit/f8ccbe108d36ab8d091836791fe1c77fcc5eb949))
+
+
+### Miscellaneous
+
+* **ci:** replace `node-version` key with shorter `node` ([#158](https://www.github.com/Fdawgs/doccon/issues/158)) ([bf6ab0e](https://www.github.com/Fdawgs/doccon/commit/bf6ab0e5fd82e21b48818ff90532903538bf18e2))
+* **dockerfile:** consolidate consecutive `run` instructions ([#160](https://www.github.com/Fdawgs/doccon/issues/160)) ([a4e6dd6](https://www.github.com/Fdawgs/doccon/commit/a4e6dd68a6a1cbf5d94c0a7a9f22920ef486b74d))
+* **plugins/pdf-to-html:** read direct from body buffer ([152224b](https://www.github.com/Fdawgs/doccon/commit/152224bb24f0e21c202e8ae63e5028659b512050))
+* **plugins/pdf-to-txt:** move tidyhtml dependency to route ([55536c3](https://www.github.com/Fdawgs/doccon/commit/55536c369a3b919dffa9d4194f94ef403abfd347))
+* **plugins/pdf-to-txt:** read direct from body buffer ([479f252](https://www.github.com/Fdawgs/doccon/commit/479f2523c17b59f12c8dde1d0a9b1a7ac19bd9c7))
+* **plugins/pdf-to-txt:** remove unused var ([8c04796](https://www.github.com/Fdawgs/doccon/commit/8c04796377e825a5a5bac9c9f74a233a45efce37))
+* **plugins:** remove redundant eslint comments ([ed65fad](https://www.github.com/Fdawgs/doccon/commit/ed65fada237efc296db089f5e3ac4008f21ff3fd))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 12.1.1 to 12.1.4 ([5129b9c](https://www.github.com/Fdawgs/doccon/commit/5129b9c85aef8e5996c4a9f173eda3925a554ce2))
+* **deps-dev:** bump @commitlint/config-conventional ([fc3db2c](https://www.github.com/Fdawgs/doccon/commit/fc3db2c4f52e7b369fe8c238d2ba62a28cff20e8))
+* **deps-dev:** bump eslint-plugin-import from 2.22.1 to 2.23.2 ([3be6423](https://www.github.com/Fdawgs/doccon/commit/3be6423b77080d1db334daefc4e1633b9eb58978))
+* **deps-dev:** bump eslint-plugin-jsdoc from 34.0.1 to 34.8.2 ([1b06127](https://www.github.com/Fdawgs/doccon/commit/1b061273aa211c6061fe3b14be4e5791f234289c))
+* **deps:** bump actions/stale from 3.0.18 to 3.0.19 ([5078e95](https://www.github.com/Fdawgs/doccon/commit/5078e95ddbec40e48a22db62707e924354ce3d08))
+* **deps:** bump node-poppler from v3.0.0 to v4.0.0 ([b259b94](https://www.github.com/Fdawgs/doccon/commit/b259b9481d04d1abc02a2c63d3fcd7629de82814))
+* **deps:** bump wagoid/commitlint-github-action from 3.1.3 to 3.1.4 ([0e70612](https://www.github.com/Fdawgs/doccon/commit/0e70612d07c3128cf84e92e477c22a877afd54ad))
+
 ### [2.0.2](https://www.github.com/Fdawgs/doccon/compare/v2.0.1...v2.0.2) (2021-05-11)
 
 
