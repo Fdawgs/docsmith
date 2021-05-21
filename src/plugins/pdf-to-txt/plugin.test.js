@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jest/no-commented-out-tests */
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fs = require("fs");
 const Fastify = require("fastify");
