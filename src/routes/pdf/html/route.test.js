@@ -24,7 +24,6 @@ describe("PDF-to-HTML route", () => {
 		await server.ready();
 	});
 
-	// TODO Add afterall to remove leftover PDFs from ./temp
 	afterAll(() => {
 		server.close();
 	});
