@@ -22,8 +22,8 @@ describe("Tidy-CSS Plugin", () => {
 		});
 	});
 
-	afterEach(() => {
-		server.close();
+	afterEach(async () => {
+		await server.close();
 	});
 
 	test("Should tidy CSS in HTML", async () => {

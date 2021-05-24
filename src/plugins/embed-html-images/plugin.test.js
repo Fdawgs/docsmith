@@ -23,8 +23,8 @@ describe("Embed-HTML-Images Plugin", () => {
 		});
 	});
 
-	afterEach(() => {
-		server.close();
+	afterEach(async () => {
+		await server.close();
 	});
 
 	test("Should embed images into HTML", async () => {

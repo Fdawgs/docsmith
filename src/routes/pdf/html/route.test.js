@@ -24,11 +24,11 @@ describe("PDF-to-HTML route", () => {
 		await server.ready();
 	});
 
-	afterAll(() => {
-		server.close();
+	afterAll(async () => {
+		await server.close();
 	});
 
-	test("Should return PDF file converted to HTML, with alt attributes removed from img tags", async () => {
+	test("Should return PDF file converted to HTML", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -36,7 +36,7 @@ describe("PDF-to-HTML route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				removeAlt: true,
+				lastPageToConvert: 2,
 			},
 			headers: {
 				"content-type": "application/pdf",
@@ -54,6 +54,9 @@ describe("PDF-to-HTML route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
+			query: {
+				lastPageToConvert: 2,
+			},
 			headers: {
 				"content-type": "application/pdf",
 			},
@@ -70,6 +73,9 @@ describe("PDF-to-HTML route", () => {
 			body: fs.readFileSync(
 				"./test_resources/test_files/empty-test.html"
 			),
+			query: {
+				lastPageToConvert: 2,
+			},
 			headers: {
 				"content-type": "application/html",
 			},

@@ -28,8 +28,8 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		});
 	});
 
-	afterEach(() => {
-		server.close();
+	afterEach(async () => {
+		await server.close();
 	});
 
 	test("Should convert PDF file to TXT", async () => {
