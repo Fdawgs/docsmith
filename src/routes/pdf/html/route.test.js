@@ -24,8 +24,8 @@ describe("PDF-to-HTML route", () => {
 		await server.ready();
 	});
 
-	afterAll(() => {
-		server.close();
+	afterAll(async () => {
+		await server.close();
 	});
 
 	test("Should return PDF file converted to HTML, with alt attributes removed from img tags", async () => {

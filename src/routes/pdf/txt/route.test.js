@@ -19,8 +19,8 @@ describe("PDF-to-TXT route", () => {
 		await server.ready();
 	});
 
-	afterAll(() => {
-		server.close();
+	afterAll(async () => {
+		await server.close();
 	});
 
 	test("Should return PDF file converted to TXT", async () => {

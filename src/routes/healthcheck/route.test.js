@@ -16,8 +16,8 @@ describe("Healthcheck Route", () => {
 			await server.ready();
 		});
 
-		afterAll(() => {
-			server.close();
+		afterAll(async () => {
+			await server.close();
 		});
 
 		test("Should return `ok`", async () => {

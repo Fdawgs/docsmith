@@ -35,8 +35,8 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		});
 	});
 
-	afterEach(() => {
-		server.close();
+	afterEach(async () => {
+		await server.close();
 	});
 
 	afterAll(() => {
