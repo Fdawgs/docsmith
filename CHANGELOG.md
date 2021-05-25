@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.0.4](https://www.github.com/Fdawgs/docsmith/compare/v2.0.3...v2.0.4) (2021-05-25)
+
+
+### Miscellaneous
+
+* **docker-compose:** update `container_name` ([970f6b9](https://www.github.com/Fdawgs/docsmith/commit/970f6b92a6f6e0ad86963ad65b1fecb4aaf49337))
+* **env:** add comments to clarify process load handling ([5313d90](https://www.github.com/Fdawgs/docsmith/commit/5313d90ece00f2764228c6ce3e527134abfa26ee))
+* **env:** remove pre-filled  process load env values in template ([4cbd96f](https://www.github.com/Fdawgs/docsmith/commit/4cbd96f65831d7c501fc4e51220425b9c484f984))
+* rename repo ([ee2a247](https://www.github.com/Fdawgs/docsmith/commit/ee2a247b904481c8273a5cc9a0979eab11cee53c))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 7.26.0 to 7.27.0 ([c9c2afc](https://www.github.com/Fdawgs/docsmith/commit/c9c2afcb394839d1aa82014b53bfe2ded35340b6))
+* **deps-dev:** bump eslint-plugin-import from 2.23.2 to 2.23.3 ([297021f](https://www.github.com/Fdawgs/docsmith/commit/297021fd51b2a3e4ef95345a96c4096c7f21ed28))
+* **deps-dev:** bump eslint-plugin-jsdoc from 34.8.2 to 35.0.0 ([311f05c](https://www.github.com/Fdawgs/docsmith/commit/311f05c12015e8b1dd9bdc90a564f0a56a7a1b2f))
+* **deps-dev:** bump jest from 26.6.3 to 27.0.0 ([7926c95](https://www.github.com/Fdawgs/docsmith/commit/7926c9511c703a9e1ebc5f0deccdc6f391c1f380))
+* **deps:** bump dotenv from 9.0.2 to 10.0.0 ([bab8464](https://www.github.com/Fdawgs/docsmith/commit/bab8464e051aa316a07d57d7c97b0ee67311383c))
+* **deps:** bump jsdom from 16.5.3 to 16.6.0 ([12be151](https://www.github.com/Fdawgs/docsmith/commit/12be15132faf1d6876d23820463ce9b0bc53315a))
+
 ### [2.0.3](https://www.github.com/Fdawgs/docsmith/compare/v2.0.2...v2.0.3) (2021-05-21)
 
 
