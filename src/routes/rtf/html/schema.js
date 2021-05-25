@@ -1,0 +1,41 @@
+const S = require("fluent-json-schema");
+
+const tags = ["RTF"];
+const security = [{ bearerToken: [] }];
+
+/**
+ * Fastify uses AJV for JSON Schema Validation,
+ * see https://www.fastify.io/docs/latest/Validation-and-Serialization/
+ *
+ * This validation protects against XSS and HPP attacks.
+ */
+const rtfToHtmlPostSchema = {
+	tags,
+	summary: "Convert RTF documents to HTML format",
+	operationId: "postRtfToHtml",
+	consumes: ["application/rtf"],
+	produces: ["text/html"],
+	// TODO: resolve binary body
+	// body: S.string().contentMediaType("application/rtf"),
+	query: S.object()
+		.prop(
+			"backgroundColor",
+			S.string()
+				.description("HTML document background color")
+				.examples(["white", "#FFFFFF"])
+		)
+		.prop(
+			"fonts",
+			S.string()
+				.description(
+					"Define the font(s) of the text in the returned HTML document"
+				)
+				.examples(["Arial", "Arial, Sans Serif"])
+		),
+	response: {
+		200: S.string(),
+	},
+	security,
+};
+
+module.exports = { rtfToHtmlPostSchema };

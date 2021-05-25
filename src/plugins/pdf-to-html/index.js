@@ -20,7 +20,7 @@ const { v4 } = require("uuid");
  * location, contents etc.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Fastify config values.
- * @param {string} options.poppler.binPath - Obfuscation values.
+ * @param {string} options.poppler.binPath - Path to Poppler binary.
  * @param {string} options.poppler.encoding - Sets the encoding to use for text output.
  * @param {object=} options.poppler.pdfToHtmlOptions - Refer to
  * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToHtml
@@ -99,19 +99,19 @@ async function plugin(server, options) {
 
 			// Build temporary file for Poppler to write to, and following plugins to read from
 			const id = v4();
-			const tempHtmlFile = `${this.config.tempDirectory}${id}`;
+			const tempFile = `${this.config.tempDirectory}${id}`;
 
 			const poppler = new Poppler(this.config.binPath);
 			await poppler.pdfToHtml(
 				req.body,
-				`${tempHtmlFile}.html`,
+				`${tempFile}.html`,
 				this.config.pdfToHtmlOptions
 			);
 
 			// Remove excess title and meta tags left behind by Poppler
 			// Poppler appends `-html` to the file name, thus the template literal here
 			const dom = new JSDOM(
-				await fsp.readFile(`${tempHtmlFile}-html.html`, {
+				await fsp.readFile(`${tempFile}-html.html`, {
 					encoding: this.config.encoding,
 				})
 			);
@@ -135,7 +135,7 @@ async function plugin(server, options) {
 
 			req.pdfToHtmlResults.docLocation = {
 				directory: this.config.tempDirectory,
-				html: tempHtmlFile,
+				html: tempFile,
 				id,
 			};
 

@@ -186,6 +186,11 @@ async function getConfig() {
 							"Endpoints used for the conversion of PDF documents",
 					},
 					{
+						name: "RTF",
+						description:
+							"Endpoints used for the conversion of RTF documents",
+					},
+					{
 						name: "System Administration",
 						description: "",
 					},
