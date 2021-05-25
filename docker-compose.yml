@@ -1,6 +1,6 @@
 services:
     app:
-        container_name: doc-conversion-api
+        container_name: docsmith
         build:
             context: .
         env_file: .env
