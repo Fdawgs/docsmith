@@ -39,10 +39,6 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 		await server.close();
 	});
 
-	afterAll(() => {
-		fs.rmdir(config.unrtf.tempDirectory, { recursive: true }, () => {});
-	});
-
 	test("Should convert RTF file to HTML and place in specified directory", async () => {
 		server.register(plugin, config);
 

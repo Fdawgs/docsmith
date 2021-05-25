@@ -39,10 +39,6 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		await server.close();
 	});
 
-	afterAll(() => {
-		fs.rmdir(config.poppler.tempDirectory, { recursive: true }, () => {});
-	});
-
 	test("Should convert PDF file to HTML and place in specified directory", async () => {
 		server.register(plugin, config);
 
