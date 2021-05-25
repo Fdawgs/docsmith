@@ -1,9 +1,9 @@
-# doccon
+# docsmith
 
-[![GitHub Release](https://img.shields.io/github/release/Fdawgs/doccon.svg)](https://github.com/Fdawgs/doccon/releases/latest/)
-![CI](https://github.com/Fdawgs/doccon/workflows/CI/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/doccon/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/doccon?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/doccon/badge.svg)](https://snyk.io/test/github/Fdawgs/doccon)
+[![GitHub Release](https://img.shields.io/github/release/Fdawgs/docsmith.svg)](https://github.com/Fdawgs/docsmith/releases/latest/)
+![CI](https://github.com/Fdawgs/docsmith/workflows/CI/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/docsmith/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/docsmith?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/docsmith/badge.svg)](https://snyk.io/test/github/Fdawgs/docsmith)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 > RESTful API for converting clinical documents/files
@@ -82,4 +82,4 @@ Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when con
 
 ## License
 
-`doccon` is licensed under the [MIT](./LICENSE) license.
+`docsmith` is licensed under the [MIT](./LICENSE) license.

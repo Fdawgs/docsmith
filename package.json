@@ -1,12 +1,12 @@
 {
-  "name": "doccon",
+  "name": "docsmith",
   "version": "2.0.3",
   "description": "RESTful API for converting clinical documents/files",
   "main": "src/app.js",
-  "repository": "git+https://github.com/Fdawgs/doccon.git",
-  "homepage": "https://github.com/Fdawgs/doccon",
+  "repository": "git+https://github.com/Fdawgs/docsmith.git",
+  "homepage": "https://github.com/Fdawgs/docsmith",
   "bugs": {
-    "url": "https://github.com/Fdawgs/doccon/issues"
+    "url": "https://github.com/Fdawgs/docsmith/issues"
   },
   "license": "MIT",
   "author": "Frazer Smith <frazer.dev@outlook.com>",

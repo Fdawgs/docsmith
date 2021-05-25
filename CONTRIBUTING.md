@@ -55,4 +55,4 @@ Prior to submitting a pull request back to the main repository, please make sure
 
 ## Issues
 
-Please file your issues [here](https://github.com/Fdawgs/doccon/issues) and try to provide as much information in the template as possible/relevant.
+Please file your issues [here](https://github.com/Fdawgs/docsmith/issues) and try to provide as much information in the template as possible/relevant.
