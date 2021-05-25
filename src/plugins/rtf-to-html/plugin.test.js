@@ -63,7 +63,7 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
 		expect(typeof response.docLocation).toBe("object");
-		expect(fs.existsSync(response.docLocation.html)).toBe(false);
+		expect(fs.existsSync(response.docLocation.rtf)).toBe(false);
 		expect(fs.existsSync(config.unrtf.tempDirectory)).toBe(true);
 	});
 
