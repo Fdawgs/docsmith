@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0](https://www.github.com/Fdawgs/docsmith/compare/v2.0.4...v2.1.0) (2021-05-25)
+
+
+### Features
+
+* **routes/rtf/html:** add rtf-to-html route ([#177](https://www.github.com/Fdawgs/docsmith/issues/177)) ([8b0fdd4](https://www.github.com/Fdawgs/docsmith/commit/8b0fdd4c32f032611ed48366974e878d02cc448a))
+* **routes/rtf/txt:** add rtf-to-txt route  ([#179](https://www.github.com/Fdawgs/docsmith/issues/179)) ([0ad64bd](https://www.github.com/Fdawgs/docsmith/commit/0ad64bd23dd763bc8f027790d26bb149e0894bea))
+
+
+### Miscellaneous
+
+* **workflows:** remove `stale.yml` ([ae47b74](https://www.github.com/Fdawgs/docsmith/commit/ae47b74b2d191d161dcaed52ebcddd3d2014cd4b))
+
 ### [2.0.4](https://www.github.com/Fdawgs/docsmith/compare/v2.0.3...v2.0.4) (2021-05-25)
 
 
