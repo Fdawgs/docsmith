@@ -1,7 +1,6 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable security/detect-object-injection */
 const createError = require("http-errors");
-const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const fs = require("fs");
 const fsp = require("fs").promises;
@@ -13,13 +12,13 @@ const { v4 } = require("uuid");
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses UnRTF to convert Buffer or string of
- * RTF file in `req.body` to HTML and places RTF file in a temporary directory.
- * `req` object is decorated with `rtfToHtmlResults` object detailing document
+ * RTF file in `req.body` to TXT and places RTF file in a temporary directory.
+ * `req` object is decorated with `rtfToTxtResults` object detailing document
  * location, contents etc.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Fastify config values.
  * @param {string} options.unrtf.binPath - Obfuscation values.
- * @param {object=} options.unrtf.rtfToHtmlOptions - Refer to
+ * @param {object=} options.unrtf.rtfToTxtOptions - Refer to
  * https://github.com/Fdawgs/node-unrtf/blob/master/API.md
  * for options.
  * @param {string} options.unrtf.tempDirectory - directory for temporarily storing
@@ -27,13 +26,13 @@ const { v4 } = require("uuid");
  */
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
-		req.rtfToHtmlResults = { body: undefined, docLocation: {} };
+		req.rtfToTxtResults = { body: undefined, docLocation: {} };
 	});
 
 	server.addHook("onResponse", (req) => {
 		// Remove files from temp directory after response sent
 		const files = glob.sync(
-			`${req.rtfToHtmlResults.docLocation.directory}/${req.rtfToHtmlResults.docLocation.id}*`
+			`${req.rtfToTxtResults.docLocation.directory}/${req.rtfToTxtResults.docLocation.id}*`
 		);
 		files.forEach((file) => {
 			fs.unlinkSync(file);
@@ -51,9 +50,9 @@ async function plugin(server, options) {
 			// Define any default settings the middleware should have to get up and running
 			const defaultConfig = {
 				binPath: undefined,
-				rtfToHtmlOptions: {
+				rtfToTxtOptions: {
 					noPictures: true,
-					outputHtml: true,
+					outputText: true,
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
@@ -78,17 +77,18 @@ async function plugin(server, options) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
-			req.rtfToHtmlResults.body = fixUtf8(
-				await unrtf.convert(tempFile, this.config.rtfToHtmlOptions)
+			req.rtfToTxtResults.body = await unrtf.convert(
+				tempFile,
+				this.config.rtfToTxtOptions
 			);
 
-			req.rtfToHtmlResults.docLocation = {
+			req.rtfToTxtResults.docLocation = {
 				directory: this.config.tempDirectory,
 				rtf: tempFile,
 				id,
 			};
 
-			res.header("content-type", `text/html`);
+			res.header("content-type", `text/plain`);
 		} catch (err) {
 			server.log.error(err);
 			res.send(createError(400, err));

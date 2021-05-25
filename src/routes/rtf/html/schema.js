@@ -11,7 +11,7 @@ const security = [{ bearerToken: [] }];
  */
 const rtfToHtmlPostSchema = {
 	tags,
-	summary: "Convert RTF documents to HTML format",
+	summary: "Convert RTF documents to HTML format (images are not converted)",
 	operationId: "postRtfToHtml",
 	consumes: ["application/rtf"],
 	produces: ["text/html"],
