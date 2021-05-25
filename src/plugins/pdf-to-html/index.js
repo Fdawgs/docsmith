@@ -20,7 +20,7 @@ const { v4 } = require("uuid");
  * location, contents etc.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Fastify config values.
- * @param {string} options.poppler.binPath - Obfuscation values.
+ * @param {string} options.poppler.binPath - Path to Poppler binary.
  * @param {string} options.poppler.encoding - Sets the encoding to use for text output.
  * @param {object=} options.poppler.pdfToHtmlOptions - Refer to
  * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToHtml
