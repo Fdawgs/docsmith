@@ -105,7 +105,7 @@
     "glob": "^7.1.7",
     "htmltidy2": "^0.3.0",
     "http-errors": "^1.8.0",
-    "jsdom": "^16.5.3",
+    "jsdom": "^16.6.0",
     "node-poppler": "^4.0.0",
     "node-unrtf": "^2.0.0",
     "pino": "^6.11.3",
