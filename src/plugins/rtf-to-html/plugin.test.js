@@ -1,4 +1,5 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
+const { cloneDeep } = require("lodash");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -19,6 +20,8 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
+		config = cloneDeep(config);
+		config.unrtf.tempDirectory = "./src/temp2/";
 	});
 
 	beforeEach(() => {
@@ -35,6 +38,10 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 		});
 	});
 
+	afterAll(() => {
+		fs.rmdir(config.unrtf.tempDirectory, { recursive: true }, () => {});
+	});
+
 	afterEach(async () => {
 		await server.close();
 	});
@@ -45,7 +52,7 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync("./test_resources/test_files/test-rtf.rtf"),
+			body: fs.readFileSync("./test_resources/test_files/valid_rtf.rtf"),
 			headers: {
 				"content-type": "application/rtf",
 			},
@@ -57,10 +64,10 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 			expect.stringContaining("Ask not what your country can do for you")
 		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
-		expect(isHtml(response.body)).toBe(true);
-		expect(typeof response.docLocation).toBe("object");
-		expect(fs.existsSync(response.docLocation.rtf)).toBe(false);
-		expect(fs.existsSync(config.unrtf.tempDirectory)).toBe(true);
+		expect(isHtml(response.body)).toEqual(true);
+		expect(typeof response.docLocation).toEqual("object");
+		expect(fs.existsSync(response.docLocation.rtf)).toEqual(false);
+		expect(fs.existsSync(config.unrtf.tempDirectory)).toEqual(true);
 	});
 
 	test("Should return HTTP 400 error if RTF file is missing", async () => {
@@ -76,9 +83,9 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 
 		const body = JSON.parse(response.payload);
 
-		expect(response.statusCode).toBe(400);
-		expect(response.statusMessage).toBe("Bad Request");
-		expect(body.statusCode).toBe(400);
-		expect(body.error).toBe("Bad Request");
+		expect(response.statusCode).toEqual(400);
+		expect(response.statusMessage).toEqual("Bad Request");
+		expect(body.statusCode).toEqual(400);
+		expect(body.error).toEqual("Bad Request");
 	});
 });

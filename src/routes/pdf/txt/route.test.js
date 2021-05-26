@@ -41,7 +41,7 @@ describe("PDF-to-TXT route", () => {
 		expect(response.payload).toEqual(
 			expect.stringContaining("The NHS Constitution")
 		);
-		expect(isHtml(response.payload)).toBe(false);
+		expect(isHtml(response.payload)).toEqual(false);
 		expect(response.statusCode).toEqual(200);
 	});
 
@@ -64,7 +64,7 @@ describe("PDF-to-TXT route", () => {
 		expect(response.payload).toEqual(
 			expect.stringContaining("The NHS Constitution")
 		);
-		expect(isHtml(response.payload)).toBe(true);
+		expect(isHtml(response.payload)).toEqual(true);
 		expect(response.statusCode).toEqual(200);
 	});
 
@@ -84,12 +84,31 @@ describe("PDF-to-TXT route", () => {
 		expect(response.statusMessage).toEqual("Unsupported Media Type");
 	});
 
+	test("Should return 415 error code if file with '.pdf' extension is not a valid PDF file", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/invalid_pdf.pdf"
+			),
+			query: {
+				lastPageToConvert: 2,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		expect(response.statusCode).toEqual(415);
+		expect(response.statusMessage).toEqual("Unsupported Media Type");
+	});
+
 	test("Should return 415 error code if file media type is not supported by route", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/empty-test.html"
+				"./test_resources/test_files/valid_empty_html.html"
 			),
 			query: {
 				lastPageToConvert: 2,

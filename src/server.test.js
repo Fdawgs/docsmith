@@ -69,7 +69,7 @@ describe("End-To-End", () => {
 					connection: "keep-alive",
 				})
 			);
-			expect(isHtml(response.payload)).toBe(true);
+			expect(isHtml(response.payload)).toEqual(true);
 			expect(response.statusCode).toEqual(200);
 		});
 	});
@@ -125,7 +125,7 @@ describe("End-To-End", () => {
 			expect(response.payload).toEqual(
 				expect.stringContaining("The NHS Constitution")
 			);
-			expect(isHtml(response.payload)).toBe(false);
+			expect(isHtml(response.payload)).toEqual(false);
 			expect(response.statusCode).toEqual(200);
 		});
 	});
@@ -136,7 +136,7 @@ describe("End-To-End", () => {
 				method: "POST",
 				url: "/rtf/html",
 				body: fs.readFileSync(
-					"./test_resources/test_files/test-rtf.rtf"
+					"./test_resources/test_files/valid_rtf.rtf"
 				),
 				headers: {
 					accept: "*/*",
@@ -175,7 +175,7 @@ describe("End-To-End", () => {
 					connection: "keep-alive",
 				})
 			);
-			expect(isHtml(response.payload)).toBe(true);
+			expect(isHtml(response.payload)).toEqual(true);
 			expect(response.statusCode).toEqual(200);
 		});
 	});
@@ -186,7 +186,7 @@ describe("End-To-End", () => {
 				method: "POST",
 				url: "/rtf/txt",
 				body: fs.readFileSync(
-					"./test_resources/test_files/test-rtf.rtf"
+					"./test_resources/test_files/valid_rtf.rtf"
 				),
 				headers: {
 					accept: "*/*",
@@ -225,7 +225,7 @@ describe("End-To-End", () => {
 					connection: "keep-alive",
 				})
 			);
-			expect(isHtml(response.payload)).toBe(false);
+			expect(isHtml(response.payload)).toEqual(false);
 			expect(response.statusCode).toEqual(200);
 		});
 	});

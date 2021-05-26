@@ -18,19 +18,19 @@ async function route(server, options) {
 		"application/rtf",
 		{ parseAs: "buffer" },
 		async (req, payload) => {
-			try {
-				/**
-				 * The Content-Type header can be spoofed so is not trusted implicitly,
-				 * this checks for RTF specific magic numbers.
-				 */
-				const { mime } = await fileType.fromBuffer(payload);
-				if (mime === "application/rtf") {
-					return payload;
-				}
-				throw UnsupportedMediaType();
-			} catch (err) {
+			/**
+			 * The Content-Type header can be spoofed so is not trusted implicitly,
+			 * this checks for RTF specific magic numbers.
+			 */
+			const results = await fileType.fromBuffer(payload);
+			if (
+				results === undefined ||
+				results.mime === undefined ||
+				results.mime !== "application/rtf"
+			) {
 				throw UnsupportedMediaType();
 			}
+			return payload;
 		}
 	);
 

@@ -39,7 +39,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -48,11 +48,11 @@ describe("Embed-HTML-Images Plugin", () => {
 		});
 
 		expect(
-			/src="tester_bullet_issues001.png"/gm.exec(response.payload)
+			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
 		).toBeNull();
 		expect(/alt=""/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
 	});
 
 	test("Should embed images into HTML and remove alt attribute from img tags", async () => {
@@ -67,7 +67,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -76,11 +76,11 @@ describe("Embed-HTML-Images Plugin", () => {
 		});
 
 		expect(
-			/src="tester_bullet_issues001.png"/gm.exec(response.payload)
+			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
 		).toBeNull();
 		expect(/alt=""/gm.exec(response.payload)).not.toBeNull();
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
 	});
 
 	test("Should embed images into HTML and add trailing slash if missing from directory", async () => {
@@ -95,7 +95,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -104,10 +104,10 @@ describe("Embed-HTML-Images Plugin", () => {
 		});
 
 		expect(
-			/src="tester_bullet_issues001.png"/gm.exec(response.payload)
+			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
 		).toBeNull();
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
 	});
 
 	test("Should continue if it cannot find images to embed in specified directory", async () => {
@@ -120,7 +120,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -128,7 +128,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			},
 		});
 
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
 	});
 });

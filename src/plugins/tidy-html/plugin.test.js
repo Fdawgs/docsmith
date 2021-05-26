@@ -31,7 +31,7 @@ describe("Tidy-CSS Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -43,12 +43,12 @@ describe("Tidy-CSS Plugin", () => {
 
 		expect(
 			dom.window.document.querySelector("html").getAttribute("lang")
-		).toBe("en");
+		).toEqual("en");
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
-		).toBe("en");
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
+		).toEqual("en");
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
 	});
 
 	test("Should tidy HTML and set language", async () => {
@@ -61,7 +61,7 @@ describe("Tidy-CSS Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -73,11 +73,11 @@ describe("Tidy-CSS Plugin", () => {
 
 		expect(
 			dom.window.document.querySelector("html").getAttribute("lang")
-		).toBe("fr");
+		).toEqual("fr");
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
-		).toBe("fr");
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
+		).toEqual("fr");
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
 	});
 });

@@ -18,19 +18,19 @@ async function route(server, options) {
 		"application/pdf",
 		{ parseAs: "buffer" },
 		async (req, payload) => {
-			try {
-				/**
-				 * The Content-Type header can be spoofed so is not trusted implicitly,
-				 * this checks for PDF specific magic numbers.
-				 */
-				const { mime } = await fileType.fromBuffer(payload);
-				if (mime === "application/pdf") {
-					return payload;
-				}
-				throw UnsupportedMediaType();
-			} catch (err) {
+			/**
+			 * The Content-Type header can be spoofed so is not trusted implicitly,
+			 * this checks for PDF specific magic numbers.
+			 */
+			const results = await fileType.fromBuffer(payload);
+			if (
+				results === undefined ||
+				results.mime === undefined ||
+				results.mime !== "application/pdf"
+			) {
 				throw UnsupportedMediaType();
 			}
+			return payload;
 		}
 	);
 
