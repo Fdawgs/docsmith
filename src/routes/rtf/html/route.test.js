@@ -58,6 +58,23 @@ describe("RTF-to-HTML route", () => {
 		expect(response.statusMessage).toEqual("Unsupported Media Type");
 	});
 
+	test("Should return 415 error code if file with '.rtf' extension is not a valid RTF file", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync("./test_resources/test_files/fake_file.rtf"),
+			query: {
+				lastPageToConvert: 2,
+			},
+			headers: {
+				"content-type": "application/rtf",
+			},
+		});
+
+		expect(response.statusCode).toEqual(415);
+		expect(response.statusMessage).toEqual("Unsupported Media Type");
+	});
+
 	test("Should return 415 error code if file media type is not supported by route", async () => {
 		const response = await server.inject({
 			method: "POST",
