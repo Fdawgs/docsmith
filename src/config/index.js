@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-non-literal-fs-filename */
 require("dotenv").config();
 
 const envSchema = require("env-schema");
