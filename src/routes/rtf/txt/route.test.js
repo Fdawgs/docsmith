@@ -34,7 +34,7 @@ describe("RTF-to-TXT route", () => {
 		expect(response.payload).toEqual(
 			expect.stringContaining("Ask not what your country can do for you")
 		);
-		expect(isHtml(response.payload)).toBe(false);
+		expect(isHtml(response.payload)).toEqual(false);
 		expect(response.statusCode).toEqual(200);
 	});
 

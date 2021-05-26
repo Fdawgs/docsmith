@@ -43,12 +43,12 @@ describe("Tidy-CSS Plugin", () => {
 
 		expect(
 			dom.window.document.querySelector("html").getAttribute("lang")
-		).toBe("en");
+		).toEqual("en");
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
-		).toBe("en");
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
+		).toEqual("en");
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
 	});
 
 	test("Should tidy HTML and set language", async () => {
@@ -73,11 +73,11 @@ describe("Tidy-CSS Plugin", () => {
 
 		expect(
 			dom.window.document.querySelector("html").getAttribute("lang")
-		).toBe("fr");
+		).toEqual("fr");
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
-		).toBe("fr");
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
+		).toEqual("fr");
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
 	});
 });

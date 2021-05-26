@@ -46,7 +46,7 @@ describe("PDF-to-HTML route", () => {
 		expect(response.payload).toEqual(
 			expect.stringContaining("The NHS Constitution")
 		);
-		expect(isHtml(response.payload)).toBe(true);
+		expect(isHtml(response.payload)).toEqual(true);
 		expect(response.statusCode).toEqual(200);
 	});
 
