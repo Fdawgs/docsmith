@@ -15,8 +15,6 @@ const pdfToTxtPostSchema = {
 	operationId: "postPdfToTxt",
 	consumes: ["application/pdf"],
 	produces: ["text/html", "text/plain"],
-	// TODO: resolve binary body
-	// body: S.string().contentMediaType("application/pdf"),
 	query: S.object()
 		.prop(
 			"boundingBoxXhtml",
