@@ -38,7 +38,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync("./test_resources/test_files/test-rtf.rtf"),
+			body: fs.readFileSync("./test_resources/test_files/valid_rtf.rtf"),
 			headers: {
 				"content-type": "application/rtf",
 			},

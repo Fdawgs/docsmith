@@ -39,7 +39,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -48,7 +48,7 @@ describe("Embed-HTML-Images Plugin", () => {
 		});
 
 		expect(
-			/src="tester_bullet_issues001.png"/gm.exec(response.payload)
+			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
 		).toBeNull();
 		expect(/alt=""/gm.exec(response.payload)).toBeNull();
 		expect(typeof response.payload).toEqual("string");
@@ -67,7 +67,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -76,7 +76,7 @@ describe("Embed-HTML-Images Plugin", () => {
 		});
 
 		expect(
-			/src="tester_bullet_issues001.png"/gm.exec(response.payload)
+			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
 		).toBeNull();
 		expect(/alt=""/gm.exec(response.payload)).not.toBeNull();
 		expect(typeof response.payload).toEqual("string");
@@ -95,7 +95,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -104,7 +104,7 @@ describe("Embed-HTML-Images Plugin", () => {
 		});
 
 		expect(
-			/src="tester_bullet_issues001.png"/gm.exec(response.payload)
+			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
 		).toBeNull();
 		expect(typeof response.payload).toEqual("string");
 		expect(isHtml(response.payload)).toEqual(true);
@@ -120,7 +120,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {

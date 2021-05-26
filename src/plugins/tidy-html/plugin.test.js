@@ -31,7 +31,7 @@ describe("Tidy-CSS Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {
@@ -61,7 +61,7 @@ describe("Tidy-CSS Plugin", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/tester_bullet_issues-html.html",
+				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
 			headers: {

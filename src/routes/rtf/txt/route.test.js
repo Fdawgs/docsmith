@@ -25,7 +25,7 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync("./test_resources/test_files/test-rtf.rtf"),
+			body: fs.readFileSync("./test_resources/test_files/valid_rtf.rtf"),
 			headers: {
 				"content-type": "application/rtf",
 			},
@@ -56,7 +56,9 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync("./test_resources/test_files/fake_file.rtf"),
+			body: fs.readFileSync(
+				"./test_resources/test_files/invalid_rtf.rtf"
+			),
 			query: {
 				lastPageToConvert: 2,
 			},
@@ -74,7 +76,7 @@ describe("RTF-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: fs.readFileSync(
-				"./test_resources/test_files/empty-test.html"
+				"./test_resources/test_files/valid_empty_html.html"
 			),
 			headers: {
 				"content-type": "application/html",

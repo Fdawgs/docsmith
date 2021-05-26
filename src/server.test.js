@@ -136,7 +136,7 @@ describe("End-To-End", () => {
 				method: "POST",
 				url: "/rtf/html",
 				body: fs.readFileSync(
-					"./test_resources/test_files/test-rtf.rtf"
+					"./test_resources/test_files/valid_rtf.rtf"
 				),
 				headers: {
 					accept: "*/*",
@@ -186,7 +186,7 @@ describe("End-To-End", () => {
 				method: "POST",
 				url: "/rtf/txt",
 				body: fs.readFileSync(
-					"./test_resources/test_files/test-rtf.rtf"
+					"./test_resources/test_files/valid_rtf.rtf"
 				),
 				headers: {
 					accept: "*/*",
