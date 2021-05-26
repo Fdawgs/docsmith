@@ -117,4 +117,4 @@ dist
 
 # Test files
 test_resources/test_log*
-src/temp/
+src/temp*/
