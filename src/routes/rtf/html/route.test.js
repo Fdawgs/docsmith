@@ -1,12 +1,20 @@
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
+const generateCombos = require("../../../../test_resources/utils/genCombos");
 const plugin = require(".");
 const getConfig = require("../../../config");
 
 const embedHtmlImages = require("../../../plugins/embed-html-images");
 const tidyCss = require("../../../plugins/tidy-css");
 const tidyHtml = require("../../../plugins/tidy-html");
+
+// Generates 6 different combinations
+const queryStrings = generateCombos([
+	{ backgroundColor: "white" },
+	{ fonts: "Arial" },
+	{ fonts: "Arial, Sans Serif" },
+]);
 
 describe("RTF-to-HTML route", () => {
 	let options;
@@ -29,70 +37,101 @@ describe("RTF-to-HTML route", () => {
 	});
 
 	test("Should return RTF file converted to HTML", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: fs.readFileSync("./test_resources/test_files/valid_rtf.rtf"),
-			headers: {
-				"content-type": "application/rtf",
-			},
-		});
+		await Promise.all(
+			queryStrings.map(async (query) => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/",
+					body: fs.readFileSync(
+						"./test_resources/test_files/valid_rtf.rtf"
+					),
+					query,
+					headers: {
+						"content-type": "application/rtf",
+					},
+				});
+				expect(response.payload).toEqual(
+					expect.stringContaining(
+						"Ask not what your country can do for you"
+					)
+				);
+				expect(isHtml(response.payload)).toEqual(true);
+				expect(response.statusCode).toEqual(200);
 
-		expect(response.payload).toEqual(
-			expect.stringContaining("Ask not what your country can do for you")
+				return response.statusCode;
+			})
 		);
-		expect(isHtml(response.payload)).toEqual(true);
-		expect(response.statusCode).toEqual(200);
 	});
 
 	test("Should return 415 error code if file is missing", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			headers: {
-				"content-type": "application/rtf",
-			},
-		});
+		await Promise.all(
+			queryStrings.map(async (query) => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/",
+					query,
+					headers: {
+						"content-type": "application/rtf",
+					},
+				});
 
-		expect(response.statusCode).toEqual(415);
-		expect(response.statusMessage).toEqual("Unsupported Media Type");
+				expect(response.statusCode).toEqual(415);
+				expect(response.statusMessage).toEqual(
+					"Unsupported Media Type"
+				);
+
+				return response.statusCode;
+			})
+		);
 	});
 
 	test("Should return 415 error code if file with '.rtf' extension is not a valid RTF file", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: fs.readFileSync(
-				"./test_resources/test_files/invalid_rtf.rtf"
-			),
-			query: {
-				lastPageToConvert: 2,
-			},
-			headers: {
-				"content-type": "application/rtf",
-			},
-		});
+		await Promise.all(
+			queryStrings.map(async (query) => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/",
+					body: fs.readFileSync(
+						"./test_resources/test_files/invalid_rtf.rtf"
+					),
+					query,
+					headers: {
+						"content-type": "application/rtf",
+					},
+				});
 
-		expect(response.statusCode).toEqual(415);
-		expect(response.statusMessage).toEqual("Unsupported Media Type");
+				expect(response.statusCode).toEqual(415);
+				expect(response.statusMessage).toEqual(
+					"Unsupported Media Type"
+				);
+
+				return response.statusCode;
+			})
+		);
 	});
 
 	test("Should return 415 error code if file media type is not supported by route", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: fs.readFileSync(
-				"./test_resources/test_files/valid_empty_html.html"
-			),
-			query: {
-				lastPageToConvert: 2,
-			},
-			headers: {
-				"content-type": "application/html",
-			},
-		});
+		await Promise.all(
+			queryStrings.map(async (query) => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/",
+					body: fs.readFileSync(
+						"./test_resources/test_files/valid_empty_html.html"
+					),
+					query,
+					headers: {
+						"content-type": "application/html",
+					},
+				});
 
-		expect(response.statusCode).toEqual(415);
-		expect(response.statusMessage).toEqual("Unsupported Media Type");
+				expect(response.statusCode).toEqual(415);
+				expect(response.statusMessage).toEqual(
+					"Unsupported Media Type"
+				);
+
+				return response.statusCode;
+			})
+		);
 	});
 });

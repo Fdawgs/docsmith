@@ -29,8 +29,9 @@ async function route(server, options) {
 				results.mime !== "application/pdf"
 			) {
 				throw UnsupportedMediaType();
+			} else {
+				return payload;
 			}
-			return payload;
 		}
 	);
 

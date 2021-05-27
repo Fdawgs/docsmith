@@ -15,8 +15,6 @@ const rtfToHtmlPostSchema = {
 	operationId: "postRtfToHtml",
 	consumes: ["application/rtf"],
 	produces: ["text/html"],
-	// TODO: resolve binary body
-	// body: S.string().contentMediaType("application/rtf"),
 	query: S.object()
 		.prop(
 			"backgroundColor",

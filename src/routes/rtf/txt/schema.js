@@ -15,8 +15,6 @@ const rtfToTxtPostSchema = {
 	operationId: "postRtfToTxt",
 	consumes: ["application/rtf"],
 	produces: ["text/plain"],
-	// TODO: resolve binary body
-	// body: S.string().contentMediaType("application/rtf"),
 	response: {
 		200: S.string(),
 	},
