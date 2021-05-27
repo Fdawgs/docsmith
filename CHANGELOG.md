@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.1.1](https://www.github.com/Fdawgs/docsmith/compare/v2.1.0...v2.1.1) (2021-05-27)
+
+
+### Miscellaneous
+
+* **gitignore:** ignore all temp directories ([a418e02](https://www.github.com/Fdawgs/docsmith/commit/a418e02e8221b5b60f390cd246fcafc28c2ff0ca))
+* **prettierignore:** ignore all temp directories ([0c373cd](https://www.github.com/Fdawgs/docsmith/commit/0c373cd102fb705ae8bdc3c4d2c621057e835495))
+* remove resolved todo comments ([d0b5c92](https://www.github.com/Fdawgs/docsmith/commit/d0b5c92b2ca38d67acb8f137ffc983ace205f4b7))
+* **test_resources:** standardize test file names ([3b6d16c](https://www.github.com/Fdawgs/docsmith/commit/3b6d16cce4be205bae9567869c66d0dfd79a73ec))
+
+
+### Improvements
+
+* **routes:** mimetype detection ([2ef53e0](https://www.github.com/Fdawgs/docsmith/commit/2ef53e09f55052bfaeb6386e3d95b1ded0020001))
+* **routes:** mimetype detection payload return ([1db2c3a](https://www.github.com/Fdawgs/docsmith/commit/1db2c3aa886bfbc3d73e1db1289bf08b62a0e304))
+
+
+### Continuous Integration
+
+* **cd:** move perf optimizations and refactoring into same section ([b5e1b23](https://www.github.com/Fdawgs/docsmith/commit/b5e1b23341c52e834eefe6d4e2c5eab24b6bcd58))
+
+
+### Dependencies
+
+* **deps-dev:** bump jest from 27.0.0 to 27.0.1 ([e64fa9b](https://www.github.com/Fdawgs/docsmith/commit/e64fa9b636d89290b480d6006e4b63a39473adae))
+* **deps-dev:** bump pino-pretty from 4.8.0 to 5.0.0 ([008d6e1](https://www.github.com/Fdawgs/docsmith/commit/008d6e1fbc41e76246d504373ed1013407fe9938))
+* **deps:** bump fastify from 3.15.1 to 3.16.2 ([e926a09](https://www.github.com/Fdawgs/docsmith/commit/e926a09c274f3c1c4c580e6cf353249fa686b1de))
+
 ## [2.1.0](https://www.github.com/Fdawgs/docsmith/compare/v2.0.4...v2.1.0) (2021-05-25)
 
 
