@@ -113,3 +113,4 @@ dist
 
 # Test files
 test_resources/*
+src/temp*/
