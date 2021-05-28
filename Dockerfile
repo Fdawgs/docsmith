@@ -1,15 +1,23 @@
-FROM node:lts-alpine
+FROM node:lts
 
+# Workdir
 WORKDIR /usr/src/app
-COPY . .
+
+# Copy and install packages (will only be production packages if NODE_ENV set to 'production')
+COPY src src/
+COPY .env package*.json ./
+RUN npm ci --ignore-scripts && npm cache clean --force
 
 # Pre-emptively make logs directory if used for logs storage set 
 # by LOG_ROTATION_FILENAME env variable 
 RUN mkdir ./logs/ && chown -R node ./logs/
-# If appropriate env file missing, use template
-RUN cp .env.template .env
-# Install dependencies
-RUN npm ci --ignore-scripts && npm cache clean --force
+
+# Install binaries
+RUN apt-get -q update && \
+    apt-get -y install poppler-data poppler-utils unrtf
+
+# Create temp folder for files to be stored whilst being converted
+RUN mkdir ./src/temp/ && chown -R node ./src/temp/
 
 # Node images provide 'node' unprivileged user to run apps and prevent
 # privilege escalation attacks
