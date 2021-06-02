@@ -17,7 +17,7 @@ This RESTful API converts files from:
 -   RTF to HTML
 -   RTF to TXT
 
-It was initially created to replace a previously purchased PDF-to-HTML conversion tool at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/). The tool, which was no longer supported, would produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries were receiving these documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and were unable to read a number of them, leading to requests for the original document to be faxed over.
+It was initially created to replace a previously purchased PDF-to-HTML conversion tool at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/). The tool would produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries were receiving these documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and were unable to read a number of them, leading to requests for the original document to be faxed over.
 
 ## Prerequisites
 
@@ -73,11 +73,11 @@ If you are unable to deploy this into production using Docker, it is recommended
 
 If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jessety/pm2-installer) to install PM2 as a Windows service.
 
-**Note:** PM2 has been configured to automatically restart the application if modifications are made to `.env`.
+**Note:** PM2 will automatically restart the application if `.env` is modified.
 
 ## Contributing
 
-Contributions are welcome and any help that can be offered is greatly appreciated!
+Contributions are welcome, and any help is greatly appreciated!
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to get started.
 Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when contributing.
