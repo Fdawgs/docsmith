@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:lts-buster-slim
 
 # Workdir
 WORKDIR /usr/app
