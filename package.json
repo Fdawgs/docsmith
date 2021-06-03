@@ -106,7 +106,7 @@
     "htmltidy2": "^0.3.0",
     "http-errors": "^1.8.0",
     "jsdom": "^16.6.0",
-    "node-poppler": "^4.0.0",
+    "node-poppler": "^4.1.0",
     "node-unrtf": "^2.0.0",
     "pino": "^6.11.3",
     "raw-body": "^2.4.1",
