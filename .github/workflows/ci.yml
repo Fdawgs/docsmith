@@ -139,18 +139,6 @@ jobs:
               with:
                   dockerfile: Dockerfile
 
-    # docker-tests:
-    #     name: Docker Build Tests
-    #     if: github.event.pull_request.draft == false
-    #     needs: lint-docker-file
-    #     runs-on: ubuntu-latest
-    #     steps:
-    #         - uses: actions/checkout@v2.3.4
-    #         - name: Build and Start App
-    #           run: |
-    #               docker build --build-arg NODE_ENV=test -t doc-conversion-api .
-    #               docker run --network --publish 8204:8204 doc-conversion-api
-
     docker-compose-tests:
         name: Docker Compose Build Tests
         if: github.event.pull_request.draft == false
@@ -161,7 +149,7 @@ jobs:
             - name: Build and Start App
               run: |
                   cp .env.template .env
-                  NODE_ENV=test docker-compose up --detach
+                  docker-compose up --detach
 
     coverage:
         name: Aggregate Coverage Calculations
