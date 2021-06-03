@@ -7,7 +7,9 @@ WORKDIR /usr/app
 COPY . .
 # Curl needed for healthcheck command
 RUN apt-get -q update && \
-    apt-get -y install curl poppler-data poppler-utils unrtf && \
+    apt-get -y --no-install-recommends install curl poppler-data poppler-utils unrtf && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
     npm ci --ignore-scripts && npm cache clean --force
 
 # Create temp folder for files to be stored whilst being converted
