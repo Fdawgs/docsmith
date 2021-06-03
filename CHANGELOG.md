@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.1.2](https://www.github.com/Fdawgs/docsmith/compare/v2.1.1...v2.1.2) (2021-06-03)
+
+
+### Documentation
+
+* **readme:** grammar and wordiness fixes ([d92af9c](https://www.github.com/Fdawgs/docsmith/commit/d92af9c5a75ad598039a168ae42514a66f999a4c))
+* **readme:** grammar fix ([ef33bda](https://www.github.com/Fdawgs/docsmith/commit/ef33bda0f8bc6061cfb279a68e1bb721f1699133))
+* **readme:** update contributing section ([208beac](https://www.github.com/Fdawgs/docsmith/commit/208beacd72f7a24d8e00461a9a3e708fb25fb97d))
+
+
+### Miscellaneous
+
+* **.env.template:** remove comment re docker and log files ([66ba536](https://www.github.com/Fdawgs/docsmith/commit/66ba53660cac5d4242d7cb8011dbf982319e6a8b))
+* **dockerignore:** ignore all temp directories ([33495d4](https://www.github.com/Fdawgs/docsmith/commit/33495d49106874afc0dd552f48b6e20fbbab85bd))
+
+
+### Continuous Integration
+
+* remove redundant docker build job ([78e3abd](https://www.github.com/Fdawgs/docsmith/commit/78e3abd235f9a3f5617c1c0195ca603a104c3d60))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-import from 2.23.3 to 2.23.4 ([9bc0cd7](https://www.github.com/Fdawgs/docsmith/commit/9bc0cd70b6cbb541dab64c2c280c6c4766f7ea9f))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.0.0 to 35.1.2 ([e0d7dd2](https://www.github.com/Fdawgs/docsmith/commit/e0d7dd28acb7e98e4f8efb63388a7a4250b4c058))
+* **deps-dev:** bump jest from 27.0.1 to 27.0.3 ([fe2f6c7](https://www.github.com/Fdawgs/docsmith/commit/fe2f6c7da50e672bcf60d4a60aedacdf1ed1ffa9))
+* **deps-dev:** bump jest from 27.0.3 to 27.0.4 ([c1a8d11](https://www.github.com/Fdawgs/docsmith/commit/c1a8d11effefde258d02b586a050041ffcdda313))
+* **deps-dev:** bump pino-pretty from 5.0.0 to 5.0.1 ([8a0a640](https://www.github.com/Fdawgs/docsmith/commit/8a0a6407b488333c72db15cb63eaad76a34e0991))
+* **deps-dev:** bump pino-pretty from 5.0.1 to 5.0.2 ([bce5af7](https://www.github.com/Fdawgs/docsmith/commit/bce5af7788c1e91739de135a173d85b07c214d6c))
+* **deps:** bump actions/cache from 2.1.5 to 2.1.6 ([97bbbb6](https://www.github.com/Fdawgs/docsmith/commit/97bbbb61d5c280354fd7d51fe57060450a88cfe6))
+* **deps:** bump fastify from 3.16.2 to 3.17.0 ([ea6516b](https://www.github.com/Fdawgs/docsmith/commit/ea6516b2a4c4a69fbe472775e5ad639ab8258af0))
+* **deps:** bump file-type from 16.4.0 to 16.5.0 ([f4d2dbf](https://www.github.com/Fdawgs/docsmith/commit/f4d2dbfe56d43a149c63ca3f17195fe79593b71c))
+* **deps:** bump node-poppler from 4.0.0 to 4.1.0 ([5203ac5](https://www.github.com/Fdawgs/docsmith/commit/5203ac58272eeb88dcec7c5d96b6efb990a27f1e))
+* **deps:** bump ws from 7.4.5 to 7.4.6 ([334cc18](https://www.github.com/Fdawgs/docsmith/commit/334cc1872b41673eb95ccc4256a85477f0a8dad7))
+* **docker:** add missing dependencies and env variables ([fac4517](https://www.github.com/Fdawgs/docsmith/commit/fac4517eda854fb939ce6d0bd1fc588c8fb5fb4d))
+* **docker:** clean list after install; ignore recommended packages ([61159cd](https://www.github.com/Fdawgs/docsmith/commit/61159cdde58fcd28960d976644b299cf36618649))
+* **dockerignore:** add test and dev files ([573e477](https://www.github.com/Fdawgs/docsmith/commit/573e477dda5f04c84d4a9ece93ebf6ccffb983e4))
+* **docker:** pin binary versions ([d237673](https://www.github.com/Fdawgs/docsmith/commit/d2376732d23073bd2b6ad1b1fa09c554eaefc17a))
+* **docker:** update workdir; install curl ([338bf2d](https://www.github.com/Fdawgs/docsmith/commit/338bf2db1817d9a01db4d9dbaaed18336a487d94))
+* **docker:** use native logging, healthcheck, restart and res handling ([23600da](https://www.github.com/Fdawgs/docsmith/commit/23600dac5f8dabd8505e2a27da89f146ea238e1c))
+* **docker:** use smaller, more secure base image ([bf2f4e0](https://www.github.com/Fdawgs/docsmith/commit/bf2f4e05d1d368a759aac1b095e75447c73cbbb9))
+
 ### [2.1.1](https://www.github.com/Fdawgs/docsmith/compare/v2.1.0...v2.1.1) (2021-05-27)
 
 
