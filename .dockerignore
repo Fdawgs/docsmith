@@ -112,5 +112,19 @@ dist
 .pnp.*
 
 # Test files
-test_resources/*
+test_resources/
 src/temp*/
+**/*.test.*
+
+# Development files
+.git/
+.github/
+.husky/
+.vscode/
+docs/
+.env.template
+.eslintrc.js
+.gitignore
+.pm2.config.js
+.prettierignore
+.prettierrc

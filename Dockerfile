@@ -1,15 +1,19 @@
-FROM node:lts-alpine
+FROM node:lts-buster-slim
 
-WORKDIR /usr/src/app
+# Workdir
+WORKDIR /usr/app
+
+# Copy and install packages
 COPY . .
+# Curl needed for healthcheck command
+RUN apt-get -q update && \
+    apt-get -y --no-install-recommends install curl=7.64.0-4+deb10u2 poppler-data=0.4.9-2 poppler-utils=0.71.0-5 unrtf=0.21.10-clean-1 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    npm ci --ignore-scripts && npm cache clean --force
 
-# Pre-emptively make logs directory if used for logs storage set 
-# by LOG_ROTATION_FILENAME env variable 
-RUN mkdir ./logs/ && chown -R node ./logs/
-# If appropriate env file missing, use template
-RUN cp .env.template .env
-# Install dependencies
-RUN npm ci --ignore-scripts && npm cache clean --force
+# Create temp folder for files to be stored whilst being converted
+RUN mkdir ./src/temp/ && chown -R node ./src/temp/
 
 # Node images provide 'node' unprivileged user to run apps and prevent
 # privilege escalation attacks
