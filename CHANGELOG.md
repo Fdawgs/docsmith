@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.1.3](https://www.github.com/Fdawgs/docsmith/compare/v2.1.2...v2.1.3) (2021-06-07)
+
+
+### Bug Fixes
+
+* **plugins/tidy-css:** incomplete multi-character sanitization ([9abf965](https://www.github.com/Fdawgs/docsmith/commit/9abf9651e8ea40936595d9f23de4d7ecb2c6f46f))
+
+
+### Documentation
+
+* **readme:** revamp intro section ([#207](https://www.github.com/Fdawgs/docsmith/issues/207)) ([04265e1](https://www.github.com/Fdawgs/docsmith/commit/04265e11cd7da608a671e762dde622dceed9dcf2))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 7.27.0 to 7.28.0 ([8152f90](https://www.github.com/Fdawgs/docsmith/commit/8152f90e34ec9ec8b08fe55809bc5204037abf2c))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.1.2 to 35.1.3 ([964b374](https://www.github.com/Fdawgs/docsmith/commit/964b3742d3d424e9e0110fff6dfb501aada17ab4))
+* **deps-dev:** bump prettier from 2.3.0 to 2.3.1 ([96133ff](https://www.github.com/Fdawgs/docsmith/commit/96133ff724e612c1d559944d36743f4419767935))
+* **deps-dev:** remove glob from dev list; already prod dep ([ee6b6ba](https://www.github.com/Fdawgs/docsmith/commit/ee6b6ba5f5f26df26070a26907522d5582075173))
+* update vulnerable dependency ([b142a49](https://www.github.com/Fdawgs/docsmith/commit/b142a49db95bd8f81a2580caf8380f43607f98d5))
+
 ### [2.1.2](https://www.github.com/Fdawgs/docsmith/compare/v2.1.1...v2.1.2) (2021-06-03)
 
 
