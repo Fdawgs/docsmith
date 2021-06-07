@@ -6,18 +6,30 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/docsmith/badge.svg)](https://snyk.io/test/github/Fdawgs/docsmith)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
-> RESTful API for converting clinical documents/files
+> RESTful API for converting clinical documents and files
 
 ## Intro
 
-This RESTful API converts files from:
+Docsmith is a RESTful API, built using Node.js and the [Fastify](https://www.fastify.io/) web framework, that can convert files from:
 
 -   PDF to HTML
 -   PDF to TXT
 -   RTF to HTML
 -   RTF to TXT
 
-It was initially created to replace a previously purchased PDF-to-HTML conversion tool at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/). The tool would produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries were receiving these documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and were unable to read a number of them, leading to requests for the original document to be faxed over.
+Planned features include:
+
+-   DOC to HTML
+-   DOC to TXT
+-   DOCX to HTML
+-   DOCX to TXT
+-   Scanned documents (as PDFs) to TXT
+
+### Why Docsmith?
+
+Docsmith was created out of the need for an open-source document conversion service at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/).
+
+Before Docsmith, the hospital was using expensive and subpar conversion tools; they would produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries in Somerset and Dorset would receive these documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and were unable to read a number of them, leading to requests for the original document to be faxed over, wasting time and money.
 
 ## Prerequisites
 
