@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.1.4](https://www.github.com/Fdawgs/docsmith/compare/v2.1.3...v2.1.4) (2021-06-08)
+
+
+### Bug Fixes
+
+* **config:** redact request authorization header from logs ([9300384](https://www.github.com/Fdawgs/docsmith/commit/9300384926e32962668edb0db7e8736d57cd6ed9))
+* **server:** remove swagger from csp for all routes apart from doc route ([5be469d](https://www.github.com/Fdawgs/docsmith/commit/5be469df586c09185a6191036d8eefafb70382ad))
+* **server:** set `frame-ancestors` csp to `'none'`; add `child-src` csp ([2d85a0f](https://www.github.com/Fdawgs/docsmith/commit/2d85a0ff9e49efa6820bbd70fd558095be059aeb))
+
+
+### Documentation
+
+* **readme:** flesh out intro section further ([97cbc09](https://www.github.com/Fdawgs/docsmith/commit/97cbc09e0b0deda27ee46e441f5fb59058c319ed))
+
+
+### Dependencies
+
+* update vulnerable dependencies ([f1297b9](https://www.github.com/Fdawgs/docsmith/commit/f1297b94049c5051c99adc939618d6ba56b3d261))
+
 ### [2.1.3](https://www.github.com/Fdawgs/docsmith/compare/v2.1.2...v2.1.3) (2021-06-07)
 
 
