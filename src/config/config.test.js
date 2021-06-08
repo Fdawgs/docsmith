@@ -83,6 +83,7 @@ describe("Configuration", () => {
 			expect.objectContaining({
 				formatters: { level: expect.any(Function) },
 				level: LOG_LEVEL,
+				redact: ["req.body", "req.headers.authorization", "res.body"],
 				serializers: {
 					req: expect.any(Function),
 					res: expect.any(Function),
@@ -192,6 +193,7 @@ describe("Configuration", () => {
 			expect.objectContaining({
 				formatters: { level: expect.any(Function) },
 				level: "info",
+				redact: ["req.body", "req.headers.authorization", "res.body"],
 				serializers: {
 					req: expect.any(Function),
 					res: expect.any(Function),

@@ -127,6 +127,11 @@ async function getConfig() {
 					},
 				},
 				level: env.LOG_LEVEL || "info",
+				/**
+				 * Fastify does not log the req or res body anyway but better
+				 * to be safe as a future change could break it
+				 */
+				redact: ["req.body", "req.headers.authorization", "res.body"],
 				serializers: {
 					req(req) {
 						return pino.stdSerializers.req(req);
@@ -156,6 +161,7 @@ async function getConfig() {
 		swagger: {
 			routePrefix: "/docs",
 			exposeRoute: true,
+			staticCSP: true,
 			openapi: {
 				info: {
 					title: name,
