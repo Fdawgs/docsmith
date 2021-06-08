@@ -51,7 +51,10 @@ async function route(server, options) {
 		async handler(req, res) {
 			const result = server.tidyCss(
 				await server.tidyHtml(
-					server.embedHtmlImages(req.pdfToHtmlResults.body, true)
+					server.embedHtmlImages(
+						req.pdfToHtmlResults.body,
+						req.query.removeAlt
+					)
 				),
 				{
 					fonts: req.query.fonts,
