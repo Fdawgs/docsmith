@@ -45,7 +45,9 @@ async function plugin(server, config) {
 			contentSecurityPolicy: {
 				directives: {
 					...helmet.contentSecurityPolicy.getDefaultDirectives(),
+					"child-src": ["'self'"],
 					"form-action": ["'self'"],
+					"frame-ancestors": ["'none'"],
 					"img-src": ["'self'", "data:"],
 					"script-src": ["'self'"],
 					"style-src": ["'self'", "https:"],
