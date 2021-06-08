@@ -26,6 +26,7 @@ describe("Configuration", () => {
 	test("Should return values according to environment variables - SSL enabled and CORS disabled", async () => {
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.datatype.number();
+		const SERVICE_BODY_MAX_BYTES = 100000000;
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
@@ -52,6 +53,7 @@ describe("Configuration", () => {
 		Object.assign(process.env, {
 			SERVICE_HOST,
 			SERVICE_PORT,
+			SERVICE_BODY_MAX_BYTES,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
@@ -78,6 +80,8 @@ describe("Configuration", () => {
 			host: SERVICE_HOST,
 			port: SERVICE_PORT,
 		});
+
+		expect(config.fastifyInit.bodyLimit).toEqual(SERVICE_BODY_MAX_BYTES);
 
 		expect(config.fastifyInit.logger).toEqual(
 			expect.objectContaining({
@@ -123,7 +127,6 @@ describe("Configuration", () => {
 
 		expect(config.poppler).toEqual(
 			expect.objectContaining({
-				encoding: "UTF-8",
 				binPath: POPPLER_BINARY_PATH,
 				tempDirectory: expect.any(String),
 			})
@@ -189,6 +192,8 @@ describe("Configuration", () => {
 			port: SERVICE_PORT,
 		});
 
+		expect(config.fastifyInit.bodyLimit).toEqual(10485760);
+
 		expect(config.fastifyInit.logger).toEqual(
 			expect.objectContaining({
 				formatters: { level: expect.any(Function) },
@@ -233,7 +238,6 @@ describe("Configuration", () => {
 
 		expect(config.poppler).toEqual(
 			expect.objectContaining({
-				encoding: "UTF-8",
 				binPath: POPPLER_BINARY_PATH,
 				tempDirectory: expect.any(String),
 			})

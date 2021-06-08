@@ -36,8 +36,7 @@ async function plugin(server, options) {
 			// Define any default settings the middleware should have to get up and running
 			const defaultConfig = {
 				binPath: undefined,
-				encoding: "UTF-8",
-				pdfToTxtOptions: {},
+				pdfToTxtOptions: { outputEncoding: "UTF-8" },
 			};
 			this.config = Object.assign(defaultConfig, options.poppler);
 
@@ -99,10 +98,7 @@ async function plugin(server, options) {
 			}
 			res.header(
 				"content-type",
-				`${contentType}; charset=${
-					this.config.pdfToTxtOptions.outputEncoding ||
-					this.config.encoding
-				}`
+				`${contentType}; charset=${this.config.pdfToTxtOptions.outputEncoding}`
 			);
 		} catch (err) {
 			server.log.error(err);
