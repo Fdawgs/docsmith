@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0](https://www.github.com/Fdawgs/docsmith/compare/v2.1.4...v2.2.0) (2021-06-08)
+
+
+### Features
+
+* **config:** add env variable for setting req body size limit ([53b97b8](https://www.github.com/Fdawgs/docsmith/commit/53b97b885e64df6869200bcef16db1a3e809cd13))
+
+
+### Bug Fixes
+
+* **plugins:** `outputencoding` query param use ([768161e](https://www.github.com/Fdawgs/docsmith/commit/768161ee6cdcf46f25d36c69db3fd0f25ae1aa63))
+
 ### [2.1.4](https://www.github.com/Fdawgs/docsmith/compare/v2.1.3...v2.1.4) (2021-06-08)
 
 
