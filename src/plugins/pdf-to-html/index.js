@@ -48,9 +48,9 @@ async function plugin(server, options) {
 			// Define any default settings the middleware should have to get up and running
 			const defaultConfig = {
 				binPath: undefined,
-				encoding: "UTF-8",
 				pdfToHtmlOptions: {
 					complexOutput: true,
+					outputEncoding: "UTF-8",
 					singlePage: true,
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
@@ -141,10 +141,7 @@ async function plugin(server, options) {
 
 			res.header(
 				"content-type",
-				`text/html; charset=${
-					this.config.pdfToHtmlOptions.outputEncoding ||
-					this.config.encoding
-				}`
+				`text/html; charset=${this.config.pdfToHtmlOptions.outputEncoding}`
 			);
 		} catch (err) {
 			server.log.error(err);

@@ -228,7 +228,6 @@ async function getConfig() {
 			sortAttributes: "alpha",
 		},
 		poppler: {
-			encoding: "UTF-8",
 			binPath: env.POPPLER_BINARY_PATH,
 			/**
 			 * Directory where HTML files and their images are temporarily held
