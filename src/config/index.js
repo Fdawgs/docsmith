@@ -49,6 +49,10 @@ async function getConfig() {
 		schema: S.object()
 			.prop("SERVICE_HOST", S.string())
 			.prop("SERVICE_PORT", S.number())
+			.prop(
+				"SERVICE_BODY_MAX_BYTES",
+				S.anyOf([S.number(), S.null()]).default(10485760)
+			)
 			.prop("HTTPS_PFX_PASSPHRASE", S.anyOf([S.string(), S.null()]))
 			.prop("HTTPS_PFX_FILE_PATH", S.anyOf([S.string(), S.null()]))
 			.prop("HTTPS_SSL_CERT_PATH", S.anyOf([S.string(), S.null()]))
@@ -116,6 +120,8 @@ async function getConfig() {
 			port: env.SERVICE_PORT,
 		},
 		fastifyInit: {
+			// The maximum payload, in bytes, the server is allowed to accept
+			bodyLimit: env.SERVICE_BODY_MAX_BYTES || 10485760,
 			/**
 			 * See https://www.fastify.io/docs/v3.8.x/Logging/
 			 * and https://getpino.io/#/docs/api for logger options
