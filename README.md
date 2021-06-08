@@ -27,9 +27,14 @@ Planned features include:
 
 ### Why Docsmith?
 
-Docsmith was created out of the need for an open-source document conversion service at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/).
+Docsmith was created out of a need for an open-source document conversion service at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/).
 
-Before Docsmith, the hospital was using expensive and subpar conversion tools; they would produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries in Somerset and Dorset would receive these documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and were unable to read a number of them, leading to requests for the original document to be faxed over, wasting time and money.
+Whilst there are many document conversion services already available the majority are costly, closed-source, and cannot be self-hosted.
+The two latter issues just mentioned pose both a security and privacy risk. If you cannot confirm that these services are not storing and logging files with confidential patient identifiable data (PID) in them then it is a GDPR nightmare waiting to happen!
+
+Docsmith was built to remedy all of the above.
+
+Before Docsmith, the hospital was using expensive and subpar black box conversion tools that would produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries in Somerset and Dorset would receive these corrupted documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and were unable to read them, meaning time and money was wasted either posting or faxing them again!
 
 ## Prerequisites
 
