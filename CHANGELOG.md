@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.2.2](https://www.github.com/Fdawgs/docsmith/compare/v2.2.1...v2.2.2) (2021-06-09)
+
+
+### Dependencies
+
+* **deps:** bump normalize-url from 4.5.0 to 4.5.1 ([7beaf5f](https://www.github.com/Fdawgs/docsmith/commit/7beaf5f2bacf7ced6ca592ce348a44b970e288d2))
+
+
+### Improvements
+
+* **plugins:** remove redundant use of `this` keyword ([3eb8931](https://www.github.com/Fdawgs/docsmith/commit/3eb8931b928960eb7399628de468aad73127226f))
+* **server:** use helmet default csp directives ([bad981c](https://www.github.com/Fdawgs/docsmith/commit/bad981c31563c0ae4304fcd7c0037b77d5940e85))
+
 ### [2.2.1](https://www.github.com/Fdawgs/docsmith/compare/v2.2.0...v2.2.1) (2021-06-09)
 
 
