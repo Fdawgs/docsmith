@@ -57,7 +57,7 @@ async function plugin(server, options) {
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
-			this.config = Object.assign(defaultConfig, options.unrtf);
+			this.config = await Object.assign(defaultConfig, options.unrtf);
 
 			// Create temp directory if missing
 			try {
@@ -78,7 +78,7 @@ async function plugin(server, options) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
-			req.rtfToHtmlResults.body = fixUtf8(
+			req.rtfToHtmlResults.body = await fixUtf8(
 				await unrtf.convert(tempFile, this.config.rtfToHtmlOptions)
 			);
 

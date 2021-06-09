@@ -56,7 +56,7 @@ async function plugin(server, options) {
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
-			this.config = Object.assign(defaultConfig, options.unrtf);
+			this.config = await Object.assign(defaultConfig, options.unrtf);
 
 			// Create temp directory if missing
 			try {
