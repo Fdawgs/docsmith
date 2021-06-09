@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.2.1](https://www.github.com/Fdawgs/docsmith/compare/v2.2.0...v2.2.1) (2021-06-09)
+
+
+### Bug Fixes
+
+* **plugins:** await `Object.assign()` and `fixUtf8()` ([d3bdbc3](https://www.github.com/Fdawgs/docsmith/commit/d3bdbc303315b0475f685d607de3129059ae357a))
+* **routes/pdf/html:** hardcoded `removealt` query param ([6e96a29](https://www.github.com/Fdawgs/docsmith/commit/6e96a29d624f10dfcbcfa200a6de8b5de5d9202a))
+
 ## [2.2.0](https://www.github.com/Fdawgs/docsmith/compare/v2.1.4...v2.2.0) (2021-06-08)
 
 
