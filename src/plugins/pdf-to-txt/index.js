@@ -34,11 +34,11 @@ async function plugin(server, options) {
 			}
 
 			// Define any default settings the middleware should have to get up and running
-			const defaultConfig = {
+			const config = {
 				binPath: undefined,
 				pdfToTxtOptions: { outputEncoding: "UTF-8" },
 			};
-			this.config = await Object.assign(defaultConfig, options.poppler);
+			await Object.assign(config, options.poppler);
 
 			/**
 			 * Create copy of query string params and prune that,
@@ -77,14 +77,14 @@ async function plugin(server, options) {
 					query[value] = autoParse(query[value]);
 				}
 			});
-			await Object.assign(this.config.pdfToTxtOptions, query);
+			await Object.assign(config.pdfToTxtOptions, query);
 
-			const poppler = new Poppler(this.config.binPath);
+			const poppler = new Poppler(config.binPath);
 
 			req.pdfToTxtResults.body = await poppler.pdfToText(
 				req.body,
 				undefined,
-				this.config.pdfToTxtOptions
+				config.pdfToTxtOptions
 			);
 
 			// Certain querystring options alter output to HTML rather than TXT
@@ -98,7 +98,7 @@ async function plugin(server, options) {
 			}
 			res.header(
 				"content-type",
-				`${contentType}; charset=${this.config.pdfToTxtOptions.outputEncoding}`
+				`${contentType}; charset=${config.pdfToTxtOptions.outputEncoding}`
 			);
 		} catch (err) {
 			server.log.error(err);

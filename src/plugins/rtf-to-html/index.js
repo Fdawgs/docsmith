@@ -49,7 +49,7 @@ async function plugin(server, options) {
 			}
 
 			// Define any default settings the middleware should have to get up and running
-			const defaultConfig = {
+			const config = {
 				binPath: undefined,
 				rtfToHtmlOptions: {
 					noPictures: true,
@@ -57,21 +57,21 @@ async function plugin(server, options) {
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
-			this.config = await Object.assign(defaultConfig, options.unrtf);
+			await Object.assign(config, options.unrtf);
 
 			// Create temp directory if missing
 			try {
-				await fsp.access(this.config.tempDirectory);
+				await fsp.access(config.tempDirectory);
 			} catch (err) {
-				await fsp.mkdir(this.config.tempDirectory);
+				await fsp.mkdir(config.tempDirectory);
 			}
 
 			// Build temporary file for UnRTF to write to, and following plugins to read from
 			const id = v4();
-			const tempFile = `${this.config.tempDirectory}${id}.rtf`;
+			const tempFile = `${config.tempDirectory}${id}.rtf`;
 			await fsp.writeFile(tempFile, req.body);
 
-			const unrtf = new UnRTF(this.config.binPath);
+			const unrtf = new UnRTF(config.binPath);
 
 			/**
 			 * `fixUtf8` function replaces most common incorrectly converted
@@ -79,11 +79,11 @@ async function plugin(server, options) {
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
 			req.rtfToHtmlResults.body = await fixUtf8(
-				await unrtf.convert(tempFile, this.config.rtfToHtmlOptions)
+				await unrtf.convert(tempFile, config.rtfToHtmlOptions)
 			);
 
 			req.rtfToHtmlResults.docLocation = {
-				directory: this.config.tempDirectory,
+				directory: config.tempDirectory,
 				rtf: tempFile,
 				id,
 			};
