@@ -46,7 +46,7 @@ async function plugin(server, options) {
 	server.addHook("preHandler", async (req, res) => {
 		try {
 			// Define any default settings the middleware should have to get up and running
-			const defaultConfig = {
+			const config = {
 				binPath: undefined,
 				pdfToHtmlOptions: {
 					complexOutput: true,
@@ -55,7 +55,7 @@ async function plugin(server, options) {
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
-			this.config = await Object.assign(defaultConfig, options.poppler);
+			await Object.assign(config, options.poppler);
 
 			/**
 			 * Create copy of query string params and prune that,
@@ -88,31 +88,31 @@ async function plugin(server, options) {
 					query[value] = autoParse(query[value]);
 				}
 			});
-			await Object.assign(this.config.pdfToHtmlOptions, query);
+			await Object.assign(config.pdfToHtmlOptions, query);
 
 			// Create temp directory if missing
 			try {
-				await fsp.access(this.config.tempDirectory);
+				await fsp.access(config.tempDirectory);
 			} catch (err) {
-				await fsp.mkdir(this.config.tempDirectory);
+				await fsp.mkdir(config.tempDirectory);
 			}
 
 			// Build temporary file for Poppler to write to, and following plugins to read from
 			const id = v4();
-			const tempFile = `${this.config.tempDirectory}${id}`;
+			const tempFile = `${config.tempDirectory}${id}`;
 
-			const poppler = new Poppler(this.config.binPath);
+			const poppler = new Poppler(config.binPath);
 			await poppler.pdfToHtml(
 				req.body,
 				`${tempFile}.html`,
-				this.config.pdfToHtmlOptions
+				config.pdfToHtmlOptions
 			);
 
 			// Remove excess title and meta tags left behind by Poppler
 			// Poppler appends `-html` to the file name, thus the template literal here
 			const dom = new JSDOM(
 				await fsp.readFile(`${tempFile}-html.html`, {
-					encoding: this.config.encoding,
+					encoding: config.encoding,
 				})
 			);
 			const titles = dom.window.document.querySelectorAll("title");
@@ -134,14 +134,14 @@ async function plugin(server, options) {
 			);
 
 			req.pdfToHtmlResults.docLocation = {
-				directory: this.config.tempDirectory,
+				directory: config.tempDirectory,
 				html: tempFile,
 				id,
 			};
 
 			res.header(
 				"content-type",
-				`text/html; charset=${this.config.pdfToHtmlOptions.outputEncoding}`
+				`text/html; charset=${config.pdfToHtmlOptions.outputEncoding}`
 			);
 		} catch (err) {
 			server.log.error(err);
