@@ -38,7 +38,7 @@ async function plugin(server, options) {
 				binPath: undefined,
 				pdfToTxtOptions: { outputEncoding: "UTF-8" },
 			};
-			this.config = Object.assign(defaultConfig, options.poppler);
+			this.config = await Object.assign(defaultConfig, options.poppler);
 
 			/**
 			 * Create copy of query string params and prune that,
@@ -77,7 +77,7 @@ async function plugin(server, options) {
 					query[value] = autoParse(query[value]);
 				}
 			});
-			Object.assign(this.config.pdfToTxtOptions, query);
+			await Object.assign(this.config.pdfToTxtOptions, query);
 
 			const poppler = new Poppler(this.config.binPath);
 

@@ -55,7 +55,7 @@ async function plugin(server, options) {
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
-			this.config = Object.assign(defaultConfig, options.poppler);
+			this.config = await Object.assign(defaultConfig, options.poppler);
 
 			/**
 			 * Create copy of query string params and prune that,
@@ -88,7 +88,7 @@ async function plugin(server, options) {
 					query[value] = autoParse(query[value]);
 				}
 			});
-			Object.assign(this.config.pdfToHtmlOptions, query);
+			await Object.assign(this.config.pdfToHtmlOptions, query);
 
 			// Create temp directory if missing
 			try {
@@ -129,7 +129,7 @@ async function plugin(server, options) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
-			req.pdfToHtmlResults.body = fixUtf8(
+			req.pdfToHtmlResults.body = await fixUtf8(
 				dom.window.document.documentElement.outerHTML
 			);
 
