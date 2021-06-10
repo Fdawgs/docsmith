@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.2.3](https://www.github.com/Fdawgs/docsmith/compare/v2.2.2...v2.2.3) (2021-06-10)
+
+
+### Bug Fixes
+
+* **plugins:** return full serialization of  HTML document ([#219](https://www.github.com/Fdawgs/docsmith/issues/219)) ([f924996](https://www.github.com/Fdawgs/docsmith/commit/f92499654794aac52915ee200d4e74829bea220e))
+
 ### [2.2.2](https://www.github.com/Fdawgs/docsmith/compare/v2.2.1...v2.2.2) (2021-06-09)
 
 
