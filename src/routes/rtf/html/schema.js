@@ -29,6 +29,10 @@ const rtfToHtmlPostSchema = {
 					"Define the font(s) of the text in the returned HTML document"
 				)
 				.examples(["Arial", "Arial, Sans Serif"])
+		)
+		.prop(
+			"removeAlt",
+			S.boolean().description("Remove the alt attribute from image tags")
 		),
 	response: {
 		200: S.string(),
