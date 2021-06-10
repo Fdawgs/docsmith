@@ -74,7 +74,7 @@ async function plugin(server) {
 			element.innerHTML = styleObj;
 		});
 
-		return dom.window.document.documentElement.outerHTML;
+		return dom.serialize();
 	}
 
 	server.decorate("tidyCss", tidyCss);

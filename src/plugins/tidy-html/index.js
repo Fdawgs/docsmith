@@ -25,7 +25,7 @@ async function plugin(server) {
 		const innerHtml = dom.window.document.querySelector("html");
 		innerHtml.setAttribute("lang", language || "en");
 		innerHtml.setAttribute("xml:lang", language || "en");
-		const parsedHtml = dom.window.document.documentElement.outerHTML;
+		const parsedHtml = dom.serialize();
 
 		/**
 		 * Refer to http://api.html-tidy.org/tidy/tidylib_api_5.6.0/tidy_quickref.html for tidy options

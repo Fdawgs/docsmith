@@ -43,7 +43,7 @@ async function plugin(server, options) {
 			}
 		});
 
-		return dom.window.document.documentElement.outerHTML;
+		return dom.serialize();
 	}
 
 	server.decorate("embedHtmlImages", embedHtmlImages);
