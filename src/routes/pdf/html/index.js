@@ -36,13 +36,13 @@ async function route(server, options) {
 	);
 
 	// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-	server.register(cors, {
-		...options.cors,
-		methods: ["POST"],
-		hideOptionsRoute: true,
-	});
-
-	server.register(pdfToHtml, options);
+	server
+		.register(cors, {
+			...options.cors,
+			methods: ["POST"],
+			hideOptionsRoute: true,
+		})
+		.register(pdfToHtml, options);
 
 	server.route({
 		method: "POST",
