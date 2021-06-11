@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.0](https://www.github.com/Fdawgs/docsmith/compare/v2.2.2...v2.3.0) (2021-06-11)
+
+
+### Features
+
+* **routes/rtf/html:** add `removeAlt` query string param ([#222](https://www.github.com/Fdawgs/docsmith/issues/222)) ([08a9c02](https://www.github.com/Fdawgs/docsmith/commit/08a9c0204c91325577aa5424e729a54aeda05787))
+* **server:** add content-encoding support ([4b03b8e](https://www.github.com/Fdawgs/docsmith/commit/4b03b8ed2624f416530b848400900e5fc09c6330))
+
+
+### Bug Fixes
+
+* **plugins:** return full serialization of  HTML document ([#219](https://www.github.com/Fdawgs/docsmith/issues/219)) ([f924996](https://www.github.com/Fdawgs/docsmith/commit/f92499654794aac52915ee200d4e74829bea220e))
+
+
+### Miscellaneous
+
+* **routes:** chain `.register()` functions ([7fd53f8](https://www.github.com/Fdawgs/docsmith/commit/7fd53f856fe62c36540cedc285362e605dce430c))
+
 ### [2.2.2](https://www.github.com/Fdawgs/docsmith/compare/v2.2.1...v2.2.2) (2021-06-09)
 
 
