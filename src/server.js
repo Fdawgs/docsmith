@@ -4,6 +4,7 @@ const path = require("path");
 
 // Import plugins
 const bearer = require("fastify-bearer-auth");
+const compress = require("fastify-compress");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const flocOff = require("fastify-floc-off");
@@ -31,6 +32,8 @@ async function plugin(server, config) {
 		.register(disableCache)
 
 		.register(flocOff)
+
+		.register(compress, { inflateIfDeflated: true })
 
 		// Process load and 503 response handling
 		.register(underPressure, config.processLoad)
