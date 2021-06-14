@@ -263,7 +263,10 @@ async function getConfig() {
 	 * Replaces using `pino-pretty` in scripts, as it does not play
 	 * well with Nodemon
 	 */
-	if (env.NODE_ENV !== "PRODUCTION" && !env.LOG_ROTATION_FILENAME) {
+	if (
+		env.NODE_ENV.toLowerCase() !== "production" &&
+		(!env.LOG_ROTATION_FILENAME || env.LOG_ROTATION_FILENAME === "")
+	) {
 		config.fastifyInit.logger.prettyPrint = true;
 	}
 
