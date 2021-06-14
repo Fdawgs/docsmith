@@ -22,7 +22,7 @@ const { Poppler } = require("node-poppler");
  */
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
-		req.pdfToTxtResults = { body: undefined, docLocation: {} };
+		req.pdfToTxtResults = { body: undefined };
 	});
 
 	server.addHook("preHandler", async (req, res) => {
