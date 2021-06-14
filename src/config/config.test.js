@@ -74,7 +74,7 @@ describe("Configuration", () => {
 
 		const config = await getConfig();
 
-		expect(config.authKeys).toContain("testtoken");
+		expect(config.bearerTokenAuthKeys).toContain("testtoken");
 
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,
@@ -185,7 +185,7 @@ describe("Configuration", () => {
 
 		const config = await getConfig();
 
-		expect(config.authKeys).toContain("testtoken");
+		expect(config.bearerTokenAuthKeys).toContain("testtoken");
 
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,

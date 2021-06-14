@@ -183,16 +183,7 @@ async function getConfig() {
 					},
 					version,
 				},
-				components: {
-					securitySchemes: {
-						bearerToken: {
-							type: "apiKey",
-							name: "Authorization",
-							in: "header",
-							bearerFormat: "bearer token",
-						},
-					},
-				},
+				components: {},
 				tags: [
 					{
 						name: "PDF",
@@ -279,7 +270,16 @@ async function getConfig() {
 		JSON.parse(env.AUTH_BEARER_TOKEN_ARRAY).forEach((element) => {
 			keys.add(element.value);
 		});
-		config.authKeys = keys;
+		config.bearerTokenAuthKeys = keys;
+
+		config.swagger.openapi.components.securitySchemes = {
+			bearerToken: {
+				type: "apiKey",
+				name: "Authorization",
+				in: "header",
+				bearerFormat: "bearer token",
+			},
+		};
 	}
 
 	if (String(env.CORS_ALLOW_CREDENTIALS) === "true") {

@@ -14,6 +14,10 @@ const { pdfToTxtPostSchema } = require("./schema");
  * @param {object} options - Object containing route config objects.
  */
 async function route(server, options) {
+	if (options.bearerTokenAuthKeys) {
+		pdfToTxtPostSchema.security = [{ bearerToken: [] }];
+	}
+
 	server.addContentTypeParser(
 		"application/pdf",
 		{ parseAs: "buffer" },

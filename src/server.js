@@ -74,8 +74,13 @@ async function plugin(server, config) {
 		 * healthcheck routes do not inherit bearer token auth
 		 */
 		.register(async (securedContext) => {
+			if (config.bearerTokenAuthKeys) {
+				securedContext.register(bearer, {
+					keys: config.bearerTokenAuthKeys,
+				});
+			}
+
 			securedContext
-				.register(bearer, { keys: config.authKeys })
 				// Import and register service routes
 				.register(autoLoad, {
 					dir: path.join(__dirname, "routes"),
