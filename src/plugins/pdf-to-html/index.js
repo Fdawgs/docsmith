@@ -33,7 +33,7 @@ async function plugin(server, options) {
 		req.pdfToHtmlResults = { body: undefined, docLocation: {} };
 	});
 
-	server.addHook("onResponse", (req) => {
+	server.addHook("onResponse", (req, res) => {
 		// Remove files from temp directory after response sent
 		const files = glob.sync(
 			`${req.pdfToHtmlResults.docLocation.directory}/${req.pdfToHtmlResults.docLocation.id}*`
@@ -41,6 +41,8 @@ async function plugin(server, options) {
 		files.forEach((file) => {
 			fs.unlinkSync(file);
 		});
+
+		return res;
 	});
 
 	server.addHook("preHandler", async (req, res) => {

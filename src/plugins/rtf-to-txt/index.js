@@ -29,7 +29,7 @@ async function plugin(server, options) {
 		req.rtfToTxtResults = { body: undefined, docLocation: {} };
 	});
 
-	server.addHook("onResponse", (req) => {
+	server.addHook("onResponse", (req, res) => {
 		// Remove files from temp directory after response sent
 		const files = glob.sync(
 			`${req.rtfToTxtResults.docLocation.directory}/${req.rtfToTxtResults.docLocation.id}*`
@@ -37,6 +37,8 @@ async function plugin(server, options) {
 		files.forEach((file) => {
 			fs.unlinkSync(file);
 		});
+
+		return res;
 	});
 
 	server.addHook("preHandler", async (req, res) => {
