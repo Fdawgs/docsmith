@@ -1,7 +1,6 @@
 const S = require("fluent-json-schema");
 
 const tags = ["RTF"];
-const security = [{ bearerToken: [] }];
 
 /**
  * Fastify uses AJV for JSON Schema Validation,
@@ -37,7 +36,6 @@ const rtfToHtmlPostSchema = {
 	response: {
 		200: S.string(),
 	},
-	security,
 };
 
 module.exports = { rtfToHtmlPostSchema };

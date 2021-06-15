@@ -14,6 +14,10 @@ const { rtfToTxtPostSchema } = require("./schema");
  * @param {object} options - Object containing route config objects.
  */
 async function route(server, options) {
+	if (options.bearerTokenAuthKeys) {
+		rtfToTxtPostSchema.security = [{ bearerToken: [] }];
+	}
+
 	server.addContentTypeParser(
 		"application/rtf",
 		{ parseAs: "buffer" },

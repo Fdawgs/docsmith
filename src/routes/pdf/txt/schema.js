@@ -1,7 +1,6 @@
 const S = require("fluent-json-schema");
 
 const tags = ["PDF"];
-const security = [{ bearerToken: [] }];
 
 /**
  * Fastify uses AJV for JSON Schema Validation,
@@ -123,7 +122,6 @@ const pdfToTxtPostSchema = {
 	response: {
 		200: S.string(),
 	},
-	security,
 };
 
 module.exports = { pdfToTxtPostSchema };
