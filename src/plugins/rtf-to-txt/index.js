@@ -43,12 +43,6 @@ async function plugin(server, options) {
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
-			// `convert` node-unrtf function still attempts to parse empty bodies/buffers
-			//  and produces results, so catch them here
-			if (req.body === undefined || req.body.length === 0) {
-				throw new Error();
-			}
-
 			// Define any default settings the middleware should have to get up and running
 			const config = {
 				binPath: undefined,
