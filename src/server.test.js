@@ -57,8 +57,7 @@ describe("End-To-End", () => {
 						"no-referrer,strict-origin-when-cross-origin",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
-					"cache-control":
-						"no-store, no-cache, must-revalidate, proxy-revalidate",
+					"cache-control": "no-store, max-age=0",
 					pragma: "no-cache",
 					expires: "0",
 					"permissions-policy": "interest-cohort=()",
@@ -109,8 +108,7 @@ describe("End-To-End", () => {
 						"no-referrer,strict-origin-when-cross-origin",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
-					"cache-control":
-						"no-store, no-cache, must-revalidate, proxy-revalidate",
+					"cache-control": "no-store, max-age=0",
 					pragma: "no-cache",
 					expires: "0",
 					"permissions-policy": "interest-cohort=()",
@@ -161,8 +159,7 @@ describe("End-To-End", () => {
 						"no-referrer,strict-origin-when-cross-origin",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
-					"cache-control":
-						"no-store, no-cache, must-revalidate, proxy-revalidate",
+					"cache-control": "no-store, max-age=0",
 					pragma: "no-cache",
 					expires: "0",
 					"permissions-policy": "interest-cohort=()",
@@ -210,8 +207,7 @@ describe("End-To-End", () => {
 						"no-referrer,strict-origin-when-cross-origin",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
-					"cache-control":
-						"no-store, no-cache, must-revalidate, proxy-revalidate",
+					"cache-control": "no-store, max-age=0",
 					pragma: "no-cache",
 					expires: "0",
 					"permissions-policy": "interest-cohort=()",
@@ -287,8 +283,7 @@ describe("Bearer Token Usage", () => {
 						"no-referrer,strict-origin-when-cross-origin",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
-					"cache-control":
-						"no-store, no-cache, must-revalidate, proxy-revalidate",
+					"cache-control": "no-store, max-age=0",
 					pragma: "no-cache",
 					expires: "0",
 					"permissions-policy": "interest-cohort=()",
@@ -337,8 +332,7 @@ describe("Bearer Token Usage", () => {
 						"no-referrer,strict-origin-when-cross-origin",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
-					"cache-control":
-						"no-store, no-cache, must-revalidate, proxy-revalidate",
+					"cache-control": "no-store, max-age=0",
 					pragma: "no-cache",
 					expires: "0",
 					"permissions-policy": "interest-cohort=()",
