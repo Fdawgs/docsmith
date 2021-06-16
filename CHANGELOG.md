@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.3.1](https://www.github.com/Fdawgs/docsmith/compare/v2.3.0...v2.3.1) (2021-06-16)
+
+
+### Bug Fixes
+
+* **config:** add `NODE_ENV` to env schema validation ([4d7fa47](https://www.github.com/Fdawgs/docsmith/commit/4d7fa47070b13eaeb1ab753ff30b88a32a8fc691))
+* **config:** prettyprint conditional ([101a520](https://www.github.com/Fdawgs/docsmith/commit/101a520b51b18e80c2693ebcd7e3a70d46fc920a))
+* **plugins:** return response object from `onResponse` hook ([b29af02](https://www.github.com/Fdawgs/docsmith/commit/b29af0233cef8f7b4806dd07e835dc71464dfb51))
+* **server:** allow bearer token auth to be disabled ([#228](https://www.github.com/Fdawgs/docsmith/issues/228)) ([80e9ce1](https://www.github.com/Fdawgs/docsmith/commit/80e9ce15b3365828c27a29dd04a83ce4051a7bdd))
+
+
+### Documentation
+
+* **readme:** revamp `why` section ([82a037b](https://www.github.com/Fdawgs/docsmith/commit/82a037b94849056c0cf7c6d2688ac3fd930bd81f))
+
+
+### Improvements
+
+* **plugins:** remove rtf body checks; now handled by `node-unrtf` ([#233](https://www.github.com/Fdawgs/docsmith/issues/233)) ([9d1351d](https://www.github.com/Fdawgs/docsmith/commit/9d1351d09a42fb4355be31ece8fdbe291fccad7d))
+
+
+### Miscellaneous
+
+* **plugins/pdf-to-txt:** remove unused variable ([b05c885](https://www.github.com/Fdawgs/docsmith/commit/b05c8856bbf5a75b378f4f60b34f8e4b9b9847ef))
+* **scripts:** benchmark conversion route ([#235](https://www.github.com/Fdawgs/docsmith/issues/235)) ([d1c92c3](https://www.github.com/Fdawgs/docsmith/commit/d1c92c3275c1f3ffd26db291e53533182e3dcd7e))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.1.3 to 35.2.0 ([2f6b017](https://www.github.com/Fdawgs/docsmith/commit/2f6b0178bd14aa4912b6d9fb5bf5b5d2c9e702aa))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.2.0 to 35.3.0 ([8028579](https://www.github.com/Fdawgs/docsmith/commit/8028579d9a55efce5b39aa3c43afc33cbd615b3a))
+* **deps:** bump fastify-compress from 3.5.0 to 3.6.0 ([#230](https://www.github.com/Fdawgs/docsmith/issues/230)) ([03f711c](https://www.github.com/Fdawgs/docsmith/commit/03f711c77ebafc4c8fbee3103842a708d112b3bd))
+* **deps:** bump fastify-disablecache from 2.0.0 to 2.0.1 ([#236](https://www.github.com/Fdawgs/docsmith/issues/236)) ([7b05aaa](https://www.github.com/Fdawgs/docsmith/commit/7b05aaadb0860a9946eb1732a696da8fbca769a1))
+* **deps:** bump node-unrtf from 2.0.0 to 2.0.1 ([6410751](https://www.github.com/Fdawgs/docsmith/commit/64107512b54d06346a62bc163ddf5db72f1a3c7e))
+
 ## [2.3.0](https://www.github.com/Fdawgs/docsmith/compare/v2.2.2...v2.3.0) (2021-06-11)
 
 
