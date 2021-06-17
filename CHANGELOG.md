@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.3.2](https://www.github.com/Fdawgs/docsmith/compare/v2.3.1...v2.3.2) (2021-06-17)
+
+
+### Dependencies
+
+* **deps:** bump actions/upload-artifact from 2.2.3 to 2.2.4 ([6b66fb1](https://www.github.com/Fdawgs/docsmith/commit/6b66fb1a7092e77e08615d9f747eaf5aad7c6189))
+* **deps:** bump fastify from 3.17.0 to 3.18.0 ([de705a6](https://www.github.com/Fdawgs/docsmith/commit/de705a65f1e35678d64b7e36714f0b60d002c971))
+* **deps:** bump fastify-disablecache from 2.0.1 to 2.0.2 ([#238](https://www.github.com/Fdawgs/docsmith/issues/238)) ([c96c2b4](https://www.github.com/Fdawgs/docsmith/commit/c96c2b4b748309fe9d541d2e9059e97d4bede56d))
+
 ### [2.3.1](https://www.github.com/Fdawgs/docsmith/compare/v2.3.0...v2.3.1) (2021-06-16)
 
 
