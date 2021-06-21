@@ -44,17 +44,17 @@ describe("End-To-End", () => {
 
 			expect(response.headers).toEqual(
 				expect.objectContaining({
-					"content-security-policy": expect.any(String),
+					"content-security-policy":
+						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -95,17 +95,17 @@ describe("End-To-End", () => {
 
 			expect(response.headers).toEqual(
 				expect.objectContaining({
-					"content-security-policy": expect.any(String),
+					"content-security-policy":
+						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -146,17 +146,17 @@ describe("End-To-End", () => {
 
 			expect(response.headers).toEqual(
 				expect.objectContaining({
-					"content-security-policy": expect.any(String),
+					"content-security-policy":
+						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -194,17 +194,17 @@ describe("End-To-End", () => {
 
 			expect(response.headers).toEqual(
 				expect.objectContaining({
-					"content-security-policy": expect.any(String),
+					"content-security-policy":
+						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -270,17 +270,17 @@ describe("Bearer Token Usage", () => {
 
 			expect(response.headers).toEqual(
 				expect.objectContaining({
-					"content-security-policy": expect.any(String),
+					"content-security-policy":
+						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -319,17 +319,17 @@ describe("Bearer Token Usage", () => {
 
 			expect(response.headers).toEqual(
 				expect.objectContaining({
-					"content-security-policy": expect.any(String),
+					"content-security-policy":
+						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
