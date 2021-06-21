@@ -29,10 +29,13 @@ const healthCheck = require("./routes/healthcheck");
 async function plugin(server, config) {
 	// Register plugins
 	server
+		// Set response headers to disable client-side caching
 		.register(disableCache)
 
+		// Opt-out of Google's FLoC advertising-surveillance network
 		.register(flocOff)
 
+		// Support Content-Encoding
 		.register(compress, { inflateIfDeflated: true })
 
 		// Process load and 503 response handling
@@ -41,6 +44,7 @@ async function plugin(server, config) {
 		// Rate limiting and 429 response handling
 		.register(rateLimit, config.rateLimit)
 
+		// Enable Swagger/OpenAPI routes
 		.register(swagger, config.swagger)
 
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
