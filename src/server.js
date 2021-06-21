@@ -51,10 +51,14 @@ async function plugin(server, config) {
 		.register(helmet, {
 			contentSecurityPolicy: {
 				directives: {
-					...helmet.contentSecurityPolicy.getDefaultDirectives(),
+					"default-src": ["'self'"],
+					"img-src": ["'self'", "data:"],
+					"object-src": ["'none'"],
 					"child-src": ["'self'"],
 					"frame-ancestors": ["'none'"],
 					"form-action": ["'self'"],
+					"upgrade-insecure-requests": [],
+					"block-all-mixed-content": [],
 				},
 			},
 			hsts: {
