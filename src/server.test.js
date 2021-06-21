@@ -53,8 +53,7 @@ describe("End-To-End", () => {
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -104,8 +103,7 @@ describe("End-To-End", () => {
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -155,8 +153,7 @@ describe("End-To-End", () => {
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -203,8 +200,7 @@ describe("End-To-End", () => {
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -279,8 +275,7 @@ describe("Bearer Token Usage", () => {
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
@@ -328,8 +323,7 @@ describe("Bearer Token Usage", () => {
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
-					"referrer-policy":
-						"no-referrer,strict-origin-when-cross-origin",
+					"referrer-policy": "no-referrer",
 					"x-xss-protection": "0",
 					"surrogate-control": "no-store",
 					"cache-control": "no-store, max-age=0, must-revalidate",
