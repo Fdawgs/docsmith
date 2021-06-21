@@ -49,7 +49,7 @@ describe("End-To-End", () => {
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
@@ -99,7 +99,7 @@ describe("End-To-End", () => {
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
@@ -149,7 +149,7 @@ describe("End-To-End", () => {
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
@@ -196,7 +196,7 @@ describe("End-To-End", () => {
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
@@ -271,7 +271,7 @@ describe("Bearer Token Usage", () => {
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",
@@ -319,7 +319,7 @@ describe("Bearer Token Usage", () => {
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
 					"strict-transport-security":
-						"max-age=15552000; includeSubDomains",
+						"max-age=31536000; includeSubDomains",
 					"x-download-options": "noopen",
 					"x-content-type-options": "nosniff",
 					"x-permitted-cross-domain-policies": "none",

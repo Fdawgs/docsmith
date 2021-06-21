@@ -53,6 +53,9 @@ async function plugin(server, config) {
 					"form-action": ["'self'"],
 				},
 			},
+			hsts: {
+				maxAge: 31536000,
+			},
 		})
 
 		// Basic healthcheck route to ping
