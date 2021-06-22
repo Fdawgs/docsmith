@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.3.3](https://www.github.com/Fdawgs/docsmith/compare/v2.3.2...v2.3.3) (2021-06-22)
+
+
+### Bug Fixes
+
+* **server:** add "base-uri" directive to `Content-Security-Policy` ([#244](https://www.github.com/Fdawgs/docsmith/issues/244)) ([f4a12e6](https://www.github.com/Fdawgs/docsmith/commit/f4a12e67c6d0c01553e2c288dcb895fb2a6bd62a))
+* **server:** increase `Strict-Transport-Security` max age to 365 days ([1c9f303](https://www.github.com/Fdawgs/docsmith/commit/1c9f303b1432bd2120d47371de4be95428996fee))
+* **server:** revert `Referrer-Policy` directives to "no-referrer" only ([b2c1023](https://www.github.com/Fdawgs/docsmith/commit/b2c102388f6479d9de7197717fe5f83b1fdbacc5))
+* **server:** use stricter `Content-Security-Policy` values ([b833c6b](https://www.github.com/Fdawgs/docsmith/commit/b833c6b0318fe9895fbc8cda6244ea6fa643b144))
+
+
+### Continuous Integration
+
+* **link-check:** reduce frequency from weekly to monthly ([#241](https://www.github.com/Fdawgs/docsmith/issues/241)) ([3a3c13f](https://www.github.com/Fdawgs/docsmith/commit/3a3c13f69361446fbb97e081d043d4833f4b6b06))
+
+
+### Miscellaneous
+
+* **server:** clarify on what each registered plugin does ([673bdfe](https://www.github.com/Fdawgs/docsmith/commit/673bdfee8759b729807c0e8c68af60c85737907a))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 7.28.0 to 7.29.0 ([9db5421](https://www.github.com/Fdawgs/docsmith/commit/9db54213aaa38299bf65db656dbad25d623d1c1a))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.3.0 to 35.4.0 ([2aefbbb](https://www.github.com/Fdawgs/docsmith/commit/2aefbbb4c79f3b43d4122c017e6888f49fd13b34))
+* **deps-dev:** bump jest from 27.0.4 to 27.0.5 ([849f75e](https://www.github.com/Fdawgs/docsmith/commit/849f75eaf839c3a1b64a10c1faa17503ed142229))
+* **deps:** bump cssom from 0.4.4 to 0.5.0 ([de2e5b0](https://www.github.com/Fdawgs/docsmith/commit/de2e5b04ea943d67fc8aa38b0d579c39bc7ec4a9))
+* **deps:** bump fastify-autoload from 3.7.1 to 3.8.0 ([a8b5a4e](https://www.github.com/Fdawgs/docsmith/commit/a8b5a4ed05ed21fa36cf0bb02682c3ef333aa5da))
+* **deps:** bump fastify-bearer-auth from 5.1.0 to 6.0.0 ([a90a6af](https://www.github.com/Fdawgs/docsmith/commit/a90a6afd22047ad4d754f09efbe482696a31f0b2))
+* **deps:** bump fastify-swagger from 4.7.0 to 4.8.0 ([192324a](https://www.github.com/Fdawgs/docsmith/commit/192324a9e1182db3493f1c14b0d84e9a1eb931a7))
+* **deps:** bump under-pressure from 5.6.0 to 5.7.0 ([ca77149](https://www.github.com/Fdawgs/docsmith/commit/ca77149cb199bc8db9428fed7cd32728abb16a0a))
+
 ### [2.3.2](https://www.github.com/Fdawgs/docsmith/compare/v2.3.1...v2.3.2) (2021-06-17)
 
 
