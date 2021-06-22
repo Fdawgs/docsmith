@@ -45,7 +45,7 @@ describe("End-To-End", () => {
 			expect(response.headers).toEqual(
 				expect.objectContaining({
 					"content-security-policy":
-						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+						"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
@@ -96,7 +96,7 @@ describe("End-To-End", () => {
 			expect(response.headers).toEqual(
 				expect.objectContaining({
 					"content-security-policy":
-						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+						"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
@@ -147,7 +147,7 @@ describe("End-To-End", () => {
 			expect(response.headers).toEqual(
 				expect.objectContaining({
 					"content-security-policy":
-						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+						"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
@@ -195,7 +195,7 @@ describe("End-To-End", () => {
 			expect(response.headers).toEqual(
 				expect.objectContaining({
 					"content-security-policy":
-						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+						"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
@@ -271,7 +271,7 @@ describe("Bearer Token Usage", () => {
 			expect(response.headers).toEqual(
 				expect.objectContaining({
 					"content-security-policy":
-						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+						"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",
@@ -320,7 +320,7 @@ describe("Bearer Token Usage", () => {
 			expect(response.headers).toEqual(
 				expect.objectContaining({
 					"content-security-policy":
-						"default-src 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+						"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 					"x-dns-prefetch-control": "off",
 					"expect-ct": "max-age=0",
 					"x-frame-options": "SAMEORIGIN",

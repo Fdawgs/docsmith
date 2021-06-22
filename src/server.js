@@ -52,6 +52,7 @@ async function plugin(server, config) {
 			contentSecurityPolicy: {
 				directives: {
 					"default-src": ["'self'"],
+					"base-uri": ["'self'"],
 					"img-src": ["'self'", "data:"],
 					"object-src": ["'none'"],
 					"child-src": ["'self'"],
