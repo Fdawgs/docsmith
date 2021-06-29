@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.3.4](https://www.github.com/Fdawgs/docsmith/compare/v2.3.3...v2.3.4) (2021-06-29)
+
+
+### Miscellaneous
+
+* **env.template:** use double quotes ([#258](https://www.github.com/Fdawgs/docsmith/issues/258)) ([0512d1f](https://www.github.com/Fdawgs/docsmith/commit/0512d1f53cd5073c2e2efe42d1838b76ebbf0973))
+
 ### [2.3.3](https://www.github.com/Fdawgs/docsmith/compare/v2.3.2...v2.3.3) (2021-06-22)
 
 
