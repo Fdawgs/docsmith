@@ -1,4 +1,5 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
+const { cloneDeep } = require("lodash");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -12,6 +13,8 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
+		config = cloneDeep(config);
+		config.poppler.tempDirectory = "./src/temp2/";
 	});
 
 	beforeEach(() => {
@@ -26,6 +29,10 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 			res.header("content-type", "application/json");
 			res.send(req.pdfToTxtResults);
 		});
+	});
+
+	afterAll(() => {
+		fs.rmdir(config.poppler.tempDirectory, { recursive: true }, () => {});
 	});
 
 	afterEach(async () => {
@@ -52,6 +59,31 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(response.body).toEqual(expect.stringContaining("for England"));
+		expect(typeof response.body).toEqual("string");
+		expect(isHtml(response.body)).toEqual(false);
+	});
+
+	test("Should convert PDF file to TXT using OCR", async () => {
+		server.register(plugin, config);
+
+		let response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				lastPageToConvert: 1,
+				ocr: true,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		response = JSON.parse(response.payload);
+
+		expect(response.body).toEqual(expect.stringContaining("NHS"));
 		expect(typeof response.body).toEqual("string");
 		expect(isHtml(response.body)).toEqual(false);
 	});

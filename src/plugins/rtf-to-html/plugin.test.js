@@ -21,7 +21,7 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 	beforeAll(async () => {
 		config = await getConfig();
 		config = cloneDeep(config);
-		config.unrtf.tempDirectory = "./src/temp2/";
+		config.unrtf.tempDirectory = "./src/temp3/";
 	});
 
 	beforeEach(() => {
