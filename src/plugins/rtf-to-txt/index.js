@@ -13,7 +13,7 @@ const { v4 } = require("uuid");
  * @author Frazer Smith
  * @description Pre-handler plugin that uses UnRTF to convert Buffer or string of
  * RTF file in `req.body` to TXT and places RTF file in a temporary directory.
- * `req` object is decorated with `rtfToTxtResults` object detailing document
+ * `req` object is decorated with `conversionResults` object detailing document
  * location, contents etc.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Fastify config values.
@@ -26,13 +26,13 @@ const { v4 } = require("uuid");
  */
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
-		req.rtfToTxtResults = { body: undefined, docLocation: {} };
+		req.conversionResults = { body: undefined, docLocation: {} };
 	});
 
 	server.addHook("onResponse", (req, res) => {
 		// Remove files from temp directory after response sent
 		const files = glob.sync(
-			`${req.rtfToTxtResults.docLocation.directory}/${req.rtfToTxtResults.docLocation.id}*`
+			`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
 		);
 		files.forEach((file) => {
 			fs.unlinkSync(file);
@@ -73,12 +73,12 @@ async function plugin(server, options) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
-			req.rtfToTxtResults.body = await unrtf.convert(
+			req.conversionResults.body = await unrtf.convert(
 				tempFile,
 				config.rtfToTxtOptions
 			);
 
-			req.rtfToTxtResults.docLocation = {
+			req.conversionResults.docLocation = {
 				directory: config.tempDirectory,
 				rtf: tempFile,
 				id,

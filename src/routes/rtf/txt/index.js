@@ -53,7 +53,7 @@ async function route(server, options) {
 		url: "/",
 		schema: rtfToTxtPostSchema,
 		async handler(req, res) {
-			res.send(req.rtfToTxtResults.body);
+			res.send(req.conversionResults.body);
 		},
 	});
 }

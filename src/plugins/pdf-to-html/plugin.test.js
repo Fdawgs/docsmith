@@ -34,7 +34,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");
-			res.send(req.pdfToHtmlResults);
+			res.send(req.conversionResults);
 		});
 	});
 

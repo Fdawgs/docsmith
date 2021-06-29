@@ -59,9 +59,9 @@ async function route(server, options) {
 				req.query.boundingBoxXhtmlLayout ||
 				req.query.generateHtmlMetaFile
 			) {
-				result = await server.tidyHtml(req.pdfToTxtResults.body);
+				result = await server.tidyHtml(req.conversionResults.body);
 			} else {
-				result = req.pdfToTxtResults.body;
+				result = req.conversionResults.body;
 			}
 
 			res.send(result);

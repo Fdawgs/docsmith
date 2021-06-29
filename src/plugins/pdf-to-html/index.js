@@ -16,7 +16,7 @@ const { v4 } = require("uuid");
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Poppler to convert Buffer or string of
  * PDF file in `req.body` to HTML and places HTML file in a temporary directory.
- * `req` object is decorated with `pdfToHtmlResults` object detailing document
+ * `req` object is decorated with `conversionResults` object detailing document
  * location, contents etc.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Fastify config values.
@@ -30,13 +30,13 @@ const { v4 } = require("uuid");
  */
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
-		req.pdfToHtmlResults = { body: undefined, docLocation: {} };
+		req.conversionResults = { body: undefined, docLocation: {} };
 	});
 
 	server.addHook("onResponse", (req, res) => {
 		// Remove files from temp directory after response sent
 		const files = glob.sync(
-			`${req.pdfToHtmlResults.docLocation.directory}/${req.pdfToHtmlResults.docLocation.id}*`
+			`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
 		);
 		files.forEach((file) => {
 			fs.unlinkSync(file);
@@ -132,9 +132,9 @@ async function plugin(server, options) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
-			req.pdfToHtmlResults.body = await fixUtf8(dom.serialize());
+			req.conversionResults.body = await fixUtf8(dom.serialize());
 
-			req.pdfToHtmlResults.docLocation = {
+			req.conversionResults.docLocation = {
 				directory: config.tempDirectory,
 				html: tempFile,
 				id,

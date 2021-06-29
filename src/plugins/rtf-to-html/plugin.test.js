@@ -34,7 +34,7 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");
-			res.send(req.rtfToHtmlResults);
+			res.send(req.conversionResults);
 		});
 	});
 
