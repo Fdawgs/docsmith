@@ -128,3 +128,6 @@ docs/
 .pm2.config.js
 .prettierignore
 .prettierrc
+
+# Tesseract trained data
+*.traineddata
