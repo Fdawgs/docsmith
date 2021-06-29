@@ -30,17 +30,19 @@ const { v4 } = require("uuid");
  */
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
-		req.conversionResults = { body: undefined, docLocation: {} };
+		req.conversionResults = { body: undefined };
 	});
 
 	server.addHook("onResponse", (req, res) => {
-		// Remove files from temp directory after response sent
-		const files = glob.sync(
-			`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
-		);
-		files.forEach((file) => {
-			fs.unlinkSync(file);
-		});
+		if (req.conversionResults.docLocation) {
+			// Remove files from temp directory after response sent
+			const files = glob.sync(
+				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
+			);
+			files.forEach((file) => {
+				fs.unlinkSync(file);
+			});
+		}
 
 		return res;
 	});

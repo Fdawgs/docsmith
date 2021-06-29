@@ -32,8 +32,7 @@ async function plugin(server, options) {
 	});
 
 	server.addHook("onResponse", (req, res) => {
-		// Only `ocr` query string param generates temp files that need removing
-		if (req.query && req.query.ocr && req.query.ocr.toString() === "true") {
+		if (req.conversionResults.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(
 				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
