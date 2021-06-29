@@ -14,7 +14,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 	beforeAll(async () => {
 		config = await getConfig();
 		config = cloneDeep(config);
-		config.unrtf.tempDirectory = "./src/temp3/";
+		config.unrtf.tempDirectory = "./src/temp4/";
 	});
 
 	beforeEach(() => {

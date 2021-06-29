@@ -62,6 +62,27 @@ describe("PDF-to-TXT route", () => {
 		);
 	});
 
+	test("Should return PDF file converted to TXT using OCR", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				lastPageToConvert: 1,
+				ocr: true,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		expect(response.payload).toEqual(expect.stringContaining("NHS"));
+		expect(isHtml(response.payload)).toEqual(false);
+		expect(response.statusCode).toEqual(200);
+	});
+
 	test("Should return PDF file converted to TXT wrapped in HTML", async () => {
 		const response = await server.inject({
 			method: "POST",

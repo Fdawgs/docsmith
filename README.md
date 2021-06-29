@@ -16,6 +16,7 @@ Docsmith is a RESTful API, built using Node.js and the [Fastify](https://www.fas
 -   PDF to TXT
 -   RTF to HTML
 -   RTF to TXT
+-   Scanned documents (as PDFs) to TXT using OCR
 
 Planned features include:
 
@@ -23,7 +24,6 @@ Planned features include:
 -   DOC to TXT
 -   DOCX to HTML
 -   DOCX to TXT
--   Scanned documents (as PDFs) to TXT
 
 ### Why Docsmith?
 

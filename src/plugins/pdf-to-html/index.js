@@ -15,7 +15,7 @@ const { v4 } = require("uuid");
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Poppler to convert Buffer or string of
- * PDF file in `req.body` to HTML and places both files in a temporary directory.
+ * PDF file in `req.body` to HTML and places HTML file in a temporary directory.
  * `req` object is decorated with `pdfToHtmlResults` object detailing document
  * location, contents etc.
  * @param {Function} server - Fastify instance.
@@ -58,6 +58,8 @@ async function plugin(server, options) {
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
 			await Object.assign(config, options.poppler);
+
+			const poppler = new Poppler(config.binPath);
 
 			/**
 			 * Create copy of query string params and prune that,
@@ -103,7 +105,6 @@ async function plugin(server, options) {
 			const id = v4();
 			const tempFile = `${config.tempDirectory}${id}`;
 
-			const poppler = new Poppler(config.binPath);
 			await poppler.pdfToHtml(
 				req.body,
 				`${tempFile}.html`,

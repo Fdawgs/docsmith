@@ -47,6 +47,7 @@ describe("Configuration", () => {
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
+		const OCR_LANGUAGES = "chi_tra";
 		const POPPLER_BINARY_PATH = "/usr/bin";
 		const UNRTF_BINARY_PATH = "/usr/bin";
 
@@ -68,6 +69,7 @@ describe("Configuration", () => {
 			LOG_LEVEL,
 			LOG_ROTATION_FILENAME,
 			AUTH_BEARER_TOKEN_ARRAY,
+			OCR_LANGUAGES,
 			POPPLER_BINARY_PATH,
 			UNRTF_BINARY_PATH,
 		});
@@ -128,6 +130,7 @@ describe("Configuration", () => {
 		expect(config.poppler).toEqual(
 			expect.objectContaining({
 				binPath: POPPLER_BINARY_PATH,
+				ocrLanguages: OCR_LANGUAGES,
 				tempDirectory: expect.any(String),
 			})
 		);
@@ -159,6 +162,7 @@ describe("Configuration", () => {
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
+		const OCR_LANGUAGES = "";
 		const POPPLER_BINARY_PATH = "/usr/bin";
 		const UNRTF_BINARY_PATH = "/usr/bin";
 
@@ -179,6 +183,7 @@ describe("Configuration", () => {
 			LOG_LEVEL,
 			LOG_ROTATION_FILENAME,
 			AUTH_BEARER_TOKEN_ARRAY,
+			OCR_LANGUAGES,
 			POPPLER_BINARY_PATH,
 			UNRTF_BINARY_PATH,
 		});
@@ -239,6 +244,7 @@ describe("Configuration", () => {
 		expect(config.poppler).toEqual(
 			expect.objectContaining({
 				binPath: POPPLER_BINARY_PATH,
+				ocrLanguages: "eng",
 				tempDirectory: expect.any(String),
 			})
 		);
