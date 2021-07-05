@@ -66,6 +66,11 @@ async function plugin(server, options) {
 			// Build temporary file for UnRTF to write to, and following plugins to read from
 			const id = v4();
 			const tempFile = `${config.tempDirectory}${id}.rtf`;
+			req.conversionResults.docLocation = {
+				directory: config.tempDirectory,
+				rtf: tempFile,
+				id,
+			};
 			await fsp.writeFile(tempFile, req.body);
 
 			const unrtf = new UnRTF(config.binPath);
@@ -79,12 +84,6 @@ async function plugin(server, options) {
 				tempFile,
 				config.rtfToTxtOptions
 			);
-
-			req.conversionResults.docLocation = {
-				directory: config.tempDirectory,
-				rtf: tempFile,
-				id,
-			};
 
 			res.header("content-type", `text/plain`);
 		} catch (err) {

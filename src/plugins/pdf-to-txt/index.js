@@ -102,6 +102,10 @@ async function plugin(server, options) {
 				// Build temporary file for Poppler to write to, and following plugins to read from
 				const id = v4();
 				const tempFile = `${config.tempDirectory}${id}`;
+				req.conversionResults.docLocation = {
+					directory: config.tempDirectory,
+					id,
+				};
 
 				await poppler.pdfToCairo(req.body, tempFile, {
 					grayscaleFile: true,
@@ -117,11 +121,6 @@ async function plugin(server, options) {
 				);
 
 				req.conversionResults.body = results.join(" ");
-
-				req.conversionResults.docLocation = {
-					directory: config.tempDirectory,
-					id,
-				};
 			} else {
 				// Prune params that pdfToTxt cannot accept
 				const pdfToTxtAcceptedParams = [

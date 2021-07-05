@@ -106,6 +106,11 @@ async function plugin(server, options) {
 			// Build temporary file for Poppler to write to, and following plugins to read from
 			const id = v4();
 			const tempFile = `${config.tempDirectory}${id}`;
+			req.conversionResults.docLocation = {
+				directory: config.tempDirectory,
+				html: tempFile,
+				id,
+			};
 
 			await poppler.pdfToHtml(
 				req.body,
@@ -135,12 +140,6 @@ async function plugin(server, options) {
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
 			req.conversionResults.body = await fixUtf8(dom.serialize());
-
-			req.conversionResults.docLocation = {
-				directory: config.tempDirectory,
-				html: tempFile,
-				id,
-			};
 
 			res.header(
 				"content-type",
