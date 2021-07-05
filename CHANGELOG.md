@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0](https://www.github.com/Fdawgs/docsmith/compare/v2.3.3...v2.4.0) (2021-07-05)
+
+
+### Features
+
+* **routes/pdf/txt:** add `ocr` query string param for ocr support ([44c44f7](https://www.github.com/Fdawgs/docsmith/commit/44c44f73d3b374eda9aa6c02642a2e29e0624f66))
+
+
+### Documentation
+
+* **readme:** update supported features list ([300785f](https://www.github.com/Fdawgs/docsmith/commit/300785f4cef3031ff2760be545da5e41289197c9))
+
+
+### Miscellaneous
+
+* **env.template:** use double quotes ([#258](https://www.github.com/Fdawgs/docsmith/issues/258)) ([0512d1f](https://www.github.com/Fdawgs/docsmith/commit/0512d1f53cd5073c2e2efe42d1838b76ebbf0973))
+* ignore tesseract trained data ([ba13eab](https://www.github.com/Fdawgs/docsmith/commit/ba13eabc488790c5a020af2dec720191c33148c1))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.4.0 to 35.4.1 ([16453a1](https://www.github.com/Fdawgs/docsmith/commit/16453a18e9fc554e568d74d03871fcbef8d33a7c))
+* **deps-dev:** bump jest from 27.0.5 to 27.0.6 ([7ad4be8](https://www.github.com/Fdawgs/docsmith/commit/7ad4be8938e0b2bceb412fe9f96aecee90d8a6e3))
+* **deps-dev:** bump nodemon from 2.0.7 to 2.0.9 ([a9be956](https://www.github.com/Fdawgs/docsmith/commit/a9be9569aa62afe471d50da15fb07c4a1ce7df21))
+* **deps-dev:** bump pino-pretty from 5.0.2 to 5.1.0 ([ff307a5](https://www.github.com/Fdawgs/docsmith/commit/ff307a5df2ced68d99177b9727a6eb28b8ab2ae3))
+* **deps-dev:** bump prettier from 2.3.1 to 2.3.2 ([fb23ddb](https://www.github.com/Fdawgs/docsmith/commit/fb23ddb5abf727de02d853d8b53ff7117ce2c644))
+* **deps:** bump actions/setup-node from 2.1.5 to 2.2.0 ([6074121](https://www.github.com/Fdawgs/docsmith/commit/6074121df261950d59f5bd15f591cc65ffd64926))
+* **deps:** bump fastify from 3.18.0 to 3.18.1 ([a949c21](https://www.github.com/Fdawgs/docsmith/commit/a949c21314a70ff0578c5f1e586b743e77f4ff61))
+* **deps:** bump fastify-swagger from 4.8.0 to 4.8.2 ([7aa3e31](https://www.github.com/Fdawgs/docsmith/commit/7aa3e3194de5e7cdcfc5c1101c6a4af507075656))
+
 ### [2.3.3](https://www.github.com/Fdawgs/docsmith/compare/v2.3.2...v2.3.3) (2021-06-22)
 
 
