@@ -56,6 +56,8 @@ async function plugin(server, options) {
 			};
 			await Object.assign(config, options.unrtf);
 
+			const unrtf = new UnRTF(config.binPath);
+
 			// Create temp directory if missing
 			try {
 				await fsp.access(config.tempDirectory);
@@ -72,8 +74,6 @@ async function plugin(server, options) {
 				id,
 			};
 			await fsp.writeFile(tempFile, req.body);
-
-			const unrtf = new UnRTF(config.binPath);
 
 			/**
 			 * `fixUtf8` function replaces most common incorrectly converted
