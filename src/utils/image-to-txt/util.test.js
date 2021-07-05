@@ -1,8 +1,8 @@
-const Util = require(".");
+const util = require(".");
 
 describe("Image-to-TXT utility", () => {
 	test("Should read text from image file", async () => {
-		const test = await Util(
+		const test = await util(
 			"./test_resources/test_files/valid_bullet_issues001.png",
 			"eng"
 		);
@@ -12,6 +12,6 @@ describe("Image-to-TXT utility", () => {
 	});
 
 	test("Should return error if file missing", async () => {
-		await expect(Util()).rejects.toThrow(new Error("Cannot convert image"));
+		await expect(util()).rejects.toThrow(new Error("Cannot convert image"));
 	});
 });

@@ -12,7 +12,7 @@ const { createWorker } = require("tesseract.js");
  * @returns {Promise<string|Error>} Promise of text retrieved
  * from image as string on resolve, or Error object on rejection.
  */
-module.exports = async function imageToTxtUtil(image, languages) {
+module.exports = async function util(image, languages) {
 	const worker = createWorker();
 	try {
 		if (image === undefined || Object.keys(image).length === 0) {
