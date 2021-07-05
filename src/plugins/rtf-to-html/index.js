@@ -14,7 +14,7 @@ const { v4 } = require("uuid");
  * @author Frazer Smith
  * @description Pre-handler plugin that uses UnRTF to convert Buffer or string of
  * RTF file in `req.body` to HTML and places RTF file in a temporary directory.
- * `req` object is decorated with `rtfToHtmlResults` object detailing document
+ * `req` object is decorated with `conversionResults` object detailing document
  * location, contents etc.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Fastify config values.
@@ -27,24 +27,26 @@ const { v4 } = require("uuid");
  */
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
-		req.rtfToHtmlResults = { body: undefined, docLocation: {} };
+		req.conversionResults = { body: undefined };
 	});
 
 	server.addHook("onResponse", (req, res) => {
-		// Remove files from temp directory after response sent
-		const files = glob.sync(
-			`${req.rtfToHtmlResults.docLocation.directory}/${req.rtfToHtmlResults.docLocation.id}*`
-		);
-		files.forEach((file) => {
-			fs.unlinkSync(file);
-		});
+		if (req.conversionResults.docLocation) {
+			// Remove files from temp directory after response sent
+			const files = glob.sync(
+				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
+			);
+			files.forEach((file) => {
+				fs.unlinkSync(file);
+			});
+		}
 
 		return res;
 	});
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
-			// Define any default settings the middleware should have to get up and running
+			// Define any default settings the plugin should have to get up and running
 			const config = {
 				binPath: undefined,
 				rtfToHtmlOptions: {
@@ -74,11 +76,11 @@ async function plugin(server, options) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
-			req.rtfToHtmlResults.body = await fixUtf8(
+			req.conversionResults.body = await fixUtf8(
 				await unrtf.convert(tempFile, config.rtfToHtmlOptions)
 			);
 
-			req.rtfToHtmlResults.docLocation = {
+			req.conversionResults.docLocation = {
 				directory: config.tempDirectory,
 				rtf: tempFile,
 				id,

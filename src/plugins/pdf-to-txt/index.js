@@ -15,7 +15,7 @@ const imageToTxt = require("../../utils/image-to-txt");
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Poppler to convert Buffer or string of
  * PDF file in `req.body` to TXT.
- * `req` object is decorated with `pdfToTxtResults.body` holding converted document.
+ * `req` object is decorated with `conversionResults.body` holding converted document.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Fastify config values.
  * @param {string} options.poppler.binPath - Path to Poppler binary.
@@ -28,15 +28,14 @@ const imageToTxt = require("../../utils/image-to-txt");
  */
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
-		req.pdfToTxtResults = { body: undefined };
+		req.conversionResults = { body: undefined };
 	});
 
 	server.addHook("onResponse", (req, res) => {
-		// Only `ocr` query string param generates temp files that need removing
-		if (req.query && req.query.ocr && req.query.ocr.toString() === "true") {
+		if (req.conversionResults.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(
-				`${req.pdfToTxtResults.docLocation.directory}/${req.pdfToTxtResults.docLocation.id}*`
+				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
 			);
 
 			files.forEach((file) => {
@@ -55,7 +54,7 @@ async function plugin(server, options) {
 				throw new Error();
 			}
 
-			// Define any default settings the middleware should have to get up and running
+			// Define any default settings the plugin should have to get up and running
 			const config = {
 				binPath: undefined,
 				ocrLanguages: "eng",
@@ -117,9 +116,9 @@ async function plugin(server, options) {
 					files.map((file) => imageToTxt(file, config.ocrLanguages))
 				);
 
-				req.pdfToTxtResults.body = results.join(" ");
+				req.conversionResults.body = results.join(" ");
 
-				req.pdfToTxtResults.docLocation = {
+				req.conversionResults.docLocation = {
 					directory: config.tempDirectory,
 					id,
 				};
@@ -153,7 +152,7 @@ async function plugin(server, options) {
 				});
 				await Object.assign(config.pdfToTxtOptions, query);
 
-				req.pdfToTxtResults.body = await poppler.pdfToText(
+				req.conversionResults.body = await poppler.pdfToText(
 					req.body,
 					undefined,
 					config.pdfToTxtOptions
