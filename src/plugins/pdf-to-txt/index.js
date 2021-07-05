@@ -54,7 +54,7 @@ async function plugin(server, options) {
 				throw new Error();
 			}
 
-			// Define any default settings the middleware should have to get up and running
+			// Define any default settings the plugin should have to get up and running
 			const config = {
 				binPath: undefined,
 				ocrLanguages: "eng",

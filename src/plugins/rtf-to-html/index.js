@@ -46,7 +46,7 @@ async function plugin(server, options) {
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
-			// Define any default settings the middleware should have to get up and running
+			// Define any default settings the plugin should have to get up and running
 			const config = {
 				binPath: undefined,
 				rtfToHtmlOptions: {
