@@ -39,7 +39,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 	});
 
 	afterAll(() => {
-		fs.rmdir(config.poppler.tempDirectory, { recursive: true }, () => {});
+		fs.rmdirSync(config.poppler.tempDirectory, { recursive: true });
 	});
 
 	afterEach(async () => {
