@@ -70,7 +70,7 @@ async function plugin(server, config) {
 		// Basic healthcheck route to ping
 		.register(healthCheck)
 
-		.register(embedHtmlImages, config)
+		.register(embedHtmlImages, config.poppler)
 		.register(tidyCss)
 		.register(tidyHtml)
 

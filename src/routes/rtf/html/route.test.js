@@ -24,7 +24,7 @@ describe("RTF-to-HTML route", () => {
 		options = await getConfig();
 
 		server = Fastify()
-			.register(embedHtmlImages, options)
+			.register(embedHtmlImages, options.unrtf)
 			.register(tidyCss)
 			.register(tidyHtml);
 		server.register(plugin, options);

@@ -28,7 +28,7 @@ describe("PDF-to-HTML route", () => {
 		options = await getConfig();
 
 		server = Fastify()
-			.register(embedHtmlImages, options)
+			.register(embedHtmlImages, options.poppler)
 			.register(tidyCss)
 			.register(tidyHtml);
 		server.register(plugin, options);

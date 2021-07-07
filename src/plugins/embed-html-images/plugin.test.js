@@ -33,7 +33,7 @@ describe("Embed-HTML-Images Plugin", () => {
 		server.post("/", (req, res) => {
 			res.send(server.embedHtmlImages(req.body));
 		});
-		server.register(plugin, altConfig);
+		server.register(plugin, altConfig.poppler);
 
 		const response = await server.inject({
 			method: "POST",
@@ -61,7 +61,7 @@ describe("Embed-HTML-Images Plugin", () => {
 		server.post("/", (req, res) => {
 			res.send(server.embedHtmlImages(req.body, true));
 		});
-		server.register(plugin, altConfig);
+		server.register(plugin, altConfig.poppler);
 
 		const response = await server.inject({
 			method: "POST",
@@ -89,7 +89,7 @@ describe("Embed-HTML-Images Plugin", () => {
 		server.post("/", (req, res) => {
 			res.send(server.embedHtmlImages(req.body));
 		});
-		server.register(plugin, altConfig);
+		server.register(plugin, altConfig.poppler);
 
 		const response = await server.inject({
 			method: "POST",
@@ -114,7 +114,7 @@ describe("Embed-HTML-Images Plugin", () => {
 		server.post("/", (req, res) => {
 			res.send(server.embedHtmlImages(req.body, true));
 		});
-		server.register(plugin, config);
+		server.register(plugin, config.poppler);
 
 		const response = await server.inject({
 			method: "POST",
