@@ -11,10 +11,10 @@ describe("Configuration", () => {
 	});
 
 	afterAll(() => {
-		const files = glob.GlobSync(`./test_resources/test_log*`).found;
-		files.forEach((foundFile) => {
+		const files = glob.sync(`./test_resources/test_log*`);
+		files.forEach((file) => {
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			fs.unlinkSync(foundFile);
+			fs.unlinkSync(file);
 		});
 	});
 
