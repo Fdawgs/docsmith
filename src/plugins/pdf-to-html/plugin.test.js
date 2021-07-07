@@ -47,7 +47,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 	});
 
 	test("Should convert PDF file to HTML and place in specified directory", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.poppler);
 
 		let response = await server.inject({
 			method: "POST",
@@ -77,7 +77,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 	});
 
 	test("Should ignore invalid `test` query string params and convert PDF file to HTML", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.poppler);
 
 		let response = await server.inject({
 			method: "POST",
@@ -109,7 +109,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 	});
 
 	test("Should return HTTP 400 error if PDF file is missing", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.poppler);
 
 		const response = await server.inject({
 			method: "POST",
