@@ -40,7 +40,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should convert RTF file to HTML and place in specified directory", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.unrtf);
 
 		let response = await server.inject({
 			method: "POST",
@@ -63,7 +63,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should return HTTP 400 error if RTF file is missing", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.unrtf);
 
 		const response = await server.inject({
 			method: "POST",

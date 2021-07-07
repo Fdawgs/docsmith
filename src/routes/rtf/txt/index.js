@@ -46,7 +46,7 @@ async function route(server, options) {
 			methods: ["POST"],
 			hideOptionsRoute: true,
 		})
-		.register(rtfToTxt, options);
+		.register(rtfToTxt, options.unrtf);
 
 	server.route({
 		method: "POST",

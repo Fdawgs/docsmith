@@ -16,12 +16,12 @@ const { v4 } = require("uuid");
  * `req` object is decorated with `conversionResults` object detailing document
  * location, contents etc.
  * @param {Function} server - Fastify instance.
- * @param {object} options - Fastify config values.
- * @param {string} options.unrtf.binPath - Obfuscation values.
- * @param {object=} options.unrtf.rtfToTxtOptions - Refer to
+ * @param {object} options - Plugin config values.
+ * @param {string} options.binPath - Path to UnRTF binary.
+ * @param {object=} options.rtfToTxtOptions - Refer to
  * https://github.com/Fdawgs/node-unrtf/blob/master/API.md
  * for options.
- * @param {string} options.unrtf.tempDirectory - directory for temporarily storing
+ * @param {string=} options.tempDirectory - directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {
@@ -54,7 +54,7 @@ async function plugin(server, options) {
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
-			await Object.assign(config, options.unrtf);
+			Object.assign(config, options);
 
 			const unrtf = new UnRTF(config.binPath);
 
