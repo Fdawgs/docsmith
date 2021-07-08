@@ -9,8 +9,8 @@ const path = require("path");
  * @description Decorator plugin that adds function to embed images into HTML,
  * after encoding with Base64.
  * @param {Function} server - Fastify instance.
- * @param {object} options - Fastify config values.
- * @param {string} options.poppler.tempDirectory - directory for temporarily storing
+ * @param {object} options - Plugin config values.
+ * @param {string} options.tempDirectory - directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {
@@ -24,7 +24,7 @@ async function plugin(server, options) {
 	function embedHtmlImages(html, removeAlt) {
 		const dom = new JSDOM(html);
 		const images = dom.window.document.querySelectorAll("img");
-		let directory = options.poppler.tempDirectory;
+		let directory = options.tempDirectory;
 		// Add trailing slash if missing
 		directory += directory.endsWith("/") ? "" : "/";
 

@@ -19,13 +19,13 @@ const { v4 } = require("uuid");
  * `req` object is decorated with `conversionResults` object detailing document
  * location, contents etc.
  * @param {Function} server - Fastify instance.
- * @param {object} options - Fastify config values.
- * @param {string} options.poppler.binPath - Path to Poppler binary.
- * @param {string} options.poppler.encoding - Sets the encoding to use for text output.
- * @param {object=} options.poppler.pdfToHtmlOptions - Refer to
+ * @param {object} options - Plugin config values.
+ * @param {string} options.binPath - Path to Poppler binary.
+ * @param {object} options.pdfToHtmlOptions - Refer to
  * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToHtml
  * for options.
- * @param {string} options.poppler.tempDirectory - directory for temporarily storing
+ * @param {string} options.pdfToHtmlOptions.encoding - Sets the encoding to use for text output.
+ * @param {string=} options.tempDirectory - directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {
@@ -59,7 +59,7 @@ async function plugin(server, options) {
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
-			await Object.assign(config, options.poppler);
+			Object.assign(config, options);
 
 			const poppler = new Poppler(config.binPath);
 
@@ -106,6 +106,11 @@ async function plugin(server, options) {
 			// Build temporary file for Poppler to write to, and following plugins to read from
 			const id = v4();
 			const tempFile = `${config.tempDirectory}${id}`;
+			req.conversionResults.docLocation = {
+				directory: config.tempDirectory,
+				html: tempFile,
+				id,
+			};
 
 			await poppler.pdfToHtml(
 				req.body,
@@ -117,7 +122,7 @@ async function plugin(server, options) {
 			// Poppler appends `-html` to the file name, thus the template literal here
 			const dom = new JSDOM(
 				await fsp.readFile(`${tempFile}-html.html`, {
-					encoding: config.encoding,
+					encoding: config.pdfToHtmlOptions.encoding,
 				})
 			);
 			const titles = dom.window.document.querySelectorAll("title");
@@ -135,12 +140,6 @@ async function plugin(server, options) {
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
 			req.conversionResults.body = await fixUtf8(dom.serialize());
-
-			req.conversionResults.docLocation = {
-				directory: config.tempDirectory,
-				html: tempFile,
-				id,
-			};
 
 			res.header(
 				"content-type",

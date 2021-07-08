@@ -17,13 +17,16 @@ const imageToTxt = require("../../utils/image-to-txt");
  * PDF file in `req.body` to TXT.
  * `req` object is decorated with `conversionResults.body` holding converted document.
  * @param {Function} server - Fastify instance.
- * @param {object} options - Fastify config values.
- * @param {string} options.poppler.binPath - Path to Poppler binary.
- * @param {string} options.poppler.encoding - Sets the encoding to use for text output.
- * @param {object=} options.poppler.pdfToTxtOptions - Refer to
+ * @param {object} options - Plugin config values.
+ * @param {string} options.binPath - Path to Poppler binary.
+ * @param {string=} options.ocrLanguages - Languages to load trained data for for OCR.
+ * Multiple languages should be concatenated with a `+` i.e. `eng+chi_tra`
+ * for English and Chinese Traditional languages.
+ * @param {object=} options.pdfToTxtOptions - Refer to
  * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToText
  * for options.
- * @param {string} options.poppler.tempDirectory - directory for temporarily storing
+ * @param {string=} options.pdfToTxtOptions.encoding - Sets the encoding to use for text output.
+ * @param {string=} options.tempDirectory - directory for temporarily storing
  * files during conversion. Required for OCR.
  */
 async function plugin(server, options) {
@@ -61,7 +64,7 @@ async function plugin(server, options) {
 				pdfToTxtOptions: { outputEncoding: "UTF-8" },
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
-			await Object.assign(config, options.poppler);
+			Object.assign(config, options);
 
 			const poppler = new Poppler(config.binPath);
 
@@ -102,6 +105,10 @@ async function plugin(server, options) {
 				// Build temporary file for Poppler to write to, and following plugins to read from
 				const id = v4();
 				const tempFile = `${config.tempDirectory}${id}`;
+				req.conversionResults.docLocation = {
+					directory: config.tempDirectory,
+					id,
+				};
 
 				await poppler.pdfToCairo(req.body, tempFile, {
 					grayscaleFile: true,
@@ -117,11 +124,6 @@ async function plugin(server, options) {
 				);
 
 				req.conversionResults.body = results.join(" ");
-
-				req.conversionResults.docLocation = {
-					directory: config.tempDirectory,
-					id,
-				};
 			} else {
 				// Prune params that pdfToTxt cannot accept
 				const pdfToTxtAcceptedParams = [

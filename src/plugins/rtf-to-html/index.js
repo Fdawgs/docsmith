@@ -17,12 +17,12 @@ const { v4 } = require("uuid");
  * `req` object is decorated with `conversionResults` object detailing document
  * location, contents etc.
  * @param {Function} server - Fastify instance.
- * @param {object} options - Fastify config values.
- * @param {string} options.unrtf.binPath - Obfuscation values.
- * @param {object=} options.unrtf.rtfToHtmlOptions - Refer to
+ * @param {object} options - Plugin config values.
+ * @param {string} options.binPath - Path to UnRTF binary.
+ * @param {object=} options.rtfToHtmlOptions - Refer to
  * https://github.com/Fdawgs/node-unrtf/blob/master/API.md
  * for options.
- * @param {string} options.unrtf.tempDirectory - directory for temporarily storing
+ * @param {string=} options.tempDirectory - directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {
@@ -55,7 +55,9 @@ async function plugin(server, options) {
 				},
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
-			await Object.assign(config, options.unrtf);
+			Object.assign(config, options);
+
+			const unrtf = new UnRTF(config.binPath);
 
 			// Create temp directory if missing
 			try {
@@ -67,9 +69,12 @@ async function plugin(server, options) {
 			// Build temporary file for UnRTF to write to, and following plugins to read from
 			const id = v4();
 			const tempFile = `${config.tempDirectory}${id}.rtf`;
+			req.conversionResults.docLocation = {
+				directory: config.tempDirectory,
+				rtf: tempFile,
+				id,
+			};
 			await fsp.writeFile(tempFile, req.body);
-
-			const unrtf = new UnRTF(config.binPath);
 
 			/**
 			 * `fixUtf8` function replaces most common incorrectly converted
@@ -79,12 +84,6 @@ async function plugin(server, options) {
 			req.conversionResults.body = await fixUtf8(
 				await unrtf.convert(tempFile, config.rtfToHtmlOptions)
 			);
-
-			req.conversionResults.docLocation = {
-				directory: config.tempDirectory,
-				rtf: tempFile,
-				id,
-			};
 
 			res.header("content-type", `text/html`);
 		} catch (err) {

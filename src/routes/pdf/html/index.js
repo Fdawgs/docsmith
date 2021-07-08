@@ -46,7 +46,7 @@ async function route(server, options) {
 			methods: ["POST"],
 			hideOptionsRoute: true,
 		})
-		.register(pdfToHtml, options);
+		.register(pdfToHtml, options.poppler);
 
 	server.route({
 		method: "POST",

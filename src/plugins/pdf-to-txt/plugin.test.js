@@ -32,7 +32,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	afterAll(() => {
-		fs.rmdir(config.poppler.tempDirectory, { recursive: true }, () => {});
+		fs.rmdirSync(config.poppler.tempDirectory, { recursive: true });
 	});
 
 	afterEach(async () => {
@@ -40,7 +40,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should convert PDF file to TXT", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.poppler);
 
 		let response = await server.inject({
 			method: "POST",
@@ -64,7 +64,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should convert PDF file to TXT using OCR", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.poppler);
 
 		let response = await server.inject({
 			method: "POST",
@@ -89,7 +89,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should ignore invalid `test` query string params and convert PDF file to TXT", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.poppler);
 
 		let response = await server.inject({
 			method: "POST",
@@ -115,7 +115,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should convert PDF file to TXT wrapped in HTML", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.poppler);
 
 		let response = await server.inject({
 			method: "POST",
@@ -140,7 +140,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should return HTTP 400 error if PDF file is missing", async () => {
-		server.register(plugin, config);
+		server.register(plugin, config.poppler);
 
 		const response = await server.inject({
 			method: "POST",
