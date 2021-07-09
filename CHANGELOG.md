@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.4.1](https://www.github.com/Fdawgs/docsmith/compare/v2.4.0...v2.4.1) (2021-07-09)
+
+
+### Bug Fixes
+
+* **plugins:** check conv object is present before removing temp files ([1fb4eb9](https://www.github.com/Fdawgs/docsmith/commit/1fb4eb950271fe5f6b6b1b60509751a81333cc3d))
+* **routes:** add `Accept` request header handling  ([#281](https://www.github.com/Fdawgs/docsmith/issues/281)) ([89e05c0](https://www.github.com/Fdawgs/docsmith/commit/89e05c0122d3d3c6d71c7d6f577bdd0bd24ad08a))
+
+
+### Improvements
+
+* **config:** use same `tempdirectory` variable across config ([ac27c45](https://www.github.com/Fdawgs/docsmith/commit/ac27c4545c1fc63ee29ee73c404c8db3b594d44a))
+* **plugins/embed-html-images:** uncouple from server config ([8caf594](https://www.github.com/Fdawgs/docsmith/commit/8caf594fd1f0b936ecd668fcf8ec31ba479a15ed))
+* **plugins/pdf-to-html:** uncouple from server config ([ab9701b](https://www.github.com/Fdawgs/docsmith/commit/ab9701b464b5bc49bfe462997af9eac067ec87cb))
+* **plugins/pdf-to-txt:** uncouple from server config ([1cacd0f](https://www.github.com/Fdawgs/docsmith/commit/1cacd0f23a9209f2fa8d76cdef7289302b814e45))
+* **plugins/rtf-to-html:** uncouple from server config ([96eb122](https://www.github.com/Fdawgs/docsmith/commit/96eb122e8b9fd07218ae382518bd384a1ed52257))
+* **plugins/rtf-to-txt:** uncouple from server config ([2514206](https://www.github.com/Fdawgs/docsmith/commit/2514206432de66a74b3da8e71741489989c44810))
+* **plugins:** create new instances of unrtf earlier ([fe9f637](https://www.github.com/Fdawgs/docsmith/commit/fe9f637bcb58e9d0fa9563db7ea373b57c3eb95c))
+* **plugins:** create result object before being blocked by asyncs ([e989620](https://www.github.com/Fdawgs/docsmith/commit/e9896208e45c81124e9b61fcd8849664964a4ee9))
+
+
+### Miscellaneous
+
+* **env.template:** replace incorrect double quote ([e6626fc](https://www.github.com/Fdawgs/docsmith/commit/e6626fc045ff5826d51c1be5a3fcc5292667b943))
+* **env.template:** replace incorrect double quote ([b2695fe](https://www.github.com/Fdawgs/docsmith/commit/b2695fec56308bbed4cc19a52df7e64b2593fef9))
+* **plugins:** remove old reference to expressjs middleware ([70cb821](https://www.github.com/Fdawgs/docsmith/commit/70cb8216828b1a936249bdfbedb003edaa54c972))
+* standardise result object name in `req` ([0b7b51d](https://www.github.com/Fdawgs/docsmith/commit/0b7b51d3fb88c257bb914e8e4b79059f38978311))
+* **utils:** standardise util function naming ([2a5a220](https://www.github.com/Fdawgs/docsmith/commit/2a5a220135a0f1f2cbb9d2eb88ef6d7507e434ce))
+* **vscode:** disable red hat telemetry ([91082b2](https://www.github.com/Fdawgs/docsmith/commit/91082b2362466d9abe9d4fe0debf21e5d4fddd6e))
+
+
+### Dependencies
+
+* **deps-dev:** bump autocannon from 7.3.0 to 7.4.0 ([64a43cb](https://www.github.com/Fdawgs/docsmith/commit/64a43cb208acd89f0270be8df74ae9b1cd4d87b7))
+* **deps-dev:** bump eslint from 7.29.0 to 7.30.0 ([7244266](https://www.github.com/Fdawgs/docsmith/commit/724426667684d43b0b18fa57a64e258afeb86217))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.4.1 to 35.4.2 ([b098fb5](https://www.github.com/Fdawgs/docsmith/commit/b098fb5dcb49b5d54150e28a4a7b8f0c48b22881))
+* **deps-dev:** bump husky from 6.0.0 to 7.0.1 ([fc9c6ff](https://www.github.com/Fdawgs/docsmith/commit/fc9c6ff2d2b95f4d985eccbe2578f86ef40d448f))
+* **deps-dev:** bump nodemon from 2.0.9 to 2.0.10 ([f5b3f6f](https://www.github.com/Fdawgs/docsmith/commit/f5b3f6f42a7564665ba8a2619752f0956940fe10))
+* **deps-dev:** bump pino-pretty from 5.1.0 to 5.1.1 ([044f857](https://www.github.com/Fdawgs/docsmith/commit/044f8579fad515a99f028fb3975b2cae78aaf492))
+* **deps:** bump coverallsapp/github-action from 1.1.2 to 1.1.3 ([d9885bf](https://www.github.com/Fdawgs/docsmith/commit/d9885bf5a6cf5968d831c60cc70b12c6bd85bce3))
+* **deps:** bump fastify from 3.18.1 to 3.19.0 ([209c4aa](https://www.github.com/Fdawgs/docsmith/commit/209c4aa469e8d71358968d80cceaf3394770b9cf))
+* **deps:** bump fastify-helmet from 5.3.1 to 5.3.2 ([ef0ee57](https://www.github.com/Fdawgs/docsmith/commit/ef0ee5793509e751818240263f0f44e1c8e16fa9))
+
 ## [2.4.0](https://www.github.com/Fdawgs/docsmith/compare/v2.3.3...v2.4.0) (2021-07-05)
 
 
