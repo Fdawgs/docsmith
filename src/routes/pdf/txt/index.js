@@ -1,4 +1,4 @@
-const { UnsupportedMediaType } = require("http-errors");
+const { NotAcceptable, UnsupportedMediaType } = require("http-errors");
 const fileType = require("file-type");
 
 // Import plugins
@@ -17,6 +17,17 @@ async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {
 		pdfToTxtPostSchema.security = [{ bearerToken: [] }];
 	}
+
+	server.addHook("onRequest", async (req, res) => {
+		if (
+			// Catch unsupported Accept header MIME types
+			!pdfToTxtPostSchema.produces.includes(
+				req.accepts().type(pdfToTxtPostSchema.produces)
+			)
+		) {
+			res.send(NotAcceptable());
+		}
+	});
 
 	server.addContentTypeParser(
 		"application/pdf",

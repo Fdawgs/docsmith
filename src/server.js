@@ -3,6 +3,7 @@ const fp = require("fastify-plugin");
 const path = require("path");
 
 // Import plugins
+const accepts = require("fastify-accepts");
 const bearer = require("fastify-bearer-auth");
 const compress = require("fastify-compress");
 const helmet = require("fastify-helmet");
@@ -29,6 +30,9 @@ const healthCheck = require("./routes/healthcheck");
 async function plugin(server, config) {
 	// Register plugins
 	server
+		// Accept header handler
+		.register(accepts)
+
 		// Set response headers to disable client-side caching
 		.register(disableCache)
 

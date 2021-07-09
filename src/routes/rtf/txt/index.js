@@ -1,4 +1,4 @@
-const { UnsupportedMediaType } = require("http-errors");
+const { NotAcceptable, UnsupportedMediaType } = require("http-errors");
 const fileType = require("file-type");
 
 // Import plugins
@@ -17,6 +17,17 @@ async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {
 		rtfToTxtPostSchema.security = [{ bearerToken: [] }];
 	}
+
+	server.addHook("onRequest", async (req, res) => {
+		if (
+			// Catch unsupported Accept header MIME types
+			!rtfToTxtPostSchema.produces.includes(
+				req.accepts().type(rtfToTxtPostSchema.produces)
+			)
+		) {
+			res.send(NotAcceptable());
+		}
+	});
 
 	server.addContentTypeParser(
 		"application/rtf",

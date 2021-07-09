@@ -1,3 +1,4 @@
+const accepts = require("fastify-accepts");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -11,7 +12,7 @@ describe("RTF-to-TXT route", () => {
 	beforeAll(async () => {
 		options = await getConfig();
 
-		server = Fastify();
+		server = Fastify().register(accepts);
 		server.register(plugin, options);
 
 		await server.ready();
@@ -85,5 +86,19 @@ describe("RTF-to-TXT route", () => {
 
 		expect(response.statusCode).toEqual(415);
 		expect(response.statusMessage).toEqual("Unsupported Media Type");
+	});
+
+	test("Should return HTTP status code 406 if MIME type in `Accept` request header is unsupported", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync("./test_resources/test_files/valid_rtf.rtf"),
+			headers: {
+				accept: "application/javascript",
+				"content-type": "application/rtf",
+			},
+		});
+
+		expect(response.statusCode).toEqual(406);
 	});
 });
