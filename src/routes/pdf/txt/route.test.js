@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+const accepts = require("fastify-accepts");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -24,7 +25,7 @@ describe("PDF-to-TXT route", () => {
 	beforeAll(async () => {
 		options = await getConfig();
 
-		server = Fastify().register(tidyHtml);
+		server = Fastify().register(accepts).register(tidyHtml);
 		server.register(plugin, options);
 
 		await server.ready();
@@ -183,5 +184,24 @@ describe("PDF-to-TXT route", () => {
 				return response.statusCode;
 			})
 		);
+	});
+
+	test("Should return HTTP status code 406 if MIME type in `Accept` request header is unsupported", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				lastPageToConvert: 2,
+			},
+			headers: {
+				accept: "application/javascript",
+				"content-type": "application/pdf",
+			},
+		});
+
+		expect(response.statusCode).toEqual(406);
 	});
 });

@@ -1,4 +1,5 @@
 const fp = require("fastify-plugin");
+const { NotAcceptable } = require("http-errors");
 
 const { healthcheckGetSchema } = require("./schema");
 
@@ -10,6 +11,17 @@ const { healthcheckGetSchema } = require("./schema");
  * @param {Function} server - Fastify instance.
  */
 async function route(server) {
+	server.addHook("onRequest", async (req, res) => {
+		if (
+			// Catch unsupported Accept header MIME types
+			!healthcheckGetSchema.produces.includes(
+				req.accepts().type(healthcheckGetSchema.produces)
+			)
+		) {
+			res.send(NotAcceptable());
+		}
+	});
+
 	server.route({
 		method: "GET",
 		url: "/healthcheck",
