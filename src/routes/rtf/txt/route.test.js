@@ -28,6 +28,7 @@ describe("RTF-to-TXT route", () => {
 			url: "/",
 			body: fs.readFileSync("./test_resources/test_files/valid_rtf.rtf"),
 			headers: {
+				accept: "application/json, text/plain",
 				"content-type": "application/rtf",
 			},
 		});
@@ -45,6 +46,7 @@ describe("RTF-to-TXT route", () => {
 			url: "/",
 
 			headers: {
+				accept: "application/json, text/plain",
 				"content-type": "application/rtf",
 			},
 		});
@@ -64,6 +66,7 @@ describe("RTF-to-TXT route", () => {
 				lastPageToConvert: 2,
 			},
 			headers: {
+				accept: "application/json, text/plain",
 				"content-type": "application/rtf",
 			},
 		});
@@ -80,6 +83,7 @@ describe("RTF-to-TXT route", () => {
 				"./test_resources/test_files/valid_empty_html.html"
 			),
 			headers: {
+				accept: "application/json, text/plain",
 				"content-type": "application/html",
 			},
 		});

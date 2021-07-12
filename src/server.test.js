@@ -37,7 +37,7 @@ describe("End-To-End", () => {
 					lastPageToConvert: 2,
 				},
 				headers: {
-					accept: "*/*",
+					accept: "application/json, text/html",
 					"content-type": "application/pdf",
 				},
 			});
@@ -88,7 +88,7 @@ describe("End-To-End", () => {
 					lastPageToConvert: 2,
 				},
 				headers: {
-					accept: "*/*",
+					accept: "application/json, text/plain",
 					"content-type": "application/pdf",
 				},
 			});
@@ -139,7 +139,7 @@ describe("End-To-End", () => {
 					"./test_resources/test_files/valid_rtf.rtf"
 				),
 				headers: {
-					accept: "*/*",
+					accept: "application/json, text/html",
 					"content-type": "application/rtf",
 				},
 			});
@@ -187,7 +187,7 @@ describe("End-To-End", () => {
 					"./test_resources/test_files/valid_rtf.rtf"
 				),
 				headers: {
-					accept: "*/*",
+					accept: "application/json, text/plain",
 					"content-type": "application/rtf",
 				},
 			});
@@ -262,7 +262,7 @@ describe("Bearer Token Usage", () => {
 					lastPageToConvert: 2,
 				},
 				headers: {
-					accept: "*/*",
+					accept: "application/json, text/html",
 					authorization: "Bearer testtoken",
 					"content-type": "application/pdf",
 				},
@@ -312,7 +312,7 @@ describe("Bearer Token Usage", () => {
 					lastPageToConvert: 2,
 				},
 				headers: {
-					accept: "*/*",
+					accept: "application/json, text/html",
 					"content-type": "application/pdf",
 				},
 			});

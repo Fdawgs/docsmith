@@ -55,6 +55,7 @@ describe("PDF-to-HTML route", () => {
 					),
 					query,
 					headers: {
+						accept: "application/json, text/html",
 						"content-type": "application/pdf",
 					},
 				});
@@ -80,6 +81,7 @@ describe("PDF-to-HTML route", () => {
 					url: "/",
 					query,
 					headers: {
+						accept: "application/json, text/html",
 						"content-type": "application/pdf",
 					},
 				});
@@ -109,6 +111,7 @@ describe("PDF-to-HTML route", () => {
 						lastPageToConvert: 2,
 					},
 					headers: {
+						accept: "application/json, text/html",
 						"content-type": "application/pdf",
 					},
 				});
@@ -135,6 +138,7 @@ describe("PDF-to-HTML route", () => {
 						"./test_resources/test_files/valid_empty_html.html"
 					),
 					headers: {
+						accept: "application/json, text/html",
 						"content-type": "application/html",
 					},
 				});

@@ -48,6 +48,7 @@ describe("PDF-to-TXT route", () => {
 					),
 					query,
 					headers: {
+						accept: "application/json, text/plain",
 						"content-type": "application/pdf",
 					},
 				});
@@ -75,6 +76,7 @@ describe("PDF-to-TXT route", () => {
 				ocr: true,
 			},
 			headers: {
+				accept: "application/json, text/plain",
 				"content-type": "application/pdf",
 			},
 		});
@@ -96,6 +98,7 @@ describe("PDF-to-TXT route", () => {
 				lastPageToConvert: 2,
 			},
 			headers: {
+				accept: "application/json, text/html",
 				"content-type": "application/pdf",
 			},
 		});
@@ -117,6 +120,7 @@ describe("PDF-to-TXT route", () => {
 					url: "/",
 					query,
 					headers: {
+						accept: "application/json, text/plain",
 						"content-type": "application/pdf",
 					},
 				});
@@ -146,6 +150,7 @@ describe("PDF-to-TXT route", () => {
 						lastPageToConvert: 2,
 					},
 					headers: {
+						accept: "application/json, text/plain",
 						"content-type": "application/pdf",
 					},
 				});
@@ -172,6 +177,7 @@ describe("PDF-to-TXT route", () => {
 						"./test_resources/test_files/valid_empty_html.html"
 					),
 					headers: {
+						accept: "application/json, text/plain",
 						"content-type": "application/html",
 					},
 				});
