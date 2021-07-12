@@ -49,6 +49,7 @@ describe("RTF-to-HTML route", () => {
 					),
 					query,
 					headers: {
+						accept: "application/json, text/html",
 						"content-type": "application/rtf",
 					},
 				});
@@ -73,6 +74,7 @@ describe("RTF-to-HTML route", () => {
 					url: "/",
 					query,
 					headers: {
+						accept: "application/json, text/html",
 						"content-type": "application/rtf",
 					},
 				});
@@ -98,6 +100,7 @@ describe("RTF-to-HTML route", () => {
 					),
 					query,
 					headers: {
+						accept: "application/json, text/html",
 						"content-type": "application/rtf",
 					},
 				});
@@ -123,6 +126,7 @@ describe("RTF-to-HTML route", () => {
 					),
 					query,
 					headers: {
+						accept: "application/json, text/html",
 						"content-type": "application/html",
 					},
 				});

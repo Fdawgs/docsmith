@@ -26,6 +26,9 @@ describe("Healthcheck Route", () => {
 			const response = await server.inject({
 				method: "GET",
 				url: "/healthcheck",
+				headers: {
+					accept: "application/json, text/plain",
+				},
 			});
 
 			expect(response.statusCode).toEqual(200);
