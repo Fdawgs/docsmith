@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.4.2](https://www.github.com/Fdawgs/docsmith/compare/v2.4.1...v2.4.2) (2021-07-12)
+
+
+### Bug Fixes
+
+* **routes:** `Accept` header handling encapsulation ([#292](https://www.github.com/Fdawgs/docsmith/issues/292)) ([d8e3d3d](https://www.github.com/Fdawgs/docsmith/commit/d8e3d3d4fc213e638c57fe3e37e6cf88820200d1))
+
+
+### Miscellaneous
+
+* **vscode:** remove user space config setting ([#283](https://www.github.com/Fdawgs/docsmith/issues/283)) ([28135bb](https://www.github.com/Fdawgs/docsmith/commit/28135bb41771c4abcf20036164fd1eb8eeeb01ec))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.4.2 to 35.4.3 ([a933b32](https://www.github.com/Fdawgs/docsmith/commit/a933b3203ab5b9fdace7a82affd0d4553c178d9e))
+* **deps-dev:** bump nodemon from 2.0.10 to 2.0.12 ([da50881](https://www.github.com/Fdawgs/docsmith/commit/da5088113601fb20447aacbbf05fbe03258f5833))
+* **deps:** bump env-schema from 3.0.1 to 3.1.0 ([d0ee9f7](https://www.github.com/Fdawgs/docsmith/commit/d0ee9f77598e18320af01ff94116e6132752e3f2))
+* **deps:** bump fastify-swagger from 4.8.2 to 4.8.3 ([7e0d077](https://www.github.com/Fdawgs/docsmith/commit/7e0d0773187318a0f516d257b0af21275456be37))
+* **deps:** bump file-type from 16.5.0 to 16.5.1 ([7616311](https://www.github.com/Fdawgs/docsmith/commit/761631114cb163f9eb36c12c22fbc4ec231dd7f2))
+* **deps:** bump fluent-json-schema from 3.0.0 to 3.0.1 ([0ebe587](https://www.github.com/Fdawgs/docsmith/commit/0ebe58795a8010fcb666756b4ed2bbc40f889cfc))
+* **deps:** bump pino from 6.11.3 to 6.12.0 ([dd61325](https://www.github.com/Fdawgs/docsmith/commit/dd61325ac97d44acb38a19088efeccc92b2d96d5))
+
+
+### Continuous Integration
+
+* **ci:** disable homebrew analytics for macos builds ([#293](https://www.github.com/Fdawgs/docsmith/issues/293)) ([ad32eae](https://www.github.com/Fdawgs/docsmith/commit/ad32eaeb49b1b1850077b96eaba59ab147f86423))
+
 ### [2.4.1](https://www.github.com/Fdawgs/docsmith/compare/v2.4.0...v2.4.1) (2021-07-09)
 
 
