@@ -17,7 +17,7 @@ async function route(server) {
 		schema: healthcheckGetSchema,
 		async handler(req, res) {
 			if (
-				// Catch unsupported Accept header MIME types
+				// Catch unsupported Accept header media types
 				!healthcheckGetSchema.produces.includes(
 					req.accepts().type(healthcheckGetSchema.produces)
 				)

@@ -20,7 +20,7 @@ async function route(server, options) {
 
 	server.addHook("onRequest", async (req, res) => {
 		if (
-			// Catch unsupported Accept header MIME types
+			// Catch unsupported Accept header media types
 			!rtfToTxtPostSchema.produces.includes(
 				req.accepts().type(rtfToTxtPostSchema.produces)
 			)
