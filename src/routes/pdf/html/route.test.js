@@ -153,7 +153,7 @@ describe("PDF-to-HTML route", () => {
 		);
 	});
 
-	test("Should return HTTP status code 406 if MIME type in `Accept` request header is unsupported", async () => {
+	test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
