@@ -62,7 +62,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 		expect(fs.existsSync(config.unrtf.tempDirectory)).toEqual(true);
 	});
 
-	test("Should return HTTP 400 error if RTF file is missing", async () => {
+	test("Should return HTTP status code 400 if RTF file is missing", async () => {
 		server.register(plugin, config.unrtf);
 
 		const response = await server.inject({

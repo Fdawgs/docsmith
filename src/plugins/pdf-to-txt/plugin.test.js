@@ -139,7 +139,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		expect(isHtml(response.body)).toEqual(true);
 	});
 
-	test("Should return HTTP 400 error if PDF file is missing", async () => {
+	test("Should return HTTP status code 400 if PDF file is missing", async () => {
 		server.register(plugin, config.poppler);
 
 		const response = await server.inject({

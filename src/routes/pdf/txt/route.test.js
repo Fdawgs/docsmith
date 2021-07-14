@@ -110,7 +110,7 @@ describe("PDF-to-TXT route", () => {
 		expect(response.statusCode).toEqual(200);
 	});
 
-	test("Should return 415 error code if file is missing", async () => {
+	test("Should return HTTP status code 415 if file is missing", async () => {
 		await Promise.all(
 			queryStrings.map(async (query) => {
 				query.lastPageToConvert = 2;
@@ -135,7 +135,7 @@ describe("PDF-to-TXT route", () => {
 		);
 	});
 
-	test("Should return 415 error code if file with '.pdf' extension is not a valid PDF file", async () => {
+	test("Should return HTTP status code 415 if file with '.pdf' extension is not a valid PDF file", async () => {
 		await Promise.all(
 			queryStrings.map(async (query) => {
 				query.lastPageToConvert = 2;
@@ -165,7 +165,7 @@ describe("PDF-to-TXT route", () => {
 		);
 	});
 
-	test("Should return 415 error code if file media type is not supported by route", async () => {
+	test("Should return HTTP status code 415 if file media type is not supported by route", async () => {
 		await Promise.all(
 			queryStrings.map(async (query) => {
 				query.lastPageToConvert = 2;
