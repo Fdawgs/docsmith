@@ -76,6 +76,33 @@ describe("End-To-End", () => {
 		});
 	});
 
+	describe("/healthcheck Route", () => {
+		test("Should return `ok`", async () => {
+			const response = await server.inject({
+				method: "GET",
+				url: "/healthcheck",
+				headers: {
+					accept: "text/plain",
+				},
+			});
+
+			expect(response.statusCode).toEqual(200);
+			expect(response.payload).toEqual("ok");
+		});
+
+		test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			const response = await server.inject({
+				method: "GET",
+				url: "/healthcheck",
+				headers: {
+					accept: "application/javascript",
+				},
+			});
+
+			expect(response.statusCode).toEqual(406);
+		});
+	});
+
 	describe("/pdf/txt Route", () => {
 		test("Should return PDF file converted to TXT, with expected headers set", async () => {
 			const response = await server.inject({
@@ -248,6 +275,33 @@ describe("Bearer Token Usage", () => {
 
 	afterAll(async () => {
 		await server.close();
+	});
+
+	describe("/healthcheck Route", () => {
+		test("Should return `ok`", async () => {
+			const response = await server.inject({
+				method: "GET",
+				url: "/healthcheck",
+				headers: {
+					accept: "text/plain",
+				},
+			});
+
+			expect(response.statusCode).toEqual(200);
+			expect(response.payload).toEqual("ok");
+		});
+
+		test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			const response = await server.inject({
+				method: "GET",
+				url: "/healthcheck",
+				headers: {
+					accept: "application/javascript",
+				},
+			});
+
+			expect(response.statusCode).toEqual(406);
+		});
 	});
 
 	describe("/pdf/html Route", () => {
