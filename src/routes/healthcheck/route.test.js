@@ -27,7 +27,7 @@ describe("Healthcheck Route", () => {
 				method: "GET",
 				url: "/healthcheck",
 				headers: {
-					accept: "application/json, text/plain",
+					accept: "text/plain",
 				},
 			});
 

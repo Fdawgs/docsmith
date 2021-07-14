@@ -49,4 +49,4 @@ async function plugin(server, options) {
 	server.decorate("embedHtmlImages", embedHtmlImages);
 }
 
-module.exports = fp(plugin);
+module.exports = fp(plugin, { fastify: "3.x", name: "embed-html-images" });

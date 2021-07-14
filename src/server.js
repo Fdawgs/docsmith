@@ -80,7 +80,8 @@ async function plugin(server, config) {
 
 		/**
 		 * Encapsulate plugins and routes into secured child context, so that swagger and
-		 * healthcheck routes do not inherit bearer token auth
+		 * healthcheck routes do not inherit bearer token auth plugin.
+		 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
 			if (config.bearerTokenAuthKeys) {
@@ -99,4 +100,4 @@ async function plugin(server, config) {
 		});
 }
 
-module.exports = fp(plugin);
+module.exports = fp(plugin, { fastify: "3.x", name: "server" });

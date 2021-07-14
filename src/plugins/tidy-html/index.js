@@ -52,4 +52,4 @@ async function plugin(server) {
 	server.decorate("tidyHtml", tidyHtml);
 }
 
-module.exports = fp(plugin);
+module.exports = fp(plugin, { fastify: "3.x", name: "tidy-html" });

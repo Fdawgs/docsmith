@@ -66,7 +66,7 @@ describe("RTF-to-HTML route", () => {
 		);
 	});
 
-	test("Should return 415 error code if file is missing", async () => {
+	test("Should return HTTP status code 415 if file is missing", async () => {
 		await Promise.all(
 			queryStrings.map(async (query) => {
 				const response = await server.inject({
@@ -89,7 +89,7 @@ describe("RTF-to-HTML route", () => {
 		);
 	});
 
-	test("Should return 415 error code if file with '.rtf' extension is not a valid RTF file", async () => {
+	test("Should return HTTP status code 415 if file with '.rtf' extension is not a valid RTF file", async () => {
 		await Promise.all(
 			queryStrings.map(async (query) => {
 				const response = await server.inject({
@@ -115,7 +115,7 @@ describe("RTF-to-HTML route", () => {
 		);
 	});
 
-	test("Should return 415 error code if file media type is not supported by route", async () => {
+	test("Should return HTTP status code 415 if file media type is not supported by route", async () => {
 		await Promise.all(
 			queryStrings.map(async (query) => {
 				const response = await server.inject({
