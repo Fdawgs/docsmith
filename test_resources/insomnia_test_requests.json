@@ -1,0 +1,319 @@
+{
+	"_type": "export",
+	"__export_format": 4,
+	"__export_date": "2021-07-14T13:42:06.696Z",
+	"__export_source": "insomnia.desktop.app:v2021.4.1",
+	"resources": [
+		{
+			"_id": "req_125853a7af084f71bc5c2607c17c90b5",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1626108178289,
+			"created": 1624952578715,
+			"url": "http://127.0.0.1:8204/docs/json",
+			"name": "docs/json",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [],
+			"authentication": {
+				"token": "testtoken",
+				"type": "bearer",
+				"disabled": true
+			},
+			"metaSortKey": -1581358899750,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"parentId": "wrk_11ea2c3bfc95495c853a9fa46ecb2ae8",
+			"modified": 1623425946718,
+			"created": 1581358907766,
+			"name": "Docsmith",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1581358907767,
+			"_type": "request_group"
+		},
+		{
+			"_id": "wrk_11ea2c3bfc95495c853a9fa46ecb2ae8",
+			"parentId": null,
+			"modified": 1572180335284,
+			"created": 1572180335284,
+			"name": "Insomnia",
+			"description": "",
+			"scope": "collection",
+			"_type": "workspace"
+		},
+		{
+			"_id": "req_bbc824f05a0e4607b3738274725d11fc",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1626091108017,
+			"created": 1623405104869,
+			"url": "http://127.0.0.1:8204/healthcheck",
+			"name": "healthcheck",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Accept-Encoding",
+					"value": "br",
+					"description": "",
+					"id": "pair_2ee669fc31a74859a6714916a1901666"
+				},
+				{
+					"id": "pair_6689f48eac1b4d81aa6feb8eed8097a1",
+					"name": "Accept",
+					"value": "text/plain",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"authentication": {
+				"token": "testtoken",
+				"type": "bearer",
+				"disabled": true
+			},
+			"metaSortKey": -1581358899700,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_15f2234a6a304620acf4d253034ccf96",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1626270064066,
+			"created": 1617131396221,
+			"url": "http://127.0.0.1:8204/pdf/html",
+			"name": "pdf/html",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/octet-stream",
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\invalid_rtf.rtf"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_4a5d095d750e40adb5e9657757bd27b2",
+					"name": "Content-Type",
+					"value": "application/pdf"
+				},
+				{
+					"id": "pair_82461babb64b43f89343003b38690ed4",
+					"name": "Accept",
+					"value": "text/html",
+					"description": ""
+				},
+				{
+					"name": "Accept-Encoding",
+					"value": "br",
+					"description": "",
+					"id": "pair_9d5cd29529014e3aba87fe572c8dc6a6",
+					"disabled": false
+				}
+			],
+			"authentication": { "token": "testtoken", "type": "bearer" },
+			"metaSortKey": -1581358899675,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_62d8c045df994201b1f91cc6f29aadaf",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1626094128482,
+			"created": 1581358899650,
+			"url": "http://127.0.0.1:8204/pdf/txt?lastPageToConvert=2",
+			"name": "pdf/txt",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/octet-stream",
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_4a5d095d750e40adb5e9657757bd27b2",
+					"name": "Content-Type",
+					"value": "application/pdf"
+				},
+				{
+					"id": "pair_88993a0340ac41d292fcd2335d8cf4d2",
+					"name": "Accept",
+					"value": "text/html",
+					"description": ""
+				},
+				{
+					"name": "Accept-Encoding",
+					"value": "gzip",
+					"description": "",
+					"id": "pair_02dfc852c4244af3a17e852952c50f10"
+				}
+			],
+			"authentication": { "token": "testtoken", "type": "bearer" },
+			"metaSortKey": -1581358899650,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_cc3d0a0e956f4b46b51c72a9591b063e",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1626094130958,
+			"created": 1624957503885,
+			"url": "http://127.0.0.1:8204/pdf/txt?ocr=true&ocrLanguage=eng&lastPageToConvert=1",
+			"name": "pdf/txt?ocr=true",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/octet-stream",
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_4a5d095d750e40adb5e9657757bd27b2",
+					"name": "Content-Type",
+					"value": "application/pdf"
+				},
+				{
+					"id": "pair_6e457f9668464086bf8e00353b0c23c8",
+					"name": "Accept",
+					"value": "text/plain",
+					"description": ""
+				},
+				{
+					"name": "Accept-Encoding",
+					"value": "br",
+					"description": "",
+					"id": "pair_02dfc852c4244af3a17e852952c50f10"
+				}
+			],
+			"authentication": { "token": "testtoken", "type": "bearer" },
+			"metaSortKey": -1580785243790.4375,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3a3fb8be64414b0ebba5ce7c2e726644",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1626094132637,
+			"created": 1624952606588,
+			"url": "http://127.0.0.1:8204/rtf/html",
+			"name": "rtf/html",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/octet-stream",
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\valid_rtf.rtf"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_4a5d095d750e40adb5e9657757bd27b2",
+					"name": "Content-Type",
+					"value": "application/rtf"
+				},
+				{
+					"id": "pair_d593624e4e7f4d73a2f452b2e409d0af",
+					"name": "Accept",
+					"value": "text/html",
+					"description": ""
+				},
+				{
+					"name": "Accept-Encoding",
+					"value": "br",
+					"description": "",
+					"id": "pair_01819f2e1d34440f8d4ee76f26cfb296"
+				}
+			],
+			"authentication": { "token": "testtoken", "type": "bearer" },
+			"metaSortKey": -1580211587930.875,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2f7fa44d87a7458e99a0b3af7ec39a0b",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1626094134795,
+			"created": 1593783519090,
+			"url": "http://127.0.0.1:8204/rtf/txt",
+			"name": "rtf/txt",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/octet-stream",
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\valid_rtf.rtf"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_4a5d095d750e40adb5e9657757bd27b2",
+					"name": "Content-Type",
+					"value": "application/rtf"
+				},
+				{
+					"id": "pair_5e9b0a5a26624bbc9f759fb92aef649f",
+					"name": "Accept",
+					"value": "text/plain",
+					"description": ""
+				},
+				{
+					"name": "Accept-Encoding",
+					"value": "br",
+					"description": "",
+					"id": "pair_db8ee8db2c7a4cd8a2b8a00ecc29ca9a"
+				}
+			],
+			"authentication": { "token": "testtoken", "type": "bearer" },
+			"metaSortKey": -1579064276211.75,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		}
+	]
+}
