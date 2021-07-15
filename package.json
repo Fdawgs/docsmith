@@ -18,7 +18,7 @@
     "jest": "jest --detectOpenHandles --runInBand",
     "jest:coverage": "jest --coverage --runInBand",
     "lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
-    "lint:licenses": "license-checker --direct --excludePackages=\"buffers@0.1.1;tesseract.js-core@2.2.0\" --onlyAllow=\"0BSD;Apache-2.0;BSD;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Python-2.0;Unlicense\" --production --summary",
+    "lint:licenses": "license-checker --direct --excludePackages=\"buffers@0.1.1;tesseract.js-core@2.2.0\" --onlyAllow=\"0BSD;Apache-2.0;Apache 2.0;BSD;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Python-2.0;Unlicense\" --production --summary",
     "lint:prettier": "prettier . --write --ignore-unknown",
     "lint:prettier:ci": "prettier . --check --ignore-unknown",
     "prepare": "husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
@@ -79,7 +79,6 @@
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.12",
-    "pino-pretty": "^5.1.1",
     "prettier": "2.3.2"
   },
   "dependencies": {
@@ -110,6 +109,7 @@
     "node-poppler": "^4.1.0",
     "node-unrtf": "^2.0.1",
     "pino": "^6.12.0",
+    "pino-pretty": "^5.1.1",
     "raw-body": "^2.4.1",
     "tesseract.js": "^2.1.4",
     "under-pressure": "^5.7.0",
