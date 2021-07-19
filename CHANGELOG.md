@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.4.3](https://www.github.com/Fdawgs/docsmith/compare/v2.4.2...v2.4.3) (2021-07-19)
+
+
+### Bug Fixes
+
+* **package:** move `pino-pretty` to production dependency list ([#298](https://www.github.com/Fdawgs/docsmith/issues/298)) ([55ec7e7](https://www.github.com/Fdawgs/docsmith/commit/55ec7e75eb990b77cd0d9127c461a16c93c1a8f3))
+
+
+### Improvements
+
+* **routes/healthcheck:** do not treat route as plugin ([02e6dcb](https://www.github.com/Fdawgs/docsmith/commit/02e6dcba640725dfe317058ea8a7e11da8664c56))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 7.30.0 to 7.31.0 ([4be0b56](https://www.github.com/Fdawgs/docsmith/commit/4be0b5614aa56e592c01ca93ae90641212a624be))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.4.3 to 35.4.5 ([f64026b](https://www.github.com/Fdawgs/docsmith/commit/f64026b2a7e2334b3a0fe63ce1cf3495de340c7c))
+* **deps:** bump fastify from 3.19.0 to 3.19.1 ([c385a56](https://www.github.com/Fdawgs/docsmith/commit/c385a56622af5de2b67948cab724df84a3ef1af5))
+* **deps:** bump fastify-cors from 6.0.1 to 6.0.2 ([6f6365f](https://www.github.com/Fdawgs/docsmith/commit/6f6365f1b19cd9d3484ae83cbb65fc9896514eac))
+* **deps:** bump wagoid/commitlint-github-action from 3.1.4 to 4.1.1 ([c5c22ca](https://www.github.com/Fdawgs/docsmith/commit/c5c22caa454236cd8d20d0f6a6b2418b6794111b))
+
+
+### Miscellaneous
+
+* change mentions of "MIME type" to "media type" ([#295](https://www.github.com/Fdawgs/docsmith/issues/295)) ([854759d](https://www.github.com/Fdawgs/docsmith/commit/854759da9bfdf0a3c1599259d5d1baada4f2debd))
+* **test_resources:** add Insomnia REST client test requests ([7859d41](https://www.github.com/Fdawgs/docsmith/commit/7859d41c9ced1505d2d6764709c41973bd53664c))
+* **test_resources:** minor header tweaks ([d43fd2e](https://www.github.com/Fdawgs/docsmith/commit/d43fd2e2a80c8582f93a127d2750926ef4336cb5))
+* update jsdoc tag comments ([#304](https://www.github.com/Fdawgs/docsmith/issues/304)) ([bd683f3](https://www.github.com/Fdawgs/docsmith/commit/bd683f342308b6846fa573cd7c04c70426fea149))
+* update plugin metadata for server dependency graph ([13aaf44](https://www.github.com/Fdawgs/docsmith/commit/13aaf44b2feb141bceb5950cd89c8b75a800a120))
+
 ### [2.4.2](https://www.github.com/Fdawgs/docsmith/compare/v2.4.1...v2.4.2) (2021-07-12)
 
 
