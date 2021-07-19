@@ -11,7 +11,9 @@ const { pdfToHtmlPostSchema } = require("./schema");
  * @author Frazer Smith
  * @description Sets routing options for server.
  * @param {Function} server - Fastify instance.
- * @param {object} options - Object containing route config objects.
+ * @param {object} options - Route config values.
+ * @param {object} options.cors - CORS settings.
+ * @param {object} options.poppler - PDF-to-HTML plugin settings.
  */
 async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {
