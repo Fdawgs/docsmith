@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.4.4](https://www.github.com/Fdawgs/docsmith/compare/v2.4.3...v2.4.4) (2021-07-21)
+
+
+### Bug Fixes
+
+* **docker-compose:** wrap variables in quotes ([05afefe](https://www.github.com/Fdawgs/docsmith/commit/05afefe94b5a1fefc16f636e8cbe7cf828a352bb))
+* **docker:** downgrade from buster to stretch; stop corrupted html gen ([c67663a](https://www.github.com/Fdawgs/docsmith/commit/c67663a3fb758ecb00b8fa16b022ba0d5b07b5cd))
+
+
+### Miscellaneous
+
+* **dockerfile:** indent script ([0d951e7](https://www.github.com/Fdawgs/docsmith/commit/0d951e78b335a749eca3dc567f52377310e0466b))
+
 ### [2.4.3](https://www.github.com/Fdawgs/docsmith/compare/v2.4.2...v2.4.3) (2021-07-19)
 
 
