@@ -50,6 +50,7 @@ Perform the following steps before deployment:
 3. Run `npm install --ignore-scripts --production` to install dependencies
 4. Make a copy of `.env.template` in the root directory and rename it to `.env`
 5. Configure the application using the environment variables in `.env`
+6. Place additional trained data into `ocr_lang_data` directory (optional, [info can be found here](./ocr_lang_data/README.md))
 
 ## Deployment
 

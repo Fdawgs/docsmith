@@ -129,5 +129,5 @@ docs/
 .prettierignore
 .prettierrc
 
-# Tesseract trained data
+# Tesseract trained data cache
 *.traineddata
