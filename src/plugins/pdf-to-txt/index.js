@@ -119,10 +119,8 @@ async function plugin(server, options) {
 
 				const files = glob.sync(`${tempFile}*.png`);
 
-				// Send each image file generated to Tesseract in `imageToTxt` util function
-				const results = await Promise.all(
-					files.map((file) => imageToTxt(file, config.ocrLanguages))
-				);
+				// Send array of images to Tesseract in `imageToTxt` util function
+				const results = await imageToTxt(files, config.ocrLanguages);
 
 				req.conversionResults.body = results.join(" ");
 			} else {
