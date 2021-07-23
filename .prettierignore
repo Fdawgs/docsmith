@@ -128,4 +128,7 @@ test_resources/test_log*
 src/temp*/
 
 # Tesseract trained data
+ocr_lang_data/*.gz
+
+# Tesseract trained data cache
 *.traineddata

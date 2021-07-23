@@ -1,4 +1,5 @@
 const { createWorker } = require("tesseract.js");
+const path = require("path");
 
 /**
  * @author Frazer Smith
@@ -13,7 +14,18 @@ const { createWorker } = require("tesseract.js");
  * from image as string on resolve, or Error object on rejection.
  */
 module.exports = async function util(image, languages) {
-	const worker = createWorker();
+	/**
+	 * Defining the cache as `readOnly` and specifying both a cache and lang path
+	 * stops Tesseract from constantly downloading new trained data from a remote
+	 * repo (allowing OCR to be used offline), and stops requests trying to read
+	 * and write simulationeously, which corrupted the trained data
+	 */
+	const worker = createWorker({
+		cacheMethod: "readOnly",
+		cachePath: path.join(__dirname, "../../.."),
+		langPath: path.join(__dirname, "../../..", "ocr_lang_data"),
+	});
+	// const worker = createWorker();
 	try {
 		if (image === undefined || Object.keys(image).length === 0) {
 			throw new Error("Cannot convert image");
