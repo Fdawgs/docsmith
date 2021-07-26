@@ -7,8 +7,10 @@ describe("Image-to-TXT utility", () => {
 			"eng"
 		);
 
-		expect(typeof test).toBe("string");
-		expect(test.substring(0, 24)).toBe("Yeovil District Hospital");
+		expect(Array.isArray(test)).toBe(true);
+		expect(test.join(" ").substring(0, 24)).toBe(
+			"Yeovil District Hospital"
+		);
 	});
 
 	test("Should return error if file missing", async () => {
