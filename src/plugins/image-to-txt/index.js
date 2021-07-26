@@ -19,7 +19,7 @@ async function plugin(server, options) {
 	 * Defining the cache as `readOnly` and specifying both a cache and lang path
 	 * stops Tesseract from constantly downloading new trained data from a remote
 	 * repo (allowing OCR to be used offline), and stops requests trying to read
-	 * and write simulationeously, which corrupted the trained data
+	 * and write simultaneously, which corrupted the trained data
 	 */
 	const workerConfig = {
 		cacheMethod: "readOnly",
@@ -33,7 +33,7 @@ async function plugin(server, options) {
 		tessjs_create_tsv: "0",
 	};
 
-	// Procedurely create workers based on number of processors available
+	// Procedurally create workers based on number of processors available
 	await Promise.all(
 		os.cpus().map(async () => {
 			const worker = createWorker(workerConfig);
