@@ -1,4 +1,5 @@
 const { createScheduler, createWorker } = require("tesseract.js");
+const os = require("os");
 const path = require("path");
 
 /**
@@ -37,34 +38,17 @@ module.exports = async function util(images, languages) {
 		tessjs_create_tsv: "0",
 	};
 
-	const worker1 = createWorker(workerConfig);
-	await worker1.load();
-	await worker1.loadLanguage(languages);
-	await worker1.initialize(languages);
-	await worker1.setParameters(workerParams);
-
-	const worker2 = createWorker(workerConfig);
-	await worker2.load();
-	await worker2.loadLanguage(languages);
-	await worker2.initialize(languages);
-	await worker2.setParameters(workerParams);
-
-	const worker3 = createWorker(workerConfig);
-	await worker3.load();
-	await worker3.loadLanguage(languages);
-	await worker3.initialize(languages);
-	await worker3.setParameters(workerParams);
-
-	const worker4 = createWorker(workerConfig);
-	await worker4.load();
-	await worker4.loadLanguage(languages);
-	await worker4.initialize(languages);
-	await worker4.setParameters(workerParams);
-
-	scheduler.addWorker(worker1);
-	scheduler.addWorker(worker2);
-	scheduler.addWorker(worker3);
-	scheduler.addWorker(worker4);
+	// Procedurely create workers based on number of processors available
+	await Promise.all(
+		os.cpus().map(async () => {
+			const worker = createWorker(workerConfig);
+			await worker.load();
+			await worker.loadLanguage(languages);
+			await worker.initialize(languages);
+			await worker.setParameters(workerParams);
+			scheduler.addWorker(worker);
+		})
+	);
 
 	const results = await Promise.all(
 		images.map(async (image) => {
