@@ -22,9 +22,7 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 		config = await getConfig();
 		config = cloneDeep(config);
 		config.unrtf.tempDirectory = "./src/temp3/";
-	});
 
-	beforeEach(() => {
 		server = Fastify();
 
 		server.addContentTypeParser("application/rtf", async (req, payload) => {
@@ -32,23 +30,20 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 			return res;
 		});
 
+		server.register(plugin, config.unrtf);
+
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");
 			res.send(req.conversionResults);
 		});
 	});
 
-	afterAll(() => {
+	afterAll(async () => {
 		fs.rmdirSync(config.unrtf.tempDirectory, { recursive: true });
-	});
-
-	afterEach(async () => {
 		await server.close();
 	});
 
 	test("Should convert RTF file to HTML and place in specified directory", async () => {
-		server.register(plugin, config.unrtf);
-
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -71,8 +66,6 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 	});
 
 	test("Should return HTTP status code 400 if RTF file is missing", async () => {
-		server.register(plugin, config.unrtf);
-
 		const response = await server.inject({
 			method: "POST",
 			url: "/",

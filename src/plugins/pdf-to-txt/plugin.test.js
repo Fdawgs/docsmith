@@ -15,9 +15,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		config = await getConfig();
 		config = cloneDeep(config);
 		config.poppler.tempDirectory = "./src/temp2/";
-	});
 
-	beforeEach(() => {
 		server = Fastify();
 
 		server.addContentTypeParser("application/pdf", async (req, payload) => {

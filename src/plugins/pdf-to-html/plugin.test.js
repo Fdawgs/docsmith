@@ -22,9 +22,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		config = await getConfig();
 		config = cloneDeep(config);
 		config.poppler.tempDirectory = "./src/temp1/";
-	});
 
-	beforeEach(() => {
 		server = Fastify();
 
 		server.addContentTypeParser("application/pdf", async (req, payload) => {
@@ -32,23 +30,20 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 			return res;
 		});
 
+		server.register(plugin, config.poppler);
+
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");
 			res.send(req.conversionResults);
 		});
 	});
 
-	afterAll(() => {
+	afterAll(async () => {
 		fs.rmdirSync(config.poppler.tempDirectory, { recursive: true });
-	});
-
-	afterEach(async () => {
 		await server.close();
 	});
 
 	test("Should convert PDF file to HTML and place in specified directory", async () => {
-		server.register(plugin, config.poppler);
-
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -77,8 +72,6 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 	});
 
 	test("Should ignore invalid `test` query string params and convert PDF file to HTML", async () => {
-		server.register(plugin, config.poppler);
-
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -109,8 +102,6 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 	});
 
 	test("Should return HTTP status code 400 if PDF file is missing", async () => {
-		server.register(plugin, config.poppler);
-
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
