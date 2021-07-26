@@ -1,24 +1,19 @@
+const fp = require("fastify-plugin");
 const { createScheduler, createWorker } = require("tesseract.js");
 const os = require("os");
 const path = require("path");
 
 /**
  * @author Frazer Smith
- * @description Utility to convert images of text to text strings,
- * using Tesseract Optical Character Recognition (OCR) engine.
- * @param {Array.<string|Buffer>} images - Array of image paths, Buffers
- * storing a binary image, or base64 encoded images.
- * @param {string=} languages - Languages to load trained data for.
+ * @description Decorator plugin that adds Tesseract Scheduler and Workers.
+ * @param {Function} server - Fastify instance.
+ * @param {object} options - Plugin config values.
+ * @param {string} options.languages - Languages to load trained data for.
  * Multiple languages are concatenated with a `+` i.e. `eng+chi_tra`
  * for English and Chinese Traditional languages.
- * @returns {Promise<Array.<string>|Error>} Promise of text retrieved
- * from image as array on resolve, or Error object on rejection.
  */
-module.exports = async function util(images, languages) {
-	if (images === undefined || Object.keys(images).length === 0) {
-		throw new Error("Cannot convert images");
-	}
-
+async function plugin(server, options) {
+	server.log.info("Setting up Tesseract OCR scheduler and workers");
 	const scheduler = createScheduler();
 	/**
 	 * Defining the cache as `readOnly` and specifying both a cache and lang path
@@ -43,28 +38,22 @@ module.exports = async function util(images, languages) {
 		os.cpus().map(async () => {
 			const worker = createWorker(workerConfig);
 			await worker.load();
-			await worker.loadLanguage(languages);
-			await worker.initialize(languages);
+			await worker.loadLanguage(options.languages);
+			await worker.initialize(options.languages);
 			await worker.setParameters(workerParams);
 			scheduler.addWorker(worker);
 		})
 	);
 
-	const results = await Promise.all(
-		images.map(async (image) => {
-			try {
-				const {
-					data: { text },
-				} = await scheduler.addJob("recognize", image);
-
-				return Promise.resolve(text);
-			} catch (err) {
-				return Promise.reject(err);
-			}
-		})
+	server.log.info(
+		`${scheduler.getNumWorkers()} Tesseract OCR workers waiting`
 	);
 
-	await scheduler.terminate();
+	server.decorate("tesseract", scheduler);
+	server.addHook("onClose", async () => {
+		server.log.info("Terminating Tesseract OCR scheduler and workers");
+		scheduler.terminate();
+	});
+}
 
-	return results;
-};
+module.exports = fp(plugin, { fastify: "3.x", name: "image-to-txt" });

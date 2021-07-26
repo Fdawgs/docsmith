@@ -130,9 +130,12 @@ describe("Configuration", () => {
 		expect(config.poppler).toEqual(
 			expect.objectContaining({
 				binPath: POPPLER_BINARY_PATH,
-				ocrLanguages: OCR_LANGUAGES,
 				tempDirectory: expect.any(String),
 			})
+		);
+
+		expect(config.tesseract).toEqual(
+			expect.objectContaining({ languages: OCR_LANGUAGES })
 		);
 
 		expect(config.unrtf).toEqual(
@@ -244,9 +247,12 @@ describe("Configuration", () => {
 		expect(config.poppler).toEqual(
 			expect.objectContaining({
 				binPath: POPPLER_BINARY_PATH,
-				ocrLanguages: "eng",
 				tempDirectory: expect.any(String),
 			})
+		);
+
+		expect(config.tesseract).toEqual(
+			expect.objectContaining({ languages: "eng" })
 		);
 
 		expect(config.unrtf).toEqual(

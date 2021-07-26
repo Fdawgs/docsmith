@@ -7,6 +7,7 @@ const generateCombos = require("../../../../test_resources/utils/genCombos");
 const plugin = require(".");
 const getConfig = require("../../../config");
 
+const imageToTxt = require("../../../plugins/image-to-txt");
 const tidyHtml = require("../../../plugins/tidy-html");
 
 // Generates 32 different combinations
@@ -25,7 +26,10 @@ describe("PDF-to-TXT route", () => {
 	beforeAll(async () => {
 		options = await getConfig();
 
-		server = Fastify().register(accepts).register(tidyHtml);
+		server = Fastify()
+			.register(accepts)
+			.register(imageToTxt, options.tesseract)
+			.register(tidyHtml);
 		server.register(plugin, options);
 
 		await server.ready();

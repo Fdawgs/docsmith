@@ -15,6 +15,7 @@ const underPressure = require("under-pressure");
 
 // Import local decorator plugins
 const embedHtmlImages = require("./plugins/embed-html-images");
+const imageToTxt = require("./plugins/image-to-txt");
 const tidyCss = require("./plugins/tidy-css");
 const tidyHtml = require("./plugins/tidy-html");
 
@@ -75,6 +76,7 @@ async function plugin(server, config) {
 		.register(healthCheck)
 
 		.register(embedHtmlImages, config.poppler)
+		.register(imageToTxt, config.tesseract)
 		.register(tidyCss)
 		.register(tidyHtml)
 
