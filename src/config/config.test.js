@@ -44,7 +44,7 @@ describe("Configuration", () => {
 			"warn",
 			"silent",
 		]);
-		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const LOG_ROTATION_FILENAME = "./test_resources/test_log1-%DATE%.log";
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
 		const OCR_LANGUAGES = "chi_tra";
@@ -130,9 +130,12 @@ describe("Configuration", () => {
 		expect(config.poppler).toEqual(
 			expect.objectContaining({
 				binPath: POPPLER_BINARY_PATH,
-				ocrLanguages: OCR_LANGUAGES,
 				tempDirectory: expect.any(String),
 			})
+		);
+
+		expect(config.tesseract).toEqual(
+			expect.objectContaining({ languages: OCR_LANGUAGES })
 		);
 
 		expect(config.unrtf).toEqual(
@@ -159,7 +162,7 @@ describe("Configuration", () => {
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
 		const LOG_LEVEL = "";
-		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const LOG_ROTATION_FILENAME = "./test_resources/test_log2-%DATE%.log";
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
 		const OCR_LANGUAGES = "";
@@ -244,9 +247,12 @@ describe("Configuration", () => {
 		expect(config.poppler).toEqual(
 			expect.objectContaining({
 				binPath: POPPLER_BINARY_PATH,
-				ocrLanguages: "eng",
 				tempDirectory: expect.any(String),
 			})
+		);
+
+		expect(config.tesseract).toEqual(
+			expect.objectContaining({ languages: "eng" })
 		);
 
 		expect(config.unrtf).toEqual(

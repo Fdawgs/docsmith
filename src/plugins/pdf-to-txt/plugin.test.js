@@ -6,6 +6,7 @@ const isHtml = require("is-html");
 const raw = require("raw-body");
 const plugin = require(".");
 const getConfig = require("../../config");
+const imageToTxt = require("../image-to-txt");
 
 describe("PDF-to-TXT Conversion Plugin", () => {
 	let config;
@@ -15,9 +16,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		config = await getConfig();
 		config = cloneDeep(config);
 		config.poppler.tempDirectory = "./src/temp2/";
-	});
 
-	beforeEach(() => {
 		server = Fastify();
 
 		server.addContentTypeParser("application/pdf", async (req, payload) => {
@@ -25,23 +24,22 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 			return res;
 		});
 
+		server
+			.register(imageToTxt, config.tesseract)
+			.register(plugin, config.poppler);
+
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");
 			res.send(req.conversionResults);
 		});
 	});
 
-	afterAll(() => {
+	afterAll(async () => {
 		fs.rmdirSync(config.poppler.tempDirectory, { recursive: true });
-	});
-
-	afterEach(async () => {
 		await server.close();
 	});
 
 	test("Should convert PDF file to TXT", async () => {
-		server.register(plugin, config.poppler);
-
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -64,8 +62,6 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should convert PDF file to TXT using OCR", async () => {
-		server.register(plugin, config.poppler);
-
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -89,8 +85,6 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should ignore invalid `test` query string params and convert PDF file to TXT", async () => {
-		server.register(plugin, config.poppler);
-
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -115,8 +109,6 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should convert PDF file to TXT wrapped in HTML", async () => {
-		server.register(plugin, config.poppler);
-
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -140,8 +132,6 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	test("Should return HTTP status code 400 if PDF file is missing", async () => {
-		server.register(plugin, config.poppler);
-
 		const response = await server.inject({
 			method: "POST",
 			url: "/",

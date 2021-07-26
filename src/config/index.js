@@ -225,8 +225,10 @@ async function getConfig() {
 		},
 		poppler: {
 			binPath: env.POPPLER_BINARY_PATH,
-			ocrLanguages: env.OCR_LANGUAGES || "eng",
 			tempDirectory,
+		},
+		tesseract: {
+			languages: env.OCR_LANGUAGES || "eng",
 		},
 		unrtf: {
 			binPath: env.UNRTF_BINARY_PATH,

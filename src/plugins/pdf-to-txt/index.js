@@ -9,8 +9,6 @@ const path = require("path");
 const { Poppler } = require("node-poppler");
 const { v4 } = require("uuid");
 
-const imageToTxt = require("../../utils/image-to-txt");
-
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Poppler to convert Buffer or string of
@@ -119,9 +117,22 @@ async function plugin(server, options) {
 
 				const files = glob.sync(`${tempFile}*.png`);
 
-				// Send each image file generated to Tesseract in `imageToTxt` util function
+				// Pass each image file generate to Tesseract OCR
 				const results = await Promise.all(
-					files.map((file) => imageToTxt(file, config.ocrLanguages))
+					files.map(async (file) => {
+						try {
+							const {
+								data: { text },
+							} = await server.tesseract.addJob(
+								"recognize",
+								file
+							);
+
+							return Promise.resolve(text);
+						} catch (err) {
+							return Promise.reject(err);
+						}
+					})
 				);
 
 				req.conversionResults.body = results.join(" ");
@@ -182,4 +193,11 @@ async function plugin(server, options) {
 	});
 }
 
-module.exports = fp(plugin, { fastify: "3.x", name: "pdf-to-txt" });
+module.exports = fp(plugin, {
+	fastify: "3.x",
+	name: "pdf-to-txt",
+	decorators: {
+		fastify: ["tesseract"],
+	},
+	dependencies: ["image-to-txt"],
+});
