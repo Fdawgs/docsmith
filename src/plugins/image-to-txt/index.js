@@ -64,7 +64,7 @@ async function plugin(server, options) {
 	server.decorate("tesseract", scheduler);
 	server.addHook("onClose", async () => {
 		server.log.info("Terminating Tesseract OCR scheduler and workers");
-		scheduler.terminate();
+		await scheduler.terminate();
 	});
 }
 
