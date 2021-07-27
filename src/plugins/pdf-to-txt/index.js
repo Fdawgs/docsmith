@@ -17,9 +17,6 @@ const { v4 } = require("uuid");
  * @param {Function} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to Poppler binary.
- * @param {string=} options.ocrLanguages - Languages to load trained data for for OCR.
- * Multiple languages should be concatenated with a `+` i.e. `eng+chi_tra`
- * for English and Chinese Traditional languages.
  * @param {object=} options.pdfToTxtOptions - Refer to
  * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToText
  * for options.
@@ -58,7 +55,6 @@ async function plugin(server, options) {
 			// Define any default settings the plugin should have to get up and running
 			const config = {
 				binPath: undefined,
-				ocrLanguages: "eng",
 				pdfToTxtOptions: { outputEncoding: "UTF-8" },
 				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
 			};
@@ -76,8 +72,12 @@ async function plugin(server, options) {
 				query[value] = autoParse(query[value]);
 			});
 
-			// If `ocr` query string param passed then used pdfToCairo and Tesseract OCR engine
-			if (query.ocr && query.ocr === true) {
+			/**
+			 * If `ocr` query string param passed then use pdfToCairo and Tesseract OCR engine.
+			 * image-to-txt plugin adds the "tesseract" decorator to server instance,
+			 * if this is missing then OCR is not supported
+			 */
+			if (query.ocr && query.ocr === true && server.tesseract) {
 				// Prune params that pdfToCairo cannot accept
 				const pdfToCairoAcceptedParams = [
 					"cropHeight",
@@ -196,8 +196,4 @@ async function plugin(server, options) {
 module.exports = fp(plugin, {
 	fastify: "3.x",
 	name: "pdf-to-txt",
-	decorators: {
-		fastify: ["tesseract"],
-	},
-	dependencies: ["image-to-txt"],
 });

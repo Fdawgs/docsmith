@@ -47,7 +47,9 @@ describe("Configuration", () => {
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log1-%DATE%.log";
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
+		const OCR_ENABLED = false;
 		const OCR_LANGUAGES = "chi_tra";
+		const OCR_WORKERS = 1;
 		const POPPLER_BINARY_PATH = "/usr/bin";
 		const UNRTF_BINARY_PATH = "/usr/bin";
 
@@ -69,7 +71,9 @@ describe("Configuration", () => {
 			LOG_LEVEL,
 			LOG_ROTATION_FILENAME,
 			AUTH_BEARER_TOKEN_ARRAY,
+			OCR_ENABLED,
 			OCR_LANGUAGES,
+			OCR_WORKERS,
 			POPPLER_BINARY_PATH,
 			UNRTF_BINARY_PATH,
 		});
@@ -135,7 +139,11 @@ describe("Configuration", () => {
 		);
 
 		expect(config.tesseract).toEqual(
-			expect.objectContaining({ languages: OCR_LANGUAGES })
+			expect.objectContaining({
+				enabled: OCR_ENABLED,
+				languages: OCR_LANGUAGES,
+				workers: OCR_WORKERS,
+			})
 		);
 
 		expect(config.unrtf).toEqual(
@@ -152,7 +160,7 @@ describe("Configuration", () => {
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
-		const CORS_ORIGIN = false;
+		const CORS_ORIGIN = "";
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = "";
@@ -165,7 +173,9 @@ describe("Configuration", () => {
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log2-%DATE%.log";
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
+		const OCR_ENABLED = "";
 		const OCR_LANGUAGES = "";
+		const OCR_WORKERS = "";
 		const POPPLER_BINARY_PATH = "/usr/bin";
 		const UNRTF_BINARY_PATH = "/usr/bin";
 
@@ -186,7 +196,9 @@ describe("Configuration", () => {
 			LOG_LEVEL,
 			LOG_ROTATION_FILENAME,
 			AUTH_BEARER_TOKEN_ARRAY,
+			OCR_ENABLED,
 			OCR_LANGUAGES,
+			OCR_WORKERS,
 			POPPLER_BINARY_PATH,
 			UNRTF_BINARY_PATH,
 		});
@@ -228,7 +240,7 @@ describe("Configuration", () => {
 		});
 
 		expect(config.cors).toEqual({
-			origin: CORS_ORIGIN,
+			origin: false,
 		});
 
 		expect(config.processLoad).toEqual({
@@ -252,7 +264,11 @@ describe("Configuration", () => {
 		);
 
 		expect(config.tesseract).toEqual(
-			expect.objectContaining({ languages: "eng" })
+			expect.objectContaining({
+				enabled: true,
+				languages: "eng",
+				workers: expect.any(Number),
+			})
 		);
 
 		expect(config.unrtf).toEqual(
