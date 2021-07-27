@@ -1,7 +1,7 @@
 const fp = require("fastify-plugin");
 const { createScheduler, createWorker } = require("tesseract.js");
-const os = require("os");
 const path = require("path");
+const physicalCpuCount = require("physical-cpu-count");
 
 /**
  * @author Frazer Smith
@@ -15,6 +15,7 @@ const path = require("path");
 async function plugin(server, options) {
 	server.log.info("Setting up Tesseract OCR scheduler and workers");
 	const scheduler = createScheduler();
+
 	/**
 	 * Defining the cache as `readOnly` and specifying both a cache and lang path
 	 * stops Tesseract from constantly downloading new trained data from a remote
@@ -33,16 +34,18 @@ async function plugin(server, options) {
 		tessjs_create_tsv: "0",
 	};
 
-	// Procedurally create workers based on number of processors available
+	// Procedurally create workers based on number of physical CPU cores available
 	await Promise.all(
-		os.cpus().map(async () => {
-			const worker = createWorker(workerConfig);
-			await worker.load();
-			await worker.loadLanguage(options.languages);
-			await worker.initialize(options.languages);
-			await worker.setParameters(workerParams);
-			scheduler.addWorker(worker);
-		})
+		Array(physicalCpuCount)
+			.fill(0)
+			.map(async () => {
+				const worker = createWorker(workerConfig);
+				await worker.load();
+				await worker.loadLanguage(options.languages);
+				await worker.initialize(options.languages);
+				await worker.setParameters(workerParams);
+				scheduler.addWorker(worker);
+			})
 	);
 
 	server.log.info(

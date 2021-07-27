@@ -108,6 +108,7 @@
     "jsdom": "^16.6.0",
     "node-poppler": "^4.1.0",
     "node-unrtf": "^2.0.1",
+    "physical-cpu-count": "^2.0.0",
     "pino": "^6.12.0",
     "pino-pretty": "^5.1.1",
     "raw-body": "^2.4.1",
