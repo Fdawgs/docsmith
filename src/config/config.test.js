@@ -48,6 +48,7 @@ describe("Configuration", () => {
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
 		const OCR_LANGUAGES = "chi_tra";
+		const OCR_WORKERS = 1;
 		const POPPLER_BINARY_PATH = "/usr/bin";
 		const UNRTF_BINARY_PATH = "/usr/bin";
 
@@ -70,6 +71,7 @@ describe("Configuration", () => {
 			LOG_ROTATION_FILENAME,
 			AUTH_BEARER_TOKEN_ARRAY,
 			OCR_LANGUAGES,
+			OCR_WORKERS,
 			POPPLER_BINARY_PATH,
 			UNRTF_BINARY_PATH,
 		});
@@ -135,7 +137,10 @@ describe("Configuration", () => {
 		);
 
 		expect(config.tesseract).toEqual(
-			expect.objectContaining({ languages: OCR_LANGUAGES })
+			expect.objectContaining({
+				languages: OCR_LANGUAGES,
+				workers: OCR_WORKERS,
+			})
 		);
 
 		expect(config.unrtf).toEqual(
@@ -166,6 +171,7 @@ describe("Configuration", () => {
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
 		const OCR_LANGUAGES = "";
+		const OCR_WORKERS = "";
 		const POPPLER_BINARY_PATH = "/usr/bin";
 		const UNRTF_BINARY_PATH = "/usr/bin";
 
@@ -187,6 +193,7 @@ describe("Configuration", () => {
 			LOG_ROTATION_FILENAME,
 			AUTH_BEARER_TOKEN_ARRAY,
 			OCR_LANGUAGES,
+			OCR_WORKERS,
 			POPPLER_BINARY_PATH,
 			UNRTF_BINARY_PATH,
 		});
@@ -252,7 +259,10 @@ describe("Configuration", () => {
 		);
 
 		expect(config.tesseract).toEqual(
-			expect.objectContaining({ languages: "eng" })
+			expect.objectContaining({
+				languages: "eng",
+				workers: expect.any(Number),
+			})
 		);
 
 		expect(config.unrtf).toEqual(

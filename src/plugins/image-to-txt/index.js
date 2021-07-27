@@ -1,7 +1,6 @@
 const fp = require("fastify-plugin");
 const { createScheduler, createWorker } = require("tesseract.js");
 const path = require("path");
-const physicalCpuCount = require("physical-cpu-count");
 
 /**
  * @author Frazer Smith
@@ -11,6 +10,8 @@ const physicalCpuCount = require("physical-cpu-count");
  * @param {string} options.languages - Languages to load trained data for.
  * Multiple languages are concatenated with a `+` i.e. `eng+chi_tra`
  * for English and Chinese Traditional languages.
+ * @param {number} options.workers - Number of Tesseract Workers
+ * to create.
  */
 async function plugin(server, options) {
 	server.log.info("Setting up Tesseract OCR scheduler and workers");
@@ -42,9 +43,9 @@ async function plugin(server, options) {
 		tessjs_create_tsv: "0",
 	};
 
-	// Procedurally create workers based on number of physical CPU cores available
+	// Procedurally create workers based on number passed
 	await Promise.all(
-		Array(physicalCpuCount)
+		Array(options.workers)
 			.fill(0)
 			.map(async () => {
 				const worker = createWorker(workerConfig);

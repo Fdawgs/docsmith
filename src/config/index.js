@@ -5,6 +5,7 @@ const envSchema = require("env-schema");
 const S = require("fluent-json-schema");
 const fsp = require("fs").promises;
 const pino = require("pino");
+const physicalCpuCount = require("physical-cpu-count");
 const rotatingLogStream = require("file-stream-rotator");
 
 const { name, description, license, version } = require("../../package.json");
@@ -114,6 +115,7 @@ async function getConfig() {
 			.prop("LOG_ROTATION_MAX_SIZE", S.anyOf([S.string(), S.null()]))
 			.prop("AUTH_BEARER_TOKEN_ARRAY", S.anyOf([S.string(), S.null()]))
 			.prop("OCR_LANGUAGES", S.anyOf([S.string(), S.null()]))
+			.prop("OCR_WORKERS", S.anyOf([S.number(), S.null()]))
 			.prop("POPPLER_BINARY_PATH", S.anyOf([S.string(), S.null()]))
 			.prop("UNRTF_BINARY_PATH", S.anyOf([S.string(), S.null()]))
 			.required(["NODE_ENV", "SERVICE_HOST", "SERVICE_PORT"]),
@@ -229,6 +231,8 @@ async function getConfig() {
 		},
 		tesseract: {
 			languages: env.OCR_LANGUAGES || "eng",
+			// Use number of physical CPU cores available if ENV variable not specified
+			workers: env.OCR_WORKERS || physicalCpuCount,
 		},
 		unrtf: {
 			binPath: env.UNRTF_BINARY_PATH,
