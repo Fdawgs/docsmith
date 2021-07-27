@@ -76,30 +76,33 @@ async function plugin(server, config) {
 		.register(healthCheck)
 
 		.register(embedHtmlImages, config.poppler)
-		.register(imageToTxt, config.tesseract)
 		.register(tidyCss)
-		.register(tidyHtml)
+		.register(tidyHtml);
 
-		/**
-		 * Encapsulate plugins and routes into secured child context, so that swagger and
-		 * healthcheck routes do not inherit bearer token auth plugin.
-		 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
-		 */
-		.register(async (securedContext) => {
-			if (config.bearerTokenAuthKeys) {
-				securedContext.register(bearer, {
-					keys: config.bearerTokenAuthKeys,
-				});
-			}
+	if (config.tesseract.enabled === true) {
+		server.register(imageToTxt, config.tesseract);
+	}
 
-			securedContext
-				// Import and register service routes
-				.register(autoLoad, {
-					dir: path.join(__dirname, "routes"),
-					ignorePattern: /healthcheck/,
-					options: config,
-				});
-		});
+	/**
+	 * Encapsulate plugins and routes into secured child context, so that swagger and
+	 * healthcheck routes do not inherit bearer token auth plugin.
+	 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
+	 */
+	server.register(async (securedContext) => {
+		if (config.bearerTokenAuthKeys) {
+			securedContext.register(bearer, {
+				keys: config.bearerTokenAuthKeys,
+			});
+		}
+
+		securedContext
+			// Import and register service routes
+			.register(autoLoad, {
+				dir: path.join(__dirname, "routes"),
+				ignorePattern: /healthcheck/,
+				options: config,
+			});
+	});
 }
 
 module.exports = fp(plugin, { fastify: "3.x", name: "server" });

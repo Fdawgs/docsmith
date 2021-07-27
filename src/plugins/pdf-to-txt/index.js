@@ -72,8 +72,12 @@ async function plugin(server, options) {
 				query[value] = autoParse(query[value]);
 			});
 
-			// If `ocr` query string param passed then used pdfToCairo and Tesseract OCR engine
-			if (query.ocr && query.ocr === true) {
+			/**
+			 * If `ocr` query string param passed then use pdfToCairo and Tesseract OCR engine.
+			 * image-to-txt plugin adds the "tesseract" decorator to server instance,
+			 * if this is missing then OCR is not supported
+			 */
+			if (query.ocr && query.ocr === true && server.tesseract) {
 				// Prune params that pdfToCairo cannot accept
 				const pdfToCairoAcceptedParams = [
 					"cropHeight",
@@ -192,8 +196,4 @@ async function plugin(server, options) {
 module.exports = fp(plugin, {
 	fastify: "3.x",
 	name: "pdf-to-txt",
-	decorators: {
-		fastify: ["tesseract"],
-	},
-	dependencies: ["image-to-txt"],
 });

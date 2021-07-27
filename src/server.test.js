@@ -5,14 +5,16 @@ const startServer = require("./server");
 const getConfig = require("./config");
 
 describe("Server Deployment", () => {
-	describe("End-To-End - Bearer Token Disabled", () => {
+	describe("End-To-End - Bearer Token and OCR Disabled", () => {
 		let config;
 		let server;
 
 		beforeAll(async () => {
 			const AUTH_BEARER_TOKEN_ARRAY = "";
+			const OCR_ENABLED = false;
 			Object.assign(process.env, {
 				AUTH_BEARER_TOKEN_ARRAY,
+				OCR_ENABLED,
 			});
 			config = await getConfig();
 
@@ -91,7 +93,7 @@ describe("Server Deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 2,
+						lastPageToConvert: 1,
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -140,7 +142,7 @@ describe("Server Deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 2,
+						lastPageToConvert: 1,
 					},
 					headers: {
 						accept: "application/javascript",
@@ -303,15 +305,17 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("End-To-End - Bearer Token Enabled", () => {
+	describe("End-To-End - Bearer Token and OCR Enabled", () => {
 		let config;
 		let server;
 
 		beforeAll(async () => {
 			const AUTH_BEARER_TOKEN_ARRAY =
 				'[{"service": "test", "value": "testtoken"}]';
+			const OCR_ENABLED = true;
 			Object.assign(process.env, {
 				AUTH_BEARER_TOKEN_ARRAY,
+				OCR_ENABLED,
 			});
 
 			config = await getConfig();
@@ -391,7 +395,7 @@ describe("Server Deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 2,
+						lastPageToConvert: 1,
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -441,7 +445,7 @@ describe("Server Deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 2,
+						lastPageToConvert: 1,
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -492,7 +496,133 @@ describe("Server Deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 2,
+						lastPageToConvert: 1,
+					},
+					headers: {
+						accept: "application/javascript",
+						authorization: "Bearer testtoken",
+						"content-type": "application/pdf",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
+		});
+
+		describe("/pdf/txt Route", () => {
+			test("Should return PDF file converted to TXT, with expected headers set", async () => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/pdf/txt",
+					body: fs.readFileSync(
+						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+					),
+					query: {
+						lastPageToConvert: 1,
+						ocr: true,
+					},
+					headers: {
+						accept: "application/json, text/plain",
+						authorization: "Bearer testtoken",
+						"content-type": "application/pdf",
+					},
+				});
+
+				expect(response.headers).toEqual(
+					expect.objectContaining({
+						"content-security-policy":
+							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+						"x-dns-prefetch-control": "off",
+						"expect-ct": "max-age=0",
+						"x-frame-options": "SAMEORIGIN",
+						"strict-transport-security":
+							"max-age=31536000; includeSubDomains",
+						"x-download-options": "noopen",
+						"x-content-type-options": "nosniff",
+						"x-permitted-cross-domain-policies": "none",
+						"referrer-policy": "no-referrer",
+						"x-xss-protection": "0",
+						"surrogate-control": "no-store",
+						"cache-control": "no-store, max-age=0, must-revalidate",
+						pragma: "no-cache",
+						expires: "0",
+						"permissions-policy": "interest-cohort=()",
+						vary: "Origin, accept-encoding",
+						"x-ratelimit-limit": expect.any(Number),
+						"x-ratelimit-remaining": expect.any(Number),
+						"x-ratelimit-reset": expect.any(Number),
+						"content-type": "text/plain; charset=UTF-8",
+						"content-length": expect.any(String),
+						date: expect.any(String),
+						connection: "keep-alive",
+					})
+				);
+				expect(isHtml(response.payload)).toEqual(false);
+				expect(response.statusCode).toEqual(200);
+			});
+
+			test("Should return HTTP status code 401 if auth bearer token is missing", async () => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/pdf/txt",
+					body: fs.readFileSync(
+						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+					),
+					query: {
+						lastPageToConvert: 1,
+						ocr: true,
+					},
+					headers: {
+						accept: "application/json, text/plain",
+						"content-type": "application/pdf",
+					},
+				});
+
+				expect(response.headers).toEqual(
+					expect.objectContaining({
+						"content-security-policy":
+							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+						"x-dns-prefetch-control": "off",
+						"expect-ct": "max-age=0",
+						"x-frame-options": "SAMEORIGIN",
+						"strict-transport-security":
+							"max-age=31536000; includeSubDomains",
+						"x-download-options": "noopen",
+						"x-content-type-options": "nosniff",
+						"x-permitted-cross-domain-policies": "none",
+						"referrer-policy": "no-referrer",
+						"x-xss-protection": "0",
+						"surrogate-control": "no-store",
+						"cache-control": "no-store, max-age=0, must-revalidate",
+						pragma: "no-cache",
+						expires: "0",
+						"permissions-policy": "interest-cohort=()",
+						vary: "accept-encoding",
+						"content-type": "application/json; charset=utf-8",
+						"content-length": expect.any(String),
+						date: expect.any(String),
+						connection: "keep-alive",
+					})
+				);
+
+				expect(JSON.parse(response.payload)).toEqual(
+					expect.objectContaining({
+						error: "missing authorization header",
+					})
+				);
+				expect(response.statusCode).toEqual(401);
+			});
+
+			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/pdf/txt",
+					body: fs.readFileSync(
+						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+					),
+					query: {
+						lastPageToConvert: 1,
+						ocr: true,
 					},
 					headers: {
 						accept: "application/javascript",

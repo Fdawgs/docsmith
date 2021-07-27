@@ -18,10 +18,10 @@ const { name, description, license, version } = require("../../package.json");
  * @returns {boolean|Array|string} CORS parameter.
  */
 function parseCorsParameter(param) {
-	if (param.trim() === "true") {
+	if (param.toLowerCase().trim() === "true") {
 		return true;
 	}
-	if (param.trim() === "false") {
+	if (param.toLowerCase().trim() === "false") {
 		return false;
 	}
 	if (param.includes(",")) {
@@ -118,7 +118,16 @@ async function getConfig() {
 			.prop("LOG_ROTATION_MAX_LOGS", S.anyOf([S.string(), S.null()]))
 			.prop("LOG_ROTATION_MAX_SIZE", S.anyOf([S.string(), S.null()]))
 			.prop("AUTH_BEARER_TOKEN_ARRAY", S.anyOf([S.string(), S.null()]))
-			.prop("OCR_LANGUAGES", S.anyOf([S.string(), S.null()]))
+			.prop(
+				"OCR_ENABLED",
+				S.anyOf([S.string().enum(["true", "false"]), S.null()]).default(
+					"true"
+				)
+			)
+			.prop(
+				"OCR_LANGUAGES",
+				S.anyOf([S.string(), S.null()]).default("eng")
+			)
 			.prop("OCR_WORKERS", S.anyOf([S.number(), S.null()]))
 			.prop("POPPLER_BINARY_PATH", S.anyOf([S.string(), S.null()]))
 			.prop("UNRTF_BINARY_PATH", S.anyOf([S.string(), S.null()]))
@@ -234,6 +243,7 @@ async function getConfig() {
 			tempDirectory,
 		},
 		tesseract: {
+			enabled: true,
 			languages: env.OCR_LANGUAGES || "eng",
 			// Use number of physical CPU cores available if ENV variable not specified
 			workers: env.OCR_WORKERS || physicalCpuCount,
@@ -289,7 +299,11 @@ async function getConfig() {
 		};
 	}
 
-	if (String(env.CORS_ALLOW_CREDENTIALS) === "true") {
+	if (String(env.OCR_ENABLED).toLowerCase().trim() === "false") {
+		config.tesseract.enabled = false;
+	}
+
+	if (String(env.CORS_ALLOW_CREDENTIALS).toLowerCase().trim() === "true") {
 		config.cors.credentials = true;
 	}
 	if (env.CORS_ALLOWED_HEADERS) {
