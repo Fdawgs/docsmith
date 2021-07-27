@@ -25,7 +25,15 @@ async function plugin(server, options) {
 	const workerConfig = {
 		cacheMethod: "readOnly",
 		cachePath: path.join(__dirname, "../../.."),
-		langPath: path.join(__dirname, "../../..", "ocr_lang_data"),
+		corePath: path.join(
+			__dirname,
+			"../../../node_modules/tesseract.js-core/tesseract-core.wasm.js"
+		),
+		langPath: path.join(__dirname, "../../../ocr_lang_data"),
+		workerPath: path.join(
+			__dirname,
+			"../../../node_modules/tesseract.js/src/worker-script/node/index.js"
+		),
 	};
 
 	// Disable HOCR and TSV in output, not needed
@@ -49,7 +57,7 @@ async function plugin(server, options) {
 	);
 
 	server.log.info(
-		`${scheduler.getNumWorkers()} Tesseract OCR workers waiting`
+		`${scheduler.getNumWorkers()} Tesseract OCR workers deployed`
 	);
 
 	server.decorate("tesseract", scheduler);
