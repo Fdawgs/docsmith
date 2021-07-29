@@ -22,7 +22,7 @@ const { v4 } = require("uuid");
  * @param {object=} options.rtfToHtmlOptions - Refer to
  * https://github.com/Fdawgs/node-unrtf/blob/master/API.md
  * for options.
- * @param {string=} options.tempDirectory - directory for temporarily storing
+ * @param {string=} options.tempDirectory - Directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {

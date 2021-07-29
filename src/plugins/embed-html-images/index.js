@@ -10,7 +10,7 @@ const path = require("path");
  * after encoding with Base64.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Plugin config values.
- * @param {string} options.tempDirectory - directory for temporarily storing
+ * @param {string} options.tempDirectory - Directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {

@@ -24,9 +24,9 @@ const healthCheck = require("./routes/healthcheck");
 
 /**
  * @author Frazer Smith
- * @description Build Fastify instance
+ * @description Build Fastify instance.
  * @param {Function} server - Fastify instance.
- * @param {object} config - Fastify configuration values
+ * @param {object} config - Fastify configuration values.
  */
 async function plugin(server, config) {
 	// Register plugins

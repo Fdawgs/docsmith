@@ -5,7 +5,7 @@ const getConfig = require("./config");
 
 /**
  * @author Frazer Smith
- * @description Start server
+ * @description Start server.
  */
 const main = async () => {
 	process.on("unhandledRejection", (err) => {
