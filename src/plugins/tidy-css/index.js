@@ -14,7 +14,7 @@ async function plugin(server) {
 	 * @param {string=} options.fonts - Font to replace document's original font(s), can be
 	 * single font or comma seperated list i.e `Arial, Sans Serif`.
 	 * @param {string=} options.backgroundColor - Color to replace document's original
-	 * background color.
+	 * background color with.
 	 * @returns {string} HTML with tidied CSS.
 	 */
 	function tidyCss(html, options = {}) {
@@ -45,7 +45,7 @@ async function plugin(server) {
 					styleRule.style.setProperty("font-family", newFonts);
 				}
 
-				// Stop pages overrunning the next, leading to overlapped text
+				// Stop pages overrunning the next, leading to overlapping text
 				if (styleRule.selectorText.substring(0, 3) === "div") {
 					styleRule.style.setProperty("page-break-inside", "avoid");
 
