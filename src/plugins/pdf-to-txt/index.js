@@ -77,7 +77,7 @@ async function plugin(server, options) {
 			 * image-to-txt plugin adds the "tesseract" decorator to server instance,
 			 * if this is missing then OCR is not supported
 			 */
-			if (query.ocr && query.ocr === true && server.tesseract) {
+			if (query?.ocr === true && server.tesseract) {
 				// Prune params that pdfToCairo cannot accept
 				const pdfToCairoAcceptedParams = [
 					"cropHeight",
