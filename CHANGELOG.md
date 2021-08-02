@@ -2,6 +2,63 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0](https://www.github.com/Fdawgs/docsmith/compare/v2.4.3...v3.0.0) (2021-08-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* minimum required version of node increased from 12 to 14 to allow for new ECMAScript syntax to be used
+* **routes/pdf-to-txt:** additional trained data must now be provided for OCR before deployment
+
+### Features
+
+* **config:** add ability to disable ocr functionality ([7ba9b43](https://www.github.com/Fdawgs/docsmith/commit/7ba9b43796135a8f0b6ef25492836ce3f6f3fde4))
+* **config:** add ability to specify number of tesseract ocr workers ([8a13c93](https://www.github.com/Fdawgs/docsmith/commit/8a13c93aae489f9914187e5829e8e61f93808a63))
+
+
+### Bug Fixes
+
+* **config:** fall back to default if `CORS_ORIGIN` env variable not set ([63431f1](https://www.github.com/Fdawgs/docsmith/commit/63431f1cc0dd7e0334d2a33b9cd2818880473c32))
+* **docker-compose:** wrap variables in quotes ([05afefe](https://www.github.com/Fdawgs/docsmith/commit/05afefe94b5a1fefc16f636e8cbe7cf828a352bb))
+* **docker:** downgrade from buster to stretch; stop corrupted html gen ([c67663a](https://www.github.com/Fdawgs/docsmith/commit/c67663a3fb758ecb00b8fa16b022ba0d5b07b5cd))
+* **plugins/image-to-txt:** await scheduler termination on close ([f59732a](https://www.github.com/Fdawgs/docsmith/commit/f59732a59b28a816d71b56ea59671d5bf9769345))
+* **routes/pdf-to-txt:** use local trained data; stop cache corruption ([7a3d128](https://www.github.com/Fdawgs/docsmith/commit/7a3d12824fb93165abd2335f83b12d94b0946113))
+* **routes/pdf/txt:** remove ocr query string param if ocr disabled ([#332](https://www.github.com/Fdawgs/docsmith/issues/332)) ([6b512c1](https://www.github.com/Fdawgs/docsmith/commit/6b512c11f66fbda73d2b4f1c50e6cb25ae3f86ca))
+* **server:** ensure doc route also inherits plugins ([#310](https://www.github.com/Fdawgs/docsmith/issues/310)) ([76826b1](https://www.github.com/Fdawgs/docsmith/commit/76826b1ef47531e483a5958dae14780f07f331b1))
+
+
+### Improvements
+
+* **plugins/image-to-txt:** convert req-level tesseract util to server-level plugin ([#311](https://www.github.com/Fdawgs/docsmith/issues/311)) ([52e9993](https://www.github.com/Fdawgs/docsmith/commit/52e9993875225756e4bc0c6eeb51452d46949489))
+* **plugins/image-to-txt:** create workers on physical core count ([f04109d](https://www.github.com/Fdawgs/docsmith/commit/f04109d6d2f422b6be4e1010447a7d590f12c5f0))
+* **plugins/image-to-txt:** use local scripts over cdn downloads ([870ee3c](https://www.github.com/Fdawgs/docsmith/commit/870ee3c01e9fe917e70da575699d4b586925cfcd))
+* **plugins/pdf-to-txt:** increase ppi to 300 to improve ocr accuracy ([99e9e24](https://www.github.com/Fdawgs/docsmith/commit/99e9e2458dfefb3382a09179b84cfc5e70877ce4))
+* **plugins/pdf-to-txt:** use optional chaining over multiple checks ([6bc7ac5](https://www.github.com/Fdawgs/docsmith/commit/6bc7ac5a447447f1572f13101e4041acb4d86158))
+
+
+### Miscellaneous
+
+* **dockerfile:** indent script ([0d951e7](https://www.github.com/Fdawgs/docsmith/commit/0d951e78b335a749eca3dc567f52377310e0466b))
+* **eslintrc:** support latest ecmascript features ([cf90012](https://www.github.com/Fdawgs/docsmith/commit/cf9001270a89fefc1c238c16bbcdc30954a3a42b))
+* **eslint:** use ecmascript 2020 globals ([#329](https://www.github.com/Fdawgs/docsmith/issues/329)) ([0a48280](https://www.github.com/Fdawgs/docsmith/commit/0a48280c9c96b71f992e64b8544293d397f61be7))
+* grammar fixes for jsdoc tags ([#327](https://www.github.com/Fdawgs/docsmith/issues/327)) ([c07dfaa](https://www.github.com/Fdawgs/docsmith/commit/c07dfaa03e1c6a35f8742cecfe0785eed6a1730c))
+* increase minimum required version of node from 12 to 14 ([931fa62](https://www.github.com/Fdawgs/docsmith/commit/931fa6201bae80624ccf388cbc80b12b0047952a))
+* **plugins/pdf-to-txt:** remove redundant jsdoc param tag ([74a799d](https://www.github.com/Fdawgs/docsmith/commit/74a799dba344970a4c55c9f0e62d3cccd96091fb))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 7.31.0 to 7.32.0 ([f264f06](https://www.github.com/Fdawgs/docsmith/commit/f264f068bedf36d82b63935a8c1d0efe5c84ce56))
+* **deps-dev:** bump eslint-plugin-jest from 24.3.6 to 24.4.0 ([#315](https://www.github.com/Fdawgs/docsmith/issues/315)) ([cf791e7](https://www.github.com/Fdawgs/docsmith/commit/cf791e7491f244f42f1bb9ae06dfda83212bd48d))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.4.5 to 36.0.6 ([83c1ca5](https://www.github.com/Fdawgs/docsmith/commit/83c1ca59a4f03ed1a69a2370b78ca2ebd2d23340))
+* **deps:** bump actions/setup-node from 2.2.0 to 2.3.0 ([#314](https://www.github.com/Fdawgs/docsmith/issues/314)) ([a8bbda5](https://www.github.com/Fdawgs/docsmith/commit/a8bbda595101fbaa632c64b23f3d3d2d924efe74))
+* **deps:** bump dependencies ([#325](https://www.github.com/Fdawgs/docsmith/issues/325)) ([e383c7d](https://www.github.com/Fdawgs/docsmith/commit/e383c7d4e6c00f50c772e267f5164c05415d965a))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([#326](https://www.github.com/Fdawgs/docsmith/issues/326)) ([7bc9fad](https://www.github.com/Fdawgs/docsmith/commit/7bc9fad002cac9170577735b962de078e6e7e21e))
+* **deps:** bump jsdom from 16.6.0 to 16.7.0 ([84bc485](https://www.github.com/Fdawgs/docsmith/commit/84bc485ab5264f7b9778fa5b9a281722ccd4b38c))
+* **deps:** bump node-poppler from 4.1.0 to 4.1.1 ([0259049](https://www.github.com/Fdawgs/docsmith/commit/0259049d296978c7769e91d0d2b8ca82d2bdd6d7))
+* **deps:** bump pino from 6.12.0 to 6.13.0 ([5b6a85e](https://www.github.com/Fdawgs/docsmith/commit/5b6a85e064aa25b7960fa8e21ef0ab769e8ff99f))
+* **deps:** bump pino-pretty from 5.1.1 to 5.1.2 ([512a196](https://www.github.com/Fdawgs/docsmith/commit/512a196303fbf9c542431880f1c5800e627e12f7))
+
 ### [2.4.3](https://www.github.com/Fdawgs/docsmith/compare/v2.4.2...v2.4.3) (2021-07-19)
 
 
