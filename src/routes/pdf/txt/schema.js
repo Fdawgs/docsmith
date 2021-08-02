@@ -124,7 +124,13 @@ const pdfToTxtPostSchema = {
 		.prop(
 			"userPassword",
 			S.string().description("User password (for encrypted files)")
-		),
+		)
+		/**
+		 * Return all schema values as JSON object rather than Fluent Schema Object.
+		 * Allows for ocr param to be removed if needed in `index.js` before schema is
+		 * passed to `route()`.
+		 */
+		.valueOf(),
 	response: {
 		200: S.string(),
 	},

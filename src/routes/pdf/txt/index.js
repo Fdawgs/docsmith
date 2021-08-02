@@ -20,6 +20,10 @@ async function route(server, options) {
 		pdfToTxtPostSchema.security = [{ bearerToken: [] }];
 	}
 
+	if (options.tesseract.enabled !== true) {
+		delete pdfToTxtPostSchema.query.properties.ocr;
+	}
+
 	server.addHook("onRequest", async (req, res) => {
 		if (
 			// Catch unsupported Accept header media types
