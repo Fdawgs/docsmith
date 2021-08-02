@@ -14,10 +14,16 @@ const { pdfToTxtPostSchema } = require("./schema");
  * @param {object} options - Route config values.
  * @param {object} options.cors - CORS settings.
  * @param {object} options.poppler - PDF-to-TXT plugin settings.
+ * @param {object} options.tesseract - Tesseract OCR / Image-to-TXT plugin settings.
+ * @param {boolean} options.tesseract.enabled - Indicator if Tesseract OCR is enabled for server.
  */
 async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {
 		pdfToTxtPostSchema.security = [{ bearerToken: [] }];
+	}
+
+	if (options.tesseract.enabled !== true) {
+		delete pdfToTxtPostSchema.query.properties.ocr;
 	}
 
 	server.addHook("onRequest", async (req, res) => {
