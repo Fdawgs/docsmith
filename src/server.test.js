@@ -4,6 +4,62 @@ const isHtml = require("is-html");
 const startServer = require("./server");
 const getConfig = require("./config");
 
+const expResHeaders = {
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+	"x-dns-prefetch-control": "off",
+	"expect-ct": "max-age=0",
+	"x-frame-options": "SAMEORIGIN",
+	"strict-transport-security": "max-age=31536000; includeSubDomains",
+	"x-download-options": "noopen",
+	"x-content-type-options": "nosniff",
+	"x-permitted-cross-domain-policies": "none",
+	"referrer-policy": "no-referrer",
+	"x-xss-protection": "0",
+	"surrogate-control": "no-store",
+	"cache-control": "no-store, max-age=0, must-revalidate",
+	pragma: "no-cache",
+	expires: "0",
+	"permissions-policy": "interest-cohort=()",
+	vary: "Origin, accept-encoding",
+	"x-ratelimit-limit": expect.any(Number),
+	"x-ratelimit-remaining": expect.any(Number),
+	"x-ratelimit-reset": expect.any(Number),
+	"content-type": expect.stringContaining("text/plain"),
+	"content-length": expect.any(String),
+	date: expect.any(String),
+	connection: "keep-alive",
+};
+
+const expResHeadersHtml = {
+	...expResHeaders,
+	...{ "content-type": expect.stringContaining("text/html") },
+};
+
+const expectResHeadersClientError = {
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+	"x-dns-prefetch-control": "off",
+	"expect-ct": "max-age=0",
+	"x-frame-options": "SAMEORIGIN",
+	"strict-transport-security": "max-age=31536000; includeSubDomains",
+	"x-download-options": "noopen",
+	"x-content-type-options": "nosniff",
+	"x-permitted-cross-domain-policies": "none",
+	"referrer-policy": "no-referrer",
+	"x-xss-protection": "0",
+	"surrogate-control": "no-store",
+	"cache-control": "no-store, max-age=0, must-revalidate",
+	pragma: "no-cache",
+	expires: "0",
+	"permissions-policy": "interest-cohort=()",
+	vary: "accept-encoding",
+	"content-type": "application/json; charset=utf-8",
+	"content-length": expect.any(String),
+	date: expect.any(String),
+	connection: "keep-alive",
+};
+
 describe("Server Deployment", () => {
 	describe("End-To-End - Bearer Token and OCR Disabled", () => {
 		let config;
@@ -39,33 +95,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "accept-encoding",
-						"x-ratelimit-limit": expect.any(Number),
-						"x-ratelimit-remaining": expect.any(Number),
-						"x-ratelimit-reset": expect.any(Number),
-						"content-type": "text/plain; charset=utf-8",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expResHeaders)
 				);
 				expect(response.statusCode).toEqual(200);
 				expect(response.payload).toEqual("ok");
@@ -80,6 +110,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.headers).toEqual(
+					expect.objectContaining(expectResHeadersClientError)
+				);
 				expect(response.statusCode).toEqual(406);
 			});
 		});
@@ -100,33 +133,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "Origin, accept-encoding",
-						"x-ratelimit-limit": expect.any(Number),
-						"x-ratelimit-remaining": expect.any(Number),
-						"x-ratelimit-reset": expect.any(Number),
-						"content-type": "text/plain; charset=utf-8",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expResHeaders)
 				);
 				expect(isHtml(response.payload)).toEqual(false);
 				expect(response.statusCode).toEqual(200);
@@ -151,33 +158,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "Origin, accept-encoding",
-						"x-ratelimit-limit": expect.any(Number),
-						"x-ratelimit-remaining": expect.any(Number),
-						"x-ratelimit-reset": expect.any(Number),
-						"content-type": "text/html; charset=UTF-8",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expResHeadersHtml)
 				);
 				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.statusCode).toEqual(200);
@@ -199,6 +180,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.headers).toEqual(
+					expect.objectContaining(expectResHeadersClientError)
+				);
 				expect(response.statusCode).toEqual(406);
 			});
 		});
@@ -221,33 +205,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "Origin, accept-encoding",
-						"x-ratelimit-limit": expect.any(Number),
-						"x-ratelimit-remaining": expect.any(Number),
-						"x-ratelimit-reset": expect.any(Number),
-						"content-type": "text/plain; charset=UTF-8",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expResHeaders)
 				);
 				expect(response.payload).toEqual(
 					expect.stringContaining("The NHS Constitution")
@@ -272,33 +230,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "Origin, accept-encoding",
-						"x-ratelimit-limit": expect.any(Number),
-						"x-ratelimit-remaining": expect.any(Number),
-						"x-ratelimit-reset": expect.any(Number),
-						"content-type": "text/html",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expResHeadersHtml)
 				);
 				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.statusCode).toEqual(200);
@@ -320,33 +252,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "Origin, accept-encoding",
-						"x-ratelimit-limit": expect.any(Number),
-						"x-ratelimit-remaining": expect.any(Number),
-						"x-ratelimit-reset": expect.any(Number),
-						"content-type": "text/plain",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expResHeaders)
 				);
 				expect(isHtml(response.payload)).toEqual(false);
 				expect(response.statusCode).toEqual(200);
@@ -390,33 +296,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "accept-encoding",
-						"x-ratelimit-limit": expect.any(Number),
-						"x-ratelimit-remaining": expect.any(Number),
-						"x-ratelimit-reset": expect.any(Number),
-						"content-type": "text/plain; charset=utf-8",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expResHeaders)
 				);
 				expect(response.statusCode).toEqual(200);
 				expect(response.payload).toEqual("ok");
@@ -431,6 +311,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.headers).toEqual(
+					expect.objectContaining(expectResHeadersClientError)
+				);
 				expect(response.statusCode).toEqual(406);
 			});
 		});
@@ -454,33 +337,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "Origin, accept-encoding",
-						"x-ratelimit-limit": expect.any(Number),
-						"x-ratelimit-remaining": expect.any(Number),
-						"x-ratelimit-reset": expect.any(Number),
-						"content-type": "text/html; charset=UTF-8",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expResHeadersHtml)
 				);
 				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.statusCode).toEqual(200);
@@ -503,32 +360,8 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "accept-encoding",
-						"content-type": "application/json; charset=utf-8",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expectResHeadersClientError)
 				);
-
 				expect(JSON.parse(response.payload)).toEqual(
 					expect.objectContaining({
 						error: "missing authorization header",
@@ -554,6 +387,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.headers).toEqual(
+					expect.objectContaining(expectResHeadersClientError)
+				);
 				expect(response.statusCode).toEqual(406);
 			});
 		});
@@ -578,33 +414,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "Origin, accept-encoding",
-						"x-ratelimit-limit": expect.any(Number),
-						"x-ratelimit-remaining": expect.any(Number),
-						"x-ratelimit-reset": expect.any(Number),
-						"content-type": "text/plain; charset=UTF-8",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expResHeaders)
 				);
 				expect(isHtml(response.payload)).toEqual(false);
 				expect(response.statusCode).toEqual(200);
@@ -628,32 +438,8 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining({
-						"content-security-policy":
-							"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-						"x-dns-prefetch-control": "off",
-						"expect-ct": "max-age=0",
-						"x-frame-options": "SAMEORIGIN",
-						"strict-transport-security":
-							"max-age=31536000; includeSubDomains",
-						"x-download-options": "noopen",
-						"x-content-type-options": "nosniff",
-						"x-permitted-cross-domain-policies": "none",
-						"referrer-policy": "no-referrer",
-						"x-xss-protection": "0",
-						"surrogate-control": "no-store",
-						"cache-control": "no-store, max-age=0, must-revalidate",
-						pragma: "no-cache",
-						expires: "0",
-						"permissions-policy": "interest-cohort=()",
-						vary: "accept-encoding",
-						"content-type": "application/json; charset=utf-8",
-						"content-length": expect.any(String),
-						date: expect.any(String),
-						connection: "keep-alive",
-					})
+					expect.objectContaining(expectResHeadersClientError)
 				);
-
 				expect(JSON.parse(response.payload)).toEqual(
 					expect.objectContaining({
 						error: "missing authorization header",
@@ -680,6 +466,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.headers).toEqual(
+					expect.objectContaining(expectResHeadersClientError)
+				);
 				expect(response.statusCode).toEqual(406);
 			});
 		});
