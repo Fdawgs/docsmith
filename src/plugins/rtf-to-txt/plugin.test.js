@@ -36,7 +36,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 		await server.close();
 	});
 
-	test("Should convert RTF file to HTML and place in specified directory", async () => {
+	test("Should convert RTF file to TXT and place in specified directory", async () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
