@@ -205,6 +205,11 @@ async function getConfig() {
 				components: {},
 				tags: [
 					{
+						name: "DOCX",
+						description:
+							"Endpoints used for the conversion of DOCX documents",
+					},
+					{
 						name: "PDF",
 						description:
 							"Endpoints used for the conversion of PDF documents",
