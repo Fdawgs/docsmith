@@ -16,6 +16,10 @@ const docxToHtmlPostSchema = {
 		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 	],
 	produces: ["text/html"],
+	query: S.object().prop(
+		"removeAlt",
+		S.boolean().description("Remove the alt attribute from image tags")
+	),
 	response: {
 		200: S.string(),
 	},

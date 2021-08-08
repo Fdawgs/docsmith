@@ -66,7 +66,9 @@ async function route(server, options) {
 		url: "/",
 		schema: docxToHtmlPostSchema,
 		async handler(req, res) {
-			const result = await server.tidyHtml(req.conversionResults.body);
+			const result = await server.tidyHtml(req.conversionResults.body, {
+				removeAlt: req.query.removeAlt,
+			});
 
 			res.send(result);
 		},

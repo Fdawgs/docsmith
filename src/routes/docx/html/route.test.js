@@ -31,6 +31,9 @@ describe("DOCX-to-HTML route", () => {
 			body: fs.readFileSync(
 				"./test_resources/test_files/valid_docx.docx"
 			),
+			query: {
+				removeAlt: true,
+			},
 			headers: {
 				accept: "application/json, text/html",
 				"content-type":
