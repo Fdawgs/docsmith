@@ -143,7 +143,7 @@ async function plugin(server, options) {
 
 			res.header(
 				"content-type",
-				`text/html; charset=${config.pdfToHtmlOptions.outputEncoding}`
+				`text/html; charset=${config.pdfToHtmlOptions.outputEncoding.toLowerCase()}`
 			);
 		} catch (err) {
 			server.log.error(err);

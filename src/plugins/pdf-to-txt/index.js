@@ -184,7 +184,7 @@ async function plugin(server, options) {
 			}
 			res.header(
 				"content-type",
-				`${contentType}; charset=${config.pdfToTxtOptions.outputEncoding}`
+				`${contentType}; charset=${config.pdfToTxtOptions.outputEncoding.toLowerCase()}`
 			);
 		} catch (err) {
 			server.log.error(err);
