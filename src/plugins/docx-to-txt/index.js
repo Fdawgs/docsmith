@@ -4,9 +4,9 @@ const mammoth = require("mammoth");
 
 /**
  * @author Frazer Smith
- * @description Pre-handler plugin that uses Mammoth to convert Buffer or string of
+ * @description Pre-handler plugin that uses Mammoth to convert Buffer containing
  * DOCX file in `req.body` to TXT.
- * `req` object is decorated with `conversionResults.body` holding converted document.
+ * `req` object is decorated with `conversionResults.body` holding the converted document.
  * @param {Function} server - Fastify instance.
  */
 async function plugin(server) {

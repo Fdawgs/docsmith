@@ -14,10 +14,10 @@ const { v4 } = require("uuid");
 
 /**
  * @author Frazer Smith
- * @description Pre-handler plugin that uses Poppler to convert Buffer or string of
+ * @description Pre-handler plugin that uses Poppler to convert Buffer containing
  * PDF file in `req.body` to HTML and places HTML file in a temporary directory.
  * `req` object is decorated with `conversionResults` object detailing document
- * location, contents etc.
+ * location and contents.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to Poppler binary.

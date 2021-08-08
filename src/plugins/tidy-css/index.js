@@ -45,7 +45,7 @@ async function plugin(server) {
 					styleRule.style.setProperty("font-family", newFonts);
 				}
 
-				// Stop pages overrunning the next, leading to overlapping text
+				// Stop pages overrunning the next page, leading to overlapping text
 				if (styleRule.selectorText.substring(0, 3) === "div") {
 					styleRule.style.setProperty("page-break-inside", "avoid");
 
