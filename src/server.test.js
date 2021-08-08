@@ -117,6 +117,29 @@ describe("Server Deployment", () => {
 			});
 		});
 
+		describe("/docx/html Route", () => {
+			test("Should return DOCX file converted to HTML, with expected headers set", async () => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/docx/html",
+					body: fs.readFileSync(
+						"./test_resources/test_files/valid_docx.docx"
+					),
+					headers: {
+						accept: "application/json, text/html",
+						"content-type":
+							"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+					},
+				});
+
+				expect(response.headers).toEqual(
+					expect.objectContaining(expResHeadersHtml)
+				);
+				expect(isHtml(response.payload)).toEqual(true);
+				expect(response.statusCode).toEqual(200);
+			});
+		});
+
 		describe("/docx/txt Route", () => {
 			test("Should return DOCX file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
