@@ -53,7 +53,7 @@ describe("Tidy-CSS Plugin", () => {
 
 	test("Should tidy HTML and set language", async () => {
 		server.post("/", async (req, res) => {
-			res.send(await server.tidyHtml(req.body, "fr"));
+			res.send(await server.tidyHtml(req.body, { language: "fr" }));
 		});
 		server.register(plugin);
 

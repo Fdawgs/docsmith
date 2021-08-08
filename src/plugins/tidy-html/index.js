@@ -14,17 +14,18 @@ const tidyP = util.promisify(tidy);
 async function plugin(server) {
 	/**
 	 * @param {string} html - Valid HTML.
-	 * @param {string=} language - Set `lang` and `xml:lang` attributes of html tag.
+	 * @param {object=} options - Function config values.
+	 * @param {string=} options.language - Set `lang` and `xml:lang` attributes of html tag.
 	 * Defaults to `en` if not set.
 	 * @returns {string} Tidied HTML.
 	 */
-	async function tidyHtml(html, language) {
+	async function tidyHtml(html, options) {
 		const dom = new JSDOM(html);
 
 		// Set document language
 		const innerHtml = dom.window.document.querySelector("html");
-		innerHtml.setAttribute("lang", language || "en");
-		innerHtml.setAttribute("xml:lang", language || "en");
+		innerHtml.setAttribute("lang", options?.language || "en");
+		innerHtml.setAttribute("xml:lang", options?.language || "en");
 		const parsedHtml = dom.serialize();
 
 		/**
