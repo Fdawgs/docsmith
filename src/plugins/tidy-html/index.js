@@ -14,9 +14,12 @@ const tidyP = util.promisify(tidy);
 async function plugin(server) {
 	/**
 	 * @param {string} html - Valid HTML.
-	 * @param {object=} options - Function config values.
+	 * @param {object} options - Function config values.
 	 * @param {string=} options.language - Set `lang` and `xml:lang` attributes of html tag.
 	 * Defaults to `en` if not set.
+	 * @param {boolean=} options.removeAlt - Removes alt attribute from img tags if set to `true`.
+	 * Useful for sending to clinical systems where img tags are stripped from received documents
+	 * (i.e. TPP's SystmOne).
 	 * @returns {string} Tidied HTML.
 	 */
 	async function tidyHtml(html, options) {
@@ -26,6 +29,15 @@ async function plugin(server) {
 		const innerHtml = dom.window.document.querySelector("html");
 		innerHtml.setAttribute("lang", options?.language || "en");
 		innerHtml.setAttribute("xml:lang", options?.language || "en");
+
+		// Remove alt attribute from img tags
+		const images = dom.window.document.querySelectorAll("img");
+		images.forEach((element) => {
+			if (options?.removeAlt === true) {
+				element.setAttribute("alt", "");
+			}
+		});
+
 		const parsedHtml = dom.serialize();
 
 		/**

@@ -55,34 +55,6 @@ describe("Embed-HTML-Images Plugin", () => {
 		expect(isHtml(response.payload)).toEqual(true);
 	});
 
-	test("Should embed images into HTML and remove alt attribute from img tags", async () => {
-		const altConfig = cloneDeep(config);
-		altConfig.poppler.tempDirectory = "./test_resources/test_files/";
-		server.post("/", (req, res) => {
-			res.send(server.embedHtmlImages(req.body, true));
-		});
-		server.register(plugin, altConfig.poppler);
-
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: fs.readFileSync(
-				"./test_resources/test_files/valid_bullet_issues_html.html",
-				{ encoding: "UTF-8" }
-			),
-			headers: {
-				"content-type": "text/html",
-			},
-		});
-
-		expect(
-			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
-		).toBeNull();
-		expect(/alt=""/gm.exec(response.payload)).not.toBeNull();
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
-	});
-
 	test("Should embed images into HTML and add trailing slash if missing from directory", async () => {
 		const altConfig = cloneDeep(config);
 		altConfig.poppler.tempDirectory = "./test_resources/test_files";
@@ -112,7 +84,7 @@ describe("Embed-HTML-Images Plugin", () => {
 
 	test("Should continue if it cannot find images to embed in specified directory", async () => {
 		server.post("/", (req, res) => {
-			res.send(server.embedHtmlImages(req.body, true));
+			res.send(server.embedHtmlImages(req.body));
 		});
 		server.register(plugin, config.poppler);
 
