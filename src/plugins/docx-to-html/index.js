@@ -1,4 +1,5 @@
 const createError = require("http-errors");
+const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const mammoth = require("mammoth");
 
@@ -18,10 +19,25 @@ async function plugin(server) {
 		try {
 			const { value } = await mammoth.convertToHtml(req.body);
 
-			// Mammoth does not wrap the results inside <html> and <body> tags itself
-			req.conversionResults.body = `<!DOCTYPE html><html><body>${value}</body></html>`;
+			/**
+			 * Mammoth does not wrap the results inside <html> and <body> tags itself.
+			 * `fixUtf8` function replaces most common incorrectly converted
+			 * Windows-1252 to UTF-8 results with HTML equivalents.
+			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
+			 */
+			req.conversionResults.body = await fixUtf8(`<!DOCTYPE html>
+			<head> 
+				<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+			</head>
+			<html>
+				<body>
+					<div>
+						${value}
+					</div>
+				</body>
+			</html>`);
 
-			res.header("content-type", `text/html`);
+			res.header("content-type", `text/html; charset=utf-8`);
 		} catch (err) {
 			server.log.error(err);
 			res.send(createError(400, err));
