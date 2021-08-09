@@ -97,7 +97,7 @@
     "fastify-helmet": "^5.3.2",
     "fastify-plugin": "^3.0.0",
     "fastify-rate-limit": "^5.6.0",
-    "fastify-swagger": "^4.8.3",
+    "fastify-swagger": "^4.8.4",
     "file-stream-rotator": "^0.5.7",
     "file-type": "^16.5.2",
     "fix-utf8": "^1.1.1",
