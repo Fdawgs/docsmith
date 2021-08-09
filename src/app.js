@@ -22,10 +22,10 @@ const main = async () => {
 	["SIGINT", "SIGTERM"].forEach((signal) => {
 		// Use once() so that double signals exits the app
 		process.once(signal, async () => {
-			server.log.info({ signal }, "closing application");
+			server.log.info({ signal }, "Closing application");
 			try {
 				await server.close();
-				server.log.info({ signal }, "application closed");
+				server.log.info({ signal }, "Application closed");
 				process.exit(0);
 			} catch (err) {
 				server.log.error({ err }, "Error closing the application");
