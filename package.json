@@ -113,7 +113,7 @@
     "pino": "^6.13.0",
     "pino-pretty": "^5.1.2",
     "raw-body": "^2.4.1",
-    "tesseract.js": "^2.1.4",
+    "tesseract.js": "^2.1.5",
     "under-pressure": "^5.7.0",
     "uuid": "^8.3.2"
   }
