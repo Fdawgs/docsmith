@@ -17,7 +17,7 @@ services:
             POPPLER_BINARY_PATH: /usr/bin/
             UNRTF_BINARY_PATH: /usr/bin/
         healthcheck:
-            test: curl "localhost:${SERVICE_PORT:-8204}/healthcheck"
+            test: curl "localhost:${SERVICE_PORT:-8204}/admin/healthcheck"
             interval: 60s
             timeout: 3s
             start_period: 5s

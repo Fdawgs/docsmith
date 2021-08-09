@@ -19,9 +19,6 @@ const imageToTxt = require("./plugins/image-to-txt");
 const tidyCss = require("./plugins/tidy-css");
 const tidyHtml = require("./plugins/tidy-html");
 
-// Import healthcheck route
-const healthCheck = require("./routes/healthcheck");
-
 /**
  * @author Frazer Smith
  * @description Build Fastify instance.
@@ -72,8 +69,12 @@ async function plugin(server, config) {
 		// Enable Swagger/OpenAPI routes
 		.register(swagger, config.swagger)
 
-		// Basic healthcheck route to ping
-		.register(healthCheck, config)
+		// Import and register admin routes
+		.register(autoLoad, {
+			dir: path.join(__dirname, "routes"),
+			ignorePattern: /(docx|pdf|rtf)/,
+			options: config,
+		})
 
 		.register(embedHtmlImages, config.poppler)
 		.register(tidyCss)
@@ -99,7 +100,7 @@ async function plugin(server, config) {
 			// Import and register service routes
 			.register(autoLoad, {
 				dir: path.join(__dirname, "routes"),
-				ignorePattern: /healthcheck/,
+				ignorePattern: /admin/,
 				options: config,
 			});
 	});
