@@ -5,6 +5,7 @@ const isHtml = require("is-html");
 const plugin = require(".");
 const getConfig = require("../../../config");
 
+const tidyCss = require("../../../plugins/tidy-css");
 const tidyHtml = require("../../../plugins/tidy-html");
 
 describe("DOCX-to-HTML route", () => {
@@ -14,7 +15,10 @@ describe("DOCX-to-HTML route", () => {
 	beforeAll(async () => {
 		options = await getConfig();
 
-		server = Fastify().register(accepts).register(tidyHtml);
+		server = Fastify()
+			.register(accepts)
+			.register(tidyCss)
+			.register(tidyHtml);
 		server.register(plugin, options);
 
 		await server.ready();

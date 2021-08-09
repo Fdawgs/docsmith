@@ -99,6 +99,38 @@ describe("Tidy-CSS Plugin", () => {
 		expect(isHtml(response.payload)).toEqual(true);
 	});
 
+	test("Should create new style element if none exist but query string param passed", async () => {
+		server.post("/", (req, res) => {
+			res.send(
+				server.tidyCss(req.body, {
+					fonts: "Arial",
+					backgroundColor: "white",
+				})
+			);
+		});
+		server.register(plugin, config);
+
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/valid_empty_html.html",
+				{ encoding: "UTF-8" }
+			),
+			headers: {
+				"content-type": "text/html",
+			},
+		});
+
+		expect(/font-family: Arial/gm.exec(response.payload)).not.toBeNull();
+		expect(
+			/background-color: white/gm.exec(response.payload)
+		).not.toBeNull();
+		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
+	});
+
 	test("Should continue to parse style elements with no type attribute", async () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body));

@@ -19,7 +19,7 @@ async function plugin(server) {
 	 */
 	function tidyCss(html, options = {}) {
 		const dom = new JSDOM(html);
-		const styles = dom.window.document.querySelectorAll("style");
+		let styles = dom.window.document.querySelectorAll("style");
 
 		let newFonts;
 		if (options.fonts) {
@@ -29,6 +29,15 @@ async function plugin(server) {
 		let newBackgroundColor;
 		if (options.backgroundColor) {
 			newBackgroundColor = String(options.backgroundColor);
+		}
+
+		// Create style element inside head if none already exist
+		if (styles.length === 0 && (newFonts || newBackgroundColor)) {
+			const element = dom.window.document.createElement("style");
+			element.innerHTML = "div {}";
+			dom.window.document.head.appendChild(element);
+
+			styles = dom.window.document.querySelectorAll("style");
 		}
 
 		styles.forEach((element) => {
@@ -41,7 +50,10 @@ async function plugin(server) {
 
 			styleObj.cssRules.forEach((styleRule) => {
 				// Replace default font
-				if (newFonts && styleRule.style["font-family"]) {
+				if (
+					newFonts &&
+					(styleRule.style["font-family"] || styles.length === 1)
+				) {
 					styleRule.style.setProperty("font-family", newFonts);
 				}
 
