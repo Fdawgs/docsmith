@@ -73,7 +73,7 @@ async function plugin(server, config) {
 		.register(swagger, config.swagger)
 
 		// Basic healthcheck route to ping
-		.register(healthCheck)
+		.register(healthCheck, config)
 
 		.register(embedHtmlImages, config.poppler)
 		.register(tidyCss)
@@ -84,8 +84,8 @@ async function plugin(server, config) {
 	}
 
 	/**
-	 * Encapsulate plugins and routes into secured child context, so that swagger and
-	 * healthcheck routes do not inherit bearer token auth plugin.
+	 * Encapsulate plugins and routes into a secured child context, so that swagger and
+	 * healthcheck routes do not inherit the bearer token auth plugin.
 	 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
 	 */
 	server.register(async (securedContext) => {

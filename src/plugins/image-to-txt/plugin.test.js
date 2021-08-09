@@ -25,7 +25,7 @@ describe("Image-To-TXT Conversion Plugin", () => {
 		server.register(plugin, config.tesseract);
 
 		server.post("/", async (req, res) => {
-			res.header("content-type", "text/plain, chareset=UTF-8");
+			res.header("content-type", "text/plain, charset=utf-8");
 
 			const {
 				data: { text },

@@ -18,10 +18,11 @@ async function plugin(server, options) {
 	const scheduler = createScheduler();
 
 	/**
-	 * Defining the cache as `readOnly` and specifying both a cache and lang path
-	 * stops Tesseract from constantly downloading new trained data from a remote
-	 * repo (allowing OCR to be used offline), and stops requests trying to read
-	 * and write simultaneously, which corrupted the trained data
+	 * Defining the cache as read-only, and specifying the cache, core, lang, and worker
+	 * paths stops Tesseract from repeatedly downloading new trained data and workers
+	 * from a remote repo, allowing OCR to be used offline.
+	 * This also stops synchronous read/writes of the trained data,
+	 * which corrupts the trained data
 	 */
 	const workerConfig = {
 		cacheMethod: "readOnly",
@@ -37,7 +38,10 @@ async function plugin(server, options) {
 		),
 	};
 
-	// Disable HOCR and TSV in output, not needed
+	/**
+	 * Disable HOCR (HTML representation of OCR results) and TSV (tab-separated values)
+	 * in output, not needed
+	 */
 	const workerParams = {
 		tessjs_create_hocr: "0",
 		tessjs_create_tsv: "0",

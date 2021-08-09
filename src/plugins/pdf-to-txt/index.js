@@ -11,9 +11,9 @@ const { v4 } = require("uuid");
 
 /**
  * @author Frazer Smith
- * @description Pre-handler plugin that uses Poppler to convert Buffer or string of
+ * @description Pre-handler plugin that uses Poppler to convert Buffer containing
  * PDF file in `req.body` to TXT.
- * `req` object is decorated with `conversionResults.body` holding converted document.
+ * `req` object is decorated with `conversionResults.body` holding the converted document.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to Poppler binary.
@@ -184,7 +184,7 @@ async function plugin(server, options) {
 			}
 			res.header(
 				"content-type",
-				`${contentType}; charset=${config.pdfToTxtOptions.outputEncoding}`
+				`${contentType}; charset=${config.pdfToTxtOptions.outputEncoding.toLowerCase()}`
 			);
 		} catch (err) {
 			server.log.error(err);

@@ -53,7 +53,7 @@ describe("Tidy-CSS Plugin", () => {
 
 	test("Should tidy HTML and set language", async () => {
 		server.post("/", async (req, res) => {
-			res.send(await server.tidyHtml(req.body, "fr"));
+			res.send(await server.tidyHtml(req.body, { language: "fr" }));
 		});
 		server.register(plugin);
 
@@ -77,6 +77,29 @@ describe("Tidy-CSS Plugin", () => {
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
 		).toEqual("fr");
+		expect(typeof response.payload).toEqual("string");
+		expect(isHtml(response.payload)).toEqual(true);
+	});
+
+	test("Should remove alt attribute from img tags", async () => {
+		server.post("/", async (req, res) => {
+			res.send(await server.tidyHtml(req.body, { removeAlt: true }));
+		});
+		server.register(plugin);
+
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/valid_bullet_issues_html.html",
+				{ encoding: "UTF-8" }
+			),
+			headers: {
+				"content-type": "text/html",
+			},
+		});
+
+		expect(/alt=""/gm.exec(response.payload)).not.toBeNull();
 		expect(typeof response.payload).toEqual("string");
 		expect(isHtml(response.payload)).toEqual(true);
 	});

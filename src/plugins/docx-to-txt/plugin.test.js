@@ -1,29 +1,24 @@
-/* eslint-disable security/detect-non-literal-fs-filename */
-const { cloneDeep } = require("lodash");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
 const plugin = require(".");
-const getConfig = require("../../config");
 
-describe("RTF-to-TXT Conversion Plugin", () => {
-	let config;
+describe("DOCX-to-TXT Conversion Plugin", () => {
 	let server;
 
 	beforeAll(async () => {
-		config = await getConfig();
-		config = cloneDeep(config);
-		config.unrtf.tempDirectory = "./src/temp4/";
-
 		server = Fastify();
 
-		server.addContentTypeParser("application/rtf", async (req, payload) => {
-			const res = await raw(payload);
-			return res;
-		});
+		server.addContentTypeParser(
+			"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			async (req, payload) => {
+				const res = await raw(payload);
+				return res;
+			}
+		);
 
-		server.register(plugin, config.unrtf);
+		server.register(plugin);
 
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");
@@ -32,17 +27,19 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 	});
 
 	afterAll(async () => {
-		fs.rmdirSync(config.unrtf.tempDirectory, { recursive: true });
 		await server.close();
 	});
 
-	test("Should convert RTF file to TXT and place in specified directory", async () => {
+	test("Should convert DOCX file to TXT", async () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync("./test_resources/test_files/valid_rtf.rtf"),
+			body: fs.readFileSync(
+				"./test_resources/test_files/valid_docx.docx"
+			),
 			headers: {
-				"content-type": "application/rtf",
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
 		});
 
@@ -51,18 +48,17 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 		expect(response.body).toEqual(
 			expect.stringContaining("Ask not what your country can do for you")
 		);
+		expect(typeof response.body).toEqual("string");
 		expect(isHtml(response.body)).toEqual(false);
-		expect(typeof response.docLocation).toEqual("object");
-		expect(fs.existsSync(response.docLocation.rtf)).toEqual(false);
-		expect(fs.existsSync(config.unrtf.tempDirectory)).toEqual(true);
 	});
 
-	test("Should return HTTP status code 400 if RTF file is missing", async () => {
+	test("Should return HTTP status code 400 if DOCX file is missing", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			headers: {
-				"content-type": "application/rtf",
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
 		});
 

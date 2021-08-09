@@ -16,12 +16,9 @@ const path = require("path");
 async function plugin(server, options) {
 	/**
 	 * @param {string} html - Valid HTML.
-	 * @param {boolean=} removeAlt - Removes alt attribute from img tags if set to `true`.
-	 * Useful for sending to clinical systems where img tags are stripped from received documents
-	 * (i.e. TPP's SystmOne).
 	 * @returns {string} HTML with images embedded.
 	 */
-	function embedHtmlImages(html, removeAlt) {
+	function embedHtmlImages(html) {
 		const dom = new JSDOM(html);
 		const images = dom.window.document.querySelectorAll("img");
 		let directory = options.tempDirectory;
@@ -36,10 +33,6 @@ async function plugin(server, options) {
 					"base64"
 				)}`;
 				element.setAttribute("src", imageAsBase64);
-
-				if (removeAlt === true) {
-					element.setAttribute("alt", "");
-				}
 			}
 		});
 

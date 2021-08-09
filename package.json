@@ -106,6 +106,7 @@
     "htmltidy2": "^0.3.0",
     "http-errors": "^1.8.0",
     "jsdom": "^16.7.0",
+    "mammoth": "^1.4.17",
     "node-poppler": "^4.1.1",
     "node-unrtf": "^2.0.1",
     "physical-cpu-count": "^2.0.0",

@@ -1,14 +1,14 @@
 {
 	"_type": "export",
 	"__export_format": 4,
-	"__export_date": "2021-07-15T12:08:51.744Z",
+	"__export_date": "2021-08-09T08:40:19.641Z",
 	"__export_source": "insomnia.desktop.app:v2021.4.1",
 	"resources": [
 		{
-			"_id": "req_ab1a80e59b534737814c0009642f820a",
-			"parentId": "fld_f7b8b1e47657428eb049cbc044bb9b69",
-			"modified": 1626350746751,
-			"created": 1626350710704,
+			"_id": "req_125853a7af084f71bc5c2607c17c90b5",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1628441218869,
+			"created": 1624952578715,
 			"url": "http://127.0.0.1:8204/docs/json",
 			"name": "docs/json",
 			"description": "",
@@ -17,15 +17,15 @@
 			"parameters": [],
 			"headers": [
 				{
-					"id": "pair_a24611bf20ef44238465c4448d2e55d0",
+					"id": "pair_6bdb1d82955c45c8b2750fb91954d080",
 					"name": "Accept",
 					"value": "application/json",
 					"description": ""
 				},
 				{
-					"id": "pair_9225b9127a274143a2038f36706e73e5",
+					"id": "pair_8aea910cdcff4076b0cc581a8b0a1153",
 					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
+					"value": "br, gzip",
 					"description": ""
 				}
 			],
@@ -45,32 +45,32 @@
 			"_type": "request"
 		},
 		{
-			"_id": "fld_f7b8b1e47657428eb049cbc044bb9b69",
-			"parentId": "wrk_5f78877c54f94a73ad20a010ac5c4fde",
-			"modified": 1626350710675,
-			"created": 1626350710675,
+			"_id": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"parentId": "wrk_11ea2c3bfc95495c853a9fa46ecb2ae8",
+			"modified": 1623425946718,
+			"created": 1581358907766,
 			"name": "Docsmith",
 			"description": "",
 			"environment": {},
 			"environmentPropertyOrder": null,
-			"metaSortKey": -1000000000,
+			"metaSortKey": -1581358907767,
 			"_type": "request_group"
 		},
 		{
-			"_id": "wrk_5f78877c54f94a73ad20a010ac5c4fde",
+			"_id": "wrk_11ea2c3bfc95495c853a9fa46ecb2ae8",
 			"parentId": null,
-			"modified": 1623333579859,
-			"created": 1611841010710,
-			"name": "Examples",
+			"modified": 1572180335284,
+			"created": 1572180335284,
+			"name": "Insomnia",
 			"description": "",
 			"scope": "collection",
 			"_type": "workspace"
 		},
 		{
-			"_id": "req_06c188506ee142f5bcc3aaf895184062",
-			"parentId": "fld_f7b8b1e47657428eb049cbc044bb9b69",
-			"modified": 1626350802567,
-			"created": 1626350710699,
+			"_id": "req_bbc824f05a0e4607b3738274725d11fc",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1628441034523,
+			"created": 1623405104869,
 			"url": "http://127.0.0.1:8204/healthcheck",
 			"name": "healthcheck",
 			"description": "",
@@ -87,7 +87,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
+					"value": "br, gzip",
 					"description": "",
 					"id": "pair_2ee669fc31a74859a6714916a1901666"
 				}
@@ -108,17 +108,105 @@
 			"_type": "request"
 		},
 		{
-			"_id": "req_fe4d12d49f2c43ea91e5e3f14873b3df",
-			"parentId": "fld_f7b8b1e47657428eb049cbc044bb9b69",
-			"modified": 1626350884380,
-			"created": 1626350710693,
+			"_id": "req_804e74fef70d4695b14f2dee57ef4f32",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1628441039599,
+			"created": 1628364735056,
+			"url": "http://127.0.0.1:8204/docx/txt",
+			"name": "docx/txt",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/octet-stream",
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\valid_docx.docx"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_88993a0340ac41d292fcd2335d8cf4d2",
+					"name": "Accept",
+					"value": "text/plain",
+					"description": ""
+				},
+				{
+					"name": "Accept-Encoding",
+					"value": "br, gzip",
+					"description": "",
+					"id": "pair_02dfc852c4244af3a17e852952c50f10"
+				},
+				{
+					"id": "pair_4a5d095d750e40adb5e9657757bd27b2",
+					"name": "Content-Type",
+					"value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+				}
+			],
+			"authentication": { "token": "testtoken", "type": "bearer" },
+			"metaSortKey": -1581358899687.5,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7e51883a6c5a4d16abbda8c0531219c2",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1628498368269,
+			"created": 1628411372058,
+			"url": "http://127.0.0.1:8204/docx/html",
+			"name": "docx/html",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/octet-stream",
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\valid_docx.docx"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_88993a0340ac41d292fcd2335d8cf4d2",
+					"name": "Accept",
+					"value": "text/html",
+					"description": ""
+				},
+				{
+					"name": "Accept-Encoding",
+					"value": "br, gzip",
+					"description": "",
+					"id": "pair_02dfc852c4244af3a17e852952c50f10"
+				},
+				{
+					"id": "pair_4a5d095d750e40adb5e9657757bd27b2",
+					"name": "Content-Type",
+					"value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+				}
+			],
+			"authentication": { "token": "testtoken", "type": "bearer" },
+			"metaSortKey": -1581358899681.25,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_15f2234a6a304620acf4d253034ccf96",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1628441045916,
+			"created": 1617131396221,
 			"url": "http://127.0.0.1:8204/pdf/html",
 			"name": "pdf/html",
 			"description": "",
 			"method": "POST",
 			"body": {
 				"mimeType": "application/octet-stream",
-				"fileName": "C:\\Users\\frazer.smith\\Documents\\Repositories\\public\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
 			},
 			"parameters": [],
 			"headers": [
@@ -130,7 +218,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
+					"value": "br, gzip",
 					"description": "",
 					"id": "pair_9d5cd29529014e3aba87fe572c8dc6a6",
 					"disabled": false
@@ -153,17 +241,17 @@
 			"_type": "request"
 		},
 		{
-			"_id": "req_ed204bccf6d7440b971f162aa3356db3",
-			"parentId": "fld_f7b8b1e47657428eb049cbc044bb9b69",
-			"modified": 1626350873351,
-			"created": 1626350710682,
+			"_id": "req_62d8c045df994201b1f91cc6f29aadaf",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1628441052399,
+			"created": 1581358899650,
 			"url": "http://127.0.0.1:8204/pdf/txt?lastPageToConvert=2",
 			"name": "pdf/txt",
 			"description": "",
 			"method": "POST",
 			"body": {
 				"mimeType": "application/octet-stream",
-				"fileName": "C:\\Users\\frazer.smith\\Documents\\Repositories\\public\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
 			},
 			"parameters": [],
 			"headers": [
@@ -175,7 +263,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
+					"value": "br, gzip",
 					"description": "",
 					"id": "pair_02dfc852c4244af3a17e852952c50f10"
 				},
@@ -197,17 +285,17 @@
 			"_type": "request"
 		},
 		{
-			"_id": "req_3b1213896a744c0ebdc664dd3dbfbebb",
-			"parentId": "fld_f7b8b1e47657428eb049cbc044bb9b69",
-			"modified": 1626350866095,
-			"created": 1626350710713,
+			"_id": "req_cc3d0a0e956f4b46b51c72a9591b063e",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1628441057983,
+			"created": 1624957503885,
 			"url": "http://127.0.0.1:8204/pdf/txt?ocr=true&ocrLanguage=eng&lastPageToConvert=1",
 			"name": "pdf/txt?ocr=true",
 			"description": "",
 			"method": "POST",
 			"body": {
 				"mimeType": "application/octet-stream",
-				"fileName": "C:\\Users\\frazer.smith\\Documents\\Repositories\\public\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
 			},
 			"parameters": [],
 			"headers": [
@@ -219,7 +307,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
+					"value": "br, gzip",
 					"description": "",
 					"id": "pair_02dfc852c4244af3a17e852952c50f10"
 				},
@@ -241,17 +329,17 @@
 			"_type": "request"
 		},
 		{
-			"_id": "req_ed3b9dcd25484510a6682d8623eea36f",
-			"parentId": "fld_f7b8b1e47657428eb049cbc044bb9b69",
-			"modified": 1626350858870,
-			"created": 1626350710708,
+			"_id": "req_3a3fb8be64414b0ebba5ce7c2e726644",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1628441067849,
+			"created": 1624952606588,
 			"url": "http://127.0.0.1:8204/rtf/html",
 			"name": "rtf/html",
 			"description": "",
 			"method": "POST",
 			"body": {
 				"mimeType": "application/octet-stream",
-				"fileName": "C:\\Users\\frazer.smith\\Documents\\Repositories\\public\\applications\\docsmith\\test_resources\\test_files\\valid_rtf.rtf"
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\valid_rtf.rtf"
 			},
 			"parameters": [],
 			"headers": [
@@ -263,7 +351,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
+					"value": "br, gzip",
 					"description": "",
 					"id": "pair_01819f2e1d34440f8d4ee76f26cfb296"
 				},
@@ -285,17 +373,17 @@
 			"_type": "request"
 		},
 		{
-			"_id": "req_3a54465f6a8b4742ba0e3baf1b487d16",
-			"parentId": "fld_f7b8b1e47657428eb049cbc044bb9b69",
-			"modified": 1626350850220,
-			"created": 1626350710688,
+			"_id": "req_2f7fa44d87a7458e99a0b3af7ec39a0b",
+			"parentId": "fld_217cb3786e4448b883a5b9b18295dd2f",
+			"modified": 1628441071555,
+			"created": 1593783519090,
 			"url": "http://127.0.0.1:8204/rtf/txt",
 			"name": "rtf/txt",
 			"description": "",
 			"method": "POST",
 			"body": {
 				"mimeType": "application/octet-stream",
-				"fileName": "C:\\Users\\frazer.smith\\Documents\\Repositories\\public\\applications\\docsmith\\test_resources\\test_files\\valid_rtf.rtf"
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\valid_rtf.rtf"
 			},
 			"parameters": [],
 			"headers": [
@@ -307,7 +395,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
+					"value": "br, gzip",
 					"description": "",
 					"id": "pair_db8ee8db2c7a4cd8a2b8a00ecc29ca9a"
 				},

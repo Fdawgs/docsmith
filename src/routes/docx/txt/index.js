@@ -3,9 +3,9 @@ const fileType = require("file-type");
 
 // Import plugins
 const cors = require("fastify-cors");
-const pdfToHtml = require("../../../plugins/pdf-to-html");
+const docxToTxt = require("../../../plugins/docx-to-txt");
 
-const { pdfToHtmlPostSchema } = require("./schema");
+const { docxToTxtPostSchema } = require("./schema");
 
 /**
  * @author Frazer Smith
@@ -13,18 +13,17 @@ const { pdfToHtmlPostSchema } = require("./schema");
  * @param {Function} server - Fastify instance.
  * @param {object} options - Route config values.
  * @param {object} options.cors - CORS settings.
- * @param {object} options.poppler - PDF-to-HTML plugin settings.
  */
 async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {
-		pdfToHtmlPostSchema.security = [{ bearerToken: [] }];
+		docxToTxtPostSchema.security = [{ bearerToken: [] }];
 	}
 
 	server.addHook("onRequest", async (req, res) => {
 		if (
 			// Catch unsupported Accept header media types
-			!pdfToHtmlPostSchema.produces.includes(
-				req.accepts().type(pdfToHtmlPostSchema.produces)
+			!docxToTxtPostSchema.produces.includes(
+				req.accepts().type(docxToTxtPostSchema.produces)
 			)
 		) {
 			res.send(NotAcceptable());
@@ -32,18 +31,19 @@ async function route(server, options) {
 	});
 
 	server.addContentTypeParser(
-		"application/pdf",
+		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 		{ parseAs: "buffer" },
 		async (req, payload) => {
 			/**
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
-			 * this checks for PDF specific magic numbers.
+			 * this checks for DOCX specific magic numbers.
 			 */
 			const results = await fileType.fromBuffer(payload);
 			if (
 				results === undefined ||
 				results.mime === undefined ||
-				results.mime !== "application/pdf"
+				results.mime !==
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 			) {
 				throw UnsupportedMediaType();
 			} else {
@@ -59,25 +59,14 @@ async function route(server, options) {
 			methods: ["POST"],
 			hideOptionsRoute: true,
 		})
-		.register(pdfToHtml, options.poppler);
+		.register(docxToTxt);
 
 	server.route({
 		method: "POST",
 		url: "/",
-		schema: pdfToHtmlPostSchema,
+		schema: docxToTxtPostSchema,
 		async handler(req, res) {
-			const result = server.tidyCss(
-				await server.tidyHtml(
-					server.embedHtmlImages(req.conversionResults.body),
-					{ removeAlt: req.query.removeAlt }
-				),
-				{
-					fonts: req.query.fonts,
-					backgroundColor: req.query.backgroundColor,
-				}
-			);
-
-			res.send(result);
+			res.send(req.conversionResults.body);
 		},
 	});
 }

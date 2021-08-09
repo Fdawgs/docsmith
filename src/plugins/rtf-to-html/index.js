@@ -12,10 +12,10 @@ const { v4 } = require("uuid");
 
 /**
  * @author Frazer Smith
- * @description Pre-handler plugin that uses UnRTF to convert Buffer or string of
+ * @description Pre-handler plugin that uses UnRTF to convert Buffer containing
  * RTF file in `req.body` to HTML and places RTF file in a temporary directory.
  * `req` object is decorated with `conversionResults` object detailing document
- * location, contents etc.
+ * location and contents.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to UnRTF binary.
