@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [3.1.1](https://www.github.com/Fdawgs/docsmith/compare/v3.1.0...v3.1.1) (2021-08-09)
+
+
+### Miscellaneous
+
+* **package:** update description ([#343](https://www.github.com/Fdawgs/docsmith/issues/343)) ([d5d9b38](https://www.github.com/Fdawgs/docsmith/commit/d5d9b38ed9426f64dde9c228e8ae25d840987f66))
+
 ## [3.1.0](https://www.github.com/Fdawgs/docsmith/compare/v3.0.0...v3.1.0) (2021-08-09)
 
 

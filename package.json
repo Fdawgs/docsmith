@@ -1,6 +1,6 @@
 {
   "name": "docsmith",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "RESTful API for converting clinical documents and files",
   "main": "src/app.js",
   "repository": "git+https://github.com/Fdawgs/docsmith.git",
