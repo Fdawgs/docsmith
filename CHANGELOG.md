@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.1.0](https://www.github.com/Fdawgs/docsmith/compare/v3.0.0...v3.1.0) (2021-08-09)
+
+
+### Features
+
+* **routes/docx/html:** support more query string params ([60b56b9](https://www.github.com/Fdawgs/docsmith/commit/60b56b9675150701603ba3b040a7c9421e3613dd))
+* **routes/docx/html:** support removealt query string param ([72017a8](https://www.github.com/Fdawgs/docsmith/commit/72017a80f6a1a8e2b47790ecc69c2007e876b6f0))
+* **routes/healthcheck:** add cors header support ([3f0b9b7](https://www.github.com/Fdawgs/docsmith/commit/3f0b9b76d88570b8824726ab1aa3a50b065ddcd9))
+* **routes:** add docx-to-html route ([98f4e64](https://www.github.com/Fdawgs/docsmith/commit/98f4e643e9db6b260337d2e3ec0ea3ea61f5c817))
+* **routes:** add docx-to-txt route ([25a01b4](https://www.github.com/Fdawgs/docsmith/commit/25a01b4ce966f38731dc9879fe7b6f1f1e815a5c))
+
+
+### Bug Fixes
+
+* **plugins/docx-to-html:** set content-type meta; fix utf-8 ([1bccb7b](https://www.github.com/Fdawgs/docsmith/commit/1bccb7b885ed2773482e12c38962c4708908f3be))
+
+
+### Improvements
+
+* **plugins/pdf:** lowercase charset in content-type res header ([38809e1](https://www.github.com/Fdawgs/docsmith/commit/38809e14255acef8bf55050852f4fb2976ab9978))
+* **plugins/tidy-html:** convert string param to object ([2f863df](https://www.github.com/Fdawgs/docsmith/commit/2f863df20a6dad776e6a7150b02e2fc8dc190903))
+* **plugins:** move alt attribute manipulation to appropriate plugin ([2168c7e](https://www.github.com/Fdawgs/docsmith/commit/2168c7e26c004a6807eae18a47932e15d35f62ee))
+
+
+### Documentation
+
+* **readme:** update feature list ([15912b8](https://www.github.com/Fdawgs/docsmith/commit/15912b8b843e9277d48f5aa029b79d0a795e1510))
+
+
+### Miscellaneous
+
+* add example docx route requests ([f0dc009](https://www.github.com/Fdawgs/docsmith/commit/f0dc0099c04ca2096a826e4b7f08d98f1ee0d26b))
+* inline comment spelling and grammar fixes ([e960246](https://www.github.com/Fdawgs/docsmith/commit/e9602469ed5464c9ad2f9d5420c21446056c0076))
+* **routes/docx/txt:** fix description ([1e41394](https://www.github.com/Fdawgs/docsmith/commit/1e41394dce03a17a08e079ddee00c5793dca43ed))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-import from 2.23.4 to 2.24.0 ([3cfb576](https://www.github.com/Fdawgs/docsmith/commit/3cfb57642252298bf65ed80ac4b976919f3d76d2))
+* **deps:** add mammoth ([01b9f3a](https://www.github.com/Fdawgs/docsmith/commit/01b9f3a009c1f77d2eea39370cc4d816e596e92c))
+* **deps:** bump actions/setup-node from 2.3.0 to 2.4.0 ([7460de7](https://www.github.com/Fdawgs/docsmith/commit/7460de789bf1f8bf9b7168d1b335de18757cc60d))
+* **deps:** bump env-schema from 3.1.0 to 3.2.0 ([15126c0](https://www.github.com/Fdawgs/docsmith/commit/15126c0456694fc0eaf8050ead93d98eb95583b9))
+* **deps:** bump fastify from 3.19.2 to 3.20.1 ([0cb82d3](https://www.github.com/Fdawgs/docsmith/commit/0cb82d3c01551eb2465cd5c030d43d3507819bd9))
+* **deps:** bump fastify-swagger from 4.8.3 to 4.8.4 ([dd47683](https://www.github.com/Fdawgs/docsmith/commit/dd4768381740f86b4218e51108dfaac3f603bb85))
+* **deps:** bump file-type from 16.5.2 to 16.5.3 ([959e67c](https://www.github.com/Fdawgs/docsmith/commit/959e67cb1dbb464f7589a67d40b3f71540627bae))
+* **deps:** bump tesseract.js from 2.1.4 to 2.1.5 ([be7c659](https://www.github.com/Fdawgs/docsmith/commit/be7c6594721ea7215cb3a2eed73eaefe6eab8401))
+
 ## [3.0.0](https://www.github.com/Fdawgs/docsmith/compare/v2.4.3...v3.0.0) (2021-08-02)
 
 
