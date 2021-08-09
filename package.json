@@ -99,7 +99,7 @@
     "fastify-rate-limit": "^5.6.0",
     "fastify-swagger": "^4.8.3",
     "file-stream-rotator": "^0.5.7",
-    "file-type": "^16.5.2",
+    "file-type": "^16.5.3",
     "fix-utf8": "^1.1.1",
     "fluent-json-schema": "^3.0.1",
     "glob": "^7.1.7",
