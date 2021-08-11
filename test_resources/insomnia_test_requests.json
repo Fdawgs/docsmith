@@ -25,7 +25,7 @@
 				{
 					"id": "pair_8aea910cdcff4076b0cc581a8b0a1153",
 					"name": "Accept-Encoding",
-					"value": "br, gzip",
+					"value": "br, gzip, deflate",
 					"description": ""
 				}
 			],
@@ -87,7 +87,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip",
+					"value": "br, gzip, deflate",
 					"description": "",
 					"id": "pair_2ee669fc31a74859a6714916a1901666"
 				}
@@ -130,7 +130,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip",
+					"value": "br, gzip, deflate",
 					"description": "",
 					"id": "pair_02dfc852c4244af3a17e852952c50f10"
 				},
@@ -174,7 +174,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip",
+					"value": "br, gzip, deflate",
 					"description": "",
 					"id": "pair_02dfc852c4244af3a17e852952c50f10"
 				},
@@ -218,7 +218,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip",
+					"value": "br, gzip, deflate",
 					"description": "",
 					"id": "pair_9d5cd29529014e3aba87fe572c8dc6a6",
 					"disabled": false
@@ -263,7 +263,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip",
+					"value": "br, gzip, deflate",
 					"description": "",
 					"id": "pair_02dfc852c4244af3a17e852952c50f10"
 				},
@@ -307,7 +307,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip",
+					"value": "br, gzip, deflate",
 					"description": "",
 					"id": "pair_02dfc852c4244af3a17e852952c50f10"
 				},
@@ -351,7 +351,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip",
+					"value": "br, gzip, deflate",
 					"description": "",
 					"id": "pair_01819f2e1d34440f8d4ee76f26cfb296"
 				},
@@ -395,7 +395,7 @@
 				},
 				{
 					"name": "Accept-Encoding",
-					"value": "br, gzip",
+					"value": "br, gzip, deflate",
 					"description": "",
 					"id": "pair_db8ee8db2c7a4cd8a2b8a00ecc29ca9a"
 				},
