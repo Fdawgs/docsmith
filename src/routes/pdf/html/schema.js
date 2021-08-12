@@ -59,6 +59,14 @@ const pdfToHtmlPostSchema = {
 				.enum(["JPG", "PNG"])
 		)
 		.prop(
+			"language",
+			S.string()
+				.description(
+					"Set the `lang` and `xml:lang` attributes of the HTML tag. Defaults to `en` if not set."
+				)
+				.default("en")
+		)
+		.prop(
 			"lastPageToConvert",
 			S.number().description("Last page to convert")
 		)

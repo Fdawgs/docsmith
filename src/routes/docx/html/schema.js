@@ -32,6 +32,14 @@ const docxToHtmlPostSchema = {
 				.examples(["Arial", "Arial, Sans Serif"])
 		)
 		.prop(
+			"language",
+			S.string()
+				.description(
+					"Set the `lang` and `xml:lang` attributes of the HTML tag. Defaults to `en` if not set."
+				)
+				.default("en")
+		)
+		.prop(
 			"removeAlt",
 			S.boolean().description("Remove the alt attribute from image tags")
 		),

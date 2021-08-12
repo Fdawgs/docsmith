@@ -69,7 +69,10 @@ async function route(server, options) {
 			const result = server.tidyCss(
 				await server.tidyHtml(
 					server.embedHtmlImages(req.conversionResults.body),
-					{ removeAlt: req.query.removeAlt }
+					{
+						language: req.query.language,
+						removeAlt: req.query.removeAlt,
+					}
 				),
 				{
 					fonts: req.query.fonts,
