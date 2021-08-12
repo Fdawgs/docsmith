@@ -19,6 +19,7 @@ const rtfToHtmlPostSchema = {
 			"backgroundColor",
 			S.string()
 				.description("HTML document background color")
+				.pattern(/^[#a-zA-Z0-9]+$/m)
 				.examples(["white", "#FFFFFF"])
 		)
 		.prop(
@@ -35,6 +36,7 @@ const rtfToHtmlPostSchema = {
 				.description(
 					"Set the `lang` and `xml:lang` attributes of the HTML tag. Defaults to `en` if not set."
 				)
+				.pattern(/^[-a-zA-Z0-9]+$/m)
 				.default("en")
 		)
 		.prop(
