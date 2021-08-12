@@ -10,11 +10,12 @@ const embedHtmlImages = require("../../../plugins/embed-html-images");
 const tidyCss = require("../../../plugins/tidy-css");
 const tidyHtml = require("../../../plugins/tidy-html");
 
-// Generates 6 different combinations
+// Generates 12 different combinations
 const queryStrings = generateCombos([
 	{ backgroundColor: "white" },
 	{ fonts: "Arial" },
 	{ fonts: "Arial, Sans Serif" },
+	{ language: "fr" },
 ]);
 
 describe("RTF-to-HTML route", () => {
