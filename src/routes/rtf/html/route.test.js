@@ -19,18 +19,18 @@ const queryStrings = generateCombos([
 ]);
 
 describe("RTF-to-HTML route", () => {
-	let options;
+	let config;
 	let server;
 
 	beforeAll(async () => {
-		options = await getConfig();
+		config = await getConfig();
 
 		server = Fastify()
 			.register(accepts)
-			.register(embedHtmlImages, options.unrtf)
+			.register(embedHtmlImages, config.unrtf)
 			.register(tidyCss)
 			.register(tidyHtml);
-		server.register(plugin, options);
+		server.register(plugin, config);
 
 		await server.ready();
 	});

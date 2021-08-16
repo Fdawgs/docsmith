@@ -9,17 +9,17 @@ const tidyCss = require("../../../plugins/tidy-css");
 const tidyHtml = require("../../../plugins/tidy-html");
 
 describe("DOCX-to-HTML route", () => {
-	let options;
+	let config;
 	let server;
 
 	beforeAll(async () => {
-		options = await getConfig();
+		config = await getConfig();
 
 		server = Fastify()
 			.register(accepts)
 			.register(tidyCss)
 			.register(tidyHtml);
-		server.register(plugin, options);
+		server.register(plugin, config);
 
 		await server.ready();
 	});
