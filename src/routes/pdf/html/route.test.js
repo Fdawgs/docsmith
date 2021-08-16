@@ -22,18 +22,18 @@ const queryStrings = generateCombos([
 ]);
 
 describe("PDF-to-HTML route", () => {
-	let options;
+	let config;
 	let server;
 
 	beforeAll(async () => {
-		options = await getConfig();
+		config = await getConfig();
 
 		server = Fastify()
 			.register(accepts)
-			.register(embedHtmlImages, options.poppler)
+			.register(embedHtmlImages, config.poppler)
 			.register(tidyCss)
 			.register(tidyHtml);
-		server.register(plugin, options);
+		server.register(plugin, config);
 
 		await server.ready();
 	});

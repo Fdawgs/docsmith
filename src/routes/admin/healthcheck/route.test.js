@@ -5,15 +5,15 @@ const getConfig = require("../../../config");
 
 describe("Healthcheck Route", () => {
 	describe("GET Requests", () => {
-		let options;
+		let config;
 		let server;
 
 		beforeAll(async () => {
-			options = await getConfig();
+			config = await getConfig();
 
 			server = Fastify();
 			server.register(accepts);
-			server.register(plugin, options);
+			server.register(plugin, config);
 
 			await server.ready();
 		});

@@ -154,6 +154,15 @@ async function getConfig() {
 				},
 				level: env.LOG_LEVEL || "info",
 				/**
+				 * Pretty output to stdout out if not in production.
+				 * Replaces using `pino-pretty` in scripts, as it does not play
+				 * well with Nodemon
+				 */
+				prettyPrint:
+					env.NODE_ENV.toLowerCase() !== "production" &&
+					(!env.LOG_ROTATION_FILENAME ||
+						env.LOG_ROTATION_FILENAME === ""),
+				/**
 				 * Fastify does not log the req or res body anyway but better
 				 * to be safe as a future change could break it
 				 */
@@ -248,7 +257,7 @@ async function getConfig() {
 			tempDirectory,
 		},
 		tesseract: {
-			enabled: true,
+			enabled: String(env.OCR_ENABLED).toLowerCase().trim() !== "false",
 			languages: env.OCR_LANGUAGES || "eng",
 			// Use number of physical CPU cores available if ENV variable not specified
 			workers: env.OCR_WORKERS || physicalCpuCount,
@@ -271,18 +280,6 @@ async function getConfig() {
 		});
 	}
 
-	/**
-	 * Pretty output to stdout out if not in production.
-	 * Replaces using `pino-pretty` in scripts, as it does not play
-	 * well with Nodemon
-	 */
-	if (
-		env.NODE_ENV.toLowerCase() !== "production" &&
-		(!env.LOG_ROTATION_FILENAME || env.LOG_ROTATION_FILENAME === "")
-	) {
-		config.fastifyInit.logger.prettyPrint = true;
-	}
-
 	if (env.RATE_LIMIT_EXCLUDED_ARRAY) {
 		config.rateLimit.allowList = JSON.parse(env.RATE_LIMIT_EXCLUDED_ARRAY);
 	}
@@ -302,10 +299,6 @@ async function getConfig() {
 				bearerFormat: "bearer token",
 			},
 		};
-	}
-
-	if (String(env.OCR_ENABLED).toLowerCase().trim() === "false") {
-		config.tesseract.enabled = false;
 	}
 
 	if (String(env.CORS_ALLOW_CREDENTIALS).toLowerCase().trim() === "true") {

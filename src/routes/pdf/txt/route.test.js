@@ -20,17 +20,17 @@ const queryStrings = generateCombos([
 ]);
 
 describe("PDF-to-TXT route", () => {
-	let options;
+	let config;
 	let server;
 
 	beforeAll(async () => {
-		options = await getConfig();
+		config = await getConfig();
 
 		server = Fastify()
 			.register(accepts)
-			.register(imageToTxt, options.tesseract)
+			.register(imageToTxt, config.tesseract)
 			.register(tidyHtml);
-		server.register(plugin, options);
+		server.register(plugin, config);
 
 		await server.ready();
 	});
