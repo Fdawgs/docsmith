@@ -257,7 +257,7 @@ async function getConfig() {
 			tempDirectory,
 		},
 		tesseract: {
-			enabled: true,
+			enabled: String(env.OCR_ENABLED).toLowerCase().trim() !== "false",
 			languages: env.OCR_LANGUAGES || "eng",
 			// Use number of physical CPU cores available if ENV variable not specified
 			workers: env.OCR_WORKERS || physicalCpuCount,
@@ -299,10 +299,6 @@ async function getConfig() {
 				bearerFormat: "bearer token",
 			},
 		};
-	}
-
-	if (String(env.OCR_ENABLED).toLowerCase().trim() === "false") {
-		config.tesseract.enabled = false;
 	}
 
 	if (String(env.CORS_ALLOW_CREDENTIALS).toLowerCase().trim() === "true") {
