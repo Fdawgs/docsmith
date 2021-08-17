@@ -1,4 +1,3 @@
-const createError = require("http-errors");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const mammoth = require("mammoth");
@@ -40,7 +39,7 @@ async function plugin(server) {
 			res.header("content-type", `text/html; charset=utf-8`);
 		} catch (err) {
 			server.log.error(err);
-			res.send(createError(400, err));
+			res.badRequest(err);
 		}
 	});
 }
@@ -48,4 +47,5 @@ async function plugin(server) {
 module.exports = fp(plugin, {
 	fastify: "3.x",
 	name: "docx-to-html",
+	dependencies: ["fastify-sensible"],
 });

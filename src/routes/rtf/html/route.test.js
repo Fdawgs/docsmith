@@ -2,6 +2,7 @@ const accepts = require("fastify-accepts");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
+const sensible = require("fastify-sensible");
 const generateCombos = require("../../../../test_resources/utils/genCombos");
 const plugin = require(".");
 const getConfig = require("../../../config");
@@ -28,9 +29,10 @@ describe("RTF-to-HTML route", () => {
 		server = Fastify()
 			.register(accepts)
 			.register(embedHtmlImages, config.unrtf)
+			.register(sensible)
 			.register(tidyCss)
-			.register(tidyHtml);
-		server.register(plugin, config);
+			.register(tidyHtml)
+			.register(plugin, config);
 
 		await server.ready();
 	});

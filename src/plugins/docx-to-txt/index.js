@@ -1,4 +1,3 @@
-const createError = require("http-errors");
 const fp = require("fastify-plugin");
 const mammoth = require("mammoth");
 
@@ -20,7 +19,7 @@ async function plugin(server) {
 			req.conversionResults.body = value;
 		} catch (err) {
 			server.log.error(err);
-			res.send(createError(400, err));
+			res.badRequest(err);
 		}
 	});
 }
@@ -28,4 +27,5 @@ async function plugin(server) {
 module.exports = fp(plugin, {
 	fastify: "3.x",
 	name: "docx-to-txt",
+	dependencies: ["fastify-sensible"],
 });

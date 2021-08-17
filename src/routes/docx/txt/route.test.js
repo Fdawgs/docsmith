@@ -2,6 +2,7 @@ const accepts = require("fastify-accepts");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
+const sensible = require("fastify-sensible");
 const plugin = require(".");
 const getConfig = require("../../../config");
 
@@ -12,8 +13,10 @@ describe("DOCX-to-TXT route", () => {
 	beforeAll(async () => {
 		config = await getConfig();
 
-		server = Fastify().register(accepts);
-		server.register(plugin, config);
+		server = Fastify()
+			.register(accepts)
+			.register(sensible)
+			.register(plugin, config);
 
 		await server.ready();
 	});

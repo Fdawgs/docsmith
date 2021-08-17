@@ -2,6 +2,7 @@ const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
+const sensible = require("fastify-sensible");
 const plugin = require(".");
 
 describe("DOCX-to-TXT Conversion Plugin", () => {
@@ -18,7 +19,7 @@ describe("DOCX-to-TXT Conversion Plugin", () => {
 			}
 		);
 
-		server.register(plugin);
+		server.register(sensible).register(plugin);
 
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");
