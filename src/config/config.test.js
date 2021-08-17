@@ -44,7 +44,9 @@ describe("Configuration", () => {
 			"warn",
 			"silent",
 		]);
+		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log1-%DATE%.log";
+		const LOG_ROTATION_FREQUENCY = "custom";
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
 		const OCR_ENABLED = false;
@@ -69,7 +71,9 @@ describe("Configuration", () => {
 			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			RATE_LIMIT_EXCLUDED_ARRAY,
 			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
 			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
 			AUTH_BEARER_TOKEN_ARRAY,
 			OCR_ENABLED,
 			OCR_LANGUAGES,
@@ -170,7 +174,9 @@ describe("Configuration", () => {
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
 		const LOG_LEVEL = "";
+		const LOG_ROTATION_DATE_FORMAT = "";
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log2-%DATE%.log";
+		const LOG_ROTATION_FREQUENCY = "";
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
 		const OCR_ENABLED = "";
@@ -194,7 +200,9 @@ describe("Configuration", () => {
 			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			RATE_LIMIT_EXCLUDED_ARRAY,
 			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
 			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
 			AUTH_BEARER_TOKEN_ARRAY,
 			OCR_ENABLED,
 			OCR_LANGUAGES,
