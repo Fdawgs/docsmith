@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable security/detect-object-injection */
 const autoParse = require("auto-parse");
 const fp = require("fastify-plugin");
