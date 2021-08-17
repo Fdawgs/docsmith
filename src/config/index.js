@@ -168,9 +168,11 @@ async function getConfig() {
 				 */
 				redact: ["req.body", "req.headers.authorization", "res.body"],
 				serializers: {
+					/* istanbul ignore next */
 					req(req) {
 						return pino.stdSerializers.req(req);
 					},
+					/* istanbul ignore next */
 					res(res) {
 						return pino.stdSerializers.res(res);
 					},
