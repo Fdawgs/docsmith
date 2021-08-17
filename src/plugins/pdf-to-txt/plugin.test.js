@@ -4,6 +4,7 @@ const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
+const sensible = require("fastify-sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
 const imageToTxt = require("../image-to-txt");
@@ -26,6 +27,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 
 		server
 			.register(imageToTxt, config.tesseract)
+			.register(sensible)
 			.register(plugin, config.poppler);
 
 		server.post("/", async (req, res) => {

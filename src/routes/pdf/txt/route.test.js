@@ -3,6 +3,7 @@ const accepts = require("fastify-accepts");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
+const sensible = require("fastify-sensible");
 const generateCombos = require("../../../../test_resources/utils/genCombos");
 const plugin = require(".");
 const getConfig = require("../../../config");
@@ -29,8 +30,9 @@ describe("PDF-to-TXT route", () => {
 		server = Fastify()
 			.register(accepts)
 			.register(imageToTxt, config.tesseract)
-			.register(tidyHtml);
-		server.register(plugin, config);
+			.register(sensible)
+			.register(tidyHtml)
+			.register(plugin, config);
 
 		await server.ready();
 	});

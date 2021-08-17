@@ -1,4 +1,3 @@
-const { NotAcceptable, UnsupportedMediaType } = require("http-errors");
 const fileType = require("file-type");
 
 // Import plugins
@@ -33,7 +32,7 @@ async function route(server, options) {
 				req.accepts().type(pdfToTxtPostSchema.produces)
 			)
 		) {
-			res.send(NotAcceptable());
+			res.notAcceptable();
 		}
 	});
 
@@ -51,7 +50,7 @@ async function route(server, options) {
 				results.mime === undefined ||
 				results.mime !== "application/pdf"
 			) {
-				throw UnsupportedMediaType();
+				throw server.httpErrors.unsupportedMediaType();
 			} else {
 				return payload;
 			}

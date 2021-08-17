@@ -1,7 +1,6 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable security/detect-object-injection */
 const autoParse = require("auto-parse");
-const createError = require("http-errors");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const fs = require("fs");
@@ -147,9 +146,13 @@ async function plugin(server, options) {
 			);
 		} catch (err) {
 			server.log.error(err);
-			res.send(createError(400, err));
+			res.badRequest(err);
 		}
 	});
 }
 
-module.exports = fp(plugin, { fastify: "3.x", name: "pdf-to-html" });
+module.exports = fp(plugin, {
+	fastify: "3.x",
+	name: "pdf-to-html",
+	dependencies: ["fastify-sensible"],
+});

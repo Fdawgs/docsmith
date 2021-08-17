@@ -4,6 +4,7 @@ const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
+const sensible = require("fastify-sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -30,7 +31,7 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 			return res;
 		});
 
-		server.register(plugin, config.unrtf);
+		server.register(sensible).register(plugin, config.unrtf);
 
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");

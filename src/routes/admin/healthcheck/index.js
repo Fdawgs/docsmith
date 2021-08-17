@@ -1,5 +1,3 @@
-const { NotAcceptable } = require("http-errors");
-
 // Import plugins
 const cors = require("fastify-cors");
 
@@ -22,7 +20,7 @@ async function route(server, options) {
 				req.accepts().type(healthcheckGetSchema.produces)
 			)
 		) {
-			res.send(NotAcceptable());
+			res.notAcceptable();
 		}
 	});
 

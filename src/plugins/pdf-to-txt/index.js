@@ -1,6 +1,6 @@
+/* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable security/detect-object-injection */
 const autoParse = require("auto-parse");
-const createError = require("http-errors");
 const fp = require("fastify-plugin");
 const fs = require("fs");
 const fsp = require("fs").promises;
@@ -188,7 +188,7 @@ async function plugin(server, options) {
 			);
 		} catch (err) {
 			server.log.error(err);
-			res.send(createError(400, err));
+			res.badRequest(err);
 		}
 	});
 }
@@ -196,4 +196,5 @@ async function plugin(server, options) {
 module.exports = fp(plugin, {
 	fastify: "3.x",
 	name: "pdf-to-txt",
+	dependencies: ["fastify-sensible"],
 });
