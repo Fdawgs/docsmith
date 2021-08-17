@@ -2,6 +2,54 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0](https://www.github.com/Fdawgs/docsmith/compare/v3.1.0...v4.0.0) (2021-08-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **routes:** `/healthcheck` moved to `/admin/healthcheck`
+
+### Features
+
+* **routes/docx/html:** add `language` query string param ([befbe1f](https://www.github.com/Fdawgs/docsmith/commit/befbe1fcd2d49fe352d4ca6b707c6ea3d6fe1035))
+* **routes/pdf/html:** add `language` query string param ([baf74c7](https://www.github.com/Fdawgs/docsmith/commit/baf74c7e3dcf8caa352061a9a4c7fecc003b0763))
+* **routes/rtf/html:** add `language` query string param ([db783d8](https://www.github.com/Fdawgs/docsmith/commit/db783d846edb205bf2a9859a6ba71809b48da6fe))
+
+
+### Bug Fixes
+
+* **app:** logging grammar fixes ([31e6f26](https://www.github.com/Fdawgs/docsmith/commit/31e6f2659d6e2d05611d289d78f224f72eac4c6a))
+* **config:** allow for empty logger env variables ([b3d3567](https://www.github.com/Fdawgs/docsmith/commit/b3d35678c2a5fc6f4e7e5e4df6e9599f42e831ce))
+* **config:** defaults for undeclared variables ([737e0b2](https://www.github.com/Fdawgs/docsmith/commit/737e0b290f57217c801716ea286d57597e6b79d9))
+* **routes/docx/html:** restrict strings accepted in query string params ([880f1f9](https://www.github.com/Fdawgs/docsmith/commit/880f1f99d03e2cf46e66a8c04f944afad03a2402))
+* **routes/pdf/html:** restrict strings accepted in query string params ([248b96f](https://www.github.com/Fdawgs/docsmith/commit/248b96f104259355f7a1e64344807b849dd9b5af))
+* **routes/rtf/html:** restrict strings accepted in query string params ([19292ef](https://www.github.com/Fdawgs/docsmith/commit/19292efeabdd24831d96c928447f18fea5f2bf77))
+
+
+### Improvements
+
+* **config:** consolidate logger pretty print conditional ([6682344](https://www.github.com/Fdawgs/docsmith/commit/668234499ce83a68c36346d0f5515cd1b61af786))
+* **config:** consolidate tesseract conditional ([6ed41c9](https://www.github.com/Fdawgs/docsmith/commit/6ed41c94716b713e861666a12b6e144297eb29ac))
+* replace `http-errors` with `fastify-sensible` plugin ([e5b8578](https://www.github.com/Fdawgs/docsmith/commit/e5b857840b7d691a5a6307cc4659a73725713255))
+* **routes:** `/healthcheck` moved to `/admin/healthcheck` ([c91bf23](https://www.github.com/Fdawgs/docsmith/commit/c91bf235b37402a1aea682db2e1dc206753b7077))
+
+
+### Miscellaneous
+
+* **env:** document default logger values ([6d340c5](https://www.github.com/Fdawgs/docsmith/commit/6d340c5da49c6c4121e85e96cf4d23c1a06ce5ce))
+* **env:** standardise, sort, and group env variables ([72f86f1](https://www.github.com/Fdawgs/docsmith/commit/72f86f1170c79d65f0ae4c7f04929a5db8c9fd1e))
+* **package:** update description ([#343](https://www.github.com/Fdawgs/docsmith/issues/343)) ([d5d9b38](https://www.github.com/Fdawgs/docsmith/commit/d5d9b38ed9426f64dde9c228e8ae25d840987f66))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 36.0.6 to 36.0.7 ([a6f29c9](https://www.github.com/Fdawgs/docsmith/commit/a6f29c9247a22ae77be8a985d33fc7257bedd217))
+* **deps:** bump env-schema from 3.2.0 to 3.3.0 ([d7b8156](https://www.github.com/Fdawgs/docsmith/commit/d7b8156b024b440c22d166d034a42090d96b4acb))
+* **deps:** bump fastify from 3.20.1 to 3.20.2 ([df203e4](https://www.github.com/Fdawgs/docsmith/commit/df203e4a7fe7ef5c73d6cd96682597a05cc8f488))
+* **deps:** bump jsdom from 16.7.0 to 17.0.0 ([d149b72](https://www.github.com/Fdawgs/docsmith/commit/d149b72bc08875ce40b4070d73329f0e4ec62629))
+* **deps:** bump pino-pretty from 5.1.2 to 5.1.3 ([886f5f9](https://www.github.com/Fdawgs/docsmith/commit/886f5f9d69532441ae14a85540533ac9532788e1))
+* **docker:** bump curl from 7.52.1+deb9u14 to 7.52.1+deb9u15 ([7283bba](https://www.github.com/Fdawgs/docsmith/commit/7283bba2eee592560f13d34da185dc3188db9b40))
+
 ## [3.1.0](https://www.github.com/Fdawgs/docsmith/compare/v3.0.0...v3.1.0) (2021-08-09)
 
 
