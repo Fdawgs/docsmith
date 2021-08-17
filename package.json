@@ -105,7 +105,7 @@
     "fluent-json-schema": "^3.0.1",
     "glob": "^7.1.7",
     "htmltidy2": "^0.3.0",
-    "jsdom": "^16.7.0",
+    "jsdom": "^17.0.0",
     "mammoth": "^1.4.17",
     "node-poppler": "^4.1.1",
     "node-unrtf": "^2.0.1",
