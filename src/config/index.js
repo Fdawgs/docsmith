@@ -56,7 +56,7 @@ async function getConfig() {
 			.prop("SERVICE_PORT", S.number())
 			.prop(
 				"SERVICE_BODY_MAX_BYTES",
-				S.anyOf([S.number(), S.null()]).default(10485760)
+				S.anyOf([S.number().default(10485760), S.null()])
 			)
 			.prop("HTTPS_PFX_PASSPHRASE", S.anyOf([S.string(), S.null()]))
 			.prop("HTTPS_PFX_FILE_PATH", S.anyOf([S.string(), S.null()]))
@@ -64,7 +64,7 @@ async function getConfig() {
 			.prop("HTTPS_SSL_KEY_PATH", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"CORS_ORIGIN",
-				S.anyOf([S.string(), S.null()]).default("false")
+				S.anyOf([S.string().default("false"), S.null()])
 			)
 
 			.prop("CORS_ALLOWED_HEADERS", S.anyOf([S.string(), S.null()]))
@@ -75,39 +75,41 @@ async function getConfig() {
 			.prop("CORS_EXPOSED_HEADERS", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"PROC_LOAD_MAX_EVENT_LOOP_DELAY",
-				S.anyOf([S.number(), S.null()]).default(0)
+				S.anyOf([S.number().default(0), S.null()])
 			)
 			.prop(
 				"PROC_LOAD_MAX_HEAP_USED_BYTES",
-				S.anyOf([S.number(), S.null()]).default(0)
+				S.anyOf([S.number().default(0), S.null()])
 			)
 			.prop(
 				"PROC_LOAD_MAX_RSS_BYTES",
-				S.anyOf([S.number(), S.null()]).default(0)
+				S.anyOf([S.number().default(0), S.null()])
 			)
 			.prop(
 				"PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION",
-				S.anyOf([S.number(), S.null()]).default(0)
+				S.anyOf([S.number().default(0), S.null()])
 			)
 			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
-				S.anyOf([S.number(), S.null()]).default(1000)
+				S.anyOf([S.number().default(1000), S.null()])
 			)
 			.prop(
 				"LOG_LEVEL",
 				S.anyOf([
-					S.string().enum([
-						"fatal",
-						"error",
-						"warn",
-						"info",
-						"debug",
-						"trace",
-						"silent",
-					]),
+					S.string()
+						.enum([
+							"fatal",
+							"error",
+							"warn",
+							"info",
+							"debug",
+							"trace",
+							"silent",
+						])
+						.default("info"),
 					S.null(),
-				]).default("info")
+				])
 			)
 			.prop("LOG_ROTATION_DATE_FORMAT", S.string().default("YYYY-MM-DD"))
 			.prop("LOG_ROTATION_FILENAME", S.anyOf([S.string(), S.null()]))
@@ -120,13 +122,14 @@ async function getConfig() {
 			.prop("AUTH_BEARER_TOKEN_ARRAY", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"OCR_ENABLED",
-				S.anyOf([S.string().enum(["true", "false"]), S.null()]).default(
-					"true"
-				)
+				S.anyOf([
+					S.string().enum(["true", "false"]).default("true"),
+					S.null(),
+				])
 			)
 			.prop(
 				"OCR_LANGUAGES",
-				S.anyOf([S.string(), S.null()]).default("eng")
+				S.anyOf([S.string().default("eng"), S.null()])
 			)
 			.prop("OCR_WORKERS", S.anyOf([S.number(), S.null()]))
 			.prop("POPPLER_BINARY_PATH", S.anyOf([S.string(), S.null()]))
