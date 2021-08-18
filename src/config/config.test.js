@@ -177,8 +177,7 @@ describe("Configuration", () => {
 		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = "";
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
-		const AUTH_BEARER_TOKEN_ARRAY =
-			'[{"service": "test", "value": "testtoken"}]';
+		const AUTH_BEARER_TOKEN_ARRAY = "";
 		const OCR_ENABLED = "";
 		const OCR_LANGUAGES = "";
 		const OCR_WORKERS = "";
@@ -213,7 +212,7 @@ describe("Configuration", () => {
 
 		const config = await getConfig();
 
-		expect(config.bearerTokenAuthKeys).toContain("testtoken");
+		expect(config.bearerTokenAuthKeys).toBeUndefined();
 
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,
