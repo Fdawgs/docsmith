@@ -5,7 +5,7 @@ const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("fastify-sensible");
 const generateCombos = require("../../../../test_resources/utils/genCombos");
-const plugin = require(".");
+const route = require(".");
 const getConfig = require("../../../config");
 
 const embedHtmlImages = require("../../../plugins/embed-html-images");
@@ -35,7 +35,7 @@ describe("PDF-to-HTML route", () => {
 			.register(sensible)
 			.register(tidyCss)
 			.register(tidyHtml)
-			.register(plugin, config);
+			.register(route, config);
 
 		await server.ready();
 	});
