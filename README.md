@@ -52,6 +52,12 @@ Perform the following steps before deployment:
 5. Configure the application using the environment variables in `.env`
 6. Place additional trained data into `ocr_lang_data` directory (optional, [info can be found here](./ocr_lang_data/README.md))
 
+**Note:** Set the following environment variables in `.env` to meet NHS Digital's recommendation to retain 6 months' worth of logs:
+
+-   `LOG_ROTATION_FREQUENCY="daily"`
+-   `LOG_ROTATION_DATE_FORMAT="YYYY-MM-DD"`
+-   `LOG_ROTATION_MAX_LOGS="180"`
+
 ## Deployment
 
 ### Standard Deployment
