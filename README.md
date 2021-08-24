@@ -54,8 +54,8 @@ Perform the following steps before deployment:
 
 **Note:** Set the following environment variables in `.env` to meet NHS Digital's recommendation to retain 6 months' worth of logs:
 
--   `LOG_ROTATION_FREQUENCY="daily"`
 -   `LOG_ROTATION_DATE_FORMAT="YYYY-MM-DD"`
+-   `LOG_ROTATION_FREQUENCY="daily"`
 -   `LOG_ROTATION_MAX_LOGS="180"`
 
 ## Deployment
