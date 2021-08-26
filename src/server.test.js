@@ -343,7 +343,7 @@ describe("Server Deployment", () => {
 				expect(response.statusCode).toEqual(200);
 			});
 
-			test("Should return HTTP status code 401 if auth bearer token is missing", async () => {
+			test("Should return HTTP status code 401 if invalid bearer token provided in header", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -355,13 +355,11 @@ describe("Server Deployment", () => {
 					},
 					headers: {
 						accept: "application/json, text/html",
+						authorization: "Bearer invalid",
 						"content-type": "application/pdf",
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
 				expect(response.statusCode).toEqual(401);
 			});
 
@@ -415,7 +413,7 @@ describe("Server Deployment", () => {
 				expect(response.statusCode).toEqual(200);
 			});
 
-			test("Should return HTTP status code 401 if auth bearer token is missing", async () => {
+			test("Should return HTTP status code 401 if invalid bearer token provided in header", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
@@ -428,13 +426,11 @@ describe("Server Deployment", () => {
 					},
 					headers: {
 						accept: "application/json, text/plain",
+						authorization: "Bearer invalid",
 						"content-type": "application/pdf",
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
 				expect(response.statusCode).toEqual(401);
 			});
 
