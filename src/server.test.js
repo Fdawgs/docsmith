@@ -47,11 +47,9 @@ describe("Server Deployment", () => {
 		let server;
 
 		beforeAll(async () => {
-			const AUTH_BEARER_TOKEN_ARRAY = "";
-			const OCR_ENABLED = false;
 			Object.assign(process.env, {
-				AUTH_BEARER_TOKEN_ARRAY,
-				OCR_ENABLED,
+				AUTH_BEARER_TOKEN_ARRAY: "",
+				OCR_ENABLED: false,
 			});
 			config = await getConfig();
 
@@ -269,12 +267,10 @@ describe("Server Deployment", () => {
 		let server;
 
 		beforeAll(async () => {
-			const AUTH_BEARER_TOKEN_ARRAY =
-				'[{"service": "test", "value": "testtoken"}]';
-			const OCR_ENABLED = true;
 			Object.assign(process.env, {
-				AUTH_BEARER_TOKEN_ARRAY,
-				OCR_ENABLED,
+				AUTH_BEARER_TOKEN_ARRAY:
+					'[{"service": "test", "value": "testtoken"}]',
+				OCR_ENABLED: true,
 			});
 
 			config = await getConfig();
