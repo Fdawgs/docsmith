@@ -5,6 +5,7 @@ const isHtml = require("is-html");
 const sensible = require("fastify-sensible");
 const route = require(".");
 const getConfig = require("../../../config");
+const sharedSchemas = require("../../../plugins/shared-schemas");
 
 describe("RTF-to-TXT route", () => {
 	let config;
@@ -16,6 +17,7 @@ describe("RTF-to-TXT route", () => {
 		server = Fastify()
 			.register(accepts)
 			.register(sensible)
+			.register(sharedSchemas)
 			.register(route, config);
 
 		await server.ready();

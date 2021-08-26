@@ -179,7 +179,7 @@ async function getConfig() {
 				},
 				level: env.LOG_LEVEL || "info",
 				/**
-				 * Pretty output to stdout out if not in production.
+				 * Pretty output to stdout if not in production.
 				 * Replaces using `pino-pretty` in scripts, as it does not play
 				 * well with Nodemon
 				 */

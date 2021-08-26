@@ -19,7 +19,7 @@ async function route(server, options) {
 		pdfToHtmlPostSchema.security = [{ bearerToken: [] }];
 	}
 
-	server.addHook("onRequest", async (req, res) => {
+	server.addHook("preValidation", async (req, res) => {
 		if (
 			// Catch unsupported Accept header media types
 			!pdfToHtmlPostSchema.produces.includes(

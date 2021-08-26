@@ -16,6 +16,18 @@ const rtfToTxtPostSchema = {
 	produces: ["text/plain"],
 	response: {
 		200: S.string(),
+		401: S.ref("responses#/definitions/unauthorized").description(
+			"Unauthorized"
+		),
+		406: S.ref("responses#/definitions/notAcceptable").description(
+			"Not Acceptable"
+		),
+		429: S.ref("responses#/definitions/tooManyRequests").description(
+			"Too Many Requests"
+		),
+		503: S.ref("responses#/definitions/serviceUnavailable").description(
+			"Service Unavailable"
+		),
 	},
 };
 

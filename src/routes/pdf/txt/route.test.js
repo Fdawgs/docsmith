@@ -7,6 +7,7 @@ const sensible = require("fastify-sensible");
 const generateCombos = require("../../../../test_resources/utils/genCombos");
 const route = require(".");
 const getConfig = require("../../../config");
+const sharedSchemas = require("../../../plugins/shared-schemas");
 
 const imageToTxt = require("../../../plugins/image-to-txt");
 const tidyHtml = require("../../../plugins/tidy-html");
@@ -31,6 +32,7 @@ describe("PDF-to-TXT route", () => {
 			.register(accepts)
 			.register(imageToTxt, config.tesseract)
 			.register(sensible)
+			.register(sharedSchemas)
 			.register(tidyHtml)
 			.register(route, config);
 
