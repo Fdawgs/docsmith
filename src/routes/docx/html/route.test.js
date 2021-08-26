@@ -5,6 +5,7 @@ const isHtml = require("is-html");
 const sensible = require("fastify-sensible");
 const route = require(".");
 const getConfig = require("../../../config");
+const sharedSchemas = require("../../../plugins/shared-schemas");
 
 const tidyCss = require("../../../plugins/tidy-css");
 const tidyHtml = require("../../../plugins/tidy-html");
@@ -19,6 +20,7 @@ describe("DOCX-to-HTML route", () => {
 		server = Fastify()
 			.register(accepts)
 			.register(sensible)
+			.register(sharedSchemas)
 			.register(tidyCss)
 			.register(tidyHtml)
 			.register(route, config);

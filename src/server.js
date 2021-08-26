@@ -13,6 +13,7 @@ const rateLimit = require("fastify-rate-limit");
 const sensible = require("fastify-sensible");
 const swagger = require("fastify-swagger");
 const underPressure = require("under-pressure");
+const sharedSchemas = require("./plugins/shared-schemas");
 
 // Import local decorator plugins
 const embedHtmlImages = require("./plugins/embed-html-images");
@@ -63,6 +64,9 @@ async function plugin(server, config) {
 
 		// Rate limiting and 429 response handling
 		.register(rateLimit, config.rateLimit)
+
+		// Re-usable schemas
+		.register(sharedSchemas)
 
 		// Utility functions and error handlers
 		.register(sensible)

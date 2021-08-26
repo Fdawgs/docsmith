@@ -7,6 +7,7 @@ const sensible = require("fastify-sensible");
 const generateCombos = require("../../../../test_resources/utils/genCombos");
 const route = require(".");
 const getConfig = require("../../../config");
+const sharedSchemas = require("../../../plugins/shared-schemas");
 
 const embedHtmlImages = require("../../../plugins/embed-html-images");
 const tidyCss = require("../../../plugins/tidy-css");
@@ -33,6 +34,7 @@ describe("PDF-to-HTML route", () => {
 			.register(accepts)
 			.register(embedHtmlImages, config.poppler)
 			.register(sensible)
+			.register(sharedSchemas)
 			.register(tidyCss)
 			.register(tidyHtml)
 			.register(route, config);
