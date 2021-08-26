@@ -363,11 +363,6 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.payload)).toEqual(
-					expect.objectContaining({
-						error: "missing authorization header",
-					})
-				);
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersJson)
 				);
@@ -441,11 +436,6 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.payload)).toEqual(
-					expect.objectContaining({
-						error: "missing authorization header",
-					})
-				);
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersJson)
 				);

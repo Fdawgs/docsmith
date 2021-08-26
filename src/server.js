@@ -97,6 +97,11 @@ async function plugin(server, config) {
 		if (config.bearerTokenAuthKeys) {
 			securedContext.register(bearer, {
 				keys: config.bearerTokenAuthKeys,
+				errorResponse: (err) => ({
+					statusCode: 401,
+					error: "Unauthorized",
+					message: err.message,
+				}),
 			});
 		}
 
