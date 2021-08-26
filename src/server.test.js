@@ -36,28 +36,9 @@ const expResHeadersHtml = {
 	...{ "content-type": expect.stringContaining("text/html") },
 };
 
-const expectResHeadersClientError = {
-	"content-security-policy":
-		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-	"x-dns-prefetch-control": "off",
-	"expect-ct": "max-age=0",
-	"x-frame-options": "SAMEORIGIN",
-	"strict-transport-security": "max-age=31536000; includeSubDomains",
-	"x-download-options": "noopen",
-	"x-content-type-options": "nosniff",
-	"x-permitted-cross-domain-policies": "none",
-	"referrer-policy": "no-referrer",
-	"x-xss-protection": "0",
-	"surrogate-control": "no-store",
-	"cache-control": "no-store, max-age=0, must-revalidate",
-	pragma: "no-cache",
-	expires: "0",
-	"permissions-policy": "interest-cohort=()",
-	vary: "accept-encoding",
-	"content-type": "application/json; charset=utf-8",
-	"content-length": expect.any(String),
-	date: expect.any(String),
-	connection: "keep-alive",
+const expResHeadersJson = {
+	...expResHeaders,
+	...{ "content-type": expect.stringContaining("application/json") },
 };
 
 describe("Server Deployment", () => {
@@ -94,10 +75,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.payload).toEqual("ok");
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeaders)
 				);
-				expect(response.payload).toEqual("ok");
 				expect(response.statusCode).toEqual(200);
 			});
 
@@ -111,7 +92,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining(expectResHeadersClientError)
+					expect.objectContaining(expResHeadersJson)
 				);
 				expect(response.statusCode).toEqual(406);
 			});
@@ -132,10 +113,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersHtml)
 				);
-				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.statusCode).toEqual(200);
 			});
 		});
@@ -155,10 +136,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(isHtml(response.payload)).toEqual(false);
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeaders)
 				);
-				expect(isHtml(response.payload)).toEqual(false);
 				expect(response.statusCode).toEqual(200);
 			});
 		});
@@ -180,10 +161,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersHtml)
 				);
-				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.statusCode).toEqual(200);
 			});
 
@@ -204,7 +185,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining(expectResHeadersClientError)
+					expect.objectContaining(expResHeadersJson)
 				);
 				expect(response.statusCode).toEqual(406);
 			});
@@ -227,13 +208,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
 				expect(response.payload).toEqual(
 					expect.stringContaining("The NHS Constitution")
 				);
 				expect(isHtml(response.payload)).toEqual(false);
+				expect(response.headers).toEqual(
+					expect.objectContaining(expResHeaders)
+				);
 				expect(response.statusCode).toEqual(200);
 			});
 		});
@@ -252,10 +233,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersHtml)
 				);
-				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.statusCode).toEqual(200);
 			});
 		});
@@ -274,10 +255,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(isHtml(response.payload)).toEqual(false);
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeaders)
 				);
-				expect(isHtml(response.payload)).toEqual(false);
 				expect(response.statusCode).toEqual(200);
 			});
 		});
@@ -318,10 +299,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.payload).toEqual("ok");
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeaders)
 				);
-				expect(response.payload).toEqual("ok");
 				expect(response.statusCode).toEqual(200);
 			});
 
@@ -335,7 +316,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining(expectResHeadersClientError)
+					expect.objectContaining(expResHeadersJson)
 				);
 				expect(response.statusCode).toEqual(406);
 			});
@@ -359,10 +340,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersHtml)
 				);
-				expect(isHtml(response.payload)).toEqual(true);
 				expect(response.statusCode).toEqual(200);
 			});
 
@@ -382,13 +363,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expectResHeadersClientError)
-				);
 				expect(JSON.parse(response.payload)).toEqual(
 					expect.objectContaining({
 						error: "missing authorization header",
 					})
+				);
+				expect(response.headers).toEqual(
+					expect.objectContaining(expResHeadersJson)
 				);
 				expect(response.statusCode).toEqual(401);
 			});
@@ -411,7 +392,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining(expectResHeadersClientError)
+					expect.objectContaining(expResHeadersJson)
 				);
 				expect(response.statusCode).toEqual(406);
 			});
@@ -436,10 +417,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(isHtml(response.payload)).toEqual(false);
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeaders)
 				);
-				expect(isHtml(response.payload)).toEqual(false);
 				expect(response.statusCode).toEqual(200);
 			});
 
@@ -460,13 +441,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expectResHeadersClientError)
-				);
 				expect(JSON.parse(response.payload)).toEqual(
 					expect.objectContaining({
 						error: "missing authorization header",
 					})
+				);
+				expect(response.headers).toEqual(
+					expect.objectContaining(expResHeadersJson)
 				);
 				expect(response.statusCode).toEqual(401);
 			});
@@ -490,7 +471,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.headers).toEqual(
-					expect.objectContaining(expectResHeadersClientError)
+					expect.objectContaining(expResHeadersJson)
 				);
 				expect(response.statusCode).toEqual(406);
 			});
