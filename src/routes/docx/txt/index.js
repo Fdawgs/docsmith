@@ -18,7 +18,7 @@ async function route(server, options) {
 		docxToTxtPostSchema.security = [{ bearerToken: [] }];
 	}
 
-	server.addHook("onRequest", async (req, res) => {
+	server.addHook("preValidation", async (req, res) => {
 		if (
 			// Catch unsupported Accept header media types
 			!docxToTxtPostSchema.produces.includes(

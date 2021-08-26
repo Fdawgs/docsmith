@@ -25,7 +25,7 @@ async function route(server, options) {
 		delete pdfToTxtPostSchema.query.properties.ocr;
 	}
 
-	server.addHook("onRequest", async (req, res) => {
+	server.addHook("preValidation", async (req, res) => {
 		if (
 			// Catch unsupported Accept header media types
 			!pdfToTxtPostSchema.produces.includes(

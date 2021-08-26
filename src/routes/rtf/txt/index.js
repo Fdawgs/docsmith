@@ -19,7 +19,7 @@ async function route(server, options) {
 		rtfToTxtPostSchema.security = [{ bearerToken: [] }];
 	}
 
-	server.addHook("onRequest", async (req, res) => {
+	server.addHook("preValidation", async (req, res) => {
 		if (
 			// Catch unsupported Accept header media types
 			!rtfToTxtPostSchema.produces.includes(
