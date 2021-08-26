@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.1](https://www.github.com/Fdawgs/docsmith/compare/v4.0.0...v4.0.1) (2021-08-26)
+
+
+### Bug Fixes
+
+* **server:** rate-limiting not affecting 406 responses ([06ec636](https://www.github.com/Fdawgs/docsmith/commit/06ec636ecbbd9762f73666775bbfb6fd01ead30e))
+* **server:** standardise 401 response schema ([5009d86](https://www.github.com/Fdawgs/docsmith/commit/5009d864494bb731b3ec882dec18297b3bd8743f))
+
+
+### Documentation
+
+* **readme:** add note regarding log retention for nhs digital ([a239ce8](https://www.github.com/Fdawgs/docsmith/commit/a239ce870d022da2eee918ca0862041a52ed2f22))
+* **readme:** sort example env variables alphabetically ascending ([00faa0f](https://www.github.com/Fdawgs/docsmith/commit/00faa0f9f72b0ad18832d358a90151ff632dc356))
+
+
+### Miscellaneous
+
+* **config:** remove excess word in inline comment ([a409a53](https://www.github.com/Fdawgs/docsmith/commit/a409a53ed4c2ce1621f7eefc791d30069ab2ae52))
+
+
+### Improvements
+
+* **plugins/shared-schemas:** move response schemas to plugin ([b51b720](https://www.github.com/Fdawgs/docsmith/commit/b51b720c3e4614585424f78cf5c545290a1e0d6f))
+
 ## [4.0.0](https://www.github.com/Fdawgs/docsmith/compare/v3.1.0...v4.0.0) (2021-08-17)
 
 
