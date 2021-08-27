@@ -10,7 +10,9 @@ const tags = ["PDF"];
  */
 const pdfToTxtPostSchema = {
 	tags,
-	summary: "Convert PDF documents to TXT format",
+	summary: "Convert PDF to TXT",
+	description:
+		"Returns the result of converting a PDF document to TXT or simple HTML format.",
 	operationId: "postPdfToTxt",
 	consumes: ["application/pdf"],
 	produces: ["text/html", "text/plain"],

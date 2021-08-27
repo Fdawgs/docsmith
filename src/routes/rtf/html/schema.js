@@ -10,7 +10,9 @@ const tags = ["RTF"];
  */
 const rtfToHtmlPostSchema = {
 	tags,
-	summary: "Convert RTF documents to HTML format (images are not converted)",
+	summary: "Convert RTF to HTML",
+	description:
+		"Returns the result of converting an RTF document to HTML format. Images are discarded.",
 	operationId: "postRtfToHtml",
 	consumes: ["application/rtf"],
 	produces: ["text/html"],

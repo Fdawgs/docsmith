@@ -10,7 +10,9 @@ const tags = ["RTF"];
  */
 const rtfToTxtPostSchema = {
 	tags,
-	summary: "Convert RTF documents to TXT format",
+	summary: "Convert RTF to TXT",
+	description:
+		"Returns the result of converting an RTF document to TXT format.",
 	operationId: "postRtfToTxt",
 	consumes: ["application/rtf"],
 	produces: ["text/plain"],

@@ -8,7 +8,7 @@ const pino = require("pino");
 const physicalCpuCount = require("physical-cpu-count");
 const rotatingLogStream = require("file-stream-rotator");
 
-const { name, description, license, version } = require("../../package.json");
+const { description, license, version } = require("../../package.json");
 
 /**
  * @author Frazer Smith
@@ -221,12 +221,9 @@ async function getConfig() {
 			timeWindow: 60000,
 		},
 		swagger: {
-			routePrefix: "/docs",
-			exposeRoute: true,
-			staticCSP: true,
 			openapi: {
 				info: {
-					title: name,
+					title: "Docsmith",
 					description,
 					contact: {
 						name: "Developer",
@@ -237,6 +234,12 @@ async function getConfig() {
 						url: "https://raw.githubusercontent.com/Fdawgs/docsmith/master/LICENSE",
 					},
 					version,
+					// Redoc specific extension to support loading image in docs
+					"x-logo": {
+						url: "/images/docsmith-logo-transparent-background-wide-canvas.png",
+						backgroundColor: "#005EB8",
+						altText: "Docsmith Logo",
+					},
 				},
 				components: {},
 				tags: [
@@ -320,10 +323,11 @@ async function getConfig() {
 
 		config.swagger.openapi.components.securitySchemes = {
 			bearerToken: {
-				type: "apiKey",
-				name: "Authorization",
-				in: "header",
-				bearerFormat: "bearer token",
+				type: "http",
+				description:
+					"Expects the request to contain an `Authorization` header with a bearer token.",
+				scheme: "bearer",
+				bearerFormat: "bearer <token>",
 			},
 		};
 	}

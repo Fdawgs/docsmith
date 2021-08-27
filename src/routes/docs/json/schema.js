@@ -1,22 +1,18 @@
 const S = require("fluent-json-schema");
 
-const tags = ["System Administration"];
-
 /**
  * Fastify uses AJV for JSON Schema Validation,
  * see https://www.fastify.io/docs/latest/Validation-and-Serialization/
  *
  * This validation protects against XSS and HPP attacks.
  */
-const healthcheckGetSchema = {
-	tags,
-	summary: "Ping",
-	description:
-		"This is a dummy endpoint you can use to test if the server is accessible.",
-	operationId: "getHealthcheck",
-	produces: ["text/plain"],
+const docsJsonGetSchema = {
+	hide: true,
+	summary: "List OpenAPI specification",
+	description: "Retrieves OpenAPI specification in JSON format.",
+	operationId: "getDocsJson",
+	produces: ["application/json"],
 	response: {
-		200: S.string().const("ok"),
 		406: S.ref("responses#/definitions/notAcceptable").description(
 			"Not Acceptable"
 		),
@@ -29,4 +25,4 @@ const healthcheckGetSchema = {
 	},
 };
 
-module.exports = { healthcheckGetSchema };
+module.exports = { docsJsonGetSchema };

@@ -10,7 +10,9 @@ const tags = ["DOCX"];
  */
 const docxToHtmlPostSchema = {
 	tags,
-	summary: "Convert DOCX documents to HTML format",
+	summary: "Convert DOCX to HTML",
+	description:
+		"Returns the result of converting a DOCX document to HTML format.",
 	operationId: "postDocxToHtml",
 	consumes: [
 		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
