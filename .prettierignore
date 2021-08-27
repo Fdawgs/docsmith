@@ -132,3 +132,6 @@ ocr_lang_data/*.gz
 
 # Tesseract trained data cache
 *.traineddata
+
+# Public files
+src/public/**/*.html
