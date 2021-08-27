@@ -29,7 +29,7 @@ async function plugin(server, options) {
 	});
 
 	server.addHook("onResponse", (req, res) => {
-		if (req.conversionResults.docLocation) {
+		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(
 				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`

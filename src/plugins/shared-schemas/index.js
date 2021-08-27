@@ -14,6 +14,15 @@ async function plugin(server) {
 			.title("Responses")
 			.description("Common response schemas")
 			.definition(
+				"badRequest",
+				S.object()
+					.id("#badRequest")
+					.title("400 Bad Request")
+					.prop("statusCode", S.number().const(400))
+					.prop("error", S.string().const("Bad Request"))
+					.prop("message", S.string().const("Bad Request"))
+			)
+			.definition(
 				"unauthorized",
 				S.object()
 					.id("#unauthorized")
@@ -33,6 +42,15 @@ async function plugin(server) {
 					.prop("statusCode", S.number().const(406))
 					.prop("error", S.string().const("Not Acceptable"))
 					.prop("message", S.string().const("Not Acceptable"))
+			)
+			.definition(
+				"unsupportedMediaType",
+				S.object()
+					.id("#unsupportedMediaType")
+					.title("415 Unsupported Media Type")
+					.prop("statusCode", S.number().const(415))
+					.prop("error", S.string().const("Unsupported Media Type"))
+					.prop("message", S.string().const("Unsupported Media Type"))
 			)
 			.definition(
 				"tooManyRequests",
