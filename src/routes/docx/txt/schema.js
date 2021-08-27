@@ -10,7 +10,9 @@ const tags = ["DOCX"];
  */
 const docxToTxtPostSchema = {
 	tags,
-	summary: "Convert DOCX documents to TXT format",
+	summary: "Convert DOCX to TXT",
+	description:
+		"Returns the result of converting a DOCX document to TXT format.",
 	operationId: "postDocxToTxt",
 	consumes: [
 		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
