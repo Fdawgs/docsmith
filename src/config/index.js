@@ -323,10 +323,11 @@ async function getConfig() {
 
 		config.swagger.openapi.components.securitySchemes = {
 			bearerToken: {
-				type: "apiKey",
-				name: "Authorization",
-				in: "header",
-				bearerFormat: "bearer token",
+				type: "http",
+				description:
+					"Expects the request to contain an `Authorization` header with a bearer token.",
+				scheme: "bearer",
+				bearerFormat: "bearer <token>",
 			},
 		};
 	}
