@@ -73,7 +73,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-security": "^1.4.0",
     "faker": "^5.5.3",
-    "husky": "^7.0.1",
+    "husky": "^7.0.2",
     "is-html": "^2.0.0",
     "jest": "^27.1.0",
     "license-checker": "^25.0.1",
