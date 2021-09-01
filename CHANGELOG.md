@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.0](https://www.github.com/Fdawgs/docsmith/compare/v4.0.0...v4.1.0) (2021-09-01)
+
+
+### Features
+
+* **routes/docs:** replace swagger ui with redoc ui ([43faf18](https://www.github.com/Fdawgs/docsmith/commit/43faf18684faa752b7b0032e8c7b515400882fd6))
+
+
+### Bug Fixes
+
+* add 400 and 415 responses to shared schema ([d4954df](https://www.github.com/Fdawgs/docsmith/commit/d4954df981dc12673e9fd049b4ed29ee6bf8953a))
+* **config:** bearer token security scheme format ([33b05d2](https://www.github.com/Fdawgs/docsmith/commit/33b05d266fb2b492ff5e2550a5b5a44168269434))
+* **plugins:** use optional chaining for `onResponse` hooks ([4b74c29](https://www.github.com/Fdawgs/docsmith/commit/4b74c297d631aed82c0b435dfc8ecaf5b646b59c))
+* **server:** rate-limiting not affecting 406 responses ([06ec636](https://www.github.com/Fdawgs/docsmith/commit/06ec636ecbbd9762f73666775bbfb6fd01ead30e))
+* **server:** standardise 401 response schema ([5009d86](https://www.github.com/Fdawgs/docsmith/commit/5009d864494bb731b3ec882dec18297b3bd8743f))
+
+
+### Documentation
+
+* **readme:** add note regarding log retention for nhs digital ([a239ce8](https://www.github.com/Fdawgs/docsmith/commit/a239ce870d022da2eee918ca0862041a52ed2f22))
+* **readme:** sort example env variables alphabetically ascending ([00faa0f](https://www.github.com/Fdawgs/docsmith/commit/00faa0f9f72b0ad18832d358a90151ff632dc356))
+
+
+### Improvements
+
+* **plugins/shared-schemas:** move response schemas to plugin ([b51b720](https://www.github.com/Fdawgs/docsmith/commit/b51b720c3e4614585424f78cf5c545290a1e0d6f))
+
+
+### Miscellaneous
+
+* **config:** remove excess word in inline comment ([a409a53](https://www.github.com/Fdawgs/docsmith/commit/a409a53ed4c2ce1621f7eefc791d30069ab2ae52))
+* **routes:** revise summaries and descriptions ([b5937d1](https://www.github.com/Fdawgs/docsmith/commit/b5937d19948d4feb6fd941e0d1fc689beef794e8))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-import from 2.24.0 to 2.24.2 ([169a64f](https://www.github.com/Fdawgs/docsmith/commit/169a64f889c4e9d710bd0453e4ed50cf76966f10))
+* **deps-dev:** bump eslint-plugin-jsdoc from 36.0.7 to 36.0.8 ([ea7ccdf](https://www.github.com/Fdawgs/docsmith/commit/ea7ccdf49dea4386377e4e00974623deb493a22b))
+* **deps-dev:** bump husky from 7.0.1 to 7.0.2 ([6b8365f](https://www.github.com/Fdawgs/docsmith/commit/6b8365f38da0bad7340e201c2a1dbcbd4e57f1c5))
+* **deps-dev:** bump jest from 27.0.6 to 27.1.0 ([8af4ade](https://www.github.com/Fdawgs/docsmith/commit/8af4ade64cdc1d0c883454ad75abcb5e35cf0029))
+* **deps:** add fastify-static ([57e592b](https://www.github.com/Fdawgs/docsmith/commit/57e592baad8ff513719d1c55624c78ef32019327))
+* **deps:** add redoc ([82f81e4](https://www.github.com/Fdawgs/docsmith/commit/82f81e4762b22ea80db802088af6c46c459b45b4))
+* **deps:** bump actions/github-script from 4.0.2 to 4.1 ([1e7d296](https://www.github.com/Fdawgs/docsmith/commit/1e7d296b70c0c87ea02e03cf02971a52aea269b5))
+* **deps:** bump fastify-autoload from 3.8.0 to 3.8.1 ([cf7bf98](https://www.github.com/Fdawgs/docsmith/commit/cf7bf985fbaf7af9f85e50e49c9ba3a114ebe55a))
+* **deps:** bump fastify-rate-limit from 5.6.0 to 5.6.2 ([27d013c](https://www.github.com/Fdawgs/docsmith/commit/27d013c8f4763452eea53560e99f2295cc0d2ccb))
+* **deps:** bump fastify-swagger from 4.8.4 to 4.9.1 ([2928879](https://www.github.com/Fdawgs/docsmith/commit/29288793d54d270cd50bc9973892f114eb18a64e))
+* **deps:** bump mammoth from 1.4.17 to 1.4.18 ([1ebc5ac](https://www.github.com/Fdawgs/docsmith/commit/1ebc5ac04f6043513cb5508aa89d487cba1125cf))
+* **deps:** bump node-poppler from 4.1.1 to 4.1.2 ([3e4f63e](https://www.github.com/Fdawgs/docsmith/commit/3e4f63e1ec6dca1063dfaea49a5429b5a55af8e2))
+* **deps:** bump pino from 6.13.0 to 6.13.1 ([38e4c1b](https://www.github.com/Fdawgs/docsmith/commit/38e4c1be353fa4f6faf853ed4f8c1f55b83abcd1))
+* **deps:** bump pino-pretty from 5.1.3 to 6.0.0 ([5c42f32](https://www.github.com/Fdawgs/docsmith/commit/5c42f327d48687f38b19b22af122382f85387499))
+
 ## [4.0.0](https://www.github.com/Fdawgs/docsmith/compare/v3.1.0...v4.0.0) (2021-08-17)
 
 
