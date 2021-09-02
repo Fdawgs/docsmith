@@ -41,6 +41,11 @@ const expResHeadersJson = {
 	...{ "content-type": expect.stringContaining("application/json") },
 };
 
+const expResHeaders4xxErrors = {
+	...expResHeadersJson,
+};
+delete expResHeaders4xxErrors.vary;
+
 describe("Server Deployment", () => {
 	describe("End-To-End - Bearer Token and OCR Disabled", () => {
 		let config;
@@ -360,6 +365,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.headers).toEqual(
+					expect.objectContaining(expResHeaders4xxErrors)
+				);
 				expect(response.statusCode).toEqual(401);
 			});
 
@@ -431,6 +439,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.headers).toEqual(
+					expect.objectContaining(expResHeaders4xxErrors)
+				);
 				expect(response.statusCode).toEqual(401);
 			});
 

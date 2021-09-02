@@ -50,7 +50,7 @@ const helmetConfig = {
  */
 async function plugin(server, config) {
 	// Register plugins
-	server
+	await server
 		// Accept header handler
 		.register(accepts)
 
@@ -114,12 +114,15 @@ async function plugin(server, config) {
 		server.register(imageToTxt, config.tesseract);
 	}
 
-	/**
-	 * Encapsulate plugins and routes into a secured child context, so that swagger and
-	 * healthcheck routes do not inherit the bearer token auth plugin.
-	 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
-	 */
 	server
+		// Ensure rate limit also applies to 4xx and 5xx responses
+		.addHook("onSend", server.rateLimit())
+
+		/**
+		 * Encapsulate plugins and routes into a secured child context, so that swagger and
+		 * healthcheck routes do not inherit the bearer token auth plugin.
+		 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
+		 */
 		.register(async (securedContext) => {
 			if (config.bearerTokenAuthKeys) {
 				securedContext.register(bearer, {
