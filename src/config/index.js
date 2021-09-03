@@ -69,6 +69,7 @@ async function getConfig() {
 				S.anyOf([S.string().enum(["true"]), S.null()])
 			)
 			.prop("CORS_EXPOSED_HEADERS", S.anyOf([S.string(), S.null()]))
+			.prop("CORS_MAX_AGE", S.anyOf([S.number(), S.null()]))
 
 			// HTTPS
 			.prop("HTTPS_PFX_PASSPHRASE", S.anyOf([S.string(), S.null()]))
@@ -340,6 +341,9 @@ async function getConfig() {
 	}
 	if (env.CORS_EXPOSED_HEADERS) {
 		config.cors.exposedHeaders = env.CORS_EXPOSED_HEADERS;
+	}
+	if (env.CORS_MAX_AGE) {
+		config.cors.maxAge = env.CORS_MAX_AGE;
 	}
 
 	// Enable HTTPS using cert/key or passphrase/pfx combinations
