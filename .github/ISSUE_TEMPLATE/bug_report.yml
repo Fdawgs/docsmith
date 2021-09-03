@@ -25,7 +25,6 @@ body:
     - type: input
       id: version
       attributes:
-          label: API/App/plugin version
           placeholder: 1.x.x
 
     - type: input
