@@ -30,6 +30,8 @@ describe("Configuration", () => {
 		const CORS_ORIGIN = false;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
+		const CORS_EXPOSED_HEADERS = "";
+		const CORS_MAX_AGE = "";
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
@@ -62,6 +64,8 @@ describe("Configuration", () => {
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			CORS_EXPOSED_HEADERS,
+			CORS_MAX_AGE,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			LOG_LEVEL,
@@ -164,6 +168,8 @@ describe("Configuration", () => {
 		const CORS_ORIGIN = false;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
+		const CORS_EXPOSED_HEADERS = "";
+		const CORS_MAX_AGE = "";
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
@@ -190,6 +196,8 @@ describe("Configuration", () => {
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			CORS_EXPOSED_HEADERS,
+			CORS_MAX_AGE,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			LOG_LEVEL,
@@ -292,6 +300,8 @@ describe("Configuration", () => {
 		const CORS_ORIGIN = true;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = true;
+		const CORS_EXPOSED_HEADERS = "";
+		const CORS_MAX_AGE = "";
 		const HTTPS_PFX_FILE_PATH =
 			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
@@ -307,6 +317,8 @@ describe("Configuration", () => {
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			CORS_EXPOSED_HEADERS,
+			CORS_MAX_AGE,
 			HTTPS_PFX_FILE_PATH,
 			HTTPS_PFX_PASSPHRASE,
 			LOG_LEVEL,
@@ -336,8 +348,9 @@ describe("Configuration", () => {
 		const CORS_ORIGIN = "https://ydh.nhs.uk";
 		const CORS_ALLOWED_HEADERS =
 			"Accept, Authorization, Content-Type, Origin, X-Requested-With";
-		const CORS_ALLOW_CREDENTIALS = "";
+		const CORS_ALLOW_CREDENTIALS = true;
 		const CORS_EXPOSED_HEADERS = "Location";
+		const CORS_MAX_AGE = 60;
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -351,6 +364,7 @@ describe("Configuration", () => {
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
 			CORS_EXPOSED_HEADERS,
+			CORS_MAX_AGE,
 			LOG_LEVEL,
 		});
 
@@ -364,7 +378,9 @@ describe("Configuration", () => {
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
 			allowedHeaders: CORS_ALLOWED_HEADERS,
+			credentials: true,
 			exposedHeaders: CORS_EXPOSED_HEADERS,
+			maxAge: CORS_MAX_AGE,
 		});
 	});
 
@@ -377,6 +393,7 @@ describe("Configuration", () => {
 			"Accept, Authorization, Content-Type, Origin, X-Requested-With";
 		const CORS_ALLOW_CREDENTIALS = "";
 		const CORS_EXPOSED_HEADERS = "Location";
+		const CORS_MAX_AGE = "";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -390,6 +407,7 @@ describe("Configuration", () => {
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
 			CORS_EXPOSED_HEADERS,
+			CORS_MAX_AGE,
 			LOG_LEVEL,
 		});
 
@@ -416,6 +434,8 @@ describe("Configuration", () => {
 		const CORS_ORIGIN = true;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
+		const CORS_EXPOSED_HEADERS = "";
+		const CORS_MAX_AGE = "";
 		const HTTPS_PFX_FILE_PATH = "./test_resources/test_ssl_cert/error.pfx";
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const LOG_LEVEL = faker.random.arrayElement([
@@ -430,6 +450,8 @@ describe("Configuration", () => {
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			CORS_EXPOSED_HEADERS,
+			CORS_MAX_AGE,
 			HTTPS_PFX_FILE_PATH,
 			HTTPS_PFX_PASSPHRASE,
 			LOG_LEVEL,
@@ -444,6 +466,8 @@ describe("Configuration", () => {
 		const CORS_ORIGIN = true;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
+		const CORS_EXPOSED_HEADERS = "";
+		const CORS_MAX_AGE = "";
 		const HTTPS_SSL_CERT_PATH = "./test_resources/test_ssl_cert/error.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/error.key";
 		const LOG_LEVEL = faker.random.arrayElement([
@@ -458,6 +482,8 @@ describe("Configuration", () => {
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			CORS_EXPOSED_HEADERS,
+			CORS_MAX_AGE,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			LOG_LEVEL,
