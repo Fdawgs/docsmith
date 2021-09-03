@@ -378,7 +378,7 @@ describe("Configuration", () => {
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
 			allowedHeaders: CORS_ALLOWED_HEADERS,
-			credentials: true,
+			credentials: CORS_ALLOW_CREDENTIALS,
 			exposedHeaders: CORS_EXPOSED_HEADERS,
 			maxAge: CORS_MAX_AGE,
 		});
