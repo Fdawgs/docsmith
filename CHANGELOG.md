@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.1.1](https://www.github.com/Fdawgs/docsmith/compare/v4.1.0...v4.1.1) (2021-09-03)
+
+
+### Bug Fixes
+
+* **server:** rate limit all 4xx and 5xx responses ([6183f4a](https://www.github.com/Fdawgs/docsmith/commit/6183f4af37f854cc5e2d2dac17be882e11f35288))
+
+
+### Miscellaneous
+
+* **.env.template:** clarify on HTTPS usage ([3f370d9](https://www.github.com/Fdawgs/docsmith/commit/3f370d9410e90ee02de41bdb1af56a806f5ab537))
+* **.env.template:** remove log level value ([02ba292](https://www.github.com/Fdawgs/docsmith/commit/02ba292f4538dd6fd6953b14788ce930c8fe115a))
+* **.env.template:** remove rate limit value ([5cfe08d](https://www.github.com/Fdawgs/docsmith/commit/5cfe08d2d76f25b4be6c3ff9d0c35d0e92bb8e1e))
+
 ## [4.1.0](https://www.github.com/Fdawgs/docsmith/compare/v4.0.0...v4.1.0) (2021-09-01)
 
 
