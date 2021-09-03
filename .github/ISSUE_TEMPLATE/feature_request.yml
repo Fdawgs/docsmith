@@ -16,7 +16,7 @@ body:
               - label: I have written a descriptive title
                 required: true
               - label: |
-                    I have searched existing requests to ensure it has not already been requested
+                    I have searched existing feature requests to ensure it has not already been proposed
                 required: true
               - label: |
                     I agree to follow the [Code of Conduct](../../CODE_OF_CONDUCT.md) that this project adheres to
