@@ -1,4 +1,4 @@
-name: 🚀 Feature request
+name: 🚀 Feature Request
 description: Submit a proposal for a new feature
 labels: [feature]
 
@@ -6,7 +6,7 @@ body:
     - type: markdown
       attributes:
           value: |
-              Thanks for filing a feature request, new ideas are greatly appreciated!
+              Thanks for making a feature request, new ideas are greatly appreciated!
 
     - type: checkboxes
       id: prerequisites
