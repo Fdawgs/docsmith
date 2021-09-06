@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.0](https://www.github.com/Fdawgs/docsmith/compare/v4.1.0...v4.2.0) (2021-09-06)
+
+
+### Features
+
+* **config:** add option to set `Access-Control-Max-Age` CORS header ([#377](https://www.github.com/Fdawgs/docsmith/issues/377)) ([b86846c](https://www.github.com/Fdawgs/docsmith/commit/b86846c851f3532c2c28e2efe707f7a6962567ff))
+
+
+### Bug Fixes
+
+* **server:** rate limit all 4xx and 5xx responses ([6183f4a](https://www.github.com/Fdawgs/docsmith/commit/6183f4af37f854cc5e2d2dac17be882e11f35288))
+
+
+### Miscellaneous
+
+* **.env.template:** clarify on HTTPS usage ([3f370d9](https://www.github.com/Fdawgs/docsmith/commit/3f370d9410e90ee02de41bdb1af56a806f5ab537))
+* **.env.template:** remove log level value ([02ba292](https://www.github.com/Fdawgs/docsmith/commit/02ba292f4538dd6fd6953b14788ce930c8fe115a))
+* **.env.template:** remove rate limit value ([5cfe08d](https://www.github.com/Fdawgs/docsmith/commit/5cfe08d2d76f25b4be6c3ff9d0c35d0e92bb8e1e))
+* **.github:** fix label casing ([0a37d54](https://www.github.com/Fdawgs/docsmith/commit/0a37d54af5f091dfe0fc82af8fd94e9721f14183))
+* **.github:** fix missing label ([99c9a85](https://www.github.com/Fdawgs/docsmith/commit/99c9a8581c4b077fd439233948f6777b7edf44a1))
+* **.github:** sort examples alphabetically ascending ([04680aa](https://www.github.com/Fdawgs/docsmith/commit/04680aa6939df77321b8f2c9915e3fefbf2a5f79))
+* **.github:** use new YAML configured GitHub issue forms ([#380](https://www.github.com/Fdawgs/docsmith/issues/380)) ([75d3d1c](https://www.github.com/Fdawgs/docsmith/commit/75d3d1c6c72d4b7c9e76a7f8c5d81608931e7548))
+
+
+### Continuous Integration
+
+* **ci:** replace workflow-run-cleanup-action with github concurrency ([#381](https://www.github.com/Fdawgs/docsmith/issues/381)) ([e7b63d7](https://www.github.com/Fdawgs/docsmith/commit/e7b63d71f31713a7960f8bfad92655e344121eb0))
+
+
+### Improvements
+
+* **public:** compress images ([#382](https://www.github.com/Fdawgs/docsmith/issues/382)) ([1410659](https://www.github.com/Fdawgs/docsmith/commit/1410659095d8f8769d2561146d49300244daac8c))
+
+
+### Dependencies
+
+* **deps:** bump fastify-disablecache from 2.0.2 to 2.0.3 ([5613806](https://www.github.com/Fdawgs/docsmith/commit/561380643683a0044da3d90480df7cd661ab0195))
+* **deps:** bump fastify-floc-off from 1.0.1 to 1.0.2 ([70f2cd4](https://www.github.com/Fdawgs/docsmith/commit/70f2cd45261aa0d87d634576267f401a6234c952))
+* **deps:** bump node-poppler from 4.1.2 to 5.0.0 ([daeee9e](https://www.github.com/Fdawgs/docsmith/commit/daeee9e6704089b21d24c390123444d8ad67ea11))
+* **deps:** bump node-unrtf from 2.0.1 to 2.0.2 ([e830ac4](https://www.github.com/Fdawgs/docsmith/commit/e830ac411d1d689e0ebd274d37167a09c2d1ffaa))
+
 ## [4.1.0](https://www.github.com/Fdawgs/docsmith/compare/v4.0.0...v4.1.0) (2021-09-01)
 
 
