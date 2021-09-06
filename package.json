@@ -109,7 +109,7 @@
     "jsdom": "^17.0.0",
     "mammoth": "^1.4.18",
     "node-poppler": "^4.1.2",
-    "node-unrtf": "^2.0.1",
+    "node-unrtf": "^2.0.2",
     "physical-cpu-count": "^2.0.0",
     "pino": "^6.13.1",
     "pino-pretty": "^6.0.0",
