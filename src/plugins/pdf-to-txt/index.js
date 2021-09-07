@@ -32,7 +32,6 @@ async function plugin(server, options) {
 	// "onSend" hook used instead of "onResponse" ensures
 	// cancelled request temp data is also removed
 	server.addHook("onSend", (req, res) => {
-		console.log("in here");
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(
