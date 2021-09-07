@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.0](https://www.github.com/Fdawgs/docsmith/compare/v4.2.0...v5.0.0) (2021-09-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **config:** `OCR_ENABLED` environment variable now defaults to false. Lower spec servers were struggling to run with the defaults, due to how CPU intensive Tesseract OCR workers are.
+
+### Bug Fixes
+
+* **config:** `OCR_ENABLED` defaults to false ([a3d1036](https://www.github.com/Fdawgs/docsmith/commit/a3d10362c9334388a864ee14467d7e71a410b904))
+* **plugins:** use `onSend` hook to remove files for all requests ([#395](https://www.github.com/Fdawgs/docsmith/issues/395)) ([703faef](https://www.github.com/Fdawgs/docsmith/commit/703faef214e6e12eb59dafa1a514639211ff5ca3))
+
+
+### Dependencies
+
+* **deps:** bump fastify from 3.20.2 to 3.21.0 ([c43f2f7](https://www.github.com/Fdawgs/docsmith/commit/c43f2f7816e7ba449f957db93ac8725022a2ee28))
+* **deps:** bump fastify-swagger from 4.9.1 to 4.10.0 ([072b423](https://www.github.com/Fdawgs/docsmith/commit/072b42343ec7235f4817c56f176c0aba5b892a51))
+* **deps:** bump pino from 6.13.1 to 6.13.2 ([1901568](https://www.github.com/Fdawgs/docsmith/commit/19015683c0c47453002cf0af1b069a2fc523bed3))
+
+
+### Miscellaneous
+
+* **.env.template:** add note regarding ocr functionality ([ced63f7](https://www.github.com/Fdawgs/docsmith/commit/ced63f70aefea6a5d9ba06406186df74fc6de5b7))
+* **.prettierrc:** override defaults for html, css, and scss files ([#388](https://www.github.com/Fdawgs/docsmith/issues/388)) ([492a5e2](https://www.github.com/Fdawgs/docsmith/commit/492a5e26804b67c836aaab4e48663deab29497f5))
+* **routes/pdf/txt:** emphasise resource intensiveness of ocr param ([1ae51ef](https://www.github.com/Fdawgs/docsmith/commit/1ae51efeedb4d021a3a4a4bb4d8de802b987fda4))
+
 ## [4.2.0](https://www.github.com/Fdawgs/docsmith/compare/v4.1.0...v4.2.0) (2021-09-06)
 
 
