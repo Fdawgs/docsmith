@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.2.1](https://www.github.com/Fdawgs/docsmith/compare/v4.2.0...v4.2.1) (2021-09-07)
+
+
+### Miscellaneous
+
+* **.prettierrc:** override defaults for html, css, and scss files ([#388](https://www.github.com/Fdawgs/docsmith/issues/388)) ([492a5e2](https://www.github.com/Fdawgs/docsmith/commit/492a5e26804b67c836aaab4e48663deab29497f5))
+
+
+### Dependencies
+
+* **deps:** bump fastify from 3.20.2 to 3.21.0 ([c43f2f7](https://www.github.com/Fdawgs/docsmith/commit/c43f2f7816e7ba449f957db93ac8725022a2ee28))
+* **deps:** bump fastify-swagger from 4.9.1 to 4.10.0 ([072b423](https://www.github.com/Fdawgs/docsmith/commit/072b42343ec7235f4817c56f176c0aba5b892a51))
+* **deps:** bump pino from 6.13.1 to 6.13.2 ([1901568](https://www.github.com/Fdawgs/docsmith/commit/19015683c0c47453002cf0af1b069a2fc523bed3))
+
 ## [4.2.0](https://www.github.com/Fdawgs/docsmith/compare/v4.1.0...v4.2.0) (2021-09-06)
 
 
