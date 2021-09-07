@@ -51,7 +51,7 @@ describe("Configuration", () => {
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
-		const OCR_ENABLED = false;
+		const OCR_ENABLED = true;
 		const OCR_LANGUAGES = "chi_tra";
 		const OCR_WORKERS = 1;
 		const POPPLER_BINARY_PATH = "/usr/bin";
@@ -280,7 +280,7 @@ describe("Configuration", () => {
 
 		expect(config.tesseract).toEqual(
 			expect.objectContaining({
-				enabled: true,
+				enabled: false,
 				languages: "eng",
 				workers: expect.any(Number),
 			})

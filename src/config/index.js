@@ -148,7 +148,7 @@ async function getConfig() {
 			.prop(
 				"OCR_ENABLED",
 				S.anyOf([
-					S.string().enum(["true", "false"]).default("true"),
+					S.string().enum(["true", "false"]).default("false"),
 					S.null(),
 				])
 			)
@@ -288,7 +288,7 @@ async function getConfig() {
 			tempDirectory,
 		},
 		tesseract: {
-			enabled: String(env.OCR_ENABLED).toLowerCase().trim() !== "false",
+			enabled: String(env.OCR_ENABLED).toLowerCase().trim() === "true",
 			languages: env.OCR_LANGUAGES || "eng",
 			// Use number of physical CPU cores available if ENV variable not specified
 			workers: env.OCR_WORKERS || physicalCpuCount,
