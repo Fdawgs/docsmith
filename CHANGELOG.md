@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.0.1](https://www.github.com/Fdawgs/docsmith/compare/v5.0.0...v5.0.1) (2021-09-07)
+
+
+### Bug Fixes
+
+* **plugins/pdf-to-txt:** remove test code ([eb5699e](https://www.github.com/Fdawgs/docsmith/commit/eb5699e66d78d8943cc1fb04694e79e454a017cb))
+
 ## [5.0.0](https://www.github.com/Fdawgs/docsmith/compare/v4.2.0...v5.0.0) (2021-09-07)
 
 
