@@ -104,7 +104,7 @@ const pdfToTxtPostSchema = {
 		.prop(
 			"ocr",
 			S.boolean().description(
-				"Use Tesseract Optical Character Recognition (OCR) engine to attempt to read text from files that are composed of images or scans of documents. Please note that this is resource heavy and can be quite slow"
+				"Use Tesseract Optical Character Recognition (OCR) engine to attempt to read text from files that are composed of images or scans of documents. <strong>Please note that this is resource intensive and slow</strong>"
 			)
 		)
 		.prop(
