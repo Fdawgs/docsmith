@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.0.2](https://www.github.com/Fdawgs/docsmith/compare/v5.0.1...v5.0.2) (2021-09-13)
+
+
+### Miscellaneous
+
+* **.dockerignore:** ignore development documentation ([988019a](https://www.github.com/Fdawgs/docsmith/commit/988019aa2bfe2e42d1e4a3de03976ae11fa2df0e))
+* **.husky/.gitignore:** remove now redundant file ([00c55df](https://www.github.com/Fdawgs/docsmith/commit/00c55dfdc6f22ab878a0e50af92c003c6699ec43))
+* **.vscode:** add `mhutchie.git-graph` extension ([#397](https://www.github.com/Fdawgs/docsmith/issues/397)) ([873c020](https://www.github.com/Fdawgs/docsmith/commit/873c020ea4efdc7c82f878cdaa2e3a1134861535))
+
 ### [5.0.1](https://www.github.com/Fdawgs/docsmith/compare/v5.0.0...v5.0.1) (2021-09-07)
 
 
