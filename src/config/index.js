@@ -377,7 +377,10 @@ async function getConfig() {
 		}
 	}
 
-	if (String(env.HTTPS_HTTP2_ENABLED).toLowerCase().trim() === "true") {
+	if (
+		config.fastifyInit.https &&
+		String(env.HTTPS_HTTP2_ENABLED).toLowerCase().trim() === "true"
+	) {
 		config.fastifyInit.https.allowHTTP1 = true;
 		config.fastifyInit.http2 = true;
 	}
