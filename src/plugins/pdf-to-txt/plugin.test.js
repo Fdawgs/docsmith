@@ -37,7 +37,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	afterAll(async () => {
-		fs.rmdirSync(config.poppler.tempDirectory, { recursive: true });
+		fs.rmSync(config.poppler.tempDirectory, { recursive: true });
 		await server.close();
 	});
 
