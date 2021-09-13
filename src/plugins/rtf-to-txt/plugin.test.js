@@ -33,7 +33,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 	});
 
 	afterAll(async () => {
-		fs.rmdirSync(config.unrtf.tempDirectory, { recursive: true });
+		fs.rmSync(config.unrtf.tempDirectory, { recursive: true });
 		await server.close();
 	});
 
