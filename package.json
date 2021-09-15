@@ -79,7 +79,7 @@
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.12",
-    "prettier": "2.3.2"
+    "prettier": "2.4.0"
   },
   "dependencies": {
     "auto-parse": "^1.8.0",
