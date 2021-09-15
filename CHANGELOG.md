@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.1.0](https://www.github.com/Fdawgs/docsmith/compare/v5.0.1...v5.1.0) (2021-09-15)
+
+
+### Features
+
+* **config:** support HTTP/2 via `HTTPS_HTTP2_ENABLED` env variable ([#400](https://www.github.com/Fdawgs/docsmith/issues/400)) ([17207dc](https://www.github.com/Fdawgs/docsmith/commit/17207dc8041a25f58273eb62b62973f4dc12dce3))
+
+
+### Miscellaneous
+
+* **.dockerignore:** ignore development documentation ([988019a](https://www.github.com/Fdawgs/docsmith/commit/988019aa2bfe2e42d1e4a3de03976ae11fa2df0e))
+* **.env.template:** correct acronym ([0f0ee2e](https://www.github.com/Fdawgs/docsmith/commit/0f0ee2eb788665a80fe0efc880647f19061ec6dc))
+* **.husky/.gitignore:** remove now redundant file ([00c55df](https://www.github.com/Fdawgs/docsmith/commit/00c55dfdc6f22ab878a0e50af92c003c6699ec43))
+* **.vscode:** add `mhutchie.git-graph` extension ([#397](https://www.github.com/Fdawgs/docsmith/issues/397)) ([873c020](https://www.github.com/Fdawgs/docsmith/commit/873c020ea4efdc7c82f878cdaa2e3a1134861535))
+
+
+### Improvements
+
+* **config:** check cert/key exists before enabling HTTP/2 ([#402](https://www.github.com/Fdawgs/docsmith/issues/402)) ([2bf4122](https://www.github.com/Fdawgs/docsmith/commit/2bf41225560e5d1030bd97ee294b420bb68a9c0d))
+* **plugins:** file deletion hooks now async ([#403](https://www.github.com/Fdawgs/docsmith/issues/403)) ([6a27104](https://www.github.com/Fdawgs/docsmith/commit/6a27104ae18f3624da29fb758b9e20988c957f7b))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 36.0.8 to 36.1.0 ([8a8a200](https://www.github.com/Fdawgs/docsmith/commit/8a8a200a3e6820b553b3ede68f87d54b2dfad9f3))
+* **deps-dev:** bump jest from 27.1.0 to 27.2.0 ([20ab1d2](https://www.github.com/Fdawgs/docsmith/commit/20ab1d2c5ee4e3f86994fd3bdb4f93122e4c5aad))
+* **deps-dev:** bump prettier from 2.3.2 to 2.4.0 ([1d44b16](https://www.github.com/Fdawgs/docsmith/commit/1d44b162ce4fac3a420e34a8cdd3e387a6b6df3d))
+* **deps:** bump env-schema from 3.3.0 to 3.4.0 ([bf41828](https://www.github.com/Fdawgs/docsmith/commit/bf4182896eca0292d961bc1eafc932754656c3ef))
+* **deps:** bump fastify from 3.21.0 to 3.21.1 ([583bbcf](https://www.github.com/Fdawgs/docsmith/commit/583bbcfd9d8b1a1fba7ddd6d2e44eeace8869af8))
+* **deps:** bump fastify-autoload from 3.8.1 to 3.9.0 ([e86ea63](https://www.github.com/Fdawgs/docsmith/commit/e86ea6310e15c52bf5ea85ac6fff7b9f21033f8c))
+* **deps:** bump fastify-swagger from 4.10.0 to 4.12.0 ([6503a8b](https://www.github.com/Fdawgs/docsmith/commit/6503a8b1f767d74f700eb91c693db8198c24cc37))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([ea33e69](https://www.github.com/Fdawgs/docsmith/commit/ea33e6963729800007aadd36e6f411a3c42adb6c))
+* **deps:** bump node-poppler from 5.0.0 to 5.0.1 ([aa29d3f](https://www.github.com/Fdawgs/docsmith/commit/aa29d3f7304fd2ae1ba064850df7f0da6e2d3dfc))
+* **deps:** bump pino-pretty from 6.0.0 to 7.0.0 ([08e6e95](https://www.github.com/Fdawgs/docsmith/commit/08e6e95ca8abadaa9d09504e5b205bc3e1cad4fc))
+* **deps:** bump sub-dependencies ([#415](https://www.github.com/Fdawgs/docsmith/issues/415)) ([54f92be](https://www.github.com/Fdawgs/docsmith/commit/54f92be27f92712952541037adc41fc5bbb4da7b))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.1 to 4.1.4 ([5803732](https://www.github.com/Fdawgs/docsmith/commit/5803732097903aaab4b7dc29a7f28a8d4d5a9c99))
+
 ### [5.0.1](https://www.github.com/Fdawgs/docsmith/compare/v5.0.0...v5.0.1) (2021-09-07)
 
 
