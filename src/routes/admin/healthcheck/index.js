@@ -35,7 +35,7 @@ async function route(server, options) {
 		method: "GET",
 		url: "/",
 		schema: healthcheckGetSchema,
-		async handler(req, res) {
+		handler(req, res) {
 			res.send("ok");
 		},
 	});
