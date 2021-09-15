@@ -50,7 +50,7 @@ const helmetConfig = {
  */
 async function plugin(server, config) {
 	// Register plugins
-	await server
+	server
 		// Accept header handler
 		.register(accepts)
 
@@ -64,11 +64,13 @@ async function plugin(server, config) {
 		.register(flocOff)
 
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
-		.register(helmet, helmetConfig)
+		.register(helmet, helmetConfig);
 
+	await server
 		// Rate limiting and 429 response handling
-		.register(rateLimit, config.rateLimit)
+		.register(rateLimit, config.rateLimit);
 
+	server
 		// Re-usable schemas
 		.register(sharedSchemas)
 

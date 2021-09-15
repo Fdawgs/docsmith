@@ -2,7 +2,6 @@
 /* eslint-disable security/detect-object-injection */
 const autoParse = require("auto-parse");
 const fp = require("fastify-plugin");
-const fs = require("fs");
 const fsp = require("fs").promises;
 const glob = require("glob");
 const path = require("path");
@@ -31,16 +30,18 @@ async function plugin(server, options) {
 
 	// "onSend" hook used instead of "onResponse" ensures
 	// cancelled request temp data is also removed
-	server.addHook("onSend", (req, res) => {
+	server.addHook("onSend", async (req, res) => {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(
 				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
 			);
 
-			files.forEach((file) => {
-				fs.unlinkSync(file);
-			});
+			await Promise.all(
+				files.map(async (file) => {
+					await fsp.unlink(file);
+				})
+			);
 		}
 
 		return res;
