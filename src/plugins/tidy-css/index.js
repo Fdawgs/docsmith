@@ -40,7 +40,9 @@ async function plugin(server) {
 			styles = dom.window.document.querySelectorAll("style");
 		}
 
-		styles.forEach((element) => {
+		styles.forEach((style) => {
+			const element = style;
+
 			// Remove optional type attribute
 			if (element.hasAttribute("type")) {
 				element.removeAttribute("type");
@@ -82,7 +84,6 @@ async function plugin(server) {
 				styleObj = styleObj.replace(/<!--|-->/gm, "");
 			}
 
-			// eslint-disable-next-line no-param-reassign
 			element.innerHTML = styleObj;
 		});
 
