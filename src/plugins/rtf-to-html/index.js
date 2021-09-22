@@ -1,5 +1,4 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
-/* eslint-disable security/detect-object-injection */
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const fsp = require("fs").promises;
