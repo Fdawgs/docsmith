@@ -1,5 +1,4 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
-/* eslint-disable security/detect-object-injection */
 const fp = require("fastify-plugin");
 const fsp = require("fs").promises;
 const glob = require("glob");
