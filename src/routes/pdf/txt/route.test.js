@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 const accepts = require("fastify-accepts");
 const fs = require("fs");
 const Fastify = require("fastify");
@@ -45,7 +44,8 @@ describe("PDF-to-TXT route", () => {
 
 	test("Should return PDF file converted to TXT", async () => {
 		await Promise.all(
-			queryStrings.map(async (query) => {
+			queryStrings.map(async (queryString) => {
+				const query = queryString;
 				query.lastPageToConvert = 2;
 
 				const response = await server.inject({
@@ -120,7 +120,8 @@ describe("PDF-to-TXT route", () => {
 
 	test("Should return HTTP status code 415 if file is missing", async () => {
 		await Promise.all(
-			queryStrings.map(async (query) => {
+			queryStrings.map(async (queryString) => {
+				const query = queryString;
 				query.lastPageToConvert = 2;
 
 				const response = await server.inject({
@@ -145,7 +146,8 @@ describe("PDF-to-TXT route", () => {
 
 	test("Should return HTTP status code 415 if file with '.pdf' extension is not a valid PDF file", async () => {
 		await Promise.all(
-			queryStrings.map(async (query) => {
+			queryStrings.map(async (queryString) => {
+				const query = queryString;
 				query.lastPageToConvert = 2;
 
 				const response = await server.inject({
@@ -175,7 +177,8 @@ describe("PDF-to-TXT route", () => {
 
 	test("Should return HTTP status code 415 if file media type is not supported by route", async () => {
 		await Promise.all(
-			queryStrings.map(async (query) => {
+			queryStrings.map(async (queryString) => {
+				const query = queryString;
 				query.lastPageToConvert = 2;
 
 				const response = await server.inject({
