@@ -72,6 +72,7 @@
     "eslint-plugin-jsdoc": "^36.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-security-node": "^1.0.14",
     "faker": "^5.5.3",
     "husky": "^7.0.2",
     "is-html": "^2.0.0",
