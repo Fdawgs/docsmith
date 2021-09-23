@@ -17,6 +17,7 @@ async function plugin(server) {
 		try {
 			const { value } = await mammoth.extractRawText(req.body);
 			req.conversionResults.body = value;
+			res.header("content-type", "text/plain; charset=utf-8");
 		} catch (err) {
 			server.log.error(err);
 			res.badRequest(err);
