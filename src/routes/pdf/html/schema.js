@@ -65,7 +65,7 @@ const pdfToHtmlPostSchema = {
 			"language",
 			S.string()
 				.description(
-					"Set the `lang` and `xml:lang` attributes of the HTML tag. Defaults to `en` if not set."
+					"Set the `lang` and `xml:lang` attributes of the HTML tag. Defaults to `en` if not set"
 				)
 				.pattern(/^[-a-zA-Z0-9]+$/m)
 				.default("en")
