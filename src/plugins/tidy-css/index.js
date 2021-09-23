@@ -59,7 +59,11 @@ async function plugin(server) {
 					styleRule.style.setProperty("font-family", newFonts);
 				}
 
-				// Stop pages overrunning the next page, leading to overlapping text
+				/**
+				 * Stop pages overrunning the next page, leading to overlapping text.
+				 * "page-break-inside" is a legacy property, replaced by "break-inside".
+				 * "page-break-inside" should be treated by browsers as an alias of "break-inside"
+				 */
 				if (styleRule.selectorText.substring(0, 3) === "div") {
 					styleRule.style.setProperty("page-break-inside", "avoid");
 
