@@ -121,8 +121,8 @@ async function plugin(server, config) {
 		.addHook("onSend", server.rateLimit())
 
 		/**
-		 * Encapsulate plugins and routes into a secured child context, so that swagger and
-		 * healthcheck routes do not inherit the bearer token auth plugin.
+		 * Encapsulate plugins and routes into a secured child context, so that admin and
+		 * docs routes do not inherit the bearer token auth plugin.
 		 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
@@ -147,8 +147,8 @@ async function plugin(server, config) {
 		})
 
 		/**
-		 * Encapsulate the doc routes into a secured child context, so that
-		 * the CSP can be relaxed without impacting security of other routes
+		 * Encapsulate the doc routes into a child context, so that the
+		 * CSP can be relaxed without impacting security of other routes
 		 */
 		.register(async (publicContext) => {
 			const relaxedHelmetConfig = JSON.parse(
