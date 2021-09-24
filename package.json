@@ -113,7 +113,7 @@
     "node-unrtf": "^2.0.2",
     "physical-cpu-count": "^2.0.0",
     "pino": "^6.13.2",
-    "pino-pretty": "^7.0.0",
+    "pino-pretty": "^7.0.1",
     "raw-body": "^2.4.1",
     "redoc": "^2.0.0-rc.56",
     "tesseract.js": "^2.1.5",
