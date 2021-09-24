@@ -34,6 +34,7 @@ async function route(server, options) {
 		url: "/",
 		schema: docsGetSchema,
 		handler(req, res) {
+			res.header("cache-control", "private, max-age=0, must-revalidate");
 			res.header("content-type", "text/html; charset=utf-8");
 			res.sendFile("docs.html");
 		},

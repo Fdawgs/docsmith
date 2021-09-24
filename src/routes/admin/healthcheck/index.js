@@ -1,5 +1,6 @@
 // Import plugins
 const cors = require("fastify-cors");
+const disableCache = require("fastify-disablecache");
 
 const { healthcheckGetSchema } = require("./schema");
 
@@ -24,12 +25,16 @@ async function route(server, options) {
 		}
 	});
 
-	// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-	server.register(cors, {
-		...options.cors,
-		methods: ["GET"],
-		hideOptionsRoute: true,
-	});
+	server
+		// Set response headers to disable client-side caching
+		.register(disableCache)
+
+		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+		.register(cors, {
+			...options.cors,
+			methods: ["GET"],
+			hideOptionsRoute: true,
+		});
 
 	server.route({
 		method: "GET",
