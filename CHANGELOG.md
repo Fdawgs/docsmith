@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.1.1](https://www.github.com/Fdawgs/docsmith/compare/v5.1.0...v5.1.1) (2021-09-24)
+
+
+### Bug Fixes
+
+* **plugins/docx-to-txt:** add missing content-type response header ([85f39bf](https://www.github.com/Fdawgs/docsmith/commit/85f39bfee8bce8f0929b31d12a56534b6fb96786))
+* **public/site.webmanifest:** set name values ([255fbf6](https://www.github.com/Fdawgs/docsmith/commit/255fbf6579f1038cca0fab7cd08e15b02f189efa))
+* **routes/docs:** add missing content-type response header ([ed5daa8](https://www.github.com/Fdawgs/docsmith/commit/ed5daa8747ca536b97a1dfa1da667a543c7c4dac))
+
+
+### Miscellaneous
+
+* **.env.template:** document `SERVICE_HOST` default ([#416](https://www.github.com/Fdawgs/docsmith/issues/416)) ([d12a589](https://www.github.com/Fdawgs/docsmith/commit/d12a58945e3c10f7a048b5fbb63750a659e9957c))
+* **plugins/tidy-css:** add inline comment regarding legacy css ([49ee2fc](https://www.github.com/Fdawgs/docsmith/commit/49ee2fc64e5a56c08934aa84ef33507cdd8a4b7b))
+* **plugins:** remove outdated eslint comments ([#420](https://www.github.com/Fdawgs/docsmith/issues/420)) ([69b8834](https://www.github.com/Fdawgs/docsmith/commit/69b883447e3818b4487d73174e08ff32857a659f))
+* **public/docs:** add `-moz-tab-size` css property ([3cb595f](https://www.github.com/Fdawgs/docsmith/commit/3cb595f611932b3faddb6d095e763b50ff089299))
+* **public:** move icons from public/ to public/images/icons ([e9fec86](https://www.github.com/Fdawgs/docsmith/commit/e9fec86d12029421f945d53f1ce795efed3aa95d))
+* **routes:** remove trailing punctuation mark ([db8a81d](https://www.github.com/Fdawgs/docsmith/commit/db8a81d61512b36973afaaf0326f3f468ae9b8cf))
+* **server:** update inline comments re child contexts ([026d096](https://www.github.com/Fdawgs/docsmith/commit/026d09692f602f26803fb0947a989dab89ae15d9))
+
+
+### Improvements
+
+* **plugins/tidy-css:** remove param reassign ([#419](https://www.github.com/Fdawgs/docsmith/issues/419)) ([88f8be0](https://www.github.com/Fdawgs/docsmith/commit/88f8be0d8cc32189f0161e8c7e4f1d9cceb397bb))
+* **public/docs:** defer redoc script loading ([3419d7d](https://www.github.com/Fdawgs/docsmith/commit/3419d7d2da7c76b61b5db03322287308bc33406d))
+* **routes/docs:** enable caching of static files ([43bdc8c](https://www.github.com/Fdawgs/docsmith/commit/43bdc8c433d121b21f848dc24c9d74fe7242a8fd))
+* **server:** move loading of static files into public context ([2619f44](https://www.github.com/Fdawgs/docsmith/commit/2619f445f1a166938521a03a374b869ac88dcfef))
+
+
+### Dependencies
+
+* **deps-dev:** add eslint-plugin-security-node ([#421](https://www.github.com/Fdawgs/docsmith/issues/421)) ([cfc9dcb](https://www.github.com/Fdawgs/docsmith/commit/cfc9dcb7c4508b6b8274869d1bddac332a1547c8))
+* **deps-dev:** bump eslint-plugin-jest from 24.4.0 to 24.4.2 ([e974cea](https://www.github.com/Fdawgs/docsmith/commit/e974cea559477ae2f9bba3619ea5da11d5626665))
+* **deps-dev:** bump jest from 27.2.0 to 27.2.1 ([b969894](https://www.github.com/Fdawgs/docsmith/commit/b969894ffbcb1f3c9e231961a0ffbb14a2c8a3aa))
+* **deps-dev:** bump nodemon from 2.0.12 to 2.0.13 ([1b462b8](https://www.github.com/Fdawgs/docsmith/commit/1b462b89e2954c54401b880eb83f25e5848b6b13))
+* **deps-dev:** bump prettier from 2.4.0 to 2.4.1 ([b50f729](https://www.github.com/Fdawgs/docsmith/commit/b50f729d2e47f8cf2216b5e6ef4561c190a3697b))
+* **deps:** bump fastify from 3.21.1 to 3.21.6 ([c6b6422](https://www.github.com/Fdawgs/docsmith/commit/c6b6422a92b436297cc4585d75e46eb3b81f93f8))
+* **deps:** bump fastify-accepts from 2.0.1 to 2.1.0 ([8a90978](https://www.github.com/Fdawgs/docsmith/commit/8a90978e81d38636f0bc2c275c9bcd1495830db0))
+* **deps:** bump glob from 7.1.7 to 7.2.0 ([16ec020](https://www.github.com/Fdawgs/docsmith/commit/16ec020ae9b3d29c33ec5cee7546e13ed3cbb4c3))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([431bcff](https://www.github.com/Fdawgs/docsmith/commit/431bcfff7d7bc199a7d1ccb5e83633e7a1f2901f))
+* **deps:** bump pino from 6.13.2 to 6.13.3 ([61508db](https://www.github.com/Fdawgs/docsmith/commit/61508dbfd474c24aacbf71aee62c65bfbc60c0fa))
+* **deps:** bump pino-pretty from 7.0.0 to 7.0.1 ([19fa351](https://www.github.com/Fdawgs/docsmith/commit/19fa35101cce4205da8c04229920a5f6274c7999))
+* **deps:** bump prismjs from 1.24.1 to 1.25.0 ([9b24fd8](https://www.github.com/Fdawgs/docsmith/commit/9b24fd8519a98a4b59e12fc9b1592674476e2165))
+
 ## [5.1.0](https://www.github.com/Fdawgs/docsmith/compare/v5.0.1...v5.1.0) (2021-09-15)
 
 
