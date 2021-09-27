@@ -31,12 +31,12 @@ async function plugin(server) {
 		innerHtml.setAttribute("xml:lang", options?.language || "en");
 
 		// Remove alt attribute from img tags
-		const images = dom.window.document.querySelectorAll("img");
-		images.forEach((element) => {
-			if (options?.removeAlt === true) {
+		if (options?.removeAlt === true) {
+			const images = dom.window.document.querySelectorAll("img");
+			images.forEach((element) => {
 				element.setAttribute("alt", "");
-			}
-		});
+			});
+		}
 
 		const parsedHtml = dom.serialize();
 
