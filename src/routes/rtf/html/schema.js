@@ -20,7 +20,9 @@ const rtfToHtmlPostSchema = {
 		.prop(
 			"backgroundColor",
 			S.string()
-				.description("HTML document background color")
+				.description(
+					"HTML document background color; replace the `background-color` CSS property for `<div>` elements"
+				)
 				.pattern(/^[#a-zA-Z0-9]+$/m)
 				.examples(["white", "#FFFFFF"])
 		)
@@ -36,14 +38,16 @@ const rtfToHtmlPostSchema = {
 			"language",
 			S.string()
 				.description(
-					"Set the `lang` and `xml:lang` attributes of the HTML tag. Defaults to `en` if not set"
+					"Set the `lang` and `xml:lang` attributes of the `<html>` tag"
 				)
 				.pattern(/^[-a-zA-Z0-9]+$/m)
 				.default("en")
 		)
 		.prop(
 			"removeAlt",
-			S.boolean().description("Remove the alt attribute from image tags")
+			S.boolean().description(
+				"Remove the `alt` attribute from `<img>` tags"
+			)
 		),
 	response: {
 		200: S.string(),
