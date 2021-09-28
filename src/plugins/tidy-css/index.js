@@ -11,24 +11,24 @@ async function plugin(server) {
 	/**
 	 * @param {string} html - Valid HTML.
 	 * @param {object} options - Function config values.
-	 * @param {string=} options.fonts - Font to replace document's original font(s), can be
-	 * single font or comma separated list i.e `Arial, Sans Serif`.
 	 * @param {string=} options.backgroundColor - Color to replace document's original
 	 * `background-color` CSS property for `<div>` elements with.
+	 * @param {string=} options.fonts - Font to replace document's original font(s), can be
+	 * single font or comma separated list i.e `Arial, Sans Serif`.
 	 * @returns {string} HTML with tidied CSS.
 	 */
 	function tidyCss(html, options = {}) {
 		const dom = new JSDOM(html);
 		let styles = dom.window.document.querySelectorAll("style");
 
-		let newFonts;
-		if (options.fonts) {
-			newFonts = String(options.fonts);
-		}
-
 		let newBackgroundColor;
 		if (options.backgroundColor) {
 			newBackgroundColor = String(options.backgroundColor);
+		}
+
+		let newFonts;
+		if (options.fonts) {
+			newFonts = String(options.fonts);
 		}
 
 		// Create style element inside head if none already exist
