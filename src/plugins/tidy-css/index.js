@@ -12,9 +12,9 @@ async function plugin(server) {
 	 * @param {string} html - Valid HTML.
 	 * @param {object} options - Function config values.
 	 * @param {string=} options.fonts - Font to replace document's original font(s), can be
-	 * single font or comma seperated list i.e `Arial, Sans Serif`.
+	 * single font or comma separated list i.e `Arial, Sans Serif`.
 	 * @param {string=} options.backgroundColor - Color to replace document's original
-	 * background color with.
+	 * `background-color` CSS property for `<div>` elements with.
 	 * @returns {string} HTML with tidied CSS.
 	 */
 	function tidyCss(html, options = {}) {
