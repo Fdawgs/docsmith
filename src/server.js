@@ -78,6 +78,26 @@ async function plugin(server, config) {
 		// Ensure rate limit also applies to 4xx and 5xx responses
 		.addHook("onSend", server.rateLimit())
 
+		/*
+		 * `x-xss-protection` and `content-security-policy` is set by default.
+		 * These are only useful for HTML/XML content; the only CSP directive that
+		 * is of use to other content is "frame-ancestors 'none'" to stop responses
+		 * from being wrapped in iframes.
+		 */
+		.addHook("onSend", async (req, res) => {
+			if (
+				!res.getHeader("content-type").startsWith("text/html") &&
+				!res.getHeader("content-type").startsWith("image/svg")
+			) {
+				res.raw.setHeader(
+					"content-security-policy",
+					"default-src 'self';frame-ancestors 'none'"
+				);
+				res.raw.removeHeader("x-xss-protection");
+			}
+			return res;
+		})
+
 		/**
 		 * Encapsulate plugins and routes into a secured child context, so that admin and
 		 * docs routes do not inherit the bearer token auth plugin.
