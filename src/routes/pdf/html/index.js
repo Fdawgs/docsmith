@@ -51,8 +51,9 @@ async function route(server, options) {
 		}
 	);
 
-	// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+	// Register plugins
 	server
+		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 		.register(cors, {
 			...options.cors,
 			methods: ["POST"],

@@ -25,6 +25,7 @@ async function route(server, options) {
 		}
 	});
 
+	// Register plugins
 	server
 		// Set response headers to disable client-side caching
 		.register(disableCache)
