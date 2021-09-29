@@ -213,6 +213,7 @@ async function getConfig() {
 		},
 		cors: {
 			origin: parseCorsParameter(env.CORS_ORIGIN) || false,
+			hideOptionsRoute: true,
 		},
 		processLoad: {
 			maxEventLoopDelay: env.PROC_LOAD_MAX_EVENT_LOOP_DELAY || 0,

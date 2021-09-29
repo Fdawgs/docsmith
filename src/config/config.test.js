@@ -128,6 +128,7 @@ describe("Configuration", () => {
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
+			hideOptionsRoute: true,
 		});
 
 		expect(config.processLoad).toEqual({
@@ -259,6 +260,7 @@ describe("Configuration", () => {
 
 		expect(config.cors).toEqual({
 			origin: false,
+			hideOptionsRoute: true,
 		});
 
 		expect(config.processLoad).toEqual({
@@ -346,6 +348,7 @@ describe("Configuration", () => {
 		expect(config.cors).toEqual({
 			credentials: CORS_ALLOW_CREDENTIALS,
 			origin: CORS_ORIGIN,
+			hideOptionsRoute: true,
 		});
 	});
 
@@ -387,6 +390,7 @@ describe("Configuration", () => {
 			allowedHeaders: CORS_ALLOWED_HEADERS,
 			credentials: CORS_ALLOW_CREDENTIALS,
 			exposedHeaders: CORS_EXPOSED_HEADERS,
+			hideOptionsRoute: true,
 			maxAge: CORS_MAX_AGE,
 		});
 	});
@@ -432,6 +436,7 @@ describe("Configuration", () => {
 			]),
 			allowedHeaders: CORS_ALLOWED_HEADERS,
 			exposedHeaders: CORS_EXPOSED_HEADERS,
+			hideOptionsRoute: true,
 		});
 	});
 

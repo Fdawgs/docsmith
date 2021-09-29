@@ -57,7 +57,6 @@ async function route(server, options) {
 		.register(cors, {
 			...options.cors,
 			methods: ["POST"],
-			hideOptionsRoute: true,
 		})
 		.register(rtfToTxt, options.unrtf);
 

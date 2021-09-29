@@ -34,7 +34,6 @@ async function route(server, options) {
 		.register(cors, {
 			...options.cors,
 			methods: ["GET"],
-			hideOptionsRoute: true,
 		});
 
 	server.route({
