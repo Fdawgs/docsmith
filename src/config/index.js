@@ -289,7 +289,6 @@ async function getConfig() {
 				maxAge: 31536000,
 			},
 		},
-
 		htmltidy: {
 			/**
 			 * Refer to http://api.html-tidy.org/tidy/tidylib_api_5.6.0/tidy_quickref.html for tidy options
