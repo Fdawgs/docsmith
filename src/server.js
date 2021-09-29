@@ -86,8 +86,9 @@ async function plugin(server, config) {
 		 */
 		.addHook("onSend", async (req, res) => {
 			if (
-				!res.getHeader("content-type").startsWith("text/html") &&
-				!res.getHeader("content-type").startsWith("image/svg")
+				res.getHeader("content-type") !== undefined &&
+				!res.getHeader("content-type")?.includes("html") &&
+				!res.getHeader("content-type")?.includes("xml")
 			) {
 				res.raw.setHeader(
 					"content-security-policy",
