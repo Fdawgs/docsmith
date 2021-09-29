@@ -213,6 +213,7 @@ async function getConfig() {
 		},
 		cors: {
 			origin: parseCorsParameter(env.CORS_ORIGIN) || false,
+			hideOptionsRoute: true,
 		},
 		processLoad: {
 			maxEventLoopDelay: env.PROC_LOAD_MAX_EVENT_LOOP_DELAY || 0,
@@ -270,6 +271,25 @@ async function getConfig() {
 				],
 			},
 		},
+		helmet: {
+			contentSecurityPolicy: {
+				directives: {
+					"default-src": ["'self'"],
+					"base-uri": ["'self'"],
+					"img-src": ["'self'", "data:"],
+					"object-src": ["'none'"],
+					"child-src": ["'self'"],
+					"frame-ancestors": ["'none'"],
+					"form-action": ["'self'"],
+					"upgrade-insecure-requests": [],
+					"block-all-mixed-content": [],
+				},
+			},
+			hsts: {
+				maxAge: 31536000,
+			},
+		},
+
 		htmltidy: {
 			/**
 			 * Refer to http://api.html-tidy.org/tidy/tidylib_api_5.6.0/tidy_quickref.html for tidy options

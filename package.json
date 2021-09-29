@@ -14,7 +14,8 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "benchmark": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:8204/pdf/html?lastPageToConvert=1\"",
+    "benchmark:html": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:8204/pdf/html?lastPageToConvert=1\"",
+    "benchmark:txt": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:8204/pdf/txt?lastPageToConvert=1\"",
     "jest": "jest --detectOpenHandles --runInBand",
     "jest:coverage": "jest --coverage --runInBand",
     "lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",

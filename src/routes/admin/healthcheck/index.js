@@ -25,6 +25,7 @@ async function route(server, options) {
 		}
 	});
 
+	// Register plugins
 	server
 		// Set response headers to disable client-side caching
 		.register(disableCache)
@@ -33,7 +34,6 @@ async function route(server, options) {
 		.register(cors, {
 			...options.cors,
 			methods: ["GET"],
-			hideOptionsRoute: true,
 		});
 
 	server.route({
