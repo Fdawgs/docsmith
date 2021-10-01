@@ -139,6 +139,7 @@ jobs:
             - uses: brpaz/hadolint-action@v1.5.0
               with:
                   dockerfile: Dockerfile
+                  ignore: DL3008
 
     docker-compose-tests:
         name: Docker Compose Build Tests
