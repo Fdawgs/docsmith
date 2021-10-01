@@ -136,9 +136,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2.3.4
-            - uses: brpaz/hadolint-action@v1.5.0
+            - uses: hadolint/hadolint-action@v1.5.0
               with:
                   dockerfile: Dockerfile
+                  ignore: DL3008
 
     docker-compose-tests:
         name: Docker Compose Build Tests
