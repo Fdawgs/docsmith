@@ -19,7 +19,7 @@ jobs:
                   script: |
                       const fs = require('fs');
 
-                      const artifacts = await github.actions.listWorkflowRunArtifacts({
+                      const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           run_id: ${{ github.event.workflow_run.id }},
@@ -28,7 +28,7 @@ jobs:
                           return artifact.name == 'pr';
                       })[0];
 
-                      const download = await github.actions.downloadArtifact({
+                      const download = await github.rest.actions.downloadArtifact({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           artifact_id: matchArtifact.id,
@@ -45,7 +45,7 @@ jobs:
                       const fs = require('fs');
                       const pull_number = Number(fs.readFileSync('./NR'));
 
-                      await github.pulls.merge({
+                      await github.rest.pulls.merge({
                           merge_method: "merge",
                           owner: context.repo.owner,
                           repo: context.repo.repo,
