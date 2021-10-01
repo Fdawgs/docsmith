@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.1.2](https://www.github.com/Fdawgs/docsmith/compare/v5.1.1...v5.1.2) (2021-10-01)
+
+
+### Improvements
+
+* **plugins/tidy-html:** move conditional check outside of loop ([#435](https://www.github.com/Fdawgs/docsmith/issues/435)) ([90e3fbe](https://www.github.com/Fdawgs/docsmith/commit/90e3fbeeb73e007b8780d42670c7a0b6dce5bf80))
+* **routes:** move cors options route config to config file ([476875d](https://www.github.com/Fdawgs/docsmith/commit/476875d607c5baa630c1a0ccb1b1590d10d15a59))
+* **server:** exclude all html and xml responses from transform ([#440](https://www.github.com/Fdawgs/docsmith/issues/440)) ([1c8b776](https://www.github.com/Fdawgs/docsmith/commit/1c8b776f6030a9431ce132ffe9e5950861f678a4))
+* **server:** move helmet config to config file ([e42160b](https://www.github.com/Fdawgs/docsmith/commit/e42160bb8db7eeaf2aad88da3b2c4cb8107b2b62))
+* **server:** reduce globbing use when registering routes ([#438](https://www.github.com/Fdawgs/docsmith/issues/438)) ([7fba268](https://www.github.com/Fdawgs/docsmith/commit/7fba26826ae88fa2b78f26aa077eb7a677326b8b))
+* **server:** reduce response header size ([a1f3502](https://www.github.com/Fdawgs/docsmith/commit/a1f3502b73368aa479c716ed956f9e9829f52283))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 13.1.0 to 13.2.0 ([8f36842](https://www.github.com/Fdawgs/docsmith/commit/8f36842c17df464ae40a7f2fda067a2ac4e06268))
+* **deps-dev:** bump @commitlint/config-conventional ([37aa6af](https://www.github.com/Fdawgs/docsmith/commit/37aa6af724b9b83a30f5bfaf9c910fa36fff2196))
+* **deps-dev:** bump eslint-plugin-jest from 24.4.2 to 24.5.0 ([985e4ae](https://www.github.com/Fdawgs/docsmith/commit/985e4aeae941e8016ddbcf612136887739eb57f8))
+* **deps-dev:** bump jest from 27.2.1 to 27.2.4 ([5aa3566](https://www.github.com/Fdawgs/docsmith/commit/5aa3566232fa5dbd2c8f9448848e43c3155587d1))
+* **deps:** bump actions/github-script from 4.1 to 5 ([5492181](https://www.github.com/Fdawgs/docsmith/commit/5492181a01b0abf7fcfb3fe8ae0992b4570d678f))
+* **deps:** bump actions/setup-node from 2.4.0 to 2.4.1 ([a1d5be8](https://www.github.com/Fdawgs/docsmith/commit/a1d5be890068ce0ed29abbe2851bc141d67bd807))
+* **deps:** bump fastify from 3.21.6 to 3.22.0 ([92ffb00](https://www.github.com/Fdawgs/docsmith/commit/92ffb0059bb6eb1e9bccea09cb76b68807cb7e3d))
+* **deps:** bump fastify-swagger from 4.12.0 to 4.12.3 ([d961c9b](https://www.github.com/Fdawgs/docsmith/commit/d961c9bc64d5cc28b250a08f0bc3af2d72ce94dc))
+* **docker:** remove package versioning ([e1ebc61](https://www.github.com/Fdawgs/docsmith/commit/e1ebc6189939f4d75a11919b274b19dcb7a32778))
+
+
+### Continuous Integration
+
+* **automerge:** update location of octokit rest methods ([#449](https://www.github.com/Fdawgs/docsmith/issues/449)) ([5b46430](https://www.github.com/Fdawgs/docsmith/commit/5b464308f1bf908005c8a728de75e59c2bd61eb4))
+* ignore hadolint rule DL3008 ([cadb6c0](https://www.github.com/Fdawgs/docsmith/commit/cadb6c093dbc520bb63b26172ada79dbff16e013))
+* update hadolint-action namespace ([710f044](https://www.github.com/Fdawgs/docsmith/commit/710f0441cf6fdede132d9d01d9f4645078d86a1b))
+
+
+### Miscellaneous
+
+* **.prettierrc:** enable `bracketsameline` option ([#451](https://www.github.com/Fdawgs/docsmith/issues/451)) ([29fc16b](https://www.github.com/Fdawgs/docsmith/commit/29fc16b28f5b805188bd27b84942739c4a677b2d))
+* **config:** remove whitespace ([7866add](https://www.github.com/Fdawgs/docsmith/commit/7866add17458ee877c67e6ce4c3194d2a8b04c08))
+* improve descriptions of query string params ([e1c586f](https://www.github.com/Fdawgs/docsmith/commit/e1c586f4ab9cdc3f3ad9482d7ef81f0f15a57bbf))
+* **package:** add separate script for benchmarking /pdf/txt route ([62c7f54](https://www.github.com/Fdawgs/docsmith/commit/62c7f54b3c5c523ea7f4efed2ac58cfed26652c8))
+* **plugins/tidy-css:** sort jsdoc param tags alphabetically ascending ([57bdd52](https://www.github.com/Fdawgs/docsmith/commit/57bdd52d05f9f973f4786e7126f36b02f102df58))
+* tidy inline comments re plugins ([8f1eaa1](https://www.github.com/Fdawgs/docsmith/commit/8f1eaa1794bea0d88bad156e1c9e495cc5c8ed07))
+
 ### [5.1.1](https://www.github.com/Fdawgs/docsmith/compare/v5.1.0...v5.1.1) (2021-09-24)
 
 
