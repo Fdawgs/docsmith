@@ -65,6 +65,9 @@ describe("PDF-to-TXT route", () => {
 					expect.stringContaining("The NHS Constitution")
 				);
 				expect(isHtml(response.payload)).toBe(false);
+				expect(response.headers).toMatchObject({
+					"content-type": "text/plain; charset=utf-8",
+				});
 				expect(response.statusCode).toBe(200);
 
 				return response.statusCode;
@@ -91,6 +94,9 @@ describe("PDF-to-TXT route", () => {
 
 		expect(response.payload).toEqual(expect.stringContaining("NHS"));
 		expect(isHtml(response.payload)).toBe(false);
+		expect(response.headers).toMatchObject({
+			"content-type": "text/plain; charset=utf-8",
+		});
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -115,6 +121,9 @@ describe("PDF-to-TXT route", () => {
 			expect.stringContaining("The NHS Constitution")
 		);
 		expect(isHtml(response.payload)).toBe(true);
+		expect(response.headers).toMatchObject({
+			"content-type": "text/html; charset=utf-8",
+		});
 		expect(response.statusCode).toBe(200);
 	});
 

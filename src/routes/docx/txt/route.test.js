@@ -45,6 +45,9 @@ describe("DOCX-to-TXT route", () => {
 			expect.stringContaining("Ask not what your country can do for you")
 		);
 		expect(isHtml(response.payload)).toBe(false);
+		expect(response.headers).toMatchObject({
+			"content-type": "text/plain; charset=utf-8",
+		});
 		expect(response.statusCode).toBe(200);
 	});
 

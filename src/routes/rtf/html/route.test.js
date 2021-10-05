@@ -65,6 +65,9 @@ describe("RTF-to-HTML route", () => {
 					)
 				);
 				expect(isHtml(response.payload)).toBe(true);
+				expect(response.headers).toMatchObject({
+					"content-type": "text/html",
+				});
 				expect(response.statusCode).toBe(200);
 
 				return response.statusCode;
