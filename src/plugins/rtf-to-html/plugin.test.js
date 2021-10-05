@@ -60,10 +60,10 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 			expect.stringContaining("Ask not what your country can do for you")
 		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
-		expect(isHtml(response.body)).toEqual(true);
-		expect(typeof response.docLocation).toEqual("object");
-		expect(fs.existsSync(response.docLocation.rtf)).toEqual(false);
-		expect(fs.existsSync(config.unrtf.tempDirectory)).toEqual(true);
+		expect(isHtml(response.body)).toBe(true);
+		expect(typeof response.docLocation).toBe("object");
+		expect(fs.existsSync(response.docLocation.rtf)).toBe(false);
+		expect(fs.existsSync(config.unrtf.tempDirectory)).toBe(true);
 	});
 
 	test("Should return HTTP status code 400 if RTF file is missing", async () => {
@@ -77,9 +77,8 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 
 		const body = JSON.parse(response.payload);
 
-		expect(response.statusCode).toEqual(400);
-		expect(response.statusMessage).toEqual("Bad Request");
-		expect(body.statusCode).toEqual(400);
-		expect(body.error).toEqual("Bad Request");
+		expect(body.statusCode).toBe(400);
+		expect(body.error).toBe("Bad Request");
+		expect(response.statusCode).toBe(400);
 	});
 });

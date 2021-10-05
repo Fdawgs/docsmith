@@ -97,25 +97,24 @@ describe("Configuration", () => {
 			port: SERVICE_PORT,
 		});
 
-		expect(config.fastifyInit.bodyLimit).toEqual(SERVICE_BODY_MAX_BYTES);
+		expect(config.fastifyInit.bodyLimit).toBe(SERVICE_BODY_MAX_BYTES);
 
-		expect(config.fastifyInit.logger).toEqual(
-			expect.objectContaining({
-				formatters: { level: expect.any(Function) },
-				level: LOG_LEVEL,
-				redact: ["req.body", "req.headers.authorization", "res.body"],
-				serializers: {
-					req: expect.any(Function),
-					res: expect.any(Function),
-				},
-				timestamp: expect.any(Function),
-				stream: expect.any(Object),
-			})
-		);
+		expect(config.fastifyInit.logger).toEqual({
+			formatters: { level: expect.any(Function) },
+			level: LOG_LEVEL,
+			prettyPrint: false,
+			redact: ["req.body", "req.headers.authorization", "res.body"],
+			serializers: {
+				req: expect.any(Function),
+				res: expect.any(Function),
+			},
+			timestamp: expect.any(Function),
+			stream: expect.any(Object),
+		});
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toEqual(
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
 			',"time"'
 		);
 
@@ -124,7 +123,7 @@ describe("Configuration", () => {
 			cert: expect.any(Buffer),
 			key: expect.any(Buffer),
 		});
-		expect(config.fastifyInit.http2).toEqual(true);
+		expect(config.fastifyInit.http2).toBe(true);
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
@@ -144,27 +143,21 @@ describe("Configuration", () => {
 			timeWindow: 60000,
 		});
 
-		expect(config.poppler).toEqual(
-			expect.objectContaining({
-				binPath: POPPLER_BINARY_PATH,
-				tempDirectory: expect.any(String),
-			})
-		);
+		expect(config.poppler).toEqual({
+			binPath: POPPLER_BINARY_PATH,
+			tempDirectory: expect.any(String),
+		});
 
-		expect(config.tesseract).toEqual(
-			expect.objectContaining({
-				enabled: OCR_ENABLED,
-				languages: OCR_LANGUAGES,
-				workers: OCR_WORKERS,
-			})
-		);
+		expect(config.tesseract).toEqual({
+			enabled: OCR_ENABLED,
+			languages: OCR_LANGUAGES,
+			workers: OCR_WORKERS,
+		});
 
-		expect(config.unrtf).toEqual(
-			expect.objectContaining({
-				binPath: UNRTF_BINARY_PATH,
-				tempDirectory: expect.any(String),
-			})
-		);
+		expect(config.unrtf).toEqual({
+			binPath: UNRTF_BINARY_PATH,
+			tempDirectory: expect.any(String),
+		});
 	});
 
 	test("Should use defaults if values missing and return values according to environment variables", async () => {
@@ -233,25 +226,24 @@ describe("Configuration", () => {
 			port: SERVICE_PORT,
 		});
 
-		expect(config.fastifyInit.bodyLimit).toEqual(10485760);
+		expect(config.fastifyInit.bodyLimit).toBe(10485760);
 
-		expect(config.fastifyInit.logger).toEqual(
-			expect.objectContaining({
-				formatters: { level: expect.any(Function) },
-				level: "info",
-				redact: ["req.body", "req.headers.authorization", "res.body"],
-				serializers: {
-					req: expect.any(Function),
-					res: expect.any(Function),
-				},
-				timestamp: expect.any(Function),
-				stream: expect.any(Object),
-			})
-		);
+		expect(config.fastifyInit.logger).toEqual({
+			formatters: { level: expect.any(Function) },
+			level: "info",
+			prettyPrint: false,
+			redact: ["req.body", "req.headers.authorization", "res.body"],
+			serializers: {
+				req: expect.any(Function),
+				res: expect.any(Function),
+			},
+			timestamp: expect.any(Function),
+			stream: expect.any(Object),
+		});
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toEqual(
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
 			',"time"'
 		);
 
@@ -276,27 +268,21 @@ describe("Configuration", () => {
 			timeWindow: 60000,
 		});
 
-		expect(config.poppler).toEqual(
-			expect.objectContaining({
-				binPath: POPPLER_BINARY_PATH,
-				tempDirectory: expect.any(String),
-			})
-		);
+		expect(config.poppler).toEqual({
+			binPath: POPPLER_BINARY_PATH,
+			tempDirectory: expect.any(String),
+		});
 
-		expect(config.tesseract).toEqual(
-			expect.objectContaining({
-				enabled: false,
-				languages: "eng",
-				workers: expect.any(Number),
-			})
-		);
+		expect(config.tesseract).toEqual({
+			enabled: false,
+			languages: "eng",
+			workers: expect.any(Number),
+		});
 
-		expect(config.unrtf).toEqual(
-			expect.objectContaining({
-				binPath: UNRTF_BINARY_PATH,
-				tempDirectory: expect.any(String),
-			})
-		);
+		expect(config.unrtf).toEqual({
+			binPath: UNRTF_BINARY_PATH,
+			tempDirectory: expect.any(String),
+		});
 	});
 
 	test("Should return values according to environment variables - PFX enabled and CORS enabled", async () => {
@@ -343,7 +329,7 @@ describe("Configuration", () => {
 			passphrase: HTTPS_PFX_PASSPHRASE,
 			pfx: expect.any(Buffer),
 		});
-		expect(config.fastifyInit.http2).toEqual(true);
+		expect(config.fastifyInit.http2).toBe(true);
 
 		expect(config.cors).toEqual({
 			credentials: CORS_ALLOW_CREDENTIALS,

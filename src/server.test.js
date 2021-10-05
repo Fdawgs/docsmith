@@ -31,23 +31,16 @@ const expResHeaders = {
 
 const expResHeadersHtml = {
 	...expResHeaders,
-	...{
-		"content-security-policy":
-			"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-		"content-type": expect.stringContaining("text/html"),
-		"x-xss-protection": "0",
-	},
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+	"content-type": expect.stringContaining("text/html"),
+	"x-xss-protection": "0",
 };
 
 const expResHeadersJson = {
 	...expResHeaders,
-	...{ "content-type": expect.stringContaining("application/json") },
+	"content-type": expect.stringContaining("application/json"),
 };
-
-const expResHeaders4xxErrors = {
-	...expResHeadersJson,
-};
-delete expResHeaders4xxErrors.vary;
 
 describe("Server Deployment", () => {
 	describe("End-To-End - Bearer Token and OCR Disabled", () => {
@@ -81,11 +74,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toBe("ok");
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -97,10 +88,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+					statusCode: 406,
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -119,11 +113,14 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(isHtml(response.payload)).toEqual(true);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersHtml)
+				expect(response.payload).toEqual(
+					expect.stringContaining(
+						"Ask not what your country can do for you"
+					)
 				);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(true);
+				expect(response.headers).toEqual(expResHeadersHtml);
+				expect(response.statusCode).toBe(200);
 			});
 		});
 
@@ -142,11 +139,14 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(isHtml(response.payload)).toEqual(false);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
+				expect(response.payload).toEqual(
+					expect.stringContaining(
+						"Ask not what your country can do for you"
+					)
 				);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(false);
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 		});
 
@@ -167,11 +167,12 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(isHtml(response.payload)).toEqual(true);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersHtml)
+				expect(response.payload).toEqual(
+					expect.stringContaining("for England")
 				);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(true);
+				expect(response.headers).toEqual(expResHeadersHtml);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -190,10 +191,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+					statusCode: 406,
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -206,7 +210,7 @@ describe("Server Deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 2,
+						lastPageToConvert: 1,
 					},
 					headers: {
 						accept: "application/json, text/plain",
@@ -215,13 +219,11 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.payload).toEqual(
-					expect.stringContaining("The NHS Constitution")
+					expect.stringContaining("for England")
 				);
-				expect(isHtml(response.payload)).toEqual(false);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(false);
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 		});
 
@@ -239,11 +241,14 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(isHtml(response.payload)).toEqual(true);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersHtml)
+				expect(response.payload).toEqual(
+					expect.stringContaining(
+						"Ask not what your country can do for you"
+					)
 				);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(true);
+				expect(response.headers).toEqual(expResHeadersHtml);
+				expect(response.statusCode).toBe(200);
 			});
 		});
 
@@ -261,11 +266,14 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(isHtml(response.payload)).toEqual(false);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
+				expect(response.payload).toEqual(
+					expect.stringContaining(
+						"Ask not what your country can do for you"
+					)
 				);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(false);
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 		});
 	});
@@ -303,11 +311,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toBe("ok");
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -319,10 +325,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+					statusCode: 406,
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -344,11 +353,12 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(isHtml(response.payload)).toEqual(true);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersHtml)
+				expect(response.payload).toEqual(
+					expect.stringContaining("for England")
 				);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(true);
+				expect(response.headers).toEqual(expResHeadersHtml);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 401 if invalid bearer token provided in header", async () => {
@@ -368,10 +378,11 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders4xxErrors)
-				);
-				expect(response.statusCode).toEqual(401);
+				expect(response.headers).toEqual({
+					...expResHeadersJson,
+					vary: "accept-encoding",
+				});
+				expect(response.statusCode).toBe(401);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -391,10 +402,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+					statusCode: 406,
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -417,11 +431,12 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(isHtml(response.payload)).toEqual(false);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
+				expect(response.payload).toEqual(
+					expect.stringContaining("NHS")
 				);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(false);
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 401 if invalid bearer token provided in header", async () => {
@@ -442,10 +457,11 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders4xxErrors)
-				);
-				expect(response.statusCode).toEqual(401);
+				expect(response.headers).toEqual({
+					...expResHeadersJson,
+					vary: "accept-encoding",
+				});
+				expect(response.statusCode).toBe(401);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -466,10 +482,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+					statusCode: 406,
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 	});

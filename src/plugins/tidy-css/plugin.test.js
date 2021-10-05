@@ -45,8 +45,9 @@ describe("Tidy-CSS Plugin", () => {
 		});
 
 		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should tidy CSS in HTML and set new font", async () => {
@@ -69,8 +70,9 @@ describe("Tidy-CSS Plugin", () => {
 
 		expect(/font-family: Arial/gm.exec(response.payload)).not.toBeNull();
 		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should tidy CSS in HTML and set new background color", async () => {
@@ -95,8 +97,9 @@ describe("Tidy-CSS Plugin", () => {
 			/background-color: white/gm.exec(response.payload)
 		).not.toBeNull();
 		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should create new style element if none exist but query string param passed", async () => {
@@ -127,8 +130,9 @@ describe("Tidy-CSS Plugin", () => {
 			/background-color: white/gm.exec(response.payload)
 		).not.toBeNull();
 		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should continue to parse style elements with no type attribute", async () => {
@@ -150,8 +154,9 @@ describe("Tidy-CSS Plugin", () => {
 		});
 
 		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should continue if it cannot find any CSS to tidy", async () => {
@@ -172,7 +177,8 @@ describe("Tidy-CSS Plugin", () => {
 			},
 		});
 
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 });

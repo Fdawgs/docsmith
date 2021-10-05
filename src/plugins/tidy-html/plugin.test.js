@@ -43,12 +43,12 @@ describe("Tidy-CSS Plugin", () => {
 
 		expect(
 			dom.window.document.querySelector("html").getAttribute("lang")
-		).toEqual("en");
+		).toBe("en");
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
-		).toEqual("en");
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		).toBe("en");
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
 	});
 
 	test("Should tidy HTML and set language", async () => {
@@ -73,12 +73,12 @@ describe("Tidy-CSS Plugin", () => {
 
 		expect(
 			dom.window.document.querySelector("html").getAttribute("lang")
-		).toEqual("fr");
+		).toBe("fr");
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
-		).toEqual("fr");
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		).toBe("fr");
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
 	});
 
 	test("Should remove alt attribute from img tags", async () => {
@@ -100,7 +100,7 @@ describe("Tidy-CSS Plugin", () => {
 		});
 
 		expect(/alt=""/gm.exec(response.payload)).not.toBeNull();
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
 	});
 });

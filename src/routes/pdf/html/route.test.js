@@ -49,7 +49,7 @@ describe("PDF-to-HTML route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 2;
+				query.lastPageToConvert = 1;
 
 				const response = await server.inject({
 					method: "POST",
@@ -65,10 +65,13 @@ describe("PDF-to-HTML route", () => {
 				});
 
 				expect(response.payload).toEqual(
-					expect.stringContaining("The NHS Constitution")
+					expect.stringContaining("for England")
 				);
-				expect(isHtml(response.payload)).toEqual(true);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(true);
+				expect(response.headers).toMatchObject({
+					"content-type": "text/html; charset=utf-8",
+				});
+				expect(response.statusCode).toBe(200);
 
 				return response.statusCode;
 			})
@@ -79,7 +82,7 @@ describe("PDF-to-HTML route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 2;
+				query.lastPageToConvert = 1;
 
 				const response = await server.inject({
 					method: "POST",
@@ -91,10 +94,12 @@ describe("PDF-to-HTML route", () => {
 					},
 				});
 
-				expect(response.statusCode).toEqual(415);
-				expect(response.statusMessage).toEqual(
-					"Unsupported Media Type"
-				);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Unsupported Media Type",
+					message: "Unsupported Media Type",
+					statusCode: 415,
+				});
+				expect(response.statusCode).toBe(415);
 
 				return response.statusCode;
 			})
@@ -105,7 +110,7 @@ describe("PDF-to-HTML route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 2;
+				query.lastPageToConvert = 1;
 
 				const response = await server.inject({
 					method: "POST",
@@ -113,19 +118,19 @@ describe("PDF-to-HTML route", () => {
 					body: fs.readFileSync(
 						"./test_resources/test_files/invalid_pdf.pdf"
 					),
-					query: {
-						lastPageToConvert: 2,
-					},
+					query,
 					headers: {
 						accept: "application/json, text/html",
 						"content-type": "application/pdf",
 					},
 				});
 
-				expect(response.statusCode).toEqual(415);
-				expect(response.statusMessage).toEqual(
-					"Unsupported Media Type"
-				);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Unsupported Media Type",
+					message: "Unsupported Media Type",
+					statusCode: 415,
+				});
+				expect(response.statusCode).toBe(415);
 
 				return response.statusCode;
 			})
@@ -136,7 +141,7 @@ describe("PDF-to-HTML route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 2;
+				query.lastPageToConvert = 1;
 
 				const response = await server.inject({
 					method: "POST",
@@ -144,16 +149,19 @@ describe("PDF-to-HTML route", () => {
 					body: fs.readFileSync(
 						"./test_resources/test_files/valid_empty_html.html"
 					),
+					query,
 					headers: {
 						accept: "application/json, text/html",
 						"content-type": "application/html",
 					},
 				});
 
-				expect(response.statusCode).toEqual(415);
-				expect(response.statusMessage).toEqual(
-					"Unsupported Media Type"
-				);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Unsupported Media Type",
+					message: "Unsupported Media Type: application/html",
+					statusCode: 415,
+				});
+				expect(response.statusCode).toBe(415);
 
 				return response.statusCode;
 			})
@@ -168,7 +176,7 @@ describe("PDF-to-HTML route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 2,
+				lastPageToConvert: 1,
 			},
 			headers: {
 				accept: "application/javascript",
@@ -176,6 +184,11 @@ describe("PDF-to-HTML route", () => {
 			},
 		});
 
-		expect(response.statusCode).toEqual(406);
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Not Acceptable",
+			message: "Not Acceptable",
+			statusCode: 406,
+		});
+		expect(response.statusCode).toBe(406);
 	});
 });

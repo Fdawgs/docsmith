@@ -49,8 +49,8 @@ describe("DOCX-to-TXT Conversion Plugin", () => {
 		expect(response.body).toEqual(
 			expect.stringContaining("Ask not what your country can do for you")
 		);
-		expect(typeof response.body).toEqual("string");
-		expect(isHtml(response.body)).toEqual(true);
+		expect(typeof response.body).toBe("string");
+		expect(isHtml(response.body)).toBe(true);
 	});
 
 	test("Should return HTTP status code 400 if DOCX file is missing", async () => {
@@ -65,9 +65,8 @@ describe("DOCX-to-TXT Conversion Plugin", () => {
 
 		const body = JSON.parse(response.payload);
 
-		expect(response.statusCode).toEqual(400);
-		expect(response.statusMessage).toEqual("Bad Request");
-		expect(body.statusCode).toEqual(400);
-		expect(body.error).toEqual("Bad Request");
+		expect(body.statusCode).toBe(400);
+		expect(body.error).toBe("Bad Request");
+		expect(response.statusCode).toBe(400);
 	});
 });
