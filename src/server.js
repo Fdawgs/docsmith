@@ -168,6 +168,7 @@ async function plugin(server, config) {
 					),
 					prefix: "/redoc/",
 					decorateReply: false,
+					maxAge: "1 day",
 				})
 				.register(autoLoad, {
 					dir: path.join(__dirname, "routes", "docs"),
