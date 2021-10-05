@@ -53,8 +53,14 @@ describe("Docs Route", () => {
 				},
 			});
 
-			expect(isHtml(response.payload)).toEqual(true);
-			expect(response.statusCode).toEqual(200);
+			expect(isHtml(response.payload)).toBe(true);
+			expect(response.headers).toEqual(
+				expect.objectContaining({
+					"cache-control": "private, max-age=0, must-revalidate",
+					"content-type": "text/html; charset=utf-8",
+				})
+			);
+			expect(response.statusCode).toBe(200);
 		});
 
 		test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -66,7 +72,12 @@ describe("Docs Route", () => {
 				},
 			});
 
-			expect(response.statusCode).toEqual(406);
+			expect(JSON.parse(response.payload)).toEqual({
+				error: "Not Acceptable",
+				message: "Not Acceptable",
+				statusCode: 406,
+			});
+			expect(response.statusCode).toBe(406);
 		});
 	});
 });

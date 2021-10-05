@@ -39,7 +39,7 @@ describe("JSON Route", () => {
 			});
 
 			expect(JSON.parse(response.payload)).toHaveProperty("openapi");
-			expect(response.statusCode).toEqual(200);
+			expect(response.statusCode).toBe(200);
 		});
 
 		test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -51,7 +51,12 @@ describe("JSON Route", () => {
 				},
 			});
 
-			expect(response.statusCode).toEqual(406);
+			expect(JSON.parse(response.payload)).toEqual({
+				error: "Not Acceptable",
+				message: "Not Acceptable",
+				statusCode: 406,
+			});
+			expect(response.statusCode).toBe(406);
 		});
 	});
 });

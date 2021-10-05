@@ -52,8 +52,8 @@ describe("DOCX-to-HTML route", () => {
 		expect(response.payload).toEqual(
 			expect.stringContaining("Ask not what your country can do for you")
 		);
-		expect(isHtml(response.payload)).toEqual(true);
-		expect(response.statusCode).toEqual(200);
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should return HTTP status code 415 if file is missing", async () => {
@@ -68,8 +68,12 @@ describe("DOCX-to-HTML route", () => {
 			},
 		});
 
-		expect(response.statusCode).toEqual(415);
-		expect(response.statusMessage).toEqual("Unsupported Media Type");
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Unsupported Media Type",
+			message: "Unsupported Media Type",
+			statusCode: 415,
+		});
+		expect(response.statusCode).toBe(415);
 	});
 
 	test("Should return HTTP status code 415 if file with '.docx' extension is not a valid DOCX file", async () => {
@@ -89,8 +93,12 @@ describe("DOCX-to-HTML route", () => {
 			},
 		});
 
-		expect(response.statusCode).toEqual(415);
-		expect(response.statusMessage).toEqual("Unsupported Media Type");
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Unsupported Media Type",
+			message: "Unsupported Media Type",
+			statusCode: 415,
+		});
+		expect(response.statusCode).toBe(415);
 	});
 
 	test("Should return HTTP status code 415 if file media type is not supported by route", async () => {
@@ -106,8 +114,12 @@ describe("DOCX-to-HTML route", () => {
 			},
 		});
 
-		expect(response.statusCode).toEqual(415);
-		expect(response.statusMessage).toEqual("Unsupported Media Type");
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Unsupported Media Type",
+			message: "Unsupported Media Type: application/html",
+			statusCode: 415,
+		});
+		expect(response.statusCode).toBe(415);
 	});
 
 	test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -124,6 +136,11 @@ describe("DOCX-to-HTML route", () => {
 			},
 		});
 
-		expect(response.statusCode).toEqual(406);
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Not Acceptable",
+			message: "Not Acceptable",
+			statusCode: 406,
+		});
+		expect(response.statusCode).toBe(406);
 	});
 });

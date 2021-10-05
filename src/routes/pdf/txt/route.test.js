@@ -64,8 +64,8 @@ describe("PDF-to-TXT route", () => {
 				expect(response.payload).toEqual(
 					expect.stringContaining("The NHS Constitution")
 				);
-				expect(isHtml(response.payload)).toEqual(false);
-				expect(response.statusCode).toEqual(200);
+				expect(isHtml(response.payload)).toBe(false);
+				expect(response.statusCode).toBe(200);
 
 				return response.statusCode;
 			})
@@ -90,8 +90,8 @@ describe("PDF-to-TXT route", () => {
 		});
 
 		expect(response.payload).toEqual(expect.stringContaining("NHS"));
-		expect(isHtml(response.payload)).toEqual(false);
-		expect(response.statusCode).toEqual(200);
+		expect(isHtml(response.payload)).toBe(false);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should return PDF file converted to TXT wrapped in HTML", async () => {
@@ -114,8 +114,8 @@ describe("PDF-to-TXT route", () => {
 		expect(response.payload).toEqual(
 			expect.stringContaining("The NHS Constitution")
 		);
-		expect(isHtml(response.payload)).toEqual(true);
-		expect(response.statusCode).toEqual(200);
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should return HTTP status code 415 if file is missing", async () => {
@@ -134,10 +134,12 @@ describe("PDF-to-TXT route", () => {
 					},
 				});
 
-				expect(response.statusCode).toEqual(415);
-				expect(response.statusMessage).toEqual(
-					"Unsupported Media Type"
-				);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Unsupported Media Type",
+					message: "Unsupported Media Type",
+					statusCode: 415,
+				});
+				expect(response.statusCode).toBe(415);
 
 				return response.statusCode;
 			})
@@ -165,10 +167,12 @@ describe("PDF-to-TXT route", () => {
 					},
 				});
 
-				expect(response.statusCode).toEqual(415);
-				expect(response.statusMessage).toEqual(
-					"Unsupported Media Type"
-				);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Unsupported Media Type",
+					message: "Unsupported Media Type",
+					statusCode: 415,
+				});
+				expect(response.statusCode).toBe(415);
 
 				return response.statusCode;
 			})
@@ -193,10 +197,12 @@ describe("PDF-to-TXT route", () => {
 					},
 				});
 
-				expect(response.statusCode).toEqual(415);
-				expect(response.statusMessage).toEqual(
-					"Unsupported Media Type"
-				);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Unsupported Media Type",
+					message: "Unsupported Media Type: application/html",
+					statusCode: 415,
+				});
+				expect(response.statusCode).toBe(415);
 
 				return response.statusCode;
 			})
@@ -219,6 +225,11 @@ describe("PDF-to-TXT route", () => {
 			},
 		});
 
-		expect(response.statusCode).toEqual(406);
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Not Acceptable",
+			message: "Not Acceptable",
+			statusCode: 406,
+		});
+		expect(response.statusCode).toBe(406);
 	});
 });
