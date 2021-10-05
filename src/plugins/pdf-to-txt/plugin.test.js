@@ -49,7 +49,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 2,
+				lastPageToConvert: 1,
 			},
 			headers: {
 				"content-type": "application/pdf",
@@ -119,7 +119,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 			),
 			query: {
 				generateHtmlMetaFile: true,
-				lastPageToConvert: 2,
+				lastPageToConvert: 1,
 			},
 			headers: {
 				"content-type": "application/pdf",

@@ -46,7 +46,7 @@ describe("PDF-to-TXT route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 2;
+				query.lastPageToConvert = 1;
 
 				const response = await server.inject({
 					method: "POST",
@@ -62,7 +62,7 @@ describe("PDF-to-TXT route", () => {
 				});
 
 				expect(response.payload).toEqual(
-					expect.stringContaining("The NHS Constitution")
+					expect.stringContaining("for England")
 				);
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toMatchObject({
@@ -109,7 +109,7 @@ describe("PDF-to-TXT route", () => {
 			),
 			query: {
 				generateHtmlMetaFile: true,
-				lastPageToConvert: 2,
+				lastPageToConvert: 1,
 			},
 			headers: {
 				accept: "application/json, text/html",
@@ -118,7 +118,7 @@ describe("PDF-to-TXT route", () => {
 		});
 
 		expect(response.payload).toEqual(
-			expect.stringContaining("The NHS Constitution")
+			expect.stringContaining("for England")
 		);
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.headers).toMatchObject({
@@ -131,7 +131,7 @@ describe("PDF-to-TXT route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 2;
+				query.lastPageToConvert = 1;
 
 				const response = await server.inject({
 					method: "POST",
@@ -159,7 +159,7 @@ describe("PDF-to-TXT route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 2;
+				query.lastPageToConvert = 1;
 
 				const response = await server.inject({
 					method: "POST",
@@ -167,9 +167,7 @@ describe("PDF-to-TXT route", () => {
 					body: fs.readFileSync(
 						"./test_resources/test_files/invalid_pdf.pdf"
 					),
-					query: {
-						lastPageToConvert: 2,
-					},
+					query,
 					headers: {
 						accept: "application/json, text/plain",
 						"content-type": "application/pdf",
@@ -192,7 +190,7 @@ describe("PDF-to-TXT route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 2;
+				query.lastPageToConvert = 1;
 
 				const response = await server.inject({
 					method: "POST",
@@ -200,6 +198,7 @@ describe("PDF-to-TXT route", () => {
 					body: fs.readFileSync(
 						"./test_resources/test_files/valid_empty_html.html"
 					),
+					query,
 					headers: {
 						accept: "application/json, text/plain",
 						"content-type": "application/html",
@@ -226,7 +225,7 @@ describe("PDF-to-TXT route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 2,
+				lastPageToConvert: 1,
 			},
 			headers: {
 				accept: "application/javascript",

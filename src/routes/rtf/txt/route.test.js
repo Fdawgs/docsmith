@@ -75,7 +75,7 @@ describe("RTF-to-TXT route", () => {
 				"./test_resources/test_files/invalid_rtf.rtf"
 			),
 			query: {
-				lastPageToConvert: 2,
+				lastPageToConvert: 1,
 			},
 			headers: {
 				accept: "application/json, text/plain",

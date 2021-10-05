@@ -170,7 +170,7 @@ describe("Server Deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 2,
+						lastPageToConvert: 1,
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -179,7 +179,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.payload).toEqual(
-					expect.stringContaining("The NHS Constitution")
+					expect.stringContaining("for England")
 				);
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(
@@ -225,7 +225,7 @@ describe("Server Deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 2,
+						lastPageToConvert: 1,
 					},
 					headers: {
 						accept: "application/json, text/plain",
@@ -234,7 +234,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.payload).toEqual(
-					expect.stringContaining("The NHS Constitution")
+					expect.stringContaining("for England")
 				);
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
@@ -363,7 +363,7 @@ describe("Server Deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 2,
+						lastPageToConvert: 1,
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -373,7 +373,7 @@ describe("Server Deployment", () => {
 				});
 
 				expect(response.payload).toEqual(
-					expect.stringContaining("The NHS Constitution")
+					expect.stringContaining("for England")
 				);
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(

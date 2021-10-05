@@ -52,7 +52,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 2,
+				lastPageToConvert: 1,
 				ignoreImages: false,
 			},
 			headers: {
@@ -63,7 +63,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(response.body).toEqual(
-			expect.stringContaining("The&nbsp;NHS&nbsp;Constitution")
+			expect.stringContaining("for&nbsp;England")
 		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toEqual(true);
@@ -77,9 +77,9 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 			method: "POST",
 			url: "/",
 			query: {
-				firstPageToConvert: 2,
+				firstPageToConvert: 1,
 				ignoreImages: true,
-				lastPageToConvert: 2,
+				lastPageToConvert: 1,
 				test: "test",
 			},
 			body: fs.readFileSync(
@@ -93,7 +93,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(response.body).toEqual(
-			expect.stringContaining("The&nbsp;NHS&nbsp;Constitution")
+			expect.stringContaining("for&nbsp;England")
 		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toEqual(true);
