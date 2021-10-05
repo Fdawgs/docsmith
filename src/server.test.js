@@ -31,23 +31,16 @@ const expResHeaders = {
 
 const expResHeadersHtml = {
 	...expResHeaders,
-	...{
-		"content-security-policy":
-			"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-		"content-type": expect.stringContaining("text/html"),
-		"x-xss-protection": "0",
-	},
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+	"content-type": expect.stringContaining("text/html"),
+	"x-xss-protection": "0",
 };
 
 const expResHeadersJson = {
 	...expResHeaders,
-	...{ "content-type": expect.stringContaining("application/json") },
+	"content-type": expect.stringContaining("application/json"),
 };
-
-const expResHeaders4xxErrors = {
-	...expResHeadersJson,
-};
-delete expResHeaders4xxErrors.vary;
 
 describe("Server Deployment", () => {
 	describe("End-To-End - Bearer Token and OCR Disabled", () => {
@@ -100,9 +93,7 @@ describe("Server Deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
+				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
@@ -128,9 +119,7 @@ describe("Server Deployment", () => {
 					)
 				);
 				expect(isHtml(response.payload)).toBe(true);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersHtml)
-				);
+				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 		});
@@ -182,9 +171,7 @@ describe("Server Deployment", () => {
 					expect.stringContaining("for England")
 				);
 				expect(isHtml(response.payload)).toBe(true);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersHtml)
-				);
+				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 
@@ -209,9 +196,7 @@ describe("Server Deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
+				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
@@ -262,9 +247,7 @@ describe("Server Deployment", () => {
 					)
 				);
 				expect(isHtml(response.payload)).toBe(true);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersHtml)
-				);
+				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 		});
@@ -347,9 +330,7 @@ describe("Server Deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
+				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
@@ -376,9 +357,7 @@ describe("Server Deployment", () => {
 					expect.stringContaining("for England")
 				);
 				expect(isHtml(response.payload)).toBe(true);
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersHtml)
-				);
+				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 
@@ -399,9 +378,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders4xxErrors)
-				);
+				expect(response.headers).toEqual({
+					...expResHeadersJson,
+					vary: "accept-encoding",
+				});
 				expect(response.statusCode).toBe(401);
 			});
 
@@ -427,9 +407,7 @@ describe("Server Deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
+				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
@@ -453,6 +431,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
+				expect(response.payload).toEqual(
+					expect.stringContaining("NHS")
+				);
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
@@ -476,9 +457,10 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders4xxErrors)
-				);
+				expect(response.headers).toEqual({
+					...expResHeadersJson,
+					vary: "accept-encoding",
+				});
 				expect(response.statusCode).toBe(401);
 			});
 
@@ -505,9 +487,7 @@ describe("Server Deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
+				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
