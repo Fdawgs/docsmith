@@ -54,7 +54,8 @@ describe("Image-To-TXT Conversion Plugin", () => {
 		expect(response.body).toEqual(
 			expect.stringContaining("Yeovil District Hospital")
 		);
-		expect(typeof response.body).toEqual("string");
-		expect(isHtml(response.body)).toEqual(false);
+		expect(typeof response.body).toBe("string");
+		expect(isHtml(response.body)).toBe(false);
+		expect(response.statusCode).toBe(200);
 	});
 });

@@ -51,8 +51,9 @@ describe("Embed-HTML-Images Plugin", () => {
 			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
 		).toBeNull();
 		expect(/alt=""/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should embed images into HTML and add trailing slash if missing from directory", async () => {
@@ -78,8 +79,9 @@ describe("Embed-HTML-Images Plugin", () => {
 		expect(
 			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
 		).toBeNull();
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should continue if it cannot find images to embed in specified directory", async () => {
@@ -100,7 +102,8 @@ describe("Embed-HTML-Images Plugin", () => {
 			},
 		});
 
-		expect(typeof response.payload).toEqual("string");
-		expect(isHtml(response.payload)).toEqual(true);
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
 	});
 });
