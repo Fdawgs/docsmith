@@ -1,0 +1,8 @@
+html {
+	-moz-tab-size: 4;
+	tab-size: 4;
+}
+body {
+	font-family: "Segoe UI", Roboto, "Helvetica neue", Arial;
+	margin: 0;
+}
