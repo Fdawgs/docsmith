@@ -35,6 +35,7 @@ async function route(server, options) {
 		url: "/",
 		schema: docsJsonGetSchema,
 		handler(req, res) {
+			res.header("cache-control", "public, max-age=3600");
 			res.send(server.swagger());
 		},
 	});

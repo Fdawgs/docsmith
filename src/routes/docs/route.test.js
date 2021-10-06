@@ -55,7 +55,7 @@ describe("Docs Route", () => {
 
 			expect(isHtml(response.payload)).toBe(true);
 			expect(response.headers).toMatchObject({
-				"cache-control": "private, max-age=0, must-revalidate",
+				"cache-control": "private, max-age=180",
 				"content-type": "text/html; charset=utf-8",
 			});
 			expect(response.statusCode).toBe(200);

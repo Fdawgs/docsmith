@@ -52,7 +52,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 1,
+				lastPageToConvert: 2,
 				ignoreImages: false,
 			},
 			headers: {
@@ -79,7 +79,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 			query: {
 				firstPageToConvert: 1,
 				ignoreImages: true,
-				lastPageToConvert: 1,
+				lastPageToConvert: 2,
 				test: "test",
 			},
 			body: fs.readFileSync(
