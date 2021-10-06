@@ -136,7 +136,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2.3.4
-            - uses: hadolint/hadolint-action@v1.5.0
+            - uses: hadolint/hadolint-action@v1.6.0
               with:
                   dockerfile: Dockerfile
                   ignore: DL3008
