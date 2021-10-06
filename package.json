@@ -118,7 +118,7 @@
     "raw-body": "^2.4.1",
     "redoc": "^2.0.0-rc.56",
     "tesseract.js": "^2.1.5",
-    "under-pressure": "^5.7.0",
+    "under-pressure": "^5.8.0",
     "uuid": "^8.3.2"
   }
 }
