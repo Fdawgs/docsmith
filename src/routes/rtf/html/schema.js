@@ -46,7 +46,7 @@ const rtfToHtmlPostSchema = {
 		.prop(
 			"removeAlt",
 			S.boolean().description(
-				"Remove the `alt` attribute from `<img>` tags"
+				"Set the `alt` attribute in `<img>` tags to an empty string"
 			)
 		),
 	response: {
