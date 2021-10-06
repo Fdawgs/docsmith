@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.1.3](https://www.github.com/Fdawgs/docsmith/compare/v5.1.2...v5.1.3) (2021-10-06)
+
+
+### Bug Fixes
+
+* **routes/docs/json:** add missing cache-control header ([579776d](https://www.github.com/Fdawgs/docsmith/commit/579776dc5f27078ca5fc9166c45126afe4379a99))
+
+
+### Documentation
+
+* **readme:** add note regarding using `docker compose up` ([5ff789b](https://www.github.com/Fdawgs/docsmith/commit/5ff789ba89df7f46e938fe66f7db7c78ece4cbb3))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jest from 24.5.0 to 24.5.2 ([0650841](https://www.github.com/Fdawgs/docsmith/commit/06508418d7da5360b197a28b82ce1bea92c515b6))
+* **deps:** bump fastify-static from 4.2.3 to 4.2.4 ([d737a22](https://www.github.com/Fdawgs/docsmith/commit/d737a22af214d39c34844b498a2d9f249e0214b9))
+* **deps:** bump fastify-swagger from 4.12.3 to 4.12.4 ([975a911](https://www.github.com/Fdawgs/docsmith/commit/975a9117bf2d5736e05a709955b740b8a95a6d15))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([6ed3150](https://www.github.com/Fdawgs/docsmith/commit/6ed315093735c5a471ccd0db07b0238a77997222))
+* **deps:** bump hadolint/hadolint-action from 1.5.0 to 1.6.0 ([1646d61](https://www.github.com/Fdawgs/docsmith/commit/1646d618cd6a82eb1e168c7f9fbf67b769ea7599))
+* **deps:** bump under-pressure from 5.7.0 to 5.8.0 ([7d6f7da](https://www.github.com/Fdawgs/docsmith/commit/7d6f7dae697a6edfe3e6f3eb7216b0454aad62d7))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.4 to 4.1.5 ([3a9dbb7](https://www.github.com/Fdawgs/docsmith/commit/3a9dbb7c2d4591d3139469b5ea5360ec5e8b11df))
+* **docker:** update image from lts-stretch-slim to lts-bullseye-slim ([b6aead9](https://www.github.com/Fdawgs/docsmith/commit/b6aead9490638464b15f67545b71b66144d117ea))
+
+
+### Improvements
+
+* **public/docs:** move css from inline to own file ([#463](https://www.github.com/Fdawgs/docsmith/issues/463)) ([806cfcc](https://www.github.com/Fdawgs/docsmith/commit/806cfcc38449ac7786ed3f73a86db07d8da78bd7))
+* **routes/docs:** allow for html to be cached for 3 minutes ([877dc91](https://www.github.com/Fdawgs/docsmith/commit/877dc916f0b2d8e4c6db24eb97671148152661c0))
+* **server:** allow for redoc js to be cached for 1 day ([29818e1](https://www.github.com/Fdawgs/docsmith/commit/29818e12935b34c42348132cf16538b36af234a9))
+* **server:** use aggressive caching for static files ([bec9208](https://www.github.com/Fdawgs/docsmith/commit/bec9208baf3118965aeec40ef9c88b706bab8b32))
+
 ### [5.1.2](https://www.github.com/Fdawgs/docsmith/compare/v5.1.1...v5.1.2) (2021-10-01)
 
 
