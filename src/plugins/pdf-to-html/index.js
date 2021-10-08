@@ -125,7 +125,7 @@ async function plugin(server, options) {
 			// Poppler appends `-html` to the file name, thus the template literal here
 			const dom = new JSDOM(
 				await fsp.readFile(`${tempFile}-html.html`, {
-					encoding: config.pdfToHtmlOptions.encoding,
+					encoding: config.pdfToHtmlOptions.outputEncoding,
 				})
 			);
 			const titles = dom.window.document.querySelectorAll("title");
