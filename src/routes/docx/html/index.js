@@ -11,6 +11,7 @@ const { docxToHtmlPostSchema } = require("./schema");
  * @description Sets routing options for server.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Route config values.
+ * @param {*=} options.bearerTokenAuthKeys - Apply `bearerToken` security scheme to route if defined.
  * @param {object} options.cors - CORS settings.
  */
 async function route(server, options) {

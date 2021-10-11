@@ -11,6 +11,7 @@ const { pdfToTxtPostSchema } = require("./schema");
  * @description Sets routing options for server.
  * @param {Function} server - Fastify instance.
  * @param {object} options - Route config values.
+ * @param {*=} options.bearerTokenAuthKeys - Apply `bearerToken` security scheme to route if defined.
  * @param {object} options.cors - CORS settings.
  * @param {object} options.poppler - PDF-to-TXT plugin settings.
  * @param {object} options.tesseract - Tesseract OCR / Image-to-TXT plugin settings.
