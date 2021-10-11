@@ -1,4 +1,4 @@
-# docsmith
+# Docsmith
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/docsmith.svg)](https://github.com/Fdawgs/docsmith/releases/latest/)
 ![CI](https://github.com/Fdawgs/docsmith/workflows/CI/badge.svg)

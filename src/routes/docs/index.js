@@ -1,16 +1,11 @@
-// Import plugins
-const cors = require("fastify-cors");
-
 const { docsGetSchema } = require("./schema");
 
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
  * @param {Function} server - Fastify instance.
- * @param {object} options - Route config values.
- * @param {object} options.cors - CORS settings.
  */
-async function route(server, options) {
+async function route(server) {
 	server.addHook("preValidation", async (req, res) => {
 		if (
 			// Catch unsupported Accept header media types
@@ -21,14 +16,6 @@ async function route(server, options) {
 			res.notAcceptable();
 		}
 	});
-
-	// Register plugins
-	server
-		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-		.register(cors, {
-			...options.cors,
-			methods: ["GET"],
-		});
 
 	server.route({
 		method: "GET",
