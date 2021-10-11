@@ -112,6 +112,7 @@ const pdfToTxtPostSchema = {
 			S.string()
 				.default("UTF-8")
 				.description("Sets the encoding to use for text output")
+				.pattern(/^[-a-zA-Z0-9_]+$/m)
 		)
 		.prop(
 			"ownerPassword",
