@@ -37,11 +37,7 @@ async function plugin(server, options) {
 				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
 			);
 
-			await Promise.all(
-				files.map(async (file) => {
-					await fsp.unlink(file);
-				})
-			);
+			await Promise.all(files.map((file) => fsp.unlink(file)));
 		}
 
 		return res;
@@ -167,7 +163,7 @@ async function plugin(server, options) {
 						delete query[value];
 					}
 				});
-				await Object.assign(config.pdfToTxtOptions, query);
+				Object.assign(config.pdfToTxtOptions, query);
 
 				req.conversionResults.body = await poppler.pdfToText(
 					req.body,

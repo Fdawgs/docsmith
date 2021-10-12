@@ -24,7 +24,7 @@ async function plugin(server) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
-			req.conversionResults.body = await fixUtf8(`<!DOCTYPE html>
+			req.conversionResults.body = fixUtf8(`<!DOCTYPE html>
 			<head> 
 				<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 			</head>

@@ -35,11 +35,7 @@ async function plugin(server, options) {
 				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
 			);
 
-			await Promise.all(
-				files.map(async (file) => {
-					await fsp.unlink(file);
-				})
-			);
+			await Promise.all(files.map((file) => fsp.unlink(file)));
 		}
 
 		return res;
