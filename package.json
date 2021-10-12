@@ -100,7 +100,7 @@
     "fastify-plugin": "^3.0.0",
     "fastify-rate-limit": "^5.6.2",
     "fastify-sensible": "^3.1.1",
-    "fastify-static": "^4.2.4",
+    "fastify-static": "^4.4.1",
     "fastify-swagger": "^4.12.4",
     "file-stream-rotator": "^0.5.7",
     "file-type": "^16.5.3",
