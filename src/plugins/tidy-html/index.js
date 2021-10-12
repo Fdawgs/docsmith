@@ -2,6 +2,7 @@ const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 const { tidy } = require("htmltidy2");
 const util = require("util");
+const tags = require("language-tags");
 
 const tidyP = util.promisify(tidy);
 
@@ -20,15 +21,22 @@ async function plugin(server) {
 	 * @param {boolean=} options.removeAlt - Set `alt` attributes in `<img>` tags to empty string if set to `true`.
 	 * Useful for sending to clinical systems where img tags are stripped from received documents
 	 * (i.e. TPP's SystmOne).
-	 * @returns {string} Tidied HTML.
+	 * @returns {string|Error} Tidied HTML; throws error if `options.language` is not valid IANA language tag.
 	 */
-	async function tidyHtml(html, options) {
+	async function tidyHtml(html, options = {}) {
 		const dom = new JSDOM(html);
 
-		// Set document language
-		const innerHtml = dom.window.document.querySelector("html");
-		innerHtml.setAttribute("lang", options?.language || "en");
-		innerHtml.setAttribute("xml:lang", options?.language || "en");
+		// Set document language if valid IANA language tag and subtag
+		const language = options?.language || "en";
+		if (tags.check(language)) {
+			const innerHtml = dom.window.document.querySelector("html");
+			innerHtml.setAttribute("lang", language);
+			innerHtml.setAttribute("xml:lang", language);
+		} else {
+			throw server.httpErrors.badRequest(
+				"querystring.language not a valid IANA language tag"
+			);
+		}
 
 		// Remove alt attribute from img tags
 		if (options?.removeAlt === true) {
@@ -65,4 +73,8 @@ async function plugin(server) {
 	server.decorate("tidyHtml", tidyHtml);
 }
 
-module.exports = fp(plugin, { fastify: "3.x", name: "tidy-html" });
+module.exports = fp(plugin, {
+	fastify: "3.x",
+	name: "tidy-html",
+	dependencies: ["fastify-sensible"],
+});
