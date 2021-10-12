@@ -163,7 +163,7 @@ async function plugin(server, options) {
 						delete query[value];
 					}
 				});
-				await Object.assign(config.pdfToTxtOptions, query);
+				Object.assign(config.pdfToTxtOptions, query);
 
 				req.conversionResults.body = await poppler.pdfToText(
 					req.body,

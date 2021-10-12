@@ -93,7 +93,7 @@ async function plugin(server, options) {
 					query[value] = autoParse(query[value]);
 				}
 			});
-			await Object.assign(config.pdfToHtmlOptions, query);
+			Object.assign(config.pdfToHtmlOptions, query);
 
 			// Create temp directory if missing
 			try {
@@ -138,7 +138,7 @@ async function plugin(server, options) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
 			 */
-			req.conversionResults.body = await fixUtf8(dom.serialize());
+			req.conversionResults.body = fixUtf8(dom.serialize());
 
 			res.header(
 				"content-type",
