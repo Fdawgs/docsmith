@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.2.0](https://www.github.com/Fdawgs/docsmith/compare/v5.1.3...v5.2.0) (2021-10-13)
+
+
+### Features
+
+* **plugins/tidy-html:** check `language` is valid IANA language tag ([#464](https://www.github.com/Fdawgs/docsmith/issues/464)) ([6894d37](https://www.github.com/Fdawgs/docsmith/commit/6894d3706f5203067e910c15837cfac612b1ade4))
+
+
+### Bug Fixes
+
+* **plugins/pdf-to-html:** correct key name for output encoding ([10c8044](https://www.github.com/Fdawgs/docsmith/commit/10c8044247fdd5ced36615e6876959458611743d))
+* **routes/docs:** remove cors support ([0659e47](https://www.github.com/Fdawgs/docsmith/commit/0659e47abb16d2341404547df4af4b9a2cbe39ed))
+* **routes/pdf:** set accepted pattern for `outputEncoding` param ([#469](https://www.github.com/Fdawgs/docsmith/issues/469)) ([6b8f99d](https://www.github.com/Fdawgs/docsmith/commit/6b8f99ddeac2c0bf0b3c9f11042c169d7beb0be2))
+
+
+### Documentation
+
+* **readme:** capitalization fixes ([b080016](https://www.github.com/Fdawgs/docsmith/commit/b0800161cb3bbd3fc9de01ad2285241916b658ea))
+
+
+### Miscellaneous
+
+* **.eslintrc:** remove inaccurate sourcetype ([#467](https://www.github.com/Fdawgs/docsmith/issues/467)) ([3709cc2](https://www.github.com/Fdawgs/docsmith/commit/3709cc2dd2d5dea9f5456cda8f2266c02c2c95c6))
+* **.vscode:** remove deprecated settings ([c0dfc77](https://www.github.com/Fdawgs/docsmith/commit/c0dfc7744c51630170a71004b7b8d9f572d02ca2))
+* apply eslint rules per line, not file-wide ([7596c3b](https://www.github.com/Fdawgs/docsmith/commit/7596c3b0463fc8d81ce8986402876114af29c654))
+* **routes/schemas:** improve `removeAlt` param description ([#465](https://www.github.com/Fdawgs/docsmith/issues/465)) ([323b316](https://www.github.com/Fdawgs/docsmith/commit/323b316b3ae0967fb226babfc358443e8d3c44f6))
+* **routes:** add missing jsdoc tag for `options.bearertokenauthkeys` ([9bacd41](https://www.github.com/Fdawgs/docsmith/commit/9bacd415dd26a71f79c65561179c4dcb26d21da5))
+* **server:** update inline comment re clickjacking ([9adb742](https://www.github.com/Fdawgs/docsmith/commit/9adb7427af20079fb802aa6a7f442c22c212459f))
+
+
+### Improvements
+
+* **plugins:** make temp file removal hooks concurrent ([0055f15](https://www.github.com/Fdawgs/docsmith/commit/0055f152f7b672771ccf51f2d8c8a3f5d807d42c))
+* **plugins:** remove redundant `await`s ([70675a9](https://www.github.com/Fdawgs/docsmith/commit/70675a9a4af1cae3863b5f6a2b623ef1c6c5fbe8))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 13.2.0 to 13.2.1 ([1a2ab1c](https://www.github.com/Fdawgs/docsmith/commit/1a2ab1cc362ecb908e068d1bc0f7c76a9fe8dc9f))
+* **deps-dev:** bump eslint-plugin-import from 2.24.2 to 2.25.2 ([a3faf64](https://www.github.com/Fdawgs/docsmith/commit/a3faf6462aa00842cbb8174cee3a467eb794145d))
+* **deps-dev:** bump eslint-plugin-jest from 24.5.2 to 25.0.5 ([33fd43b](https://www.github.com/Fdawgs/docsmith/commit/33fd43bfaa8239280cc9544902250f5b24542201))
+* **deps-dev:** bump eslint-plugin-jsdoc from 36.1.0 to 36.1.1 ([f47090b](https://www.github.com/Fdawgs/docsmith/commit/f47090b32abb0121ce995f48bc552e11c70dbe67))
+* **deps-dev:** bump jest from 27.2.4 to 27.2.5 ([4002ef2](https://www.github.com/Fdawgs/docsmith/commit/4002ef2c21c04a2ae04b240b161cfe53255416bf))
+* **deps:** bump fastify-static from 4.2.4 to 4.4.1 ([c9cc5d0](https://www.github.com/Fdawgs/docsmith/commit/c9cc5d0d6b586680ba4544512a7b29d738dc4bde))
+* **deps:** bump fastify-static from 4.4.1 to 4.4.2 ([1222b4b](https://www.github.com/Fdawgs/docsmith/commit/1222b4b42d3b5c7cd879f3675a0fea29a7b036c8))
+* **deps:** bump jsdom from 17.0.0 to 18.0.0 ([f520183](https://www.github.com/Fdawgs/docsmith/commit/f5201839292e847a87726cfa8bfa578047437a7b))
+* **deps:** bump node-poppler from 5.0.1 to 5.0.2 ([e396b03](https://www.github.com/Fdawgs/docsmith/commit/e396b035bc1802888d230fde254d5ec66acbf948))
+* **deps:** bump redoc from 2.0.0-rc.56 to 2.0.0-rc.57 ([7fd5224](https://www.github.com/Fdawgs/docsmith/commit/7fd522499063d6c5eb97b3b9b5077112570ce2de))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.5 to 4.1.9 ([504d15a](https://www.github.com/Fdawgs/docsmith/commit/504d15a12209da429500bd4c26d567fb2fa5084d))
+
 ### [5.1.3](https://www.github.com/Fdawgs/docsmith/compare/v5.1.2...v5.1.3) (2021-10-06)
 
 
