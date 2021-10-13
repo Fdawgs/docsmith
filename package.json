@@ -117,7 +117,7 @@
     "pino": "^6.13.3",
     "pino-pretty": "^7.0.1",
     "raw-body": "^2.4.1",
-    "redoc": "^2.0.0-rc.56",
+    "redoc": "^2.0.0-rc.57",
     "tesseract.js": "^2.1.5",
     "under-pressure": "^5.8.0",
     "uuid": "^8.3.2"
