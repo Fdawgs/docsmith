@@ -108,7 +108,7 @@
     "fluent-json-schema": "^3.0.1",
     "glob": "^7.2.0",
     "htmltidy2": "^0.3.0",
-    "jsdom": "^17.0.0",
+    "jsdom": "^18.0.0",
     "language-tags": "^1.0.5",
     "mammoth": "^1.4.18",
     "node-poppler": "^5.0.2",
