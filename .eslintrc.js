@@ -14,9 +14,6 @@ module.exports = {
 	],
 	parserOptions: {
 		ecmaVersion: 2020,
-		ecmaFeatures: {
-			impliedStrict: true,
-		},
 	},
 	plugins: [
 		"import",
