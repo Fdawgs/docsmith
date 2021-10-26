@@ -38,7 +38,7 @@ const rtfToHtmlPostSchema = {
 			"language",
 			S.string()
 				.description(
-					"Set the `lang` and `xml:lang` attributes of the `<html>` tag"
+					"Set the `lang` and `xml:lang` attributes of the `<html>` tag. Must be a valid IANA language tag"
 				)
 				.pattern(/^[-a-zA-Z0-9]+$/m)
 				.default("en")
