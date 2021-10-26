@@ -6,6 +6,7 @@ const fsp = require("fs").promises;
 const pino = require("pino");
 const physicalCpuCount = require("physical-cpu-count");
 const rotatingLogStream = require("file-stream-rotator");
+const secJSON = require("secure-json-parse");
 
 const { description, license, version } = require("../../package.json");
 
@@ -334,12 +335,14 @@ async function getConfig() {
 	}
 
 	if (env.RATE_LIMIT_EXCLUDED_ARRAY) {
-		config.rateLimit.allowList = JSON.parse(env.RATE_LIMIT_EXCLUDED_ARRAY);
+		config.rateLimit.allowList = secJSON.parse(
+			env.RATE_LIMIT_EXCLUDED_ARRAY
+		);
 	}
 
 	if (env.AUTH_BEARER_TOKEN_ARRAY) {
 		const keys = new Set();
-		JSON.parse(env.AUTH_BEARER_TOKEN_ARRAY).forEach((element) => {
+		secJSON.parse(env.AUTH_BEARER_TOKEN_ARRAY).forEach((element) => {
 			keys.add(element.value);
 		});
 		config.bearerTokenAuthKeys = keys;

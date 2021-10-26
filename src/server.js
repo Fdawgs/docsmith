@@ -1,6 +1,7 @@
 const autoLoad = require("fastify-autoload");
 const fp = require("fastify-plugin");
 const path = require("path");
+const secJSON = require("secure-json-parse");
 
 // Import plugins
 const accepts = require("fastify-accepts");
@@ -134,7 +135,7 @@ async function plugin(server, config) {
 		 * CSP can be relaxed without impacting security of other routes
 		 */
 		.register(async (publicContext) => {
-			const relaxedHelmetConfig = JSON.parse(
+			const relaxedHelmetConfig = secJSON.parse(
 				JSON.stringify(config.helmet)
 			);
 			Object.assign(
