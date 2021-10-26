@@ -93,7 +93,13 @@ const pdfToHtmlPostSchema = {
 		)
 		.prop(
 			"ownerPassword",
-			S.string().description("Owner password (for encrypted files)")
+			S.string()
+				.description("Owner password (for encrypted files)")
+				/**
+				 * PDFs had a max character length of 32 up to PDF 1.7;
+				 * later versions that changed to 127 bytes
+				 */
+				.maxLength(127)
 		)
 		.prop(
 			"removeAlt",
@@ -103,7 +109,13 @@ const pdfToHtmlPostSchema = {
 		)
 		.prop(
 			"userPassword",
-			S.string().description("User password (for encrypted files)")
+			S.string()
+				.description("User password (for encrypted files)")
+				/**
+				 * PDFs had a max character length of 32 up to PDF 1.7;
+				 * later versions that changed to 127 bytes
+				 */
+				.maxLength(127)
 		)
 		.prop(
 			"wordBreakThreshold",
