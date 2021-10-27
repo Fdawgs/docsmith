@@ -17,6 +17,7 @@ const pdfToHtmlPostSchema = {
 	consumes: ["application/pdf"],
 	produces: ["text/html"],
 	query: S.object()
+		.additionalProperties(false)
 		.prop(
 			"backgroundColor",
 			S.string()

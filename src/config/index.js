@@ -51,6 +51,7 @@ async function getConfig() {
 	const env = envSchema({
 		dotenv: true,
 		schema: S.object()
+			.additionalProperties(false)
 			.prop("NODE_ENV", S.string())
 
 			// Service
