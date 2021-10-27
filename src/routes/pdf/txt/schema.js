@@ -112,11 +112,17 @@ const pdfToTxtPostSchema = {
 			S.string()
 				.default("UTF-8")
 				.description("Sets the encoding to use for text output")
-				.pattern(/^[-a-zA-Z0-9_]+$/m)
+				.pattern(/^[-\w]+$/m)
 		)
 		.prop(
 			"ownerPassword",
-			S.string().description("Owner password (for encrypted files)")
+			S.string()
+				.description("Owner password (for encrypted files)")
+				/**
+				 * PDFs had a max character length of 32 up to PDF 1.7;
+				 * later versions that changed to 127 bytes
+				 */
+				.maxLength(127)
 		)
 		.prop(
 			"rawLayout",
@@ -126,7 +132,13 @@ const pdfToTxtPostSchema = {
 		)
 		.prop(
 			"userPassword",
-			S.string().description("User password (for encrypted files)")
+			S.string()
+				.description("User password (for encrypted files)")
+				/**
+				 * PDFs had a max character length of 32 up to PDF 1.7;
+				 * later versions that changed to 127 bytes
+				 */
+				.maxLength(127)
 		)
 		/**
 		 * Return all schema values as JSON object rather than Fluent Schema Object.
