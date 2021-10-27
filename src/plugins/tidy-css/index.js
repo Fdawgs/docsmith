@@ -1,6 +1,7 @@
 const CSSOM = require("cssom");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
+
 /**
  * @author Frazer Smith
  * @description Decorator plugin that adds function that parses
