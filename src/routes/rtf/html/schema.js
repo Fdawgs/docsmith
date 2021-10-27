@@ -17,6 +17,7 @@ const rtfToHtmlPostSchema = {
 	consumes: ["application/rtf"],
 	produces: ["text/html"],
 	query: S.object()
+		.additionalProperties(false)
 		.prop(
 			"backgroundColor",
 			S.string()

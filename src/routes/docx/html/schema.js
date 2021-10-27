@@ -19,6 +19,7 @@ const docxToHtmlPostSchema = {
 	],
 	produces: ["text/html"],
 	query: S.object()
+		.additionalProperties(false)
 		.prop(
 			"backgroundColor",
 			S.string()
