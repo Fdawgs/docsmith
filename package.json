@@ -110,7 +110,7 @@
     "htmltidy2": "^0.3.0",
     "jsdom": "^18.0.0",
     "language-tags": "^1.0.5",
-    "mammoth": "^1.4.18",
+    "mammoth": "^1.4.19",
     "node-poppler": "^5.0.2",
     "node-unrtf": "^2.0.2",
     "physical-cpu-count": "^2.0.0",
