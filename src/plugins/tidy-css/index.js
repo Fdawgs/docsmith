@@ -61,6 +61,30 @@ async function plugin(server) {
 				}
 
 				/**
+				 * Font family names containing any non-alphabetical characters
+				 * other than hyphens should be quoted
+				 */
+				if (styleRule.style["font-family"]) {
+					const fonts = styleRule.style["font-family"].split(",");
+					const parsedFonts = [];
+
+					fonts.forEach((font) => {
+						if (/[^a-zA-Z-]+/.test(font.trim())) {
+							parsedFonts.push(
+								`"${font.replace(/"/g, "").trim()}"`
+							);
+						} else {
+							parsedFonts.push(font.trim());
+						}
+					});
+
+					styleRule.style.setProperty(
+						"font-family",
+						parsedFonts.join(", ")
+					);
+				}
+
+				/**
 				 * Stop pages overrunning the next page, leading to overlapping text.
 				 * "page-break-inside" is a legacy property, replaced by "break-inside".
 				 * "page-break-inside" should be treated by browsers as an alias of "break-inside"

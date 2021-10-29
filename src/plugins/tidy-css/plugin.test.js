@@ -75,6 +75,35 @@ describe("Tidy-CSS Plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
+	test("Should tidy CSS in HTML and set new font in quotation marks", async () => {
+		server.post("/", (req, res) => {
+			res.send(
+				server.tidyCss(req.body, { fonts: 'Sans Serif, "Gill Sans"' })
+			);
+		});
+		server.register(plugin);
+
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/valid_bullet_issues_html.html",
+				{ encoding: "UTF-8" }
+			),
+			headers: {
+				"content-type": "text/html",
+			},
+		});
+
+		expect(
+			/font-family: "Sans Serif", "Gill Sans"/gm.exec(response.payload)
+		).not.toBeNull();
+		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
+		expect(typeof response.payload).toBe("string");
+		expect(isHtml(response.payload)).toBe(true);
+		expect(response.statusCode).toBe(200);
+	});
+
 	test("Should tidy CSS in HTML and set new background color", async () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body, { backgroundColor: "white" }));
