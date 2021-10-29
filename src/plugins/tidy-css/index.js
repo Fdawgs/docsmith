@@ -110,7 +110,7 @@ async function plugin(server) {
 			 * sanitization (CWE-20 and CWE-116).
 			 */
 			styleObj = styleObj.toString().replace(/;}/gm, "}");
-			while (/<!--|-->/gm.test(styleObj)) {
+			while (/<!--|-->/m.test(styleObj)) {
 				styleObj = styleObj.replace(/<!--|-->/gm, "");
 			}
 
