@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.2.1](https://www.github.com/Fdawgs/docsmith/compare/v5.2.0...v5.2.1) (2021-10-29)
+
+
+### Bug Fixes
+
+* **config:** remove additional env variables ([ef5f9bf](https://www.github.com/Fdawgs/docsmith/commit/ef5f9bf49f52687b13d78077e60b5d42f89e5288))
+* **routes/pdf:** set max length for password params ([864d218](https://www.github.com/Fdawgs/docsmith/commit/864d218853063842bda9e8f4cae8d1fdf377ddf0))
+* **routes:** clarify on valid input for `language` params ([4c6b50d](https://www.github.com/Fdawgs/docsmith/commit/4c6b50d3d829e0ec8b8174b358d6d2f9ffe909c4))
+* **routes:** remove additional properties from req query ([6875a59](https://www.github.com/Fdawgs/docsmith/commit/6875a59751f7f81427ef9099d5494a43490e4028))
+
+
+### Documentation
+
+* bump coc from v2.0.0 to v2.1.0 ([#486](https://www.github.com/Fdawgs/docsmith/issues/486)) ([a161d41](https://www.github.com/Fdawgs/docsmith/commit/a161d41914ac4448ba6d0013da81223b963152c4))
+
+
+### Improvements
+
+* use secure-json-parse for json parsing ([f5c3170](https://www.github.com/Fdawgs/docsmith/commit/f5c31707cb5bc08227433aea69d78aae7673ea72))
+
+
+### Miscellaneous
+
+* **.eslintrc:** remove redundant `impliedStrict` option ([#484](https://www.github.com/Fdawgs/docsmith/issues/484)) ([7742bce](https://www.github.com/Fdawgs/docsmith/commit/7742bce7e4f24c48b65903769c1bcff5c38da50c))
+* **plugins/tidy-css:** add whitespace ([8001076](https://www.github.com/Fdawgs/docsmith/commit/80010760e8ad2576e8ed3d71dc2e936a51737d26))
+* **routes/pdf:** use shorter syntax for `outputEncoding`regex pattern ([c8e3a05](https://www.github.com/Fdawgs/docsmith/commit/c8e3a05acc3d1e1dc979bf49c3f55ec75b7f80d2))
+
+
+### Dependencies
+
+* **deps-dev:** bump autocannon from 7.4.0 to 7.5.0 ([8b9a485](https://www.github.com/Fdawgs/docsmith/commit/8b9a4851c50b8cb00b8ce3dbce3bc61934e8f571))
+* **deps-dev:** bump eslint-plugin-jest from 25.0.5 to 25.2.2 ([337cde3](https://www.github.com/Fdawgs/docsmith/commit/337cde365c24b96ec7d1e4d496cfba172ef7b5c2))
+* **deps-dev:** bump eslint-plugin-jsdoc from 36.1.1 to 37.0.3 ([ce08525](https://www.github.com/Fdawgs/docsmith/commit/ce0852558bf4a1c0aab0f731cc93330b371d06a1))
+* **deps-dev:** bump eslint-plugin-promise from 5.1.0 to 5.1.1 ([b0f39d5](https://www.github.com/Fdawgs/docsmith/commit/b0f39d502eee2b54f807e9b729b1d11a7124b30d))
+* **deps-dev:** bump husky from 7.0.2 to 7.0.4 ([9511f9b](https://www.github.com/Fdawgs/docsmith/commit/9511f9bbdd6c3a38f3e6007fa2fa136f6c89f2ba))
+* **deps-dev:** bump jest from 27.2.5 to 27.3.1 ([2b9769d](https://www.github.com/Fdawgs/docsmith/commit/2b9769dfc53792e17fee0a1a5c6f3afdcceefc56))
+* **deps-dev:** bump nodemon from 2.0.13 to 2.0.14 ([e6ec937](https://www.github.com/Fdawgs/docsmith/commit/e6ec937f45948ecc239df0158aebddca8bde85e7))
+* **deps:** add secure-json-parse ([6d16dd6](https://www.github.com/Fdawgs/docsmith/commit/6d16dd66b41dc5143f0c19495350eb14f3791d9b))
+* **deps:** bump actions/checkout from 2.3.4 to 2.3.5 ([76fa389](https://www.github.com/Fdawgs/docsmith/commit/76fa38930e41b8e523dd813098c9aabe4e5820b6))
+* **deps:** bump fastify from 3.22.0 to 3.22.1 ([b8fa640](https://www.github.com/Fdawgs/docsmith/commit/b8fa640549102636ca0abb24cd6c3f965792f845))
+* **deps:** bump fastify-compress from 3.6.0 to 3.6.1 ([8eff1f5](https://www.github.com/Fdawgs/docsmith/commit/8eff1f5be53c17e716ede87e34ce58368bd7e418))
+* **deps:** bump fastify-disablecache from 2.0.3 to 2.0.4 ([e0b9ce7](https://www.github.com/Fdawgs/docsmith/commit/e0b9ce71f53bd35129068087c8672eb17b30b241))
+* **deps:** bump fastify-floc-off from 1.0.2 to 1.0.3 ([33712c1](https://www.github.com/Fdawgs/docsmith/commit/33712c11f9823d8245dbbb57a7a3ba5b3a116e34))
+* **deps:** bump fastify-swagger from 4.12.4 to 4.12.6 ([23eba6f](https://www.github.com/Fdawgs/docsmith/commit/23eba6f769a05e4755cdb8f2b2c40f1d57f858cb))
+* **deps:** bump mammoth from 1.4.18 to 1.4.19 ([cd05469](https://www.github.com/Fdawgs/docsmith/commit/cd05469532763ebaf09ec6c36c6f0e987457c77e))
+* **deps:** bump node-unrtf from 2.0.2 to 2.0.4 ([61d4a6b](https://www.github.com/Fdawgs/docsmith/commit/61d4a6b15d484953cca5c45c3718c81e06206bdd))
+* **deps:** bump pino from 6.13.3 to 7.0.5 ([a651961](https://www.github.com/Fdawgs/docsmith/commit/a6519619a6765515a7effe66a73687b289392a4f))
+* **deps:** bump pino-pretty from 7.0.1 to 7.1.0 ([386ff26](https://www.github.com/Fdawgs/docsmith/commit/386ff26721161e3cf513d206d33630270e072b44))
+* update lockfile from v1 to v2; bump sub-dependencies ([#507](https://www.github.com/Fdawgs/docsmith/issues/507)) ([7f141b2](https://www.github.com/Fdawgs/docsmith/commit/7f141b24d423221e6945b4badd533c6526bebf4c))
+
 ## [5.2.0](https://www.github.com/Fdawgs/docsmith/compare/v5.1.3...v5.2.0) (2021-10-13)
 
 
