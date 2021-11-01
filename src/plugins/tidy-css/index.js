@@ -73,7 +73,7 @@ async function plugin(server) {
 					fonts.forEach((font) => {
 						if (/[^a-zA-Z-]+/.test(font.trim())) {
 							parsedFonts.push(
-								cssEsc(font.replace("</style>", "").trim(), {
+								cssEsc(font.replace(/<\/style>/gm, "").trim(), {
 									quotes: "double",
 									wrap: true,
 								})
