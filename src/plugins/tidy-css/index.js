@@ -1,3 +1,4 @@
+const cssEsc = require("cssesc");
 const CSSOM = require("cssom");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
@@ -72,7 +73,10 @@ async function plugin(server) {
 					fonts.forEach((font) => {
 						if (/[^a-zA-Z-]+/.test(font.trim())) {
 							parsedFonts.push(
-								`"${font.replace(/"/g, "").trim()}"`
+								cssEsc(font.replace("</style>", "").trim(), {
+									quotes: "double",
+									wrap: true,
+								})
 							);
 						} else {
 							parsedFonts.push(font.trim());
