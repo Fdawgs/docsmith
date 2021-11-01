@@ -24,8 +24,13 @@ const rtfToHtmlPostSchema = {
 				.description(
 					"HTML document background color; replace the `background-color` CSS property for `<div>` elements"
 				)
-				.pattern(/^[#a-zA-Z0-9]+$/m)
-				.examples(["white", "#FFFFFF"])
+				.pattern(/^[#a-zA-Z0-9()%, .]+$/m)
+				.examples([
+					"white",
+					"#FFFFFF",
+					"rgb(255, 255, 128)",
+					"hsla(50, 33%, 25%, 0.75)",
+				])
 		)
 		.prop(
 			"fonts",
