@@ -96,7 +96,9 @@ describe("Tidy-CSS Plugin", () => {
 		});
 
 		expect(
-			/font-family: "Sans Serif", "Gill Sans"/gm.exec(response.payload)
+			/font-family: "Sans Serif", "\\"Gill Sans\\""/gm.exec(
+				response.payload
+			)
 		).not.toBeNull();
 		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
 		expect(typeof response.payload).toBe("string");
