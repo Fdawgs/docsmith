@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.2.2](https://www.github.com/Fdawgs/docsmith/compare/v5.2.1...v5.2.2) (2021-11-01)
+
+
+### Bug Fixes
+
+* **plugins/tidy-css:** correct escaping for `fonts` param ([#514](https://www.github.com/Fdawgs/docsmith/issues/514)) ([67bb360](https://www.github.com/Fdawgs/docsmith/commit/67bb3609f77d108bb43189409807076766134085))
+* **plugins/tidy-css:** remove global flag from regex ([#511](https://www.github.com/Fdawgs/docsmith/issues/511)) ([88560e2](https://www.github.com/Fdawgs/docsmith/commit/88560e23bee568e2a3aee887c3735890896d27e6))
+* **plugins/tidy-css:** replace all instances of value ([#518](https://www.github.com/Fdawgs/docsmith/issues/518)) ([090231f](https://www.github.com/Fdawgs/docsmith/commit/090231f340f40f7e1d8b249b543db90380671259))
+* **plugins/tidy-css:** wrap non-alphabetical font families in quotes ([#508](https://www.github.com/Fdawgs/docsmith/issues/508)) ([8ccf49d](https://www.github.com/Fdawgs/docsmith/commit/8ccf49dd9f71cbab46fc3e81f6c873597430be22))
+* **routes:** allow for rgb and hsl values in `backgroundColor` param ([#515](https://www.github.com/Fdawgs/docsmith/issues/515)) ([e864302](https://www.github.com/Fdawgs/docsmith/commit/e864302ba95d857da61eb53c4a53db1e023544de))
+
+
+### Improvements
+
+* **plugins/tidy-css:** replace `match()` with `test()` ([#510](https://www.github.com/Fdawgs/docsmith/issues/510)) ([dc2e319](https://www.github.com/Fdawgs/docsmith/commit/dc2e319b9782e5e3d506e9a22ac0826fa313afe0))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 13.2.1 to 14.1.0 ([8991105](https://www.github.com/Fdawgs/docsmith/commit/89911055073dce996347ecc9c9078369e36b712b))
+* **deps-dev:** bump @commitlint/config-conventional ([e33a440](https://www.github.com/Fdawgs/docsmith/commit/e33a440daba04d58ad982ade3f27b593643b696c))
+* **deps-dev:** bump eslint from 7.32.0 to 8.1.0 ([b6cd2b9](https://www.github.com/Fdawgs/docsmith/commit/b6cd2b96510480c3eed16d340c0c576aae24f511))
+* **deps:** bump fastify-sensible from 3.1.1 to 3.1.2 ([5aca88b](https://www.github.com/Fdawgs/docsmith/commit/5aca88b79362664893d2745786bd22f40550eee8))
+
 ### [5.2.1](https://www.github.com/Fdawgs/docsmith/compare/v5.2.0...v5.2.1) (2021-10-29)
 
 
