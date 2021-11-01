@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
-    "@commitlint/config-conventional": "^13.2.0",
+    "@commitlint/config-conventional": "^14.1.0",
     "autocannon": "^7.5.0",
     "eslint": "^8.1.0",
     "eslint-config-airbnb-base": "^14.2.1",
