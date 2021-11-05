@@ -57,20 +57,21 @@ async function plugin(server, options) {
 			};
 			Object.assign(config, options);
 
+			const directory = path.normalizeTrim(config.tempDirectory);
 			const unrtf = new UnRTF(config.binPath);
 
 			// Create temp directory if missing
 			try {
-				await fs.access(config.tempDirectory);
+				await fs.access(directory);
 			} catch (err) {
-				await fs.mkdir(config.tempDirectory);
+				await fs.mkdir(directory);
 			}
 
 			// Build temporary file for UnRTF to write to, and following plugins to read from
 			const id = v4();
-			const tempFile = path.joinSafe(config.tempDirectory, `${id}.rtf`);
+			const tempFile = path.joinSafe(directory, `${id}.rtf`);
 			req.conversionResults.docLocation = {
-				directory: config.tempDirectory,
+				directory,
 				rtf: tempFile,
 				id,
 			};

@@ -63,6 +63,7 @@ async function plugin(server, options) {
 			};
 			Object.assign(config, options);
 
+			const directory = path.normalizeTrim(config.tempDirectory);
 			const poppler = new Poppler(config.binPath);
 
 			/**
@@ -100,16 +101,16 @@ async function plugin(server, options) {
 
 			// Create temp directory if missing
 			try {
-				await fs.access(config.tempDirectory);
+				await fs.access(directory);
 			} catch (err) {
-				await fs.mkdir(config.tempDirectory);
+				await fs.mkdir(directory);
 			}
 
 			// Build temporary file for Poppler to write to, and following plugins to read from
 			const id = v4();
-			const tempFile = path.joinSafe(config.tempDirectory, id);
+			const tempFile = path.joinSafe(directory, id);
 			req.conversionResults.docLocation = {
-				directory: config.tempDirectory,
+				directory,
 				html: tempFile,
 				id,
 			};

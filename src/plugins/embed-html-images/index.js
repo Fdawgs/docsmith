@@ -21,7 +21,7 @@ async function plugin(server, options) {
 	function embedHtmlImages(html) {
 		const dom = new JSDOM(html);
 		const images = dom.window.document.querySelectorAll("img");
-		const directory = options.tempDirectory;
+		const directory = path.normalizeTrim(options.tempDirectory);
 
 		images.forEach((element) => {
 			if (fs.existsSync(path.joinSafe(directory, element.src))) {
