@@ -32,18 +32,8 @@ jobs:
             - uses: actions/checkout@v2.3.5
             - uses: actions/setup-node@v2.4.1
               with:
+                  cache: npm
                   node-version: 16
-            - name: Get NPM Cache Directory
-              id: npm-cache-dir
-              run: |
-                  echo "::set-output name=dir::$(npm config get cache)"
-            - uses: actions/cache@v2.1.6
-              id: npm-cache
-              with:
-                  path: ${{ steps.npm-cache-dir.outputs.dir }}
-                  key: ${{ runner.os }}-${{ matrix.node }}-node-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                      ${{ runner.os }}-${{ matrix.node }}-node-
             - name: Install
               run: npm ci --ignore-scripts
             - name: Run ESLint
@@ -82,18 +72,8 @@ jobs:
             - name: Use Node.js ${{ matrix.node }} on ${{ matrix.os }}
               uses: actions/setup-node@v2.4.1
               with:
+                  cache: npm
                   node-version: ${{ matrix.node }}
-            - name: Get NPM Cache Directory
-              id: npm-cache-dir
-              run: |
-                  echo "::set-output name=dir::$(npm config get cache)"
-            - uses: actions/cache@v2.1.6
-              id: npm-cache
-              with:
-                  path: ${{ steps.npm-cache-dir.outputs.dir }}
-                  key: ${{ runner.os }}-${{ matrix.node }}-node-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                      ${{ runner.os }}-${{ matrix.node }}-node-
             - name: Install
               run: npm ci --ignore-scripts
             - name: Run macOS Tests
