@@ -1,5 +1,5 @@
 const faker = require("faker/locale/en_GB");
-const fs = require("fs");
+const fs = require("fs").promises;
 const glob = require("glob");
 const getConfig = require(".");
 
@@ -10,12 +10,11 @@ describe("Configuration", () => {
 		jest.resetModules();
 	});
 
-	afterAll(() => {
+	afterAll(async () => {
 		const files = glob.sync(`./test_resources/test_log*`);
-		files.forEach((file) => {
-			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			fs.unlinkSync(file);
-		});
+
+		// eslint-disable-next-line security/detect-non-literal-fs-filename
+		await Promise.all(files.map((file) => fs.unlink(file)));
 	});
 
 	afterEach(() => {

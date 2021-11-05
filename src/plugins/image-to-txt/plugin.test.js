@@ -1,6 +1,6 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const { cloneDeep } = require("lodash");
-const fs = require("fs");
+const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
@@ -43,7 +43,7 @@ describe("Image-To-TXT Conversion Plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/valid_bullet_issues001.png"
 			),
 			headers: {

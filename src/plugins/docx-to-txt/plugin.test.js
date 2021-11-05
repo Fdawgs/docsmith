@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
@@ -35,7 +35,7 @@ describe("DOCX-to-TXT Conversion Plugin", () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/valid_docx.docx"
 			),
 			headers: {

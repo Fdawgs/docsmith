@@ -1,5 +1,5 @@
 const accepts = require("fastify-accepts");
-const fs = require("fs");
+const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("fastify-sensible");
@@ -51,7 +51,7 @@ describe("PDF-to-TXT route", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query,
@@ -79,7 +79,7 @@ describe("PDF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
@@ -104,7 +104,7 @@ describe("PDF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
@@ -164,7 +164,7 @@ describe("PDF-to-TXT route", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/invalid_pdf.pdf"
 					),
 					query,
@@ -195,7 +195,7 @@ describe("PDF-to-TXT route", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/valid_empty_html.html"
 					),
 					query,
@@ -221,7 +221,7 @@ describe("PDF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {

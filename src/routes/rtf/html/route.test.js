@@ -1,5 +1,5 @@
 const accepts = require("fastify-accepts");
-const fs = require("fs");
+const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("fastify-sensible");
@@ -49,7 +49,7 @@ describe("RTF-to-HTML route", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/valid_rtf.rtf"
 					),
 					query,
@@ -106,7 +106,7 @@ describe("RTF-to-HTML route", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/invalid_rtf.rtf"
 					),
 					query,
@@ -134,7 +134,7 @@ describe("RTF-to-HTML route", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/valid_empty_html.html"
 					),
 					query,
@@ -160,7 +160,9 @@ describe("RTF-to-HTML route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync("./test_resources/test_files/valid_rtf.rtf"),
+			body: await fs.readFile(
+				"./test_resources/test_files/valid_rtf.rtf"
+			),
 			headers: {
 				accept: "application/javascript",
 				"content-type": "application/rtf",
