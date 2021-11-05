@@ -1,6 +1,6 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const { cloneDeep } = require("lodash");
-const fs = require("fs");
+const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
@@ -37,7 +37,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	afterAll(async () => {
-		fs.rmSync(config.poppler.tempDirectory, { recursive: true });
+		await fs.rm(config.poppler.tempDirectory, { recursive: true });
 		await server.close();
 	});
 
@@ -45,7 +45,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
@@ -67,7 +67,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
@@ -95,7 +95,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 				lastPageToConvert: 1,
 				test: "test",
 			},
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			headers: {
@@ -114,7 +114,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {

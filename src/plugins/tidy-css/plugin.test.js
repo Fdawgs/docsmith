@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
@@ -35,7 +35,7 @@ describe("Tidy-CSS Plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
@@ -59,7 +59,7 @@ describe("Tidy-CSS Plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
@@ -86,7 +86,7 @@ describe("Tidy-CSS Plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
@@ -115,7 +115,7 @@ describe("Tidy-CSS Plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/valid_bullet_issues_html.html",
 				{ encoding: "UTF-8" }
 			),
@@ -147,7 +147,7 @@ describe("Tidy-CSS Plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/valid_empty_html.html",
 				{ encoding: "UTF-8" }
 			),
@@ -175,7 +175,7 @@ describe("Tidy-CSS Plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/valid_empty_style_html.html",
 				{ encoding: "UTF-8" }
 			),
@@ -199,7 +199,7 @@ describe("Tidy-CSS Plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.readFile(
 				"./test_resources/test_files/valid_empty_html.html",
 				{ encoding: "UTF-8" }
 			),

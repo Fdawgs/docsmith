@@ -3,7 +3,7 @@
 const autoParse = require("auto-parse");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
-const fsp = require("fs").promises;
+const fs = require("fs").promises;
 const glob = require("glob");
 const { JSDOM } = require("jsdom");
 const path = require("path");
@@ -40,7 +40,7 @@ async function plugin(server, options) {
 				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
 			);
 
-			await Promise.all(files.map((file) => fsp.unlink(file)));
+			await Promise.all(files.map((file) => fs.unlink(file)));
 		}
 
 		return res;
@@ -97,9 +97,9 @@ async function plugin(server, options) {
 
 			// Create temp directory if missing
 			try {
-				await fsp.access(config.tempDirectory);
+				await fs.access(config.tempDirectory);
 			} catch (err) {
-				await fsp.mkdir(config.tempDirectory);
+				await fs.mkdir(config.tempDirectory);
 			}
 
 			// Build temporary file for Poppler to write to, and following plugins to read from
@@ -120,7 +120,7 @@ async function plugin(server, options) {
 			// Remove excess title and meta tags left behind by Poppler
 			// Poppler appends `-html` to the file name, thus the template literal here
 			const dom = new JSDOM(
-				await fsp.readFile(`${tempFile}-html.html`, {
+				await fs.readFile(`${tempFile}-html.html`, {
 					encoding: config.pdfToHtmlOptions.outputEncoding,
 				})
 			);

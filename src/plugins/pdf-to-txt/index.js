@@ -2,7 +2,7 @@
 /* eslint-disable security/detect-object-injection */
 const autoParse = require("auto-parse");
 const fp = require("fastify-plugin");
-const fsp = require("fs").promises;
+const fs = require("fs").promises;
 const glob = require("glob");
 const path = require("path");
 const { Poppler } = require("node-poppler");
@@ -37,7 +37,7 @@ async function plugin(server, options) {
 				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
 			);
 
-			await Promise.all(files.map((file) => fsp.unlink(file)));
+			await Promise.all(files.map((file) => fs.unlink(file)));
 		}
 
 		return res;
@@ -94,9 +94,9 @@ async function plugin(server, options) {
 
 				// Create temp directory if missing
 				try {
-					await fsp.access(config.tempDirectory);
+					await fs.access(config.tempDirectory);
 				} catch (err) {
-					await fsp.mkdir(config.tempDirectory);
+					await fs.mkdir(config.tempDirectory);
 				}
 
 				// Build temporary file for Poppler to write to, and following plugins to read from

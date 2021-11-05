@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
-const fsp = require("fs").promises;
+const fs = require("fs").promises;
 const glob = require("glob");
 const path = require("path");
 const { UnRTF } = require("node-unrtf");
@@ -36,7 +36,7 @@ async function plugin(server, options) {
 				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
 			);
 
-			await Promise.all(files.map((file) => fsp.unlink(file)));
+			await Promise.all(files.map((file) => fs.unlink(file)));
 		}
 
 		return res;
@@ -59,9 +59,9 @@ async function plugin(server, options) {
 
 			// Create temp directory if missing
 			try {
-				await fsp.access(config.tempDirectory);
+				await fs.access(config.tempDirectory);
 			} catch (err) {
-				await fsp.mkdir(config.tempDirectory);
+				await fs.mkdir(config.tempDirectory);
 			}
 
 			// Build temporary file for UnRTF to write to, and following plugins to read from
@@ -72,7 +72,7 @@ async function plugin(server, options) {
 				rtf: tempFile,
 				id,
 			};
-			await fsp.writeFile(tempFile, req.body);
+			await fs.writeFile(tempFile, req.body);
 
 			/**
 			 * `fixUtf8` function replaces most common incorrectly converted

@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const startServer = require("./server");
@@ -103,7 +103,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/docx/html",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/valid_docx.docx"
 					),
 					headers: {
@@ -129,7 +129,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/docx/txt",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/valid_docx.docx"
 					),
 					headers: {
@@ -155,7 +155,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
@@ -179,7 +179,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
@@ -206,7 +206,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
@@ -232,7 +232,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/rtf/html",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/valid_rtf.rtf"
 					),
 					headers: {
@@ -257,7 +257,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/rtf/txt",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/valid_rtf.rtf"
 					),
 					headers: {
@@ -340,7 +340,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
@@ -365,7 +365,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
@@ -389,7 +389,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
@@ -417,7 +417,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
@@ -443,7 +443,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
@@ -468,7 +468,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
-					body: fs.readFileSync(
+					body: await fs.readFile(
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
