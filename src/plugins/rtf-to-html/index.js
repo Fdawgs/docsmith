@@ -3,7 +3,7 @@ const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const fs = require("fs").promises;
 const glob = require("glob");
-const path = require("path");
+const path = require("upath");
 const { UnRTF } = require("node-unrtf");
 const { v4 } = require("uuid");
 
@@ -33,7 +33,10 @@ async function plugin(server, options) {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(
-				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
+				`${path.joinSafe(
+					req.conversionResults.docLocation.directory,
+					req.conversionResults.docLocation.id
+				)}*`
 			);
 
 			await Promise.all(files.map((file) => fs.unlink(file)));
@@ -51,24 +54,25 @@ async function plugin(server, options) {
 					noPictures: true,
 					outputHtml: true,
 				},
-				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
+				tempDirectory: path.joinSafe(__dirname, "..", "temp"),
 			};
 			Object.assign(config, options);
 
+			const directory = path.normalizeTrim(config.tempDirectory);
 			const unrtf = new UnRTF(config.binPath);
 
 			// Create temp directory if missing
 			try {
-				await fs.access(config.tempDirectory);
+				await fs.access(directory);
 			} catch (err) {
-				await fs.mkdir(config.tempDirectory);
+				await fs.mkdir(directory);
 			}
 
 			// Build temporary file for UnRTF to write to, and following plugins to read from
 			const id = v4();
-			const tempFile = `${config.tempDirectory}${id}.rtf`;
+			const tempFile = path.joinSafe(directory, `${id}.rtf`);
 			req.conversionResults.docLocation = {
-				directory: config.tempDirectory,
+				directory,
 				rtf: tempFile,
 				id,
 			};
