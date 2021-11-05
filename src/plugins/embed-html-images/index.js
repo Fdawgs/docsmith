@@ -2,7 +2,7 @@
 const fp = require("fastify-plugin");
 const fs = require("fs");
 const { JSDOM } = require("jsdom");
-const path = require("path");
+const path = require("upath");
 
 /**
  * @author Frazer Smith
@@ -21,15 +21,13 @@ async function plugin(server, options) {
 	function embedHtmlImages(html) {
 		const dom = new JSDOM(html);
 		const images = dom.window.document.querySelectorAll("img");
-		let directory = options.tempDirectory;
-		// Add trailing slash if missing
-		directory += directory.endsWith("/") ? "" : "/";
+		const directory = options.tempDirectory;
 
 		images.forEach((element) => {
-			if (fs.existsSync(directory + element.src)) {
+			if (fs.existsSync(path.joinSafe(directory, element.src))) {
 				const imgForm = path.extname(element.src).substring(1);
 				const imageAsBase64 = `data:image/${imgForm};base64,${fs.readFileSync(
-					directory + element.src,
+					path.joinSafe(directory, element.src),
 					"base64"
 				)}`;
 				element.setAttribute("src", imageAsBase64);
