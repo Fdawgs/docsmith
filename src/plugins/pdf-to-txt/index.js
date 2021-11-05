@@ -4,7 +4,7 @@ const autoParse = require("auto-parse");
 const fp = require("fastify-plugin");
 const fs = require("fs").promises;
 const glob = require("glob");
-const path = require("path");
+const path = require("upath");
 const { Poppler } = require("node-poppler");
 const { v4 } = require("uuid");
 
@@ -34,7 +34,10 @@ async function plugin(server, options) {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(
-				`${req.conversionResults.docLocation.directory}/${req.conversionResults.docLocation.id}*`
+				`${path.joinSafe(
+					req.conversionResults.docLocation.directory,
+					req.conversionResults.docLocation.id
+				)}*`
 			);
 
 			await Promise.all(files.map((file) => fs.unlink(file)));
@@ -45,8 +48,10 @@ async function plugin(server, options) {
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
-			// `pdfToText` Poppler function still attempts to parse empty bodies/input and produces results
-			// so catch them here
+			/**
+			 * `pdfToText` Poppler function still attempts to parse empty bodies/input
+			 * and produces results, so catch them here
+			 */
 			if (req.body === undefined || Object.keys(req.body).length === 0) {
 				throw new Error();
 			}
@@ -55,7 +60,7 @@ async function plugin(server, options) {
 			const config = {
 				binPath: undefined,
 				pdfToTxtOptions: { outputEncoding: "UTF-8" },
-				tempDirectory: `${path.resolve(__dirname, "..")}/temp/`,
+				tempDirectory: path.joinSafe(__dirname, "..", "temp"),
 			};
 			Object.assign(config, options);
 
@@ -101,7 +106,7 @@ async function plugin(server, options) {
 
 				// Build temporary file for Poppler to write to, and following plugins to read from
 				const id = v4();
-				const tempFile = `${config.tempDirectory}${id}`;
+				const tempFile = path.joinSafe(config.tempDirectory, id);
 				req.conversionResults.docLocation = {
 					directory: config.tempDirectory,
 					id,
