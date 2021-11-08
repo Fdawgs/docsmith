@@ -33,7 +33,7 @@ async function route(server, options) {
 				req.accepts().type(pdfToTxtPostSchema.produces)
 			)
 		) {
-			res.notAcceptable();
+			throw res.notAcceptable();
 		}
 	});
 

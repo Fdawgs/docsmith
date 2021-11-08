@@ -27,7 +27,7 @@ async function route(server, options) {
 				req.accepts().type(rtfToHtmlPostSchema.produces)
 			)
 		) {
-			res.notAcceptable();
+			throw res.notAcceptable();
 		}
 	});
 

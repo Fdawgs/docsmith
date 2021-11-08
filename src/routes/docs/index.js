@@ -13,7 +13,7 @@ async function route(server) {
 				req.accepts().type(docsGetSchema.produces)
 			)
 		) {
-			res.notAcceptable();
+			throw res.notAcceptable();
 		}
 	});
 
