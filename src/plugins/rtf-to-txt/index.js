@@ -61,11 +61,16 @@ async function plugin(server, options) {
 			const unrtf = new UnRTF(config.binPath);
 
 			// Create temp directory if missing
-			try {
-				await fs.access(directory);
-			} catch (err) {
-				await fs.mkdir(directory);
-			}
+			await fs.mkdir(directory).catch((err) => {
+				// Ignore "EEXIST: An object by the name pathname already exists" error
+				/* istanbul ignore if */
+				if (err.code !== "EEXIST") {
+					server.log.error(err);
+					throw res.internalServerError(
+						`Error interacting with temp directory: ${err.code}`
+					);
+				}
+			});
 
 			// Build temporary file for UnRTF to write to, and following plugins to read from
 			const id = v4();
