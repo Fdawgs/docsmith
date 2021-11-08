@@ -309,7 +309,9 @@ async function getConfig() {
 			sortAttributes: "alpha",
 		},
 		poppler: {
-			binPath: env.POPPLER_BINARY_PATH,
+			binPath: env.POPPLER_BINARY_PATH
+				? path.normalizeSafe(env.POPPLER_BINARY_PATH)
+				: env.POPPLER_BINARY_PATH,
 			tempDirectory,
 		},
 		tesseract: {
@@ -319,7 +321,9 @@ async function getConfig() {
 			workers: env.OCR_WORKERS || physicalCpuCount,
 		},
 		unrtf: {
-			binPath: env.UNRTF_BINARY_PATH,
+			binPath: env.UNRTF_BINARY_PATH
+				? path.normalizeSafe(env.UNRTF_BINARY_PATH)
+				: env.UNRTF_BINARY_PATH,
 			tempDirectory,
 		},
 	};
