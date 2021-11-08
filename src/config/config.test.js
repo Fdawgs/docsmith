@@ -184,8 +184,8 @@ describe("Configuration", () => {
 		const OCR_ENABLED = "";
 		const OCR_LANGUAGES = "";
 		const OCR_WORKERS = "";
-		const POPPLER_BINARY_PATH = "/usr/bin";
-		const UNRTF_BINARY_PATH = "/usr/bin";
+		const POPPLER_BINARY_PATH = "";
+		const UNRTF_BINARY_PATH = "";
 
 		Object.assign(process.env, {
 			SERVICE_HOST,
