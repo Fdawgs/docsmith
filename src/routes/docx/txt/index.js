@@ -26,7 +26,7 @@ async function route(server, options) {
 				req.accepts().type(docxToTxtPostSchema.produces)
 			)
 		) {
-			res.notAcceptable();
+			throw res.notAcceptable();
 		}
 	});
 
