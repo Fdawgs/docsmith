@@ -3,6 +3,7 @@ require("dotenv").config();
 const envSchema = require("env-schema");
 const S = require("fluent-json-schema");
 const fs = require("fs").promises;
+const path = require("upath");
 const pino = require("pino");
 const physicalCpuCount = require("physical-cpu-count");
 const rotatingLogStream = require("file-stream-rotator");
@@ -327,7 +328,7 @@ async function getConfig() {
 		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
 		config.fastifyInit.logger.stream = rotatingLogStream.getStream({
 			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
-			filename: env.LOG_ROTATION_FILENAME,
+			filename: path.normalizeTrim(env.LOG_ROTATION_FILENAME),
 			frequency: env.LOG_ROTATION_FREQUENCY || "daily",
 			max_logs: env.LOG_ROTATION_MAX_LOG,
 			size: env.LOG_ROTATION_MAX_SIZE,
@@ -377,9 +378,13 @@ async function getConfig() {
 		try {
 			config.fastifyInit.https = {
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				cert: await fs.readFile(env.HTTPS_SSL_CERT_PATH),
+				cert: await fs.readFile(
+					path.normalizeTrim(env.HTTPS_SSL_CERT_PATH)
+				),
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				key: await fs.readFile(env.HTTPS_SSL_KEY_PATH),
+				key: await fs.readFile(
+					path.normalizeTrim(env.HTTPS_SSL_KEY_PATH)
+				),
 			};
 		} catch (err) {
 			throw Error(
@@ -393,7 +398,9 @@ async function getConfig() {
 			config.fastifyInit.https = {
 				passphrase: env.HTTPS_PFX_PASSPHRASE,
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				pfx: await fs.readFile(env.HTTPS_PFX_FILE_PATH),
+				pfx: await fs.readFile(
+					path.normalizeTrim(env.HTTPS_PFX_FILE_PATH)
+				),
 			};
 		} catch (err) {
 			throw Error(
