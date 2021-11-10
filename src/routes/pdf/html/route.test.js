@@ -31,8 +31,8 @@ describe("PDF-to-HTML route", () => {
 
 		server = Fastify()
 			.register(accepts)
-			.register(embedHtmlImages, config.poppler)
 			.register(sensible)
+			.register(embedHtmlImages, config.poppler)
 			.register(sharedSchemas)
 			.register(tidyCss)
 			.register(tidyHtml)

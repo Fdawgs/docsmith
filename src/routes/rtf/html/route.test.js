@@ -29,8 +29,8 @@ describe("RTF-to-HTML route", () => {
 
 		server = Fastify()
 			.register(accepts)
-			.register(embedHtmlImages, config.unrtf)
 			.register(sensible)
+			.register(embedHtmlImages, config.unrtf)
 			.register(sharedSchemas)
 			.register(tidyCss)
 			.register(tidyHtml)
