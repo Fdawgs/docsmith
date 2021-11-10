@@ -112,7 +112,7 @@
     "jsdom": "^18.0.1",
     "language-tags": "^1.0.5",
     "mammoth": "^1.4.19",
-    "node-poppler": "^5.0.3",
+    "node-poppler": "^5.1.0",
     "node-unrtf": "^2.0.5",
     "physical-cpu-count": "^2.0.0",
     "pino": "^7.2.0",
