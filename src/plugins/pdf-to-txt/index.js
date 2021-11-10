@@ -104,9 +104,7 @@ async function plugin(server, options) {
 					/* istanbul ignore if */
 					if (err.code !== "EEXIST") {
 						server.log.error(err);
-						throw res.internalServerError(
-							`Error interacting with temp directory: ${err.code}`
-						);
+						throw res.internalServerError();
 					}
 				});
 
