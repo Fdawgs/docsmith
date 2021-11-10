@@ -155,7 +155,7 @@ async function plugin(server, options) {
 			);
 		} catch (err) {
 			server.log.error(err);
-			res.badRequest(err);
+			throw res.badRequest();
 		}
 	});
 }
