@@ -95,7 +95,7 @@ async function plugin(server, options) {
 			res.header("content-type", `text/html`);
 		} catch (err) {
 			server.log.error(err);
-			res.badRequest(err);
+			throw res.badRequest();
 		}
 	});
 }
