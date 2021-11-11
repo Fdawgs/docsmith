@@ -81,19 +81,28 @@ async function plugin(server, options) {
 			};
 			await fs.writeFile(tempFile, req.body);
 
-			/**
-			 * `fixUtf8` function replaces most common incorrectly converted
-			 * Windows-1252 to UTF-8 results with HTML equivalents.
-			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
-			 */
-			req.conversionResults.body = await fixUtf8(
-				await unrtf.convert(tempFile, config.rtfToHtmlOptions)
-			);
+			try {
+				/**
+				 * `fixUtf8` function replaces most common incorrectly converted
+				 * Windows-1252 to UTF-8 results with HTML equivalents.
+				 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
+				 */
+				req.conversionResults.body = await fixUtf8(
+					await unrtf.convert(tempFile, config.rtfToHtmlOptions)
+				);
+			} catch (err) {
+				/**
+				 * UnRTF will throw if the .rtf file provided
+				 * by client is malformed, thus client error code
+				 */
+				server.log.error(err);
+				throw res.badRequest();
+			}
 
 			res.header("content-type", `text/html`);
 		} catch (err) {
 			server.log.error(err);
-			throw res.badRequest();
+			throw res.internalServerError();
 		}
 	});
 }
