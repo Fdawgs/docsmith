@@ -3,6 +3,7 @@ const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
+const sensible = require("fastify-sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -21,6 +22,8 @@ describe("Embed-HTML-Images Plugin", () => {
 			const res = await raw(payload);
 			return res;
 		});
+
+		server.register(sensible);
 	});
 
 	afterEach(async () => {
@@ -30,8 +33,8 @@ describe("Embed-HTML-Images Plugin", () => {
 	test("Should embed images into HTML", async () => {
 		const altConfig = cloneDeep(config);
 		altConfig.poppler.tempDirectory = "./test_resources/test_files/";
-		server.post("/", (req, res) => {
-			res.send(server.embedHtmlImages(req.body));
+		server.post("/", async (req, res) => {
+			res.send(await server.embedHtmlImages(req.body));
 		});
 		server.register(plugin, altConfig.poppler);
 
@@ -59,8 +62,8 @@ describe("Embed-HTML-Images Plugin", () => {
 	test("Should embed images into HTML and add trailing slash if missing from directory", async () => {
 		const altConfig = cloneDeep(config);
 		altConfig.poppler.tempDirectory = "./test_resources/test_files";
-		server.post("/", (req, res) => {
-			res.send(server.embedHtmlImages(req.body));
+		server.post("/", async (req, res) => {
+			res.send(await server.embedHtmlImages(req.body));
 		});
 		server.register(plugin, altConfig.poppler);
 
@@ -84,9 +87,9 @@ describe("Embed-HTML-Images Plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should continue if it cannot find images to embed in specified directory", async () => {
-		server.post("/", (req, res) => {
-			res.send(server.embedHtmlImages(req.body));
+	test("Should throw error if it cannot find images to embed in specified directory", async () => {
+		server.post("/", async (req, res) => {
+			res.send(await server.embedHtmlImages(req.body));
 		});
 		server.register(plugin, config.poppler);
 
@@ -101,9 +104,11 @@ describe("Embed-HTML-Images Plugin", () => {
 				"content-type": "text/html",
 			},
 		});
-
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
-		expect(response.statusCode).toBe(200);
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Internal Server Error",
+			message: "Internal Server Error",
+			statusCode: 500,
+		});
+		expect(response.statusCode).toBe(500);
 	});
 });
