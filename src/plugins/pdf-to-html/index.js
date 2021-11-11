@@ -118,11 +118,20 @@ async function plugin(server, options) {
 				id,
 			};
 
-			await poppler.pdfToHtml(
-				req.body,
-				`${tempFile}.html`,
-				config.pdfToHtmlOptions
-			);
+			await poppler
+				.pdfToHtml(
+					req.body,
+					`${tempFile}.html`,
+					config.pdfToHtmlOptions
+				)
+				.catch((err) => {
+					/**
+					 * Poppler will throw if the .pdf file provided
+					 * by client is malformed, thus client error code
+					 */
+					server.log.error(err);
+					throw res.badRequest();
+				});
 
 			// Remove excess title and meta tags left behind by Poppler
 			// Poppler appends `-html` to the file name, thus the template literal here
@@ -153,7 +162,7 @@ async function plugin(server, options) {
 			);
 		} catch (err) {
 			server.log.error(err);
-			throw res.badRequest();
+			throw res.internalServerError();
 		}
 	});
 }
