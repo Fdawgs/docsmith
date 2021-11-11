@@ -2,6 +2,59 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.2.3](https://www.github.com/Fdawgs/docsmith/compare/v5.2.2...v5.2.3) (2021-11-11)
+
+
+### Bug Fixes
+
+* **plugins/embed-html-images:** create image path safely ([ebd2b7d](https://www.github.com/Fdawgs/docsmith/commit/ebd2b7d2f3683f824fffd7151fabd17c226bfbb8))
+* **plugins:** separate user and server error responses ([#548](https://www.github.com/Fdawgs/docsmith/issues/548)) ([0fdc0f3](https://www.github.com/Fdawgs/docsmith/commit/0fdc0f3fb54a0046b61c10808378994290464c77))
+
+
+### Miscellaneous
+
+* **.env.template:** add note regarding required logging variables ([693d17b](https://www.github.com/Fdawgs/docsmith/commit/693d17bf68b3674fd8ac42dd591c647a284d1d1b))
+* **.prettierrc:** only enable `bracketSameLine` for html ([#519](https://www.github.com/Fdawgs/docsmith/issues/519)) ([b53e630](https://www.github.com/Fdawgs/docsmith/commit/b53e630f760701572a652aeea4130019e6898c82))
+* rename `fsp` variable to `fs` ([19f3015](https://www.github.com/Fdawgs/docsmith/commit/19f3015fac2c0734a61bc23e963a69754da29474))
+
+
+### Continuous Integration
+
+* **ci:** do not run clean-up on draft prs ([4a13559](https://www.github.com/Fdawgs/docsmith/commit/4a135596b5c89349e7d860c4990cef3abda3ee9d))
+* **spell-check:** do not run on draft prs ([888ab78](https://www.github.com/Fdawgs/docsmith/commit/888ab78095036989467ef3c0f44da68ed1004350))
+* use actions/setup-node's cache option ([#521](https://www.github.com/Fdawgs/docsmith/issues/521)) ([959ec09](https://www.github.com/Fdawgs/docsmith/commit/959ec09b0e1162803736c805a9a9fee564ec9be0))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-config-airbnb-base from 14.2.1 to 15.0.0 ([8317bfa](https://www.github.com/Fdawgs/docsmith/commit/8317bfacaf90835bdd20c474eb5ef70139be82b3))
+* **deps-dev:** bump eslint-plugin-import from 2.25.2 to 2.25.3 ([ff1b7dc](https://www.github.com/Fdawgs/docsmith/commit/ff1b7dc5725c7efd38e767ec5524e59992b0ae84))
+* **deps-dev:** bump eslint-plugin-jest from 25.2.2 to 25.2.4 ([364ce9d](https://www.github.com/Fdawgs/docsmith/commit/364ce9d2abf5f68d7088285f37cc58625838a3dd))
+* **deps-dev:** bump nodemon from 2.0.14 to 2.0.15 ([a0f743c](https://www.github.com/Fdawgs/docsmith/commit/a0f743cddfb0fb384e9f69e58c8418ff3a2aaf75))
+* **deps:** bump actions/checkout from 2.3.5 to 2.4.0 ([d826b19](https://www.github.com/Fdawgs/docsmith/commit/d826b19e71114fde93b06f2d1ddd8c687def9de7))
+* **deps:** bump env-schema from 3.4.0 to 3.5.0 ([96c9b98](https://www.github.com/Fdawgs/docsmith/commit/96c9b98cea940ef00b71c3a44f6ad4716acbc666))
+* **deps:** bump fastify from 3.22.1 to 3.23.1 ([925c3a5](https://www.github.com/Fdawgs/docsmith/commit/925c3a54aefb8721e9950e39223d77972674accf))
+* **deps:** bump fastify-static from 4.4.2 to 4.5.0 ([86f704a](https://www.github.com/Fdawgs/docsmith/commit/86f704a0fb608261998eb96a7e455f3c8d7b0d27))
+* **deps:** bump jsdom from 18.0.0 to 18.0.1 ([f179def](https://www.github.com/Fdawgs/docsmith/commit/f179def0e14159a3350b9d357ab0aa15d2008bc5))
+* **deps:** bump node-poppler from 5.0.2 to 5.0.3 ([1756dbf](https://www.github.com/Fdawgs/docsmith/commit/1756dbfd73f1ecf24510722ef9656531a4765c94))
+* **deps:** bump node-poppler from 5.0.3 to 5.1.0 ([ab5d71a](https://www.github.com/Fdawgs/docsmith/commit/ab5d71afd3b11dce87de908312ae3ed6f0095926))
+* **deps:** bump node-unrtf from 2.0.4 to 2.0.5 ([ce2a420](https://www.github.com/Fdawgs/docsmith/commit/ce2a42092e86a3e43040a388ad6fd6830a274487))
+* **deps:** bump pino from 7.0.5 to 7.1.0 ([24514c7](https://www.github.com/Fdawgs/docsmith/commit/24514c74de11041c56b3d19ad34e6b8e4af3aef4))
+* **deps:** bump pino from 7.1.0 to 7.2.0 ([c523570](https://www.github.com/Fdawgs/docsmith/commit/c523570507e04e3b048df27370ad6b47eae63e45))
+* **deps:** bump pino-pretty from 7.1.0 to 7.2.0 ([6f1d967](https://www.github.com/Fdawgs/docsmith/commit/6f1d967d5f38417f233f7d6f37b20969c85358bd))
+
+
+### Improvements
+
+* **config:** normalize file paths ([#526](https://www.github.com/Fdawgs/docsmith/issues/526)) ([cc5f80b](https://www.github.com/Fdawgs/docsmith/commit/cc5f80b4de6b4586522e5d21abdf0c2f2d02e675))
+* **plugins/embed-html-images:** convert to async function ([#547](https://www.github.com/Fdawgs/docsmith/issues/547)) ([fe2d316](https://www.github.com/Fdawgs/docsmith/commit/fe2d316dbdc3133b985f4e64174520dc3a6a6f55))
+* **plugins:** normalize `tempDirectory` param ([21730c4](https://www.github.com/Fdawgs/docsmith/commit/21730c4cf26faffeb1d701d6f25f286fcb1ee2bf))
+* **plugins:** provide generic error response ([#546](https://www.github.com/Fdawgs/docsmith/issues/546)) ([64d941c](https://www.github.com/Fdawgs/docsmith/commit/64d941c90ad127dd6cf5da1ae6ff5c7128181116))
+* **plugins:** remove `fs.access()` calls ([#527](https://www.github.com/Fdawgs/docsmith/issues/527)) ([2818db1](https://www.github.com/Fdawgs/docsmith/commit/2818db1384012888ed052900dad6b0b944b8cb38))
+* **plugins:** use `path.joinSafe()` over template literals ([e3d5273](https://www.github.com/Fdawgs/docsmith/commit/e3d52734c83b02b469cbbb2151991a863989bd4a))
+* **routes:** throw `notAcceptable` errors not return ([#528](https://www.github.com/Fdawgs/docsmith/issues/528)) ([5fa94ac](https://www.github.com/Fdawgs/docsmith/commit/5fa94ac87e3c65047e08d84a169f7c94520bd7e1))
+* **server:** use `path.joinSafe()` over `path.join()` ([71af90f](https://www.github.com/Fdawgs/docsmith/commit/71af90f09e7fcf56df0ecd795a4b0ff831b33b56))
+
 ### [5.2.2](https://www.github.com/Fdawgs/docsmith/compare/v5.2.1...v5.2.2) (2021-11-01)
 
 
