@@ -66,9 +66,7 @@ async function plugin(server, options) {
 				/* istanbul ignore if */
 				if (err.code !== "EEXIST") {
 					server.log.error(err);
-					throw res.internalServerError(
-						`Error interacting with temp directory: ${err.code}`
-					);
+					throw res.internalServerError();
 				}
 			});
 
@@ -95,7 +93,7 @@ async function plugin(server, options) {
 			res.header("content-type", `text/plain`);
 		} catch (err) {
 			server.log.error(err);
-			res.badRequest(err);
+			throw res.badRequest();
 		}
 	});
 }

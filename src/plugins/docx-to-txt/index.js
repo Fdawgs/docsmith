@@ -20,7 +20,7 @@ async function plugin(server) {
 			res.header("content-type", "text/plain; charset=utf-8");
 		} catch (err) {
 			server.log.error(err);
-			res.badRequest(err);
+			throw res.badRequest();
 		}
 	});
 }

@@ -75,10 +75,11 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 			},
 		});
 
-		const body = JSON.parse(response.payload);
-
-		expect(body.statusCode).toBe(400);
-		expect(body.error).toBe("Bad Request");
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Bad Request",
+			message: "Bad Request",
+			statusCode: 400,
+		});
 		expect(response.statusCode).toBe(400);
 	});
 });
