@@ -53,7 +53,7 @@ async function plugin(server, options) {
 			 * and produces results, so catch them here
 			 */
 			if (req.body === undefined || Object.keys(req.body).length === 0) {
-				throw new Error();
+				throw res.badRequest();
 			}
 
 			// Define any default settings the plugin should have to get up and running
@@ -116,12 +116,21 @@ async function plugin(server, options) {
 					id,
 				};
 
-				await poppler.pdfToCairo(req.body, tempFile, {
-					resolutionXYAxis: 300,
-					grayscaleFile: true,
-					pngFile: true,
-					...query,
-				});
+				await poppler
+					.pdfToCairo(req.body, tempFile, {
+						resolutionXYAxis: 300,
+						grayscaleFile: true,
+						pngFile: true,
+						...query,
+					})
+					.catch((err) => {
+						/**
+						 * Poppler will throw if the .pdf file provided
+						 * by client is malformed, thus client error code
+						 */
+						server.log.error(err);
+						throw res.badRequest();
+					});
 
 				const files = glob.sync(`${tempFile}*.png`);
 
@@ -174,11 +183,20 @@ async function plugin(server, options) {
 				});
 				Object.assign(config.pdfToTxtOptions, query);
 
-				req.conversionResults.body = await poppler.pdfToText(
-					req.body,
-					undefined,
-					config.pdfToTxtOptions
-				);
+				try {
+					req.conversionResults.body = await poppler.pdfToText(
+						req.body,
+						undefined,
+						config.pdfToTxtOptions
+					);
+				} catch (err) {
+					/**
+					 * Poppler will throw if the .pdf file provided
+					 * by client is malformed, thus client error code
+					 */
+					server.log.error(err);
+					throw res.badRequest();
+				}
 			}
 
 			// Certain querystring options alter output to HTML rather than TXT
@@ -196,7 +214,7 @@ async function plugin(server, options) {
 			);
 		} catch (err) {
 			server.log.error(err);
-			throw res.badRequest();
+			throw res.internalServerError();
 		}
 	});
 }

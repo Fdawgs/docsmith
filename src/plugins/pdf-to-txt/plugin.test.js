@@ -86,6 +86,30 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		expect(isHtml(response.body)).toBe(false);
 	});
 
+	test("Should return HTTP status code 400 if PDF file is not a valid PDF file for OCR", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			query: {
+				lastPageToConvert: 1,
+				ocr: true,
+			},
+			body: await fs.readFile(
+				"./test_resources/test_files/invalid_pdf.pdf"
+			),
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Bad Request",
+			message: "Bad Request",
+			statusCode: 400,
+		});
+		expect(response.statusCode).toBe(400);
+	});
+
 	test("Should ignore invalid `test` query string params and convert PDF file to TXT", async () => {
 		let response = await server.inject({
 			method: "POST",
@@ -131,6 +155,26 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 		expect(response.body).toEqual(expect.stringContaining("for England"));
 		expect(typeof response.body).toBe("string");
 		expect(isHtml(response.body)).toBe(true);
+	});
+
+	test("Should return HTTP status code 400 if PDF file is not a valid PDF file", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: await fs.readFile(
+				"./test_resources/test_files/invalid_pdf.pdf"
+			),
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Bad Request",
+			message: "Bad Request",
+			statusCode: 400,
+		});
+		expect(response.statusCode).toBe(400);
 	});
 
 	test("Should return HTTP status code 400 if PDF file is missing", async () => {

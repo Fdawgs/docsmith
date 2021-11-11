@@ -118,4 +118,24 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		});
 		expect(response.statusCode).toBe(400);
 	});
+
+	test("Should return HTTP status code 400 if PDF file is not a valid PDF file", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: fs.readFileSync(
+				"./test_resources/test_files/invalid_pdf.pdf"
+			),
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		expect(JSON.parse(response.payload)).toEqual({
+			error: "Bad Request",
+			message: "Bad Request",
+			statusCode: 400,
+		});
+		expect(response.statusCode).toBe(400);
+	});
 });

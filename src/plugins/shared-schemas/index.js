@@ -67,6 +67,15 @@ async function plugin(server) {
 					)
 			)
 			.definition(
+				"internalServerError",
+				S.object()
+					.id("#internalServerError")
+					.title("500 Internal Server Error Response")
+					.prop("statusCode", S.number().const(500))
+					.prop("error", S.string().const("Internal Server Error"))
+					.prop("message", S.string().const("Internal Server Error"))
+			)
+			.definition(
 				"serviceUnavailable",
 				S.object()
 					.id("#serviceUnavailable")

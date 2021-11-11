@@ -19,6 +19,10 @@ async function plugin(server) {
 			req.conversionResults.body = value;
 			res.header("content-type", "text/plain; charset=utf-8");
 		} catch (err) {
+			/**
+			 * Mammoth will throw if the .docx file provided
+			 * by client is malformed, thus client error code
+			 */
 			server.log.error(err);
 			throw res.badRequest();
 		}
