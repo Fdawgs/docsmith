@@ -36,7 +36,7 @@ async function plugin(server) {
 				</body>
 			</html>`);
 
-			res.header("content-type", `text/html; charset=utf-8`);
+			res.header("content-type", "text/html; charset=utf-8");
 		} catch (err) {
 			/**
 			 * Mammoth will throw if the .docx file provided
