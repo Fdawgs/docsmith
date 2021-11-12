@@ -45,65 +45,58 @@ async function plugin(server, options) {
 	});
 
 	server.addHook("preHandler", async (req, res) => {
-		try {
-			// Define any default settings the plugin should have to get up and running
-			const config = {
-				binPath: undefined,
-				rtfToTxtOptions: {
-					noPictures: true,
-					outputText: true,
-				},
-				tempDirectory: path.joinSafe(__dirname, "..", "temp"),
-			};
-			Object.assign(config, options);
+		// Define any default settings the plugin should have to get up and running
+		const config = {
+			binPath: undefined,
+			rtfToTxtOptions: {
+				noPictures: true,
+				outputText: true,
+			},
+			tempDirectory: path.joinSafe(__dirname, "..", "temp"),
+		};
+		Object.assign(config, options);
 
-			const directory = path.normalizeTrim(config.tempDirectory);
-			const unrtf = new UnRTF(config.binPath);
+		const directory = path.normalizeTrim(config.tempDirectory);
+		const unrtf = new UnRTF(config.binPath);
 
-			// Create temp directory if missing
-			await fs.mkdir(directory).catch((err) => {
-				// Ignore "EEXIST: An object by the name pathname already exists" error
-				/* istanbul ignore if */
-				if (err.code !== "EEXIST") {
-					server.log.error(err);
-					throw res.internalServerError();
-				}
-			});
-
-			// Build temporary file for UnRTF to write to, and following plugins to read from
-			const id = v4();
-			const tempFile = path.joinSafe(directory, `${id}.rtf`);
-			req.conversionResults.docLocation = {
-				directory,
-				rtf: tempFile,
-				id,
-			};
-			await fs.writeFile(tempFile, req.body);
-
-			try {
-				/**
-				 * `fixUtf8` function replaces most common incorrectly converted
-				 * Windows-1252 to UTF-8 results with HTML equivalents.
-				 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
-				 */
-				req.conversionResults.body = await unrtf.convert(
-					tempFile,
-					config.rtfToTxtOptions
-				);
-			} catch (err) {
-				/**
-				 * UnRTF will throw if the .rtf file provided
-				 * by client is malformed, thus client error code
-				 */
-				server.log.error(err);
-				throw res.badRequest();
+		// Create temp directory if missing
+		await fs.mkdir(directory).catch((err) => {
+			// Ignore "EEXIST: An object by the name pathname already exists" error
+			/* istanbul ignore if */
+			if (err.code !== "EEXIST") {
+				throw err;
 			}
+		});
 
-			res.header("content-type", `text/plain`);
+		// Build temporary file for UnRTF to write to, and following plugins to read from
+		const id = v4();
+		const tempFile = path.joinSafe(directory, `${id}.rtf`);
+		req.conversionResults.docLocation = {
+			directory,
+			rtf: tempFile,
+			id,
+		};
+		await fs.writeFile(tempFile, req.body);
+
+		try {
+			/**
+			 * `fixUtf8` function replaces most common incorrectly converted
+			 * Windows-1252 to UTF-8 results with HTML equivalents.
+			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
+			 */
+			req.conversionResults.body = await unrtf.convert(
+				tempFile,
+				config.rtfToTxtOptions
+			);
 		} catch (err) {
-			server.log.error(err);
-			throw res.internalServerError();
+			/**
+			 * UnRTF will throw if the .rtf file provided
+			 * by client is malformed, thus client error code
+			 */
+			throw res.badRequest();
 		}
+
+		res.header("content-type", `text/plain`);
 	});
 }
 

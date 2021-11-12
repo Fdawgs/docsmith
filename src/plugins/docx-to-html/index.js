@@ -42,7 +42,6 @@ async function plugin(server) {
 			 * Mammoth will throw if the .docx file provided
 			 * by client is malformed, thus client error code
 			 */
-			server.log.error(err);
 			throw res.badRequest();
 		}
 	});
