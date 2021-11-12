@@ -3,7 +3,6 @@ const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
-const sensible = require("fastify-sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -22,8 +21,6 @@ describe("Embed-HTML-Images Plugin", () => {
 			const res = await raw(payload);
 			return res;
 		});
-
-		server.register(sensible);
 	});
 
 	afterEach(async () => {
@@ -104,10 +101,12 @@ describe("Embed-HTML-Images Plugin", () => {
 				"content-type": "text/html",
 			},
 		});
+
 		expect(JSON.parse(response.payload)).toEqual({
-			error: "Internal Server Error",
-			message: expect.any(String),
-			statusCode: 500,
+			code: "ENOENT",
+			errno: expect.any(Number),
+			path: expect.any(String),
+			syscall: expect.any(String),
 		});
 		expect(response.statusCode).toBe(500);
 	});
