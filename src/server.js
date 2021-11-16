@@ -181,6 +181,7 @@ async function plugin(server, config) {
 		.setErrorHandler(
 			// eslint-disable-next-line promise/prefer-await-to-callbacks
 			(err, req, res) => {
+				/* istanbul ignore if */
 				if (res.statusCode >= 500) {
 					req.log.error({ req, res, err }, err && err.message);
 					res.internalServerError();
