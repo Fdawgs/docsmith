@@ -1,4 +1,5 @@
 const Fastify = require("fastify");
+const fs = require("fs").promises;
 const startServer = require("./server");
 const getConfig = require("./config");
 
@@ -24,6 +25,9 @@ const main = async () => {
 		process.once(signal, async () => {
 			server.log.info({ signal }, "Closing application");
 			try {
+				await fs.rm(config.poppler.tempDirectory, {
+					recursive: true,
+				});
 				await server.close();
 				server.log.info({ signal }, "Application closed");
 				process.exit(0);
