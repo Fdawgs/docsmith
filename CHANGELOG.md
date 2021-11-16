@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.2.4](https://www.github.com/Fdawgs/docsmith/compare/v5.2.3...v5.2.4) (2021-11-16)
+
+
+### Bug Fixes
+
+* **app:** delete temp directory and leftover files on shutdown ([#555](https://www.github.com/Fdawgs/docsmith/issues/555)) ([208c341](https://www.github.com/Fdawgs/docsmith/commit/208c3417942e806d13e4b851b0b165769ea28035))
+
+
+### Continuous Integration
+
+* trigger workflows when drafts marked as "ready to review" ([#550](https://www.github.com/Fdawgs/docsmith/issues/550)) ([1acd2c2](https://www.github.com/Fdawgs/docsmith/commit/1acd2c2b351cf8cde7dd41ddcac946475f4c3ccd))
+
+
+### Miscellaneous
+
+* **plugins/docx-to-html:** replace stray back-ticks ([#554](https://www.github.com/Fdawgs/docsmith/issues/554)) ([579c77f](https://www.github.com/Fdawgs/docsmith/commit/579c77f56040b88edcfb94df272d4ebbad15b899))
+
+
+### Improvements
+
+* **plugins/embed-html-images:** remove redundant dependency ([4753bcc](https://www.github.com/Fdawgs/docsmith/commit/4753bcc127269da572a4d7cb1ef5ad7043b1076c))
+* **plugins:** further separate server and client errors ([c7e2ea0](https://www.github.com/Fdawgs/docsmith/commit/c7e2ea0a619b7e7e03f7eea97c17a5423e59bf57))
+* use custom error handler; link errors to requests in logs ([784541e](https://www.github.com/Fdawgs/docsmith/commit/784541e49696fdacf73fd0147b84f1b4f88df24d))
+
+
+### Dependencies
+
+* **deps:** bump fastify from 3.23.1 to 3.24.0 ([9ba8835](https://www.github.com/Fdawgs/docsmith/commit/9ba88350d87e0923eb6a81cdf59bc00502ff8f49))
+* **deps:** bump jsdom from 18.0.1 to 18.1.0 ([94f6f9a](https://www.github.com/Fdawgs/docsmith/commit/94f6f9aea9e04b2c6e33a1efbe6157c99b81ac3a))
+
 ### [5.2.3](https://www.github.com/Fdawgs/docsmith/compare/v5.2.2...v5.2.3) (2021-11-11)
 
 
