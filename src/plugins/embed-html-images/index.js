@@ -19,31 +19,26 @@ async function plugin(server, options) {
 	 * @returns {string} HTML with images embedded.
 	 */
 	async function embedHtmlImages(html) {
-		try {
-			const dom = new JSDOM(html);
-			const images = dom.window.document.querySelectorAll("img");
-			const directory = path.normalizeTrim(options.tempDirectory);
+		const dom = new JSDOM(html);
+		const images = dom.window.document.querySelectorAll("img");
+		const directory = path.normalizeTrim(options.tempDirectory);
 
-			await Promise.all(
-				Array.from(images).map(async (element) => {
-					const imgForm = path.extname(element.src).substring(1);
-					const imageAsBase64 = await fs.readFile(
-						path.joinSafe(directory, element.src),
-						"base64"
-					);
+		await Promise.all(
+			Array.from(images).map(async (element) => {
+				const imgForm = path.extname(element.src).substring(1);
+				const imageAsBase64 = await fs.readFile(
+					path.joinSafe(directory, element.src),
+					"base64"
+				);
 
-					element.setAttribute(
-						"src",
-						`data:image/${imgForm};base64,${imageAsBase64}`
-					);
-				})
-			);
+				element.setAttribute(
+					"src",
+					`data:image/${imgForm};base64,${imageAsBase64}`
+				);
+			})
+		);
 
-			return dom.serialize();
-		} catch (err) {
-			server.log.error(err);
-			throw server.httpErrors.internalServerError();
-		}
+		return dom.serialize();
 	}
 
 	server.decorate("embedHtmlImages", embedHtmlImages);
@@ -52,5 +47,4 @@ async function plugin(server, options) {
 module.exports = fp(plugin, {
 	fastify: "3.x",
 	name: "embed-html-images",
-	dependencies: ["fastify-sensible"],
 });
