@@ -93,7 +93,11 @@ async function plugin(server, options) {
 			 * UnRTF will throw if the .rtf file provided
 			 * by client is malformed, thus client error code
 			 */
-			throw res.badRequest();
+			if (/File is not the correct media type/.test(err)) {
+				throw res.badRequest();
+			} else {
+				throw err;
+			}
 		}
 
 		res.header("content-type", `text/plain`);

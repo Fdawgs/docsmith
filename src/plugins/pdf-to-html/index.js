@@ -118,12 +118,16 @@ async function plugin(server, options) {
 
 		await poppler
 			.pdfToHtml(req.body, `${tempFile}.html`, config.pdfToHtmlOptions)
-			.catch(() => {
+			.catch((err) => {
 				/**
 				 * Poppler will throw if the .pdf file provided
 				 * by client is malformed, thus client error code
 				 */
-				throw res.badRequest();
+				if (/Syntax Error:/.test(err)) {
+					throw res.badRequest();
+				} else {
+					throw err;
+				}
 			});
 
 		// Remove excess title and meta tags left behind by Poppler

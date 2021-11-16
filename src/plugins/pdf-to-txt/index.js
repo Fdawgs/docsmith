@@ -121,12 +121,16 @@ async function plugin(server, options) {
 					pngFile: true,
 					...query,
 				})
-				.catch(() => {
+				.catch((err) => {
 					/**
 					 * Poppler will throw if the .pdf file provided
 					 * by client is malformed, thus client error code
 					 */
-					throw res.badRequest();
+					if (/Syntax Error:/.test(err)) {
+						throw res.badRequest();
+					} else {
+						throw err;
+					}
 				});
 
 			const files = glob.sync(`${tempFile}*.png`);
@@ -188,7 +192,11 @@ async function plugin(server, options) {
 				 * Poppler will throw if the .pdf file provided
 				 * by client is malformed, thus client error code
 				 */
-				throw res.badRequest();
+				if (/Syntax Error:/.test(err)) {
+					throw res.badRequest();
+				} else {
+					throw err;
+				}
 			}
 		}
 
