@@ -56,6 +56,7 @@ async function plugin(server) {
 		 * - clean (replace legacy HTML tags)
 		 * - dropProprietaryAttributes (remove proprietary attributes, such as Microsoft data binding attributes)
 		 * - escapeCdata (convert <![CDATA[]]> sections to normal text)
+		 * - hideComments (do not print HTML comment tags)
 		 * - sortAttributes (sort attributes in element in ascending alphabetic sort)
 		 */
 		const config = {
@@ -63,6 +64,7 @@ async function plugin(server) {
 			clean: true,
 			dropProprietaryAttributes: true,
 			escapeCdata: true,
+			hideComments: true,
 			sortAttributes: "alpha",
 		};
 

@@ -79,15 +79,15 @@ async function plugin(server, options) {
 		await fs.writeFile(tempFile, req.body);
 
 		try {
-			/**
-			 * `fixUtf8` function replaces most common incorrectly converted
-			 * Windows-1252 to UTF-8 results with HTML equivalents.
-			 * Refer to https://www.i18nqa.com/debug/utf8-debug.html for more info.
-			 */
 			req.conversionResults.body = await unrtf.convert(
 				tempFile,
 				config.rtfToTxtOptions
 			);
+
+			// Remove metadata comments UnRTF adds to beginning of file
+			req.conversionResults.body = req.conversionResults.body
+				.replace(/^###(?:\s){0,3}.*?(?:-){1,17}/ms, "")
+				.trim();
 		} catch (err) {
 			/**
 			 * UnRTF will throw if the .rtf file provided
