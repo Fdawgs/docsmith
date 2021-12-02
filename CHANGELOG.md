@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.2.5](https://www.github.com/Fdawgs/docsmith/compare/v5.2.4...v5.2.5) (2021-12-02)
+
+
+### Bug Fixes
+
+* **plugins/rtf-to-txt:** remove metadata comments from beginning of file ([4c5095f](https://www.github.com/Fdawgs/docsmith/commit/4c5095f9fe63b42b729cf10d9bc1cd4a26abb83d))
+* **plugins/tidy-html:** hide html comment tags ([d4285d9](https://www.github.com/Fdawgs/docsmith/commit/d4285d9a320fad6f058fc6d71a00fb17cccf8c7c))
+
+
+### Documentation
+
+* **coc:** reduce verbosity ([f0bdc3e](https://www.github.com/Fdawgs/docsmith/commit/f0bdc3eb2d1a9d37de00898727b1e0fe8579a4a2))
+* **readme:** add notes regarding tested binaries ([4cb753b](https://www.github.com/Fdawgs/docsmith/commit/4cb753be794ebf8f467ee76d6c3fd0aaa67aa5e2))
+* **readme:** remove planned features section ([#562](https://www.github.com/Fdawgs/docsmith/issues/562)) ([d4aa988](https://www.github.com/Fdawgs/docsmith/commit/d4aa988a3c579720e05642b4a2533425c8df8b32))
+
+
+### Miscellaneous
+
+* **husky/pre-commit:** add `lint:licenses` script ([#564](https://www.github.com/Fdawgs/docsmith/issues/564)) ([1bc122e](https://www.github.com/Fdawgs/docsmith/commit/1bc122e1937cec69bbf006d1fb9f062507fd28ed))
+* ignore `.yarnclean` and `yarn.lock` ([#566](https://www.github.com/Fdawgs/docsmith/issues/566)) ([79d90a0](https://www.github.com/Fdawgs/docsmith/commit/79d90a0ef98eef1d83a65e280d15a02e0ac04872))
+* **plugins/tidy-css:** add comment re escape and replace purpose ([64fad0c](https://www.github.com/Fdawgs/docsmith/commit/64fad0cf07c90630b2ce7ccb70d9eff87cae9417))
+* turn off `security/detect-object-injection` eslint rule ([#563](https://www.github.com/Fdawgs/docsmith/issues/563)) ([21da097](https://www.github.com/Fdawgs/docsmith/commit/21da09736a6c81236a7de5681f88f96d8706d74f))
+
+
+### Improvements
+
+* **plugins/rtf-to-txt:** improve conciseness of regex ([993f9ad](https://www.github.com/Fdawgs/docsmith/commit/993f9ade7641958d43987aababab8589f18150ac))
+
+
+### Dependencies
+
+* **dependabot:** ignore minor and patch github-actions updates ([#557](https://www.github.com/Fdawgs/docsmith/issues/557)) ([93819ba](https://www.github.com/Fdawgs/docsmith/commit/93819bad0085b1958412b547a74204667fc70c4b))
+* **deps-dev:** bump @commitlint/cli from 14.1.0 to 15.0.0 ([4c97c60](https://www.github.com/Fdawgs/docsmith/commit/4c97c605cb86251998efc5aa278eaef0e0eda33e))
+* **deps-dev:** bump @commitlint/config-conventional ([54a14cb](https://www.github.com/Fdawgs/docsmith/commit/54a14cbbe0ae56a48f44ea935dd614e946ade690))
+* **deps-dev:** bump eslint-plugin-jest from 25.2.4 to 25.3.0 ([36775f1](https://www.github.com/Fdawgs/docsmith/commit/36775f12e4f32e8f02e6e2e0dd6cf57843300fb4))
+* **deps-dev:** bump eslint-plugin-jsdoc from 37.0.3 to 37.1.0 ([ecdd795](https://www.github.com/Fdawgs/docsmith/commit/ecdd795a8ac9e0dec00947e8463545ba545dec5f))
+* **deps-dev:** bump eslint-plugin-promise from 5.1.1 to 5.2.0 ([4f809d6](https://www.github.com/Fdawgs/docsmith/commit/4f809d6655d9093349d9e38123eb9059a9ad2746))
+* **deps-dev:** bump jest from 27.3.1 to 27.4.2 ([8d87f66](https://www.github.com/Fdawgs/docsmith/commit/8d87f66073f13bae4d1f92dcf09c1636b4039212))
+* **deps-dev:** bump jest from 27.4.2 to 27.4.3 ([eac2be7](https://www.github.com/Fdawgs/docsmith/commit/eac2be79227e606465a597ffe4e72a5583b2436b))
+* **deps-dev:** bump prettier from 2.4.1 to 2.5.0 ([b23ab7a](https://www.github.com/Fdawgs/docsmith/commit/b23ab7ac73e757165e0167015d6e54d3bc3a4986))
+* **deps:** bump fastify from 3.24.0 to 3.24.1 ([5fc007d](https://www.github.com/Fdawgs/docsmith/commit/5fc007d5207749c27de21b26fab37efb00a7b0cf))
+* **deps:** bump fastify-compress from 3.6.1 to 3.7.0 ([59a5aeb](https://www.github.com/Fdawgs/docsmith/commit/59a5aeb774cfa63ca9052260b0787e94d1c6d5c7))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([a5783ee](https://www.github.com/Fdawgs/docsmith/commit/a5783ee6b8445fe23f6f72e084bed739e0e0e762))
+* **deps:** bump jsdom from 18.1.0 to 18.1.1 ([b1532bf](https://www.github.com/Fdawgs/docsmith/commit/b1532bfc4df888ae499cba39582d767742e50349))
+* **deps:** bump node-unrtf from 2.0.5 to 2.0.6 ([a1c5d34](https://www.github.com/Fdawgs/docsmith/commit/a1c5d346191a1c62326d0da54a5b09ed2f1a0561))
+* **deps:** bump pino from 7.2.0 to 7.5.0 ([b16dfed](https://www.github.com/Fdawgs/docsmith/commit/b16dfed87c4c7bbd986ca9e0df7fd37921fc5865))
+* **deps:** bump pino from 7.5.0 to 7.5.1 ([eb50682](https://www.github.com/Fdawgs/docsmith/commit/eb50682f14701cff86a720d36acd87001d413a5b))
+* **deps:** bump raw-body from 2.4.1 to 2.4.2 ([0e0956f](https://www.github.com/Fdawgs/docsmith/commit/0e0956f47390cf6c3bcc68d81da546b6d756baf1))
+* **deps:** bump redoc from 2.0.0-rc.57 to 2.0.0-rc.58 ([b0dc2dc](https://www.github.com/Fdawgs/docsmith/commit/b0dc2dc14b6840688a8ec6e02da3ce22dc86667c))
+* **deps:** bump sub dependencies ([#585](https://www.github.com/Fdawgs/docsmith/issues/585)) ([5924625](https://www.github.com/Fdawgs/docsmith/commit/592462521ca0ffb196821e096751390232a4e0af))
+
 ### [5.2.4](https://www.github.com/Fdawgs/docsmith/compare/v5.2.3...v5.2.4) (2021-11-16)
 
 
