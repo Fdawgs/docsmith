@@ -33,8 +33,8 @@ Docsmith enables a data processor to use a robust, GDPR-compliant, open-source d
 ## Prerequisites
 
 -   [Node.js](https://nodejs.org/en/)
--   Linux only: latest available `poppler-data` and `poppler-utils` binaries
--   Linux and macOS only: latest available `unrtf` binary
+-   Linux only: latest available `poppler-data` and `poppler-utils` binaries (note: Docsmith has only been tested with `poppler-data` >= v0.4.9 and `poppler-utils` >= v20.12.0)
+-   Linux and macOS only: latest available `unrtf` binary (note: Docsmith has only been tested with `unrtf` >= v0.19.3)
 
 ## Setup
 
