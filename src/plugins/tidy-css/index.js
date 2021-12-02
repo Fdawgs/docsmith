@@ -73,6 +73,7 @@ async function plugin(server) {
 					fonts.forEach((font) => {
 						if (/[^a-zA-Z-]+/.test(font.trim())) {
 							parsedFonts.push(
+								// Stop escaping of <style> elements and code injection
 								cssEsc(font.replace(/<\/style>/gm, "").trim(), {
 									quotes: "double",
 									wrap: true,
