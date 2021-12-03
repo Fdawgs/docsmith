@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.2.6](https://www.github.com/Fdawgs/docsmith/compare/v5.2.5...v5.2.6) (2021-12-03)
+
+
+### Dependencies
+
+* **dependabot:** ignore minor and patch release-please-action updates ([#586](https://www.github.com/Fdawgs/docsmith/issues/586)) ([e822c6c](https://www.github.com/Fdawgs/docsmith/commit/e822c6c5d49870ce090beaa10817669a38f790fb))
+
 ### [5.2.5](https://www.github.com/Fdawgs/docsmith/compare/v5.2.4...v5.2.5) (2021-12-02)
 
 
