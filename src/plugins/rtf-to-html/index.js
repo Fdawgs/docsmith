@@ -5,7 +5,7 @@ const fs = require("fs").promises;
 const glob = require("glob");
 const path = require("upath");
 const { UnRTF } = require("node-unrtf");
-const { v4 } = require("uuid");
+const { randomUUID } = require("crypto");
 
 /**
  * @author Frazer Smith
@@ -70,7 +70,7 @@ async function plugin(server, options) {
 		});
 
 		// Build temporary file for UnRTF to write to, and following plugins to read from
-		const id = v4();
+		const id = randomUUID();
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
 		req.conversionResults.docLocation = {
 			directory,

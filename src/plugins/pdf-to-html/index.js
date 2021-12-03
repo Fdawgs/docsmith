@@ -7,7 +7,7 @@ const glob = require("glob");
 const { JSDOM } = require("jsdom");
 const path = require("upath");
 const { Poppler } = require("node-poppler");
-const { v4 } = require("uuid");
+const { randomUUID } = require("crypto");
 
 /**
  * @author Frazer Smith
@@ -107,7 +107,7 @@ async function plugin(server, options) {
 		});
 
 		// Build temporary file for Poppler to write to, and following plugins to read from
-		const id = v4();
+		const id = randomUUID();
 		const tempFile = path.joinSafe(directory, id);
 		req.conversionResults.docLocation = {
 			directory,
