@@ -32,9 +32,12 @@ Docsmith enables a data processor to use a robust, GDPR-compliant, open-source d
 
 ## Prerequisites
 
--   [Node.js](https://nodejs.org/en/)
--   Linux only: latest available `poppler-data` and `poppler-utils` binaries (note: Docsmith has only been tested with `poppler-data` >= v0.4.9 and `poppler-utils` >= v20.12.0)
--   Linux and macOS only: latest available `unrtf` binary (note: Docsmith has only been tested with `unrtf` >= v0.19.3)
+These are only required if running the API outside of Docker:
+
+-   [Node.js](https://nodejs.org/en/) ^14.17.0 || ^15.6.0 || >=16.0.0
+-   Linux only: `poppler-data` >=0.4.9
+-   Linux only: `poppler-utils` >=20.12.0
+-   Linux and macOS only: `unrtf` >=0.19.3
 
 ## Setup
 
@@ -42,10 +45,9 @@ Perform the following steps before deployment:
 
 1. Clone the repo
 2. Navigate to the project directory
-3. Run `npm install --ignore-scripts --production` to install dependencies
-4. Make a copy of `.env.template` in the root directory and rename it to `.env`
-5. Configure the application using the environment variables in `.env`
-6. Place additional trained data into `ocr_lang_data` directory (optional, [info can be found here](./ocr_lang_data/README.md))
+3. Make a copy of `.env.template` in the root directory and rename it to `.env`
+4. Configure the application using the environment variables in `.env`
+5. Place additional trained data into `ocr_lang_data` directory (optional, [info can be found here](./ocr_lang_data/README.md))
 
 **Note:** Set the following environment variables in `.env` to meet NHS Digital's recommendation to retain 6 months' worth of logs:
 
@@ -57,7 +59,8 @@ Perform the following steps before deployment:
 
 ### Standard Deployment
 
-1. Run `npm start`
+1. Run `npm install --ignore-scripts --production` to install dependencies
+2. Run `npm start`
 
 The service should be up and running on the port set in the config. You should see the following output in stdout or the log file specified using the `LOG_ROTATION_FILENAME` environment variable:
 
@@ -75,7 +78,7 @@ You can now navigate to http://0.0.0.0:8204/docs to see the API documentation!
 
 ### Deploying Using Docker
 
-This requires [Docker](https://www.docker.com/products) installed.
+This requires [Docker](https://www.docker.com) installed.
 
 1. Run `docker compose up` (or `docker compose up -d` to run in background)
 
@@ -83,9 +86,10 @@ This requires [Docker](https://www.docker.com/products) installed.
 
 If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
-1. Run `npm install -g pm2` to install pm2 globally
-2. Launch application with `pm2 start .pm2.config.js`
-3. Check the application has been deployed using `pm2 list` or `pm2 monit`
+1. Run `npm install --ignore-scripts --production` to install dependencies
+2. Run `npm install -g pm2` to install pm2 globally
+3. Launch application with `pm2 start .pm2.config.js`
+4. Check the application has been deployed using `pm2 list` or `pm2 monit`
 
 #### To Install as a Windows Service:
 
