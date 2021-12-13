@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.0](https://www.github.com/Fdawgs/docsmith/compare/v5.2.5...v6.0.0) (2021-12-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **plugins:** replace `uuid` dep with `crypto.randomUUID()` (#565)
+
+### Improvements
+
+* **plugins:** replace `uuid` dep with `crypto.randomUUID()` ([#565](https://www.github.com/Fdawgs/docsmith/issues/565)) ([9d5ef67](https://www.github.com/Fdawgs/docsmith/commit/9d5ef6757ed7cc488b4ffb865edd9c87092ed06d))
+
+
+### Dependencies
+
+* **dependabot:** ignore minor and patch release-please-action updates ([#586](https://www.github.com/Fdawgs/docsmith/issues/586)) ([e822c6c](https://www.github.com/Fdawgs/docsmith/commit/e822c6c5d49870ce090beaa10817669a38f790fb))
+* **deps-dev:** bump eslint from 8.3.0 to 8.4.1 ([919599b](https://www.github.com/Fdawgs/docsmith/commit/919599bc053d4740838caa63affd63ae55d67d3b))
+* **deps-dev:** bump eslint-plugin-jsdoc from 37.1.0 to 37.2.0 ([9dc0c7b](https://www.github.com/Fdawgs/docsmith/commit/9dc0c7bc7a94b29298e5feed6cc34177b78d03e8))
+* **deps-dev:** bump jest from 27.4.3 to 27.4.4 ([58cfc1d](https://www.github.com/Fdawgs/docsmith/commit/58cfc1dd251d2930e60ca1fec62d255e2becf950))
+* **deps-dev:** bump prettier from 2.5.0 to 2.5.1 ([ce8433d](https://www.github.com/Fdawgs/docsmith/commit/ce8433d4410107e2708cf71865d07f12e29e3ee4))
+* **deps:** bump fastify-compress from 3.7.0 to 4.0.0 ([0d530ac](https://www.github.com/Fdawgs/docsmith/commit/0d530ace21cbdd8a99565fd322490c965bb26537))
+* **deps:** bump fastify-rate-limit from 5.6.2 to 5.7.0 ([c3f90f2](https://www.github.com/Fdawgs/docsmith/commit/c3f90f29a77222289f640062487de0165c48ae94))
+* **deps:** bump jsdom from 18.1.1 to 19.0.0 ([76a8a77](https://www.github.com/Fdawgs/docsmith/commit/76a8a77e1581ee1fce72492b868f81b4b357df1f))
+* **deps:** bump node-poppler from 5.1.0 to 5.1.1 ([c7b7575](https://www.github.com/Fdawgs/docsmith/commit/c7b7575a1a5126d4916904be2656c9d569effebe))
+* **deps:** bump redoc from 2.0.0-rc.58 to 2.0.0-rc.59 ([82c7660](https://www.github.com/Fdawgs/docsmith/commit/82c76606688324d39bbd5382c4cabf08585be745))
+
+
+### Documentation
+
+* **readme:** fix broken docker link ([9b11dc3](https://www.github.com/Fdawgs/docsmith/commit/9b11dc3727d50b0882ab7545b62c92bb2174591d))
+* **readme:** tidy prerequisite and deployment steps ([43b1f87](https://www.github.com/Fdawgs/docsmith/commit/43b1f8701cc8818e9afff978d43b8bcf0ffa22a0))
+
 ### [5.2.5](https://www.github.com/Fdawgs/docsmith/compare/v5.2.4...v5.2.5) (2021-12-02)
 
 
