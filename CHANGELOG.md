@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚠ BREAKING CHANGES
 
-* **plugins:** replace `uuid` dep with `crypto.randomUUID()` (#565)
+* Minimum node engine bumped from `>=14.0.0` to `^14.17.0 || ^15.6.0 || >=16.0.0`
 
 ### Improvements
 
