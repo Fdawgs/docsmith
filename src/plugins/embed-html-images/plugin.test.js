@@ -1,4 +1,3 @@
-const { cloneDeep } = require("lodash");
 const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -28,7 +27,7 @@ describe("Embed-HTML-Images Plugin", () => {
 	});
 
 	test("Should embed images into HTML", async () => {
-		const altConfig = cloneDeep(config);
+		const altConfig = await getConfig();
 		altConfig.poppler.tempDirectory = "./test_resources/test_files/";
 		server.post("/", async (req, res) => {
 			res.send(await server.embedHtmlImages(req.body));

@@ -1,5 +1,4 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
-const { cloneDeep } = require("lodash");
 const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -13,7 +12,6 @@ describe("Image-To-TXT Conversion Plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
-		config = cloneDeep(config);
 
 		server = Fastify();
 
