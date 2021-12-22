@@ -5,7 +5,7 @@ const raw = require("raw-body");
 const sensible = require("fastify-sensible");
 const plugin = require(".");
 
-describe("DOCX-to-TXT Conversion Plugin", () => {
+describe("DOCX-to-HTML Conversion Plugin", () => {
 	let server;
 
 	beforeAll(async () => {
@@ -31,7 +31,7 @@ describe("DOCX-to-TXT Conversion Plugin", () => {
 		await server.close();
 	});
 
-	test("Should convert DOCX file to TXT", async () => {
+	test("Should convert DOCX file to HTML", async () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",

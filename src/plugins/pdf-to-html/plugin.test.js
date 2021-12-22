@@ -1,5 +1,4 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
-const { cloneDeep } = require("lodash");
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -21,7 +20,6 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
-		config = cloneDeep(config);
 		config.poppler.tempDirectory = "./src/temp1/";
 
 		server = Fastify();

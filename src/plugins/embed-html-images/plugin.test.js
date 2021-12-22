@@ -1,4 +1,3 @@
-const { cloneDeep } = require("lodash");
 const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -28,7 +27,7 @@ describe("Embed-HTML-Images Plugin", () => {
 	});
 
 	test("Should embed images into HTML", async () => {
-		const altConfig = cloneDeep(config);
+		const altConfig = await getConfig();
 		altConfig.poppler.tempDirectory = "./test_resources/test_files/";
 		server.post("/", async (req, res) => {
 			res.send(await server.embedHtmlImages(req.body));
@@ -51,34 +50,6 @@ describe("Embed-HTML-Images Plugin", () => {
 			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
 		).toBeNull();
 		expect(/alt=""/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toBe("string");
-		expect(isHtml(response.payload)).toBe(true);
-		expect(response.statusCode).toBe(200);
-	});
-
-	test("Should embed images into HTML and add trailing slash if missing from directory", async () => {
-		const altConfig = cloneDeep(config);
-		altConfig.poppler.tempDirectory = "./test_resources/test_files";
-		server.post("/", async (req, res) => {
-			res.send(await server.embedHtmlImages(req.body));
-		});
-		server.register(plugin, altConfig.poppler);
-
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/valid_bullet_issues_html.html",
-				{ encoding: "UTF-8" }
-			),
-			headers: {
-				"content-type": "text/html",
-			},
-		});
-
-		expect(
-			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
-		).toBeNull();
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
