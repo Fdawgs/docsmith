@@ -18,8 +18,134 @@ describe("Configuration", () => {
 	});
 
 	afterEach(() => {
+		// Reset the process.env to default after each test
 		jest.resetModules();
 		Object.assign(process.env, currentEnv);
+	});
+
+	test("Should use defaults if values missing and return values according to environment variables", async () => {
+		const SERVICE_HOST = faker.internet.ip();
+		const SERVICE_PORT = faker.datatype.number();
+		const CORS_ORIGIN = false;
+		const CORS_ALLOWED_HEADERS = "";
+		const CORS_ALLOW_CREDENTIALS = "";
+		const CORS_EXPOSED_HEADERS = "";
+		const CORS_MAX_AGE = "";
+		const HTTPS_SSL_CERT_PATH = "";
+		const HTTPS_SSL_KEY_PATH = "";
+		const HTTPS_HTTP2_ENABLED = "";
+		const LOG_LEVEL = "";
+		const LOG_ROTATION_DATE_FORMAT = "";
+		const LOG_ROTATION_FILENAME = "./test_resources/test_log2-%DATE%.log";
+		const LOG_ROTATION_FREQUENCY = "";
+		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = "";
+		const PROC_LOAD_MAX_HEAP_USED_BYTES = "";
+		const PROC_LOAD_MAX_RSS_BYTES = "";
+		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = "";
+		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
+		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
+		const AUTH_BEARER_TOKEN_ARRAY = "";
+		const OCR_ENABLED = "";
+		const OCR_LANGUAGES = "";
+		const OCR_WORKERS = "";
+		const POPPLER_BINARY_PATH = "";
+		const UNRTF_BINARY_PATH = "";
+
+		Object.assign(process.env, {
+			SERVICE_HOST,
+			SERVICE_PORT,
+			CORS_ORIGIN,
+			CORS_ALLOWED_HEADERS,
+			CORS_ALLOW_CREDENTIALS,
+			CORS_EXPOSED_HEADERS,
+			CORS_MAX_AGE,
+			HTTPS_SSL_CERT_PATH,
+			HTTPS_SSL_KEY_PATH,
+			HTTPS_HTTP2_ENABLED,
+			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
+			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
+			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
+			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
+			PROC_LOAD_MAX_HEAP_USED_BYTES,
+			PROC_LOAD_MAX_RSS_BYTES,
+			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
+			RATE_LIMIT_EXCLUDED_ARRAY,
+			AUTH_BEARER_TOKEN_ARRAY,
+			OCR_ENABLED,
+			OCR_LANGUAGES,
+			OCR_WORKERS,
+			POPPLER_BINARY_PATH,
+			UNRTF_BINARY_PATH,
+		});
+
+		const config = await getConfig();
+
+		expect(config.bearerTokenAuthKeys).toBeUndefined();
+
+		expect(config.fastify).toEqual({
+			host: SERVICE_HOST,
+			port: SERVICE_PORT,
+		});
+
+		expect(config.fastifyInit.bodyLimit).toBe(10485760);
+
+		expect(config.fastifyInit.logger).toEqual({
+			formatters: { level: expect.any(Function) },
+			level: "info",
+			prettyPrint: false,
+			redact: ["req.body", "req.headers.authorization", "res.body"],
+			serializers: {
+				req: expect.any(Function),
+				res: expect.any(Function),
+			},
+			timestamp: expect.any(Function),
+			stream: expect.any(Object),
+		});
+		expect(config.fastifyInit.logger.formatters.level()).toEqual({
+			level: undefined,
+		});
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
+			',"time"'
+		);
+
+		expect(config.fastifyInit.https).toBeUndefined();
+		expect(config.fastifyInit.http2).toBeUndefined();
+
+		expect(config.cors).toEqual({
+			origin: false,
+			hideOptionsRoute: true,
+		});
+
+		expect(config.processLoad).toEqual({
+			maxEventLoopDelay: 0,
+			maxEventLoopUtilization: 0,
+			maxHeapUsedBytes: 0,
+			maxRssBytes: 0,
+		});
+
+		expect(config.rateLimit).toEqual({
+			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
+			max: 1000,
+			timeWindow: 60000,
+		});
+
+		expect(config.poppler).toEqual({
+			binPath: POPPLER_BINARY_PATH,
+			tempDirectory: expect.any(String),
+		});
+
+		expect(config.tesseract).toEqual({
+			enabled: false,
+			languages: "eng",
+			workers: expect.any(Number),
+		});
+
+		expect(config.unrtf).toEqual({
+			binPath: UNRTF_BINARY_PATH,
+			tempDirectory: expect.any(String),
+		});
 	});
 
 	test("Should return values according to environment variables - SSL enabled and CORS disabled", async () => {
@@ -151,131 +277,6 @@ describe("Configuration", () => {
 			enabled: OCR_ENABLED,
 			languages: OCR_LANGUAGES,
 			workers: OCR_WORKERS,
-		});
-
-		expect(config.unrtf).toEqual({
-			binPath: UNRTF_BINARY_PATH,
-			tempDirectory: expect.any(String),
-		});
-	});
-
-	test("Should use defaults if values missing and return values according to environment variables", async () => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
-		const CORS_ORIGIN = false;
-		const CORS_ALLOWED_HEADERS = "";
-		const CORS_ALLOW_CREDENTIALS = "";
-		const CORS_EXPOSED_HEADERS = "";
-		const CORS_MAX_AGE = "";
-		const HTTPS_SSL_CERT_PATH = "";
-		const HTTPS_SSL_KEY_PATH = "";
-		const HTTPS_HTTP2_ENABLED = "";
-		const LOG_LEVEL = "";
-		const LOG_ROTATION_DATE_FORMAT = "";
-		const LOG_ROTATION_FILENAME = "./test_resources/test_log2-%DATE%.log";
-		const LOG_ROTATION_FREQUENCY = "";
-		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = "";
-		const PROC_LOAD_MAX_HEAP_USED_BYTES = "";
-		const PROC_LOAD_MAX_RSS_BYTES = "";
-		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = "";
-		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
-		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
-		const AUTH_BEARER_TOKEN_ARRAY = "";
-		const OCR_ENABLED = "";
-		const OCR_LANGUAGES = "";
-		const OCR_WORKERS = "";
-		const POPPLER_BINARY_PATH = "";
-		const UNRTF_BINARY_PATH = "";
-
-		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
-			CORS_ORIGIN,
-			CORS_ALLOWED_HEADERS,
-			CORS_ALLOW_CREDENTIALS,
-			CORS_EXPOSED_HEADERS,
-			CORS_MAX_AGE,
-			HTTPS_SSL_CERT_PATH,
-			HTTPS_SSL_KEY_PATH,
-			HTTPS_HTTP2_ENABLED,
-			LOG_LEVEL,
-			LOG_ROTATION_DATE_FORMAT,
-			LOG_ROTATION_FILENAME,
-			LOG_ROTATION_FREQUENCY,
-			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
-			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
-			PROC_LOAD_MAX_HEAP_USED_BYTES,
-			PROC_LOAD_MAX_RSS_BYTES,
-			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
-			RATE_LIMIT_EXCLUDED_ARRAY,
-			AUTH_BEARER_TOKEN_ARRAY,
-			OCR_ENABLED,
-			OCR_LANGUAGES,
-			OCR_WORKERS,
-			POPPLER_BINARY_PATH,
-			UNRTF_BINARY_PATH,
-		});
-
-		const config = await getConfig();
-
-		expect(config.bearerTokenAuthKeys).toBeUndefined();
-
-		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
-		});
-
-		expect(config.fastifyInit.bodyLimit).toBe(10485760);
-
-		expect(config.fastifyInit.logger).toEqual({
-			formatters: { level: expect.any(Function) },
-			level: "info",
-			prettyPrint: false,
-			redact: ["req.body", "req.headers.authorization", "res.body"],
-			serializers: {
-				req: expect.any(Function),
-				res: expect.any(Function),
-			},
-			timestamp: expect.any(Function),
-			stream: expect.any(Object),
-		});
-		expect(config.fastifyInit.logger.formatters.level()).toEqual({
-			level: undefined,
-		});
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
-			',"time"'
-		);
-
-		expect(config.fastifyInit.https).toBeUndefined();
-		expect(config.fastifyInit.http2).toBeUndefined();
-
-		expect(config.cors).toEqual({
-			origin: false,
-			hideOptionsRoute: true,
-		});
-
-		expect(config.processLoad).toEqual({
-			maxEventLoopDelay: 0,
-			maxEventLoopUtilization: 0,
-			maxHeapUsedBytes: 0,
-			maxRssBytes: 0,
-		});
-
-		expect(config.rateLimit).toEqual({
-			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
-			max: 1000,
-			timeWindow: 60000,
-		});
-
-		expect(config.poppler).toEqual({
-			binPath: POPPLER_BINARY_PATH,
-			tempDirectory: expect.any(String),
-		});
-
-		expect(config.tesseract).toEqual({
-			enabled: false,
-			languages: "eng",
-			workers: expect.any(Number),
 		});
 
 		expect(config.unrtf).toEqual({
