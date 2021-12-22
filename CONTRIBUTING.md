@@ -53,6 +53,8 @@ Prior to submitting a pull request back to the main repository, please make sure
 2. Run `npm test` to check the code adheres to the defined style and that it passes the Jest tests
 3. Run `npm run lint:prettier` to run the Prettier code formatter over the code
 
+Steps 2. and 3. are automatically run by a pre-commit hook added by [Husky](https://typicode.github.io/husky/#/).
+
 ## Issues
 
 Please file your issues [here](https://github.com/Fdawgs/docsmith/issues) and try to provide as much information in the template as possible/relevant.
