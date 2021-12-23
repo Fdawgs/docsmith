@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.0.1](https://www.github.com/Fdawgs/docsmith/compare/v6.0.0...v6.0.1) (2021-12-23)
+
+
+### Dependencies
+
+* **deps-dev:** remove lodash ([04f3a47](https://www.github.com/Fdawgs/docsmith/commit/04f3a47dd7724b427ead2700a912b141b6be8eda))
+
+
+### Documentation
+
+* **contributing:** add mention of husky pre-commit hook ([c9d827c](https://www.github.com/Fdawgs/docsmith/commit/c9d827c5f4a1632513272af2fa1e60c911a498b5))
+* **contributing:** update husky hook mention ([5f0e3a9](https://www.github.com/Fdawgs/docsmith/commit/5f0e3a9ba69647a96b0e3c52ab74b08b6b55707b))
+
 ## [6.0.0](https://www.github.com/Fdawgs/docsmith/compare/v5.2.5...v6.0.0) (2021-12-13)
 
 
