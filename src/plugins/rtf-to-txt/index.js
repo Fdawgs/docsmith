@@ -12,7 +12,7 @@ const { randomUUID } = require("crypto");
  * RTF file in `req.body` to TXT and places RTF file in a temporary directory.
  * `req` object is decorated with `conversionResults` object detailing document
  * location and contents.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to UnRTF binary.
  * @param {object=} options.rtfToTxtOptions - Refer to

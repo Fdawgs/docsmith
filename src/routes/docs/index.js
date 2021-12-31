@@ -3,7 +3,7 @@ const { docsGetSchema } = require("./schema");
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  */
 async function route(server) {
 	server.addHook("preValidation", async (req, res) => {

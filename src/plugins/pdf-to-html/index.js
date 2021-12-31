@@ -15,7 +15,7 @@ const { randomUUID } = require("crypto");
  * PDF file in `req.body` to HTML and places HTML file in a temporary directory.
  * `req` object is decorated with `conversionResults` object detailing document
  * location and contents.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to Poppler binary.
  * @param {object} options.pdfToHtmlOptions - Refer to

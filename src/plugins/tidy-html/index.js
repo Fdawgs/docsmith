@@ -10,7 +10,7 @@ const tidyP = util.promisify(tidy);
  * @author Frazer Smith
  * @description Decorator plugin that adds function that uses HTMLTidy2 to
  * parse and tidy HTML passed.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  */
 async function plugin(server) {
 	/**

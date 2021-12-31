@@ -6,7 +6,7 @@ const { docsJsonGetSchema } = require("./schema");
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  * @param {object} options - Route config values.
  * @param {object} options.cors - CORS settings.
  */

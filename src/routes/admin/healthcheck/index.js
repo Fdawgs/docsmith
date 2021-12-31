@@ -9,7 +9,7 @@ const { healthcheckGetSchema } = require("./schema");
  * @description Sets routing options for server for healthcheck endpoint.
  * This is used by monitoring software to poll and confirm the API is running,
  * so needs no authentication.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  * @param {object} options - Route config values.
  * @param {object} options.cors - CORS settings.
  */
