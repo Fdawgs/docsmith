@@ -71,7 +71,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jest": "^25.3.0",
     "eslint-plugin-jsdoc": "^37.5.0",
-    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-security-node": "^1.0.14",
     "faker": "^5.5.3",
