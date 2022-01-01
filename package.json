@@ -114,7 +114,7 @@
     "node-poppler": "^5.1.1",
     "node-unrtf": "^2.0.6",
     "physical-cpu-count": "^2.0.0",
-    "pino": "^7.5.1",
+    "pino": "^7.6.2",
     "pino-pretty": "^7.2.0",
     "raw-body": "^2.4.2",
     "redoc": "^2.0.0-rc.59",
