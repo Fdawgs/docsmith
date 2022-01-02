@@ -26,7 +26,7 @@ const tidyHtml = require("./plugins/tidy-html");
 /**
  * @author Frazer Smith
  * @description Build Fastify instance.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  * @param {object} config - Fastify configuration values.
  */
 async function plugin(server, config) {
@@ -67,6 +67,7 @@ async function plugin(server, config) {
 			options: { ...config, prefix: "admin" },
 		})
 
+		// HTML and CSS parsing plugins used in routes
 		.register(embedHtmlImages, config.poppler)
 		.register(tidyCss)
 		.register(tidyHtml);
@@ -80,7 +81,7 @@ async function plugin(server, config) {
 		.addHook("onSend", server.rateLimit())
 
 		/*
-		 * `x-xss-protection` and `content-security-policy` is set by default.
+		 * `x-xss-protection` and `content-security-policy` is set by default by Helmet.
 		 * These are only useful for HTML/XML content; the only CSP directive that
 		 * is of use to other content is "frame-ancestors 'none'" to stop responses
 		 * from being wrapped in iframes and used for clickjacking attacks.

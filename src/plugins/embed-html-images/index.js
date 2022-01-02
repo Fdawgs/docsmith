@@ -8,7 +8,7 @@ const path = require("upath");
  * @author Frazer Smith
  * @description Decorator plugin that adds function to embed images into HTML,
  * after encoding with Base64.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.tempDirectory - Directory for temporarily storing
  * files during conversion.

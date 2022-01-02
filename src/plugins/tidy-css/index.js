@@ -7,7 +7,7 @@ const { JSDOM } = require("jsdom");
  * @author Frazer Smith
  * @description Decorator plugin that adds function that parses
  * and tidies CSS passed.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  */
 async function plugin(server) {
 	/**
