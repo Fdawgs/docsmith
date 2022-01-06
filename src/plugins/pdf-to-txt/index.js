@@ -125,7 +125,7 @@ async function plugin(server, options) {
 					 * Poppler will throw if the .pdf file provided
 					 * by client is malformed, thus client error code
 					 */
-					/* istanbul ignore else */
+					/* istanbul ignore else: unable to test unknown errors */
 					if (/Syntax Error:/.test(err)) {
 						throw res.badRequest();
 					} else {
@@ -145,7 +145,7 @@ async function plugin(server, options) {
 
 						return Promise.resolve(text);
 					} catch (err) {
-						/* istanbul ignore next */
+						/* istanbul ignore next: unable to test unknown errors */
 						return Promise.reject(err);
 					}
 				})
@@ -193,7 +193,7 @@ async function plugin(server, options) {
 				 * Poppler will throw if the .pdf file provided
 				 * by client is malformed, thus client error code
 				 */
-				/* istanbul ignore else */
+				/* istanbul ignore else: unable to test unknown errors */
 				if (/Syntax Error:/.test(err)) {
 					throw res.badRequest();
 				} else {

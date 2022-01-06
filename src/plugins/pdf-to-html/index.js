@@ -122,7 +122,7 @@ async function plugin(server, options) {
 				 * Poppler will throw if the .pdf file provided
 				 * by client is malformed, thus client error code
 				 */
-				/* istanbul ignore else */
+				/* istanbul ignore else: unable to test unknown errors */
 				if (/Syntax Error:/.test(err)) {
 					throw res.badRequest();
 				} else {
