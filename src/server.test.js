@@ -24,7 +24,7 @@ const expResHeaders = {
 	"x-ratelimit-remaining": expect.any(Number),
 	"x-ratelimit-reset": expect.any(Number),
 	"content-type": expect.stringContaining("text/plain"),
-	"content-length": expect.any(String),
+	"content-length": expect.anything(),
 	date: expect.any(String),
 	connection: "keep-alive",
 };
@@ -36,6 +36,20 @@ const expResHeadersHtml = {
 	"content-type": expect.stringContaining("text/html"),
 	"x-xss-protection": "0",
 };
+
+const expResHeadersHtmlStatic = {
+	...expResHeadersHtml,
+	"accept-ranges": "bytes",
+	"cache-control": "private, max-age=180",
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self' blob:;frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content;script-src 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline'",
+	etag: expect.any(String),
+	"last-modified": expect.any(String),
+	vary: "accept-encoding",
+};
+delete expResHeadersHtmlStatic.expires;
+delete expResHeadersHtmlStatic.pragma;
+delete expResHeadersHtmlStatic["surrogate-control"];
 
 const expResHeadersJson = {
 	...expResHeaders,
@@ -95,6 +109,22 @@ describe("Server Deployment", () => {
 				});
 				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
+			});
+		});
+
+		describe("/docs Route", () => {
+			test("Should return HTML", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/docs",
+					headers: {
+						accept: "text/html",
+					},
+				});
+
+				expect(isHtml(response.payload)).toBe(true);
+				expect(response.headers).toEqual(expResHeadersHtmlStatic);
+				expect(response.statusCode).toBe(200);
 			});
 		});
 
@@ -332,6 +362,22 @@ describe("Server Deployment", () => {
 				});
 				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
+			});
+		});
+
+		describe("/docs Route", () => {
+			test("Should return HTML", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/docs",
+					headers: {
+						accept: "text/html",
+					},
+				});
+
+				expect(isHtml(response.payload)).toBe(true);
+				expect(response.headers).toEqual(expResHeadersHtmlStatic);
+				expect(response.statusCode).toBe(200);
 			});
 		});
 
