@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.0.1](https://github.com/Fdawgs/docsmith/compare/v6.0.0...v6.0.1) (2022-01-06)
+
+
+### Documentation
+
+* **contributing:** add mention of husky pre-commit hook ([c9d827c](https://github.com/Fdawgs/docsmith/commit/c9d827c5f4a1632513272af2fa1e60c911a498b5))
+* **contributing:** add step for `lint:licenses` script ([2790d26](https://github.com/Fdawgs/docsmith/commit/2790d262b33ef348fff3ee63734fe26195218589))
+* **contributing:** update husky hook mention ([5f0e3a9](https://github.com/Fdawgs/docsmith/commit/5f0e3a9ba69647a96b0e3c52ab74b08b6b55707b))
+
+
+### Continuous Integration
+
+* remove spellcheck workflow ([#621](https://github.com/Fdawgs/docsmith/issues/621)) ([964f031](https://github.com/Fdawgs/docsmith/commit/964f03142331c0f248a5f3d6fb419c4010246e1b))
+
+
+### Miscellaneous
+
+* add istanbul inline comments ([441495d](https://github.com/Fdawgs/docsmith/commit/441495d92959fdb9325e13fd3eceff457e7ca396))
+* fix `server` jsdoc tag param type ([a5a5a40](https://github.com/Fdawgs/docsmith/commit/a5a5a40c0eb8558af434701e52687f9ed54c44f6))
+* **scripts:** remove invalid license identifier from `lint:licenses` ([0433f3e](https://github.com/Fdawgs/docsmith/commit/0433f3ea2a1d53c9bfca67159d13d050daff434f))
+* **scripts:** remove non-permissive bsd license from accepted list ([#622](https://github.com/Fdawgs/docsmith/issues/622)) ([3a19000](https://github.com/Fdawgs/docsmith/commit/3a19000483bdb5ddfd9bf5da41adf851384c082a))
+* **scripts:** remove unused package from excluded list ([ce4a7dc](https://github.com/Fdawgs/docsmith/commit/ce4a7dc3a63664479737a6c43d10854e831630e9))
+* **server:** update inline comment re helmet defaults ([c5e1c10](https://github.com/Fdawgs/docsmith/commit/c5e1c1018f19bc4b8dc1d3bd920a1f6c5a65d8f0))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 15.0.0 to 16.0.1 ([6c6d38a](https://github.com/Fdawgs/docsmith/commit/6c6d38a7ed3e65f0e5c1aaa83e1ef351c712a407))
+* **deps-dev:** bump @commitlint/config-conventional ([bc94d49](https://github.com/Fdawgs/docsmith/commit/bc94d49daedc9c93c8e4091ac1ab8e2104551fc6))
+* **deps-dev:** bump autocannon from 7.5.0 to 7.5.1 ([b5f9660](https://github.com/Fdawgs/docsmith/commit/b5f96600819e51a2a59189678ddc32fa74cf7f38))
+* **deps-dev:** bump eslint from 8.4.1 to 8.6.0 ([79bd003](https://github.com/Fdawgs/docsmith/commit/79bd003e629e2263c43aa87e27a86819fc397e3c))
+* **deps-dev:** bump eslint-plugin-import from 2.25.3 to 2.25.4 ([6413f13](https://github.com/Fdawgs/docsmith/commit/6413f1389809f30f2e1404e97fcd07d48ef1a7c0))
+* **deps-dev:** bump eslint-plugin-jest from 25.3.0 to 25.3.3 ([00965ea](https://github.com/Fdawgs/docsmith/commit/00965ea81bf07a1ced6a324ec41268460dc45a61))
+* **deps-dev:** bump eslint-plugin-jest from 25.3.3 to 25.3.4 ([4d04a1a](https://github.com/Fdawgs/docsmith/commit/4d04a1afc5ad44a203e3dd2d8b0a5f727545b122))
+* **deps-dev:** bump eslint-plugin-jsdoc from 37.2.0 to 37.5.0 ([f7c2939](https://github.com/Fdawgs/docsmith/commit/f7c2939097f92f15681db55605fde6a65f2fed70))
+* **deps-dev:** bump eslint-plugin-jsdoc from 37.5.0 to 37.5.1 ([3b2ca71](https://github.com/Fdawgs/docsmith/commit/3b2ca71459917a6716cf7228d1f1351549631439))
+* **deps-dev:** bump eslint-plugin-promise from 5.2.0 to 6.0.0 ([dc30f22](https://github.com/Fdawgs/docsmith/commit/dc30f222cf0b887681351762467eab5324038e91))
+* **deps-dev:** bump eslint-plugin-security-node from 1.0.14 to 1.1.0 ([6ca1d19](https://github.com/Fdawgs/docsmith/commit/6ca1d199725ed57362657d9af87f8c3f6d8a0da8))
+* **deps-dev:** bump jest from 27.4.4 to 27.4.5 ([751fbe6](https://github.com/Fdawgs/docsmith/commit/751fbe64baf2745f7a704fb44f26f6f33bb145ea))
+* **deps-dev:** bump jest from 27.4.5 to 27.4.7 ([1122a6e](https://github.com/Fdawgs/docsmith/commit/1122a6e47e1a75ad940a0f9e34c81d078f14894c))
+* **deps-dev:** remove lodash ([04f3a47](https://github.com/Fdawgs/docsmith/commit/04f3a47dd7724b427ead2700a912b141b6be8eda))
+* **deps:** bump env-schema from 3.5.0 to 3.5.1 ([e89f3f0](https://github.com/Fdawgs/docsmith/commit/e89f3f0cb22936293794c32f4b87703b99531f3e))
+* **deps:** bump fastify from 3.24.1 to 3.25.3 ([3cabadb](https://github.com/Fdawgs/docsmith/commit/3cabadb1e834e01a998c1af63c953fd5deceb6a2))
+* **deps:** bump fastify-bearer-auth from 6.0.0 to 6.1.0 ([84402f9](https://github.com/Fdawgs/docsmith/commit/84402f9805daacb406540061d5753631ce4564a4))
+* **deps:** bump fastify-compress from 4.0.0 to 4.0.1 ([eae061d](https://github.com/Fdawgs/docsmith/commit/eae061d0f6711c3f1f161dba3d13e35e11b3be04))
+* **deps:** bump fastify-swagger from 4.12.6 to 4.13.0 ([1d5d9c3](https://github.com/Fdawgs/docsmith/commit/1d5d9c3bac166bd975d3f92148a333d5ef3a8148))
+* **deps:** bump GoogleCloudPlatform/release-please-action from 2 to 3 ([8099e2c](https://github.com/Fdawgs/docsmith/commit/8099e2c6f6eb29d1b2f911a9c11406b65a7490fc))
+* **deps:** bump pino from 7.5.1 to 7.6.2 ([05d74f0](https://github.com/Fdawgs/docsmith/commit/05d74f05ef2ed86ebedcecbdc540b72ea36eb3d4))
+* **deps:** bump pino-pretty from 7.2.0 to 7.3.0 ([3c45289](https://github.com/Fdawgs/docsmith/commit/3c452895623d63f4ec37bc5d0b80be6fcc5a83e6))
+* **deps:** bump sub-dependencies ([#628](https://github.com/Fdawgs/docsmith/issues/628)) ([3eae7e9](https://github.com/Fdawgs/docsmith/commit/3eae7e95380046843e6d6d1e097e36595a3c597b))
+
 ## [6.0.0](https://www.github.com/Fdawgs/docsmith/compare/v5.2.5...v6.0.0) (2021-12-13)
 
 
