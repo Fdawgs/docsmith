@@ -42,30 +42,19 @@ async function plugin(server, config) {
 		.register(flocOff)
 
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
-		.register(helmet, config.helmet);
-
-	await server
-		// Rate limiting and 429 response handling
-		.register(rateLimit, config.rateLimit);
-
-	server
-		// Re-usable schemas
-		.register(sharedSchemas)
+		.register(helmet, config.helmet)
 
 		// Utility functions and error handlers
 		.register(sensible, { errorHandler: false })
 
-		// Process load and 503 response handling
-		.register(underPressure, config.processLoad)
+		// Re-usable schemas
+		.register(sharedSchemas)
 
 		// Generate OpenAPI/Swagger schemas
 		.register(swagger, config.swagger)
 
-		// Import and register admin routes
-		.register(autoLoad, {
-			dir: path.joinSafe(__dirname, "routes", "admin"),
-			options: { ...config, prefix: "admin" },
-		})
+		// Process load and 503 response handling
+		.register(underPressure, config.processLoad)
 
 		// HTML and CSS parsing plugins used in routes
 		.register(embedHtmlImages, config.poppler)
@@ -76,6 +65,11 @@ async function plugin(server, config) {
 		server.register(imageToTxt, config.tesseract);
 	}
 
+	await server
+		// Rate limiting and 429 response handling
+		.register(rateLimit, config.rateLimit);
+
+	// Register routes
 	server
 		// Ensure rate limit also applies to 4xx and 5xx responses
 		.addHook("onSend", server.rateLimit())
@@ -99,6 +93,12 @@ async function plugin(server, config) {
 				res.raw.removeHeader("x-xss-protection");
 			}
 			return res;
+		})
+
+		// Import and register admin routes
+		.register(autoLoad, {
+			dir: path.joinSafe(__dirname, "routes", "admin"),
+			options: { ...config, prefix: "admin" },
 		})
 
 		/**
