@@ -25,6 +25,10 @@ describe("PDF-to-TXT route", () => {
 	let server;
 
 	beforeAll(async () => {
+		Object.assign(process.env, {
+			OCR_ENABLED: true,
+		});
+
 		config = await getConfig();
 
 		server = Fastify()
