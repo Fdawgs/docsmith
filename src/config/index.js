@@ -66,10 +66,7 @@ async function getConfig() {
 			// CORS
 			.prop("CORS_ORIGIN", S.anyOf([S.string(), S.null()]))
 			.prop("CORS_ALLOWED_HEADERS", S.anyOf([S.string(), S.null()]))
-			.prop(
-				"CORS_ALLOW_CREDENTIALS",
-				S.anyOf([S.string().enum(["true"]), S.null()])
-			)
+			.prop("CORS_ALLOW_CREDENTIALS", S.anyOf([S.boolean(), S.null()]))
 			.prop("CORS_EXPOSED_HEADERS", S.anyOf([S.string(), S.null()]))
 			.prop("CORS_MAX_AGE", S.anyOf([S.number(), S.null()]))
 
@@ -78,10 +75,7 @@ async function getConfig() {
 			.prop("HTTPS_PFX_FILE_PATH", S.anyOf([S.string(), S.null()]))
 			.prop("HTTPS_SSL_CERT_PATH", S.anyOf([S.string(), S.null()]))
 			.prop("HTTPS_SSL_KEY_PATH", S.anyOf([S.string(), S.null()]))
-			.prop(
-				"HTTPS_HTTP2_ENABLED",
-				S.anyOf([S.string().enum(["true"]), S.null()])
-			)
+			.prop("HTTPS_HTTP2_ENABLED", S.anyOf([S.boolean(), S.null()]))
 
 			// Logger
 			.prop(
@@ -153,10 +147,7 @@ async function getConfig() {
 			// OCR
 			.prop(
 				"OCR_ENABLED",
-				S.anyOf([
-					S.string().enum(["true", "false"]).default("false"),
-					S.null(),
-				])
+				S.anyOf([S.boolean().default(false), S.null()])
 			)
 			.prop(
 				"OCR_LANGUAGES",
@@ -315,7 +306,7 @@ async function getConfig() {
 			tempDirectory,
 		},
 		tesseract: {
-			enabled: String(env.OCR_ENABLED).toLowerCase().trim() === "true",
+			enabled: env.OCR_ENABLED === true,
 			languages: env.OCR_LANGUAGES || "eng",
 			// Use number of physical CPU cores available if ENV variable not specified
 			workers: env.OCR_WORKERS || physicalCpuCount,
@@ -364,7 +355,7 @@ async function getConfig() {
 		};
 	}
 
-	if (String(env.CORS_ALLOW_CREDENTIALS).toLowerCase().trim() === "true") {
+	if (env.CORS_ALLOW_CREDENTIALS === true) {
 		config.cors.credentials = true;
 	}
 	if (env.CORS_ALLOWED_HEADERS) {
@@ -413,10 +404,7 @@ async function getConfig() {
 		}
 	}
 
-	if (
-		config.fastifyInit.https &&
-		String(env.HTTPS_HTTP2_ENABLED).toLowerCase().trim() === "true"
-	) {
+	if (config.fastifyInit.https && env.HTTPS_HTTP2_ENABLED === true) {
 		config.fastifyInit.https.allowHTTP1 = true;
 		config.fastifyInit.http2 = true;
 	}

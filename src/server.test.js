@@ -318,7 +318,6 @@ describe("Server Deployment", () => {
 					'[{"service": "test", "value": "testtoken"}]',
 				OCR_ENABLED: true,
 			});
-
 			config = await getConfig();
 
 			server = Fastify();
