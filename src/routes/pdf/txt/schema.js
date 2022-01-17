@@ -160,6 +160,7 @@ const pdfToTxtPostSchema = {
 	},
 };
 
+/* istanbul ignore next */
 if (process.env?.OCR_ENABLED === "true") {
 	const baseQuerySchema = pdfToTxtPostSchema.query;
 
