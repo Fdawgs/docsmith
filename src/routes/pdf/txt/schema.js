@@ -102,12 +102,6 @@ const pdfToTxtPostSchema = {
 			)
 		)
 		.prop(
-			"ocr",
-			S.boolean().description(
-				"Use Tesseract Optical Character Recognition (OCR) engine to attempt to read text from files that are composed of images or scans of documents. <strong>Please note that this is resource intensive and slow</strong>"
-			)
-		)
-		.prop(
 			"outputEncoding",
 			S.string()
 				.default("UTF-8")
@@ -139,13 +133,7 @@ const pdfToTxtPostSchema = {
 				 * later versions that changed to 127 bytes
 				 */
 				.maxLength(127)
-		)
-		/**
-		 * Return all schema values as JSON object rather than Fluent Schema Object.
-		 * Allows for ocr param to be removed if needed in `index.js` before schema is
-		 * passed to `route()`.
-		 */
-		.valueOf(),
+		),
 	response: {
 		200: S.string(),
 		400: S.ref("responses#/definitions/badRequest").description(
@@ -171,5 +159,18 @@ const pdfToTxtPostSchema = {
 		),
 	},
 };
+
+if (process.env?.OCR_ENABLED === "true") {
+	const baseQuerySchema = pdfToTxtPostSchema.query;
+
+	pdfToTxtPostSchema.query = S.object()
+		.prop(
+			"ocr",
+			S.boolean().description(
+				"Use Tesseract Optical Character Recognition (OCR) engine to attempt to read text from files that are composed of images or scans of documents. <strong>Please note that this is resource intensive and slow</strong>"
+			)
+		)
+		.extend(baseQuerySchema);
+}
 
 module.exports = { pdfToTxtPostSchema };
