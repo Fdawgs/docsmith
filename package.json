@@ -117,7 +117,7 @@
     "pino": "^7.6.2",
     "pino-pretty": "^7.3.0",
     "raw-body": "^2.4.2",
-    "redoc": "^2.0.0-rc.59",
+    "redoc": "^2.0.0-rc.61",
     "secure-json-parse": "^2.4.0",
     "tesseract.js": "^2.1.5",
     "under-pressure": "^5.8.0",
