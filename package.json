@@ -86,7 +86,7 @@
     "auto-parse": "^1.8.0",
     "cssesc": "^3.0.0",
     "cssom": "^0.5.0",
-    "dotenv": "^10.0.0",
+    "dotenv": "^14.3.2",
     "env-schema": "^3.5.1",
     "fastify": "^3.25.3",
     "fastify-accepts": "^2.1.0",
