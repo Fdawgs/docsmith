@@ -80,6 +80,8 @@ jobs:
                   node-version: ${{ matrix.node }}
             - name: Install
               run: npm ci --ignore-scripts
+            - name: Install Playwright
+              run: npx playwright install --with-deps
             - name: Run macOS Tests
               if: matrix.os == 'macos-latest'
               env:
