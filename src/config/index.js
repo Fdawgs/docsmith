@@ -276,11 +276,21 @@ async function getConfig() {
 					"form-action": ["'self'"],
 					"upgrade-insecure-requests": [],
 					"block-all-mixed-content": [],
+					"script-src": null,
+					"script-src-attr": null,
+					"style-src": null,
+					"font-src": null,
 				},
 			},
+			crossOriginEmbedderPolicy: false,
+			crossOriginOpenerPolicy: false,
+			crossOriginResourcePolicy: false,
 			hsts: {
 				maxAge: 31536000,
 			},
+			// Only supported by Chrome at time of writing
+			// TODO: enable when more browsers support it
+			originAgentCluster: false,
 		},
 		htmltidy: {
 			/**
