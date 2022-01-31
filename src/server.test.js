@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable security-node/detect-crlf */
 const { chromium, firefox } = require("playwright");
 const fs = require("fs").promises;
 const Fastify = require("fastify");
@@ -577,20 +579,31 @@ describe("Server Deployment", () => {
 				browser = await browserType.launch();
 				page = await browser.newPage();
 
-				await page.goto("http://localhost:8204/docs");
-				expect(await page.title()).toBe("Docsmith | Documentation");
 				/**
-				 * Checks redoc has not rendered an error component
-				 * https://github.com/Redocly/redoc/blob/master/src/components/ErrorBoundary.tsx
+				 * Wrap test in try...catch as PlayWright will throw promise rejection exceptions,
+				 * and then not shut down browsers, meaning Jest will hang as external resources
+				 * are still being held on to or timers are still pending
 				 */
-				const heading = page.locator("h1 >> nth=0");
-				await heading.waitFor();
-				expect(await heading.textContent()).not.toBe(
-					"Something Went Wrong..."
-				);
+				try {
+					await page.goto("http://localhost:8204/docs");
+					expect(await page.title()).toBe("Docsmith | Documentation");
+					/**
+					 * Checks redoc has not rendered an error component
+					 * https://github.com/Redocly/redoc/blob/master/src/components/ErrorBoundary.tsx
+					 */
+					const heading = page.locator("h1 >> nth=0");
+					await heading.waitFor();
+					expect(await heading.textContent()).not.toBe(
+						"Something Went Wrong..."
+					);
 
-				await page.close();
-				await browser.close();
+					await page.close();
+					await browser.close();
+				} catch (err) {
+					console.log(err);
+					await page.close();
+					await browser.close();
+				}
 			});
 		});
 	});
