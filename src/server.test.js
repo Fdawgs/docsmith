@@ -1,3 +1,4 @@
+const { chromium, firefox } = require("playwright");
 const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
@@ -534,6 +535,62 @@ describe("Server Deployment", () => {
 				});
 				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
+			});
+		});
+	});
+
+	describe("API Documentation Frontend", () => {
+		let config;
+		let server;
+
+		let browser;
+		let page;
+
+		beforeAll(async () => {
+			Object.assign(process.env, {
+				SERVICE_HOST: "localhost",
+				SERVICE_PORT: "8204",
+				HTTPS_PFX_PASSPHRASE: "",
+				HTTPS_PFX_FILE_PATH: "",
+				HTTPS_SSL_CERT_PATH: "",
+				HTTPS_SSL_KEY_PATH: "",
+				HTTPS_HTTP2_ENABLED: "",
+				OCR_ENABLED: "",
+			});
+			config = await getConfig();
+
+			// Turn off logging for test runs
+			delete config.fastifyInit.logger;
+			server = Fastify(config.fastifyInit);
+			server.register(startServer, config);
+
+			await server.listen(config.fastify);
+		});
+
+		afterAll(async () => {
+			await server.close();
+		});
+
+		const browsers = [chromium, firefox];
+		browsers.forEach((browserType) => {
+			test(`Should render docs page without error components - ${browserType.name()}`, async () => {
+				browser = await browserType.launch();
+				page = await browser.newPage();
+
+				await page.goto("http://localhost:8204/docs");
+				expect(await page.title()).toBe("Docsmith | Documentation");
+				/**
+				 * Checks redoc has not rendered an error component
+				 * https://github.com/Redocly/redoc/blob/master/src/components/ErrorBoundary.tsx
+				 */
+				const heading = page.locator("h1 >> nth=0");
+				await heading.waitFor();
+				expect(await heading.textContent()).not.toBe(
+					"Something Went Wrong..."
+				);
+
+				await page.close();
+				await browser.close();
 			});
 		});
 	});
