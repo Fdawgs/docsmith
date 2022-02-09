@@ -216,6 +216,7 @@ async function getConfig() {
 			maxRssBytes: env.PROC_LOAD_MAX_RSS_BYTES || 0,
 		},
 		rateLimit: {
+			continueExceeding: true,
 			max: env.RATE_LIMIT_MAX_CONNECTIONS_PER_MIN || 1000,
 			timeWindow: 60000,
 		},
