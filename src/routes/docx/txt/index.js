@@ -54,7 +54,7 @@ async function route(server, options) {
 
 	// Register plugins
 	server
-		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+		// Enable CORS if options passed
 		.register(cors, {
 			...options.cors,
 			methods: ["POST"],
