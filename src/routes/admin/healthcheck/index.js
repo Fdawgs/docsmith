@@ -30,7 +30,7 @@ async function route(server, options) {
 		// Set response headers to disable client-side caching
 		.register(disableCache)
 
-		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+		// Enable CORS if options passed
 		.register(cors, {
 			...options.cors,
 			methods: ["GET"],
