@@ -157,7 +157,7 @@ jobs:
     save-pr-number:
         name: Save PR Number
         if: >
-            github.event.pull_request.draft == false && 
+            github.event.pull_request.draft == false &&
             github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         steps:
