@@ -67,7 +67,7 @@
     "autocannon": "^7.7.0",
     "eslint": "^8.9.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-jsdoc": "^37.9.4",
@@ -80,7 +80,7 @@
     "jest": "^27.4.7",
     "license-checker": "^25.0.1",
     "nodemon": "^2.0.15",
-    "playwright": "^1.18.1",
+    "playwright": "^1.19.2",
     "prettier": "2.5.1"
   },
   "dependencies": {
@@ -94,7 +94,7 @@
     "fastify-autoload": "^3.11.0",
     "fastify-bearer-auth": "^6.2.0",
     "fastify-compress": "^4.0.1",
-    "fastify-cors": "^6.0.2",
+    "fastify-cors": "^6.0.3",
     "fastify-disablecache": "^2.0.5",
     "fastify-floc-off": "^1.0.5",
     "fastify-helmet": "7.0.1",
