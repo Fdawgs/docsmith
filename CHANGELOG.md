@@ -2,6 +2,60 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.0.3](https://github.com/Fdawgs/docsmith/compare/v6.0.2...v6.0.3) (2022-02-28)
+
+
+### Bug Fixes
+
+* **config:** renew rate-limit if user attempts req in limit time window ([#665](https://github.com/Fdawgs/docsmith/issues/665)) ([d224384](https://github.com/Fdawgs/docsmith/commit/d2243848b63373491a641bd568718e759795e7fa))
+* **public/docs:** add x-ua-compatible meta tag ([25f9157](https://github.com/Fdawgs/docsmith/commit/25f91576d8e14f18efa5ae9dfd0a186a9d154804))
+
+
+### Improvements
+
+* **config:** call `Error` as constructor, not function ([6629960](https://github.com/Fdawgs/docsmith/commit/6629960c53bbc01f305406f6ca82bff3fd5a71e8))
+* **public:** remove unused web app manifest and icons ([050f1e7](https://github.com/Fdawgs/docsmith/commit/050f1e7c3463ea67d9d67389e29b7fc93ff19505))
+
+
+### Miscellaneous
+
+* **plugins/tidy-css:** update font-family inline comment ([091ca80](https://github.com/Fdawgs/docsmith/commit/091ca803422c77eae35570aba8ac95b1573e2b0f))
+* **public:** add more apple-touch-icon sizes ([5bb8e73](https://github.com/Fdawgs/docsmith/commit/5bb8e73acdcbabd2b4e5e2ebdeea62a7c6120118))
+* **public:** rename mask-icon ([41ff06a](https://github.com/Fdawgs/docsmith/commit/41ff06a9ff7f8a4fc2240706522f269846c0ebd6))
+* remove trailing whitespace ([101bfc8](https://github.com/Fdawgs/docsmith/commit/101bfc8af7be92ac61d2a1b92799e5d1255a500f))
+* **routes:** update cors inline comment ([6dce4e6](https://github.com/Fdawgs/docsmith/commit/6dce4e6d40153a9b39a3582666a08245335e6107))
+
+
+### Dependencies
+
+* **dependabot:** major tags no longer need ignore support ([43f40e1](https://github.com/Fdawgs/docsmith/commit/43f40e10afa4f65e8bde0f37a1ea3bf10cfb7551))
+* **deps-dev:** bump @commitlint/cli from 16.1.0 to 16.2.1 ([18a2934](https://github.com/Fdawgs/docsmith/commit/18a293465309b52994910d88418c98ca8a16fc47))
+* **deps-dev:** bump @commitlint/config-conventional ([657a716](https://github.com/Fdawgs/docsmith/commit/657a7162ae061d377c59bd80c63951ad09a0f5f1))
+* **deps-dev:** bump autocannon from 7.6.0 to 7.7.0 ([9815e7c](https://github.com/Fdawgs/docsmith/commit/9815e7cecdfc3cc9ab47b3df137593d00ca57658))
+* **deps-dev:** bump eslint from 8.8.0 to 8.9.0 ([23cc768](https://github.com/Fdawgs/docsmith/commit/23cc768c473056fc767d80f412cd1b7f261f1150))
+* **deps-dev:** bump eslint-config-prettier from 8.3.0 to 8.4.0 ([4916581](https://github.com/Fdawgs/docsmith/commit/49165810b5d8cbcf7654be80b2479144a27e25d4))
+* **deps-dev:** bump eslint-plugin-jest from 26.0.0 to 26.1.1 ([34c62e4](https://github.com/Fdawgs/docsmith/commit/34c62e443d6b947ddf1fb509db5592372d670ec3))
+* **deps-dev:** bump eslint-plugin-jsdoc from 37.7.0 to 37.9.4 ([9b0b0f8](https://github.com/Fdawgs/docsmith/commit/9b0b0f8a3f46a54eb4367a2e0583b60a7ae16ae9))
+* **deps-dev:** bump jest from 27.4.7 to 27.5.1 ([ff6560e](https://github.com/Fdawgs/docsmith/commit/ff6560e66a4858ff7ec9fc00121a4ac24c582eab))
+* **deps-dev:** bump playwright from 1.18.1 to 1.19.2 ([ea632b6](https://github.com/Fdawgs/docsmith/commit/ea632b614a79e7c0b953bffa8d5bfb0e8c5850e5))
+* **deps:** bump actions/github-script from 5 to 6 ([3a54e55](https://github.com/Fdawgs/docsmith/commit/3a54e55f9af03061c06e60b454b8b42d0fd90d79))
+* **deps:** bump actions/setup-node from 2 to 3 ([1e16c31](https://github.com/Fdawgs/docsmith/commit/1e16c317e9de76f7e35db4100110dc661e3c5edc))
+* **deps:** bump dotenv from 15.0.0 to 16.0.0 ([6732991](https://github.com/Fdawgs/docsmith/commit/6732991b6c0712ad6e5a0877cf5eff01c81670de))
+* **deps:** bump fastify from 3.27.0 to 3.27.2 ([2789508](https://github.com/Fdawgs/docsmith/commit/27895081e44b128eaf3e7746ab111ab5468b2826))
+* **deps:** bump fastify-autoload from 3.10.0 to 3.11.0 ([49c484d](https://github.com/Fdawgs/docsmith/commit/49c484dac2fe3791bbe15ad0bfa4831f2e7be0b6))
+* **deps:** bump fastify-bearer-auth from 6.1.0 to 6.2.0 ([c77d3f9](https://github.com/Fdawgs/docsmith/commit/c77d3f92c1f19395a0c23737cedfae30548e51c3))
+* **deps:** bump fastify-cors from 6.0.2 to 6.0.3 ([110a4e9](https://github.com/Fdawgs/docsmith/commit/110a4e9b3b3994b126a1742c16c59c3c163ce46a))
+* **deps:** bump fastify-disablecache from 2.0.5 to 2.0.6 ([b6f717c](https://github.com/Fdawgs/docsmith/commit/b6f717cd9edeeccb842b6335d387f5dccf38e48d))
+* **deps:** bump fastify-floc-off from 1.0.4 to 1.0.5 ([eecb694](https://github.com/Fdawgs/docsmith/commit/eecb694b1ccec9b91d583bf3db5ad47bed5eb51a))
+* **deps:** bump fastify-rate-limit from 5.7.0 to 5.7.2 ([3e5d397](https://github.com/Fdawgs/docsmith/commit/3e5d3971bcd838bcfa27c85e2747163ec95f4081))
+* **deps:** bump node-poppler from 5.1.2 to 5.1.3 ([9501b88](https://github.com/Fdawgs/docsmith/commit/9501b88d7e32f466820a82becdc3cc133cea3d9c))
+* **deps:** bump node-unrtf from 2.0.6 to 2.0.7 ([24fe07d](https://github.com/Fdawgs/docsmith/commit/24fe07d64690629bae8447d19b6c32059d662ebb))
+* **deps:** bump pino from 7.6.5 to 7.8.0 ([c1ab1d1](https://github.com/Fdawgs/docsmith/commit/c1ab1d12ef7661faf51d297a55c7758be0035621))
+* **deps:** bump prismjs from 1.26.0 to 1.27.0 ([bbff55b](https://github.com/Fdawgs/docsmith/commit/bbff55b2e676ee1ad9e074d81f8b3ef62da61a01))
+* **deps:** bump raw-body from 2.4.2 to 2.5.0 ([024c136](https://github.com/Fdawgs/docsmith/commit/024c1367c55753b18ad27e36b7242fbdc37945e4))
+* **deps:** bump redoc from 2.0.0-rc.63 to 2.0.0-rc.64 ([28054ba](https://github.com/Fdawgs/docsmith/commit/28054bac595c01975158cc2d6a5608f7dadb08e6))
+* **deps:** bump sub-dependencies ([#698](https://github.com/Fdawgs/docsmith/issues/698)) ([a4997eb](https://github.com/Fdawgs/docsmith/commit/a4997ebe7ec46206ee1625f344a250153a643d9e))
+
 ### [6.0.2](https://github.com/Fdawgs/docsmith/compare/v6.0.1...v6.0.2) (2022-02-01)
 
 
