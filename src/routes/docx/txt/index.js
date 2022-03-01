@@ -19,17 +19,6 @@ async function route(server, options) {
 		docxToTxtPostSchema.security = [{ bearerToken: [] }];
 	}
 
-	server.addHook("preValidation", async (req, res) => {
-		if (
-			// Catch unsupported Accept header media types
-			!docxToTxtPostSchema.produces.includes(
-				req.accepts().type(docxToTxtPostSchema.produces)
-			)
-		) {
-			throw res.notAcceptable();
-		}
-	});
-
 	server.addContentTypeParser(
 		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 		{ parseAs: "buffer" },
@@ -65,7 +54,17 @@ async function route(server, options) {
 		method: "POST",
 		url: "/",
 		schema: docxToTxtPostSchema,
-		handler(req, res) {
+		preValidation: async (req, res) => {
+			if (
+				// Catch unsupported Accept header media types
+				!docxToTxtPostSchema.produces.includes(
+					req.accepts().type(docxToTxtPostSchema.produces)
+				)
+			) {
+				throw res.notAcceptable();
+			}
+		},
+		handler: (req, res) => {
 			res.send(req.conversionResults.body);
 		},
 	});

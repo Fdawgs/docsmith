@@ -20,17 +20,6 @@ async function route(server, options) {
 		rtfToHtmlPostSchema.security = [{ bearerToken: [] }];
 	}
 
-	server.addHook("preValidation", async (req, res) => {
-		if (
-			// Catch unsupported Accept header media types
-			!rtfToHtmlPostSchema.produces.includes(
-				req.accepts().type(rtfToHtmlPostSchema.produces)
-			)
-		) {
-			throw res.notAcceptable();
-		}
-	});
-
 	server.addContentTypeParser(
 		"application/rtf",
 		{ parseAs: "buffer" },
@@ -65,7 +54,17 @@ async function route(server, options) {
 		method: "POST",
 		url: "/",
 		schema: rtfToHtmlPostSchema,
-		async handler(req, res) {
+		preValidation: async (req, res) => {
+			if (
+				// Catch unsupported Accept header media types
+				!rtfToHtmlPostSchema.produces.includes(
+					req.accepts().type(rtfToHtmlPostSchema.produces)
+				)
+			) {
+				throw res.notAcceptable();
+			}
+		},
+		handler: async (req, res) => {
 			const result = server.tidyCss(
 				await server.tidyHtml(
 					await server.embedHtmlImages(req.conversionResults.body),

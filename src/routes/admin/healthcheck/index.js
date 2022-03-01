@@ -14,17 +14,6 @@ const { healthcheckGetSchema } = require("./schema");
  * @param {object} options.cors - CORS settings.
  */
 async function route(server, options) {
-	server.addHook("preValidation", async (req, res) => {
-		if (
-			// Catch unsupported Accept header media types
-			!healthcheckGetSchema.produces.includes(
-				req.accepts().type(healthcheckGetSchema.produces)
-			)
-		) {
-			throw res.notAcceptable();
-		}
-	});
-
 	// Register plugins
 	server
 		// Set response headers to disable client-side caching
@@ -40,7 +29,17 @@ async function route(server, options) {
 		method: "GET",
 		url: "/",
 		schema: healthcheckGetSchema,
-		handler(req, res) {
+		preValidation: async (req, res) => {
+			if (
+				// Catch unsupported Accept header media types
+				!healthcheckGetSchema.produces.includes(
+					req.accepts().type(healthcheckGetSchema.produces)
+				)
+			) {
+				throw res.notAcceptable();
+			}
+		},
+		handler: (req, res) => {
 			res.send("ok");
 		},
 	});

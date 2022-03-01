@@ -20,17 +20,6 @@ async function route(server, options) {
 		pdfToTxtPostSchema.security = [{ bearerToken: [] }];
 	}
 
-	server.addHook("preValidation", async (req, res) => {
-		if (
-			// Catch unsupported Accept header media types
-			!pdfToTxtPostSchema.produces.includes(
-				req.accepts().type(pdfToTxtPostSchema.produces)
-			)
-		) {
-			throw res.notAcceptable();
-		}
-	});
-
 	server.addContentTypeParser(
 		"application/pdf",
 		{ parseAs: "buffer" },
@@ -65,7 +54,17 @@ async function route(server, options) {
 		method: "POST",
 		url: "/",
 		schema: pdfToTxtPostSchema,
-		async handler(req, res) {
+		preValidation: async (req, res) => {
+			if (
+				// Catch unsupported Accept header media types
+				!pdfToTxtPostSchema.produces.includes(
+					req.accepts().type(pdfToTxtPostSchema.produces)
+				)
+			) {
+				throw res.notAcceptable();
+			}
+		},
+		handler: async (req, res) => {
 			let result;
 			if (
 				req.query.boundingBoxXhtml ||
