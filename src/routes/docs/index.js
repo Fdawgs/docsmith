@@ -1,3 +1,8 @@
+const path = require("upath");
+
+// Import plugins
+const staticPlugin = require("fastify-static");
+
 const { docsGetSchema } = require("./schema");
 
 /**
@@ -17,6 +22,27 @@ async function route(server) {
 		}
 	});
 
+	// Register plugins
+	server
+		// Allow for static files to be served from this dir via `sendFile`
+		.register(staticPlugin, { root: __dirname, serve: false })
+
+		// Register redoc module to allow for js to be used in docs.html
+		.register(staticPlugin, {
+			root: path.joinSafe(
+				__dirname,
+				"..",
+				"..",
+				"..",
+				"node_modules",
+				"redoc",
+				"bundles"
+			),
+			prefix: "/redoc/",
+			decorateReply: false,
+			maxAge: "1 day",
+		});
+
 	server.route({
 		method: "GET",
 		url: "/",
@@ -24,7 +50,7 @@ async function route(server) {
 		handler(req, res) {
 			res.header("cache-control", "private, max-age=180");
 			res.header("content-type", "text/html; charset=utf-8");
-			res.sendFile("docs.html");
+			res.sendFile("index.html");
 		},
 	});
 }

@@ -158,20 +158,6 @@ async function plugin(server, config) {
 					immutable: true,
 					maxAge: "365 days",
 				})
-
-				// Register redoc module to allow for js to be used in ./src/public/docs.html
-				.register(staticPlugin, {
-					root: path.joinSafe(
-						__dirname,
-						"..",
-						"node_modules",
-						"redoc",
-						"bundles"
-					),
-					prefix: "/redoc/",
-					decorateReply: false,
-					maxAge: "1 day",
-				})
 				.register(autoLoad, {
 					dir: path.joinSafe(__dirname, "routes", "docs"),
 					options: { ...config, prefix: "docs" },
