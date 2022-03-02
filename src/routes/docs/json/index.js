@@ -11,17 +11,6 @@ const { docsJsonGetSchema } = require("./schema");
  * @param {object} options.cors - CORS settings.
  */
 async function route(server, options) {
-	server.addHook("preValidation", async (req, res) => {
-		if (
-			// Catch unsupported Accept header media types
-			!docsJsonGetSchema.produces.includes(
-				req.accepts().type(docsJsonGetSchema.produces)
-			)
-		) {
-			throw res.notAcceptable();
-		}
-	});
-
 	// Register plugins
 	server
 		// Enable CORS if options passed
@@ -34,7 +23,17 @@ async function route(server, options) {
 		method: "GET",
 		url: "/",
 		schema: docsJsonGetSchema,
-		handler(req, res) {
+		preValidation: async (req, res) => {
+			if (
+				// Catch unsupported Accept header media types
+				!docsJsonGetSchema.produces.includes(
+					req.accepts().type(docsJsonGetSchema.produces)
+				)
+			) {
+				throw res.notAcceptable();
+			}
+		},
+		handler: (req, res) => {
 			res.header("cache-control", "public, max-age=3600");
 			res.send(server.swagger());
 		},

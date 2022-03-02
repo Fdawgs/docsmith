@@ -578,6 +578,7 @@ describe("Server Deployment", () => {
 			await browser.close();
 		});
 
+		// Webkit not tested as it is flakey in context of Playwright
 		const browsers = [chromium, firefox];
 		browsers.forEach((browserType) => {
 			test(`Should render docs page without error components - ${browserType.name()}`, async () => {

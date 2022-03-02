@@ -2,8 +2,6 @@ const accepts = require("fastify-accepts");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("fastify-sensible");
-const staticPlugin = require("fastify-static");
-const path = require("upath");
 const route = require(".");
 const getConfig = require("../../config");
 const sharedSchemas = require("../../plugins/shared-schemas");
@@ -20,20 +18,6 @@ describe("Docs Route", () => {
 			server
 				.register(accepts)
 				.register(sensible)
-				.register(staticPlugin, {
-					root: path.joinSafe(__dirname, "../..", "public"),
-				})
-				.register(staticPlugin, {
-					root: path.joinSafe(
-						__dirname,
-						"../../..",
-						"node_modules",
-						"redoc",
-						"bundles"
-					),
-					prefix: "/redoc/",
-					decorateReply: false,
-				})
 				.register(sharedSchemas)
 				.register(route, config);
 
