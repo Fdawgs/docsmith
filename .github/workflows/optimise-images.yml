@@ -1,0 +1,49 @@
+name: Optimise Images
+on:
+    pull_request:
+        paths:
+            - "**.jpg"
+            - "**.jpeg"
+            - "**.png"
+            - "**.webp"
+    push:
+        branches:
+            - master
+        paths:
+            - "**.jpg"
+            - "**.jpeg"
+            - "**.png"
+            - "**.webp"
+    workflow_dispatch:
+jobs:
+    build:
+        name: Optimise Images
+        runs-on: ubuntu-latest
+        # Only run on master repo and PRs that match the master repo
+        if: >
+            github.repository == 'Fdawgs/docsmith' &&
+            (github.event_name != 'pull_request' ||
+             github.event.pull_request.head.repo.full_name == github.repository)
+        steps:
+            - uses: actions/checkout@v3
+            - name: Compress Images
+              id: calibre
+              uses: calibreapp/image-actions@1.1.0
+              with:
+                  githubToken: ${{ secrets.GITHUB_TOKEN }}
+                  jpegQuality: "100"
+                  pngQuality: "100"
+                  webpQuality: "100"
+                  # For non-Pull Requests, run in compressOnly mode and PR after.
+                  compressOnly: ${{ github.event_name != 'pull_request' }}
+            - name: Create Pull Request
+              # If it's not a Pull Request then commit any changes as a new PR
+              if: >
+                  github.event_name != 'pull_request' &&
+                  steps.calibre.outputs.markdown != ''
+              uses: peter-evans/create-pull-request@v3
+              with:
+                  title: "chore: auto-compress images"
+                  branch-suffix: timestamp
+                  commit-message: "chore: auto-compress images"
+                  body: ${{ steps.calibre.outputs.markdown }}
