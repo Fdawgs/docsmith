@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.0.4](https://github.com/Fdawgs/docsmith/compare/v6.0.3...v6.0.4) (2022-03-08)
+
+
+### Improvements
+
+* **routes/docs:** move html and redoc out of root context ([7a7220b](https://github.com/Fdawgs/docsmith/commit/7a7220bba7ff01562d8ad5bd929728ea7c65db41))
+* **routes:** add `preValidation` hooks directly into routes ([4af0a17](https://github.com/Fdawgs/docsmith/commit/4af0a17b5c1061b56cb627f2b6174c2f6dc1086d))
+
+
+### Continuous Integration
+
+* add image optimisation workflow ([#706](https://github.com/Fdawgs/docsmith/issues/706)) ([484c2e5](https://github.com/Fdawgs/docsmith/commit/484c2e565620ad60eef14ddc458d230ed9d7362b))
+* only install chromium and firefox with playwright ([54d2810](https://github.com/Fdawgs/docsmith/commit/54d281059578ba69b922b31c00ed61283e0ae72d))
+
+
+### Miscellaneous
+
+* **.env.template:** double-quote example strings ([#703](https://github.com/Fdawgs/docsmith/issues/703)) ([0bc305a](https://github.com/Fdawgs/docsmith/commit/0bc305a7784b7f18ec4489447e638a833f465a80))
+* auto-compress images ([#707](https://github.com/Fdawgs/docsmith/issues/707)) ([9659e92](https://github.com/Fdawgs/docsmith/commit/9659e925e5daf2ed7ff9e028241d6c9788bf4ddb))
+
+
+### Documentation
+
+* **readme:** add usage section ([#708](https://github.com/Fdawgs/docsmith/issues/708)) ([998c757](https://github.com/Fdawgs/docsmith/commit/998c75719852d76eebca8b1296cd18bfdd164da1))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-config-prettier from 8.4.0 to 8.5.0 ([#716](https://github.com/Fdawgs/docsmith/issues/716)) ([0c4a493](https://github.com/Fdawgs/docsmith/commit/0c4a4931dc841a44b19f2a298d76a9104b10bc07))
+* **deps-dev:** bump eslint-plugin-jsdoc from 37.9.4 to 37.9.7 ([#710](https://github.com/Fdawgs/docsmith/issues/710)) ([f13dbff](https://github.com/Fdawgs/docsmith/commit/f13dbfff6fec1f4c99cd7a018751876125ac925e))
+* **deps:** bump actions/checkout from 2 to 3 ([#709](https://github.com/Fdawgs/docsmith/issues/709)) ([26abbca](https://github.com/Fdawgs/docsmith/commit/26abbcadb404fee01c51e8917ee5b185816206f6))
+* **deps:** bump fastify from 3.27.2 to 3.27.3 ([#712](https://github.com/Fdawgs/docsmith/issues/712)) ([39635c1](https://github.com/Fdawgs/docsmith/commit/39635c116f907e2c36257af444ca4360a43b8766))
+* **deps:** bump fluent-json-schema from 3.0.1 to 3.1.0 ([#713](https://github.com/Fdawgs/docsmith/issues/713)) ([4ae9f0f](https://github.com/Fdawgs/docsmith/commit/4ae9f0f2a8f7e52fd0e42ee8078feca33eccf2df))
+* **deps:** bump pino-pretty from 7.5.1 to 7.5.3 ([#715](https://github.com/Fdawgs/docsmith/issues/715)) ([b3c1c8f](https://github.com/Fdawgs/docsmith/commit/b3c1c8f374265d35e1e4928ed0636b466f5b91fc))
+* **deps:** bump raw-body from 2.5.0 to 2.5.1 ([#700](https://github.com/Fdawgs/docsmith/issues/700)) ([ce7f609](https://github.com/Fdawgs/docsmith/commit/ce7f609468e61d5ca62c0eb1e5daade10a77decd))
+
 ### [6.0.3](https://github.com/Fdawgs/docsmith/compare/v6.0.2...v6.0.3) (2022-02-28)
 
 
