@@ -89,7 +89,7 @@
     "cssom": "^0.5.0",
     "dotenv": "^16.0.0",
     "env-schema": "^3.5.2",
-    "fastify": "^3.27.2",
+    "fastify": "^3.27.3",
     "fastify-accepts": "^2.1.0",
     "fastify-autoload": "^3.11.0",
     "fastify-bearer-auth": "^6.2.0",
