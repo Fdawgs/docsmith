@@ -33,7 +33,7 @@ jobs:
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
               with:
                   cache: npm
@@ -56,7 +56,7 @@ jobs:
             github.actor != 'dependabot[bot]'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
               with:
                   fetch-depth: 0
             - uses: wagoid/commitlint-github-action@v4
@@ -72,7 +72,7 @@ jobs:
                 os: [macos-latest, ubuntu-latest, windows-latest]
         runs-on: ${{ matrix.os }}
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Use Node.js ${{ matrix.node }} on ${{ matrix.os }}
               uses: actions/setup-node@v3
               with:
@@ -121,7 +121,7 @@ jobs:
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - uses: hadolint/hadolint-action@v1.6.0
               with:
                   dockerfile: Dockerfile
@@ -133,7 +133,7 @@ jobs:
         needs: lint-docker-file
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Build and Start App
               run: |
                   cp .env.template .env
@@ -161,7 +161,7 @@ jobs:
             github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Save PR Number
               run: |
                   mkdir -p ./pr
