@@ -116,7 +116,7 @@
     "node-unrtf": "^2.0.7",
     "physical-cpu-count": "^2.0.0",
     "pino": "^7.8.0",
-    "pino-pretty": "^7.5.1",
+    "pino-pretty": "^7.5.3",
     "raw-body": "^2.5.1",
     "redoc": "^2.0.0-rc.64",
     "secure-json-parse": "^2.4.0",
