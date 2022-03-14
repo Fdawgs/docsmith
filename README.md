@@ -34,7 +34,7 @@ Docsmith enables a data processor to use a robust, GDPR-compliant, open-source d
 
 These are only required if running the API outside of Docker:
 
--   [Node.js](https://nodejs.org/en/) ^14.17.0 || ^15.6.0 || >=16.0.0
+-   [Node.js](https://nodejs.org/en/) ^14.17.0, ^15.6.0, or >=16.0.0
 -   Linux only: `poppler-data` >=0.4.9
 -   Linux only: `poppler-utils` >=20.12.0
 -   Linux and macOS only: `unrtf` >=0.19.3
@@ -62,7 +62,7 @@ Perform the following steps before deployment:
 1. Run `npm install --ignore-scripts --production` to install dependencies
 2. Run `npm start`
 
-The service should be up and running on the port set in the config. You should see the following output in stdout or the log file specified using the `LOG_ROTATION_FILENAME` environment variable:
+The service should be up and running on the port set in the config. You should see output similar to the following in stdout or in the log file specified using the `LOG_ROTATION_FILENAME` environment variable:
 
 ```json
 {
@@ -107,7 +107,7 @@ API documentation can be found at `/docs`:
 
 Contributions are welcome, and any help is greatly appreciated!
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to get started.
+See [the contributing guide](./CONTRIBUTING.md) for details on how to get started.
 Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when contributing.
 
 ## License
