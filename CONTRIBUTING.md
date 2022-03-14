@@ -15,14 +15,14 @@ Other processes and specifications that are in use in this repository are:
 
 ## Getting Started
 
-As noted in the prerequisites section of the readme file, this project requires that you have Node.js installed.
+Ensure you have all prerequisites installed (including any optional ones), as noted in the [prerequisites section of the readme file](./README.md#prerequisites).
 
-With those in place, you can fork the repository, clone it, and then run `npm install` to install all development dependencies.
-Make a copy of `.env.template` in the root directory and rename it to `.env`, configuring the environment variables as required.
+With those in place, you can fork the repository, clone it, and then run `npm install` to install all dependencies.
+Make a copy of `.env.template` in the root directory and rename it to `.env`, configuring the environment variables in the file as required.
 
 ### Development Workflow
 
-After cloning and installing all the dependencies, there are several commands available for local development:
+After cloning the repository and installing all the dependencies, there are several commands available for local development:
 
 -   `npm run lint` - Lints everything in src directory
 -   `npm run jest` - Runs Jest over all tests in src directory
@@ -47,7 +47,7 @@ Titles and headings should adhere to the [Associated Press (AP)](https://www.aps
 
 ## Pull Request Checklist
 
-Prior to submitting a pull request back to the main repository, please make sure you have completed the following steps:
+Before submitting a pull request back to the main repository, please make sure you have completed the following steps:
 
 1. Pull request base branch is set to `master`. All pull requests should be forked from and merged back to `master`
 2. Run `npm test` to check the code adheres to the defined ESLint style and that it passes the Jest tests
