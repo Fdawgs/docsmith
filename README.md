@@ -34,7 +34,7 @@ Docsmith enables a data processor to use a robust, GDPR-compliant, open-source d
 
 These are only required if running the API outside of Docker:
 
--   [Node.js](https://nodejs.org/en/) ^14.17.0 || ^15.6.0 || >=16.0.0
+-   [Node.js](https://nodejs.org/en/) ^14.17.0, ^15.6.0, or >=16.0.0
 -   Linux only: `poppler-data` >=0.4.9
 -   Linux only: `poppler-utils` >=20.12.0
 -   Linux and macOS only: `unrtf` >=0.19.3
