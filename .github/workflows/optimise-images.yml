@@ -1,4 +1,8 @@
 name: Optimise Images
+
+# **What it does**: Automatically compress and optimise images.
+# **Why we have it**: Reduces bandwidth needs of app and repo.
+
 on:
     pull_request:
         paths:
@@ -15,6 +19,7 @@ on:
             - "**.png"
             - "**.webp"
     workflow_dispatch:
+
 jobs:
     build:
         name: Optimise Images
@@ -25,8 +30,10 @@ jobs:
             (github.event_name != 'pull_request' ||
              github.event.pull_request.head.repo.full_name == github.repository)
         steps:
-            - uses: actions/checkout@v3
-            - name: Compress Images
+            - name: Check out repo
+              uses: actions/checkout@v3
+
+            - name: Compress images
               id: calibre
               uses: calibreapp/image-actions@1.1.0
               with:
@@ -34,10 +41,11 @@ jobs:
                   jpegQuality: "100"
                   pngQuality: "100"
                   webpQuality: "100"
-                  # For non-Pull Requests, run in compressOnly mode and PR after.
+                  # For non-Pull Requests, run in compressOnly mode and PR after
                   compressOnly: ${{ github.event_name != 'pull_request' }}
-            - name: Create Pull Request
-              # If it's not a Pull Request then commit any changes as a new PR
+
+            - name: Create pull request
+              # If it is not a Pull Request then commit any changes as a new PR
               if: >
                   github.event_name != 'pull_request' &&
                   steps.calibre.outputs.markdown != ''

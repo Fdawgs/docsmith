@@ -34,6 +34,8 @@ describe("Embed-HTML-Images Plugin", () => {
 		});
 		server.register(plugin, altConfig.poppler);
 
+		await server.ready();
+
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -60,6 +62,8 @@ describe("Embed-HTML-Images Plugin", () => {
 			res.send(await server.embedHtmlImages(req.body));
 		});
 		server.register(plugin, config.poppler);
+
+		await server.ready();
 
 		const response = await server.inject({
 			method: "POST",

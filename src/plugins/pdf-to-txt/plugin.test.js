@@ -32,6 +32,8 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 			res.header("content-type", "application/json");
 			res.send(req.conversionResults);
 		});
+
+		await server.ready();
 	});
 
 	afterAll(async () => {

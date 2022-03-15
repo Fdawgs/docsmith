@@ -1,127 +1,127 @@
 {
-  "name": "docsmith",
-  "version": "6.0.4",
-  "description": "RESTful API for converting clinical documents and files",
-  "main": "src/app.js",
-  "repository": "git+https://github.com/Fdawgs/docsmith.git",
-  "homepage": "https://github.com/Fdawgs/docsmith",
-  "bugs": {
-    "url": "https://github.com/Fdawgs/docsmith/issues"
-  },
-  "license": "MIT",
-  "author": "Frazer Smith <frazer.dev@outlook.com>",
-  "engines": {
-    "node": "^14.17.0 || ^15.6.0 || >=16.0.0"
-  },
-  "scripts": {
-    "benchmark:html": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:8204/pdf/html?lastPageToConvert=1\"",
-    "benchmark:txt": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:8204/pdf/txt?lastPageToConvert=1\"",
-    "jest": "jest --detectOpenHandles --runInBand",
-    "jest:coverage": "jest --coverage --runInBand",
-    "lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
-    "lint:licenses": "license-checker --direct --excludePackages=\"caniuse-lite@1.0.30001312;duck@0.1.12;language-subtag-registry@0.3.21;tesseract.js-core@2.2.0;url-template@2.0.8\" --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Python-2.0;Unlicense\" --production --summary",
-    "lint:prettier": "prettier . --write --ignore-unknown",
-    "lint:prettier:ci": "prettier . --check --ignore-unknown",
-    "prepare": "husky install",
-    "start": "node .",
-    "start:dev": "nodemon",
-    "test": "npm run lint && npm run jest"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "jest": {
-    "clearMocks": true,
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/app.js"
-    ],
-    "coverageReporters": [
-      "text",
-      "lcovonly"
-    ],
-    "resetMocks": true,
-    "testEnvironment": "node",
-    "testTimeout": 60000
-  },
-  "nodemonConfig": {
-    "env": {
-      "NODE_ENV": "development",
-      "SUPPRESS_SUPPORT": 1
-    },
-    "ignore": [
-      "src/temp",
-      "test_resources"
-    ],
-    "verbose": true,
-    "watch": [
-      ".env",
-      "src"
-    ]
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^16.2.1",
-    "@commitlint/config-conventional": "^16.2.1",
-    "autocannon": "^7.7.0",
-    "eslint": "^8.10.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.1",
-    "eslint-plugin-jsdoc": "^37.9.7",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-security-node": "^1.1.1",
-    "faker": "5.5.3",
-    "husky": "^7.0.4",
-    "is-html": "^2.0.0",
-    "jest": "^27.5.1",
-    "license-checker": "^25.0.1",
-    "nodemon": "^2.0.15",
-    "playwright": "^1.19.2",
-    "prettier": "2.5.1"
-  },
-  "dependencies": {
-    "auto-parse": "^1.8.0",
-    "cssesc": "^3.0.0",
-    "cssom": "^0.5.0",
-    "dotenv": "^16.0.0",
-    "env-schema": "^3.5.2",
-    "fastify": "^3.27.3",
-    "fastify-accepts": "^2.1.0",
-    "fastify-autoload": "^3.11.0",
-    "fastify-bearer-auth": "^6.2.0",
-    "fastify-compress": "^4.0.1",
-    "fastify-cors": "^6.0.3",
-    "fastify-disablecache": "^2.0.6",
-    "fastify-floc-off": "^1.0.5",
-    "fastify-helmet": "7.0.1",
-    "fastify-plugin": "^3.0.1",
-    "fastify-rate-limit": "^5.7.2",
-    "fastify-sensible": "^3.1.2",
-    "fastify-static": "^4.5.0",
-    "fastify-swagger": "4.12.0",
-    "file-stream-rotator": "^0.6.1",
-    "file-type": "^16.5.3",
-    "fix-utf8": "^1.1.1",
-    "fluent-json-schema": "^3.1.0",
-    "glob": "^7.2.0",
-    "htmltidy2": "^0.3.0",
-    "jsdom": "^19.0.0",
-    "language-tags": "^1.0.5",
-    "mammoth": "^1.4.19",
-    "node-poppler": "^5.1.3",
-    "node-unrtf": "^2.0.7",
-    "physical-cpu-count": "^2.0.0",
-    "pino": "^7.8.0",
-    "pino-pretty": "^7.5.3",
-    "raw-body": "^2.5.1",
-    "redoc": "^2.0.0-rc.64",
-    "secure-json-parse": "^2.4.0",
-    "tesseract.js": "^2.1.5",
-    "under-pressure": "^5.8.0",
-    "upath": "^2.0.1"
-  }
+	"name": "docsmith",
+	"version": "6.0.4",
+	"description": "RESTful API for converting clinical documents and files",
+	"main": "src/app.js",
+	"repository": "git+https://github.com/Fdawgs/docsmith.git",
+	"homepage": "https://github.com/Fdawgs/docsmith",
+	"bugs": {
+		"url": "https://github.com/Fdawgs/docsmith/issues"
+	},
+	"license": "MIT",
+	"author": "Frazer Smith <frazer.dev@outlook.com>",
+	"engines": {
+		"node": "^14.17.0 || ^15.6.0 || >=16.0.0"
+	},
+	"scripts": {
+		"benchmark:html": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:8204/pdf/html?lastPageToConvert=1\"",
+		"benchmark:txt": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:8204/pdf/txt?lastPageToConvert=1\"",
+		"jest": "jest",
+		"jest:coverage": "jest --coverage",
+		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
+		"lint:licenses": "license-checker --direct --excludePackages=\"caniuse-lite@1.0.30001312;duck@0.1.12;language-subtag-registry@0.3.21;tesseract.js-core@2.2.0;url-template@2.0.8\" --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Python-2.0;Unlicense\" --production --summary",
+		"lint:prettier": "prettier . -w -u",
+		"lint:prettier:ci": "prettier . -c -u",
+		"prepare": "husky install",
+		"start": "node .",
+		"start:dev": "nodemon",
+		"test": "npm run lint && npm run jest"
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		]
+	},
+	"jest": {
+		"clearMocks": true,
+		"collectCoverageFrom": [
+			"src/**/*.js",
+			"!src/app.js"
+		],
+		"coverageReporters": [
+			"text",
+			"lcovonly"
+		],
+		"resetMocks": true,
+		"testEnvironment": "node",
+		"testTimeout": 60000
+	},
+	"nodemonConfig": {
+		"env": {
+			"NODE_ENV": "development",
+			"SUPPRESS_SUPPORT": 1
+		},
+		"ignore": [
+			"src/temp",
+			"test_resources"
+		],
+		"verbose": true,
+		"watch": [
+			".env",
+			"src"
+		]
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^16.2.1",
+		"@commitlint/config-conventional": "^16.2.1",
+		"autocannon": "^7.7.0",
+		"eslint": "^8.10.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-jest": "^26.1.1",
+		"eslint-plugin-jsdoc": "^37.9.7",
+		"eslint-plugin-promise": "^6.0.0",
+		"eslint-plugin-security": "^1.4.0",
+		"eslint-plugin-security-node": "^1.1.1",
+		"faker": "5.5.3",
+		"husky": "^7.0.4",
+		"is-html": "^2.0.0",
+		"jest": "^27.5.1",
+		"license-checker": "^25.0.1",
+		"nodemon": "^2.0.15",
+		"playwright": "^1.19.2",
+		"prettier": "2.5.1"
+	},
+	"dependencies": {
+		"auto-parse": "^1.8.0",
+		"cssesc": "^3.0.0",
+		"cssom": "^0.5.0",
+		"dotenv": "^16.0.0",
+		"env-schema": "^3.5.2",
+		"fastify": "^3.27.3",
+		"fastify-accepts": "^2.1.0",
+		"fastify-autoload": "^3.11.0",
+		"fastify-bearer-auth": "^6.2.0",
+		"fastify-compress": "^4.0.1",
+		"fastify-cors": "^6.0.3",
+		"fastify-disablecache": "^2.0.6",
+		"fastify-floc-off": "^1.0.5",
+		"fastify-helmet": "7.0.1",
+		"fastify-plugin": "^3.0.1",
+		"fastify-rate-limit": "^5.7.2",
+		"fastify-sensible": "^3.1.2",
+		"fastify-static": "^4.5.0",
+		"fastify-swagger": "4.12.0",
+		"file-stream-rotator": "^0.6.1",
+		"file-type": "^16.5.3",
+		"fix-utf8": "^1.1.1",
+		"fluent-json-schema": "^3.1.0",
+		"glob": "^7.2.0",
+		"htmltidy2": "^0.3.0",
+		"jsdom": "^19.0.0",
+		"language-tags": "^1.0.5",
+		"mammoth": "^1.4.19",
+		"node-poppler": "^5.1.3",
+		"node-unrtf": "^2.0.7",
+		"physical-cpu-count": "^2.0.0",
+		"pino": "^7.8.0",
+		"pino-pretty": "^7.5.3",
+		"raw-body": "^2.5.1",
+		"redoc": "^2.0.0-rc.64",
+		"secure-json-parse": "^2.4.0",
+		"tesseract.js": "^2.1.5",
+		"under-pressure": "^5.8.0",
+		"upath": "^2.0.1"
+	}
 }

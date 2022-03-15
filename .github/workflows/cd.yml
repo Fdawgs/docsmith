@@ -1,5 +1,8 @@
 name: CD
 
+# **What it does**: Automatically generates releases and release notes.
+# **Why we have it**: Allows development to focus on higher value work.
+
 on:
     push:
         branches:
