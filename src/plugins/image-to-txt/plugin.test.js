@@ -31,6 +31,8 @@ describe("Image-To-TXT Conversion Plugin", () => {
 
 			res.send(text);
 		});
+
+		await server.ready();
 	});
 
 	afterAll(async () => {
