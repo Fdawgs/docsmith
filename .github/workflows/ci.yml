@@ -161,10 +161,10 @@ jobs:
             - name: Check out repo
               uses: actions/checkout@v3
 
-            - name: build and start app
+            - name: Build and start app
               run: |
                   cp .env.template .env
-                  docker-compose up --detach
+                  docker compose up -d
 
     coverage:
         name: Aggregate Coverage Calculations

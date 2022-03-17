@@ -13,7 +13,7 @@ describe("Image-To-TXT Conversion Plugin", () => {
 	beforeAll(async () => {
 		config = await getConfig();
 
-		server = Fastify();
+		server = Fastify({ pluginTimeout: 30000 });
 
 		server.addContentTypeParser("image/png", async (req, payload) => {
 			const res = await raw(payload);
