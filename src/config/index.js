@@ -217,6 +217,8 @@ async function getConfig() {
 		},
 		rateLimit: {
 			continueExceeding: true,
+			// Ensure rate limit also applies to 4xx and 5xx responses
+			hook: "onSend",
 			max: env.RATE_LIMIT_MAX_CONNECTIONS_PER_MIN || 1000,
 			timeWindow: 60000,
 		},
