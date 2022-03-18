@@ -87,7 +87,7 @@ async function plugin(server, options) {
 			// Remove metadata comments UnRTF adds to beginning of file
 			req.conversionResults.body = req.conversionResults.body
 				.replace(
-					/^###\s?Translation\s?from\s?RTF\s?performed\s?by\s?UnRTF.*?-{1,17}/ims,
+					/^###\s{0,10}Translation\s?from\s?RTF\s?performed\s?by\s?UnRTF.*?-{1,17}/ims,
 					""
 				)
 				.trim();
