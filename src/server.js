@@ -38,6 +38,9 @@ async function plugin(server, config) {
 		// Support Content-Encoding
 		.register(compress, { inflateIfDeflated: true })
 
+		// Set response headers to disable client-side caching
+		.register(disableCache)
+
 		// Opt-out of Google's FLoC advertising-surveillance network
 		.register(flocOff)
 
@@ -104,10 +107,6 @@ async function plugin(server, config) {
 		 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
-			securedContext
-				// Set response headers to disable client-side caching
-				.register(disableCache);
-
 			if (config.bearerTokenAuthKeys) {
 				securedContext.register(bearer, {
 					keys: config.bearerTokenAuthKeys,
@@ -130,7 +129,8 @@ async function plugin(server, config) {
 
 		/**
 		 * Encapsulate the docs routes into a child context, so that the
-		 * CSP can be relaxed without impacting security of other routes
+		 * CSP can be relaxed, and cache enabled, without impacting
+		 * security of other routes
 		 */
 		.register(async (publicContext) => {
 			const relaxedHelmetConfig = secJSON.parse(
@@ -160,6 +160,16 @@ async function plugin(server, config) {
 					options: { ...config, prefix: "docs" },
 				});
 		})
+
+		// Rate limit 404 responses
+		.setNotFoundHandler(
+			{
+				preHandler: server.rateLimit(),
+			},
+			(req, res) => {
+				res.notFound(`Route ${req.method}:${req.url} not found`);
+			}
+		)
 
 		// Errors thrown by routes and plugins are caught here
 		.setErrorHandler(

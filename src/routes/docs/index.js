@@ -47,6 +47,9 @@ async function route(server) {
 			}
 		},
 		handler: (req, res) => {
+			res.removeHeader("pragma");
+			res.removeHeader("expires");
+			res.removeHeader("surrogate-control");
 			res.header("cache-control", "private, max-age=180");
 			res.header("content-type", "text/html; charset=utf-8");
 			res.sendFile("index.html");

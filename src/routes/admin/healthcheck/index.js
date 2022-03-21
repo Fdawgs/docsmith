@@ -1,6 +1,5 @@
 // Import plugins
 const cors = require("fastify-cors");
-const disableCache = require("fastify-disablecache");
 
 const { healthcheckGetSchema } = require("./schema");
 
@@ -16,9 +15,6 @@ const { healthcheckGetSchema } = require("./schema");
 async function route(server, options) {
 	// Register plugins
 	server
-		// Set response headers to disable client-side caching
-		.register(disableCache)
-
 		// Enable CORS if options passed
 		.register(cors, {
 			...options.cors,
