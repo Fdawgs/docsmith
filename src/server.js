@@ -161,6 +161,16 @@ async function plugin(server, config) {
 				});
 		})
 
+		// Rate limit 404 responses
+		.setNotFoundHandler(
+			{
+				preHandler: server.rateLimit(),
+			},
+			(req, res) => {
+				res.notFound(`Route ${req.method}:${req.url} not found`);
+			}
+		)
+
 		// Errors thrown by routes and plugins are caught here
 		.setErrorHandler(
 			// eslint-disable-next-line promise/prefer-await-to-callbacks
