@@ -26,9 +26,10 @@
 		<script>
 			// Redoc no longer supports IE, see https://github.com/Redocly/redoc/issues/1936
 			if (window.document.documentMode) {
-				document.write(
-					"This browser is no longer supported by this page. <br>Please switch to a more modern browser such as Google Chrome, Microsoft Edge, or Mozilla Firefox."
-				);
+				var p = document.createElement("p");
+				p.innerHTML =
+					"This browser is no longer supported by this page. <br>Please switch to a more modern browser such as Google Chrome, Microsoft Edge, or Mozilla Firefox.";
+				document.body.insertBefore(p, document.body.firstChild);
 			}
 		</script>
 		<redoc spec-url="docs/json" hide-hostname="true" expand-responses="200"></redoc>
