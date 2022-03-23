@@ -4,15 +4,15 @@ name: Optimise Images
 # **Why we have it**: Reduces bandwidth needs of app and repo.
 
 on:
-    pull_request:
+    push:
+        branches:
+            - master
         paths:
             - "**.jpg"
             - "**.jpeg"
             - "**.png"
             - "**.webp"
-    push:
-        branches:
-            - master
+    pull_request:
         paths:
             - "**.jpg"
             - "**.jpeg"
