@@ -64,7 +64,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^16.2.1",
 		"@commitlint/config-conventional": "^16.2.1",
-		"autocannon": "^7.7.0",
+		"autocannon": "^7.8.0",
 		"eslint": "^8.10.0",
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-config-prettier": "^8.5.0",
@@ -88,7 +88,7 @@
 		"cssesc": "^3.0.0",
 		"cssom": "^0.5.0",
 		"dotenv": "^16.0.0",
-		"env-schema": "^3.5.2",
+		"env-schema": "^4.0.0",
 		"fastify": "^3.27.3",
 		"fastify-accepts": "^2.1.0",
 		"fastify-autoload": "^3.11.0",
