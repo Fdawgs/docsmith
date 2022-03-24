@@ -90,7 +90,7 @@
 		"dotenv": "^16.0.0",
 		"env-schema": "^4.0.0",
 		"fastify": "^3.27.3",
-		"fastify-accepts": "^2.1.0",
+		"fastify-accepts": "^2.2.0",
 		"fastify-autoload": "^3.11.0",
 		"fastify-bearer-auth": "^6.2.0",
 		"fastify-compress": "^4.0.1",
