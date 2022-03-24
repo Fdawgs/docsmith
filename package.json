@@ -111,7 +111,7 @@
 		"htmltidy2": "^0.3.0",
 		"jsdom": "^19.0.0",
 		"language-tags": "^1.0.5",
-		"mammoth": "^1.4.19",
+		"mammoth": "^1.4.21",
 		"node-poppler": "^5.1.3",
 		"node-unrtf": "^2.0.7",
 		"physical-cpu-count": "^2.0.0",
