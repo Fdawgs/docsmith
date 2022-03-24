@@ -81,7 +81,7 @@
 		"license-checker": "^25.0.1",
 		"nodemon": "^2.0.15",
 		"playwright": "^1.19.2",
-		"prettier": "2.5.1"
+		"prettier": "2.6.0"
 	},
 	"dependencies": {
 		"auto-parse": "^1.8.0",
