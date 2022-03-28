@@ -47,12 +47,12 @@ async function route(server) {
 			}
 		},
 		handler: (req, res) => {
-			res.removeHeader("pragma");
-			res.removeHeader("expires");
-			res.removeHeader("surrogate-control");
-			res.header("cache-control", "private, max-age=180");
-			res.type("text/html; charset=utf-8");
-			res.sendFile("index.html");
+			res.header("cache-control", "private, max-age=180")
+				.removeHeader("pragma")
+				.removeHeader("expires")
+				.removeHeader("surrogate-control")
+				.type("text/html; charset=utf-8")
+				.sendFile("index.html");
 		},
 	});
 }
