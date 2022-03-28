@@ -104,7 +104,7 @@ async function plugin(server, options) {
 			}
 		}
 
-		res.header("content-type", `text/plain`);
+		res.type("text/plain");
 	});
 }
 

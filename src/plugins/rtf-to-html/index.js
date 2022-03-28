@@ -101,7 +101,7 @@ async function plugin(server, options) {
 			}
 		}
 
-		res.header("content-type", `text/html`);
+		res.type("text/html");
 	});
 }
 

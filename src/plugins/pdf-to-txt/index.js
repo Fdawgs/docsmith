@@ -211,8 +211,7 @@ async function plugin(server, options) {
 		) {
 			contentType = "text/html";
 		}
-		res.header(
-			"content-type",
+		res.type(
 			`${contentType}; charset=${config.pdfToTxtOptions.outputEncoding.toLowerCase()}`
 		);
 	});
