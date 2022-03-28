@@ -17,7 +17,7 @@ async function plugin(server) {
 		try {
 			const { value } = await mammoth.extractRawText(req.body);
 			req.conversionResults.body = value;
-			res.header("content-type", "text/plain; charset=utf-8");
+			res.type("text/plain; charset=utf-8");
 		} catch (err) {
 			/**
 			 * Mammoth will throw if the .docx file provided

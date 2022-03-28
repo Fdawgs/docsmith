@@ -39,20 +39,18 @@ async function route(server) {
 		preValidation: async (req, res) => {
 			if (
 				// Catch unsupported Accept header media types
-				!docsGetSchema.produces.includes(
-					req.accepts().type(docsGetSchema.produces)
-				)
+				!req.accepts().type(docsGetSchema.produces)
 			) {
 				throw res.notAcceptable();
 			}
 		},
 		handler: (req, res) => {
-			res.removeHeader("pragma");
-			res.removeHeader("expires");
-			res.removeHeader("surrogate-control");
-			res.header("cache-control", "private, max-age=180");
-			res.header("content-type", "text/html; charset=utf-8");
-			res.sendFile("index.html");
+			res.header("cache-control", "private, max-age=180")
+				.removeHeader("pragma")
+				.removeHeader("expires")
+				.removeHeader("surrogate-control")
+				.type("text/html; charset=utf-8")
+				.sendFile("index.html");
 		},
 	});
 }

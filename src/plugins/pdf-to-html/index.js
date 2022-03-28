@@ -153,8 +153,7 @@ async function plugin(server, options) {
 		 */
 		req.conversionResults.body = fixUtf8(dom.serialize());
 
-		res.header(
-			"content-type",
+		res.type(
 			`text/html; charset=${config.pdfToHtmlOptions.outputEncoding.toLowerCase()}`
 		);
 	});
