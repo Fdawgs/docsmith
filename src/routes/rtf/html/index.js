@@ -57,9 +57,7 @@ async function route(server, options) {
 		preValidation: async (req, res) => {
 			if (
 				// Catch unsupported Accept header media types
-				!rtfToHtmlPostSchema.produces.includes(
-					req.accepts().type(rtfToHtmlPostSchema.produces)
-				)
+				!req.accepts().type(rtfToHtmlPostSchema.produces)
 			) {
 				throw res.notAcceptable();
 			}
