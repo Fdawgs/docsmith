@@ -6,7 +6,7 @@ const tags = ["System Administration"];
  * Fastify uses AJV for JSON Schema Validation,
  * see https://www.fastify.io/docs/latest/Validation-and-Serialization/
  *
- * This validation protects against XSS and HPP attacks.
+ * Input validation protects against XSS, HPP, and most injection attacks.
  */
 const healthcheckGetSchema = {
 	tags,
