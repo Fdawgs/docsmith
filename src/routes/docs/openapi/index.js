@@ -1,7 +1,7 @@
 // Import plugins
 const cors = require("fastify-cors");
 
-const { docsJsonGetSchema } = require("./schema");
+const { docsOpenapiGetSchema } = require("./schema");
 
 /**
  * @author Frazer Smith
@@ -22,11 +22,11 @@ async function route(server, options) {
 	server.route({
 		method: "GET",
 		url: "/",
-		schema: docsJsonGetSchema,
+		schema: docsOpenapiGetSchema,
 		preValidation: async (req, res) => {
 			if (
 				// Catch unsupported Accept header media types
-				!req.accepts().type(docsJsonGetSchema.produces)
+				!req.accepts().type(docsOpenapiGetSchema.produces)
 			) {
 				throw res.notAcceptable();
 			}

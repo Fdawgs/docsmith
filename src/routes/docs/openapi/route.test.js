@@ -6,7 +6,7 @@ const route = require(".");
 const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
 
-describe("JSON Route", () => {
+describe("OpenAPI Route", () => {
 	describe("GET Requests", () => {
 		let config;
 		let server;
