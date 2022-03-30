@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.0](https://github.com/Fdawgs/docsmith/compare/v6.0.5...v7.0.0) (2022-03-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **routes/docs:** `docs/json` route renamed to `docs/openapi`
+
+### Improvements
+
+* chain response functions ([161c018](https://github.com/Fdawgs/docsmith/commit/161c0188eb4bb3e998370fc3478dd63ae384cba6))
+* **routes:** clean `accept` header conditionals ([a3f431c](https://github.com/Fdawgs/docsmith/commit/a3f431c2d7e91d70a4c109de678e0ec44fc3e75e))
+* use `type()` alias function to set content-type ([f83b0ca](https://github.com/Fdawgs/docsmith/commit/f83b0cae8c50558d718aba3e83f4d9737531bc1c))
+
+
+### Miscellaneous
+
+* **routes/docs:** rename `docs/json` to `docs/openapi` ([e70610d](https://github.com/Fdawgs/docsmith/commit/e70610d9ef1726671709d68af7a08dc52ec783a8))
+* **routes:** standardise ajv inline comment ([82dc312](https://github.com/Fdawgs/docsmith/commit/82dc31202d99b62ec051ae6c3aefb9ecc0633296))
+
+
+### Dependencies
+
+* **deps-dev:** bump @faker-js/faker from 6.0.0 to 6.1.1 ([6348ebc](https://github.com/Fdawgs/docsmith/commit/6348ebc24307ed2d1943e693147bf1abcf8b6c44))
+* **deps-dev:** bump autocannon from 7.8.0 to 7.8.1 ([6276e54](https://github.com/Fdawgs/docsmith/commit/6276e54f9693bcf51c27042baff6b65529ef4cd9))
+* **deps-dev:** bump eslint from 8.11.0 to 8.12.0 ([0b7e12b](https://github.com/Fdawgs/docsmith/commit/0b7e12becc0e51a82d680eb6ae6fb0d7a9704011))
+* **deps-dev:** bump eslint-plugin-jsdoc from 38.0.6 to 38.1.4 ([0d82ea8](https://github.com/Fdawgs/docsmith/commit/0d82ea8d31c6af19dab4147a7775c86854c45a1c))
+* **deps-dev:** bump prettier from 2.6.0 to 2.6.1 ([66f6bc8](https://github.com/Fdawgs/docsmith/commit/66f6bc846f982a8152af0c6e4a1fc5419f73a6c3))
+* **deps:** bump fastify-disablecache from 2.0.6 to 2.0.7 ([8c40155](https://github.com/Fdawgs/docsmith/commit/8c40155b1a315338a2fb244977b4aa87e46b8ace))
+* **deps:** bump fastify-floc-off from 1.0.5 to 1.0.6 ([3294c70](https://github.com/Fdawgs/docsmith/commit/3294c700bbaa6cb75c0f413e3eb9343b168699d5))
+* **deps:** bump fastify-swagger from 5.0.0 to 5.1.0 ([03603be](https://github.com/Fdawgs/docsmith/commit/03603bedf886bd9556ed90ee6398865a4e2575ac))
+* **deps:** bump hadolint/hadolint-action from 1.7.0 to 2.0.0 ([a7b81ab](https://github.com/Fdawgs/docsmith/commit/a7b81abb85b073599e2c3eab1a6dbad7c05b5f4f))
+* **deps:** bump pino-pretty from 7.5.4 to 7.6.0 ([51f34ae](https://github.com/Fdawgs/docsmith/commit/51f34aed6a5eb1b9540e54f09f823536630ef5f6))
+
 ### [6.0.5](https://github.com/Fdawgs/docsmith/compare/v6.0.4...v6.0.5) (2022-03-24)
 
 
