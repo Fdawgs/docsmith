@@ -86,12 +86,11 @@ async function plugin(server, config) {
 				!res.getHeader("content-type")?.includes("html") &&
 				!res.getHeader("content-type")?.includes("xml")
 			) {
-				res.raw
-					.setHeader(
-						"content-security-policy",
-						"default-src 'self';frame-ancestors 'none'"
-					)
-					.removeHeader("x-xss-protection");
+				res.header(
+					"content-security-policy",
+					"default-src 'self';frame-ancestors 'none'"
+				);
+				res.raw.removeHeader("x-xss-protection");
 			}
 			return res;
 		})
