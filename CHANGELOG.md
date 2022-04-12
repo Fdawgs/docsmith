@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file.
 
+### [7.0.1](https://github.com/Fdawgs/docsmith/compare/v7.0.0...v7.0.1) (2022-04-12)
+
+
+### Improvements
+
+* **server:** call reply object over raw when overwriting header ([#765](https://github.com/Fdawgs/docsmith/issues/765)) ([48db35c](https://github.com/Fdawgs/docsmith/commit/48db35cdea9dc145f48e7ebf1b77416d8226dad5))
+
+
+### Continuous Integration
+
+* **automerge:** set correct `contents` permission level ([52eef71](https://github.com/Fdawgs/docsmith/commit/52eef71b9f5db89ff6428f3fd4866b23bb056658))
+* **automerge:** squash automerge prs ([10f45be](https://github.com/Fdawgs/docsmith/commit/10f45be4fab20cc19a458c27467111b8ab1b1d45))
+* **cd:** update org name for release-please-action ([0d69309](https://github.com/Fdawgs/docsmith/commit/0d693096f4c20b8ed391107075fa01253df394db))
+* **optimise-images:** reduce permissions to minimum ([1e669fe](https://github.com/Fdawgs/docsmith/commit/1e669fef899ffa4eb233edfdfe0bb2f119c67388))
+* reduce workflow permissions to minimum ([74dd1c6](https://github.com/Fdawgs/docsmith/commit/74dd1c6394f9e430151055fb1f830ef17944192d))
+* replace workflow-run-cleanup-action with github concurrency ([1eff2a4](https://github.com/Fdawgs/docsmith/commit/1eff2a4f2b2fcdc9521edabd0cd84cd8b438f83e))
+
+
+### Dependencies
+
+* **deps-dev:** bump @faker-js/faker from 6.1.1 to 6.1.2 ([#776](https://github.com/Fdawgs/docsmith/issues/776)) ([82f2f0b](https://github.com/Fdawgs/docsmith/commit/82f2f0b0126406a8f394cf5f08f826b6e29c75ea))
+* **deps-dev:** bump eslint from 8.12.0 to 8.13.0 ([#781](https://github.com/Fdawgs/docsmith/issues/781)) ([dab2567](https://github.com/Fdawgs/docsmith/commit/dab25675ea2f1729864c6edb34a4aefc0603d918))
+* **deps-dev:** bump eslint-plugin-import from 2.25.4 to 2.26.0 ([#777](https://github.com/Fdawgs/docsmith/issues/777)) ([2202774](https://github.com/Fdawgs/docsmith/commit/220277448495a42d7b93743f05ed744cb2939460))
+* **deps-dev:** bump eslint-plugin-jest from 26.1.3 to 26.1.4 ([#783](https://github.com/Fdawgs/docsmith/issues/783)) ([b7437e7](https://github.com/Fdawgs/docsmith/commit/b7437e7b2fbf93b8a2cdaca71dbfff24ca9f98e6))
+* **deps-dev:** bump eslint-plugin-jsdoc from 38.1.4 to 39.1.1 ([#782](https://github.com/Fdawgs/docsmith/issues/782)) ([d733c48](https://github.com/Fdawgs/docsmith/commit/d733c4839b8172ca50be8fe6b94ac681ce9662dc))
+* **deps-dev:** bump playwright from 1.20.1 to 1.20.2 ([#774](https://github.com/Fdawgs/docsmith/issues/774)) ([5fb0f1a](https://github.com/Fdawgs/docsmith/commit/5fb0f1a194af1b77c8ca8f22ab727c90625aceb8))
+* **deps-dev:** bump prettier from 2.6.1 to 2.6.2 ([#771](https://github.com/Fdawgs/docsmith/issues/771)) ([2b6692a](https://github.com/Fdawgs/docsmith/commit/2b6692ae5417ec19bacf557f0c4e1b9ebcbf348b))
+* **deps:** bump actions/upload-artifact from 2 to 3 ([#780](https://github.com/Fdawgs/docsmith/issues/780)) ([3bd7283](https://github.com/Fdawgs/docsmith/commit/3bd7283f4b889a43dbb5cb5faeb341d02a18116c))
+* **deps:** bump fastify from 3.27.4 to 3.28.0 ([#775](https://github.com/Fdawgs/docsmith/issues/775)) ([55395cb](https://github.com/Fdawgs/docsmith/commit/55395cb3fd7feca6413a55a1cc489b0a9a99e598))
+* **deps:** bump glob from 7.2.0 to 8.0.1 ([#785](https://github.com/Fdawgs/docsmith/issues/785)) ([6f2f3a4](https://github.com/Fdawgs/docsmith/commit/6f2f3a4ae64c2d2a955b3a07f017b1094923d4ff))
+* **deps:** bump hadolint/hadolint-action from 2.0.0 to 2.1.0 ([bc9db2b](https://github.com/Fdawgs/docsmith/commit/bc9db2b51c620adb3f9d56d62cf583c03e859314))
+* **deps:** bump moment from 2.29.1 to 2.29.2 ([#778](https://github.com/Fdawgs/docsmith/issues/778)) ([5a59c1e](https://github.com/Fdawgs/docsmith/commit/5a59c1e04390534a6e022285809f1d6977c7c1af))
+* **deps:** bump pino from 7.9.2 to 7.10.0 ([#784](https://github.com/Fdawgs/docsmith/issues/784)) ([d48221e](https://github.com/Fdawgs/docsmith/commit/d48221efbaf2a7b2f216c32f675e4e993fce87a9))
+* **deps:** bump pino-pretty from 7.6.0 to 7.6.1 ([#773](https://github.com/Fdawgs/docsmith/issues/773)) ([ce0fde8](https://github.com/Fdawgs/docsmith/commit/ce0fde823d4d2f61953c37f7f01eb524c3c88c54))
+* **deps:** bump redoc from 2.0.0-rc.65 to 2.0.0-rc.66 ([f944c5a](https://github.com/Fdawgs/docsmith/commit/f944c5ace5ce71a908c69fe230ebd8dbc069a653))
+* **docker:** install production deps only ([#779](https://github.com/Fdawgs/docsmith/issues/779)) ([e9cf62b](https://github.com/Fdawgs/docsmith/commit/e9cf62bf7906f0bd267d9b67acb24b089d431d90))
+
 ## [7.0.0](https://github.com/Fdawgs/docsmith/compare/v6.0.5...v7.0.0) (2022-03-30)
 
 
