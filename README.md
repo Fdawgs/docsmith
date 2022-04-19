@@ -75,6 +75,8 @@ The service should be up and running on the port set in the config. You should s
 }
 ```
 
+To quickly test it, use [Insomnia](https://insomnia.rest/) and import the example requests from `./test_resources/insomnia_test_requests.json`.
+
 ### Deploying Using Docker
 
 This requires [Docker](https://www.docker.com) installed.
