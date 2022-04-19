@@ -11,7 +11,9 @@ RUN apt-get -q update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     npm ci --production --ignore-scripts && \
-    npm cache clean --force
+    npm cache clean --force && \
+    chown node ./node_modules/htmltidy2/bin/linux64/tidy && \
+    chmod 544 ./node_modules/htmltidy2/bin/linux64/tidy
 
 # Create temp folder for files to be stored whilst being converted
 RUN mkdir ./src/temp/ && chown -R node ./src/temp/
