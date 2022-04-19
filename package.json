@@ -102,7 +102,7 @@
 		"fastify-rate-limit": "^5.8.0",
 		"fastify-sensible": "^3.1.2",
 		"fastify-static": "^4.6.1",
-		"fastify-swagger": "5.1.0",
+		"fastify-swagger": "5.1.1",
 		"file-stream-rotator": "^0.6.1",
 		"file-type": "^16.5.3",
 		"fix-utf8": "^1.1.1",
