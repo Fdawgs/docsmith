@@ -79,7 +79,7 @@ jobs:
         strategy:
             matrix:
                 node: [14, 16]
-                os: [macos-latest, ubuntu-latest, windows-2019]
+                os: [macos-latest, ubuntu-latest, windows-latest]
         runs-on: ${{ matrix.os }}
         steps:
             - name: Check out repo
@@ -121,7 +121,7 @@ jobs:
                   npm run jest:coverage
 
             - name: Run Windows tests
-              if: matrix.os == 'windows-2019'
+              if: matrix.os == 'windows-latest'
               run: |
                   cp .env.template .env
                   npm run jest:coverage
