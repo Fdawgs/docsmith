@@ -108,7 +108,7 @@
 		"fix-utf8": "^1.1.1",
 		"fluent-json-schema": "^3.1.0",
 		"glob": "^8.0.1",
-		"htmltidy2": "^0.3.0",
+		"htmltidy2": "^1.0.0",
 		"jsdom": "^19.0.0",
 		"language-tags": "^1.0.5",
 		"mammoth": "^1.4.21",
