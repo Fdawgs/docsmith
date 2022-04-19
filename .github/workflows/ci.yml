@@ -108,6 +108,7 @@ jobs:
               run: |
                   brew install unrtf poppler
                   cp .env.template .env
+                  chmod 555 ./node_modules/htmltidy2/bin/darwin/tidy
                   npm run jest:coverage
 
             - name: Run Ubuntu tests
@@ -118,6 +119,7 @@ jobs:
               run: |
                   sudo apt-get -y install poppler-data poppler-utils unrtf
                   cp .env.template .env
+                  chmod 555 ./node_modules/htmltidy2/bin/linux64/tidy
                   npm run jest:coverage
 
             - name: Run Windows tests
