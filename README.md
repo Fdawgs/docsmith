@@ -3,7 +3,6 @@
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/docsmith.svg)](https://github.com/Fdawgs/docsmith/releases/latest/)
 ![CI](https://github.com/Fdawgs/docsmith/workflows/CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/docsmith/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/docsmith?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/docsmith/badge.svg)](https://snyk.io/test/github/Fdawgs/docsmith)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 > RESTful API for converting clinical documents and files
