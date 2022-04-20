@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+### [7.0.2](https://github.com/Fdawgs/docsmith/compare/v7.0.1...v7.0.2) (2022-04-20)
+
+
+### Documentation
+
+* **readme:** add mention of insomnia example requests ([72f14dd](https://github.com/Fdawgs/docsmith/commit/72f14dd6cc94665f11daadde690f8896dc77688b))
+
+
+### Continuous Integration
+
+* fix htmltidy permissions ([bc0a8e2](https://github.com/Fdawgs/docsmith/commit/bc0a8e2c2c488396f2c76e7813d18217c83e2fc8))
+* revert to using `windows-latest` runners ([46163fc](https://github.com/Fdawgs/docsmith/commit/46163fc9eafd0b6a129d51d6a1b586d70ec8b83b))
+* use shorter arg aliases for lockfile lint step ([90625ef](https://github.com/Fdawgs/docsmith/commit/90625efe1bc201cc5402e7ffd5314b48de560367))
+* validate that resolved url matches the package name ([0681713](https://github.com/Fdawgs/docsmith/commit/0681713c662bda96b59044eca9fe72f029d216ee))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.1.1 to 39.2.3 ([#789](https://github.com/Fdawgs/docsmith/issues/789)) ([85db72a](https://github.com/Fdawgs/docsmith/commit/85db72a8f1b742c5cba0d8cf86ff42b7ff8a98bd))
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.2.3 to 39.2.4 ([#794](https://github.com/Fdawgs/docsmith/issues/794)) ([5703a79](https://github.com/Fdawgs/docsmith/commit/5703a798fe697079f34abe59fc9f0065d7b70940))
+* **deps-dev:** bump eslint-plugin-security from 1.4.0 to 1.5.0 ([#793](https://github.com/Fdawgs/docsmith/issues/793)) ([8fcc000](https://github.com/Fdawgs/docsmith/commit/8fcc000d809ef94c20ece662581825dc23c5237a))
+* **deps-dev:** bump playwright from 1.20.2 to 1.21.1 ([#791](https://github.com/Fdawgs/docsmith/issues/791)) ([0f0a69f](https://github.com/Fdawgs/docsmith/commit/0f0a69ff3d2a63dc72536d920032e1775a185c00))
+* **deps:** bump fastify-autoload from 3.11.0 to 3.12.0 ([#792](https://github.com/Fdawgs/docsmith/issues/792)) ([e028d82](https://github.com/Fdawgs/docsmith/commit/e028d825bd121eeaf733239bd47f2d0079cf0dd4))
+* **deps:** bump fastify-swagger from 5.1.0 to 5.1.1 ([#790](https://github.com/Fdawgs/docsmith/issues/790)) ([5cae107](https://github.com/Fdawgs/docsmith/commit/5cae107855d20f28da1852c2d70460b941f0711c))
+* **deps:** bump htmltidy2 from 0.3.0 to 1.0.0 ([#714](https://github.com/Fdawgs/docsmith/issues/714)) ([de504ca](https://github.com/Fdawgs/docsmith/commit/de504ca495fe3493c9fb93043e9f55029fe94bc1))
+* **docker:** fix htmltidy permissions and ownership ([9c47797](https://github.com/Fdawgs/docsmith/commit/9c47797f08206e1786cc94d9a58fa2df57c9a047))
+
 ### [7.0.1](https://github.com/Fdawgs/docsmith/compare/v7.0.0...v7.0.1) (2022-04-12)
 
 
