@@ -1,7 +1,7 @@
 const fileType = require("file-type");
 
 // Import plugins
-const cors = require("fastify-cors");
+const cors = require("@fastify/cors");
 const docxToTxt = require("../../../plugins/docx-to-txt");
 
 const { docxToTxtPostSchema } = require("./schema");

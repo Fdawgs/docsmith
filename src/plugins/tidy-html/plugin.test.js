@@ -3,7 +3,7 @@ const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
 const raw = require("raw-body");
-const sensible = require("fastify-sensible");
+const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
 describe("Tidy-CSS Plugin", () => {

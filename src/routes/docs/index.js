@@ -1,7 +1,7 @@
 const path = require("upath");
 
 // Import plugins
-const staticPlugin = require("fastify-static");
+const staticPlugin = require("@fastify/static");
 
 const { docsGetSchema } = require("./schema");
 

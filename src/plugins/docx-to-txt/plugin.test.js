@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const raw = require("raw-body");
-const sensible = require("fastify-sensible");
+const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
 describe("DOCX-to-TXT Conversion Plugin", () => {
