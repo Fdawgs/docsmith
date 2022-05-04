@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file.
 
+### [7.0.3](https://github.com/Fdawgs/docsmith/compare/v7.0.2...v7.0.3) (2022-05-04)
+
+
+### Documentation
+
+* **readme:** remove snyk badge ([cdf64fb](https://github.com/Fdawgs/docsmith/commit/cdf64fbfe326ee38736703086f737a137d8233ff))
+
+
+### Continuous Integration
+
+* add dependency-review job ([ca5da5a](https://github.com/Fdawgs/docsmith/commit/ca5da5a1582077b59994508b78d2df8c9a8969f4))
+* **link-check:** replace `npx linkinator` call with github action ([#797](https://github.com/Fdawgs/docsmith/issues/797)) ([cd44cd2](https://github.com/Fdawgs/docsmith/commit/cd44cd2defa0c50432b79a0829c58f2c7e7adf94))
+* only trigger dependency-review on pr ([21d6872](https://github.com/Fdawgs/docsmith/commit/21d6872a9d6a031fdb31b6f03b25aa75f321d394))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 16.2.3 to 16.2.4 ([#801](https://github.com/Fdawgs/docsmith/issues/801)) ([a49ef11](https://github.com/Fdawgs/docsmith/commit/a49ef11eb37dd5cf2d05b943d3facefecf6d0ca0))
+* **deps-dev:** bump @commitlint/config-conventional ([#806](https://github.com/Fdawgs/docsmith/issues/806)) ([e77d298](https://github.com/Fdawgs/docsmith/commit/e77d298c0f371124bc42f023ed2e538378da9b29))
+* **deps-dev:** bump @faker-js/faker from 6.1.2 to 6.2.0 ([#809](https://github.com/Fdawgs/docsmith/issues/809)) ([3df6db8](https://github.com/Fdawgs/docsmith/commit/3df6db86f74bc828a0b14d2786624212562cad32))
+* **deps-dev:** bump @faker-js/faker from 6.2.0 to 6.3.1 ([#815](https://github.com/Fdawgs/docsmith/issues/815)) ([a797d12](https://github.com/Fdawgs/docsmith/commit/a797d12b4fe01bb11323a75531c9cc59f1e866fa))
+* **deps-dev:** bump eslint from 8.13.0 to 8.14.0 ([#804](https://github.com/Fdawgs/docsmith/issues/804)) ([f8f7bd1](https://github.com/Fdawgs/docsmith/commit/f8f7bd169773c249509b4829edc312690eb539d1))
+* **deps-dev:** bump eslint-plugin-jest from 26.1.4 to 26.1.5 ([#810](https://github.com/Fdawgs/docsmith/issues/810)) ([59328ca](https://github.com/Fdawgs/docsmith/commit/59328ca8c799f58a67a4fe117d85e6b51cf0749f))
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.2.4 to 39.2.9 ([#807](https://github.com/Fdawgs/docsmith/issues/807)) ([c341df3](https://github.com/Fdawgs/docsmith/commit/c341df34befb8916eb615c386b95f6361c9e2fc8))
+* **deps-dev:** bump jest from 27.5.1 to 28.0.3 ([#803](https://github.com/Fdawgs/docsmith/issues/803)) ([32e774a](https://github.com/Fdawgs/docsmith/commit/32e774a269778ec0d6309e1c9556aad14d14b276))
+* **deps-dev:** bump nodemon from 2.0.15 to 2.0.16 ([#802](https://github.com/Fdawgs/docsmith/issues/802)) ([d743122](https://github.com/Fdawgs/docsmith/commit/d74312263b7afeefba60ce374316d8dabb8e81da))
+* **deps:** bump @fastify/autoload from 4.0.0 to 4.0.1 ([#814](https://github.com/Fdawgs/docsmith/issues/814)) ([59ae05d](https://github.com/Fdawgs/docsmith/commit/59ae05dd0f9dcd17d4110df98a0f4e507e9b70c9))
+* **deps:** bump @fastify/bearer-auth from 7.0.0 to 7.0.1 ([#818](https://github.com/Fdawgs/docsmith/issues/818)) ([e244511](https://github.com/Fdawgs/docsmith/commit/e2445116291fab1e4c348b3c18d4822e7da2b016))
+* **deps:** bump @fastify/static from 5.0.0 to 5.0.1 ([#813](https://github.com/Fdawgs/docsmith/issues/813)) ([80e3ecb](https://github.com/Fdawgs/docsmith/commit/80e3ecbc1d9bf54a3ba7022df5ef8024337a5452))
+* **deps:** bump @fastify/swagger from 6.0.0 to 6.0.1 ([#817](https://github.com/Fdawgs/docsmith/issues/817)) ([e82d41c](https://github.com/Fdawgs/docsmith/commit/e82d41c87a900a3c50284832031e712e8b79f642))
+* **deps:** bump fastify from 3.28.0 to 3.29.0 ([#800](https://github.com/Fdawgs/docsmith/issues/800)) ([dd0c95b](https://github.com/Fdawgs/docsmith/commit/dd0c95bda67e46ddd880b5a380bcfed53c2d9ab4))
+* **deps:** bump github/codeql-action from 1 to 2 ([#799](https://github.com/Fdawgs/docsmith/issues/799)) ([3a343d3](https://github.com/Fdawgs/docsmith/commit/3a343d3d266e7b41aae1e0255840a3db17da44b7))
+* **deps:** bump node-poppler from 5.1.3 to 5.1.4 ([#812](https://github.com/Fdawgs/docsmith/issues/812)) ([cd11dc6](https://github.com/Fdawgs/docsmith/commit/cd11dc68e16b2ffe6273703c1a124b7baccdbca3))
+* **deps:** bump pino from 7.10.0 to 7.11.0 ([#808](https://github.com/Fdawgs/docsmith/issues/808)) ([9ad337e](https://github.com/Fdawgs/docsmith/commit/9ad337e0a0eb09fbbc808b40a64c469f9b2ba344))
+* **deps:** bump redoc from 2.0.0-rc.66 to 2.0.0-rc.67 ([#805](https://github.com/Fdawgs/docsmith/issues/805)) ([c73dc05](https://github.com/Fdawgs/docsmith/commit/c73dc05ee1282ce6c8459889fc976c4b84abe5e5))
+* **deps:** bump sub-dependencies ([57d77fb](https://github.com/Fdawgs/docsmith/commit/57d77fb936b3dd651aad3afae6547bcf3dc9217c))
+* **deps:** bump under-pressure from 5.8.0 to 5.8.1 ([#816](https://github.com/Fdawgs/docsmith/issues/816)) ([95c7117](https://github.com/Fdawgs/docsmith/commit/95c7117ddbc394823ae163cebf9fe29d3000f4e5))
+* use new `[@fastify](https://github.com/fastify)` org dependencies ([#798](https://github.com/Fdawgs/docsmith/issues/798)) ([d79d8dc](https://github.com/Fdawgs/docsmith/commit/d79d8dc33c9b7e167aede600e29b7ae7f7f31ab3))
+
+
+### Miscellaneous
+
+* **.github/workflows/link-check:** use `skip` input ([c508778](https://github.com/Fdawgs/docsmith/commit/c5087783a7912a4f78872700a76790b0949bf0a3))
+* **ci:** remove quotation marks from step name ([a01de23](https://github.com/Fdawgs/docsmith/commit/a01de23cd07e050a2ee8ffe1f9db3063bd46a748))
+* **server:** add missing asterisk to inline comment block ([c7ee7f4](https://github.com/Fdawgs/docsmith/commit/c7ee7f4e672cabe2fd6e3c2efd990a22fd393e8c))
+* use npm install alias ([f8676ba](https://github.com/Fdawgs/docsmith/commit/f8676ba98bff23bfabff18aa45107358e11a7394))
+
 ### [7.0.2](https://github.com/Fdawgs/docsmith/compare/v7.0.1...v7.0.2) (2022-04-20)
 
 
