@@ -64,7 +64,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^16.2.4",
 		"@commitlint/config-conventional": "^16.2.4",
-		"@faker-js/faker": "^6.2.0",
+		"@faker-js/faker": "^6.3.1",
 		"autocannon": "^7.8.1",
 		"eslint": "^8.14.0",
 		"eslint-config-airbnb-base": "^15.0.0",
