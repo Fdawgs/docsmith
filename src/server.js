@@ -74,7 +74,7 @@ async function plugin(server, config) {
 
 	// Register routes
 	server
-		/*
+		/**
 		 * `x-xss-protection` and `content-security-policy` is set by default by Helmet.
 		 * These are only useful for HTML/XML content; the only CSP directive that
 		 * is of use to other content is "frame-ancestors 'none'" to stop responses
