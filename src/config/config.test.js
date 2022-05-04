@@ -160,7 +160,7 @@ describe("Configuration", () => {
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
 		const HTTPS_HTTP2_ENABLED = true;
-		const LOG_LEVEL = faker.random.arrayElement([
+		const LOG_LEVEL = faker.helpers.arrayElement([
 			"debug",
 			"warn",
 			"silent",
@@ -283,7 +283,7 @@ describe("Configuration", () => {
 			"./test_resources/test_ssl_cert/server.cert"; // Not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const HTTPS_HTTP2_ENABLED = true;
-		const LOG_LEVEL = faker.random.arrayElement([
+		const LOG_LEVEL = faker.helpers.arrayElement([
 			"debug",
 			"warn",
 			"silent",
@@ -369,7 +369,7 @@ describe("Configuration", () => {
 				envVariables?.CORS_ALLOW_CREDENTIALS || "";
 			const CORS_EXPOSED_HEADERS = "Location";
 			const CORS_MAX_AGE = 10;
-			const LOG_LEVEL = faker.random.arrayElement([
+			const LOG_LEVEL = faker.helpers.arrayElement([
 				"debug",
 				"warn",
 				"silent",
@@ -428,7 +428,7 @@ describe("Configuration", () => {
 		const HTTPS_SSL_CERT_PATH = envVariables?.HTTPS_SSL_CERT_PATH || "";
 		const HTTPS_PFX_FILE_PATH = envVariables?.HTTPS_PFX_FILE_PATH || "";
 		const HTTPS_PFX_PASSPHRASE = envVariables?.HTTPS_PFX_PASSPHRASE || "";
-		const LOG_LEVEL = faker.random.arrayElement([
+		const LOG_LEVEL = faker.helpers.arrayElement([
 			"debug",
 			"warn",
 			"silent",
