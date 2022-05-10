@@ -17,7 +17,7 @@ Other processes and specifications that are in use in this repository are:
 
 Ensure you have all prerequisites installed (including any optional ones), as noted in the [prerequisites section of the readme file](./README.md#prerequisites).
 
-With those in place, you can fork the repository, clone it, and then run `npm i` to install all dependencies.
+With those in place, you can fork the repository, clone it, and then run `npm ci` to install all dependencies.
 Make a copy of `.env.template` in the root directory and rename it to `.env`, configuring the environment variables in the file as required.
 
 ### Development Workflow
