@@ -181,10 +181,10 @@ async function plugin(server, config) {
 					/* istanbul ignore next: under-pressure plugin throws valid 503s */
 					res.statusCode !== 503
 				) {
-					req.log.error({ req, res, err }, err && err.message);
+					req.log.error({ req, res, err }, err?.message);
 					res.internalServerError();
 				} else {
-					req.log.info({ req, res, err }, err && err.message);
+					req.log.info({ req, res, err }, err?.message);
 					res.send(err);
 				}
 			}
