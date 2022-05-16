@@ -81,7 +81,7 @@ describe("Embed-HTML-Images Plugin", () => {
 			code: "ENOENT",
 			errno: expect.any(Number),
 			path: expect.any(String),
-			syscall: expect.any(String),
+			syscall: "open",
 		});
 		expect(response.statusCode).toBe(500);
 	});
