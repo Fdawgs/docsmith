@@ -176,11 +176,15 @@ async function plugin(server, config) {
 			// eslint-disable-next-line promise/prefer-await-to-callbacks
 			(err, req, res) => {
 				/* istanbul ignore if */
-				if (res.statusCode >= 500) {
-					req.log.error({ req, res, err }, err && err.message);
+				if (
+					res.statusCode >= 500 &&
+					/* istanbul ignore next: under-pressure plugin throws valid 503s */
+					res.statusCode !== 503
+				) {
+					req.log.error({ req, res, err }, err?.message);
 					res.internalServerError();
 				} else {
-					req.log.info({ req, res, err }, err && err.message);
+					req.log.info({ req, res, err }, err?.message);
 					res.send(err);
 				}
 			}

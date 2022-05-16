@@ -7,6 +7,7 @@ faker.locale = "en_GB";
 
 describe("Configuration", () => {
 	const currentEnv = { ...process.env };
+	const tempDirectory = "./src/temp/";
 
 	beforeAll(() => {
 		jest.resetModules();
@@ -137,7 +138,7 @@ describe("Configuration", () => {
 
 		expect(config.poppler).toEqual({
 			binPath: POPPLER_BINARY_PATH,
-			tempDirectory: expect.any(String),
+			tempDirectory,
 		});
 
 		expect(config.tesseract).toEqual({
@@ -148,7 +149,7 @@ describe("Configuration", () => {
 
 		expect(config.unrtf).toEqual({
 			binPath: UNRTF_BINARY_PATH,
-			tempDirectory: expect.any(String),
+			tempDirectory,
 		});
 	});
 
@@ -261,7 +262,7 @@ describe("Configuration", () => {
 
 		expect(config.poppler).toEqual({
 			binPath: POPPLER_BINARY_PATH,
-			tempDirectory: expect.any(String),
+			tempDirectory,
 		});
 
 		expect(config.tesseract).toEqual({
@@ -272,7 +273,7 @@ describe("Configuration", () => {
 
 		expect(config.unrtf).toEqual({
 			binPath: UNRTF_BINARY_PATH,
-			tempDirectory: expect.any(String),
+			tempDirectory,
 		});
 	});
 
