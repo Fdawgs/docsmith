@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+### [7.0.4](https://github.com/Fdawgs/docsmith/compare/v7.0.3...v7.0.4) (2022-05-16)
+
+
+### Bug Fixes
+
+* **server:** do not transform 503 http err into 500 http err response ([84b7b24](https://github.com/Fdawgs/docsmith/commit/84b7b24ebdddfacf9719f77a76ec09ff3928738f))
+
+
+### Documentation
+
+* update deployment steps to use `npm ci` ([2c522c5](https://github.com/Fdawgs/docsmith/commit/2c522c538da33725564b0fdfe2d2f32477cae9a3))
+
+
+### Miscellaneous
+
+* **.eslintrc:** enable `plugin:jest/style` rules ([#822](https://github.com/Fdawgs/docsmith/issues/822)) ([f3bf60a](https://github.com/Fdawgs/docsmith/commit/f3bf60a9dd94a5bbd40295d55dad87d772366d70))
+* **.github/codeql-config:** remove quotation marks ([b137e33](https://github.com/Fdawgs/docsmith/commit/b137e3393d6ecd33694ef2dbd500e58e71425339))
+* **server:** use optional chaining for error message logging ([0bb745e](https://github.com/Fdawgs/docsmith/commit/0bb745e0299c05455a5e0c40a8515fcc28705fb3))
+
+
+### Continuous Integration
+
+* check `user.login` is dependabot instead of `actor` ([45bdf1b](https://github.com/Fdawgs/docsmith/commit/45bdf1b8bbb5e011480372398855816ee4555161))
+* **ci:** require `unit-tests` job to pass for `save-pr-number` job to run ([218ac5f](https://github.com/Fdawgs/docsmith/commit/218ac5f619cbd805fabf20b55a906d516ea26bfe))
+* **codeql:** only run on pr changes to `.html`, `.js`, and `.yml` files ([9c9ca6c](https://github.com/Fdawgs/docsmith/commit/9c9ca6c32a58212e85e4c04cc6c727609f61a9cf))
+* **codeql:** resolve missing analyses ([e25810f](https://github.com/Fdawgs/docsmith/commit/e25810f02d43ae714dd4b0413a4355e554af5da7))
+* **codeql:** specify which files to scan during analysis ([980aa48](https://github.com/Fdawgs/docsmith/commit/980aa48eb063387d35bbe2a0ad1bdaa7bfcfb4d1))
+
 ### [7.0.3](https://github.com/Fdawgs/docsmith/compare/v7.0.2...v7.0.3) (2022-05-04)
 
 
