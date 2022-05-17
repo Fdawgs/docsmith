@@ -52,7 +52,7 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   cache: npm
-                  node-version: 16
+                  node-version: lts/*
 
             - name: Install
               run: npm ci --ignore-scripts
@@ -91,18 +91,18 @@ jobs:
         if: github.event.pull_request.draft == false
         strategy:
             matrix:
-                node: [14, 16]
+                node-version: [14, 16]
                 os: [macos-latest, ubuntu-latest, windows-latest]
         runs-on: ${{ matrix.os }}
         steps:
             - name: Check out repo
               uses: actions/checkout@v3
 
-            - name: Setup Node ${{ matrix.node }} on ${{ matrix.os }}
+            - name: Setup Node ${{ matrix.node-version }} on ${{ matrix.os }}
               uses: actions/setup-node@v3
               with:
                   cache: npm
-                  node-version: ${{ matrix.node }}
+                  node-version: ${{ matrix.node-version }}
 
             - name: Install
               run: npm ci --ignore-scripts
@@ -147,7 +147,7 @@ jobs:
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel: true
-                  flag-name: run-${{ matrix.node }}-${{ matrix.os }}
+                  flag-name: run-${{ matrix.node-version }}-${{ matrix.os }}
 
     lint-docker-file:
         name: Lint Dockerfile
