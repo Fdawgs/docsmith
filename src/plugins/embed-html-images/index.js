@@ -1,6 +1,6 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fp = require("fastify-plugin");
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const { JSDOM } = require("jsdom");
 const path = require("upath");
 

@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const autoParse = require("auto-parse");
 const fp = require("fastify-plugin");
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const glob = require("glob");
 const path = require("upath");
 const { Poppler } = require("node-poppler");

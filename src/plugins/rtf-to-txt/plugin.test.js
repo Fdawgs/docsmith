@@ -33,7 +33,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 	});
 
 	afterAll(async () => {
-		fs.rmSync(config.unrtf.tempDirectory, { recursive: true });
+		await fs.promises.rm(config.unrtf.tempDirectory, { recursive: true });
 		await server.close();
 	});
 
@@ -41,7 +41,9 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync("./test_resources/test_files/valid_rtf.rtf"),
+			body: await fs.promises.readFile(
+				"./test_resources/test_files/valid_rtf.rtf"
+			),
 			headers: {
 				"content-type": "application/rtf",
 			},
