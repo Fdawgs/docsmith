@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const envSchema = require("env-schema");
 const S = require("fluent-json-schema");
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const path = require("upath");
 const pino = require("pino");
 const physicalCpuCount = require("physical-cpu-count");

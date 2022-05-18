@@ -1,5 +1,5 @@
 const accepts = require("@fastify/accepts");
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");

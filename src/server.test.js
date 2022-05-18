@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable security-node/detect-crlf */
 const { chromium, firefox } = require("playwright");
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const startServer = require("./server");

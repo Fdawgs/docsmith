@@ -1,4 +1,4 @@
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");

@@ -2,7 +2,7 @@
 const autoParse = require("auto-parse");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const glob = require("glob");
 const { JSDOM } = require("jsdom");
 const path = require("upath");

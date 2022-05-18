@@ -1,5 +1,5 @@
 const Fastify = require("fastify");
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const startServer = require("./server");
 const getConfig = require("./config");
 
