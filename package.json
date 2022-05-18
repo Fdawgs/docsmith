@@ -91,7 +91,7 @@
 		"@fastify/cors": "^7.0.0",
 		"@fastify/helmet": "^8.0.1",
 		"@fastify/rate-limit": "^6.0.0",
-		"@fastify/sensible": "^4.0.0",
+		"@fastify/sensible": "^4.1.0",
 		"@fastify/static": "^5.0.2",
 		"@fastify/swagger": "^6.0.1",
 		"auto-parse": "^1.8.0",
