@@ -40,7 +40,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 	});
 
 	afterAll(async () => {
-		fs.rmSync(config.poppler.tempDirectory, { recursive: true });
+		await fs.promises.rm(config.poppler.tempDirectory, { recursive: true });
 		await server.close();
 	});
 
@@ -48,7 +48,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		let response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.promises.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
@@ -82,7 +82,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 				lastPageToConvert: 2,
 				test: "test",
 			},
-			body: fs.readFileSync(
+			body: await fs.promises.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			headers: {
@@ -123,7 +123,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: fs.readFileSync(
+			body: await fs.promises.readFile(
 				"./test_resources/test_files/invalid_pdf.pdf"
 			),
 			headers: {
