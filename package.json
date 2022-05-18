@@ -80,7 +80,7 @@
 		"jest": "^28.0.3",
 		"license-checker": "^25.0.1",
 		"nodemon": "^2.0.16",
-		"playwright": "^1.21.1",
+		"playwright": "^1.22.1",
 		"prettier": "2.6.2"
 	},
 	"dependencies": {
