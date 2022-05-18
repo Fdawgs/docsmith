@@ -2,6 +2,61 @@
 
 All notable changes to this project will be documented in this file.
 
+### [7.0.4](https://github.com/Fdawgs/docsmith/compare/v7.0.3...v7.0.4) (2022-05-18)
+
+
+### Bug Fixes
+
+* **server:** do not transform 503 http err into 500 http err response ([84b7b24](https://github.com/Fdawgs/docsmith/commit/84b7b24ebdddfacf9719f77a76ec09ff3928738f))
+
+
+### Documentation
+
+* update deployment steps to use `npm ci` ([2c522c5](https://github.com/Fdawgs/docsmith/commit/2c522c538da33725564b0fdfe2d2f32477cae9a3))
+
+
+### Miscellaneous
+
+* **.eslintrc:** enable `plugin:jest/style` rules ([#822](https://github.com/Fdawgs/docsmith/issues/822)) ([f3bf60a](https://github.com/Fdawgs/docsmith/commit/f3bf60a9dd94a5bbd40295d55dad87d772366d70))
+* **.github/codeql-config:** remove quotation marks ([b137e33](https://github.com/Fdawgs/docsmith/commit/b137e3393d6ecd33694ef2dbd500e58e71425339))
+* **bug_report:** use node 18 as placeholder for `node-version` ([db2aab8](https://github.com/Fdawgs/docsmith/commit/db2aab8231c85977dee003ac3fb8e1ea0e1d988b))
+* **server:** use optional chaining for error message logging ([0bb745e](https://github.com/Fdawgs/docsmith/commit/0bb745e0299c05455a5e0c40a8515fcc28705fb3))
+
+
+### Continuous Integration
+
+* **automerge:** fix context ([7ae3807](https://github.com/Fdawgs/docsmith/commit/7ae3807a25f489831a220faf52e8428880ea329c))
+* check `user.login` is dependabot instead of `actor` ([45bdf1b](https://github.com/Fdawgs/docsmith/commit/45bdf1b8bbb5e011480372398855816ee4555161))
+* **ci:** require `unit-tests` job to pass for `save-pr-number` job to run ([218ac5f](https://github.com/Fdawgs/docsmith/commit/218ac5f619cbd805fabf20b55a906d516ea26bfe))
+* **ci:** use `lts/*` for node setup in lint job ([9200b27](https://github.com/Fdawgs/docsmith/commit/9200b273e65cc9fe53a317e3e10455bfa947f72b))
+* **ci:** use `node-version` for node matrix key ([805c13e](https://github.com/Fdawgs/docsmith/commit/805c13e30df277e981c5096879a65b3c04397680))
+* **codeql:** only run on pr changes to `.html`, `.js`, and `.yml` files ([9c9ca6c](https://github.com/Fdawgs/docsmith/commit/9c9ca6c32a58212e85e4c04cc6c727609f61a9cf))
+* **codeql:** resolve missing analyses ([e25810f](https://github.com/Fdawgs/docsmith/commit/e25810f02d43ae714dd4b0413a4355e554af5da7))
+* **codeql:** specify which files to scan during analysis ([980aa48](https://github.com/Fdawgs/docsmith/commit/980aa48eb063387d35bbe2a0ad1bdaa7bfcfb4d1))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 16.2.4 to 17.0.0 ([#837](https://github.com/Fdawgs/docsmith/issues/837)) ([aa2f03f](https://github.com/Fdawgs/docsmith/commit/aa2f03f82b47759dcc73b7e092b1d05e6c8bab40))
+* **deps-dev:** bump @commitlint/config-conventional ([#832](https://github.com/Fdawgs/docsmith/issues/832)) ([ea7a55c](https://github.com/Fdawgs/docsmith/commit/ea7a55c1d8385aac2db109b6a3a23a0f9165be50))
+* **deps-dev:** bump eslint from 8.14.0 to 8.15.0 ([#828](https://github.com/Fdawgs/docsmith/issues/828)) ([3a84375](https://github.com/Fdawgs/docsmith/commit/3a843754d64cf878e80280f0d319a616631bcf5b))
+* **deps-dev:** bump eslint-plugin-jest from 26.1.5 to 26.2.2 ([#831](https://github.com/Fdawgs/docsmith/issues/831)) ([97687a1](https://github.com/Fdawgs/docsmith/commit/97687a10fd362ebb0950790a3ea850dea5ce12b5))
+* **deps-dev:** bump husky from 7.0.4 to 8.0.1 ([#827](https://github.com/Fdawgs/docsmith/issues/827)) ([e051b94](https://github.com/Fdawgs/docsmith/commit/e051b9432f33fa7a7c44f598f7af69f2b486f2ca))
+* **deps-dev:** bump jest from 28.0.3 to 28.1.0 ([#840](https://github.com/Fdawgs/docsmith/issues/840)) ([b188eba](https://github.com/Fdawgs/docsmith/commit/b188ebacbb81201c86cb227dd9759cf9c4cce69c))
+* **deps-dev:** bump playwright from 1.21.1 to 1.22.1 ([#836](https://github.com/Fdawgs/docsmith/issues/836)) ([e9cfb4e](https://github.com/Fdawgs/docsmith/commit/e9cfb4e2415851167a4b064a50ad6e96da10a10a))
+* **deps:** bump @fastify/helmet from 8.0.0 to 8.0.1 ([#833](https://github.com/Fdawgs/docsmith/issues/833)) ([c249022](https://github.com/Fdawgs/docsmith/commit/c249022099d14fa34a00c2a49a148708d0be4e92))
+* **deps:** bump @fastify/sensible from 4.0.0 to 4.1.0 ([#830](https://github.com/Fdawgs/docsmith/issues/830)) ([7b5f7bf](https://github.com/Fdawgs/docsmith/commit/7b5f7bf73fe688703f2520e66a87b0f049cea118))
+* **deps:** bump @fastify/static from 5.0.1 to 5.0.2 ([#834](https://github.com/Fdawgs/docsmith/issues/834)) ([2b2deba](https://github.com/Fdawgs/docsmith/commit/2b2debad59b8f3c09696835b7624e8754e5e8e36))
+* **deps:** bump dotenv from 16.0.0 to 16.0.1 ([#835](https://github.com/Fdawgs/docsmith/issues/835)) ([312b187](https://github.com/Fdawgs/docsmith/commit/312b187ee0ec7ccabdf75010910a1bfe98d6d00b))
+* **deps:** bump glob from 8.0.1 to 8.0.3 ([#838](https://github.com/Fdawgs/docsmith/issues/838)) ([7d24f6a](https://github.com/Fdawgs/docsmith/commit/7d24f6a101acf22abe99c1fa5f11236c843cdce6))
+* **deps:** bump redoc from 2.0.0-rc.67 to 2.0.0-rc.70 ([#829](https://github.com/Fdawgs/docsmith/issues/829)) ([09fb54b](https://github.com/Fdawgs/docsmith/commit/09fb54bb0d645e22691466d61bab589b1cc775fc))
+* **deps:** bump sub-dependencies ([4612215](https://github.com/Fdawgs/docsmith/commit/4612215b799434090f0e2541e88a23c64e26029b))
+
+
+### Improvements
+
+* access `fs/promises` api via newer route ([236534b](https://github.com/Fdawgs/docsmith/commit/236534b0fb4f507598e78cd8195a1e947f7b89f4))
+
 ### [7.0.3](https://github.com/Fdawgs/docsmith/compare/v7.0.2...v7.0.3) (2022-05-04)
 
 
