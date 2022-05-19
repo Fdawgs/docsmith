@@ -1,5 +1,4 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
-const autoParse = require("auto-parse");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const fs = require("fs/promises");
@@ -8,6 +7,9 @@ const { JSDOM } = require("jsdom");
 const path = require("upath");
 const { Poppler } = require("node-poppler");
 const { randomUUID } = require("crypto");
+
+// Import utils
+const parseString = require("../../utils/parse-string");
 
 /**
  * @author Frazer Smith
@@ -92,7 +94,7 @@ async function plugin(server, options) {
 				 * Convert query string params to literal values to
 				 * allow Poppler module to use them
 				 */
-				query[value] = autoParse(query[value]);
+				query[value] = parseString(query[value]);
 			}
 		});
 		Object.assign(config.pdfToHtmlOptions, query);
