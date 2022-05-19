@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+### [7.0.5](https://github.com/Fdawgs/docsmith/compare/v7.0.4...v7.0.5) (2022-05-19)
+
+
+### Continuous Integration
+
+* remove git credentials after checkout ([#842](https://github.com/Fdawgs/docsmith/issues/842)) ([cfa1540](https://github.com/Fdawgs/docsmith/commit/cfa1540a7efc50c564b039608a4e5985418afcd2))
+
+
+### Improvements
+
+* replace abandoned `auto-parse` dep with smaller, faster util ([#844](https://github.com/Fdawgs/docsmith/issues/844)) ([34c23ce](https://github.com/Fdawgs/docsmith/commit/34c23ce9a5ddd8135d5a00cc21ce68d9b338e570))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.2.9 to 39.3.0 ([#846](https://github.com/Fdawgs/docsmith/issues/846)) ([786a3d0](https://github.com/Fdawgs/docsmith/commit/786a3d0274f37581c4fdc55d0ac17d1ea4cf0dd9))
+* **deps:** bump @fastify/rate-limit from 6.0.0 to 6.0.1 ([#845](https://github.com/Fdawgs/docsmith/issues/845)) ([205d899](https://github.com/Fdawgs/docsmith/commit/205d89970fa0a70a6fdaf8ab809d359182b8b54b))
+
 ### [7.0.4](https://github.com/Fdawgs/docsmith/compare/v7.0.3...v7.0.4) (2022-05-18)
 
 
