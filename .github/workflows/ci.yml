@@ -36,6 +36,8 @@ jobs:
         steps:
             - name: Check out repo
               uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
 
             - name: Dependency review
               uses: actions/dependency-review-action@v1
@@ -47,6 +49,8 @@ jobs:
         steps:
             - name: Check out repo
               uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
 
             - name: Setup Node
               uses: actions/setup-node@v3
@@ -80,6 +84,7 @@ jobs:
               uses: actions/checkout@v3
               with:
                   fetch-depth: 0
+                  persist-credentials: false
 
             - name: Run Commitlint
               uses: wagoid/commitlint-github-action@v4
@@ -97,6 +102,8 @@ jobs:
         steps:
             - name: Check out repo
               uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
 
             - name: Setup Node ${{ matrix.node-version }} on ${{ matrix.os }}
               uses: actions/setup-node@v3
@@ -156,6 +163,8 @@ jobs:
         steps:
             - name: Check out repo
               uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
 
             - name: Run Hadolint
               uses: hadolint/hadolint-action@v2.1.0
@@ -171,6 +180,8 @@ jobs:
         steps:
             - name: Check out repo
               uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
 
             - name: Build and start app
               run: |
@@ -203,6 +214,8 @@ jobs:
         steps:
             - name: Check out repo
               uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
 
             - name: Save PR number
               run: |
