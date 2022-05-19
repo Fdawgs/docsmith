@@ -1,11 +1,13 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
-const autoParse = require("auto-parse");
 const fp = require("fastify-plugin");
 const fs = require("fs/promises");
 const glob = require("glob");
 const path = require("upath");
 const { Poppler } = require("node-poppler");
 const { randomUUID } = require("crypto");
+
+// Import utils
+const parseString = require("../../utils/parse-string");
 
 /**
  * @author Frazer Smith
@@ -72,7 +74,7 @@ async function plugin(server, options) {
 		 */
 		const query = { ...req.query };
 		Object.keys(query).forEach((value) => {
-			query[value] = autoParse(query[value]);
+			query[value] = parseString(query[value]);
 		});
 
 		/**
