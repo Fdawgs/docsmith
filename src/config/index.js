@@ -26,15 +26,10 @@ function parseCorsParameter(param) {
 		return false;
 	}
 	if (param.includes(",")) {
-		const paramArray = [];
-		param
+		return param
 			.trim()
 			.split(",")
-			.forEach((value) => {
-				paramArray.push(value.trim());
-			});
-
-		return paramArray;
+			.map((value) => value.trim());
 	}
 	return param;
 }
