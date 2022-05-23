@@ -68,20 +68,18 @@ async function plugin(server) {
 				 */
 				if (styleRule.style["font-family"]) {
 					const fonts = styleRule.style["font-family"].split(",");
-					const parsedFonts = [];
-
-					fonts.forEach((font) => {
+					const parsedFonts = fonts.map((font) => {
 						if (/[^a-zA-Z-]+/.test(font.trim())) {
-							parsedFonts.push(
-								// Stop escaping of <style> elements and code injection
-								cssEsc(font.replace(/<\/style>/gm, "").trim(), {
+							// Stop escaping of <style> elements and code injection
+							return cssEsc(
+								font.replace(/<\/style>/gm, "").trim(),
+								{
 									quotes: "double",
 									wrap: true,
-								})
+								}
 							);
-						} else {
-							parsedFonts.push(font.trim());
 						}
+						return font.trim();
 					});
 
 					styleRule.style.setProperty(
