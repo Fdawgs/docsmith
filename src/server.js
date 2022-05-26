@@ -50,7 +50,7 @@ async function plugin(server, config) {
 		// Utility functions and error handlers
 		.register(sensible, { errorHandler: false })
 
-		// Re-usable schemas
+		// Reusable schemas
 		.register(sharedSchemas)
 
 		// Generate OpenAPI/Swagger schemas
