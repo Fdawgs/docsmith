@@ -19,7 +19,9 @@ RUN apt-get -q update && \
     rm -rf ./node_modules/node-unrtf/src/lib/*
 
 # Create temp folder for files to be stored whilst being converted
-RUN mkdir ./src/temp/ && chown -R node ./src/temp/
+RUN mkdir ./src/temp/ && \
+    ## Allow for temp folder to be manipulated
+    chown -R node ./src/
 
 # Node images provide 'node' unprivileged user to run apps and prevent
 # privilege escalation attacks
