@@ -13,7 +13,10 @@ RUN apt-get -q update && \
     npm ci --production --ignore-scripts && \
     npm cache clean --force && \
     chown node ./node_modules/htmltidy2/bin/linux64/tidy && \
-    chmod 544 ./node_modules/htmltidy2/bin/linux64/tidy
+    chmod 544 ./node_modules/htmltidy2/bin/linux64/tidy && \
+    # Remove included Windows binaries
+    rm -rf ./node_modules/node-poppler/src/lib/* && \
+    rm -rf ./node_modules/node-unrtf/src/lib/*
 
 # Create temp folder for files to be stored whilst being converted
 RUN mkdir ./src/temp/ && chown -R node ./src/temp/
