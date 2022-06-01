@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file.
 
+### [7.0.6](https://github.com/Fdawgs/docsmith/compare/v7.0.5...v7.0.6) (2022-06-01)
+
+
+### Bug Fixes
+
+* **app:** ignore error throw on closure if temp folder already removed ([a28db7e](https://github.com/Fdawgs/docsmith/commit/a28db7edc7424cd4e50ce3cd7c1af79c0a229e2b))
+
+
+### Improvements
+
+* **config:** replace `forEach()` with `map()` ([a248a34](https://github.com/Fdawgs/docsmith/commit/a248a34a46f39e559f89aabefad530574f7313ac))
+* **plugins/tidy-css:** replace `forEach()` with `map()` ([33e0a1a](https://github.com/Fdawgs/docsmith/commit/33e0a1a057cc883a30a10ccb98f77e12b2a660c0))
+
+
+### Miscellaneous
+
+* remove redundant eslint comments ([cd861d1](https://github.com/Fdawgs/docsmith/commit/cd861d1268a7875b0787894f5a51e02d00629eb8))
+* **server:** fix inline comment ([b2dfc96](https://github.com/Fdawgs/docsmith/commit/b2dfc9631f2fb35f5410cda7401a082de064fa28))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.0.0 to 17.0.2 ([#850](https://github.com/Fdawgs/docsmith/issues/850)) ([1d38f6c](https://github.com/Fdawgs/docsmith/commit/1d38f6cad21a209a9293a936e3849b22e8ff77ad))
+* **deps-dev:** bump @commitlint/config-conventional ([#859](https://github.com/Fdawgs/docsmith/issues/859)) ([f7c4b9e](https://github.com/Fdawgs/docsmith/commit/f7c4b9e5a3cd3124cc553d716b555a73388df65c))
+* **deps-dev:** bump @faker-js/faker from 6.3.1 to 7.1.0 ([#857](https://github.com/Fdawgs/docsmith/issues/857)) ([c3cb838](https://github.com/Fdawgs/docsmith/commit/c3cb838808071905790bfdbe7aa7a03cca5bcedc))
+* **deps-dev:** bump eslint from 8.15.0 to 8.16.0 ([#855](https://github.com/Fdawgs/docsmith/issues/855)) ([43ca3f6](https://github.com/Fdawgs/docsmith/commit/43ca3f69e13b5b8c178e179bbab7a0d9f4bdbf02))
+* **deps-dev:** bump eslint-plugin-jest from 26.2.2 to 26.4.6 ([#853](https://github.com/Fdawgs/docsmith/issues/853)) ([fe26126](https://github.com/Fdawgs/docsmith/commit/fe2612679f27b0cb99398bbaa18550598da35bd0))
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.3.0 to 39.3.2 ([#858](https://github.com/Fdawgs/docsmith/issues/858)) ([360aeb1](https://github.com/Fdawgs/docsmith/commit/360aeb137b643119b527e3527406115a6efe0f7f))
+* **deps-dev:** bump playwright from 1.22.1 to 1.22.2 ([#854](https://github.com/Fdawgs/docsmith/issues/854)) ([b3e0a25](https://github.com/Fdawgs/docsmith/commit/b3e0a2511fa90555693f029b8c0c458d981dd19d))
+* **deps:** bump @fastify/helmet from 8.0.1 to 8.1.0 ([#856](https://github.com/Fdawgs/docsmith/issues/856)) ([d86e47e](https://github.com/Fdawgs/docsmith/commit/d86e47e23c9525af3eea87533342c718a3dd2dae))
+* **deps:** bump @fastify/swagger from 6.0.1 to 6.1.0 ([#860](https://github.com/Fdawgs/docsmith/issues/860)) ([3c65e69](https://github.com/Fdawgs/docsmith/commit/3c65e694578ede75ed315a755cbb90372a48360c))
+* **deps:** bump env-schema from 4.0.0 to 5.0.0 ([#852](https://github.com/Fdawgs/docsmith/issues/852)) ([e43a33a](https://github.com/Fdawgs/docsmith/commit/e43a33a68fda4d899635f0a6e7b17f85b20bf6ae))
+* **deps:** bump node-poppler from 5.1.4 to 5.1.5 ([#864](https://github.com/Fdawgs/docsmith/issues/864)) ([1722612](https://github.com/Fdawgs/docsmith/commit/17226129481c3ca1361df3b015a54fb03f91c7bb))
+* **deps:** bump node-unrtf from 2.0.7 to 2.0.8 ([#863](https://github.com/Fdawgs/docsmith/issues/863)) ([ccac0e1](https://github.com/Fdawgs/docsmith/commit/ccac0e1e5cfb36113cd344b6d4db1e1a4a1d0893))
+* **deps:** bump redoc from 2.0.0-rc.70 to 2.0.0-rc.71 ([#862](https://github.com/Fdawgs/docsmith/issues/862)) ([0ab0628](https://github.com/Fdawgs/docsmith/commit/0ab06282f76b66c272b4c8f0efd47dd3e86a3243))
+* **deps:** bump sub-dependencies ([#865](https://github.com/Fdawgs/docsmith/issues/865)) ([38eea8a](https://github.com/Fdawgs/docsmith/commit/38eea8a331e3c4eb90e6fa48d85b8224fbfda4ac))
+* **dockerfile:** fix permissions needed to alter temp folder ([85fcd2f](https://github.com/Fdawgs/docsmith/commit/85fcd2f7e68ac73894d3688aef62419adb5f70bc))
+* **dockerfile:** remove windows binaries from dependencies ([b91b0c0](https://github.com/Fdawgs/docsmith/commit/b91b0c02ce64fead603c69fd5de6c0bdff0cf75f))
+
 ### [7.0.5](https://github.com/Fdawgs/docsmith/compare/v7.0.4...v7.0.5) (2022-05-19)
 
 
