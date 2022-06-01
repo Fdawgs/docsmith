@@ -111,7 +111,7 @@
 		"jsdom": "^19.0.0",
 		"language-tags": "^1.0.5",
 		"mammoth": "^1.4.21",
-		"node-poppler": "^5.1.4",
+		"node-poppler": "^5.1.5",
 		"node-unrtf": "^2.0.8",
 		"physical-cpu-count": "^2.0.0",
 		"pino": "^7.11.0",
