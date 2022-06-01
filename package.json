@@ -19,7 +19,7 @@
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
-		"lint:licenses": "license-checker --direct --excludePackages=\"caniuse-lite@1.0.30001341;duck@0.1.12;language-subtag-registry@0.3.21;tesseract.js-core@2.2.0;url-template@2.0.8\" --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Python-2.0;Unlicense\" --production --summary",
+		"lint:licenses": "license-checker --direct --excludePackages=\"caniuse-lite@1.0.30001344;duck@0.1.12;language-subtag-registry@0.3.21;tesseract.js-core@2.2.0;url-template@2.0.8\" --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Python-2.0;Unlicense\" --production --summary",
 		"lint:prettier": "prettier . -w -u",
 		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",
