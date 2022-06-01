@@ -100,7 +100,7 @@
 		"env-schema": "^5.0.0",
 		"fastify": "^3.29.0",
 		"fastify-disablecache": "^2.0.7",
-		"fastify-floc-off": "^1.0.6",
+		"fastify-floc-off": "^2.0.0",
 		"fastify-plugin": "^3.0.1",
 		"file-stream-rotator": "^0.6.1",
 		"file-type": "^16.5.3",
