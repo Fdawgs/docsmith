@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const { chromium, firefox } = require("playwright");
 const fs = require("fs/promises");
 const Fastify = require("fastify");
