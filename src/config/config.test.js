@@ -1,9 +1,7 @@
-const { faker } = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker/locale/en_GB");
 const fs = require("fs/promises");
 const glob = require("glob");
 const getConfig = require(".");
-
-faker.locale = "en_GB";
 
 describe("Configuration", () => {
 	const currentEnv = { ...process.env };
