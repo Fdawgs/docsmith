@@ -65,7 +65,7 @@ const expResHeaders4xxErrors = {
 delete expResHeaders4xxErrors["keep-alive"];
 
 describe("Server Deployment", () => {
-	describe("End-To-End - Bearer Token and OCR Disabled", () => {
+	describe("Bearer Token and OCR Disabled", () => {
 		let config;
 		let server;
 
@@ -337,7 +337,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("End-To-End - Bearer Token and OCR Enabled", () => {
+	describe("Bearer Token and OCR Enabled", () => {
 		let config;
 		let server;
 
