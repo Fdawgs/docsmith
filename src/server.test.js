@@ -65,7 +65,7 @@ const expResHeaders4xxErrors = {
 delete expResHeaders4xxErrors["keep-alive"];
 
 describe("Server Deployment", () => {
-	describe("End-To-End - Bearer Token and OCR Disabled", () => {
+	describe("Bearer Token and OCR Disabled", () => {
 		let config;
 		let server;
 
@@ -138,22 +138,6 @@ describe("Server Deployment", () => {
 
 				expect(response.headers).toEqual(expResHeaders4xxErrors);
 				expect(response.statusCode).toBe(404);
-			});
-		});
-
-		describe("/docs Route", () => {
-			test("Should return HTML", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/docs",
-					headers: {
-						accept: "text/html",
-					},
-				});
-
-				expect(isHtml(response.payload)).toBe(true);
-				expect(response.headers).toEqual(expResHeadersHtmlStatic);
-				expect(response.statusCode).toBe(200);
 			});
 		});
 
@@ -337,7 +321,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("End-To-End - Bearer Token and OCR Enabled", () => {
+	describe("Bearer Token and OCR Enabled", () => {
 		let config;
 		let server;
 
@@ -411,22 +395,6 @@ describe("Server Deployment", () => {
 
 				expect(response.headers).toEqual(expResHeaders4xxErrors);
 				expect(response.statusCode).toBe(404);
-			});
-		});
-
-		describe("/docs Route", () => {
-			test("Should return HTML", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/docs",
-					headers: {
-						accept: "text/html",
-					},
-				});
-
-				expect(isHtml(response.payload)).toBe(true);
-				expect(response.headers).toEqual(expResHeadersHtmlStatic);
-				expect(response.statusCode).toBe(200);
 			});
 		});
 
@@ -588,7 +556,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("API Documentation Frontend", () => {
+	describe("API Documentation", () => {
 		let config;
 		let server;
 
@@ -620,30 +588,50 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		afterEach(async () => {
-			await page.close();
-			await browser.close();
+		describe("Content", () => {
+			describe("/docs Route", () => {
+				test("Should return HTML", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/docs",
+						headers: {
+							accept: "text/html",
+						},
+					});
+
+					expect(isHtml(response.payload)).toBe(true);
+					expect(response.headers).toEqual(expResHeadersHtmlStatic);
+					expect(response.statusCode).toBe(200);
+				});
+			});
 		});
 
-		// Webkit not tested as it is flakey in context of Playwright
-		const browsers = [chromium, firefox];
-		browsers.forEach((browserType) => {
-			test(`Should render docs page without error components - ${browserType.name()}`, async () => {
-				browser = await browserType.launch();
-				page = await browser.newPage();
+		describe("Frontend", () => {
+			afterEach(async () => {
+				await page.close();
+				await browser.close();
+			});
 
-				await page.goto("http://localhost:8204/docs");
-				expect(await page.title()).toBe("Docsmith | Documentation");
-				/**
-				 * Checks redoc has not rendered an error component
-				 * https://github.com/Redocly/redoc/blob/master/src/components/ErrorBoundary.tsx
-				 */
-				const heading = page.locator("h1 >> nth=0");
-				await heading.waitFor();
+			// Webkit not tested as it is flakey in context of Playwright
+			const browsers = [chromium, firefox];
+			browsers.forEach((browserType) => {
+				test(`Should render docs page without error components - ${browserType.name()}`, async () => {
+					browser = await browserType.launch();
+					page = await browser.newPage();
 
-				expect(await heading.textContent()).not.toEqual(
-					expect.stringMatching(/something\s*went\s*wrong/i)
-				);
+					await page.goto("http://localhost:8204/docs");
+					expect(await page.title()).toBe("Docsmith | Documentation");
+					/**
+					 * Checks redoc has not rendered an error component
+					 * https://github.com/Redocly/redoc/blob/master/src/components/ErrorBoundary.tsx
+					 */
+					const heading = page.locator("h1 >> nth=0");
+					await heading.waitFor();
+
+					expect(await heading.textContent()).not.toEqual(
+						expect.stringMatching(/something\s*went\s*wrong/i)
+					);
+				});
 			});
 		});
 	});
