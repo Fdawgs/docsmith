@@ -80,7 +80,7 @@ To quickly test it, use [Insomnia](https://insomnia.rest/) and import the exampl
 
 This requires [Docker](https://www.docker.com) installed.
 
-1. Run `docker compose up` (or `docker compose up -d` to run in background)
+1. Run `docker compose up` (or `docker compose up -d` to run in the background)
 
 ### Deploying Using PM2
 
