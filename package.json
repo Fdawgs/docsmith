@@ -120,7 +120,7 @@
 		"redoc": "^2.0.0-rc.71",
 		"secure-json-parse": "^2.4.0",
 		"tesseract.js": "^2.1.5",
-		"under-pressure": "^5.8.1",
+		"under-pressure": "^6.1.0",
 		"upath": "^2.0.1"
 	}
 }
