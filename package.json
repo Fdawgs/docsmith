@@ -70,7 +70,7 @@
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-import": "^2.26.0",
-		"eslint-plugin-jest": "^26.4.6",
+		"eslint-plugin-jest": "^26.5.3",
 		"eslint-plugin-jsdoc": "^39.3.2",
 		"eslint-plugin-promise": "^6.0.0",
 		"eslint-plugin-security": "^1.5.0",
@@ -81,7 +81,7 @@
 		"license-checker": "^25.0.1",
 		"nodemon": "^2.0.16",
 		"playwright": "^1.22.2",
-		"prettier": "2.6.2"
+		"prettier": "2.7.0"
 	},
 	"dependencies": {
 		"@fastify/accepts": "^3.0.0",
