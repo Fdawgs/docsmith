@@ -145,6 +145,11 @@ async function plugin(server, options) {
 						.addJob("recognize", file)
 						.then((result) => result?.data?.text)
 				)
+			).catch(
+				/* istanbul ignore next: unable to test unknown errors */
+				(err) => {
+					throw err;
+				}
 			);
 
 			req.conversionResults.body = results.join(" ");
