@@ -135,22 +135,16 @@ async function plugin(server, options) {
 					}
 				});
 
+			// glob sorts files alphabetically
 			const files = glob.sync(`${tempFile}*.png`);
 
 			// Pass each image file generate to Tesseract OCR
 			const results = await Promise.all(
-				files.map(async (file) => {
-					try {
-						const {
-							data: { text },
-						} = await server.tesseract.addJob("recognize", file);
-
-						return Promise.resolve(text);
-					} catch (err) {
-						/* istanbul ignore next: unable to test unknown errors */
-						return Promise.reject(err);
-					}
-				})
+				files.map(async (file) =>
+					server.tesseract
+						.addJob("recognize", file)
+						.then((result) => result?.data?.text)
+				)
 			);
 
 			req.conversionResults.body = results.join(" ");
