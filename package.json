@@ -24,7 +24,7 @@
 		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",
 		"start": "node .",
-		"start:dev": "nodemon",
+		"start:dev": "nodemon | pino-pretty",
 		"test": "npm run lint && npm run jest"
 	},
 	"commitlint": {
@@ -80,6 +80,7 @@
 		"jest": "^28.1.1",
 		"license-checker": "^25.0.1",
 		"nodemon": "^2.0.16",
+		"pino-pretty": "^8.0.0",
 		"playwright": "^1.22.2",
 		"prettier": "^2.7.0"
 	},
@@ -115,7 +116,6 @@
 		"node-unrtf": "^2.0.9",
 		"physical-cpu-count": "^2.0.0",
 		"pino": "^8.0.0",
-		"pino-pretty": "^8.0.0",
 		"raw-body": "^2.5.1",
 		"redoc": "^2.0.0-rc.72",
 		"secure-json-parse": "^2.4.0",

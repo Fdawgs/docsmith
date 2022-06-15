@@ -172,15 +172,6 @@ async function getConfig() {
 				},
 				level: env.LOG_LEVEL || "info",
 				/**
-				 * Pretty output to stdout if not in production.
-				 * Replaces using `pino-pretty` in scripts, as it does not play
-				 * well with Nodemon
-				 */
-				prettyPrint:
-					env.NODE_ENV.toLowerCase() !== "production" &&
-					(!env.LOG_ROTATION_FILENAME ||
-						env.LOG_ROTATION_FILENAME === ""),
-				/**
 				 * Fastify does not log the req or res body anyway but better
 				 * to be safe as a future change could break it
 				 */
