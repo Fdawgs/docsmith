@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.7](https://github.com/Fdawgs/docsmith/compare/v7.0.6...v7.0.7) (2022-06-15)
+
+
+### Documentation
+
+* **readme:** grammar fixes ([f6dd5e7](https://github.com/Fdawgs/docsmith/commit/f6dd5e7812c8d76eb14de6d136a6c5d50b19c1bf))
+
+
+### Miscellaneous
+
+* **.github/funding:** remove unused keys ([639199a](https://github.com/Fdawgs/docsmith/commit/639199add2005687ffc270ebc3c36ec9440ec3a3))
+* **.github:** add `FUNDING.yml` ([c206bee](https://github.com/Fdawgs/docsmith/commit/c206beebea97d97526525e64797a33130c457c44))
+* **.gitignore:** use latest github ignore template ([8c04671](https://github.com/Fdawgs/docsmith/commit/8c04671458d24b5bd88046cce5f9c058abb5f919))
+* **.prettierignore:** add new paths from `.gitignore` ([55c16a2](https://github.com/Fdawgs/docsmith/commit/55c16a2f2f46733011c26042ad80aa2b10ee0412))
+
+
+### Improvements
+
+* **plugins/embed-html-images:** remove `await` in `Promise.all()` ([b398232](https://github.com/Fdawgs/docsmith/commit/b398232f3e64906685391ba6c75eae5fae0dd5f3))
+* **plugins/pdf-to-txt:** remove `await` in `Promise.all()` ([f2c1892](https://github.com/Fdawgs/docsmith/commit/f2c18922506bba298207e416c1cdfa5aaf06045b))
+* **plugins:** explicitly catch promise rejections ([196fd9f](https://github.com/Fdawgs/docsmith/commit/196fd9f521fb0d57abb6f705563f82d300415d97))
+
+
+### Dependencies
+
+* **deps-dev:** bump @faker-js/faker from 7.1.0 to 7.2.0 ([#891](https://github.com/Fdawgs/docsmith/issues/891)) ([dd20ad3](https://github.com/Fdawgs/docsmith/commit/dd20ad35c91f6827307382899b103f1d5e980cd7))
+* **deps-dev:** bump eslint from 8.16.0 to 8.17.0 ([#887](https://github.com/Fdawgs/docsmith/issues/887)) ([3cd70fa](https://github.com/Fdawgs/docsmith/commit/3cd70fa1454795cc6af9b17ec23e0e1b501e39d5))
+* **deps-dev:** bump eslint-plugin-jest from 26.4.6 to 26.5.3 ([#888](https://github.com/Fdawgs/docsmith/issues/888)) ([7ec72e0](https://github.com/Fdawgs/docsmith/commit/7ec72e00648d8b9bc6c05cfe0fe2d3ce703a0dc2))
+* **deps-dev:** bump jest from 28.1.0 to 28.1.1 ([#877](https://github.com/Fdawgs/docsmith/issues/877)) ([3d10ae9](https://github.com/Fdawgs/docsmith/commit/3d10ae9d106c326cd1690d8c1c94bb7eda848811))
+* **deps-dev:** bump prettier from 2.6.2 to 2.7.0 ([#873](https://github.com/Fdawgs/docsmith/issues/873)) ([cb8459f](https://github.com/Fdawgs/docsmith/commit/cb8459f003733640840009471b21792aa47e10ae))
+* **deps:** bump node-poppler from 5.1.5 to 5.1.6 ([#883](https://github.com/Fdawgs/docsmith/issues/883)) ([28de0a9](https://github.com/Fdawgs/docsmith/commit/28de0a932d027c974935f6bfb6a9fcc8b3b0e35b))
+* **deps:** bump node-unrtf from 2.0.8 to 2.0.9 ([#893](https://github.com/Fdawgs/docsmith/issues/893)) ([3392714](https://github.com/Fdawgs/docsmith/commit/3392714e4948be0106191626c35be71c1000ef69))
+* **deps:** bump pino from 7.11.0 to 8.0.0 ([#881](https://github.com/Fdawgs/docsmith/issues/881)) ([50e8102](https://github.com/Fdawgs/docsmith/commit/50e8102c4afdd3d6947a30be126bc9ce7eaae814))
+* **deps:** bump pino-pretty from 7.6.1 to 8.0.0 ([#894](https://github.com/Fdawgs/docsmith/issues/894)) ([bcb93ca](https://github.com/Fdawgs/docsmith/commit/bcb93caadfab50c9f5c83f3dad8885bd385c08b8))
+* **deps:** bump redoc from 2.0.0-rc.71 to 2.0.0-rc.72 ([#886](https://github.com/Fdawgs/docsmith/issues/886)) ([b9c8d56](https://github.com/Fdawgs/docsmith/commit/b9c8d5620339d1a121d293a217fbeb27e81fcb8d))
+* **deps:** bump sub-dependencies ([4f04c79](https://github.com/Fdawgs/docsmith/commit/4f04c796837363f917dec7071f2e0556ee545d98))
+* **deps:** move pino-pretty to dev dependencies ([e31cba2](https://github.com/Fdawgs/docsmith/commit/e31cba2f92b99f0c024b43035cf6c2635b3363ef))
+
 ### [7.0.6](https://github.com/Fdawgs/docsmith/compare/v7.0.5...v7.0.6) (2022-06-01)
 
 
