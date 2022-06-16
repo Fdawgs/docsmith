@@ -135,7 +135,7 @@ describe("PDF-to-TXT route", () => {
 
 	test("Should return HTTP status code 415 if file is missing", async () => {
 		await Promise.all(
-			queryStrings.map(async (queryString) => {
+			queryStrings.map((queryString) => {
 				const query = queryString;
 				query.lastPageToConvert = 1;
 

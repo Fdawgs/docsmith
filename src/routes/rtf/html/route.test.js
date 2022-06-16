@@ -79,7 +79,7 @@ describe("RTF-to-HTML route", () => {
 
 	test("Should return HTTP status code 415 if file is missing", async () => {
 		await Promise.all(
-			queryStrings.map(async (query) =>
+			queryStrings.map((query) =>
 				server
 					.inject({
 						method: "POST",

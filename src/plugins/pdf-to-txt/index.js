@@ -140,7 +140,7 @@ async function plugin(server, options) {
 
 			// Pass each image file generate to Tesseract OCR
 			const results = await Promise.all(
-				files.map(async (file) =>
+				files.map((file) =>
 					server.tesseract
 						.addJob("recognize", file)
 						.then((result) => result?.data?.text)

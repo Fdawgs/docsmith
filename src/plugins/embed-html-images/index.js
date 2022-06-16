@@ -24,7 +24,7 @@ async function plugin(server, options) {
 		const directory = path.normalizeTrim(options.tempDirectory);
 
 		await Promise.all(
-			Array.from(images).map(async (element) => {
+			Array.from(images).map((element) => {
 				const imgForm = path.extname(element.src).substring(1);
 
 				return fs
