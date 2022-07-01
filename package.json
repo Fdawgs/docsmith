@@ -79,7 +79,7 @@
 		"is-html": "^2.0.0",
 		"jest": "^28.1.1",
 		"license-checker": "^25.0.1",
-		"nodemon": "^2.0.16",
+		"nodemon": "^2.0.18",
 		"pino-pretty": "^8.0.0",
 		"playwright": "^1.22.2",
 		"prettier": "^2.7.0"
