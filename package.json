@@ -80,7 +80,7 @@
 		"jest": "^28.1.1",
 		"license-checker": "^25.0.1",
 		"nodemon": "^2.0.19",
-		"pino-pretty": "^8.0.0",
+		"pino-pretty": "^8.1.0",
 		"playwright": "^1.23.2",
 		"prettier": "^2.7.1"
 	},
