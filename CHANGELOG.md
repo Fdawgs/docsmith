@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.8](https://github.com/Fdawgs/docsmith/compare/v7.0.7...v7.0.8) (2022-07-14)
+
+
+### Miscellaneous
+
+* remove redundant `async` keywords ([2ba30c8](https://github.com/Fdawgs/docsmith/commit/2ba30c837b6854afe536c9b60ec1a831f5ddddb5))
+
+
+### Documentation
+
+* **readme:** use block quotes for notes to enable github md highlights ([e98b784](https://github.com/Fdawgs/docsmith/commit/e98b784969c6d322b495f04d8bbc6f6bec1fd963))
+
+
+### Dependencies
+
+* **dependabot:** increase `open-pull-requests-limit` from 5 to 20 ([b0d9790](https://github.com/Fdawgs/docsmith/commit/b0d97903fb90a60d4640b09b513e51ebe1e993ca))
+* **deps-dev:** bump @commitlint/cli from 17.0.2 to 17.0.3 ([#910](https://github.com/Fdawgs/docsmith/issues/910)) ([567076f](https://github.com/Fdawgs/docsmith/commit/567076f917a11aea9d24465b670a072de0d8947b))
+* **deps-dev:** bump @commitlint/config-conventional ([#903](https://github.com/Fdawgs/docsmith/issues/903)) ([85a9e4d](https://github.com/Fdawgs/docsmith/commit/85a9e4dc4710ac85fe759d18a405cd1518e39f41))
+* **deps-dev:** bump @faker-js/faker from 7.2.0 to 7.3.0 ([#908](https://github.com/Fdawgs/docsmith/issues/908)) ([4ca4bda](https://github.com/Fdawgs/docsmith/commit/4ca4bda6929c3985e3e0629fe604a6996ceee6e8))
+* **deps-dev:** bump eslint from 8.17.0 to 8.19.0 ([#913](https://github.com/Fdawgs/docsmith/issues/913)) ([ee264e1](https://github.com/Fdawgs/docsmith/commit/ee264e15d7c09fdf8ec4596717b84a81145a27ce))
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.3.2 to 39.3.3 ([#916](https://github.com/Fdawgs/docsmith/issues/916)) ([d99cc5d](https://github.com/Fdawgs/docsmith/commit/d99cc5d0ac7c4af7738c7bd5363efdabe4f2cc79))
+* **deps-dev:** bump jest from 28.1.1 to 28.1.2 ([#911](https://github.com/Fdawgs/docsmith/issues/911)) ([566b281](https://github.com/Fdawgs/docsmith/commit/566b2814917ba838d3fdd177b95a08c53ad3d11e))
+* **deps-dev:** bump jest from 28.1.2 to 28.1.3 ([#920](https://github.com/Fdawgs/docsmith/issues/920)) ([ffcb188](https://github.com/Fdawgs/docsmith/commit/ffcb188ad3fb34f8a191fb6d1e2fd5cc71ba1aa8))
+* **deps-dev:** bump nodemon from 2.0.16 to 2.0.19 ([#906](https://github.com/Fdawgs/docsmith/issues/906)) ([8bf7b0d](https://github.com/Fdawgs/docsmith/commit/8bf7b0ddae742db74e33ee8ffb41abb598bee382))
+* **deps-dev:** bump pino-pretty from 8.0.0 to 8.1.0 ([#915](https://github.com/Fdawgs/docsmith/issues/915)) ([e77f682](https://github.com/Fdawgs/docsmith/commit/e77f682b21e89df5df31578b85d30fb0fc473af1))
+* **deps-dev:** bump playwright from 1.22.2 to 1.23.2 ([#912](https://github.com/Fdawgs/docsmith/issues/912)) ([3ec0ef7](https://github.com/Fdawgs/docsmith/commit/3ec0ef77234180ae60484a3d76c2ebd1263929e2))
+* **deps-dev:** bump playwright from 1.23.2 to 1.23.3 ([#919](https://github.com/Fdawgs/docsmith/issues/919)) ([0d2350f](https://github.com/Fdawgs/docsmith/commit/0d2350f33db2e2a19e6a72ef01b99b89bb513e46))
+* **deps-dev:** bump prettier from 2.7.0 to 2.7.1 ([#902](https://github.com/Fdawgs/docsmith/issues/902)) ([ee7413d](https://github.com/Fdawgs/docsmith/commit/ee7413d006cf402b7cd335f9293b771271f53829))
+* **deps:** bump @fastify/autoload from 4.0.1 to 5.1.0 ([#917](https://github.com/Fdawgs/docsmith/issues/917)) ([4c34420](https://github.com/Fdawgs/docsmith/commit/4c34420f931acc8e35ebf5dddcaca35d4afc96fc))
+* **deps:** bump actions/dependency-review-action from 1 to 2 ([#899](https://github.com/Fdawgs/docsmith/issues/899)) ([57ba948](https://github.com/Fdawgs/docsmith/commit/57ba94846a916d936e13947907e42a8a7ec4f10d))
+* **deps:** bump fastify-plugin from 3.0.1 to 4.0.0 ([#922](https://github.com/Fdawgs/docsmith/issues/922)) ([2375609](https://github.com/Fdawgs/docsmith/commit/23756099fceecb5f82b32d090541bad41cd2b584))
+* **deps:** bump jsdom from 19.0.0 to 20.0.0 ([5f146e2](https://github.com/Fdawgs/docsmith/commit/5f146e2e90ca153902af5484ab6025d60abb978e))
+* **deps:** bump moment from 2.29.3 to 2.29.4 ([#907](https://github.com/Fdawgs/docsmith/issues/907)) ([d452a10](https://github.com/Fdawgs/docsmith/commit/d452a101a1d30dec05368880c633300e36ac1a41))
+* **deps:** bump pino from 8.0.0 to 8.1.0 ([#901](https://github.com/Fdawgs/docsmith/issues/901)) ([ed21d43](https://github.com/Fdawgs/docsmith/commit/ed21d4362b4ababec466f1937ebe82992e973400))
+* **deps:** bump sub-dependencies ([#924](https://github.com/Fdawgs/docsmith/issues/924)) ([9269653](https://github.com/Fdawgs/docsmith/commit/9269653ff1d0105b73555cf6cc28aa9ba4161774))
+* **deps:** bump wagoid/commitlint-github-action from 4 to 5 ([#898](https://github.com/Fdawgs/docsmith/issues/898)) ([0f5deba](https://github.com/Fdawgs/docsmith/commit/0f5deba9d18c017dca862d8801ccbe9f567ad88e))
+
 ## [7.0.7](https://github.com/Fdawgs/docsmith/compare/v7.0.6...v7.0.7) (2022-06-15)
 
 
