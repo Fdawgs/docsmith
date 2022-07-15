@@ -40,8 +40,10 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 	});
 
 	afterAll(async () => {
-		await fs.promises.rm(config.poppler.tempDirectory, { recursive: true });
-		await server.close();
+		await Promise.all([
+			fs.promises.rm(config.poppler.tempDirectory, { recursive: true }),
+			server.close(),
+		]);
 	});
 
 	test("Should convert PDF file to HTML and place in specified directory", async () => {
