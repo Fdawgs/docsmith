@@ -36,9 +36,7 @@ async function plugin(server, options) {
 						)
 					);
 			})
-		).catch((err) => {
-			throw err;
-		});
+		);
 
 		return dom.serialize();
 	}

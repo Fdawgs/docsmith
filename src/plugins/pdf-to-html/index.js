@@ -100,13 +100,15 @@ async function plugin(server, options) {
 		Object.assign(config.pdfToHtmlOptions, query);
 
 		// Create temp directory if missing
-		await fs.mkdir(directory).catch((err) => {
+		try {
+			await fs.mkdir(directory);
+		} catch (err) {
 			// Ignore "EEXIST: An object by the name pathname already exists" error
 			/* istanbul ignore if */
 			if (err.code !== "EEXIST") {
 				throw err;
 			}
-		});
+		}
 
 		// Build temporary file for Poppler to write to, and following plugins to read from
 		const id = randomUUID();
@@ -117,20 +119,24 @@ async function plugin(server, options) {
 			id,
 		};
 
-		await poppler
-			.pdfToHtml(req.body, `${tempFile}.html`, config.pdfToHtmlOptions)
-			.catch((err) => {
-				/**
-				 * Poppler will throw if the .pdf file provided
-				 * by client is malformed, thus client error code
-				 */
-				/* istanbul ignore else: unable to test unknown errors */
-				if (/Syntax Error:/.test(err)) {
-					throw res.badRequest();
-				} else {
-					throw err;
-				}
-			});
+		try {
+			await poppler.pdfToHtml(
+				req.body,
+				`${tempFile}.html`,
+				config.pdfToHtmlOptions
+			);
+		} catch (err) {
+			/**
+			 * Poppler will throw if the .pdf file provided
+			 * by client is malformed, thus client error code
+			 */
+			/* istanbul ignore else: unable to test unknown errors */
+			if (/Syntax Error:/.test(err)) {
+				throw res.badRequest();
+			} else {
+				throw err;
+			}
+		}
 
 		// Remove excess title and meta tags left behind by Poppler
 		// Poppler appends `-html` to the file name, thus the template literal here

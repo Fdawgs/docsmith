@@ -33,8 +33,10 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 	});
 
 	afterAll(async () => {
-		await fs.promises.rm(config.unrtf.tempDirectory, { recursive: true });
-		await server.close();
+		await Promise.all([
+			fs.promises.rm(config.unrtf.tempDirectory, { recursive: true }),
+			server.close(),
+		]);
 	});
 
 	test("Should convert RTF file to TXT and place in specified directory", async () => {

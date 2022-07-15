@@ -99,13 +99,15 @@ async function plugin(server, options) {
 			});
 
 			// Create temp directory if missing
-			await fs.mkdir(directory).catch((err) => {
+			try {
+				await fs.mkdir(directory);
+			} catch (err) {
 				// Ignore "EEXIST: An object by the name pathname already exists" error
 				/* istanbul ignore if */
 				if (err.code !== "EEXIST") {
 					throw err;
 				}
-			});
+			}
 
 			// Build temporary file for Poppler to write to, and following plugins to read from
 			const id = randomUUID();
@@ -115,25 +117,25 @@ async function plugin(server, options) {
 				id,
 			};
 
-			await poppler
-				.pdfToCairo(req.body, tempFile, {
+			try {
+				await poppler.pdfToCairo(req.body, tempFile, {
 					resolutionXYAxis: 300,
 					grayscaleFile: true,
 					pngFile: true,
 					...query,
-				})
-				.catch((err) => {
-					/**
-					 * Poppler will throw if the .pdf file provided
-					 * by client is malformed, thus client error code
-					 */
-					/* istanbul ignore else: unable to test unknown errors */
-					if (/Syntax Error:/.test(err)) {
-						throw res.badRequest();
-					} else {
-						throw err;
-					}
 				});
+			} catch (err) {
+				/**
+				 * Poppler will throw if the .pdf file provided
+				 * by client is malformed, thus client error code
+				 */
+				/* istanbul ignore else: unable to test unknown errors */
+				if (/Syntax Error:/.test(err)) {
+					throw res.badRequest();
+				} else {
+					throw err;
+				}
+			}
 
 			// glob sorts files alphabetically
 			const files = glob.sync(`${tempFile}*.png`);
@@ -145,11 +147,6 @@ async function plugin(server, options) {
 						.addJob("recognize", file)
 						.then((result) => result?.data?.text)
 				)
-			).catch(
-				/* istanbul ignore next: unable to test unknown errors */
-				(err) => {
-					throw err;
-				}
 			);
 
 			req.conversionResults.body = results.join(" ");

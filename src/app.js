@@ -25,18 +25,21 @@ const main = async () => {
 		process.once(signal, async () => {
 			server.log.info({ signal }, "Closing application");
 			try {
-				await fs
-					.rm(config.poppler.tempDirectory, {
-						recursive: true,
-					})
-					.catch((err) => {
-						// Ignore "ENOENT: no such file or directory" error
-						/* istanbul ignore if */
-						if (err.code !== "ENOENT") {
-							throw err;
-						}
-					});
-				await server.close();
+				await Promise.all([
+					fs
+						.rm(config.poppler.tempDirectory, {
+							recursive: true,
+						})
+						.catch((err) => {
+							// Ignore "ENOENT: no such file or directory" error
+							/* istanbul ignore if */
+							if (err.code !== "ENOENT") {
+								throw err;
+							}
+						}),
+					server.close(),
+				]);
+
 				server.log.info({ signal }, "Application closed");
 				process.exit(0);
 			} catch (err) {

@@ -37,8 +37,10 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 	});
 
 	afterAll(async () => {
-		await fs.rm(config.poppler.tempDirectory, { recursive: true });
-		await server.close();
+		await Promise.all([
+			fs.rm(config.poppler.tempDirectory, { recursive: true }),
+			server.close(),
+		]);
 	});
 
 	test("Should convert PDF file to TXT", async () => {
