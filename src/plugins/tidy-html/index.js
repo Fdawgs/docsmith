@@ -68,12 +68,7 @@ async function plugin(server) {
 			sortAttributes: "alpha",
 		};
 
-		const results = await tidyP(parsedHtml, config).catch(
-			/* istanbul ignore next: unable to test unknown errors */
-			(err) => {
-				throw err;
-			}
-		);
+		const results = await tidyP(parsedHtml, config);
 		return results;
 	}
 
