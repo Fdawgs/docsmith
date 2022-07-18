@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.9](https://github.com/Fdawgs/docsmith/compare/v7.0.8...v7.0.9) (2022-07-18)
+
+
+### Improvements
+
+* **app:** combine multiple `await`s into `Promise.all()` ([e5cd27b](https://github.com/Fdawgs/docsmith/commit/e5cd27bacaeaee67c57c46154c6df42903cfdc79))
+* **plugins:** remove useless `catch`s rethrowing errors ([40c84a8](https://github.com/Fdawgs/docsmith/commit/40c84a828a8f821b05e617405006afb65e8dcd89))
+* **plugins:** use `try...catch` over `Promise.catch()` ([4ba4978](https://github.com/Fdawgs/docsmith/commit/4ba497876554a7199b95a317331436c20815c294))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 8.19.0 to 8.20.0 ([#931](https://github.com/Fdawgs/docsmith/issues/931)) ([b14b0b8](https://github.com/Fdawgs/docsmith/commit/b14b0b8b35e93990cdeebfa85e6f35eddd375a8a))
+* **deps-dev:** bump eslint-plugin-jest from 26.5.3 to 26.6.0 ([#929](https://github.com/Fdawgs/docsmith/issues/929)) ([b0622d5](https://github.com/Fdawgs/docsmith/commit/b0622d5632d7b692a7abdf2fd3babd54625fdffd))
+* **deps-dev:** bump playwright from 1.23.3 to 1.23.4 ([#930](https://github.com/Fdawgs/docsmith/issues/930)) ([ee1f217](https://github.com/Fdawgs/docsmith/commit/ee1f217242f4ff515ef62a88252188e70da50153))
+* **deps:** bump pino from 8.1.0 to 8.2.0 ([#928](https://github.com/Fdawgs/docsmith/issues/928)) ([b6e48fb](https://github.com/Fdawgs/docsmith/commit/b6e48fbc954ec4b07de52de58cfd7d5bfc0dbc2f))
+
 ## [7.0.8](https://github.com/Fdawgs/docsmith/compare/v7.0.7...v7.0.8) (2022-07-14)
 
 
