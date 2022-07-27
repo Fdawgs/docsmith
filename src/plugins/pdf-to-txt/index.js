@@ -31,7 +31,7 @@ async function plugin(server, options) {
 
 	// "onSend" hook used instead of "onResponse" ensures
 	// cancelled request temp data is also removed
-	server.addHook("onSend", async (req, res) => {
+	server.addHook("onSend", async (req, res, payload) => {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(
@@ -44,7 +44,7 @@ async function plugin(server, options) {
 			await Promise.all(files.map((file) => fs.unlink(file)));
 		}
 
-		return res;
+		return payload;
 	});
 
 	server.addHook("preHandler", async (req, res) => {
