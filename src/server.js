@@ -14,7 +14,7 @@ const rateLimit = require("@fastify/rate-limit");
 const sensible = require("@fastify/sensible");
 const staticPlugin = require("@fastify/static");
 const swagger = require("@fastify/swagger");
-const underPressure = require("under-pressure");
+const underPressure = require("@fastify/under-pressure");
 const sharedSchemas = require("./plugins/shared-schemas");
 
 // Import local decorator plugins
@@ -172,23 +172,23 @@ async function plugin(server, config) {
 		)
 
 		// Errors thrown by routes and plugins are caught here
-		.setErrorHandler(
-			// eslint-disable-next-line promise/prefer-await-to-callbacks
-			(err, req, res) => {
-				/* istanbul ignore if */
-				if (
-					res.statusCode >= 500 &&
+		.setErrorHandler(async (err, req, res) => {
+			if (
+				(err.statusCode >= 500 &&
 					/* istanbul ignore next: under-pressure plugin throws valid 503s */
-					res.statusCode !== 503
-				) {
-					req.log.error({ req, res, err }, err?.message);
-					res.internalServerError();
-				} else {
-					req.log.info({ req, res, err }, err?.message);
-					res.send(err);
-				}
+					err.statusCode !== 503) ||
+				/**
+				 * Uncaught errors will have a res.statusCode but not
+				 * an err.statusCode as @fastify/sensible sets that
+				 */
+				(res.statusCode === 200 && !err.statusCode)
+			) {
+				res.log.error(err);
+				return res.internalServerError();
 			}
-		);
+
+			throw err;
+		});
 }
 
-module.exports = fp(plugin, { fastify: "3.x", name: "server" });
+module.exports = fp(plugin, { fastify: "4.x", name: "server" });

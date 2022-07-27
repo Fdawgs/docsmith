@@ -30,6 +30,7 @@ const parseString = require("../../utils/parse-string");
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
+		return req;
 	});
 
 	// "onSend" hook used instead of "onResponse" ensures
@@ -132,7 +133,7 @@ async function plugin(server, options) {
 			 */
 			/* istanbul ignore else: unable to test unknown errors */
 			if (/Syntax Error:/.test(err)) {
-				throw res.badRequest();
+				throw server.httpErrors.badRequest();
 			} else {
 				throw err;
 			}
@@ -168,7 +169,7 @@ async function plugin(server, options) {
 }
 
 module.exports = fp(plugin, {
-	fastify: "3.x",
+	fastify: "4.x",
 	name: "pdf-to-html",
-	dependencies: ["fastify-sensible"],
+	dependencies: ["@fastify/sensible"],
 });

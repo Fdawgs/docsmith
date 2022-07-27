@@ -76,7 +76,7 @@ async function plugin(server) {
 }
 
 module.exports = fp(plugin, {
-	fastify: "3.x",
+	fastify: "4.x",
 	name: "tidy-html",
-	dependencies: ["fastify-sensible"],
+	dependencies: ["@fastify/sensible"],
 });

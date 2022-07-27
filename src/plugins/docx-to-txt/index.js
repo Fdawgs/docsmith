@@ -11,6 +11,7 @@ const mammoth = require("mammoth");
 async function plugin(server) {
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
+		return req;
 	});
 
 	server.addHook("preHandler", async (req, res) => {
@@ -23,13 +24,13 @@ async function plugin(server) {
 			 * Mammoth will throw if the .docx file provided
 			 * by client is malformed, thus client error code
 			 */
-			throw res.badRequest();
+			throw server.httpErrors.badRequest();
 		}
 	});
 }
 
 module.exports = fp(plugin, {
-	fastify: "3.x",
+	fastify: "4.x",
 	name: "docx-to-txt",
-	dependencies: ["fastify-sensible"],
+	dependencies: ["@fastify/sensible"],
 });
