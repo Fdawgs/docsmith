@@ -41,8 +41,10 @@ async function route(server) {
 				// Catch unsupported Accept header media types
 				!req.accepts().type(docsGetSchema.produces)
 			) {
-				throw res.notAcceptable();
+				return res.notAcceptable();
 			}
+
+			return req;
 		},
 		handler: (req, res) => {
 			res.header("cache-control", "private, max-age=180")

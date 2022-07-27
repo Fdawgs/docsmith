@@ -59,8 +59,10 @@ async function route(server, options) {
 				// Catch unsupported Accept header media types
 				!req.accepts().type(rtfToTxtPostSchema.produces)
 			) {
-				throw res.notAcceptable();
+				return res.notAcceptable();
 			}
+
+			return req;
 		},
 		handler: (req, res) => {
 			res.send(req.conversionResults.body);
