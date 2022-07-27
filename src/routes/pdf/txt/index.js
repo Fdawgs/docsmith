@@ -42,7 +42,7 @@ async function route(server, options) {
 	);
 
 	// Register plugins
-	server
+	await server
 		// Enable CORS if options passed
 		.register(cors, {
 			...options.cors,

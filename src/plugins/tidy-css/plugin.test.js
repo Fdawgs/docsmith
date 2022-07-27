@@ -30,9 +30,7 @@ describe("Tidy-CSS Plugin", () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body));
 		});
-		server.register(plugin);
-
-		await server.ready();
+		await server.register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -56,9 +54,7 @@ describe("Tidy-CSS Plugin", () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body, { fonts: "Arial" }));
 		});
-		server.register(plugin);
-
-		await server.ready();
+		await server.register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -85,9 +81,7 @@ describe("Tidy-CSS Plugin", () => {
 				server.tidyCss(req.body, { fonts: 'Sans Serif, "Gill Sans"' })
 			);
 		});
-		server.register(plugin);
-
-		await server.ready();
+		await server.register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -116,9 +110,7 @@ describe("Tidy-CSS Plugin", () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body, { backgroundColor: "white" }));
 		});
-		server.register(plugin);
-
-		await server.ready();
+		await server.register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -150,9 +142,7 @@ describe("Tidy-CSS Plugin", () => {
 				})
 			);
 		});
-		server.register(plugin, config);
-
-		await server.ready();
+		await server.register(plugin, config).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -180,9 +170,7 @@ describe("Tidy-CSS Plugin", () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body));
 		});
-		server.register(plugin, config);
-
-		await server.ready();
+		await server.register(plugin, config).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -206,9 +194,7 @@ describe("Tidy-CSS Plugin", () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body));
 		});
-		server.register(plugin, config);
-
-		await server.ready();
+		await server.register(plugin, config).ready();
 
 		const response = await server.inject({
 			method: "POST",

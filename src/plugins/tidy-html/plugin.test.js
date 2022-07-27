@@ -26,9 +26,7 @@ describe("Tidy-CSS Plugin", () => {
 		server.post("/", async (req, res) => {
 			res.send(await server.tidyHtml(req.body));
 		});
-		server.register(sensible).register(plugin);
-
-		await server.ready();
+		await server.register(sensible).register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -58,9 +56,7 @@ describe("Tidy-CSS Plugin", () => {
 		server.post("/", async (req, res) => {
 			res.send(await server.tidyHtml(req.body, { language: "fr" }));
 		});
-		server.register(sensible).register(plugin);
-
-		await server.ready();
+		await server.register(sensible).register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -92,9 +88,7 @@ describe("Tidy-CSS Plugin", () => {
 				await server.tidyHtml(req.body, { language: "en-Somerset" })
 			);
 		});
-		server.register(sensible).register(plugin);
-
-		await server.ready();
+		await server.register(sensible).register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -120,9 +114,7 @@ describe("Tidy-CSS Plugin", () => {
 		server.post("/", async (req, res) => {
 			res.send(await server.tidyHtml(req.body, { removeAlt: true }));
 		});
-		server.register(sensible).register(plugin);
-
-		await server.ready();
+		await server.register(sensible).register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",

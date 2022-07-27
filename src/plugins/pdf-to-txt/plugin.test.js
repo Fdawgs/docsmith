@@ -23,7 +23,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 			return res;
 		});
 
-		server
+		await server
 			.register(imageToTxt, config.tesseract)
 			.register(sensible)
 			.register(plugin, config.poppler);

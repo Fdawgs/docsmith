@@ -32,9 +32,7 @@ describe("Embed-HTML-Images Plugin", () => {
 		server.post("/", async (req, res) => {
 			res.send(await server.embedHtmlImages(req.body));
 		});
-		server.register(plugin, altConfig.poppler);
-
-		await server.ready();
+		await server.register(plugin, altConfig.poppler).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -61,9 +59,7 @@ describe("Embed-HTML-Images Plugin", () => {
 		server.post("/", async (req, res) => {
 			res.send(await server.embedHtmlImages(req.body));
 		});
-		server.register(plugin, config.poppler);
-
-		await server.ready();
+		await server.register(plugin, config.poppler).ready();
 
 		const response = await server.inject({
 			method: "POST",

@@ -31,7 +31,7 @@ const tidyHtml = require("./plugins/tidy-html");
  */
 async function plugin(server, config) {
 	// Register plugins
-	server
+	await server
 		// Accept header handler
 		.register(accepts)
 
@@ -65,7 +65,7 @@ async function plugin(server, config) {
 		.register(tidyHtml);
 
 	if (config.tesseract.enabled === true) {
-		server.register(imageToTxt, config.tesseract);
+		await server.register(imageToTxt, config.tesseract);
 	}
 
 	await server
@@ -73,7 +73,7 @@ async function plugin(server, config) {
 		.register(rateLimit, config.rateLimit);
 
 	// Register routes
-	server
+	await server
 		/**
 		 * `x-xss-protection` and `content-security-policy` is set by default by Helmet.
 		 * These are only useful for HTML/XML content; the only CSP directive that
@@ -108,7 +108,7 @@ async function plugin(server, config) {
 		 */
 		.register(async (securedContext) => {
 			if (config.bearerTokenAuthKeys) {
-				securedContext.register(bearer, {
+				await securedContext.register(bearer, {
 					keys: config.bearerTokenAuthKeys,
 					errorResponse: (err) => ({
 						statusCode: 401,
@@ -118,7 +118,7 @@ async function plugin(server, config) {
 				});
 			}
 
-			securedContext
+			await securedContext
 				// Import and register service routes
 				.register(autoLoad, {
 					dir: path.joinSafe(__dirname, "routes"),
@@ -145,7 +145,7 @@ async function plugin(server, config) {
 				}
 			);
 
-			publicContext
+			await publicContext
 				// Set relaxed response headers
 				.register(helmet, relaxedHelmetConfig)
 

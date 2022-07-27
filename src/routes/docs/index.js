@@ -12,7 +12,7 @@ const { docsGetSchema } = require("./schema");
  */
 async function route(server) {
 	// Register plugins
-	server
+	await server
 		// Allow for static files to be served from this dir via `sendFile`
 		.register(staticPlugin, { root: __dirname, serve: false })
 

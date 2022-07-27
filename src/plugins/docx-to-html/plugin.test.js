@@ -19,7 +19,7 @@ describe("DOCX-to-HTML Conversion Plugin", () => {
 			}
 		);
 
-		server.register(sensible).register(plugin);
+		await server.register(sensible).register(plugin);
 
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");

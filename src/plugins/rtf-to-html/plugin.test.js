@@ -29,7 +29,7 @@ describe("RTF-to-HTML Conversion Plugin", () => {
 			return res;
 		});
 
-		server.register(sensible).register(plugin, config.unrtf);
+		await server.register(sensible).register(plugin, config.unrtf);
 
 		server.post("/", async (req, res) => {
 			res.header("content-type", "application/json");
