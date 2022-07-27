@@ -629,4 +629,50 @@ describe("Server Deployment", () => {
 			});
 		});
 	});
+
+	describe("Error Handling", () => {
+		let config;
+		let server;
+
+		beforeAll(async () => {
+			Object.assign(process.env, {
+				AUTH_BEARER_TOKEN_ARRAY: "",
+				OCR_ENABLED: false,
+			});
+			config = await getConfig();
+
+			server = Fastify();
+			await server.register(startServer, config);
+
+			server.get("/error", async () => {
+				throw new Error("test");
+			});
+
+			await server.ready();
+		});
+
+		afterAll(async () => {
+			await server.close();
+		});
+
+		describe("/error Route", () => {
+			test("Should return HTTP status code 500", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/error",
+					headers: {
+						accept: "*/*",
+					},
+				});
+
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Internal Server Error",
+					message: "Internal Server Error",
+					statusCode: 500,
+				});
+				expect(response.headers).toEqual(expResHeaders4xxErrors);
+				expect(response.statusCode).toBe(500);
+			});
+		});
+	});
 });
