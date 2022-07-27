@@ -29,12 +29,11 @@ describe("Embed-HTML-Images Plugin", () => {
 	test("Should embed images into HTML", async () => {
 		const altConfig = await getConfig();
 		altConfig.poppler.tempDirectory = "./test_resources/test_files/";
-		server.post("/", async (req, res) => {
-			res.send(await server.embedHtmlImages(req.body));
+		server.post("/", async (req) => {
+			const result = await server.embedHtmlImages(req.body);
+			return result;
 		});
-		server.register(plugin, altConfig.poppler);
-
-		await server.ready();
+		await server.register(plugin, altConfig.poppler).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -58,12 +57,11 @@ describe("Embed-HTML-Images Plugin", () => {
 	});
 
 	test("Should throw error if it cannot find images to embed in specified directory", async () => {
-		server.post("/", async (req, res) => {
-			res.send(await server.embedHtmlImages(req.body));
+		server.post("/", async (req) => {
+			const result = await server.embedHtmlImages(req.body);
+			return result;
 		});
-		server.register(plugin, config.poppler);
-
-		await server.ready();
+		await server.register(plugin, config.poppler).ready();
 
 		const response = await server.inject({
 			method: "POST",

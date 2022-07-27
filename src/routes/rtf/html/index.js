@@ -42,7 +42,7 @@ async function route(server, options) {
 	);
 
 	// Register plugins
-	server
+	await server
 		// Enable CORS if options passed
 		.register(cors, {
 			...options.cors,
@@ -59,10 +59,12 @@ async function route(server, options) {
 				// Catch unsupported Accept header media types
 				!req.accepts().type(rtfToHtmlPostSchema.produces)
 			) {
-				throw res.notAcceptable();
+				return res.notAcceptable();
 			}
+
+			return req;
 		},
-		handler: async (req, res) => {
+		handler: async (req) => {
 			const result = server.tidyCss(
 				await server.tidyHtml(
 					await server.embedHtmlImages(req.conversionResults.body),
@@ -76,8 +78,7 @@ async function route(server, options) {
 					backgroundColor: req.query.backgroundColor,
 				}
 			);
-
-			res.send(result);
+			return result;
 		},
 	});
 }

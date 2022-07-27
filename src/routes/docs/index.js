@@ -12,7 +12,7 @@ const { docsGetSchema } = require("./schema");
  */
 async function route(server) {
 	// Register plugins
-	server
+	await server
 		// Allow for static files to be served from this dir via `sendFile`
 		.register(staticPlugin, { root: __dirname, serve: false })
 
@@ -41,16 +41,18 @@ async function route(server) {
 				// Catch unsupported Accept header media types
 				!req.accepts().type(docsGetSchema.produces)
 			) {
-				throw res.notAcceptable();
+				return res.notAcceptable();
 			}
+
+			return req;
 		},
-		handler: (req, res) => {
+		handler: async (req, res) => {
 			res.header("cache-control", "private, max-age=180")
 				.removeHeader("pragma")
 				.removeHeader("expires")
 				.removeHeader("surrogate-control")
-				.type("text/html; charset=utf-8")
-				.sendFile("index.html");
+				.type("text/html; charset=utf-8");
+			return res.sendFile("index.html");
 		},
 	});
 }

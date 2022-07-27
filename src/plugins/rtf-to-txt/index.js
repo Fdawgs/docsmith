@@ -24,11 +24,12 @@ const { randomUUID } = require("crypto");
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
+		return req;
 	});
 
 	// "onSend" hook used instead of "onResponse" ensures
 	// cancelled request temp data is also removed
-	server.addHook("onSend", async (req, res) => {
+	server.addHook("onSend", async (req, res, payload) => {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(
@@ -41,7 +42,7 @@ async function plugin(server, options) {
 			await Promise.all(files.map((file) => fs.unlink(file)));
 		}
 
-		return res;
+		return payload;
 	});
 
 	server.addHook("preHandler", async (req, res) => {
@@ -100,7 +101,7 @@ async function plugin(server, options) {
 			 */
 			/* istanbul ignore else: unable to test unknown errors */
 			if (/File is not the correct media type/.test(err)) {
-				throw res.badRequest();
+				throw server.httpErrors.badRequest();
 			} else {
 				throw err;
 			}
@@ -111,7 +112,7 @@ async function plugin(server, options) {
 }
 
 module.exports = fp(plugin, {
-	fastify: "3.x",
+	fastify: "4.x",
 	name: "rtf-to-txt",
-	dependencies: ["fastify-sensible"],
+	dependencies: ["@fastify/sensible"],
 });

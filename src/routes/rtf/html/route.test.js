@@ -27,16 +27,16 @@ describe("RTF-to-HTML route", () => {
 	beforeAll(async () => {
 		config = await getConfig();
 
-		server = Fastify()
+		server = Fastify();
+		await server
 			.register(accepts)
 			.register(sensible)
 			.register(embedHtmlImages, config.unrtf)
 			.register(sharedSchemas)
 			.register(tidyCss)
 			.register(tidyHtml)
-			.register(route, config);
-
-		await server.ready();
+			.register(route, config)
+			.ready();
 	});
 
 	afterAll(async () => {

@@ -27,12 +27,8 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should tidy CSS in HTML", async () => {
-		server.post("/", (req, res) => {
-			res.send(server.tidyCss(req.body));
-		});
-		server.register(plugin);
-
-		await server.ready();
+		server.post("/", async (req) => server.tidyCss(req.body));
+		await server.register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -53,12 +49,10 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should tidy CSS in HTML and set new font", async () => {
-		server.post("/", (req, res) => {
-			res.send(server.tidyCss(req.body, { fonts: "Arial" }));
-		});
-		server.register(plugin);
-
-		await server.ready();
+		server.post("/", async (req) =>
+			server.tidyCss(req.body, { fonts: "Arial" })
+		);
+		await server.register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -80,14 +74,12 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should tidy CSS in HTML and set new font in quotation marks", async () => {
-		server.post("/", (req, res) => {
-			res.send(
-				server.tidyCss(req.body, { fonts: 'Sans Serif, "Gill Sans"' })
-			);
-		});
-		server.register(plugin);
-
-		await server.ready();
+		server.post("/", async (req) =>
+			server.tidyCss(req.body, {
+				fonts: 'Sans Serif, "Gill Sans"',
+			})
+		);
+		await server.register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -113,12 +105,10 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should tidy CSS in HTML and set new background color", async () => {
-		server.post("/", (req, res) => {
-			res.send(server.tidyCss(req.body, { backgroundColor: "white" }));
-		});
-		server.register(plugin);
-
-		await server.ready();
+		server.post("/", async (req) =>
+			server.tidyCss(req.body, { backgroundColor: "white" })
+		);
+		await server.register(plugin).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -142,17 +132,13 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should create new style element if none exist but query string param passed", async () => {
-		server.post("/", (req, res) => {
-			res.send(
-				server.tidyCss(req.body, {
-					fonts: "Arial",
-					backgroundColor: "white",
-				})
-			);
-		});
-		server.register(plugin, config);
-
-		await server.ready();
+		server.post("/", async (req) =>
+			server.tidyCss(req.body, {
+				fonts: "Arial",
+				backgroundColor: "white",
+			})
+		);
+		await server.register(plugin, config).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -177,12 +163,8 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should continue to parse style elements with no type attribute", async () => {
-		server.post("/", (req, res) => {
-			res.send(server.tidyCss(req.body));
-		});
-		server.register(plugin, config);
-
-		await server.ready();
+		server.post("/", async (req) => server.tidyCss(req.body));
+		await server.register(plugin, config).ready();
 
 		const response = await server.inject({
 			method: "POST",
@@ -203,12 +185,8 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should continue if it cannot find any CSS to tidy", async () => {
-		server.post("/", (req, res) => {
-			res.send(server.tidyCss(req.body));
-		});
-		server.register(plugin, config);
-
-		await server.ready();
+		server.post("/", async (req) => server.tidyCss(req.body));
+		await server.register(plugin, config).ready();
 
 		const response = await server.inject({
 			method: "POST",

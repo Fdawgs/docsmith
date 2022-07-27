@@ -42,7 +42,7 @@ async function route(server, options) {
 	);
 
 	// Register plugins
-	server
+	await server
 		// Enable CORS if options passed
 		.register(cors, {
 			...options.cors,
@@ -59,12 +59,12 @@ async function route(server, options) {
 				// Catch unsupported Accept header media types
 				!req.accepts().type(docxToTxtPostSchema.produces)
 			) {
-				throw res.notAcceptable();
+				return res.notAcceptable();
 			}
+
+			return req;
 		},
-		handler: (req, res) => {
-			res.send(req.conversionResults.body);
-		},
+		handler: async (req) => req.conversionResults.body,
 	});
 }
 

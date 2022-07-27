@@ -20,7 +20,7 @@ describe("Image-To-TXT Conversion Plugin", () => {
 			return res;
 		});
 
-		server.register(plugin, config.tesseract);
+		await server.register(plugin, config.tesseract);
 
 		server.post("/", async (req, res) => {
 			res.header("content-type", "text/plain, charset=utf-8");
@@ -29,7 +29,7 @@ describe("Image-To-TXT Conversion Plugin", () => {
 				data: { text },
 			} = await server.tesseract.addJob("recognize", req.body);
 
-			res.send(text);
+			return text;
 		});
 
 		await server.ready();

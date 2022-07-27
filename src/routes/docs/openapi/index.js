@@ -12,7 +12,7 @@ const { docsOpenapiGetSchema } = require("./schema");
  */
 async function route(server, options) {
 	// Register plugins
-	server
+	await server
 		// Enable CORS if options passed
 		.register(cors, {
 			...options.cors,
@@ -28,15 +28,17 @@ async function route(server, options) {
 				// Catch unsupported Accept header media types
 				!req.accepts().type(docsOpenapiGetSchema.produces)
 			) {
-				throw res.notAcceptable();
+				return res.notAcceptable();
 			}
+
+			return req;
 		},
-		handler: (req, res) => {
+		handler: async (req, res) => {
 			res.header("cache-control", "public, max-age=3600")
 				.removeHeader("pragma")
 				.removeHeader("expires")
-				.removeHeader("surrogate-control")
-				.send(server.swagger());
+				.removeHeader("surrogate-control");
+			return server.swagger();
 		},
 	});
 }

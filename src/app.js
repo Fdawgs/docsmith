@@ -17,8 +17,7 @@ const main = async () => {
 	const config = await getConfig();
 
 	const server = Fastify(config.fastifyInit);
-	server.register(startServer, config);
-	await server.listen(config.fastify);
+	await server.register(startServer, config).listen(config.fastify);
 
 	["SIGINT", "SIGTERM"].forEach((signal) => {
 		// Use once() so that double signals exits the app

@@ -15,14 +15,13 @@ describe("OpenAPI Route", () => {
 			config = await getConfig();
 
 			server = Fastify();
-			server
+			await server
 				.register(accepts)
 				.register(sensible)
 				.register(sharedSchemas)
 				.register(swagger, config.swagger)
-				.register(route, config);
-
-			await server.ready();
+				.register(route, config)
+				.ready();
 		});
 
 		afterAll(async () => {

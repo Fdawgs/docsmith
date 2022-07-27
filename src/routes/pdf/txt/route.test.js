@@ -31,15 +31,15 @@ describe("PDF-to-TXT route", () => {
 
 		config = await getConfig();
 
-		server = Fastify()
+		server = Fastify();
+		await server
 			.register(accepts)
 			.register(imageToTxt, config.tesseract)
 			.register(sensible)
 			.register(sharedSchemas)
 			.register(tidyHtml)
-			.register(route, config);
-
-		await server.ready();
+			.register(route, config)
+			.ready();
 	});
 
 	afterAll(async () => {
