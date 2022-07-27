@@ -64,9 +64,7 @@ async function route(server, options) {
 
 			return req;
 		},
-		handler: (req, res) => {
-			res.send(req.conversionResults.body);
-		},
+		handler: async (req) => req.conversionResults.body,
 	});
 }
 

@@ -33,12 +33,12 @@ async function route(server, options) {
 
 			return req;
 		},
-		handler: (req, res) => {
+		handler: async (req, res) => {
 			res.header("cache-control", "public, max-age=3600")
 				.removeHeader("pragma")
 				.removeHeader("expires")
-				.removeHeader("surrogate-control")
-				.send(server.swagger());
+				.removeHeader("surrogate-control");
+			return server.swagger();
 		},
 	});
 }

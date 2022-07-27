@@ -64,7 +64,7 @@ async function route(server, options) {
 
 			return req;
 		},
-		handler: async (req, res) => {
+		handler: async (req) => {
 			let result;
 			if (
 				req.query.boundingBoxXhtml ||
@@ -75,8 +75,7 @@ async function route(server, options) {
 			} else {
 				result = req.conversionResults.body;
 			}
-
-			res.send(result);
+			return result;
 		},
 	});
 }

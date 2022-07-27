@@ -29,7 +29,7 @@ describe("Image-To-TXT Conversion Plugin", () => {
 				data: { text },
 			} = await server.tesseract.addJob("recognize", req.body);
 
-			res.send(text);
+			return text;
 		});
 
 		await server.ready();

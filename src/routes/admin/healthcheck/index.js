@@ -35,9 +35,7 @@ async function route(server, options) {
 
 			return req;
 		},
-		handler: (req, res) => {
-			res.send("ok");
-		},
+		handler: async () => "ok",
 	});
 }
 

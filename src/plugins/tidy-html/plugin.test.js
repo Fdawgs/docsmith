@@ -23,8 +23,9 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should tidy HTML", async () => {
-		server.post("/", async (req, res) => {
-			res.send(await server.tidyHtml(req.body));
+		server.post("/", async (req) => {
+			const result = await server.tidyHtml(req.body);
+			return result;
 		});
 		await server.register(sensible).register(plugin).ready();
 
@@ -53,8 +54,9 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should tidy HTML and set language", async () => {
-		server.post("/", async (req, res) => {
-			res.send(await server.tidyHtml(req.body, { language: "fr" }));
+		server.post("/", async (req) => {
+			const result = await server.tidyHtml(req.body, { language: "fr" });
+			return result;
 		});
 		await server.register(sensible).register(plugin).ready();
 
@@ -83,10 +85,11 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should return HTTP status code 400 if language querystring param is not valid IANA language tag", async () => {
-		server.post("/", async (req, res) => {
-			res.send(
-				await server.tidyHtml(req.body, { language: "en-Somerset" })
-			);
+		server.post("/", async (req) => {
+			const result = await server.tidyHtml(req.body, {
+				language: "en-Somerset",
+			});
+			return result;
 		});
 		await server.register(sensible).register(plugin).ready();
 
@@ -111,8 +114,9 @@ describe("Tidy-CSS Plugin", () => {
 	});
 
 	test("Should remove alt attribute from img tags", async () => {
-		server.post("/", async (req, res) => {
-			res.send(await server.tidyHtml(req.body, { removeAlt: true }));
+		server.post("/", async (req) => {
+			const result = await server.tidyHtml(req.body, { removeAlt: true });
+			return result;
 		});
 		await server.register(sensible).register(plugin).ready();
 

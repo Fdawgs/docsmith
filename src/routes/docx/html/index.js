@@ -64,7 +64,7 @@ async function route(server, options) {
 
 			return req;
 		},
-		handler: async (req, res) => {
+		handler: async (req) => {
 			const result = server.tidyCss(
 				await server.tidyHtml(req.conversionResults.body, {
 					language: req.query.language,
@@ -75,8 +75,7 @@ async function route(server, options) {
 					backgroundColor: req.query.backgroundColor,
 				}
 			);
-
-			res.send(result);
+			return result;
 		},
 	});
 }
