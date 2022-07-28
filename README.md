@@ -60,7 +60,7 @@ Perform the following steps before deployment:
 
 ### Standard Deployment
 
-1. Run `npm ci --ignore-scripts --production` to install dependencies
+1. Run `npm ci --ignore-scripts --omit=dev` to install dependencies
 2. Run `npm start`
 
 The service should be up and running on the port set in the config. You should see output similar to the following in stdout or in the log file specified using the `LOG_ROTATION_FILENAME` environment variable:
@@ -87,7 +87,7 @@ This requires [Docker](https://www.docker.com) installed.
 
 If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
-1. Run `npm ci --ignore-scripts --production` to install dependencies
+1. Run `npm ci --ignore-scripts --omit=dev` to install dependencies
 2. Run `npm i -g pm2` to install pm2 globally
 3. Launch application with `pm2 start .pm2.config.js`
 4. Check the application has been deployed using `pm2 list` or `pm2 monit`

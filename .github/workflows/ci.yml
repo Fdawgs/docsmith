@@ -61,6 +61,9 @@ jobs:
             - name: Install
               run: npm ci --ignore-scripts
 
+            - name: Audit NPM package signatures
+              run: npm audit signatures
+
             - name: Run ESLint
               run: npm run lint
 
