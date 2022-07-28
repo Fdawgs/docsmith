@@ -133,6 +133,7 @@ dist
 .pnp.*
 
 # lock files
+pnpm-lock.yaml
 yarn.lock
 
 # Test files
