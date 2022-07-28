@@ -10,7 +10,7 @@ RUN apt-get -q update && \
     apt-get -y --no-install-recommends install curl poppler-data poppler-utils unrtf && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    npm ci --production --ignore-scripts && \
+    npm ci --ignore-scripts --omit=dev && \
     npm cache clean --force && \
     chown node ./node_modules/htmltidy2/bin/linux64/tidy && \
     chmod 544 ./node_modules/htmltidy2/bin/linux64/tidy && \
