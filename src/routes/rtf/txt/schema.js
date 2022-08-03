@@ -18,25 +18,25 @@ const rtfToTxtPostSchema = {
 	produces: ["text/plain"],
 	response: {
 		200: S.string(),
-		400: S.ref("responses#/definitions/badRequest").description(
+		400: S.ref("responses#/properties/badRequest").description(
 			"Bad Request"
 		),
-		401: S.ref("responses#/definitions/unauthorized").description(
+		401: S.ref("responses#/properties/unauthorized").description(
 			"Unauthorized"
 		),
-		406: S.ref("responses#/definitions/notAcceptable").description(
+		406: S.ref("responses#/properties/notAcceptable").description(
 			"Not Acceptable"
 		),
-		415: S.ref("responses#/definitions/unsupportedMediaType").description(
+		415: S.ref("responses#/properties/unsupportedMediaType").description(
 			"Unsupported Media Type"
 		),
-		429: S.ref("responses#/definitions/tooManyRequests").description(
+		429: S.ref("responses#/properties/tooManyRequests").description(
 			"Too Many Requests"
 		),
-		500: S.ref("responses#/definitions/internalServerError").description(
+		500: S.ref("responses#/properties/internalServerError").description(
 			"Internal Server Error"
 		),
-		503: S.ref("responses#/definitions/serviceUnavailable").description(
+		503: S.ref("responses#/properties/serviceUnavailable").description(
 			"Service Unavailable"
 		),
 	},

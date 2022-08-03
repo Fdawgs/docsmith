@@ -13,13 +13,13 @@ const docsOpenapiGetSchema = {
 	operationId: "getDocsOpenapi",
 	produces: ["application/json"],
 	response: {
-		406: S.ref("responses#/definitions/notAcceptable").description(
+		406: S.ref("responses#/properties/notAcceptable").description(
 			"Not Acceptable"
 		),
-		429: S.ref("responses#/definitions/tooManyRequests").description(
+		429: S.ref("responses#/properties/tooManyRequests").description(
 			"Too Many Requests"
 		),
-		503: S.ref("responses#/definitions/serviceUnavailable").description(
+		503: S.ref("responses#/properties/serviceUnavailable").description(
 			"Service Unavailable"
 		),
 	},

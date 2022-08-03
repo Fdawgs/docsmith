@@ -7,25 +7,29 @@ const S = require("fluent-json-schema");
  * @param {object} server - Fastify instance.
  */
 async function plugin(server) {
+	/**
+	 * NOTE: `.definition()` definitions have been replaced with `.prop()` properties, and
+	 * `.id()` ids removed due to definitions breaking in v4.12.1 of fastify-swagger.
+	 * See https://github.com/fastify/fastify-swagger/issues/524
+	 */
+
 	// Response schemas
 	server.addSchema(
 		S.object()
 			.id("responses")
 			.title("Responses")
 			.description("Common response schemas")
-			.definition(
+			.prop(
 				"badRequest",
 				S.object()
-					.id("#badRequest")
 					.title("400 Bad Request")
 					.prop("statusCode", S.number().const(400))
 					.prop("error", S.string().const("Bad Request"))
 					.prop("message", S.string().const("Bad Request"))
 			)
-			.definition(
+			.prop(
 				"unauthorized",
 				S.object()
-					.id("#unauthorized")
 					.title("401 Unauthorized")
 					.prop("statusCode", S.number().const(401))
 					.prop("error", S.string().const("Unauthorized"))
@@ -34,28 +38,25 @@ async function plugin(server) {
 						S.string().examples(["missing authorization header"])
 					)
 			)
-			.definition(
+			.prop(
 				"notAcceptable",
 				S.object()
-					.id("#notAcceptable")
 					.title("406 Not Acceptable Response")
 					.prop("statusCode", S.number().const(406))
 					.prop("error", S.string().const("Not Acceptable"))
 					.prop("message", S.string().const("Not Acceptable"))
 			)
-			.definition(
+			.prop(
 				"unsupportedMediaType",
 				S.object()
-					.id("#unsupportedMediaType")
 					.title("415 Unsupported Media Type")
 					.prop("statusCode", S.number().const(415))
 					.prop("error", S.string().const("Unsupported Media Type"))
 					.prop("message", S.string().const("Unsupported Media Type"))
 			)
-			.definition(
+			.prop(
 				"tooManyRequests",
 				S.object()
-					.id("#tooManyRequests")
 					.title("429 Too Many Requests Response")
 					.prop("statusCode", S.number().const(429))
 					.prop("error", S.string().const("Too Many Requests"))
@@ -66,19 +67,17 @@ async function plugin(server) {
 						])
 					)
 			)
-			.definition(
+			.prop(
 				"internalServerError",
 				S.object()
-					.id("#internalServerError")
 					.title("500 Internal Server Error Response")
 					.prop("statusCode", S.number().const(500))
 					.prop("error", S.string().const("Internal Server Error"))
 					.prop("message", S.string().const("Internal Server Error"))
 			)
-			.definition(
+			.prop(
 				"serviceUnavailable",
 				S.object()
-					.id("#serviceUnavailable")
 					.title("503 Service Unavailable")
 					.prop("statusCode", S.number().const(503))
 					.prop("code", S.string().const("FST_UNDER_PRESSURE"))
