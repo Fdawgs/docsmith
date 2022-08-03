@@ -82,7 +82,6 @@ async function plugin(server, config) {
 		 */
 		.addHook("onSend", async (req, res, payload) => {
 			if (
-				res.getHeader("content-type") !== undefined &&
 				!res.getHeader("content-type")?.includes("html") &&
 				!res.getHeader("content-type")?.includes("xml")
 			) {
