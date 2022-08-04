@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.11](https://github.com/Fdawgs/docsmith/compare/v7.0.10...v7.0.11) (2022-08-04)
+
+
+### Bug Fixes
+
+* **routes:** invalid openapi shared schema definitions ([#949](https://github.com/Fdawgs/docsmith/issues/949)) ([c0338c5](https://github.com/Fdawgs/docsmith/commit/c0338c5e553de85d0fed404be26ee0f934d10b74))
+* **server:** reduce `content-security-policy` for options routes ([#951](https://github.com/Fdawgs/docsmith/issues/951)) ([a228aca](https://github.com/Fdawgs/docsmith/commit/a228aca1f6d750638a251915d5a7810781644a36))
+
+
+### Dependencies
+
+* **deps:** bump @fastify/cors from 8.0.0 to 8.1.0 ([#952](https://github.com/Fdawgs/docsmith/issues/952)) ([6f597f0](https://github.com/Fdawgs/docsmith/commit/6f597f0a1de3415fead3bb5f6703915c6b3519b4))
+
 ## [7.0.10](https://github.com/Fdawgs/docsmith/compare/v7.0.9...v7.0.10) (2022-08-01)
 
 
