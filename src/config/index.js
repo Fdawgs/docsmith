@@ -330,7 +330,7 @@ async function getConfig() {
 			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
 			filename: path.normalizeTrim(env.LOG_ROTATION_FILENAME),
 			frequency: env.LOG_ROTATION_FREQUENCY || "daily",
-			max_logs: env.LOG_ROTATION_MAX_LOG,
+			max_logs: env.LOG_ROTATION_MAX_LOGS,
 			size: env.LOG_ROTATION_MAX_SIZE,
 			verbose: false,
 		});

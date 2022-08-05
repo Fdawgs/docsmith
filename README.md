@@ -54,7 +54,7 @@ Perform the following steps before deployment:
 >
 > -   `LOG_ROTATION_DATE_FORMAT="YYYY-MM-DD"`
 > -   `LOG_ROTATION_FREQUENCY="daily"`
-> -   `LOG_ROTATION_MAX_LOGS="180"`
+> -   `LOG_ROTATION_MAX_LOGS="180d"`
 
 ## Deployment
 
