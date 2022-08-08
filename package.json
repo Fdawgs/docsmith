@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"author": "Frazer Smith <frazer.dev@outlook.com>",
 	"engines": {
-		"node": "^14.17.0 || ^15.6.0 || >=16.0.0"
+		"node": "^14.17.0 || >=16.0.0"
 	},
 	"scripts": {
 		"benchmark:html": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:8204/pdf/html?lastPageToConvert=1\"",
