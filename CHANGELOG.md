@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.0](https://github.com/Fdawgs/docsmith/compare/v7.0.11...v8.0.0) (2022-08-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for EOL node 15
+
+### Bug Fixes
+
+* **config:** log rotation max files ([#954](https://github.com/Fdawgs/docsmith/issues/954)) ([8ab22f2](https://github.com/Fdawgs/docsmith/commit/8ab22f273c292e1af815cf061c08ceadff7d869f))
+
+
+### Miscellaneous
+
+* drop support for node 15 ([#956](https://github.com/Fdawgs/docsmith/issues/956)) ([03f3b1f](https://github.com/Fdawgs/docsmith/commit/03f3b1fae774afe5fd9c4a9bf1c7c201514a567c))
+
+
+### Dependencies
+
+* **deps-dev:** bump @faker-js/faker from 7.3.0 to 7.4.0 ([#960](https://github.com/Fdawgs/docsmith/issues/960)) ([3e2b56d](https://github.com/Fdawgs/docsmith/commit/3e2b56da3afa187b96bcaed25e63fe949dd23215))
+* **deps-dev:** bump eslint-plugin-jest from 26.7.0 to 26.8.2 ([#966](https://github.com/Fdawgs/docsmith/issues/966)) ([74f29ce](https://github.com/Fdawgs/docsmith/commit/74f29ce8411aff551b127a5f8897b407028d8890))
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.3.4 to 39.3.6 ([#965](https://github.com/Fdawgs/docsmith/issues/965)) ([4b5b9c9](https://github.com/Fdawgs/docsmith/commit/4b5b9c9bc885ca1c8c06234c42554a0ec7823c83))
+* **deps:** bump @fastify/autoload from 5.1.0 to 5.2.0 ([#962](https://github.com/Fdawgs/docsmith/issues/962)) ([c9862be](https://github.com/Fdawgs/docsmith/commit/c9862befaab3e1521d01f34a236e4fd5e19efd5e))
+* **deps:** bump fastify from 4.3.0 to 4.4.0 ([#957](https://github.com/Fdawgs/docsmith/issues/957)) ([ccf007a](https://github.com/Fdawgs/docsmith/commit/ccf007af3997f93f95cbfcd5be4d929780d2d498))
+* **deps:** bump fastify-disablecache from 3.0.1 to 3.0.2 ([#958](https://github.com/Fdawgs/docsmith/issues/958)) ([3e2b769](https://github.com/Fdawgs/docsmith/commit/3e2b7696b1092fd1f8e628ba925e1385b2bc6dce))
+* **deps:** bump fastify-floc-off from 2.0.1 to 2.0.2 ([#963](https://github.com/Fdawgs/docsmith/issues/963)) ([636f4a0](https://github.com/Fdawgs/docsmith/commit/636f4a06e82fba435f28739c7fdd037f8cda3a82))
+* **deps:** bump node-poppler from 5.1.6 to 6.0.0 ([#967](https://github.com/Fdawgs/docsmith/issues/967)) ([879f849](https://github.com/Fdawgs/docsmith/commit/879f8497809f4ade19fbc91dc16139754eebf7eb))
+* **deps:** bump node-unrtf from 2.0.9 to 3.0.0 ([#959](https://github.com/Fdawgs/docsmith/issues/959)) ([2d570b2](https://github.com/Fdawgs/docsmith/commit/2d570b2474f080f4ce87ee281691585031f6f086))
+* **deps:** bump pino from 8.3.1 to 8.4.0 ([#961](https://github.com/Fdawgs/docsmith/issues/961)) ([0d5671e](https://github.com/Fdawgs/docsmith/commit/0d5671e74188e9f1a4e1e545899eb7cd1694150d))
+
 ## [7.0.11](https://github.com/Fdawgs/docsmith/compare/v7.0.10...v7.0.11) (2022-08-04)
 
 
