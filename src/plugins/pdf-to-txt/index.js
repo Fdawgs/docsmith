@@ -40,6 +40,37 @@ async function plugin(server, options) {
 		}
 	}
 
+	const pdfToCairoAcceptedParams = [
+		"cropHeight",
+		"cropWidth",
+		"cropXAxis",
+		"cropYAxis",
+		"firstPageToConvert",
+		"lastPageToConvert",
+	];
+
+	const pdfToTxtAcceptedParams = [
+		"boundingBoxXhtml",
+		"boundingBoxXhtmlLayout",
+		"cropHeight",
+		"cropWidth",
+		"cropXAxis",
+		"cropYAxis",
+		"eolConvention",
+		"firstPageToConvert",
+		"fixedWidthLayout",
+		"generateHtmlMetaFile",
+		"lastPageToConvert",
+		"listEncodingOptions",
+		"maintainLayout",
+		"noDiagonalText",
+		"noPageBreaks",
+		"outputEncoding",
+		"ownerPassword",
+		"rawLayout",
+		"userPassword",
+	];
+
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
 		return req;
@@ -98,14 +129,6 @@ async function plugin(server, options) {
 		 */
 		if (query?.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
-			const pdfToCairoAcceptedParams = [
-				"cropHeight",
-				"cropWidth",
-				"cropXAxis",
-				"cropYAxis",
-				"firstPageToConvert",
-				"lastPageToConvert",
-			];
 			Object.keys(query).forEach((value) => {
 				if (!pdfToCairoAcceptedParams.includes(value)) {
 					delete query[value];
@@ -155,27 +178,6 @@ async function plugin(server, options) {
 			req.conversionResults.body = results.join(" ");
 		} else {
 			// Prune params that pdfToTxt cannot accept
-			const pdfToTxtAcceptedParams = [
-				"boundingBoxXhtml",
-				"boundingBoxXhtmlLayout",
-				"cropHeight",
-				"cropWidth",
-				"cropXAxis",
-				"cropYAxis",
-				"eolConvention",
-				"firstPageToConvert",
-				"fixedWidthLayout",
-				"generateHtmlMetaFile",
-				"lastPageToConvert",
-				"listEncodingOptions",
-				"maintainLayout",
-				"noDiagonalText",
-				"noPageBreaks",
-				"outputEncoding",
-				"ownerPassword",
-				"rawLayout",
-				"userPassword",
-			];
 			Object.keys(query).forEach((value) => {
 				if (!pdfToTxtAcceptedParams.includes(value)) {
 					delete query[value];

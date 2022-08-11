@@ -43,6 +43,22 @@ async function plugin(server, options) {
 		}
 	}
 
+	const pdfToHtmlAcceptedParams = [
+		"exchangePdfLinks",
+		"extractHidden",
+		"firstPageToConvert",
+		"ignoreImages",
+		"imageFormat",
+		"lastPageToConvert",
+		"noDrm",
+		"noMergeParagraph",
+		"outputEncoding",
+		"ownerPassword",
+		"userPassword",
+		"wordBreakThreshold",
+		"zoom",
+	];
+
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
 		return req;
@@ -85,21 +101,6 @@ async function plugin(server, options) {
 		 * as some of the params may be used in other plugins
 		 */
 		const query = { ...req.query };
-		const pdfToHtmlAcceptedParams = [
-			"exchangePdfLinks",
-			"extractHidden",
-			"firstPageToConvert",
-			"ignoreImages",
-			"imageFormat",
-			"lastPageToConvert",
-			"noDrm",
-			"noMergeParagraph",
-			"outputEncoding",
-			"ownerPassword",
-			"userPassword",
-			"wordBreakThreshold",
-			"zoom",
-		];
 		Object.keys(query).forEach((value) => {
 			if (!pdfToHtmlAcceptedParams.includes(value)) {
 				delete query[value];
