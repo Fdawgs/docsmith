@@ -46,12 +46,12 @@ const expResHeadersHtmlStatic = {
 	"content-security-policy":
 		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self' blob:;frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content;script-src 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline'",
 	etag: expect.any(String),
+	expires: undefined,
 	"last-modified": expect.any(String),
+	pragma: undefined,
+	"surrogate-control": undefined,
 	vary: "accept-encoding",
 };
-delete expResHeadersHtmlStatic.expires;
-delete expResHeadersHtmlStatic.pragma;
-delete expResHeadersHtmlStatic["surrogate-control"];
 
 const expResHeadersJson = {
 	...expResHeaders,
@@ -60,9 +60,9 @@ const expResHeadersJson = {
 
 const expResHeaders4xxErrors = {
 	...expResHeadersJson,
+	"keep-alive": undefined,
 	vary: "accept-encoding",
 };
-delete expResHeaders4xxErrors["keep-alive"];
 
 describe("Server Deployment", () => {
 	describe("Bearer Token and OCR Disabled", () => {
@@ -573,7 +573,7 @@ describe("Server Deployment", () => {
 			config = await getConfig();
 
 			// Turn off logging for test runs
-			delete config.fastifyInit.logger;
+			config.fastifyInit.logger = undefined;
 			server = Fastify(config.fastifyInit);
 			await server.register(startServer, config).listen(config.fastify);
 		});
