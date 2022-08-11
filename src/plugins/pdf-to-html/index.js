@@ -28,6 +28,21 @@ const parseString = require("../../utils/parse-string");
  * files during conversion.
  */
 async function plugin(server, options) {
+	const directory = path.normalizeTrim(
+		options?.tempDirectory || path.joinSafe(__dirname, "..", "temp")
+	);
+
+	// Create temp directory if missing
+	try {
+		await fs.mkdir(directory);
+	} catch (err) {
+		// Ignore "EEXIST: An object by the name pathname already exists" error
+		/* istanbul ignore if */
+		if (err.code !== "EEXIST") {
+			throw err;
+		}
+	}
+
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
 		return req;
@@ -60,11 +75,9 @@ async function plugin(server, options) {
 				outputEncoding: "UTF-8",
 				singlePage: true,
 			},
-			tempDirectory: path.joinSafe(__dirname, "..", "temp"),
 		};
 		Object.assign(config, options);
 
-		const directory = path.normalizeTrim(config.tempDirectory);
 		const poppler = new Poppler(config.binPath);
 
 		/**
@@ -99,17 +112,6 @@ async function plugin(server, options) {
 			}
 		});
 		Object.assign(config.pdfToHtmlOptions, query);
-
-		// Create temp directory if missing
-		try {
-			await fs.mkdir(directory);
-		} catch (err) {
-			// Ignore "EEXIST: An object by the name pathname already exists" error
-			/* istanbul ignore if */
-			if (err.code !== "EEXIST") {
-				throw err;
-			}
-		}
 
 		// Build temporary file for Poppler to write to, and following plugins to read from
 		const id = randomUUID();
