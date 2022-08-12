@@ -76,7 +76,7 @@ describe("Server Deployment", () => {
 			});
 			config = await getConfig();
 
-			server = Fastify();
+			server = Fastify({ pluginTimeout: 30000 });
 			await server.register(startServer, config).ready();
 		});
 
@@ -331,7 +331,7 @@ describe("Server Deployment", () => {
 			});
 			config = await getConfig();
 
-			server = Fastify();
+			server = Fastify({ pluginTimeout: 30000 });
 			await server.register(startServer, config).ready();
 		});
 
@@ -574,7 +574,7 @@ describe("Server Deployment", () => {
 
 			// Turn off logging for test runs
 			config.fastifyInit.logger = undefined;
-			server = Fastify(config.fastifyInit);
+			server = Fastify({ ...config.fastifyInit, pluginTimeout: 30000 });
 			await server.register(startServer, config).listen(config.fastify);
 		});
 
@@ -641,7 +641,7 @@ describe("Server Deployment", () => {
 			});
 			config = await getConfig();
 
-			server = Fastify();
+			server = Fastify({ pluginTimeout: 30000 });
 			await server.register(startServer, config);
 
 			server.get("/error", async () => {

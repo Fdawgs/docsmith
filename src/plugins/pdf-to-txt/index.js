@@ -21,13 +21,11 @@ const parseString = require("../../utils/parse-string");
  * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToText
  * for options.
  * @param {string=} options.pdfToTxtOptions.encoding - Sets the encoding to use for text output.
- * @param {string=} options.tempDirectory - Directory for temporarily storing
+ * @param {string} options.tempDirectory - Directory for temporarily storing
  * files during conversion. Required for OCR.
  */
 async function plugin(server, options) {
-	const directory = path.normalizeTrim(
-		options?.tempDirectory || path.joinSafe(__dirname, "..", "temp")
-	);
+	const directory = path.normalizeTrim(options.tempDirectory);
 
 	// Create temp directory if missing
 	try {
