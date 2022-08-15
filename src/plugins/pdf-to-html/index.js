@@ -24,10 +24,39 @@ const parseString = require("../../utils/parse-string");
  * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToHtml
  * for options.
  * @param {string} options.pdfToHtmlOptions.encoding - Sets the encoding to use for text output.
- * @param {string=} options.tempDirectory - Directory for temporarily storing
+ * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {
+	const directory = path.normalizeTrim(options.tempDir);
+
+	// Create temp directory if missing
+	try {
+		await fs.mkdir(directory);
+	} catch (err) {
+		// Ignore "EEXIST: An object by the name pathname already exists" error
+		/* istanbul ignore if */
+		if (err.code !== "EEXIST") {
+			throw err;
+		}
+	}
+
+	const pdfToHtmlAcceptedParams = [
+		"exchangePdfLinks",
+		"extractHidden",
+		"firstPageToConvert",
+		"ignoreImages",
+		"imageFormat",
+		"lastPageToConvert",
+		"noDrm",
+		"noMergeParagraph",
+		"outputEncoding",
+		"ownerPassword",
+		"userPassword",
+		"wordBreakThreshold",
+		"zoom",
+	];
+
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
 		return req;
@@ -60,11 +89,9 @@ async function plugin(server, options) {
 				outputEncoding: "UTF-8",
 				singlePage: true,
 			},
-			tempDirectory: path.joinSafe(__dirname, "..", "temp"),
 		};
 		Object.assign(config, options);
 
-		const directory = path.normalizeTrim(config.tempDirectory);
 		const poppler = new Poppler(config.binPath);
 
 		/**
@@ -72,21 +99,6 @@ async function plugin(server, options) {
 		 * as some of the params may be used in other plugins
 		 */
 		const query = { ...req.query };
-		const pdfToHtmlAcceptedParams = [
-			"exchangePdfLinks",
-			"extractHidden",
-			"firstPageToConvert",
-			"ignoreImages",
-			"imageFormat",
-			"lastPageToConvert",
-			"noDrm",
-			"noMergeParagraph",
-			"outputEncoding",
-			"ownerPassword",
-			"userPassword",
-			"wordBreakThreshold",
-			"zoom",
-		];
 		Object.keys(query).forEach((value) => {
 			if (!pdfToHtmlAcceptedParams.includes(value)) {
 				delete query[value];
@@ -99,17 +111,6 @@ async function plugin(server, options) {
 			}
 		});
 		Object.assign(config.pdfToHtmlOptions, query);
-
-		// Create temp directory if missing
-		try {
-			await fs.mkdir(directory);
-		} catch (err) {
-			// Ignore "EEXIST: An object by the name pathname already exists" error
-			/* istanbul ignore if */
-			if (err.code !== "EEXIST") {
-				throw err;
-			}
-		}
 
 		// Build temporary file for Poppler to write to, and following plugins to read from
 		const id = randomUUID();

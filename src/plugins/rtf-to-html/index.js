@@ -19,10 +19,23 @@ const { randomUUID } = require("crypto");
  * @param {object=} options.rtfToHtmlOptions - Refer to
  * https://github.com/Fdawgs/node-unrtf/blob/master/API.md
  * for options.
- * @param {string=} options.tempDirectory - Directory for temporarily storing
+ * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {
+	const directory = path.normalizeTrim(options.tempDir);
+
+	// Create temp directory if missing
+	try {
+		await fs.mkdir(directory);
+	} catch (err) {
+		// Ignore "EEXIST: An object by the name pathname already exists" error
+		/* istanbul ignore if */
+		if (err.code !== "EEXIST") {
+			throw err;
+		}
+	}
+
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
 		return req;
@@ -54,11 +67,9 @@ async function plugin(server, options) {
 				noPictures: true,
 				outputHtml: true,
 			},
-			tempDirectory: path.joinSafe(__dirname, "..", "temp"),
 		};
 		Object.assign(config, options);
 
-		const directory = path.normalizeTrim(config.tempDirectory);
 		const unrtf = new UnRTF(config.binPath);
 
 		// Create temp directory if missing

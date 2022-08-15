@@ -5,7 +5,7 @@ const getConfig = require(".");
 
 describe("Configuration", () => {
 	const currentEnv = { ...process.env };
-	const tempDirectory = "./src/temp/";
+	const tempDir = "./src/temp/";
 
 	afterAll(async () => {
 		const files = glob.sync("./test_resources/+(test-log*|.audit.json)", {
@@ -82,6 +82,8 @@ describe("Configuration", () => {
 
 		expect(config.bearerTokenAuthKeys).toBeUndefined();
 
+		expect(config.tempDir).toBe(tempDir);
+
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,
 			port: SERVICE_PORT,
@@ -132,7 +134,7 @@ describe("Configuration", () => {
 
 		expect(config.poppler).toEqual({
 			binPath: POPPLER_BINARY_PATH,
-			tempDirectory,
+			tempDir,
 		});
 
 		expect(config.tesseract).toEqual({
@@ -143,7 +145,7 @@ describe("Configuration", () => {
 
 		expect(config.unrtf).toEqual({
 			binPath: UNRTF_BINARY_PATH,
-			tempDirectory,
+			tempDir,
 		});
 	});
 
@@ -210,6 +212,8 @@ describe("Configuration", () => {
 
 		expect(config.bearerTokenAuthKeys).toContain("testtoken");
 
+		expect(config.tempDir).toBe(tempDir);
+
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,
 			port: SERVICE_PORT,
@@ -259,7 +263,7 @@ describe("Configuration", () => {
 
 		expect(config.poppler).toEqual({
 			binPath: POPPLER_BINARY_PATH,
-			tempDirectory,
+			tempDir,
 		});
 
 		expect(config.tesseract).toEqual({
@@ -270,7 +274,7 @@ describe("Configuration", () => {
 
 		expect(config.unrtf).toEqual({
 			binPath: UNRTF_BINARY_PATH,
-			tempDirectory,
+			tempDir,
 		});
 	});
 

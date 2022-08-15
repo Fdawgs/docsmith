@@ -10,7 +10,7 @@ const path = require("upath");
  * after encoding with Base64.
  * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
- * @param {string} options.tempDirectory - Directory for temporarily storing
+ * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {
@@ -21,7 +21,7 @@ async function plugin(server, options) {
 	async function embedHtmlImages(html) {
 		const dom = new JSDOM(html);
 		const images = dom.window.document.querySelectorAll("img");
-		const directory = path.normalizeTrim(options.tempDirectory);
+		const directory = path.normalizeTrim(options.tempDir);
 
 		await Promise.all(
 			Array.from(images).map((element) => {

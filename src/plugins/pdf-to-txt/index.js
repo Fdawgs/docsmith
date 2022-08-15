@@ -21,10 +21,54 @@ const parseString = require("../../utils/parse-string");
  * https://github.com/Fdawgs/node-poppler/blob/master/API.md#Poppler+pdfToText
  * for options.
  * @param {string=} options.pdfToTxtOptions.encoding - Sets the encoding to use for text output.
- * @param {string=} options.tempDirectory - Directory for temporarily storing
+ * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion. Required for OCR.
  */
 async function plugin(server, options) {
+	const directory = path.normalizeTrim(options.tempDir);
+
+	// Create temp directory if missing
+	try {
+		await fs.mkdir(directory);
+	} catch (err) {
+		// Ignore "EEXIST: An object by the name pathname already exists" error
+		/* istanbul ignore if */
+		if (err.code !== "EEXIST") {
+			throw err;
+		}
+	}
+
+	const pdfToCairoAcceptedParams = [
+		"cropHeight",
+		"cropWidth",
+		"cropXAxis",
+		"cropYAxis",
+		"firstPageToConvert",
+		"lastPageToConvert",
+	];
+
+	const pdfToTxtAcceptedParams = [
+		"boundingBoxXhtml",
+		"boundingBoxXhtmlLayout",
+		"cropHeight",
+		"cropWidth",
+		"cropXAxis",
+		"cropYAxis",
+		"eolConvention",
+		"firstPageToConvert",
+		"fixedWidthLayout",
+		"generateHtmlMetaFile",
+		"lastPageToConvert",
+		"listEncodingOptions",
+		"maintainLayout",
+		"noDiagonalText",
+		"noPageBreaks",
+		"outputEncoding",
+		"ownerPassword",
+		"rawLayout",
+		"userPassword",
+	];
+
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
 		return req;
@@ -61,11 +105,9 @@ async function plugin(server, options) {
 		const config = {
 			binPath: undefined,
 			pdfToTxtOptions: { outputEncoding: "UTF-8" },
-			tempDirectory: path.joinSafe(__dirname, "..", "temp"),
 		};
 		Object.assign(config, options);
 
-		const directory = path.normalizeTrim(config.tempDirectory);
 		const poppler = new Poppler(config.binPath);
 
 		/**
@@ -85,30 +127,11 @@ async function plugin(server, options) {
 		 */
 		if (query?.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
-			const pdfToCairoAcceptedParams = [
-				"cropHeight",
-				"cropWidth",
-				"cropXAxis",
-				"cropYAxis",
-				"firstPageToConvert",
-				"lastPageToConvert",
-			];
 			Object.keys(query).forEach((value) => {
 				if (!pdfToCairoAcceptedParams.includes(value)) {
 					delete query[value];
 				}
 			});
-
-			// Create temp directory if missing
-			try {
-				await fs.mkdir(directory);
-			} catch (err) {
-				// Ignore "EEXIST: An object by the name pathname already exists" error
-				/* istanbul ignore if */
-				if (err.code !== "EEXIST") {
-					throw err;
-				}
-			}
 
 			// Build temporary file for Poppler to write to, and following plugins to read from
 			const id = randomUUID();
@@ -153,27 +176,6 @@ async function plugin(server, options) {
 			req.conversionResults.body = results.join(" ");
 		} else {
 			// Prune params that pdfToTxt cannot accept
-			const pdfToTxtAcceptedParams = [
-				"boundingBoxXhtml",
-				"boundingBoxXhtmlLayout",
-				"cropHeight",
-				"cropWidth",
-				"cropXAxis",
-				"cropYAxis",
-				"eolConvention",
-				"firstPageToConvert",
-				"fixedWidthLayout",
-				"generateHtmlMetaFile",
-				"lastPageToConvert",
-				"listEncodingOptions",
-				"maintainLayout",
-				"noDiagonalText",
-				"noPageBreaks",
-				"outputEncoding",
-				"ownerPassword",
-				"rawLayout",
-				"userPassword",
-			];
 			Object.keys(query).forEach((value) => {
 				if (!pdfToTxtAcceptedParams.includes(value)) {
 					delete query[value];

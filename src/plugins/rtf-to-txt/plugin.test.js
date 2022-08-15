@@ -13,7 +13,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
-		config.unrtf.tempDirectory = "./src/temp4/";
+		config.unrtf.tempDir = "./src/temp-test-pdf-to-html/";
 
 		server = Fastify();
 
@@ -34,7 +34,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 
 	afterAll(async () => {
 		await Promise.all([
-			fs.promises.rm(config.unrtf.tempDirectory, { recursive: true }),
+			fs.promises.rm(config.unrtf.tempDir, { recursive: true }),
 			server.close(),
 		]);
 	});
@@ -59,7 +59,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 		expect(isHtml(response.body)).toBe(false);
 		expect(typeof response.docLocation).toBe("object");
 		expect(fs.existsSync(response.docLocation.rtf)).toBe(false);
-		expect(fs.existsSync(config.unrtf.tempDirectory)).toBe(true);
+		expect(fs.existsSync(config.unrtf.tempDir)).toBe(true);
 	});
 
 	test("Should return HTTP status code 400 if RTF file is missing", async () => {

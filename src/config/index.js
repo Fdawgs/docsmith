@@ -41,7 +41,7 @@ function parseCorsParameter(param) {
  */
 async function getConfig() {
 	// Directory for temporarily storing files during conversion
-	const tempDirectory = "./src/temp/";
+	const tempDir = "./src/temp/";
 
 	// Validate env variables
 	const env = envSchema({
@@ -153,6 +153,7 @@ async function getConfig() {
 	});
 
 	const config = {
+		tempDir,
 		fastify: {
 			port: env.SERVICE_PORT,
 		},
@@ -303,7 +304,7 @@ async function getConfig() {
 			binPath: env.POPPLER_BINARY_PATH
 				? path.normalizeSafe(env.POPPLER_BINARY_PATH)
 				: env.POPPLER_BINARY_PATH,
-			tempDirectory,
+			tempDir,
 		},
 		tesseract: {
 			enabled: env.OCR_ENABLED === true,
@@ -315,7 +316,7 @@ async function getConfig() {
 			binPath: env.UNRTF_BINARY_PATH
 				? path.normalizeSafe(env.UNRTF_BINARY_PATH)
 				: env.UNRTF_BINARY_PATH,
-			tempDirectory,
+			tempDir,
 		},
 	};
 
