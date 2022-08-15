@@ -70,17 +70,6 @@ async function plugin(server, options) {
 		};
 		Object.assign(config, options);
 
-		// Create temp directory if missing
-		try {
-			await fs.mkdir(directory);
-		} catch (err) {
-			// Ignore "EEXIST: An object by the name pathname already exists" error
-			/* istanbul ignore if */
-			if (err.code !== "EEXIST") {
-				throw err;
-			}
-		}
-
 		// Build temporary file for UnRTF to write to, and following plugins to read from
 		const id = randomUUID();
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
