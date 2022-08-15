@@ -14,7 +14,7 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
-		config.poppler.tempDir = "./src/temp2/";
+		config.poppler.tempDir = "./src/temp-test-pdf-to-txt/";
 
 		server = Fastify({ pluginTimeout: 30000 });
 

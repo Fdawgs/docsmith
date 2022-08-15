@@ -13,7 +13,7 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
-		config.unrtf.tempDir = "./src/temp4/";
+		config.unrtf.tempDir = "./src/temp-test-pdf-to-html/";
 
 		server = Fastify();
 
