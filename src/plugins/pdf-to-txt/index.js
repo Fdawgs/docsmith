@@ -26,6 +26,7 @@ const parseString = require("../../utils/parse-string");
  */
 async function plugin(server, options) {
 	const directory = path.normalizeTrim(options.tempDir);
+	const poppler = new Poppler(options.binPath);
 
 	// Create temp directory if missing
 	try {
@@ -103,12 +104,9 @@ async function plugin(server, options) {
 
 		// Define any default settings the plugin should have to get up and running
 		const config = {
-			binPath: undefined,
 			pdfToTxtOptions: { outputEncoding: "UTF-8" },
 		};
 		Object.assign(config, options);
-
-		const poppler = new Poppler(config.binPath);
 
 		/**
 		 * Create copy of query string params and convert query string params to literal

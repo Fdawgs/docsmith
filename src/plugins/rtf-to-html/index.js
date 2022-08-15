@@ -24,6 +24,7 @@ const { randomUUID } = require("crypto");
  */
 async function plugin(server, options) {
 	const directory = path.normalizeTrim(options.tempDir);
+	const unrtf = new UnRTF(options.binPath);
 
 	// Create temp directory if missing
 	try {
@@ -62,15 +63,12 @@ async function plugin(server, options) {
 	server.addHook("preHandler", async (req, res) => {
 		// Define any default settings the plugin should have to get up and running
 		const config = {
-			binPath: undefined,
 			rtfToHtmlOptions: {
 				noPictures: true,
 				outputHtml: true,
 			},
 		};
 		Object.assign(config, options);
-
-		const unrtf = new UnRTF(config.binPath);
 
 		// Create temp directory if missing
 		try {
