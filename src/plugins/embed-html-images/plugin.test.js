@@ -28,7 +28,7 @@ describe("Embed-HTML-Images Plugin", () => {
 
 	test("Should embed images into HTML", async () => {
 		const altConfig = await getConfig();
-		altConfig.poppler.tempDirectory = "./test_resources/test_files/";
+		altConfig.poppler.tempDir = "./test_resources/test_files/";
 		server.post("/", async (req) => {
 			const result = await server.embedHtmlImages(req.body);
 			return result;

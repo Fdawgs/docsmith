@@ -20,7 +20,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
-		config.poppler.tempDirectory = "./src/temp1/";
+		config.poppler.tempDir = "./src/temp1/";
 
 		server = Fastify();
 
@@ -41,7 +41,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 
 	afterAll(async () => {
 		await Promise.all([
-			fs.promises.rm(config.poppler.tempDirectory, { recursive: true }),
+			fs.promises.rm(config.poppler.tempDir, { recursive: true }),
 			server.close(),
 		]);
 	});
@@ -71,7 +71,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		expect(isHtml(response.body)).toBe(true);
 		expect(typeof response.docLocation).toBe("object");
 		expect(fs.existsSync(response.docLocation.html)).toBe(false);
-		expect(fs.existsSync(config.poppler.tempDirectory)).toBe(true);
+		expect(fs.existsSync(config.poppler.tempDir)).toBe(true);
 	});
 
 	test("Should ignore invalid `test` query string params and convert PDF file to HTML", async () => {
@@ -101,7 +101,7 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 		expect(isHtml(response.body)).toBe(true);
 		expect(typeof response.docLocation).toBe("object");
 		expect(fs.existsSync(response.docLocation.html)).toBe(false);
-		expect(fs.existsSync(config.poppler.tempDirectory)).toBe(true);
+		expect(fs.existsSync(config.poppler.tempDir)).toBe(true);
 	});
 
 	test("Should return HTTP status code 400 if PDF file is missing", async () => {

@@ -19,11 +19,11 @@ const { randomUUID } = require("crypto");
  * @param {object=} options.rtfToHtmlOptions - Refer to
  * https://github.com/Fdawgs/node-unrtf/blob/master/API.md
  * for options.
- * @param {string} options.tempDirectory - Directory for temporarily storing
+ * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
  */
 async function plugin(server, options) {
-	const directory = path.normalizeTrim(options.tempDirectory);
+	const directory = path.normalizeTrim(options.tempDir);
 
 	// Create temp directory if missing
 	try {
