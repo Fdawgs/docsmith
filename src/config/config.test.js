@@ -82,6 +82,8 @@ describe("Configuration", () => {
 
 		expect(config.bearerTokenAuthKeys).toBeUndefined();
 
+		expect(config.tempDir).toBe(tempDir);
+
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,
 			port: SERVICE_PORT,
@@ -209,6 +211,8 @@ describe("Configuration", () => {
 		const config = await getConfig();
 
 		expect(config.bearerTokenAuthKeys).toContain("testtoken");
+
+		expect(config.tempDir).toBe(tempDir);
 
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,

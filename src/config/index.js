@@ -153,6 +153,7 @@ async function getConfig() {
 	});
 
 	const config = {
+		tempDir,
 		fastify: {
 			port: env.SERVICE_PORT,
 		},

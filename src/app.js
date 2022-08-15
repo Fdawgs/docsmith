@@ -26,7 +26,7 @@ const main = async () => {
 			try {
 				await Promise.all([
 					fs
-						.rm(config.poppler.tempDir, {
+						.rm(config.tempDir, {
 							recursive: true,
 						})
 						.catch((err) => {
