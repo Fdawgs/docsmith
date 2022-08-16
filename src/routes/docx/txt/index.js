@@ -54,15 +54,13 @@ async function route(server, options) {
 		method: "POST",
 		url: "/",
 		schema: docxToTxtPostSchema,
-		onRequest: async (req, res) => {
+		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
 				!req.accepts().type(docxToTxtPostSchema.produces)
 			) {
-				return res.notAcceptable();
+				throw server.httpErrors.notAcceptable();
 			}
-
-			return req;
 		},
 		handler: async (req) => req.conversionResults.body,
 	});

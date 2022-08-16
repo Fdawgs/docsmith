@@ -72,7 +72,6 @@ async function plugin(server, options) {
 
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
-		return req;
 	});
 
 	// "onSend" hook used instead of "onResponse" ensures

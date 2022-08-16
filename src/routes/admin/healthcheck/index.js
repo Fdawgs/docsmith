@@ -25,15 +25,13 @@ async function route(server, options) {
 		method: "GET",
 		url: "/",
 		schema: healthcheckGetSchema,
-		onRequest: async (req, res) => {
+		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
 				!req.accepts().type(healthcheckGetSchema.produces)
 			) {
-				return res.notAcceptable();
+				throw server.httpErrors.notAcceptable();
 			}
-
-			return req;
 		},
 		handler: async () => "ok",
 	});
