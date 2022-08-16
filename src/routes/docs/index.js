@@ -36,7 +36,7 @@ async function route(server) {
 		method: "GET",
 		url: "/",
 		schema: docsGetSchema,
-		preValidation: async (req, res) => {
+		onRequest: async (req, res) => {
 			if (
 				// Catch unsupported Accept header media types
 				!req.accepts().type(docsGetSchema.produces)

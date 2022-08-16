@@ -54,7 +54,7 @@ async function route(server, options) {
 		method: "POST",
 		url: "/",
 		schema: docxToTxtPostSchema,
-		preValidation: async (req, res) => {
+		onRequest: async (req, res) => {
 			if (
 				// Catch unsupported Accept header media types
 				!req.accepts().type(docxToTxtPostSchema.produces)
