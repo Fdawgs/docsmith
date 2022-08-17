@@ -54,17 +54,17 @@ async function route(server, options) {
 		method: "POST",
 		url: "/",
 		schema: rtfToTxtPostSchema,
-		preValidation: async (req, res) => {
+		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
 				!req.accepts().type(rtfToTxtPostSchema.produces)
 			) {
-				return res.notAcceptable();
+				throw server.httpErrors.notAcceptable();
 			}
-
-			return req;
 		},
-		handler: async (req) => req.conversionResults.body,
+		handler: (req, res) => {
+			res.send(req.conversionResults.body);
+		},
 	});
 }
 

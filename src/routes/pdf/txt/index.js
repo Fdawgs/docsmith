@@ -54,15 +54,13 @@ async function route(server, options) {
 		method: "POST",
 		url: "/",
 		schema: pdfToTxtPostSchema,
-		preValidation: async (req, res) => {
+		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
 				!req.accepts().type(pdfToTxtPostSchema.produces)
 			) {
-				return res.notAcceptable();
+				throw server.httpErrors.notAcceptable();
 			}
-
-			return req;
 		},
 		handler: async (req) => {
 			let result;

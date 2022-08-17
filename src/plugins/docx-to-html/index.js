@@ -12,7 +12,6 @@ const mammoth = require("mammoth");
 async function plugin(server) {
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
-		return req;
 	});
 
 	server.addHook("preHandler", async (req, res) => {
