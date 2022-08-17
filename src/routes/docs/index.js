@@ -44,13 +44,13 @@ async function route(server) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: async (req, res) => {
+		handler: (req, res) => {
 			res.header("cache-control", "private, max-age=180")
 				.removeHeader("pragma")
 				.removeHeader("expires")
 				.removeHeader("surrogate-control")
-				.type("text/html; charset=utf-8");
-			return res.sendFile("index.html");
+				.type("text/html; charset=utf-8")
+				.sendFile("index.html");
 		},
 	});
 }

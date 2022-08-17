@@ -31,12 +31,12 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: async (req, res) => {
+		handler: (req, res) => {
 			res.header("cache-control", "public, max-age=3600")
 				.removeHeader("pragma")
 				.removeHeader("expires")
-				.removeHeader("surrogate-control");
-			return server.swagger();
+				.removeHeader("surrogate-control")
+				.send(server.swagger());
 		},
 	});
 }

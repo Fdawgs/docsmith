@@ -33,7 +33,9 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: async () => "ok",
+		handler: (req, res) => {
+			res.send("ok");
+		},
 	});
 }
 

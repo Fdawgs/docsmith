@@ -62,7 +62,9 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: async (req) => req.conversionResults.body,
+		handler: (req, res) => {
+			res.send(req.conversionResults.body);
+		},
 	});
 }
 
