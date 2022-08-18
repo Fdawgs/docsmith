@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.1](https://github.com/Fdawgs/docsmith/compare/v8.0.0...v8.0.1) (2022-08-18)
+
+
+### Miscellaneous
+
+* rename `options.tempDirectory` to `options.tempDir` ([fd4ac24](https://github.com/Fdawgs/docsmith/commit/fd4ac2457dd0758b9efd8afe6a72fa1ff6e02f8a))
+
+
+### Improvements
+
+* **config:** expose `tempDir` at top level of object ([368d815](https://github.com/Fdawgs/docsmith/commit/368d815293a5a0b4563a3cba3ffe7102c211c156))
+* **plugins/rtf-to-html:** remove duplicate `fs.mkdir()` call ([4541344](https://github.com/Fdawgs/docsmith/commit/454134489e00bed8c8484e1a7ee7aeb45019225b))
+* **plugins:** make `options.tempDirectory` mandatory ([18bcf39](https://github.com/Fdawgs/docsmith/commit/18bcf3908ce3ce15d5150ed75e8ca245fd1f482a))
+* **plugins:** move const arrays out of hooks ([9fe2f15](https://github.com/Fdawgs/docsmith/commit/9fe2f15559f05caf0bcd3f06683428a353e5eb8c))
+* **plugins:** only create `unRTF` and `Poppler` classes once on reg ([736a9b4](https://github.com/Fdawgs/docsmith/commit/736a9b40a0c353790429045edd8dd07fff7b847d))
+* **plugins:** only create temp directory once on register ([e6945cb](https://github.com/Fdawgs/docsmith/commit/e6945cb9ae26fa322a6c64ca4ebf3ec2e96725e3))
+* remove redundant returns ([3373b6d](https://github.com/Fdawgs/docsmith/commit/3373b6d147eabc8a002ec318f177966b1ad2e2cb))
+* **routes:** check accept header is supported before parsing req body ([ae167c9](https://github.com/Fdawgs/docsmith/commit/ae167c98ad4059760587ffc9cab9b0e4a77212fe))
+* **routes:** convert sync async handlers to sync only ([a9672d2](https://github.com/Fdawgs/docsmith/commit/a9672d23e1d0045ac38f10f616e30fa08fbd6b22))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 8.21.0 to 8.22.0 ([#981](https://github.com/Fdawgs/docsmith/issues/981)) ([12012ce](https://github.com/Fdawgs/docsmith/commit/12012ce40a9ff61f210e3f9f4f7662e7817da9cf))
+* **deps-dev:** bump eslint-plugin-jest from 26.8.2 to 26.8.3 ([#974](https://github.com/Fdawgs/docsmith/issues/974)) ([ecb7689](https://github.com/Fdawgs/docsmith/commit/ecb76898098f6a85df63a354f6a37d28bc5bd1c9))
+* **deps-dev:** bump pino-pretty from 8.1.0 to 9.0.1 ([#977](https://github.com/Fdawgs/docsmith/issues/977)) ([d4fca71](https://github.com/Fdawgs/docsmith/commit/d4fca7197ca6d78c5dcd89981fd588898861ccd4))
+* **deps-dev:** bump playwright from 1.24.2 to 1.25.0 ([#976](https://github.com/Fdawgs/docsmith/issues/976)) ([6e493d9](https://github.com/Fdawgs/docsmith/commit/6e493d9b86cd18d3cff3ccbc89b39b9f0969291f))
+* **deps:** bump @fastify/under-pressure from 7.0.0 to 8.0.0 ([#978](https://github.com/Fdawgs/docsmith/issues/978)) ([3ce02b6](https://github.com/Fdawgs/docsmith/commit/3ce02b6003709cacd5be6e1094a7036a3737a1e5))
+* **deps:** bump fastify from 4.4.0 to 4.5.0 ([#975](https://github.com/Fdawgs/docsmith/issues/975)) ([f3eb087](https://github.com/Fdawgs/docsmith/commit/f3eb087c0c2cc76b9187f7e35a5f4507f0b4d5fb))
+* **deps:** bump fastify-plugin from 4.1.0 to 4.2.0 ([#979](https://github.com/Fdawgs/docsmith/issues/979)) ([3f19262](https://github.com/Fdawgs/docsmith/commit/3f19262a17266e46e973601061a1671170f1d284))
+* **deps:** bump pino from 8.4.0 to 8.4.1 ([#973](https://github.com/Fdawgs/docsmith/issues/973)) ([7dd3129](https://github.com/Fdawgs/docsmith/commit/7dd3129b2c229d04d3ac82dd9b0f3cdc24f2f182))
+* **deps:** bump redoc from 2.0.0-rc.74 to 2.0.0-rc.75 ([#980](https://github.com/Fdawgs/docsmith/issues/980)) ([e54c873](https://github.com/Fdawgs/docsmith/commit/e54c873aac0ee9781e4cd434792efb1ab84d1683))
+* **deps:** bump sub-dependencies ([#982](https://github.com/Fdawgs/docsmith/issues/982)) ([c460bf0](https://github.com/Fdawgs/docsmith/commit/c460bf01e28ea1032bf6910dd7566f9b967ce120))
+
 ## [8.0.0](https://github.com/Fdawgs/docsmith/compare/v7.0.11...v8.0.0) (2022-08-09)
 
 
