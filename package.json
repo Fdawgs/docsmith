@@ -118,7 +118,7 @@
 		"physical-cpu-count": "^2.0.0",
 		"pino": "^8.4.1",
 		"raw-body": "^2.5.1",
-		"redoc": "^2.0.0-rc.75",
+		"redoc": "^2.0.0-rc.76",
 		"secure-json-parse": "^2.5.0",
 		"tesseract.js": "^2.1.5",
 		"upath": "^2.0.1"
