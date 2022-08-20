@@ -120,7 +120,7 @@
 		"raw-body": "^2.5.1",
 		"redoc": "^2.0.0-rc.76",
 		"secure-json-parse": "^2.5.0",
-		"tesseract.js": "^2.1.5",
+		"tesseract.js": "^3.0.1",
 		"upath": "^2.0.1"
 	}
 }
