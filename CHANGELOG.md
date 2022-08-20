@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.2](https://github.com/Fdawgs/docsmith/compare/v8.0.1...v8.0.2) (2022-08-20)
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jest from 26.8.3 to 26.8.4 ([#986](https://github.com/Fdawgs/docsmith/issues/986)) ([c520501](https://github.com/Fdawgs/docsmith/commit/c5205010299c38de5ca2578874243b10f9134ba0))
+* **deps:** bump fastify from 4.5.0 to 4.5.2 ([#988](https://github.com/Fdawgs/docsmith/issues/988)) ([5b25fc4](https://github.com/Fdawgs/docsmith/commit/5b25fc4dd99090a621e8299c8f98a5974406712c))
+* **deps:** bump pino from 8.4.1 to 8.4.2 ([#987](https://github.com/Fdawgs/docsmith/issues/987)) ([b9f695e](https://github.com/Fdawgs/docsmith/commit/b9f695e7e00ae7205c3f7a3cb460d6f571ddd163))
+* **deps:** bump redoc from 2.0.0-rc.75 to 2.0.0-rc.76 ([#985](https://github.com/Fdawgs/docsmith/issues/985)) ([2d3cab6](https://github.com/Fdawgs/docsmith/commit/2d3cab6142dcbec65e77d106a8fa15acaa328c32))
+* **deps:** bump tesseract.js from 2.1.5 to 3.0.1 ([#989](https://github.com/Fdawgs/docsmith/issues/989)) ([2f2818f](https://github.com/Fdawgs/docsmith/commit/2f2818fbe44cd09ccdd7e5dbbe534cf2253647fe))
+
+
+### Continuous Integration
+
+* **ci:** add node 18 to test matrix ([#823](https://github.com/Fdawgs/docsmith/issues/823)) ([13a0ac0](https://github.com/Fdawgs/docsmith/commit/13a0ac094c2137e8bbfc0634ab304d1ef78d3f9d))
+
+
+### Miscellaneous
+
+* compress images ([#983](https://github.com/Fdawgs/docsmith/issues/983)) ([9d2c22f](https://github.com/Fdawgs/docsmith/commit/9d2c22fb67719fbb311dcd7f1b32ff4931c406d1))
+* **package:** update `lint:licenses` script ([ee0c2be](https://github.com/Fdawgs/docsmith/commit/ee0c2be2b4c52a5930630c7aa76e54b7249f229a))
+
 ## [8.0.1](https://github.com/Fdawgs/docsmith/compare/v8.0.0...v8.0.1) (2022-08-18)
 
 
