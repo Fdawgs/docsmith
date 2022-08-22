@@ -13,7 +13,7 @@ RUN apt-get -q update && \
     npm ci --ignore-scripts --omit=dev && \
     npm cache clean --force && \
     chown node ./node_modules/htmltidy2/bin/linux64/tidy && \
-    chmod 544 ./node_modules/htmltidy2/bin/linux64/tidy && \
+    chmod 100 ./node_modules/htmltidy2/bin/linux64/tidy && \
     # Remove included Windows binaries
     rm -rf ./node_modules/node-poppler/src/lib/* && \
     rm -rf ./node_modules/node-unrtf/src/lib/*
