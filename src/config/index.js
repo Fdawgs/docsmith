@@ -261,7 +261,6 @@ async function getConfig() {
 				maxAge: 31536000,
 			},
 			// Only supported by Chrome at time of writing
-			// TODO: enable when more browsers support it
 			originAgentCluster: false,
 		},
 		htmltidy: {
