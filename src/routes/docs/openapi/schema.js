@@ -13,6 +13,9 @@ const docsOpenapiGetSchema = {
 	operationId: "getDocsOpenapi",
 	produces: ["application/json"],
 	response: {
+		200: S.object()
+			.additionalProperties(true)
+			.prop("openapi", S.string().required()),
 		406: S.ref("responses#/properties/notAcceptable").description(
 			"Not Acceptable"
 		),
