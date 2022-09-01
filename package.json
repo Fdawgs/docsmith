@@ -100,7 +100,7 @@
 		"cssom": "^0.5.0",
 		"dotenv": "^16.0.1",
 		"env-schema": "^5.0.0",
-		"fastify": "^4.5.2",
+		"fastify": "^4.5.3",
 		"fastify-disablecache": "^3.0.2",
 		"fastify-floc-off": "^2.0.2",
 		"fastify-plugin": "^4.2.0",
