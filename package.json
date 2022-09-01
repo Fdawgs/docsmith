@@ -105,7 +105,7 @@
 		"fastify-floc-off": "^2.0.2",
 		"fastify-plugin": "^4.2.1",
 		"file-stream-rotator": "^0.6.1",
-		"file-type": "^16.5.4",
+		"file-type": "^18.0.0",
 		"fix-utf8": "^1.1.1",
 		"fluent-json-schema": "^3.1.0",
 		"glob": "^8.0.3",
