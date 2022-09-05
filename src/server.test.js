@@ -12,7 +12,6 @@ const expResHeaders = {
 	"content-security-policy": "default-src 'self';frame-ancestors 'none'",
 	"content-type": expect.stringContaining("text/plain"),
 	date: expect.any(String),
-	"expect-ct": "max-age=0",
 	expires: "0",
 	"permissions-policy": "interest-cohort=()",
 	pragma: "no-cache",
