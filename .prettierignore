@@ -132,6 +132,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Clinic.js
+.clinic
+
 # Auto generated files
 package.json
 CHANGELOG.md
@@ -140,9 +143,6 @@ CHANGELOG.md
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
-
-# Clinic.js
-.clinic
 
 # Test files
 test_resources/test_log*
