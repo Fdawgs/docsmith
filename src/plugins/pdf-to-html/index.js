@@ -96,7 +96,7 @@ async function plugin(server, options) {
 		 * as some of the params may be used in other plugins
 		 */
 		const query = { ...req.query };
-		Object.keys(query).forEach((value) => {
+		Object.getOwnPropertyNames(query).forEach((value) => {
 			if (!pdfToHtmlAcceptedParams.includes(value)) {
 				delete query[value];
 			} else {

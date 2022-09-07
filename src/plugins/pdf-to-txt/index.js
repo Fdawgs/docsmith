@@ -97,7 +97,10 @@ async function plugin(server, options) {
 		 * `pdfToText` Poppler function still attempts to parse empty bodies/input
 		 * and produces results, so catch them here
 		 */
-		if (req.body === undefined || Object.keys(req.body).length === 0) {
+		if (
+			req.body === undefined ||
+			Object.getOwnPropertyNames(req.body).length === 0
+		) {
 			throw server.httpErrors.badRequest();
 		}
 
@@ -113,7 +116,7 @@ async function plugin(server, options) {
 		 * in other plugins
 		 */
 		const query = { ...req.query };
-		Object.keys(query).forEach((value) => {
+		Object.getOwnPropertyNames(query).forEach((value) => {
 			query[value] = parseString(query[value]);
 		});
 
@@ -124,7 +127,7 @@ async function plugin(server, options) {
 		 */
 		if (query?.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
-			Object.keys(query).forEach((value) => {
+			Object.getOwnPropertyNames(query).forEach((value) => {
 				if (!pdfToCairoAcceptedParams.includes(value)) {
 					delete query[value];
 				}
@@ -173,7 +176,7 @@ async function plugin(server, options) {
 			req.conversionResults.body = results.join(" ");
 		} else {
 			// Prune params that pdfToTxt cannot accept
-			Object.keys(query).forEach((value) => {
+			Object.getOwnPropertyNames(query).forEach((value) => {
 				if (!pdfToTxtAcceptedParams.includes(value)) {
 					delete query[value];
 				}
