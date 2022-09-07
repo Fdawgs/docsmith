@@ -141,6 +141,9 @@ package-lock.json
 pnpm-lock.yaml
 yarn.lock
 
+# Clinic.js
+.clinic
+
 # Test files
 test_resources/test_log*
 test_resources/.audit.json

@@ -114,6 +114,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Clinic.js
+.clinic
+
 # Test files
 test_resources/
 src/temp*/
