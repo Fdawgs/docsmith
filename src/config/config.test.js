@@ -22,8 +22,8 @@ describe("Configuration", () => {
 	});
 
 	test("Should use defaults if values missing and return values according to environment variables", async () => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
+		const HOST = faker.internet.ip();
+		const PORT = faker.datatype.number();
 		const CORS_ORIGIN = false;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
@@ -50,8 +50,8 @@ describe("Configuration", () => {
 		const UNRTF_BINARY_PATH = "";
 
 		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
+			HOST,
+			PORT,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
@@ -85,8 +85,8 @@ describe("Configuration", () => {
 		expect(config.tempDir).toBe(tempDir);
 
 		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
+			host: HOST,
+			port: PORT,
 		});
 
 		expect(config.fastifyInit.bodyLimit).toBe(10485760);
@@ -150,8 +150,8 @@ describe("Configuration", () => {
 	});
 
 	test("Should return values according to environment variables - HTTPS (SSL cert) enabled, HTTP2 enabled, and OCR enabled", async () => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
+		const HOST = faker.internet.ip();
+		const PORT = faker.datatype.number();
 		const SERVICE_BODY_MAX_BYTES = 100000000;
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
@@ -182,8 +182,8 @@ describe("Configuration", () => {
 		const UNRTF_BINARY_PATH = "/usr/bin";
 
 		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
+			HOST,
+			PORT,
 			SERVICE_BODY_MAX_BYTES,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
@@ -215,8 +215,8 @@ describe("Configuration", () => {
 		expect(config.tempDir).toBe(tempDir);
 
 		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
+			host: HOST,
+			port: PORT,
 		});
 
 		expect(config.fastifyInit.bodyLimit).toBe(SERVICE_BODY_MAX_BYTES);
@@ -279,8 +279,8 @@ describe("Configuration", () => {
 	});
 
 	test("Should return values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
+		const HOST = faker.internet.ip();
+		const PORT = faker.datatype.number();
 		const HTTPS_PFX_FILE_PATH =
 			"./test_resources/test_ssl_cert/server.cert"; // Not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
@@ -292,8 +292,8 @@ describe("Configuration", () => {
 		]);
 
 		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
+			HOST,
+			PORT,
 			HTTPS_PFX_FILE_PATH,
 			HTTPS_PFX_PASSPHRASE,
 			HTTPS_HTTP2_ENABLED,
@@ -303,8 +303,8 @@ describe("Configuration", () => {
 		const config = await getConfig();
 
 		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
+			host: HOST,
+			port: PORT,
 		});
 
 		expect(config.fastifyInit.https).toEqual({
@@ -362,8 +362,8 @@ describe("Configuration", () => {
 	])(
 		"Should return values according to environment variables - $testName",
 		async ({ envVariables, expected }) => {
-			const SERVICE_HOST = faker.internet.ip();
-			const SERVICE_PORT = faker.datatype.number();
+			const HOST = faker.internet.ip();
+			const PORT = faker.datatype.number();
 			const CORS_ORIGIN = envVariables.CORS_ORIGIN;
 			const CORS_ALLOWED_HEADERS =
 				"Accept, Authorization, Content-Type, Origin, X-Requested-With";
@@ -378,8 +378,8 @@ describe("Configuration", () => {
 			]);
 
 			Object.assign(process.env, {
-				SERVICE_HOST,
-				SERVICE_PORT,
+				HOST,
+				PORT,
 				CORS_ORIGIN,
 				CORS_ALLOWED_HEADERS,
 				CORS_ALLOW_CREDENTIALS,
@@ -391,8 +391,8 @@ describe("Configuration", () => {
 			const config = await getConfig();
 
 			expect(config.fastify).toEqual({
-				host: SERVICE_HOST,
-				port: SERVICE_PORT,
+				host: HOST,
+				port: PORT,
 			});
 
 			expect(config.cors).toEqual({
@@ -424,8 +424,8 @@ describe("Configuration", () => {
 			},
 		},
 	])("Should throw error if $testName", async ({ envVariables }) => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
+		const HOST = faker.internet.ip();
+		const PORT = faker.datatype.number();
 		const HTTPS_SSL_KEY_PATH = envVariables?.HTTPS_SSL_KEY_PATH || "";
 		const HTTPS_SSL_CERT_PATH = envVariables?.HTTPS_SSL_CERT_PATH || "";
 		const HTTPS_PFX_FILE_PATH = envVariables?.HTTPS_PFX_FILE_PATH || "";
@@ -437,8 +437,8 @@ describe("Configuration", () => {
 		]);
 
 		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
+			HOST,
+			PORT,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			HTTPS_PFX_FILE_PATH,
