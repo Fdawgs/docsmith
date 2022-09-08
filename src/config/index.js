@@ -53,7 +53,7 @@ async function getConfig() {
 			// Service
 			.prop("HOST", S.string())
 			.prop("PORT", S.number())
-			.prop("SERVICE_BODY_MAX_BYTES", S.anyOf([S.number(), S.null()]))
+			.prop("REQ_BODY_MAX_BYTES", S.anyOf([S.number(), S.null()]))
 
 			// CORS
 			.prop("CORS_ORIGIN", S.anyOf([S.string(), S.null()]))
@@ -140,7 +140,7 @@ async function getConfig() {
 		},
 		fastifyInit: {
 			// The maximum payload, in bytes, the server is allowed to accept
-			bodyLimit: env.SERVICE_BODY_MAX_BYTES || 10485760,
+			bodyLimit: env.REQ_BODY_MAX_BYTES || 10485760,
 			/**
 			 * See https://www.fastify.io/docs/v3.8.x/Logging/
 			 * and https://getpino.io/#/docs/api for logger options

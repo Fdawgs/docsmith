@@ -152,7 +152,7 @@ describe("Configuration", () => {
 	test("Should return values according to environment variables - HTTPS (SSL cert) enabled, HTTP2 enabled, and OCR enabled", async () => {
 		const HOST = faker.internet.ip();
 		const PORT = faker.datatype.number();
-		const SERVICE_BODY_MAX_BYTES = 100000000;
+		const REQ_BODY_MAX_BYTES = 100000000;
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
@@ -184,7 +184,7 @@ describe("Configuration", () => {
 		Object.assign(process.env, {
 			HOST,
 			PORT,
-			SERVICE_BODY_MAX_BYTES,
+			REQ_BODY_MAX_BYTES,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			HTTPS_HTTP2_ENABLED,
@@ -219,7 +219,7 @@ describe("Configuration", () => {
 			port: PORT,
 		});
 
-		expect(config.fastifyInit.bodyLimit).toBe(SERVICE_BODY_MAX_BYTES);
+		expect(config.fastifyInit.bodyLimit).toBe(REQ_BODY_MAX_BYTES);
 
 		expect(config.fastifyInit.logger).toEqual({
 			formatters: { level: expect.any(Function) },
