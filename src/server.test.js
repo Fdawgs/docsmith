@@ -560,8 +560,8 @@ describe("Server Deployment", () => {
 
 		beforeAll(async () => {
 			Object.assign(process.env, {
-				SERVICE_HOST: "localhost",
-				SERVICE_PORT: "8204",
+				HOST: "localhost",
+				PORT: "8204",
 				HTTPS_PFX_PASSPHRASE: "",
 				HTTPS_PFX_FILE_PATH: "",
 				HTTPS_SSL_CERT_PATH: "",

@@ -51,9 +51,9 @@ async function getConfig() {
 			.prop("NODE_ENV", S.string())
 
 			// Service
-			.prop("SERVICE_HOST", S.string())
-			.prop("SERVICE_PORT", S.number())
-			.prop("SERVICE_BODY_MAX_BYTES", S.anyOf([S.number(), S.null()]))
+			.prop("HOST", S.string())
+			.prop("PORT", S.number())
+			.prop("REQ_BODY_MAX_BYTES", S.anyOf([S.number(), S.null()]))
 
 			// CORS
 			.prop("CORS_ORIGIN", S.anyOf([S.string(), S.null()]))
@@ -130,17 +130,17 @@ async function getConfig() {
 			.prop("OCR_ENABLED", S.anyOf([S.boolean(), S.null()]))
 			.prop("OCR_LANGUAGES", S.anyOf([S.string(), S.null()]))
 			.prop("OCR_WORKERS", S.anyOf([S.number(), S.null()]))
-			.required(["NODE_ENV", "SERVICE_HOST", "SERVICE_PORT"]),
+			.required(["NODE_ENV", "HOST", "PORT"]),
 	});
 
 	const config = {
 		tempDir,
 		fastify: {
-			port: env.SERVICE_PORT,
+			port: env.PORT,
 		},
 		fastifyInit: {
 			// The maximum payload, in bytes, the server is allowed to accept
-			bodyLimit: env.SERVICE_BODY_MAX_BYTES || 10485760,
+			bodyLimit: env.REQ_BODY_MAX_BYTES || 10485760,
 			/**
 			 * See https://www.fastify.io/docs/v3.8.x/Logging/
 			 * and https://getpino.io/#/docs/api for logger options
@@ -301,8 +301,8 @@ async function getConfig() {
 	};
 
 	// Ensure API listens on both IPv4 and IPv6 addresses
-	if (env.SERVICE_HOST) {
-		config.fastify.host = env.SERVICE_HOST;
+	if (env.HOST) {
+		config.fastify.host = env.HOST;
 	}
 
 	if (env.LOG_ROTATION_FILENAME) {
