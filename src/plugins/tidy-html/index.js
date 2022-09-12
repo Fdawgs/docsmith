@@ -49,7 +49,7 @@ async function plugin(server) {
 		const parsedHtml = dom.serialize();
 
 		/**
-		 * Refer to http://api.html-tidy.org/tidy/tidylib_api_5.6.0/tidy_quickref.html for tidy options
+		 * Refer to https://api.html-tidy.org/tidy/tidylib_api_5.8.0/tidy_quickref.html for tidy options
 		 *
 		 * The following options have been turned on:
 		 * - bare (remove Microsoft specific HTML and replace `&nbsp;` with spaces)
