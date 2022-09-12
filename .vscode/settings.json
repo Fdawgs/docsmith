@@ -7,5 +7,8 @@
 	},
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"npm.packageManager": "npm",
-	"redhat.telemetry.enabled": false
+	"redhat.telemetry.enabled": false,
+	"[xml]": {
+		"editor.defaultFormatter": "redhat.vscode-xml"
+	}
 }
