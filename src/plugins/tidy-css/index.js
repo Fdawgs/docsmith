@@ -115,7 +115,10 @@ async function plugin(server) {
 		styleObj = styleObj.toString();
 		combinedStyle.innerHTML = cssCleaner.minify(styleObj).styles;
 
-		dom.window.document.head.appendChild(combinedStyle);
+		// Stop empty <style> element being added
+		if (combinedStyle.innerHTML !== "") {
+			dom.window.document.head.appendChild(combinedStyle);
+		}
 
 		return dom.serialize();
 	}
