@@ -66,7 +66,7 @@ describe("Tidy-CSS Plugin", () => {
 			},
 		});
 
-		expect(/font-family: Arial/gm.exec(response.payload)).not.toBeNull();
+		expect(/font-family:Arial/gm.exec(response.payload)).not.toBeNull();
 		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
@@ -94,7 +94,7 @@ describe("Tidy-CSS Plugin", () => {
 		});
 
 		expect(
-			/font-family: "Sans Serif", "\\"Gill Sans\\""/gm.exec(
+			/font-family:"Sans Serif","\\"Gill Sans\\""/gm.exec(
 				response.payload
 			)
 		).not.toBeNull();
@@ -122,9 +122,7 @@ describe("Tidy-CSS Plugin", () => {
 			},
 		});
 
-		expect(
-			/background-color: white/gm.exec(response.payload)
-		).not.toBeNull();
+		expect(/background-color:#fff/gm.exec(response.payload)).not.toBeNull();
 		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
@@ -152,10 +150,8 @@ describe("Tidy-CSS Plugin", () => {
 			},
 		});
 
-		expect(/font-family: Arial/gm.exec(response.payload)).not.toBeNull();
-		expect(
-			/background-color: white/gm.exec(response.payload)
-		).not.toBeNull();
+		expect(/font-family:Arial/gm.exec(response.payload)).not.toBeNull();
+		expect(/background-color:#fff/gm.exec(response.payload)).not.toBeNull();
 		expect(/;}|<!--|-->/gm.exec(response.payload)).toBeNull();
 		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
