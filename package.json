@@ -96,6 +96,7 @@
 		"@fastify/static": "^6.5.0",
 		"@fastify/swagger": "^7.5.0",
 		"@fastify/under-pressure": "^8.1.0",
+		"clean-css": "^5.3.1",
 		"cssesc": "^3.0.0",
 		"cssom": "^0.5.0",
 		"dotenv": "^16.0.2",
