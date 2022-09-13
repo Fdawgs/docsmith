@@ -1,5 +1,6 @@
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
+const { minify } = require("html-minifier-terser");
 const { tidy } = require("htmltidy2");
 const util = require("util");
 const tags = require("language-tags");
@@ -8,8 +9,8 @@ const tidyP = util.promisify(tidy);
 
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds function that uses HTMLTidy2 to
- * parse and tidy HTML passed.
+ * @description Decorator plugin that adds function that uses HTMLTidy2
+ * and HTMLMinifier to parse, tidy, and minify HTML passed.
  * @param {object} server - Fastify instance.
  */
 async function plugin(server) {
@@ -49,7 +50,7 @@ async function plugin(server) {
 		const parsedHtml = dom.serialize();
 
 		/**
-		 * Refer to http://api.html-tidy.org/tidy/tidylib_api_5.6.0/tidy_quickref.html for tidy options
+		 * Refer to https://api.html-tidy.org/tidy/tidylib_api_5.8.0/tidy_quickref.html for tidy options
 		 *
 		 * The following options have been turned on:
 		 * - bare (remove Microsoft specific HTML and replace `&nbsp;` with spaces)
@@ -59,17 +60,22 @@ async function plugin(server) {
 		 * - hideComments (do not print HTML comment tags)
 		 * - sortAttributes (sort attributes in element in ascending alphabetic sort)
 		 */
-		const config = {
+		const tidiedHtml = await tidyP(parsedHtml, {
 			bare: true,
 			clean: true,
 			dropProprietaryAttributes: true,
 			escapeCdata: true,
 			hideComments: true,
 			sortAttributes: "alpha",
-		};
+		});
 
-		const results = await tidyP(parsedHtml, config);
-		return results;
+		const minifiedHtml = await minify(tidiedHtml, {
+			collapseWhitespace: true,
+			removeComments: true,
+			removeEmptyAttributes: true,
+		});
+
+		return minifiedHtml;
 	}
 
 	server.decorate("tidyHtml", tidyHtml);
