@@ -63,20 +63,18 @@ async function route(server, options) {
 			}
 		},
 		handler: async (req) => {
-			const result = server.tidyCss(
-				await server.tidyHtml(
-					await server.embedHtmlImages(req.conversionResults.body),
-					{
-						language: req.query.language,
-						removeAlt: req.query.removeAlt,
-					}
-				),
-				{
-					fonts: req.query.fonts,
-					backgroundColor: req.query.backgroundColor,
-				}
+			const embeddedHtml = await server.embedHtmlImages(
+				req.conversionResults.body
 			);
-			return result;
+			const tidiedHtml = await server.tidyHtml(embeddedHtml, {
+				language: req.query.language,
+				removeAlt: req.query.removeAlt,
+			});
+
+			return server.tidyCss(tidiedHtml, {
+				fonts: req.query.fonts,
+				backgroundColor: req.query.backgroundColor,
+			});
 		},
 	});
 }
