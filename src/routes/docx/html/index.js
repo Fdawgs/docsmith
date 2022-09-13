@@ -63,17 +63,18 @@ async function route(server, options) {
 			}
 		},
 		handler: async (req) => {
-			const result = server.tidyCss(
-				await server.tidyHtml(req.conversionResults.body, {
+			const tidiedHtml = await server.tidyHtml(
+				req.conversionResults.body,
+				{
 					language: req.query.language,
 					removeAlt: req.query.removeAlt,
-				}),
-				{
-					fonts: req.query.fonts,
-					backgroundColor: req.query.backgroundColor,
 				}
 			);
-			return result;
+
+			return server.tidyCss(tidiedHtml, {
+				fonts: req.query.fonts,
+				backgroundColor: req.query.backgroundColor,
+			});
 		},
 	});
 }
