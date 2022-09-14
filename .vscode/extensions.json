@@ -5,6 +5,7 @@
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
 		"ms-azuretools.vscode-docker",
+		"redhat.vscode-xml",
 		"redhat.vscode-yaml"
 	]
 }

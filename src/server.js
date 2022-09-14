@@ -15,6 +15,7 @@ const sensible = require("@fastify/sensible");
 const staticPlugin = require("@fastify/static");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
+const serializeJsonToXml = require("./plugins/serialize-json-to-xml");
 const sharedSchemas = require("./plugins/shared-schemas");
 
 // Import local decorator plugins
@@ -49,6 +50,9 @@ async function plugin(server, config) {
 
 		// Utility functions and error handlers
 		.register(sensible, { errorHandler: false })
+
+		// Serialization support for XML responses
+		.register(serializeJsonToXml)
 
 		// Reusable schemas
 		.register(sharedSchemas)
