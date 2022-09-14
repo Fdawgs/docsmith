@@ -8,8 +8,8 @@ const path = require("upath");
  * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.languages - Languages to load trained data for.
- * Multiple languages are concatenated with a `+` i.e. `eng+chi_tra`
- * for English and Chinese Traditional languages.
+ * Multiple languages are concatenated with a `+` i.e. `eng+cym`
+ * for English and Welsh languages.
  * @param {number} options.workers - Number of Tesseract Workers
  * to create.
  */

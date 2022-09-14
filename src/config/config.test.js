@@ -176,7 +176,7 @@ describe("Configuration", () => {
 		const AUTH_BEARER_TOKEN_ARRAY =
 			'[{"service": "test", "value": "testtoken"}]';
 		const OCR_ENABLED = true;
-		const OCR_LANGUAGES = "chi_tra";
+		const OCR_LANGUAGES = "cym";
 		const OCR_WORKERS = 1;
 		const POPPLER_BINARY_PATH = "/usr/bin";
 		const UNRTF_BINARY_PATH = "/usr/bin";
