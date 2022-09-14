@@ -46,6 +46,7 @@ async function plugin(server) {
 				return js2xmlparser.parse("response", parsedPayload, {
 					format: {
 						doubleQuotes: true,
+						pretty: false,
 					},
 					declaration: {
 						encoding: "UTF-8",

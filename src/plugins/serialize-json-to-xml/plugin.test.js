@@ -1,6 +1,5 @@
 const Fastify = require("fastify");
 const accepts = require("@fastify/accepts");
-const js2xmlparser = require("js2xmlparser");
 const plugin = require(".");
 
 describe("Serialize-JSON-To-XML Plugin", () => {
@@ -47,19 +46,8 @@ describe("Serialize-JSON-To-XML Plugin", () => {
 			},
 		});
 
-		expect(response.payload).toEqual(
-			js2xmlparser.parse(
-				"response",
-				{ "test-key": "test-value" },
-				{
-					format: {
-						doubleQuotes: true,
-					},
-					declaration: {
-						encoding: "UTF-8",
-					},
-				}
-			)
+		expect(response.payload).toBe(
+			'<?xml version="1.0" encoding="UTF-8"?><response><test-key>test-value</test-key></response>'
 		);
 		expect(response.headers["content-type"]).toBe(
 			"application/xml; charset=utf-8"
