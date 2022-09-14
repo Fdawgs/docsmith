@@ -58,7 +58,6 @@ async function plugin(server) {
 		 * - dropProprietaryAttributes (remove proprietary attributes, such as Microsoft data binding attributes)
 		 * - escapeCdata (convert <![CDATA[]]> sections to normal text)
 		 * - hideComments (do not print HTML comment tags)
-		 * - sortAttributes (sort attributes in element in ascending alphabetic sort)
 		 */
 		const tidiedHtml = await tidyP(parsedHtml, {
 			bare: true,
@@ -66,13 +65,15 @@ async function plugin(server) {
 			dropProprietaryAttributes: true,
 			escapeCdata: true,
 			hideComments: true,
-			sortAttributes: "alpha",
 		});
 
+		// Refer to https://github.com/terser/html-minifier-terser#options-quick-reference for options
 		const minifiedHtml = await minify(tidiedHtml, {
 			collapseWhitespace: true,
 			removeComments: true,
 			removeEmptyAttributes: true,
+			sortAttributes: true,
+			sortClassName: true,
 		});
 
 		return minifiedHtml;
