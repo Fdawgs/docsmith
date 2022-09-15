@@ -53,25 +53,25 @@ async function plugin(server) {
 		 * Refer to https://api.html-tidy.org/tidy/tidylib_api_5.8.0/tidy_quickref.html for tidy options
 		 *
 		 * The following options have been turned on:
-		 * - bare (remove Microsoft specific HTML and replace `&nbsp;` with spaces)
+		 * - bare (replace smart quotes and em dashes with ASCII and replace `&nbsp;` with spaces)
 		 * - clean (replace legacy HTML tags)
 		 * - dropProprietaryAttributes (remove proprietary attributes, such as Microsoft data binding attributes)
 		 * - escapeCdata (convert <![CDATA[]]> sections to normal text)
-		 * - hideComments (do not print HTML comment tags)
 		 */
 		const tidiedHtml = await tidyP(parsedHtml, {
 			bare: true,
 			clean: true,
 			dropProprietaryAttributes: true,
 			escapeCdata: true,
-			hideComments: true,
 		});
 
 		// Refer to https://github.com/terser/html-minifier-terser#options-quick-reference for options
 		const minifiedHtml = await minify(tidiedHtml, {
 			collapseWhitespace: true,
+			decodeEntities: true,
 			removeComments: true,
 			removeEmptyAttributes: true,
+			removeRedundantAttributes: true,
 			sortAttributes: true,
 			sortClassName: true,
 		});
