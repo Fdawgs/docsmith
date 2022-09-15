@@ -2,10 +2,10 @@ const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 const { minify } = require("html-minifier-terser");
 const { tidy } = require("htmltidy2");
-const util = require("util");
-const tags = require("language-tags");
+const { promisify } = require("util");
+const { check } = require("language-tags");
 
-const tidyP = util.promisify(tidy);
+const tidyP = promisify(tidy);
 
 /**
  * @author Frazer Smith
@@ -29,7 +29,7 @@ async function plugin(server) {
 
 		// Set document language if valid IANA language tag and subtag
 		const language = options?.language || "en";
-		if (tags.check(language)) {
+		if (check(language)) {
 			const innerHtml = dom.window.document.querySelector("html");
 			innerHtml.setAttribute("lang", language);
 			innerHtml.setAttribute("xml:lang", language);

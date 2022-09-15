@@ -1,5 +1,5 @@
 const fp = require("fastify-plugin");
-const mammoth = require("mammoth");
+const { extractRawText } = require("mammoth");
 
 /**
  * @author Frazer Smith
@@ -15,7 +15,7 @@ async function plugin(server) {
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
-			const { value } = await mammoth.extractRawText(req.body);
+			const { value } = await extractRawText(req.body);
 			req.conversionResults.body = value;
 			res.type("text/plain; charset=utf-8");
 		} catch (err) {

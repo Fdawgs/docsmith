@@ -1,4 +1,4 @@
-const fileType = require("file-type");
+const { fromBuffer } = require("file-type");
 
 // Import plugins
 const cors = require("@fastify/cors");
@@ -27,7 +27,7 @@ async function route(server, options) {
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
 			 * this checks for DOCX specific magic numbers.
 			 */
-			const results = await fileType.fromBuffer(payload);
+			const results = await fromBuffer(payload);
 			if (
 				results === undefined ||
 				results.mime === undefined ||

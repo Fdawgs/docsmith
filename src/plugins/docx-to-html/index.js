@@ -1,6 +1,6 @@
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
-const mammoth = require("mammoth");
+const { convertToHtml } = require("mammoth");
 
 /**
  * @author Frazer Smith
@@ -16,7 +16,7 @@ async function plugin(server) {
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
-			const { value } = await mammoth.convertToHtml(req.body);
+			const { value } = await convertToHtml(req.body);
 
 			/**
 			 * Mammoth does not wrap the results inside <html> and <body> tags itself.
