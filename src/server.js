@@ -107,7 +107,7 @@ async function plugin(server, config) {
 		/**
 		 * Encapsulate plugins and routes into a secured child context, so that admin and
 		 * docs routes do not inherit the bearer token auth plugin.
-		 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
+		 * See https://fastify.io/docs/latest/Reference/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
 			if (config.bearerTokenAuthKeys) {

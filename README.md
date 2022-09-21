@@ -9,7 +9,7 @@
 
 ## Intro
 
-Docsmith is a RESTful API, built using Node.js and the [Fastify](https://www.fastify.io/) web framework, that can convert files from:
+Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify.io/) web framework, that can convert files from:
 
 -   DOCX to HTML
 -   DOCX to TXT
@@ -79,7 +79,7 @@ To quickly test it, use [Insomnia](https://insomnia.rest/) and import the exampl
 
 ### Deploying Using Docker
 
-This requires [Docker](https://www.docker.com) installed.
+This requires [Docker](https://docker.com) installed.
 
 1. Run `docker compose up` (or `docker compose up -d` to run in the background)
 
