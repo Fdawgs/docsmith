@@ -4,7 +4,7 @@ const tags = ["System Administration"];
 
 /**
  * Fastify uses AJV for JSON Schema Validation,
- * see https://www.fastify.io/docs/latest/Validation-and-Serialization/
+ * see https://fastify.io/docs/latest/Reference/Validation-and-Serialization/
  *
  * Input validation protects against XSS, HPP, and most injection attacks.
  */

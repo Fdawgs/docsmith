@@ -69,7 +69,7 @@ async function plugin(server) {
 			/**
 			 * Font family names containing any non-alphabetical characters
 			 * other than hyphens should be quoted.
-			 * See https://www.w3.org/TR/css-fonts-4/#family-name-syntax
+			 * See https://w3.org/TR/css-fonts-4/#family-name-syntax
 			 */
 			if (styleRule.style["font-family"]) {
 				const fonts = styleRule.style["font-family"].split(",");
