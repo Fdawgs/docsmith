@@ -364,7 +364,7 @@ describe("Configuration", () => {
 		async ({ envVariables, expected }) => {
 			const HOST = faker.internet.ip();
 			const PORT = faker.datatype.number();
-			const CORS_ORIGIN = envVariables.CORS_ORIGIN;
+			const { CORS_ORIGIN } = envVariables;
 			const CORS_ALLOWED_HEADERS =
 				"Accept, Authorization, Content-Type, Origin, X-Requested-With";
 			const CORS_ALLOW_CREDENTIALS =
