@@ -112,7 +112,7 @@
 		"glob": "^8.0.3",
 		"html-minifier-terser": "^7.0.0",
 		"htmltidy2": "^1.0.0",
-		"js2xmlparser": "^4.0.2",
+		"js2xmlparser": "^5.0.0",
 		"jsdom": "^20.0.0",
 		"language-tags": "^1.0.5",
 		"mammoth": "^1.5.1",
