@@ -99,7 +99,7 @@
 		"clean-css": "^5.3.1",
 		"cssesc": "^3.0.0",
 		"cssom": "^0.5.0",
-		"dotenv": "^16.0.2",
+		"dotenv": "^16.0.3",
 		"env-schema": "^5.0.0",
 		"fastify": "^4.5.3",
 		"fastify-disablecache": "^3.0.2",
