@@ -117,7 +117,7 @@
 		"language-tags": "^1.0.5",
 		"mammoth": "^1.5.1",
 		"node-poppler": "^6.0.1",
-		"node-unrtf": "^3.0.0",
+		"node-unrtf": "^3.0.1",
 		"physical-cpu-count": "^2.0.0",
 		"pino": "^8.6.1",
 		"raw-body": "^2.5.1",
