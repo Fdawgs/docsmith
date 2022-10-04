@@ -52,7 +52,7 @@ async function getConfig() {
 
 			// Service
 			.prop("HOST", S.string())
-			.prop("PORT", S.number())
+			.prop("PORT", S.anyOf([S.number(), S.null()]))
 			.prop("REQ_BODY_MAX_BYTES", S.anyOf([S.number(), S.null()]))
 
 			// CORS
@@ -130,13 +130,14 @@ async function getConfig() {
 			.prop("OCR_ENABLED", S.anyOf([S.boolean(), S.null()]))
 			.prop("OCR_LANGUAGES", S.anyOf([S.string(), S.null()]))
 			.prop("OCR_WORKERS", S.anyOf([S.number(), S.null()]))
-			.required(["NODE_ENV", "HOST", "PORT"]),
+			.required(["NODE_ENV", "HOST"]),
 	});
 
 	const config = {
 		tempDir,
 		fastify: {
-			port: env.PORT,
+			// 0 picks the first available open port
+			port: env.PORT || 0,
 		},
 		fastifyInit: {
 			// The maximum payload, in bytes, the server is allowed to accept
@@ -300,7 +301,7 @@ async function getConfig() {
 		},
 	};
 
-	// Ensure API listens on both IPv4 and IPv6 addresses
+	// Ensure API listens on both IPv4 and IPv6 addresses if not explicitly set
 	if (env.HOST) {
 		config.fastify.host = env.HOST;
 	}
