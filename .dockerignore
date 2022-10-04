@@ -135,7 +135,7 @@ docs/
 .prettierignore
 .prettierrc
 CHANGELOG.md
-CODE_OF_CONDUCTING.md
+CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 
 # Tesseract trained data cache
