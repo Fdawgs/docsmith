@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.1.0](https://github.com/Fdawgs/docsmith/compare/v9.0.0...v9.1.0) (2022-10-06)
+
+
+### Features
+
+* **config:** use first available open port if `PORT` env variable unset ([#1055](https://github.com/Fdawgs/docsmith/issues/1055)) ([5c738e4](https://github.com/Fdawgs/docsmith/commit/5c738e4a4a854b5e7361a7a2c17d832ed9311ac8))
+
+
+### Continuous Integration
+
+* **cd:** create release asset ([2356d52](https://github.com/Fdawgs/docsmith/commit/2356d5289f0f3fca42878a299f23499e42c1a142))
+
+
+### Dependencies
+
+* **.dockerignore:** add `SECURITY.md` ([014118d](https://github.com/Fdawgs/docsmith/commit/014118d0dcbf289ce6b3d92ee5ac2ab31670ecce))
+* **.dockerignore:** fix `CODE_OF_CONDUCT` entry ([#1057](https://github.com/Fdawgs/docsmith/issues/1057)) ([47eb5e2](https://github.com/Fdawgs/docsmith/commit/47eb5e25b5a1515b26ea70ae943b0f49195e38fc))
+* **deps-dev:** bump eslint-plugin-jest from 27.0.4 to 27.1.1 ([#1061](https://github.com/Fdawgs/docsmith/issues/1061)) ([94922a7](https://github.com/Fdawgs/docsmith/commit/94922a732e7a7b03d0255aef6d1aabd223e548db))
+* **deps-dev:** bump pino-pretty from 9.1.0 to 9.1.1 ([#1059](https://github.com/Fdawgs/docsmith/issues/1059)) ([cd173df](https://github.com/Fdawgs/docsmith/commit/cd173df60ad4952bf53506cd2bf8def437e01562))
+* **deps:** bump fluent-json-schema from 3.1.0 to 4.0.0 ([#1060](https://github.com/Fdawgs/docsmith/issues/1060)) ([df43bed](https://github.com/Fdawgs/docsmith/commit/df43bedaf8d784e00530aaa87d786fcffadea685))
+
 ## [9.0.0](https://github.com/Fdawgs/docsmith/compare/v8.0.3...v9.0.0) (2022-10-03)
 
 
