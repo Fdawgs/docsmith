@@ -1,11 +1,12 @@
 const { faker } = require("@faker-js/faker/locale/en_GB");
 const fs = require("fs/promises");
 const glob = require("glob");
+const path = require("upath");
 const getConfig = require(".");
 
 describe("Configuration", () => {
 	const currentEnv = { ...process.env };
-	const tempDir = "./src/temp/";
+	const tempDir = path.joinSafe(__dirname, "../temp");
 
 	afterAll(async () => {
 		const files = glob.sync("./test_resources/+(test-log*|.audit.json)", {

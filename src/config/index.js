@@ -41,7 +41,7 @@ function parseCorsParameter(param) {
  */
 async function getConfig() {
 	// Directory for temporarily storing files during conversion
-	const tempDir = "./src/temp/";
+	const tempDir = path.joinSafe(__dirname, "../temp");
 
 	// Validate env variables
 	const env = envSchema({
