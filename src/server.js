@@ -152,7 +152,7 @@ async function plugin(server, config) {
 				// Set relaxed response headers
 				.register(helmet, relaxedHelmetConfig)
 
-				// Register static files in ./src/public
+				// Register static files in public
 				.register(staticPlugin, {
 					root: path.joinSafe(__dirname, "public"),
 					immutable: true,
