@@ -72,7 +72,7 @@
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-jest": "^27.1.2",
 		"eslint-plugin-jsdoc": "^39.3.6",
-		"eslint-plugin-promise": "^6.0.1",
+		"eslint-plugin-promise": "^6.1.0",
 		"eslint-plugin-security": "^1.5.0",
 		"eslint-plugin-security-node": "^1.1.1",
 		"husky": "^8.0.1",
