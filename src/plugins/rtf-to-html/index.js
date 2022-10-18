@@ -3,6 +3,7 @@ const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const fs = require("fs/promises");
 const glob = require("glob");
+const { JSDOM } = require("jsdom");
 const path = require("upath");
 const { UnRTF } = require("node-unrtf");
 const { randomUUID } = require("crypto");
@@ -70,7 +71,7 @@ async function plugin(server, options) {
 		Object.assign(config, options);
 
 		// Build temporary file for UnRTF to write to, and following plugins to read from
-		const id = randomUUID();
+		const id = `docsmith_rtf-to-html_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
 		req.conversionResults.docLocation = {
 			directory,
@@ -80,14 +81,20 @@ async function plugin(server, options) {
 		await fs.writeFile(tempFile, req.body);
 
 		try {
+			// Add title to document
+			const dom = new JSDOM(
+				await unrtf.convert(tempFile, config.rtfToHtmlOptions)
+			);
+			const element = dom.window.document.createElement("title");
+			element.innerHTML = id;
+			dom.window.document.head.prepend(element);
+
 			/**
 			 * `fixUtf8` function replaces most common incorrectly converted
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info.
 			 */
-			req.conversionResults.body = await fixUtf8(
-				await unrtf.convert(tempFile, config.rtfToHtmlOptions)
-			);
+			req.conversionResults.body = await fixUtf8(dom.serialize());
 		} catch (err) {
 			/**
 			 * UnRTF will throw if the .rtf file provided

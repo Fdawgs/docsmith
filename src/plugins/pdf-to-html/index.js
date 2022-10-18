@@ -110,7 +110,7 @@ async function plugin(server, options) {
 		Object.assign(config.pdfToHtmlOptions, query);
 
 		// Build temporary file for Poppler to write to, and following plugins to read from
-		const id = randomUUID();
+		const id = `docsmith_pdf-to-html_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, id);
 		req.conversionResults.docLocation = {
 			directory,
@@ -145,6 +145,10 @@ async function plugin(server, options) {
 			})
 		);
 		const titles = dom.window.document.querySelectorAll("title");
+
+		// Overwrite title set by Poppler, which reveals directories
+		titles[0].innerHTML = id;
+
 		for (let index = 1; index < titles.length; index += 1) {
 			titles[index].parentNode.removeChild(titles[index]);
 		}

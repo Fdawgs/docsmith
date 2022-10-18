@@ -131,7 +131,7 @@ async function plugin(server, options) {
 			});
 
 			// Build temporary file for Poppler to write to, and following plugins to read from
-			const id = randomUUID();
+			const id = `docsmith_pdf-to-txt_${randomUUID()}`;
 			const tempFile = path.joinSafe(directory, id);
 			req.conversionResults.docLocation = {
 				directory,
