@@ -1,6 +1,7 @@
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const { convertToHtml } = require("mammoth");
+const { randomUUID } = require("crypto");
 
 /**
  * @author Frazer Smith
@@ -25,7 +26,8 @@ async function plugin(server) {
 			 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info.
 			 */
 			req.conversionResults.body = fixUtf8(`<!DOCTYPE html>
-			<head> 
+			<head>
+				<title>docsmith_docx-to-html_${randomUUID()}</title>
 				<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 			</head>
 			<html>
