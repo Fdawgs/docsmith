@@ -47,7 +47,7 @@ jobs:
                   .dockerignore .env.template .pm2.config.js
                   docker-compose.yml Dockerfile LICENSE
                   package.json package-lock.json README.md
-                  ocr_lang_data src
+                  ocr_lang_data src -x \src\**\*.test.js
 
             - name: Upload release asset
               uses: actions/upload-release-asset@v1
