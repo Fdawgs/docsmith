@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.1.1](https://github.com/Fdawgs/docsmith/compare/v9.1.0...v9.1.1) (2022-10-18)
+
+
+### Improvements
+
+* **config:** replace hardcoded value for temp directory ([d39dba2](https://github.com/Fdawgs/docsmith/commit/d39dba2f6a97f4d810f2d369bd5d55eac4791228))
+
+
+### Miscellaneous
+
+* **server:** remove reference to hardcoded dir ([0c29613](https://github.com/Fdawgs/docsmith/commit/0c29613c3c41c0e2bb0bf159a69c4e7ddb279332))
+
+
+### Dependencies
+
+* **deps-dev:** bump @faker-js/faker from 7.5.0 to 7.6.0 ([#1066](https://github.com/Fdawgs/docsmith/issues/1066)) ([ffe117d](https://github.com/Fdawgs/docsmith/commit/ffe117d121621e3152da87d7d4de8d59821cfd84))
+* **deps-dev:** bump eslint from 8.24.0 to 8.25.0 ([#1077](https://github.com/Fdawgs/docsmith/issues/1077)) ([31d0b35](https://github.com/Fdawgs/docsmith/commit/31d0b35d3e7d856224e7dc700f89ae82be526c25))
+* **deps-dev:** bump eslint-plugin-jest from 27.1.1 to 27.1.2 ([#1067](https://github.com/Fdawgs/docsmith/issues/1067)) ([d0a9c5e](https://github.com/Fdawgs/docsmith/commit/d0a9c5edf231ddeca95bb8f6a4266b5c10b3014b))
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.3.6 to 39.3.13 ([#1078](https://github.com/Fdawgs/docsmith/issues/1078)) ([e5c19eb](https://github.com/Fdawgs/docsmith/commit/e5c19ebd14995384146ab52436588c8d5f1fe084))
+* **deps-dev:** bump eslint-plugin-promise from 6.0.1 to 6.1.0 ([#1074](https://github.com/Fdawgs/docsmith/issues/1074)) ([36452a2](https://github.com/Fdawgs/docsmith/commit/36452a2fa25fb068eb6933134db7416661fe7223))
+* **deps-dev:** bump jest from 29.1.2 to 29.2.0 ([#1073](https://github.com/Fdawgs/docsmith/issues/1073)) ([a5e1c9c](https://github.com/Fdawgs/docsmith/commit/a5e1c9c71a85d4ce8b80af10d695c11bc2fdea56))
+* **deps-dev:** bump playwright from 1.26.1 to 1.27.1 ([#1071](https://github.com/Fdawgs/docsmith/issues/1071)) ([d56323d](https://github.com/Fdawgs/docsmith/commit/d56323d764be4ccc8ec6bbb8f20da8bce0055089))
+* **deps:** bump @fastify/autoload from 5.4.0 to 5.4.1 ([#1070](https://github.com/Fdawgs/docsmith/issues/1070)) ([3fdf2d8](https://github.com/Fdawgs/docsmith/commit/3fdf2d83679608c0c5f322d081db9e52ffd5774d))
+* **deps:** bump @fastify/helmet from 10.0.1 to 10.0.2 ([#1076](https://github.com/Fdawgs/docsmith/issues/1076)) ([0930ced](https://github.com/Fdawgs/docsmith/commit/0930cedd3fb4664213c1f275d66a284957ff8a45))
+* **deps:** bump @fastify/rate-limit from 7.4.0 to 7.5.0 ([#1069](https://github.com/Fdawgs/docsmith/issues/1069)) ([b65eab0](https://github.com/Fdawgs/docsmith/commit/b65eab05d0de0642efd715b02bc2ad33bbf5764f))
+* **deps:** bump @fastify/swagger from 7.6.1 to 8.0.0 ([#1068](https://github.com/Fdawgs/docsmith/issues/1068)) ([0166758](https://github.com/Fdawgs/docsmith/commit/0166758fa4b701989dc33d84a65f00dcf8623362))
+* **deps:** bump fastify from 4.7.0 to 4.8.1 ([#1064](https://github.com/Fdawgs/docsmith/issues/1064)) ([db81718](https://github.com/Fdawgs/docsmith/commit/db81718156337b07c3914e5f3efd9011e860131a))
+* **deps:** bump fastify from 4.8.1 to 4.9.1 ([#1075](https://github.com/Fdawgs/docsmith/issues/1075)) ([0249aff](https://github.com/Fdawgs/docsmith/commit/0249aff13f939c04eed915346c6078e19873479c))
+* **deps:** bump fastify-plugin from 4.2.1 to 4.3.0 ([#1072](https://github.com/Fdawgs/docsmith/issues/1072)) ([537bd54](https://github.com/Fdawgs/docsmith/commit/537bd54b8597ad6ef600a5d70f52ca224f51d5db))
+
+
+### Continuous Integration
+
+* **cd:** remove test files from release asset ([#1079](https://github.com/Fdawgs/docsmith/issues/1079)) ([b80d445](https://github.com/Fdawgs/docsmith/commit/b80d445310070b7bc140f591d783682682325c4d))
+
 ## [9.1.0](https://github.com/Fdawgs/docsmith/compare/v9.0.0...v9.1.0) (2022-10-06)
 
 
