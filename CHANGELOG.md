@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.1.2](https://github.com/Fdawgs/docsmith/compare/v9.1.1...v9.1.2) (2022-10-18)
+
+
+### Bug Fixes
+
+* **plugins/docx-to-html:** add title to html ([ca3a249](https://github.com/Fdawgs/docsmith/commit/ca3a249c48f3b53fca032d435f135258eb6ea76c))
+* **plugins/pdf-to-html:** remove temp file directory path from title ([a192847](https://github.com/Fdawgs/docsmith/commit/a1928470fa4c517b6c8f448b33dc573eede38de4))
+* **plugins/rtf-to-html:** add title to html ([8cc313e](https://github.com/Fdawgs/docsmith/commit/8cc313e563927ad164d3af88d57cde44a8d2cd49))
+
+
+### Improvements
+
+* **plugins:** add metadata to temp file names for easier debugging ([4f3031a](https://github.com/Fdawgs/docsmith/commit/4f3031aa841ab203418222af26ed37a9284f48e3))
+
+
+### Dependencies
+
+* **deps:** bump fastify from 4.9.1 to 4.9.2 ([#1081](https://github.com/Fdawgs/docsmith/issues/1081)) ([fc12ef9](https://github.com/Fdawgs/docsmith/commit/fc12ef9bb5c7eba66435c5f398ac78dd9266210d))
+
 ## [9.1.1](https://github.com/Fdawgs/docsmith/compare/v9.1.0...v9.1.1) (2022-10-18)
 
 
