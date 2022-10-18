@@ -69,7 +69,7 @@ async function plugin(server, options) {
 		Object.assign(config, options);
 
 		// Build temporary file for UnRTF to write to, and following plugins to read from
-		const id = randomUUID();
+		const id = `docsmith_rtf-to-txt_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
 		req.conversionResults.docLocation = {
 			directory,
