@@ -68,10 +68,10 @@ The service should be up and running on the port set in the config. You should s
 ```json
 {
 	"level": "info",
-	"time": "2020-12-01T09:48:08.612Z",
-	"pid": 41896,
+	"time": "2022-10-20T07:57:21.459Z",
+	"pid": 148,
 	"hostname": "MYCOMPUTER",
-	"msg": "Server listening at http://0.0.0.0:8204"
+	"msg": "Server listening at http://127.0.0.1:51173"
 }
 ```
 
