@@ -27,7 +27,7 @@ After cloning the repository and installing all the dependencies, there are seve
 -   `npm run lint` - Lints everything in src directory
 -   `npm run jest` - Runs Jest over all tests in src directory
 -   `npm test` - Runs `npm run lint` and `npm run jest` together
--   `npm run start:dev` - Starts a development server with live reload, available on `localhost:8204` unless you specify your own port
+-   `npm run start:dev` - Starts a development server with live reload
 
 ### Production Workflow
 
