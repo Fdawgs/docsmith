@@ -23,9 +23,9 @@ Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify
 
 Docsmith was created out of a need for an open-source document conversion service at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/).
 
-Being open-source, with the ability to be self-hosted, enables a data processor (i.e an NHS trust) to confirm that a service is not storing and logging files with confidential patient identifiable data (PID) in them, which is essential for preventing potential GDPR breaches. This is something that the majority of existing closed-source document conversion services cannot offer. Docsmith was built to remedy this.
+Being open-source, with the ability to be self-hosted, enables a data processor (i.e. an NHS trust) to confirm that a service is not storing and logging files with confidential patient identifiable data (PID) in them, which is essential for preventing potential GDPR breaches. This is something that the majority of existing closed-source document conversion services cannot offer. Docsmith was built to remedy this.
 
-Before Docsmith, Yeovil District Hospital was using expensive black-box conversion tools that would regularly produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries in Somerset and Dorset would receive these corrupted documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and be unable to read them. This resulted in time and money wasted either posting or faxing them again; opening up the potential for further data breaches.
+Before Docsmith, Yeovil District Hospital was using expensive black-box conversion tools that would regularly produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries in Somerset and Dorset would receive these corrupted documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and be unable to read them. This resulted in time and money wasted either posting or faxing them again, opening up the potential for further data breaches.
 
 Docsmith enables a data processor to use a robust, GDPR-compliant, open-source document conversion service. In comparison with equivalents in the market today it completes this vital task at a fraction of the cost (free!), whilst also ensuring a higher level of security and privacy for the data subjects.
 
@@ -50,7 +50,7 @@ Perform the following steps before deployment:
 5. Place additional trained data into `ocr_lang_data` directory (optional, [info can be found here](./ocr_lang_data/README.md))
 
 > **Note**
-> Set the following environment variables in `.env` to meet NHS Digital's recommendation to retain 6 months' worth of logs:
+> Set the following environment variables in `.env` to meet NHS Digital's recommendation to retain six months' worth of logs:
 >
 > -   `LOG_ROTATION_DATE_FORMAT="YYYY-MM-DD"`
 > -   `LOG_ROTATION_FREQUENCY="daily"`
@@ -89,8 +89,8 @@ If you are unable to deploy this into production using Docker, it is recommended
 
 1. Run `npm ci --ignore-scripts --omit=dev` to install dependencies
 2. Run `npm i -g pm2` to install pm2 globally
-3. Launch application with `pm2 start .pm2.config.js`
-4. Check the application has been deployed using `pm2 list` or `pm2 monit`
+3. Launch the application with `pm2 start .pm2.config.js`
+4. Check that the application has been deployed using `pm2 list` or `pm2 monit`
 
 #### To Install as a Windows Service:
 
