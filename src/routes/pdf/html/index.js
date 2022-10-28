@@ -6,6 +6,8 @@ const pdfToHtml = require("../../../plugins/pdf-to-html");
 
 const { pdfToHtmlPostSchema } = require("./schema");
 
+const accepts = ["text/html"];
+
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
@@ -57,7 +59,7 @@ async function route(server, options) {
 		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
-				!req.accepts().type(pdfToHtmlPostSchema.produces)
+				!req.accepts().type(accepts)
 			) {
 				throw server.httpErrors.notAcceptable();
 			}

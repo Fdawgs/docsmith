@@ -5,6 +5,8 @@ const staticPlugin = require("@fastify/static");
 
 const { docsGetSchema } = require("./schema");
 
+const accepts = ["text/html"];
+
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
@@ -39,7 +41,7 @@ async function route(server) {
 		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
-				!req.accepts().type(docsGetSchema.produces)
+				!req.accepts().type(accepts)
 			) {
 				throw server.httpErrors.notAcceptable();
 			}

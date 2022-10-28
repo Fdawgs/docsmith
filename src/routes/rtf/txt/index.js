@@ -6,6 +6,8 @@ const rtfToTxt = require("../../../plugins/rtf-to-txt");
 
 const { rtfToTxtPostSchema } = require("./schema");
 
+const accepts = ["text/plain"];
+
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
@@ -57,7 +59,7 @@ async function route(server, options) {
 		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
-				!req.accepts().type(rtfToTxtPostSchema.produces)
+				!req.accepts().type(accepts)
 			) {
 				throw server.httpErrors.notAcceptable();
 			}
