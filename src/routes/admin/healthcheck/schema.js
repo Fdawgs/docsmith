@@ -14,9 +14,18 @@ const healthcheckGetSchema = {
 	description:
 		"This is a dummy endpoint you can use to test if the server is accessible.",
 	operationId: "getHealthcheck",
-	produces: ["text/plain"],
+	produces: ["application/json", "application/xml"],
 	response: {
-		200: S.string().const("ok"),
+		200: {
+			content: {
+				"text/plain": {
+					schema: {
+						type: "string",
+						enum: ["ok"],
+					},
+				},
+			},
+		},
 		406: S.ref("responses#/properties/notAcceptable").description(
 			"Not Acceptable"
 		),

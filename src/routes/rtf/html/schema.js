@@ -15,7 +15,7 @@ const rtfToHtmlPostSchema = {
 		"Returns the result of converting an RTF document to HTML format. Images are discarded.",
 	operationId: "postRtfToHtml",
 	consumes: ["application/rtf"],
-	produces: ["text/html"],
+	produces: ["application/json", "application/xml"],
 	query: S.object()
 		.additionalProperties(false)
 		.prop(
@@ -56,7 +56,15 @@ const rtfToHtmlPostSchema = {
 			)
 		),
 	response: {
-		200: S.string(),
+		200: {
+			content: {
+				"text/html": {
+					schema: {
+						type: "string",
+					},
+				},
+			},
+		},
 		400: S.ref("responses#/properties/badRequest").description(
 			"Bad Request"
 		),

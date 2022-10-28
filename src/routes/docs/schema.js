@@ -11,9 +11,17 @@ const docsGetSchema = {
 	summary: "List documentation",
 	description: "Retrieves OpenAPI documentation.",
 	operationId: "getDocs",
-	produces: ["text/html"],
+	produces: ["application/json", "application/xml"],
 	response: {
-		200: S.string(),
+		200: {
+			content: {
+				"text/html": {
+					schema: {
+						type: "string",
+					},
+				},
+			},
+		},
 		406: S.ref("responses#/properties/notAcceptable").description(
 			"Not Acceptable"
 		),

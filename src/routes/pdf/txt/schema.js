@@ -15,7 +15,7 @@ const pdfToTxtPostSchema = {
 		"Returns the result of converting a PDF document to TXT or simple HTML format.",
 	operationId: "postPdfToTxt",
 	consumes: ["application/pdf"],
-	produces: ["text/html", "text/plain"],
+	produces: ["application/json", "application/xml"],
 	query: S.object()
 		.prop(
 			"boundingBoxXhtml",
@@ -135,7 +135,20 @@ const pdfToTxtPostSchema = {
 				.maxLength(127)
 		),
 	response: {
-		200: S.string(),
+		200: {
+			content: {
+				"text/html": {
+					schema: {
+						type: "string",
+					},
+				},
+				"text/plain": {
+					schema: {
+						type: "string",
+					},
+				},
+			},
+		},
 		400: S.ref("responses#/properties/badRequest").description(
 			"Bad Request"
 		),

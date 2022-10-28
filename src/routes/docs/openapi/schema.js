@@ -11,7 +11,7 @@ const docsOpenapiGetSchema = {
 	summary: "List OpenAPI specification",
 	description: "Retrieves OpenAPI specification.",
 	operationId: "getDocsOpenapi",
-	produces: ["application/json"],
+	produces: ["application/json", "application/xml"],
 	response: {
 		200: S.object()
 			.additionalProperties(true)
