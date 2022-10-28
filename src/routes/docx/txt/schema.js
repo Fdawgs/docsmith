@@ -17,9 +17,17 @@ const docxToTxtPostSchema = {
 	consumes: [
 		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 	],
-	produces: ["text/plain"],
+	produces: ["application/json", "application/xml"],
 	response: {
-		200: S.string(),
+		200: {
+			content: {
+				"text/plain": {
+					schema: {
+						type: "string",
+					},
+				},
+			},
+		},
 		400: S.ref("responses#/properties/badRequest").description(
 			"Bad Request"
 		),

@@ -15,9 +15,17 @@ const rtfToTxtPostSchema = {
 		"Returns the result of converting an RTF document to TXT format.",
 	operationId: "postRtfToTxt",
 	consumes: ["application/rtf"],
-	produces: ["text/plain"],
+	produces: ["application/json", "application/xml"],
 	response: {
-		200: S.string(),
+		200: {
+			content: {
+				"text/plain": {
+					schema: {
+						type: "string",
+					},
+				},
+			},
+		},
 		400: S.ref("responses#/properties/badRequest").description(
 			"Bad Request"
 		),

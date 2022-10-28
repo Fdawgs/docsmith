@@ -15,7 +15,7 @@ const pdfToHtmlPostSchema = {
 		"Returns the result of converting a PDF document to HTML format.",
 	operationId: "postPdfToHtml",
 	consumes: ["application/pdf"],
-	produces: ["text/html"],
+	produces: ["application/json", "application/xml"],
 	query: S.object()
 		.additionalProperties(false)
 		.prop(
@@ -136,7 +136,15 @@ const pdfToHtmlPostSchema = {
 			S.number().default(1.5).description("Zoom the PDF document")
 		),
 	response: {
-		200: S.string(),
+		200: {
+			content: {
+				"text/html": {
+					schema: {
+						type: "string",
+					},
+				},
+			},
+		},
 		400: S.ref("responses#/properties/badRequest").description(
 			"Bad Request"
 		),

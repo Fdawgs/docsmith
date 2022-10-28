@@ -3,6 +3,8 @@ const cors = require("@fastify/cors");
 
 const { healthcheckGetSchema } = require("./schema");
 
+const accepts = ["text/plain"];
+
 /**
  * @author Frazer Smith
  * @description Sets routing options for server for healthcheck endpoint.
@@ -28,7 +30,7 @@ async function route(server, options) {
 		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
-				!req.accepts().type(healthcheckGetSchema.produces)
+				!req.accepts().type(accepts)
 			) {
 				throw server.httpErrors.notAcceptable();
 			}

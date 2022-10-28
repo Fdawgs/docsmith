@@ -17,7 +17,7 @@ const docxToHtmlPostSchema = {
 	consumes: [
 		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 	],
-	produces: ["text/html"],
+	produces: ["application/json", "application/xml"],
 	query: S.object()
 		.additionalProperties(false)
 		.prop(
@@ -58,7 +58,15 @@ const docxToHtmlPostSchema = {
 			)
 		),
 	response: {
-		200: S.string(),
+		200: {
+			content: {
+				"text/html": {
+					schema: {
+						type: "string",
+					},
+				},
+			},
+		},
 		400: S.ref("responses#/properties/badRequest").description(
 			"Bad Request"
 		),
