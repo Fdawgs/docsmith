@@ -5,7 +5,7 @@ const path = require("upath");
 const getConfig = require(".");
 
 describe("Configuration", () => {
-	const currentEnv = { ...process.env };
+	const currentEnv = { ...process.env, NODE_ENV: "development" };
 	const tempDir = path.joinSafe(__dirname, "../temp");
 
 	afterAll(async () => {
@@ -23,7 +23,7 @@ describe("Configuration", () => {
 	});
 
 	test("Should use defaults if values missing and return values according to environment variables", async () => {
-		const HOST = faker.internet.ip();
+		const HOST = "";
 		const PORT = "";
 		const CORS_ORIGIN = false;
 		const CORS_ALLOWED_HEADERS = "";
@@ -86,7 +86,6 @@ describe("Configuration", () => {
 		expect(config.tempDir).toBe(tempDir);
 
 		expect(config.fastify).toEqual({
-			host: HOST,
 			port: 0,
 		});
 
