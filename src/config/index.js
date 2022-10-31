@@ -129,8 +129,7 @@ async function getConfig() {
 			// OCR
 			.prop("OCR_ENABLED", S.anyOf([S.boolean(), S.null()]))
 			.prop("OCR_LANGUAGES", S.anyOf([S.string(), S.null()]))
-			.prop("OCR_WORKERS", S.anyOf([S.number(), S.null()]))
-			.required(["NODE_ENV", "HOST"]),
+			.prop("OCR_WORKERS", S.anyOf([S.number(), S.null()])),
 	});
 
 	const config = {
