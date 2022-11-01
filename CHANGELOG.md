@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.1.3](https://github.com/Fdawgs/docsmith/compare/v9.1.2...v9.1.3) (2022-11-01)
+
+
+### Bug Fixes
+
+* **routes:** accept header handling ([22a42f8](https://github.com/Fdawgs/docsmith/commit/22a42f81ffc947e99950839fe2acc929c0960467))
+* **routes:** openapi schema content types ([b937d3f](https://github.com/Fdawgs/docsmith/commit/b937d3fc0ae6303fe689f7a6b93d914dd50080bd))
+
+
+### Miscellaneous
+
+* **.env.template:** remove `PORT` value ([d7c818c](https://github.com/Fdawgs/docsmith/commit/d7c818c2d1c6ffc84608199959c6871e28b4b20b))
+
+
+### Documentation
+
+* content and grammar fixes ([#1086](https://github.com/Fdawgs/docsmith/issues/1086)) ([e4b2ee5](https://github.com/Fdawgs/docsmith/commit/e4b2ee5bcb99b5bbe405c806ef9716b336110f8b))
+* **readme:** update example log ([cf43ded](https://github.com/Fdawgs/docsmith/commit/cf43ded9f111866d086d97422eec72fac50dab07))
+
+
+### Improvements
+
+* **config:** remove redundant required props ([#1101](https://github.com/Fdawgs/docsmith/issues/1101)) ([1ba2277](https://github.com/Fdawgs/docsmith/commit/1ba2277e81aca55a11c38b3640fc75c0de2c5ddb))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.1.2 to 17.2.0 ([#1103](https://github.com/Fdawgs/docsmith/issues/1103)) ([364db75](https://github.com/Fdawgs/docsmith/commit/364db755dbfaaed724eeebe24c536df6a51d26d8))
+* **deps-dev:** bump @commitlint/config-conventional ([#1102](https://github.com/Fdawgs/docsmith/issues/1102)) ([51d4f4d](https://github.com/Fdawgs/docsmith/commit/51d4f4dda79fc93de959027c5d76cda1e7b4700c))
+* **deps-dev:** bump eslint from 8.25.0 to 8.26.0 ([#1100](https://github.com/Fdawgs/docsmith/issues/1100)) ([5785e87](https://github.com/Fdawgs/docsmith/commit/5785e875bcdeae27424214d8ae9c9e5b16b5fec1))
+* **deps-dev:** bump eslint-plugin-jest from 27.1.2 to 27.1.3 ([#1089](https://github.com/Fdawgs/docsmith/issues/1089)) ([890a838](https://github.com/Fdawgs/docsmith/commit/890a838126df429b9a8558a9474fd8c93e52fde5))
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.3.13 to 39.4.0 ([#1093](https://github.com/Fdawgs/docsmith/issues/1093)) ([ba54d2e](https://github.com/Fdawgs/docsmith/commit/ba54d2ebb753339aa9b3bd06c56bef9f71b81816))
+* **deps-dev:** bump eslint-plugin-promise from 6.1.0 to 6.1.1 ([#1094](https://github.com/Fdawgs/docsmith/issues/1094)) ([8f91476](https://github.com/Fdawgs/docsmith/commit/8f91476d3945aa6c7984c1bbd9bfb9ac79a18fd4))
+* **deps-dev:** bump jest from 29.2.0 to 29.2.2 ([#1095](https://github.com/Fdawgs/docsmith/issues/1095)) ([21a2eaa](https://github.com/Fdawgs/docsmith/commit/21a2eaa0b021ae1994773c49277133bc25252f2c))
+* **deps:** bump @fastify/cors from 8.1.0 to 8.1.1 ([#1097](https://github.com/Fdawgs/docsmith/issues/1097)) ([3e37647](https://github.com/Fdawgs/docsmith/commit/3e376475202fdf8a6b7901a800f2acaa0987bda4))
+* **deps:** bump fastify-disablecache from 3.0.3 to 3.0.4 ([#1096](https://github.com/Fdawgs/docsmith/issues/1096)) ([deaf80c](https://github.com/Fdawgs/docsmith/commit/deaf80c03fd0515bfea45c86660c76b0813cd28c))
+* **deps:** bump fastify-floc-off from 2.0.3 to 2.0.4 ([#1092](https://github.com/Fdawgs/docsmith/issues/1092)) ([1063551](https://github.com/Fdawgs/docsmith/commit/106355141a0868eceb09775bc69fc113d1f80be6))
+* **deps:** bump jsdom from 20.0.1 to 20.0.2 ([#1099](https://github.com/Fdawgs/docsmith/issues/1099)) ([cb5c670](https://github.com/Fdawgs/docsmith/commit/cb5c6705625945d6fb2c43eb7ee5f8b8c48c18aa))
+* **deps:** bump node-poppler from 6.0.1 to 6.0.3 ([#1090](https://github.com/Fdawgs/docsmith/issues/1090)) ([cd271d6](https://github.com/Fdawgs/docsmith/commit/cd271d63a4c5f3b278db1a3270f19347e45b3cc9))
+* **deps:** bump node-unrtf from 3.0.1 to 3.0.3 ([#1098](https://github.com/Fdawgs/docsmith/issues/1098)) ([0b08111](https://github.com/Fdawgs/docsmith/commit/0b08111f7d98a9958b2d5691df3abb448ba9ed1f))
+* **deps:** bump pino from 8.6.1 to 8.7.0 ([#1091](https://github.com/Fdawgs/docsmith/issues/1091)) ([f4a811a](https://github.com/Fdawgs/docsmith/commit/f4a811a75875fe4841a04abf1ca0b83ffef6b9f8))
+* **deps:** bump transistive dependencies ([#1104](https://github.com/Fdawgs/docsmith/issues/1104)) ([b707dec](https://github.com/Fdawgs/docsmith/commit/b707dec5cc057d8006246ec99f092c6e34a27711))
+
 ## [9.1.2](https://github.com/Fdawgs/docsmith/compare/v9.1.1...v9.1.2) (2022-10-18)
 
 
