@@ -2,7 +2,6 @@
 const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
-const raw = require("raw-body");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -15,10 +14,11 @@ describe("Image-To-TXT Conversion Plugin", () => {
 
 		server = Fastify({ pluginTimeout: 30000 });
 
-		server.addContentTypeParser("image/png", async (req, payload) => {
-			const res = await raw(payload);
-			return res;
-		});
+		server.addContentTypeParser(
+			"image/png",
+			{ parseAs: "buffer" },
+			async (req, payload) => payload
+		);
 
 		await server.register(plugin, config.tesseract);
 

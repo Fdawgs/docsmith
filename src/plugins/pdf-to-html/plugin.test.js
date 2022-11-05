@@ -2,7 +2,6 @@
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
-const raw = require("raw-body");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
@@ -24,10 +23,11 @@ describe("PDF-to-HTML Conversion Plugin", () => {
 
 		server = Fastify();
 
-		server.addContentTypeParser("application/pdf", async (req, payload) => {
-			const res = await raw(payload);
-			return res;
-		});
+		server.addContentTypeParser(
+			"application/pdf",
+			{ parseAs: "buffer" },
+			async (req, payload) => payload
+		);
 
 		await server.register(sensible).register(plugin, config.poppler);
 
