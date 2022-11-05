@@ -1,7 +1,6 @@
 const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
-const raw = require("raw-body");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -16,10 +15,11 @@ describe("Embed-HTML-Images Plugin", () => {
 	beforeEach(() => {
 		server = Fastify();
 
-		server.addContentTypeParser("text/html", async (req, payload) => {
-			const res = await raw(payload);
-			return res;
-		});
+		server.addContentTypeParser(
+			"text/html",
+			{ parseAs: "buffer" },
+			async (req, payload) => payload
+		);
 	});
 
 	afterEach(async () => {

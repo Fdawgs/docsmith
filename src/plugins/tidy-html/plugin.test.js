@@ -2,7 +2,6 @@ const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
-const raw = require("raw-body");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
@@ -12,10 +11,11 @@ describe("Tidy-CSS Plugin", () => {
 	beforeEach(() => {
 		server = Fastify();
 
-		server.addContentTypeParser("text/html", async (req, payload) => {
-			const res = await raw(payload);
-			return res;
-		});
+		server.addContentTypeParser(
+			"text/html",
+			{ parseAs: "buffer" },
+			async (req, payload) => payload
+		);
 	});
 
 	afterEach(async () => {

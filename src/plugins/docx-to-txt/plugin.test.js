@@ -1,7 +1,6 @@
 const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
-const raw = require("raw-body");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
@@ -13,10 +12,8 @@ describe("DOCX-to-TXT Conversion Plugin", () => {
 
 		server.addContentTypeParser(
 			"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-			async (req, payload) => {
-				const res = await raw(payload);
-				return res;
-			}
+			{ parseAs: "buffer" },
+			async (req, payload) => payload
 		);
 
 		await server.register(sensible).register(plugin);
