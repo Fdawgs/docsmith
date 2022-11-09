@@ -5,10 +5,10 @@ const S = require("fluent-json-schema");
 const fs = require("fs/promises");
 const path = require("upath");
 const pino = require("pino");
-const physicalCpuCount = require("physical-cpu-count");
 const rotatingLogStream = require("file-stream-rotator");
 const secJSON = require("secure-json-parse");
 
+const coreCount = require("../utils/core-count");
 const { description, license, version } = require("../../package.json");
 
 /**
@@ -290,7 +290,7 @@ async function getConfig() {
 			enabled: env.OCR_ENABLED === true,
 			languages: env.OCR_LANGUAGES || "eng",
 			// Use number of physical CPU cores available if ENV variable not specified
-			workers: env.OCR_WORKERS || physicalCpuCount,
+			workers: env.OCR_WORKERS || coreCount(),
 		},
 		unrtf: {
 			binPath: env.UNRTF_BINARY_PATH
