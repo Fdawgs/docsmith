@@ -36,7 +36,8 @@
 		"clearMocks": true,
 		"collectCoverageFrom": [
 			"src/**/*.js",
-			"!src/app.js"
+			"!src/app.js",
+			"!src/utils/core-count/index.js"
 		],
 		"coverageReporters": [
 			"text",
@@ -117,7 +118,6 @@
 		"mammoth": "^1.5.1",
 		"node-poppler": "^6.0.3",
 		"node-unrtf": "^3.0.3",
-		"physical-cpu-count": "^2.0.0",
 		"pino": "^8.7.0",
 		"redoc": "^2.0.0",
 		"secure-json-parse": "^2.5.0",
