@@ -591,7 +591,6 @@ describe("Server Deployment", () => {
 				expected: {
 					response: {
 						headers: {
-							basic: expResHeaders,
 							json: expResHeadersJson,
 							text: expResHeadersText,
 						},
