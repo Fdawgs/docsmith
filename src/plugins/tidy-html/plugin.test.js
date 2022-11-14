@@ -113,7 +113,7 @@ describe("Tidy-CSS Plugin", () => {
 		expect(response.statusCode).toBe(400);
 	});
 
-	test("Should remove alt attribute from img tags", async () => {
+	test("Should set alt attribute in img tags to empty string", async () => {
 		server.post("/", async (req) => {
 			const result = await server.tidyHtml(req.body, { removeAlt: true });
 			return result;
