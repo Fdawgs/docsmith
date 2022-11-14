@@ -40,8 +40,10 @@ async function plugin(server, options) {
 		req.conversionResults = { body: undefined };
 	});
 
-	// "onSend" hook used instead of "onResponse" ensures
-	// cancelled request temp data is also removed
+	/**
+	 * "onSend" hook used instead of "onResponse" ensures
+	 * cancelled request temp data is also removed
+	 */
 	server.addHook("onSend", async (req, res, payload) => {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent

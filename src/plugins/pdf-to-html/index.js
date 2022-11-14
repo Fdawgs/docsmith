@@ -62,8 +62,10 @@ async function plugin(server, options) {
 		req.conversionResults = { body: undefined };
 	});
 
-	// "onSend" hook used instead of "onResponse" ensures
-	// cancelled request temp data is also removed
+	/**
+	 * "onSend" hook used instead of "onResponse" ensures
+	 * cancelled request temp data is also removed.
+	 */
 	server.addHook("onSend", async (req, res, payload) => {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
@@ -137,8 +139,10 @@ async function plugin(server, options) {
 			}
 		}
 
-		// Remove excess title and meta tags left behind by Poppler
-		// Poppler appends `-html` to the file name, thus the template literal here
+		/**
+		 * Remove excess title and meta elements left behind by Poppler;
+		 * Poppler appends `-html` to the file name, thus the template literal here
+		 */
 		const dom = new JSDOM(
 			await fs.readFile(`${tempFile}-html.html`, {
 				encoding: config.pdfToHtmlOptions.outputEncoding,
@@ -160,7 +164,7 @@ async function plugin(server, options) {
 		/**
 		 * `fixUtf8` function replaces most common incorrectly converted
 		 * Windows-1252 to UTF-8 results with HTML equivalents.
-		 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info.
+		 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info
 		 */
 		req.conversionResults.body = fixUtf8(dom.serialize());
 

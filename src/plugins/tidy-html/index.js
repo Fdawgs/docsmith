@@ -21,7 +21,7 @@ async function plugin(server) {
 	 * Defaults to `en` if not set.
 	 * @param {boolean=} options.removeAlt - Set `alt` attributes in `<img>` tags to empty string if set to `true`.
 	 * Useful for sending to clinical systems where img tags are stripped from received documents
-	 * (i.e. TPP's SystmOne).
+	 * (i.e. TPP's SystmOne), and for screen reader users.
 	 * @returns {string|Error} Tidied HTML; throws error if `options.language` is not valid IANA language tag.
 	 */
 	async function tidyHtml(html, options = {}) {
@@ -39,7 +39,13 @@ async function plugin(server) {
 			);
 		}
 
-		// Remove alt attribute from img tags
+		/**
+		 * When an alt attribute is not present in an <img> tag, screen readers may announce the image's file name instead.
+		 * This can be a confusing experience if the file name is not representative of the image's contents.
+		 * See https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI
+		 *
+		 * As such, alt attributes in <img> tags are set to an empty string rather than removed here
+		 */
 		if (options?.removeAlt === true) {
 			const images = dom.window.document.querySelectorAll("img");
 			images.forEach((element) => {
