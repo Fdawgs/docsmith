@@ -137,7 +137,7 @@ async function plugin(server, options) {
 			}
 		}
 
-		// Remove excess title and meta tags left behind by Poppler
+		// Remove excess title and meta elements left behind by Poppler
 		// Poppler appends `-html` to the file name, thus the template literal here
 		const dom = new JSDOM(
 			await fs.readFile(`${tempFile}-html.html`, {
