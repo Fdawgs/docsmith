@@ -44,7 +44,7 @@ async function plugin(server) {
 		 * This can be a confusing experience if the file name is not representative of the image's contents.
 		 * See https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI
 		 *
-		 * As such, alt attributes in <img> tags are set to an empty string rather than removed here.
+		 * As such, alt attributes in <img> tags are set to an empty string rather than removed here
 		 */
 		if (options?.removeAlt === true) {
 			const images = dom.window.document.querySelectorAll("img");
