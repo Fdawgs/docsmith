@@ -34,7 +34,7 @@ describe("Configuration", () => {
 		const HTTPS_HTTP2_ENABLED = "";
 		const LOG_LEVEL = "";
 		const LOG_ROTATION_DATE_FORMAT = "";
-		const LOG_ROTATION_FILENAME = "./test_resources/test-log2-%DATE%.log";
+		const LOG_ROTATION_FILENAME = "";
 		const LOG_ROTATION_FREQUENCY = "";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = "";
 		const PROC_LOAD_MAX_HEAP_USED_BYTES = "";
@@ -99,7 +99,6 @@ describe("Configuration", () => {
 				res: expect.any(Function),
 			},
 			timestamp: expect.any(Function),
-			stream: expect.any(Object),
 		});
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
@@ -148,6 +147,47 @@ describe("Configuration", () => {
 		});
 	});
 
+	test("Should use defaults logging values if values missing", async () => {
+		const LOG_LEVEL = "";
+		const LOG_ROTATION_DATE_FORMAT = "";
+		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
+		const LOG_ROTATION_FREQUENCY = "";
+
+		Object.assign(process.env, {
+			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
+			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
+		});
+
+		const config = await getConfig();
+
+		expect(config.fastifyInit.logger).toEqual({
+			formatters: { level: expect.any(Function) },
+			level: "info",
+			redact: ["req.body", "req.headers.authorization", "res.body"],
+			serializers: {
+				req: expect.any(Function),
+				res: expect.any(Function),
+			},
+			stream: expect.any(Object),
+			timestamp: expect.any(Function),
+		});
+		expect(config.fastifyInit.logger.formatters.level()).toEqual({
+			level: undefined,
+		});
+		expect(config.fastifyInit.logger.stream.config.options).toEqual(
+			expect.objectContaining({
+				filename: LOG_ROTATION_FILENAME,
+				date_format: "YYYY-MM-DD",
+				frequency: "daily",
+			})
+		);
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
+			',"time"'
+		);
+	});
+
 	test("Should return values according to environment variables - HTTPS (SSL cert) enabled, HTTP2 enabled, and OCR enabled", async () => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
@@ -158,8 +198,8 @@ describe("Configuration", () => {
 		const HTTPS_HTTP2_ENABLED = true;
 		const LOG_LEVEL = "trace";
 		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
-		const LOG_ROTATION_FILENAME = "./test_resources/test-log1-%DATE%.log";
-		const LOG_ROTATION_FREQUENCY = "custom";
+		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
+		const LOG_ROTATION_FREQUENCY = "date";
 		const LOG_ROTATION_MAX_LOGS = "1";
 		const LOG_ROTATION_MAX_SIZE = "1g";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = 1000;
@@ -224,12 +264,21 @@ describe("Configuration", () => {
 				req: expect.any(Function),
 				res: expect.any(Function),
 			},
-			timestamp: expect.any(Function),
 			stream: expect.any(Object),
+			timestamp: expect.any(Function),
 		});
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
+		expect(config.fastifyInit.logger.stream.config.options).toEqual(
+			expect.objectContaining({
+				date_format: LOG_ROTATION_DATE_FORMAT,
+				filename: LOG_ROTATION_FILENAME,
+				frequency: LOG_ROTATION_FREQUENCY,
+				max_logs: LOG_ROTATION_MAX_LOGS,
+				size: LOG_ROTATION_MAX_SIZE,
+			})
+		);
 		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
 			',"time"'
 		);
