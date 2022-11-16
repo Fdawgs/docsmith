@@ -17,7 +17,7 @@ services:
             POPPLER_BINARY_PATH: /usr/bin/
             UNRTF_BINARY_PATH: /usr/bin/
         healthcheck:
-            test: curl "localhost:${PORT:-8204}/admin/healthcheck"
+            test: curl "localhost:${PORT:-3000}/admin/healthcheck"
             interval: 60s
             timeout: 3s
             start_period: 5s
@@ -33,5 +33,5 @@ services:
                 max-file: "${LOG_ROTATION_MAX_LOGS:-10}"
                 max-size: "${LOG_ROTATION_MAX_SIZE:-100m}"
         ports:
-            - "127.0.0.1:${PORT:-8204}:${PORT:-8204}"
+            - "127.0.0.1:${PORT:-3000}:${PORT:-3000}"
         restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"

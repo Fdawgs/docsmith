@@ -85,7 +85,7 @@ describe("Configuration", () => {
 		expect(config.tempDir).toBe(tempDir);
 
 		expect(config.fastify).toEqual({
-			port: 0,
+			port: 3000,
 		});
 
 		expect(config.fastifyInit.bodyLimit).toBe(10485760);
