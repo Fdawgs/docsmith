@@ -135,8 +135,7 @@ async function getConfig() {
 	const config = {
 		tempDir,
 		fastify: {
-			// 0 picks the first available open port
-			port: env.PORT || 0,
+			port: env.PORT || 3000,
 		},
 		fastifyInit: {
 			// The maximum payload, in bytes, the server is allowed to accept

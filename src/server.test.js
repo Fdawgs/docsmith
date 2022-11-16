@@ -827,7 +827,7 @@ describe("Server Deployment", () => {
 		beforeAll(async () => {
 			Object.assign(process.env, {
 				HOST: "localhost",
-				PORT: "8204",
+				PORT: "3000",
 				HTTPS_PFX_PASSPHRASE: "",
 				HTTPS_PFX_FILE_PATH: "",
 				HTTPS_SSL_CERT_PATH: "",
@@ -878,7 +878,7 @@ describe("Server Deployment", () => {
 					browser = await browserType.launch();
 					page = await browser.newPage();
 
-					await page.goto("http://localhost:8204/docs");
+					await page.goto("http://localhost:3000/docs");
 					expect(await page.title()).toBe("Docsmith | Documentation");
 					/**
 					 * Checks redoc has not rendered an error component:
