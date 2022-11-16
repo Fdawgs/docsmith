@@ -18,6 +18,7 @@ RUN apt-get -q update &&\
 # Copy and install node dependencies
 COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts --omit=dev && \
+    npm pkg delete commitlint devDependencies jest nodemonConfig scripts && \
     npm cache clean --force && \
     chown node ./node_modules/htmltidy2/bin/linux64/tidy && \
     chmod 100 ./node_modules/htmltidy2/bin/linux64/tidy && \
