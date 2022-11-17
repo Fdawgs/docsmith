@@ -1,4 +1,4 @@
-FROM node:18-bullseye-slim
+FROM node:19-bullseye-slim
 
 # Workdir
 WORKDIR /usr/app
