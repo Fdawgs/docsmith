@@ -90,7 +90,10 @@ async function getConfig() {
 			.prop(
 				"LOG_ROTATION_FREQUENCY",
 				S.anyOf([
-					S.string().enum(["custom", "daily", "test"]),
+					// daily, date, [1-12]h, or [1-30]m
+					S.string().pattern(
+						/^(?:daily|date|(?:[1-9]|1[012])h|(?:[1-9]|[1-2][0-9]|30)m)$/m
+					),
 					S.null(),
 				])
 			)
@@ -307,10 +310,13 @@ async function getConfig() {
 	}
 
 	if (env.LOG_ROTATION_FILENAME) {
+		const logFile = path.normalizeTrim(env.LOG_ROTATION_FILENAME);
+
 		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
 		config.fastifyInit.logger.stream = rotatingLogStream.getStream({
+			audit_file: path.joinSafe(path.dirname(logFile), ".audit.json"),
 			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
-			filename: path.normalizeTrim(env.LOG_ROTATION_FILENAME),
+			filename: logFile,
 			frequency: env.LOG_ROTATION_FREQUENCY || "daily",
 			max_logs: env.LOG_ROTATION_MAX_LOGS,
 			size: env.LOG_ROTATION_MAX_SIZE,
