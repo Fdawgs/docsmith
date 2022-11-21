@@ -24,9 +24,10 @@ describe("RTF-to-TXT Conversion Plugin", () => {
 
 		await server.register(sensible).register(plugin, config.unrtf);
 
-		server.post("/", async (req, res) => {
-			res.header("content-type", "application/json");
-			return req.conversionResults;
+		server.post("/", (req, res) => {
+			res.header("content-type", "application/json").send(
+				req.conversionResults
+			);
 		});
 
 		await server.ready();

@@ -28,9 +28,10 @@ describe("PDF-to-TXT Conversion Plugin", () => {
 			.register(sensible)
 			.register(plugin, config.poppler);
 
-		server.post("/", async (req, res) => {
-			res.header("content-type", "application/json");
-			return req.conversionResults;
+		server.post("/", (req, res) => {
+			res.header("content-type", "application/json").send(
+				req.conversionResults
+			);
 		});
 
 		await server.ready();

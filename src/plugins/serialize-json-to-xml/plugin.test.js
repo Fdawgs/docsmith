@@ -9,12 +9,8 @@ describe("Serialize-JSON-To-XML Plugin", () => {
 		server = Fastify();
 
 		await server.register(accepts).register(plugin);
-		server.route({
-			method: "GET",
-			url: "/",
-			handler: (req, res) => {
-				res.send({ "test-key": "test-value" });
-			},
+		server.get("/", (req, res) => {
+			res.send({ "test-key": "test-value" });
 		});
 
 		await server.ready();
