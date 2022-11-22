@@ -110,7 +110,7 @@
 		"fix-utf8": "^1.1.2",
 		"fluent-json-schema": "^4.0.0",
 		"glob": "^8.0.3",
-		"html-minifier-terser": "^7.0.0",
+		"html-minifier-terser": "^7.1.0",
 		"htmltidy2": "^1.0.0",
 		"js2xmlparser": "^5.0.0",
 		"jsdom": "^20.0.2",
