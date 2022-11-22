@@ -93,7 +93,7 @@
 		"@fastify/helmet": "^10.0.2",
 		"@fastify/rate-limit": "^7.5.0",
 		"@fastify/sensible": "^5.1.1",
-		"@fastify/static": "^6.5.0",
+		"@fastify/static": "^6.5.1",
 		"@fastify/swagger": "^8.1.0",
 		"@fastify/under-pressure": "^8.1.0",
 		"clean-css": "^5.3.1",
