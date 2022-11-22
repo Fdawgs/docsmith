@@ -145,7 +145,7 @@ pnpm-lock.yaml
 yarn.lock
 
 # Test files
-test_resources/test_log*
+test_resources/test-log*
 test_resources/.audit.json
 src/temp*/
 
