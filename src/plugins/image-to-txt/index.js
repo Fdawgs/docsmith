@@ -52,8 +52,7 @@ async function plugin(server, options) {
 		Array(options.workers)
 			.fill(0)
 			.map(async () => {
-				const worker = createWorker(workerConfig);
-				await worker.load();
+				const worker = await createWorker(workerConfig);
 				await worker.loadLanguage(options.languages);
 				await worker.initialize(options.languages);
 				await worker.setParameters(workerParams);
