@@ -120,7 +120,7 @@
 		"node-unrtf": "^3.0.3",
 		"pino": "^8.7.0",
 		"redoc": "^2.0.0",
-		"secure-json-parse": "^2.5.0",
+		"secure-json-parse": "^2.6.0",
 		"tesseract.js": "^4.0.0",
 		"upath": "^2.0.1"
 	}
