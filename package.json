@@ -95,7 +95,7 @@
 		"@fastify/sensible": "^5.2.0",
 		"@fastify/static": "^6.5.1",
 		"@fastify/swagger": "^8.2.1",
-		"@fastify/under-pressure": "^8.1.0",
+		"@fastify/under-pressure": "^8.2.0",
 		"clean-css": "^5.3.1",
 		"cssesc": "^3.0.0",
 		"cssom": "^0.5.0",
