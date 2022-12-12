@@ -121,7 +121,7 @@
 		"pino": "^8.7.0",
 		"redoc": "^2.0.0",
 		"secure-json-parse": "^2.6.0",
-		"tesseract.js": "^4.0.0",
+		"tesseract.js": "^4.0.1",
 		"upath": "^2.0.1"
 	}
 }
