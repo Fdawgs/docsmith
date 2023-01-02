@@ -52,9 +52,6 @@ async function plugin(server) {
 			combinedStyle.innerHTML += element.innerHTML;
 			element.remove();
 		});
-		// element.remove() leaves behind empty lines
-		dom.window.document.head.innerHTML =
-			dom.window.document.head.innerHTML.replace(/^\s*[\r\n]/gm, "");
 
 		let styleObj = CSSOM.parse(combinedStyle.innerHTML);
 		styleObj.cssRules.forEach((styleRule) => {
