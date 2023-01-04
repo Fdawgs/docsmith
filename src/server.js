@@ -15,7 +15,7 @@ const sensible = require("@fastify/sensible");
 const staticPlugin = require("@fastify/static");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
-const serializeJsonToXml = require("./plugins/serialize-json-to-xml");
+const serialiseJsonToXml = require("./plugins/serialise-json-to-xml");
 const sharedSchemas = require("./plugins/shared-schemas");
 
 // Import local decorator plugins
@@ -51,8 +51,8 @@ async function plugin(server, config) {
 		// Utility functions and error handlers
 		.register(sensible, { errorHandler: false })
 
-		// Serialization support for XML responses
-		.register(serializeJsonToXml)
+		// Serialisation support for XML responses
+		.register(serialiseJsonToXml)
 
 		// Reusable schemas
 		.register(sharedSchemas)
@@ -79,7 +79,7 @@ async function plugin(server, config) {
 	// Register routes
 	await server
 		/**
-		 * `x-xss-protection` and `content-security-policy` is set by default by Helmet.
+		 * Helmet sets `x-xss-protection` and `content-security-policy` by default.
 		 * These are only useful for HTML/XML content; the only CSP directive that
 		 * is of use to other content is "frame-ancestors 'none'" to stop responses
 		 * from being wrapped in iframes and used for clickjacking attacks
@@ -132,7 +132,7 @@ async function plugin(server, config) {
 
 		/**
 		 * Encapsulate the docs routes into a child context, so that the
-		 * CSP can be relaxed, and cache enabled, without impacting
+		 * CSP can be relaxed, and cache enabled, without affecting
 		 * security of other routes
 		 */
 		.register(async (publicContext) => {

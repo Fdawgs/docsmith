@@ -21,13 +21,13 @@ Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify
 
 ### Why Docsmith?
 
-Docsmith was created out of a need for an open-source document conversion service at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/).
+Docsmith was created in my spare time, after identifying the need for an open-source document conversion service at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/).
 
 Being open-source, with the ability to be self-hosted, enables a data processor (i.e. an NHS trust) to confirm that a service is not storing and logging files with confidential patient identifiable data (PID) in them, which is essential for preventing potential GDPR breaches. This is something that the majority of existing closed-source document conversion services cannot offer. Docsmith was built to remedy this.
 
 Before Docsmith, Yeovil District Hospital was using expensive black-box conversion tools that would regularly produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries in Somerset and Dorset would receive these corrupted documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and be unable to read them. This resulted in time and money wasted either posting or faxing them again, opening up the potential for further data breaches.
 
-Docsmith enables a data processor to use a robust, GDPR-compliant, open-source document conversion service. In comparison with equivalents in the market today it completes this vital task at a fraction of the cost (free!), whilst also ensuring a higher level of security and privacy for the data subjects.
+Docsmith enables a data processor to use a comprehensive, GDPR-compliant, open-source document conversion service. In comparison with equivalents in the market today it completes this vital task at a fraction of the cost (free!), whilst also ensuring a higher level of security and privacy for the data subjects.
 
 ## Prerequisites
 
@@ -75,7 +75,7 @@ The service should be up and running on the port set in the config. You should s
 }
 ```
 
-To quickly test it, use [Insomnia](https://insomnia.rest/) and import the example requests from `./test_resources/insomnia_test_requests.json`.
+To test it, use [Insomnia](https://insomnia.rest/) and import the example requests from `./test_resources/insomnia_test_requests.json`.
 
 ### Deploying Using Docker
 
@@ -85,7 +85,7 @@ This requires [Docker](https://docker.com) installed.
 
 ### Deploying Using PM2
 
-If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
+If you cannot deploy this into production using Docker, use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
 1. Run `npm ci --ignore-scripts --omit=dev` to install dependencies
 2. Run `npm i -g pm2` to install pm2 globally

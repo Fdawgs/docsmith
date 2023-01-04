@@ -2,7 +2,7 @@ const Fastify = require("fastify");
 const accepts = require("@fastify/accepts");
 const plugin = require(".");
 
-describe("Serialize-JSON-To-XML Plugin", () => {
+describe("Serialise-JSON-To-XML Plugin", () => {
 	let server;
 
 	beforeAll(async () => {
