@@ -4,7 +4,7 @@ const secJSON = require("secure-json-parse");
 
 /**
  * @author Frazer Smith
- * @description On-send plugin that adds support for serialization
+ * @description On-send plugin that adds support for serialisation
  * of application/json responses, allowing them to be returned as XML
  * if the accepts request header only includes "application/xml"
  * or if it explicitly includes the "application/xml" media type
@@ -14,8 +14,8 @@ const secJSON = require("secure-json-parse");
 async function plugin(server) {
 	server.addHook("onSend", async (req, res, payload) => {
 		/**
-		 * Ensure it does not attempt to serialise non-JSON responses,
-		 * by default Fastify sets response type to application/json
+		 * Ensure it does not attempt to serialise non-JSON responses.
+		 * By default, Fastify sets the response type to application/json
 		 * if it has not been explicitly defined
 		 */
 		if (
@@ -57,6 +57,6 @@ async function plugin(server) {
 
 module.exports = fp(plugin, {
 	fastify: "4.x",
-	name: "serialize-json-to-xml",
+	name: "serialise-json-to-xml",
 	dependencies: ["@fastify/accepts"],
 });
