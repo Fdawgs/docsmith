@@ -18,7 +18,7 @@ async function route(server) {
 		// Allow for static files to be served from this dir via `sendFile`
 		.register(staticPlugin, { root: __dirname, serve: false })
 
-		// Register redoc module to allow for js to be used in docs.html
+		// Register redoc module to allow for standalone js and map to be used in docs.html
 		.register(staticPlugin, {
 			root: path.joinSafe(
 				__dirname,
@@ -29,9 +29,11 @@ async function route(server) {
 				"redoc",
 				"bundles"
 			),
-			prefix: "/redoc/",
+			allowedPath: (pathName) =>
+				pathName.match(/\/redoc\.standalone\.js(?:.map|)/),
 			decorateReply: false,
 			maxAge: "1 day",
+			prefix: "/redoc/",
 		});
 
 	server.route({

@@ -144,7 +144,7 @@ async function plugin(server, config) {
 				{
 					"script-src": ["'self'", "'unsafe-inline'"],
 					"style-src": ["'self'", "'unsafe-inline'"],
-					"child-src": ["'self'", "blob:"],
+					"child-src": ["'self'"],
 				}
 			);
 
