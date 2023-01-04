@@ -8,7 +8,7 @@ const accepts = ["text/plain"];
 /**
  * @author Frazer Smith
  * @description Sets routing options for server for healthcheck endpoint.
- * This is used by monitoring software to poll and confirm the API is running,
+ * Monitoring software polls this to confirm the API is running,
  * so needs no authentication.
  * @param {object} server - Fastify instance.
  * @param {object} options - Route config values.
