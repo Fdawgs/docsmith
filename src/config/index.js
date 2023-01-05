@@ -208,7 +208,7 @@ async function getConfig() {
 					title: "Docsmith",
 					description,
 					contact: {
-						name: "Developer",
+						name: "Author",
 						email: "frazer.dev@outlook.com",
 					},
 					license: {
