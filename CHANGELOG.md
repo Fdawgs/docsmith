@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.2](https://github.com/Fdawgs/docsmith/compare/v10.0.1...v10.0.2) (2023-01-05)
+
+
+### Bug Fixes
+
+* **plugins/rtf-to-txt:** titles with dashes interrupting `replace()` ([6c0dc02](https://github.com/Fdawgs/docsmith/commit/6c0dc02676a46700655b530e031bf9f4c16a0754))
+* **routes/docs:** limit files served from redoc module ([0463d2f](https://github.com/Fdawgs/docsmith/commit/0463d2fb9841b4eef2409893ea956edd8d414835))
+
+
+### Improvements
+
+* **plugins/tidy-css:** clean-css's `minify()` handles whitespace ([f059c84](https://github.com/Fdawgs/docsmith/commit/f059c84a6beb1b38b5adcbcbb485cc8cf73d87cd))
+* **routes/docs:** do not expand 200 response by default ([08b0c18](https://github.com/Fdawgs/docsmith/commit/08b0c1815713be909f2cef21f2659b4aa21502b9))
+* **routes/docs:** remove search web worker and blob ([8ca3c41](https://github.com/Fdawgs/docsmith/commit/8ca3c41a0e3258c153ea3bc9c4efea34b9ca742e))
+
+
+### Documentation
+
+* grammar and clarity fixes ([06b3fff](https://github.com/Fdawgs/docsmith/commit/06b3ffff337195f37e78b9a62ae5e798cd6716e8))
+
+
+### Miscellaneous
+
+* **license:** update license year ([8cd4bea](https://github.com/Fdawgs/docsmith/commit/8cd4bea9e118dbdf40dd4817d28855891825782d))
+* **plugins:** rename plugin to use british english spelling ([ab5fad4](https://github.com/Fdawgs/docsmith/commit/ab5fad46e18bfb8c6187439dffcf02f1b74a0a86))
+* **route/docs:** remove `x-ua-compatible` meta tag ([bc7ef68](https://github.com/Fdawgs/docsmith/commit/bc7ef68f2b2191af75207def86ae29d961f51454))
+* **route/docs:** remove redundant html comment ([343bc7f](https://github.com/Fdawgs/docsmith/commit/343bc7f4a43b7ff69ee1592f8f4ad13a21c429d3))
+* update contact details ([74f580a](https://github.com/Fdawgs/docsmith/commit/74f580a4446eb0e2ca37962bafae5e508ba04675))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.3.0 to 17.4.0 ([#1180](https://github.com/Fdawgs/docsmith/issues/1180)) ([a558eab](https://github.com/Fdawgs/docsmith/commit/a558eab1e9bc081a5875591576fbbaa5c305ee8e))
+* **deps-dev:** bump @commitlint/config-conventional ([#1183](https://github.com/Fdawgs/docsmith/issues/1183)) ([63a8340](https://github.com/Fdawgs/docsmith/commit/63a8340af60efd050df87e04493412fec2a7fc5b))
+* **deps-dev:** bump eslint from 8.29.0 to 8.31.0 ([#1173](https://github.com/Fdawgs/docsmith/issues/1173)) ([a7e7631](https://github.com/Fdawgs/docsmith/commit/a7e76312968fe492a66957cec1baa2fe2168c930))
+* **deps-dev:** bump eslint-config-prettier from 8.5.0 to 8.6.0 ([#1179](https://github.com/Fdawgs/docsmith/issues/1179)) ([dae2b61](https://github.com/Fdawgs/docsmith/commit/dae2b6173b00268ee2a2efecc55c963e59d32a3f))
+* **deps-dev:** bump eslint-plugin-jest from 27.1.6 to 27.2.0 ([#1171](https://github.com/Fdawgs/docsmith/issues/1171)) ([9ab1df4](https://github.com/Fdawgs/docsmith/commit/9ab1df46adda4ef582efe96f40deb96053a1f1d3))
+* **deps-dev:** bump husky from 8.0.2 to 8.0.3 ([#1181](https://github.com/Fdawgs/docsmith/issues/1181)) ([f8ea5ac](https://github.com/Fdawgs/docsmith/commit/f8ea5acc4ef855a1e67efb7d9edf6e2a91496960))
+* **deps-dev:** bump playwright from 1.28.1 to 1.29.1 ([#1172](https://github.com/Fdawgs/docsmith/issues/1172)) ([c5dedce](https://github.com/Fdawgs/docsmith/commit/c5dedce66e766ba9b8faf89e889001175abfbca8))
+* **deps:** bump @fastify/autoload from 5.6.0 to 5.7.0 ([#1178](https://github.com/Fdawgs/docsmith/issues/1178)) ([8b21624](https://github.com/Fdawgs/docsmith/commit/8b216243429a374db6b93ab09ad3266d2aa33933))
+* **deps:** bump fastify from 4.10.2 to 4.11.0 ([#1182](https://github.com/Fdawgs/docsmith/issues/1182)) ([f0e0ddb](https://github.com/Fdawgs/docsmith/commit/f0e0ddb79ebc4dc8dc88331b96860eaffdb585d7))
+* **deps:** bump language-tags from 1.0.6 to 1.0.7 ([#1170](https://github.com/Fdawgs/docsmith/issues/1170)) ([d65f4be](https://github.com/Fdawgs/docsmith/commit/d65f4bec8a83923796ca79a4731ee1aca6924d55))
+* **deps:** bump pino from 8.7.0 to 8.8.0 ([#1169](https://github.com/Fdawgs/docsmith/issues/1169)) ([7864e54](https://github.com/Fdawgs/docsmith/commit/7864e54512e454e7dc500ebbb5e17482ef3137a9))
+* **deps:** bump transistive dependencies ([#1184](https://github.com/Fdawgs/docsmith/issues/1184)) ([45f5f4d](https://github.com/Fdawgs/docsmith/commit/45f5f4d21ea86a6d9b0fee23dce469f81d2207cc))
+
 ## [10.0.1](https://github.com/Fdawgs/docsmith/compare/v10.0.0...v10.0.1) (2022-12-12)
 
 
