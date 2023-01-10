@@ -78,7 +78,6 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
@@ -128,7 +127,9 @@ src/temp*/
 .husky/
 .vscode/
 docs/
+src/
 .env.template
+.esbuild.js
 .eslintrc.js
 .gitignore
 .pm2.config.js

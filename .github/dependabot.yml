@@ -14,6 +14,9 @@ updates:
           include: scope
           prefix: build
       directory: /
+      ignore:
+          - dependency-name: esbuild
+          - dependency-name: esbuild-plugin-glob
       open-pull-requests-limit: 20
       schedule:
           interval: monthly

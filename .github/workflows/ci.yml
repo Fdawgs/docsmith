@@ -159,6 +159,28 @@ jobs:
                   parallel: true
                   flag-name: run-${{ matrix.node-version }}-${{ matrix.os }}
 
+    build:
+        name: Build
+        if: github.event.pull_request.draft == false
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repo
+              uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
+
+            - name: Setup Node
+              uses: actions/setup-node@v3
+              with:
+                  cache: npm
+                  node-version: lts/*
+
+            - name: Install
+              run: npm ci --ignore-scripts
+
+            - name: Run esbuild
+              run: npm run build
+
     lint-docker-file:
         name: Lint Dockerfile
         if: github.event.pull_request.draft == false

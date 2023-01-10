@@ -2,7 +2,7 @@
 	"name": "docsmith",
 	"version": "10.0.2",
 	"description": "RESTful API for converting clinical documents and files",
-	"main": "src/app.js",
+	"main": "dist/app.js",
 	"repository": "git+https://github.com/Fdawgs/docsmith.git",
 	"homepage": "https://github.com/Fdawgs/docsmith",
 	"bugs": {
@@ -16,6 +16,7 @@
 	"scripts": {
 		"benchmark:html": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:3000/pdf/html?lastPageToConvert=1\"",
 		"benchmark:txt": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:3000/pdf/txt?lastPageToConvert=1\"",
+		"build": "node .esbuild.js",
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
@@ -24,7 +25,7 @@
 		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",
 		"start": "node .",
-		"start:dev": "nodemon | pino-pretty",
+		"start:dev": "nodemon src/app.js | pino-pretty",
 		"test": "npm run lint && npm run jest"
 	},
 	"commitlint": {
@@ -66,6 +67,8 @@
 		"@commitlint/cli": "^17.4.0",
 		"@commitlint/config-conventional": "^17.4.0",
 		"autocannon": "^7.10.0",
+		"esbuild": "^0.16.16",
+		"esbuild-plugin-glob": "^2.2.1",
 		"eslint": "^8.31.0",
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-config-prettier": "^8.6.0",

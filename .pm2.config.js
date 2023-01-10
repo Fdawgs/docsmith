@@ -8,7 +8,7 @@ module.exports = {
 			exec_mode: "cluster",
 			instances: "max",
 			name,
-			script: "./src/app.js",
+			script: "./dist/app.js",
 			watch: [".env"],
 		},
 	],
