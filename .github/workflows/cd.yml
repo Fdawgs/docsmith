@@ -47,6 +47,9 @@ jobs:
                   cache: npm
                   node-version: lts/*
 
+            - name: Build
+              run: npm run build
+
             - name: Remove dev values from package.json
               run: |
                   npm pkg delete commitlint devDependencies jest nodemonConfig scripts
@@ -58,7 +61,7 @@ jobs:
                   .dockerignore .env.template .pm2.config.js
                   docker-compose.yml Dockerfile LICENSE
                   package.json package-lock.json README.md
-                  ocr_lang_data src -x \src\**\*.test.js
+                  dist ocr_lang_data
 
             - name: Upload release asset
               uses: actions/upload-release-asset@v1
