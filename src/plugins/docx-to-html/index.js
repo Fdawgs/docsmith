@@ -1,5 +1,6 @@
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
+const { JSDOM } = require("jsdom");
 const { convertToHtml } = require("mammoth");
 const { randomUUID } = require("crypto");
 
@@ -25,7 +26,8 @@ async function plugin(server) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info
 			 */
-			req.conversionResults.body = fixUtf8(`<!DOCTYPE html>
+			req.conversionResults.body = new JSDOM(
+				fixUtf8(`<!DOCTYPE html>
 			<head>
 				<title>docsmith_docx-to-html_${randomUUID()}</title>
 				<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -36,7 +38,8 @@ async function plugin(server) {
 						${value}
 					</div>
 				</body>
-			</html>`);
+			</html>`)
+			).serialize();
 
 			res.type("text/html; charset=utf-8");
 		} catch (err) {
