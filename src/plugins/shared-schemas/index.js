@@ -25,7 +25,12 @@ async function plugin(server) {
 					.title("400 Bad Request")
 					.prop("statusCode", S.number().const(400))
 					.prop("error", S.string().const("Bad Request"))
-					.prop("message", S.string().const("Bad Request"))
+					.prop(
+						"message",
+						S.string().examples([
+							"querystring/lastPageToConvert must be number",
+						])
+					)
 			)
 			.prop(
 				"unauthorized",
