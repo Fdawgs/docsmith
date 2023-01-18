@@ -218,7 +218,7 @@ async function getConfig() {
 					version,
 					// Redoc specific extension to support loading image in docs
 					"x-logo": {
-						url: "/images/docsmith-logo-transparent-background-wide-canvas.png",
+						url: "/public/images/docsmith-logo-transparent-background-wide-canvas.png",
 						backgroundColor: "#005EB8",
 						altText: "Docsmith Logo",
 					},

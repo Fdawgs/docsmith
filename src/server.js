@@ -152,11 +152,21 @@ async function plugin(server, config) {
 				// Set relaxed response headers
 				.register(helmet, relaxedHelmetConfig)
 
+				// Stop fastify-disablecache overwriting @fastify/static's cache headers
+				.addHook("onRequest", async (req, res) => {
+					res.removeHeader("cache-control")
+						.removeHeader("expires")
+						.removeHeader("pragma")
+						.removeHeader("surrogate-control");
+				})
+
 				// Register static files in public
 				.register(staticPlugin, {
 					root: path.joinSafe(__dirname, "public"),
 					immutable: true,
 					maxAge: "365 days",
+					prefix: "/public/",
+					wildcard: false,
 				})
 				.register(autoLoad, {
 					dir: path.joinSafe(__dirname, "routes", "docs"),
