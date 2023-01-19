@@ -76,7 +76,7 @@ const expResHeadersText = {
 	"content-type": expect.stringContaining("text/plain"),
 };
 
-const expResHeaders4xxErrors = {
+const expResHeaders404Errors = {
 	...expResHeadersJson,
 	vary: undefined,
 };
@@ -156,7 +156,7 @@ describe("Server Deployment", () => {
 					statusCode: 404,
 				});
 
-				expect(response.headers).toEqual(expResHeaders4xxErrors);
+				expect(response.headers).toEqual(expResHeaders404Errors);
 				expect(response.statusCode).toBe(404);
 			});
 		});
@@ -411,7 +411,7 @@ describe("Server Deployment", () => {
 					statusCode: 404,
 				});
 
-				expect(response.headers).toEqual(expResHeaders4xxErrors);
+				expect(response.headers).toEqual(expResHeaders404Errors);
 				expect(response.statusCode).toBe(404);
 			});
 		});
@@ -826,7 +826,7 @@ describe("Server Deployment", () => {
 							statusCode: 404,
 						});
 						expect(response.headers).toEqual(
-							expResHeaders4xxErrors
+							expResHeaders404Errors
 						);
 						expect(response.statusCode).toBe(404);
 					});
