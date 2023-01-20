@@ -39,7 +39,7 @@ describe("OpenAPI Route", () => {
 
 			expect(JSON.parse(response.payload)).toHaveProperty("openapi");
 			expect(response.headers).toMatchObject({
-				"cache-control": "public, max-age=3600",
+				"cache-control": "public, max-age=1800",
 			});
 			expect(response.statusCode).toBe(200);
 		});
