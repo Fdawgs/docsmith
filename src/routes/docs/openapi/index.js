@@ -34,7 +34,7 @@ async function route(server, options) {
 			}
 		},
 		handler: (req, res) => {
-			res.header("cache-control", "public, max-age=3600")
+			res.header("cache-control", "public, max-age=1800")
 				.removeHeader("pragma")
 				.removeHeader("expires")
 				.removeHeader("surrogate-control")

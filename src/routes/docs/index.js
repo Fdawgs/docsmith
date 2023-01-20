@@ -49,7 +49,7 @@ async function route(server) {
 			}
 		},
 		handler: (req, res) => {
-			res.header("cache-control", "private, max-age=180")
+			res.header("cache-control", "public, max-age=300")
 				.removeHeader("pragma")
 				.removeHeader("expires")
 				.removeHeader("surrogate-control")
