@@ -93,7 +93,7 @@ All notable changes to this project will be documented in this file.
 ### ⚠ BREAKING CHANGES
 
 * minimum required version of node increased from 14.17.0 to 18.12.1
-	* Node 14 and 16 becomes EOL in April and September 2023 respectively, which is the same time that [Yeovil District Hospital NHS Foundation Trust is due to merge with Somerset NHS Foundation Trust](https://yeovilhospital.co.uk/better-care-for-local-people-the-merger-of-yeovil-hospital-nhs-foundation-trust-with-somerset-nhs-foundation-trust/). Development will be focused on the merger at that point in time and I may have less time for this side-project, so this PR preemptively drops support to reduce work load in the future
+	* Node 14 and 16 becomes EOL in April and September 2023 respectively, which is the same time that my employer is due to merge with another organisation. Development will be focused on the merger at that point in time and I may have less time for this side-project, so this PR preemptively drops support to reduce work load in the future
 * **deps:** `LOG_ROTATION_FREQUENCY` env variable accepted values changed from "daily, custom, or test" to "daily, date, [1-12]h, or [1-30]m"
 * **config:** `PORT` env variable no longer uses first available open port if unset
 
@@ -2601,7 +2601,6 @@ All notable changes to this project will be documented in this file.
 -   ci: add ci workflow ([000cc8c](https://github.com/Fdawgs/docsmith/commit/000cc8c))
 -   ci: add codeql-analysis workflow ([098a3ea](https://github.com/Fdawgs/docsmith/commit/098a3ea))
 -   ci: add linux and macos installs ([f4e92c9](https://github.com/Fdawgs/docsmith/commit/f4e92c9))
--   ci(typo-ci): add `ydh` to list of excluded words ([97f6f5d](https://github.com/Fdawgs/docsmith/commit/97f6f5d))
 -   docs: bump coc from v1.4.0 to v2.0.0 ([798d906](https://github.com/Fdawgs/docsmith/commit/798d906))
 -   docs: update contact email ([871ba6d](https://github.com/Fdawgs/docsmith/commit/871ba6d))
 -   docs(readme): add deployment steps ([e9d2d14](https://github.com/Fdawgs/docsmith/commit/e9d2d14))

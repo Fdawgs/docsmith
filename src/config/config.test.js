@@ -384,23 +384,22 @@ describe("Configuration", () => {
 		{
 			testName: "CORS origin set to comma-delimited string value",
 			envVariables: {
-				CORS_ORIGIN:
-					"https://test1.ydh.nhs.uk, https://test2.ydh.nhs.uk",
+				CORS_ORIGIN: "https://test1.nhs.uk, https://test2.nhs.uk",
 			},
 			expected: {
 				origin: expect.arrayContaining([
-					"https://test1.ydh.nhs.uk",
-					"https://test2.ydh.nhs.uk",
+					"https://test1.nhs.uk",
+					"https://test2.nhs.uk",
 				]),
 			},
 		},
 		{
 			testName: "CORS origin set to string value",
 			envVariables: {
-				CORS_ORIGIN: "https://ydh.nhs.uk",
+				CORS_ORIGIN: "https://nhs.uk",
 			},
 			expected: {
-				origin: "https://ydh.nhs.uk",
+				origin: "https://nhs.uk",
 			},
 		},
 	])(

@@ -622,7 +622,7 @@ describe("Server Deployment", () => {
 				},
 				request: {
 					headers: {
-						origin: "https://notreal.ydh.nhs.uk",
+						origin: "https://notreal.nhs.uk",
 					},
 				},
 				expected: {
@@ -631,12 +631,12 @@ describe("Server Deployment", () => {
 							json: {
 								...expResHeadersJson,
 								"access-control-allow-origin":
-									"https://notreal.ydh.nhs.uk",
+									"https://notreal.nhs.uk",
 							},
 							text: {
 								...expResHeadersText,
 								"access-control-allow-origin":
-									"https://notreal.ydh.nhs.uk",
+									"https://notreal.nhs.uk",
 							},
 						},
 					},
@@ -645,11 +645,11 @@ describe("Server Deployment", () => {
 			{
 				testName: "Cors Enabled and Set to String",
 				envVariables: {
-					CORS_ORIGIN: "https://notreal.ydh.nhs.uk",
+					CORS_ORIGIN: "https://notreal.nhs.uk",
 				},
 				request: {
 					headers: {
-						origin: "https://notreal.ydh.nhs.uk",
+						origin: "https://notreal.nhs.uk",
 					},
 				},
 				expected: {
@@ -658,12 +658,12 @@ describe("Server Deployment", () => {
 							json: {
 								...expResHeadersJson,
 								"access-control-allow-origin":
-									"https://notreal.ydh.nhs.uk",
+									"https://notreal.nhs.uk",
 							},
 							text: {
 								...expResHeadersText,
 								"access-control-allow-origin":
-									"https://notreal.ydh.nhs.uk",
+									"https://notreal.nhs.uk",
 							},
 						},
 					},
@@ -673,13 +673,13 @@ describe("Server Deployment", () => {
 				testName: "Cors Enabled and Set to Array of Strings",
 				envVariables: {
 					CORS_ORIGIN: [
-						"https://notreal.ydh.nhs.uk",
+						"https://notreal.nhs.uk",
 						"https://notreal.sft.nhs.uk",
 					],
 				},
 				request: {
 					headers: {
-						origin: "https://notreal.ydh.nhs.uk",
+						origin: "https://notreal.nhs.uk",
 					},
 				},
 				expected: {
@@ -688,12 +688,12 @@ describe("Server Deployment", () => {
 							json: {
 								...expResHeadersJson,
 								"access-control-allow-origin":
-									"https://notreal.ydh.nhs.uk",
+									"https://notreal.nhs.uk",
 							},
 							text: {
 								...expResHeadersText,
 								"access-control-allow-origin":
-									"https://notreal.ydh.nhs.uk",
+									"https://notreal.nhs.uk",
 							},
 						},
 					},
@@ -706,7 +706,7 @@ describe("Server Deployment", () => {
 				},
 				request: {
 					headers: {
-						origin: "https://notreal.ydh.nhs.uk",
+						origin: "https://notreal.nhs.uk",
 					},
 				},
 				expected: {

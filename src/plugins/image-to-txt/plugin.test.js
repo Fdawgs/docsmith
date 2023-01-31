@@ -52,7 +52,7 @@ describe("Image-To-TXT Conversion Plugin", () => {
 		});
 
 		expect(response.body).toEqual(
-			expect.stringContaining("Yeovil District Hospital")
+			expect.stringContaining("Super Test Hospital")
 		);
 		expect(typeof response.body).toBe("string");
 		expect(isHtml(response.body)).toBe(false);
