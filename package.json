@@ -107,7 +107,7 @@
 		"fastify": "^4.11.0",
 		"fastify-disablecache": "^3.0.4",
 		"fastify-floc-off": "^2.0.4",
-		"fastify-plugin": "^4.4.0",
+		"fastify-plugin": "^4.5.0",
 		"file-stream-rotator": "^1.0.0",
 		"file-type": "^16.5.4",
 		"fix-utf8": "^1.1.2",
