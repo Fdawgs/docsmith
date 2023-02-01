@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.4](https://github.com/Fdawgs/docsmith/compare/v10.0.3...v10.0.4) (2023-02-01)
+
+
+### Continuous Integration
+
+* **cd:** add missing install step ([#1225](https://github.com/Fdawgs/docsmith/issues/1225)) ([16f2e2d](https://github.com/Fdawgs/docsmith/commit/16f2e2d7b8c4c658c1626978bbabb7218986ec70))
+
 ## [10.0.3](https://github.com/Fdawgs/docsmith/compare/v10.0.2...v10.0.3) (2023-02-01)
 
 
