@@ -47,6 +47,9 @@ jobs:
                   cache: npm
                   node-version: lts/*
 
+            - name: Install
+              run: npm ci --ignore-scripts
+
             - name: Build
               run: npm run build
 
