@@ -21,7 +21,7 @@ Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify
 
 ### Why Docsmith?
 
-Docsmith was created in my spare time, after identifying the need for an open-source document conversion service at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/).
+Docsmith was created in my spare time outside of work, after identifying the need for an open-source document conversion service at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/).
 
 Being open-source, with the ability to be self-hosted, enables a data processor (i.e. an NHS trust) to confirm that a service is not storing and logging files with confidential patient identifiable data (PID) in them, which is essential for preventing potential GDPR breaches. This is something that the majority of existing closed-source document conversion services cannot offer. Docsmith was built to remedy this.
 
