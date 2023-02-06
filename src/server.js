@@ -12,10 +12,10 @@ const disableCache = require("fastify-disablecache");
 const flocOff = require("fastify-floc-off");
 const rateLimit = require("@fastify/rate-limit");
 const sensible = require("@fastify/sensible");
+const serialiseJsonToXml = require("fastify-json-to-xml");
 const staticPlugin = require("@fastify/static");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
-const serialiseJsonToXml = require("./plugins/serialise-json-to-xml");
 const sharedSchemas = require("./plugins/shared-schemas");
 
 // Import local decorator plugins
