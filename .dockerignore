@@ -118,7 +118,7 @@ out
 
 # Test files
 test_resources/
-src/temp*/
+dist/temp*/
 **/*.test.*
 
 # Development files

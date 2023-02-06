@@ -4,9 +4,9 @@ FROM node:18-bullseye-slim
 WORKDIR /usr/app
 
 # Create temp folder for files to be stored whilst being converted
-RUN mkdir -p ./src/temp/ && \
+RUN mkdir -p ./dist/temp/ && \
     ## Allow for temp folder to be manipulated
-    chown -R node ./src/
+    chown -R node ./dist/
 
 # Install OS dependencies
 # Curl needed for healthcheck command
