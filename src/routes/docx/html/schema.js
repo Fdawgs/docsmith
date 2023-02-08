@@ -70,9 +70,6 @@ const docxToHtmlPostSchema = {
 		400: S.ref("responses#/properties/badRequest").description(
 			"Bad Request"
 		),
-		401: S.ref("responses#/properties/unauthorized").description(
-			"Unauthorized"
-		),
 		406: S.ref("responses#/properties/notAcceptable").description(
 			"Not Acceptable"
 		),

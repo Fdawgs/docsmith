@@ -20,6 +20,10 @@ const accepts = ["text/plain"];
 async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {
 		rtfToTxtPostSchema.security = [{ bearerToken: [] }];
+		rtfToTxtPostSchema.response[401] = {
+			$ref: "responses#/properties/unauthorized",
+			description: "Unauthorized",
+		};
 	}
 
 	server.addContentTypeParser(
