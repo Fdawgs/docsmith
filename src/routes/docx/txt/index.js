@@ -19,6 +19,10 @@ const accepts = ["text/plain"];
 async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {
 		docxToTxtPostSchema.security = [{ bearerToken: [] }];
+		docxToTxtPostSchema.response[401] = {
+			$ref: "responses#/properties/unauthorized",
+			description: "Unauthorized",
+		};
 	}
 
 	server.addContentTypeParser(

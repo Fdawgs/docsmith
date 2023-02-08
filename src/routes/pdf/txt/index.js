@@ -20,6 +20,10 @@ const accepts = ["text/plain", "text/html"];
 async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {
 		pdfToTxtPostSchema.security = [{ bearerToken: [] }];
+		pdfToTxtPostSchema.response[401] = {
+			$ref: "responses#/properties/unauthorized",
+			description: "Unauthorized",
+		};
 	}
 
 	server.addContentTypeParser(
