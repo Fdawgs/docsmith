@@ -223,7 +223,12 @@ async function getConfig() {
 						altText: "Docsmith Logo",
 					},
 				},
-				components: {},
+				// Components object always populated by shared schemas at launch
+				components: {
+					securitySchemes: env.AUTH_BEARER_TOKEN_ARRAY
+						? {}
+						: undefined,
+				},
 				tags: [
 					{
 						name: "DOCX",
@@ -338,14 +343,12 @@ async function getConfig() {
 		});
 		config.bearerTokenAuthKeys = keys;
 
-		config.swagger.openapi.components.securitySchemes = {
-			bearerToken: {
-				type: "http",
-				description:
-					"Expects the request to contain an `Authorization` header with a bearer token.",
-				scheme: "bearer",
-				bearerFormat: "bearer <token>",
-			},
+		config.swagger.openapi.components.securitySchemes.bearerToken = {
+			type: "http",
+			description:
+				"Expects the request to contain an `Authorization` header with a bearer token.",
+			scheme: "bearer",
+			bearerFormat: "bearer <token>",
 		};
 	}
 
