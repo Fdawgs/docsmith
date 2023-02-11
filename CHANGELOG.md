@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.5](https://github.com/Fdawgs/docsmith/compare/v10.0.4...v10.0.5) (2023-02-08)
+
+
+### Bug Fixes
+
+* **routes:** only add 401 response to schema when auth enabled ([#1231](https://github.com/Fdawgs/docsmith/issues/1231)) ([7ee87e8](https://github.com/Fdawgs/docsmith/commit/7ee87e8ecb99d36b6b4c624422104e41ca52703a))
+
+
+### Dependencies
+
+* **.dockerignore:** add dist temp dir ([c64c86b](https://github.com/Fdawgs/docsmith/commit/c64c86b6f43a95dd883b8945f352539d9abfa5c7))
+* **docker:** create temp dir in correct parent dir ([9441c14](https://github.com/Fdawgs/docsmith/commit/9441c14465dfaa7e096cfd236d1301fb35deaeb3))
+
+
+### Documentation
+
+* **readme:** clarify source ([d0a4552](https://github.com/Fdawgs/docsmith/commit/d0a4552f185d6497ada945a2723940eeefe1462f))
+
+
+### Improvements
+
+* **plugins:** replace xml plugin with dedicated dependency ([#1230](https://github.com/Fdawgs/docsmith/issues/1230)) ([b0d982f](https://github.com/Fdawgs/docsmith/commit/b0d982f434226f154887d2c73131d1cc2e799ff7))
+
 ## [10.0.4](https://github.com/Fdawgs/docsmith/compare/v10.0.3...v10.0.4) (2023-02-01)
 
 
