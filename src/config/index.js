@@ -106,14 +106,14 @@ async function getConfig() {
 				S.anyOf([S.number(), S.null()])
 			)
 			.prop(
+				"PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION",
+				S.anyOf([S.number(), S.null()])
+			)
+			.prop(
 				"PROC_LOAD_MAX_HEAP_USED_BYTES",
 				S.anyOf([S.number(), S.null()])
 			)
 			.prop("PROC_LOAD_MAX_RSS_BYTES", S.anyOf([S.number(), S.null()]))
-			.prop(
-				"PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION",
-				S.anyOf([S.number(), S.null()])
-			)
 
 			// Rate Limiting
 			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
@@ -122,7 +122,7 @@ async function getConfig() {
 				S.anyOf([S.number(), S.null()])
 			)
 
-			// API Keys
+			// Bearer Token Auth
 			.prop("AUTH_BEARER_TOKEN_ARRAY", S.anyOf([S.string(), S.null()]))
 
 			// Binary Paths
@@ -202,51 +202,6 @@ async function getConfig() {
 			max: env.RATE_LIMIT_MAX_CONNECTIONS_PER_MIN || 1000,
 			timeWindow: 60000,
 		},
-		swagger: {
-			openapi: {
-				info: {
-					title: "Docsmith",
-					description,
-					contact: {
-						name: "Author",
-						email: "frazer.dev@outlook.com",
-					},
-					license: {
-						name: license,
-						url: "https://raw.githubusercontent.com/Fdawgs/docsmith/master/LICENSE",
-					},
-					version,
-					// Redoc specific extension to support loading image in docs
-					"x-logo": {
-						url: "/public/images/docsmith-logo-transparent-background-wide-canvas.png",
-						backgroundColor: "#005EB8",
-						altText: "Docsmith Logo",
-					},
-				},
-				components: {},
-				tags: [
-					{
-						name: "DOCX",
-						description:
-							"Endpoints used for the conversion of DOCX documents",
-					},
-					{
-						name: "PDF",
-						description:
-							"Endpoints used for the conversion of PDF documents",
-					},
-					{
-						name: "RTF",
-						description:
-							"Endpoints used for the conversion of RTF documents",
-					},
-					{
-						name: "System Administration",
-						description: "",
-					},
-				],
-			},
-		},
 		helmet: {
 			contentSecurityPolicy: {
 				directives: {
@@ -273,6 +228,56 @@ async function getConfig() {
 			},
 			// Only supported by Chrome at time of writing
 			originAgentCluster: false,
+		},
+		swagger: {
+			openapi: {
+				info: {
+					title: "Docsmith",
+					description,
+					contact: {
+						name: "Author",
+						email: "frazer.dev@outlook.com",
+					},
+					license: {
+						name: license,
+						url: "https://raw.githubusercontent.com/Fdawgs/docsmith/master/LICENSE",
+					},
+					version,
+					// Redoc specific extension to support loading image in docs
+					"x-logo": {
+						url: "/public/images/docsmith-logo-transparent-background-wide-canvas.png",
+						backgroundColor: "#005EB8",
+						altText: "Docsmith Logo",
+					},
+				},
+				// Components object populated by shared schemas at launch
+				components: {
+					securitySchemes: env.AUTH_BEARER_TOKEN_ARRAY
+						? {}
+						: undefined,
+				},
+				tags: [
+					{
+						name: "DOCX",
+						description:
+							"Endpoints used for the conversion of DOCX documents",
+					},
+					{
+						name: "PDF",
+						description:
+							"Endpoints used for the conversion of PDF documents",
+					},
+					{
+						name: "RTF",
+						description:
+							"Endpoints used for the conversion of RTF documents",
+					},
+					{
+						name: "System Administration",
+						description: "",
+					},
+				],
+			},
 		},
 		htmltidy: {
 			/**
@@ -316,39 +321,6 @@ async function getConfig() {
 		config.fastify.host = env.HOST;
 	}
 
-	if (env.LOG_ROTATION_FILENAME) {
-		const logFile = path.normalizeTrim(env.LOG_ROTATION_FILENAME);
-
-		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
-		config.fastifyInit.logger.stream = rotatingLogStream.getStream({
-			audit_file: path.joinSafe(path.dirname(logFile), ".audit.json"),
-			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
-			filename: logFile,
-			frequency: env.LOG_ROTATION_FREQUENCY || "daily",
-			max_logs: env.LOG_ROTATION_MAX_LOGS,
-			size: env.LOG_ROTATION_MAX_SIZE,
-			verbose: false,
-		});
-	}
-
-	if (env.AUTH_BEARER_TOKEN_ARRAY) {
-		const keys = new Set();
-		secJSON.parse(env.AUTH_BEARER_TOKEN_ARRAY).forEach((element) => {
-			keys.add(element.value);
-		});
-		config.bearerTokenAuthKeys = keys;
-
-		config.swagger.openapi.components.securitySchemes = {
-			bearerToken: {
-				type: "http",
-				description:
-					"Expects the request to contain an `Authorization` header with a bearer token.",
-				scheme: "bearer",
-				bearerFormat: "bearer <token>",
-			},
-		};
-	}
-
 	// Enable HTTPS using cert/key or passphrase/pfx combinations
 	if (env.HTTPS_SSL_CERT_PATH && env.HTTPS_SSL_KEY_PATH) {
 		try {
@@ -388,6 +360,39 @@ async function getConfig() {
 	if (config.fastifyInit.https && env.HTTPS_HTTP2_ENABLED === true) {
 		config.fastifyInit.https.allowHTTP1 = true;
 		config.fastifyInit.http2 = true;
+	}
+
+	// Set Pino transport
+	if (env.LOG_ROTATION_FILENAME) {
+		const logFile = path.normalizeTrim(env.LOG_ROTATION_FILENAME);
+
+		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
+		config.fastifyInit.logger.stream = rotatingLogStream.getStream({
+			audit_file: path.joinSafe(path.dirname(logFile), ".audit.json"),
+			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
+			filename: logFile,
+			frequency: env.LOG_ROTATION_FREQUENCY || "daily",
+			max_logs: env.LOG_ROTATION_MAX_LOGS,
+			size: env.LOG_ROTATION_MAX_SIZE,
+			verbose: false,
+		});
+	}
+
+	// Bearer token auth
+	if (env.AUTH_BEARER_TOKEN_ARRAY) {
+		const keys = new Set();
+		secJSON.parse(env.AUTH_BEARER_TOKEN_ARRAY).forEach((element) => {
+			keys.add(element.value);
+		});
+		config.bearerTokenAuthKeys = keys;
+
+		config.swagger.openapi.components.securitySchemes.bearerToken = {
+			type: "http",
+			description:
+				"Expects the request to contain an `Authorization` header with a bearer token.",
+			scheme: "bearer",
+			bearerFormat: "bearer <token>",
+		};
 	}
 
 	return config;
