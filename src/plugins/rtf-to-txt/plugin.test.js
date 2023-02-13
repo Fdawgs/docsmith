@@ -6,7 +6,7 @@ const sensible = require("@fastify/sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
 
-describe("RTF-to-TXT Conversion Plugin", () => {
+describe("RTF-to-TXT conversion plugin", () => {
 	let config;
 	let server;
 

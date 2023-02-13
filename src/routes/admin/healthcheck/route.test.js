@@ -5,8 +5,8 @@ const route = require(".");
 const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
 
-describe("Healthcheck Route", () => {
-	describe("GET Requests", () => {
+describe("Healthcheck route", () => {
+	describe("GET requests", () => {
 		let config;
 		let server;
 

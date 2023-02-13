@@ -4,7 +4,7 @@ const isHtml = require("is-html");
 const plugin = require(".");
 const getConfig = require("../../config");
 
-describe("Tidy-CSS Plugin", () => {
+describe("Tidy-CSS plugin", () => {
 	let config;
 	let server;
 

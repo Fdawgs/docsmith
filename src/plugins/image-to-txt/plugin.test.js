@@ -5,7 +5,7 @@ const isHtml = require("is-html");
 const plugin = require(".");
 const getConfig = require("../../config");
 
-describe("Image-To-TXT Conversion Plugin", () => {
+describe("Image-to-TXT conversion plugin", () => {
 	let config;
 	let server;
 

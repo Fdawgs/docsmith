@@ -4,7 +4,7 @@ const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
-describe("DOCX-to-TXT Conversion Plugin", () => {
+describe("DOCX-to-TXT conversion plugin", () => {
 	let server;
 
 	beforeAll(async () => {

@@ -7,7 +7,7 @@ const plugin = require(".");
 const getConfig = require("../../config");
 const imageToTxt = require("../image-to-txt");
 
-describe("PDF-to-TXT Conversion Plugin", () => {
+describe("PDF-to-TXT conversion plugin", () => {
 	let config;
 	let server;
 
