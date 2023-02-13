@@ -58,7 +58,7 @@ Perform the following steps before deployment:
 
 ## Deployment
 
-### Standard Deployment
+### Standard deployment
 
 1. Run `npm ci --ignore-scripts --omit=dev` to install dependencies
 2. Run `npm start`
@@ -77,13 +77,13 @@ The service should be up and running on the port set in the config. Output simil
 
 To test it, use [Insomnia](https://insomnia.rest/) and import the example requests from `./test_resources/insomnia_test_requests.json`.
 
-### Deploying Using Docker
+### Deploying using Docker
 
 This requires [Docker](https://docker.com) installed.
 
 1. Run `docker compose up` (or `docker compose up -d` to run in the background)
 
-### Deploying Using PM2
+### Deploying using PM2
 
 If this cannot be deployed into production using Docker, use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
@@ -92,7 +92,7 @@ If this cannot be deployed into production using Docker, use a process manager s
 3. Launch the application with `pm2 start .pm2.config.js`
 4. Check that the application has been deployed using `pm2 list` or `pm2 monit`
 
-#### To Install as a Windows Service:
+#### To install as a Windows service:
 
 If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jessety/pm2-installer) to install PM2 as a Windows service.
 
@@ -101,7 +101,7 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 ## Usage
 
-### Accessing API Documentation
+### Accessing API documentation
 
 API documentation can be found at `/docs`:
 

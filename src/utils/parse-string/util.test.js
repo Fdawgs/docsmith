@@ -1,6 +1,6 @@
 const util = require(".");
 
-describe("Parse-String Util", () => {
+describe("Parse-String util", () => {
 	test("Should convert string 'false' to boolean 'false'", () => {
 		const response = util("false");
 		expect(response).toBe(false);

@@ -4,7 +4,7 @@ const isHtml = require("is-html");
 const plugin = require(".");
 const getConfig = require("../../config");
 
-describe("Embed-HTML-Images Plugin", () => {
+describe("Embed-HTML-Images plugin", () => {
 	let config;
 	let server;
 

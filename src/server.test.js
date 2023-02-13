@@ -86,8 +86,8 @@ const expResHeaders5xxErrors = {
 	vary: "accept-encoding",
 };
 
-describe("Server Deployment", () => {
-	describe("Bearer Token and OCR Disabled", () => {
+describe("Server deployment", () => {
+	describe("Bearer token and OCR disabled", () => {
 		let config;
 		let server;
 
@@ -106,7 +106,7 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		describe("/admin/healthcheck Route", () => {
+		describe("/admin/healthcheck route", () => {
 			test("Should return `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
@@ -140,7 +140,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("Undeclared Route", () => {
+		describe("Undeclared route", () => {
 			test("Should return HTTP status code 404 if route not found", async () => {
 				const response = await server.inject({
 					method: "GET",
@@ -161,7 +161,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("/docx/html Route", () => {
+		describe("/docx/html route", () => {
 			test("Should return DOCX file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
@@ -187,7 +187,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("/docx/txt Route", () => {
+		describe("/docx/txt route", () => {
 			test("Should return DOCX file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
@@ -213,7 +213,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("/pdf/html Route", () => {
+		describe("/pdf/html route", () => {
 			test("Should return PDF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
@@ -264,7 +264,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("/pdf/txt Route", () => {
+		describe("/pdf/txt route", () => {
 			test("Should return PDF file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
@@ -290,7 +290,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("/rtf/html Route", () => {
+		describe("/rtf/html route", () => {
 			test("Should return RTF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
@@ -315,7 +315,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("/rtf/txt Route", () => {
+		describe("/rtf/txt route", () => {
 			test("Should return RTF file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
@@ -341,7 +341,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("Bearer Token and OCR Enabled", () => {
+	describe("Bearer token and OCR enabled", () => {
 		let config;
 		let server;
 
@@ -361,7 +361,7 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		describe("/admin/healthcheck Route", () => {
+		describe("/admin/healthcheck route", () => {
 			test("Should return `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
@@ -395,7 +395,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("Undeclared Route", () => {
+		describe("Undeclared route", () => {
 			test("Should return HTTP status code 404 if route not found", async () => {
 				const response = await server.inject({
 					method: "GET",
@@ -416,7 +416,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("/pdf/html Route", () => {
+		describe("/pdf/html route", () => {
 			test("Should return PDF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
@@ -493,7 +493,7 @@ describe("Server Deployment", () => {
 			});
 		});
 
-		describe("/pdf/txt Route", () => {
+		describe("/pdf/txt route", () => {
 			test("Should return PDF file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
@@ -735,7 +735,7 @@ describe("Server Deployment", () => {
 					await server.close();
 				});
 
-				describe("/admin/healthcheck Route", () => {
+				describe("/admin/healthcheck route", () => {
 					test("Should return `ok`", async () => {
 						const response = await server.inject({
 							method: "GET",
@@ -807,7 +807,7 @@ describe("Server Deployment", () => {
 					});
 				});
 
-				describe("Undeclared Route", () => {
+				describe("Undeclared route", () => {
 					test("Should return HTTP status code 404 if route not found", async () => {
 						const response = await server.inject({
 							method: "GET",
@@ -833,7 +833,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("API Documentation", () => {
+	describe("API documentation", () => {
 		let config;
 		let server;
 
@@ -864,7 +864,7 @@ describe("Server Deployment", () => {
 		});
 
 		describe("Content", () => {
-			describe("/docs Route", () => {
+			describe("/docs route", () => {
 				test("Should return HTML", async () => {
 					const response = await server.inject({
 						method: "GET",
@@ -880,7 +880,7 @@ describe("Server Deployment", () => {
 				});
 			});
 
-			describe("/public Route", () => {
+			describe("/public route", () => {
 				test("Should return image", async () => {
 					const response = await server.inject({
 						method: "GET",
@@ -926,7 +926,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("Error Handling", () => {
+	describe("Error handling", () => {
 		let config;
 		let server;
 
@@ -951,7 +951,7 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		describe("/error Route", () => {
+		describe("/error route", () => {
 			test("Should return HTTP status code 500", async () => {
 				const response = await server.inject({
 					method: "GET",

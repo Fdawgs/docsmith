@@ -100,7 +100,7 @@ async function getConfig() {
 			.prop("LOG_ROTATION_MAX_LOGS", S.anyOf([S.string(), S.null()]))
 			.prop("LOG_ROTATION_MAX_SIZE", S.anyOf([S.string(), S.null()]))
 
-			// Process Load Handling
+			// Process load handling
 			.prop(
 				"PROC_LOAD_MAX_EVENT_LOOP_DELAY",
 				S.anyOf([S.number(), S.null()])
@@ -115,17 +115,17 @@ async function getConfig() {
 			)
 			.prop("PROC_LOAD_MAX_RSS_BYTES", S.anyOf([S.number(), S.null()]))
 
-			// Rate Limiting
+			// Rate limiting
 			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
 				S.anyOf([S.number(), S.null()])
 			)
 
-			// Bearer Token Auth
+			// Bearer token auth
 			.prop("AUTH_BEARER_TOKEN_ARRAY", S.anyOf([S.string(), S.null()]))
 
-			// Binary Paths
+			// Binary paths
 			.prop("POPPLER_BINARY_PATH", S.anyOf([S.string(), S.null()]))
 			.prop("UNRTF_BINARY_PATH", S.anyOf([S.string(), S.null()]))
 
@@ -247,7 +247,7 @@ async function getConfig() {
 					"x-logo": {
 						url: "/public/images/docsmith-logo-transparent-background-wide-canvas.png",
 						backgroundColor: "#005EB8",
-						altText: "Docsmith Logo",
+						altText: "Docsmith logo",
 					},
 				},
 				// Components object populated by shared schemas at launch
@@ -273,7 +273,7 @@ async function getConfig() {
 							"Endpoints used for the conversion of RTF documents",
 					},
 					{
-						name: "System Administration",
+						name: "System administration",
 						description: "",
 					},
 				],
