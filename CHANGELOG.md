@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [10.0.5](https://github.com/Fdawgs/docsmith/compare/v10.0.4...v10.0.5) (2023-02-08)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **routes:** only add 401 response to schema when auth enabled ([#1231](https://github.com/Fdawgs/docsmith/issues/1231)) ([7ee87e8](https://github.com/Fdawgs/docsmith/commit/7ee87e8ecb99d36b6b4c624422104e41ca52703a))
 
@@ -28,14 +28,14 @@ All notable changes to this project will be documented in this file.
 ## [10.0.4](https://github.com/Fdawgs/docsmith/compare/v10.0.3...v10.0.4) (2023-02-01)
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** add missing install step ([#1225](https://github.com/Fdawgs/docsmith/issues/1225)) ([16f2e2d](https://github.com/Fdawgs/docsmith/commit/16f2e2d7b8c4c658c1626978bbabb7218986ec70))
 
 ## [10.0.3](https://github.com/Fdawgs/docsmith/compare/v10.0.2...v10.0.3) (2023-02-01)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/shared-schemas:** remove 400 response message suppression ([6a4543c](https://github.com/Fdawgs/docsmith/commit/6a4543c338165b18b3d6d313e81d8f5d4243e1cc))
 * **server:** response headers for static and 404 routes ([#1194](https://github.com/Fdawgs/docsmith/issues/1194)) ([30ae9b4](https://github.com/Fdawgs/docsmith/commit/30ae9b4ae1106a5dbf9e8366555d469b861a228b))
@@ -91,7 +91,7 @@ All notable changes to this project will be documented in this file.
 ## [10.0.2](https://github.com/Fdawgs/docsmith/compare/v10.0.1...v10.0.2) (2023-01-05)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/rtf-to-txt:** titles with dashes interrupting `replace()` ([6c0dc02](https://github.com/Fdawgs/docsmith/commit/6c0dc02676a46700655b530e031bf9f4c16a0754))
 * **routes/docs:** limit files served from redoc module ([0463d2f](https://github.com/Fdawgs/docsmith/commit/0463d2fb9841b4eef2409893ea956edd8d414835))
@@ -136,7 +136,7 @@ All notable changes to this project will be documented in this file.
 ## [10.0.1](https://github.com/Fdawgs/docsmith/compare/v10.0.0...v10.0.1) (2022-12-12)
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** remove dev values from `package.json` ([#1087](https://github.com/Fdawgs/docsmith/issues/1087)) ([b8da792](https://github.com/Fdawgs/docsmith/commit/b8da79271027e9ba556fe5db4e972c1e8d6995a7))
 
@@ -183,7 +183,7 @@ All notable changes to this project will be documented in this file.
 * **deps:** `LOG_ROTATION_FREQUENCY` env variable accepted values changed from "daily, custom, or test" to "daily, date, [1-12]h, or [1-30]m"
 * **config:** `PORT` env variable no longer uses first available open port if unset
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** physical cpu core counting ([#1110](https://github.com/Fdawgs/docsmith/issues/1110)) ([4b97e80](https://github.com/Fdawgs/docsmith/commit/4b97e80936048dda15366de0e3dfc89827fcbccc))
 * **config:** use port 3000 if `PORT` env variable unset ([#1114](https://github.com/Fdawgs/docsmith/issues/1114)) ([e2fc111](https://github.com/Fdawgs/docsmith/commit/e2fc1113f282fede739d67e33e63986435eda073))
@@ -234,7 +234,7 @@ All notable changes to this project will be documented in this file.
 ## [9.1.3](https://github.com/Fdawgs/docsmith/compare/v9.1.2...v9.1.3) (2022-11-01)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **routes:** accept header handling ([22a42f8](https://github.com/Fdawgs/docsmith/commit/22a42f81ffc947e99950839fe2acc929c0960467))
 * **routes:** openapi schema content types ([b937d3f](https://github.com/Fdawgs/docsmith/commit/b937d3fc0ae6303fe689f7a6b93d914dd50080bd))
@@ -277,7 +277,7 @@ All notable changes to this project will be documented in this file.
 ## [9.1.2](https://github.com/Fdawgs/docsmith/compare/v9.1.1...v9.1.2) (2022-10-18)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/docx-to-html:** add title to html ([ca3a249](https://github.com/Fdawgs/docsmith/commit/ca3a249c48f3b53fca032d435f135258eb6ea76c))
 * **plugins/pdf-to-html:** remove temp file directory path from title ([a192847](https://github.com/Fdawgs/docsmith/commit/a1928470fa4c517b6c8f448b33dc573eede38de4))
@@ -324,7 +324,7 @@ All notable changes to this project will be documented in this file.
 * **deps:** bump fastify-plugin from 4.2.1 to 4.3.0 ([#1072](https://github.com/Fdawgs/docsmith/issues/1072)) ([537bd54](https://github.com/Fdawgs/docsmith/commit/537bd54b8597ad6ef600a5d70f52ca224f51d5db))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** remove test files from release asset ([#1079](https://github.com/Fdawgs/docsmith/issues/1079)) ([b80d445](https://github.com/Fdawgs/docsmith/commit/b80d445310070b7bc140f591d783682682325c4d))
 
@@ -336,7 +336,7 @@ All notable changes to this project will be documented in this file.
 * **config:** use first available open port if `PORT` env variable unset ([#1055](https://github.com/Fdawgs/docsmith/issues/1055)) ([5c738e4](https://github.com/Fdawgs/docsmith/commit/5c738e4a4a854b5e7361a7a2c17d832ed9311ac8))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** create release asset ([2356d52](https://github.com/Fdawgs/docsmith/commit/2356d5289f0f3fca42878a299f23499e42c1a142))
 
@@ -364,7 +364,7 @@ All notable changes to this project will be documented in this file.
 * add serialization support for xml error responses ([ab44b55](https://github.com/Fdawgs/docsmith/commit/ab44b55bf4237bfc60e5a07063a99dd0420eb731))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** use `HOST` and `PORT` env variables for cloud services ([12b954d](https://github.com/Fdawgs/docsmith/commit/12b954d27e4d8f827d913f978725c5caae0a5108))
 * **plugins/serialize-json-to-xml:** rep invalid xml chars with U+FFFD ([#1030](https://github.com/Fdawgs/docsmith/issues/1030)) ([ea6326a](https://github.com/Fdawgs/docsmith/commit/ea6326ace60eab4fbea1d5bc9057005a9f726466))
@@ -430,7 +430,7 @@ All notable changes to this project will be documented in this file.
 ## [8.0.3](https://github.com/Fdawgs/docsmith/compare/v8.0.2...v8.0.3) (2022-09-05)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** `default` throws exceptions when used in `anyOf` schemas ([8637097](https://github.com/Fdawgs/docsmith/commit/863709787a839d09a6a9c01510b86180e1365ea3))
 * **plugins/shared-schemas:** replace 415 response message const ([972323b](https://github.com/Fdawgs/docsmith/commit/972323bc9615ed0df15f760d4b60c591d382a0cf))
@@ -489,7 +489,7 @@ All notable changes to this project will be documented in this file.
 * **deps:** bump tesseract.js from 2.1.5 to 3.0.1 ([#989](https://github.com/Fdawgs/docsmith/issues/989)) ([2f2818f](https://github.com/Fdawgs/docsmith/commit/2f2818fbe44cd09ccdd7e5dbbe534cf2253647fe))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** add node 18 to test matrix ([#823](https://github.com/Fdawgs/docsmith/issues/823)) ([13a0ac0](https://github.com/Fdawgs/docsmith/commit/13a0ac094c2137e8bbfc0634ab304d1ef78d3f9d))
 
@@ -540,7 +540,7 @@ All notable changes to this project will be documented in this file.
 
 * drop support for EOL node 15
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** log rotation max files ([#954](https://github.com/Fdawgs/docsmith/issues/954)) ([8ab22f2](https://github.com/Fdawgs/docsmith/commit/8ab22f273c292e1af815cf061c08ceadff7d869f))
 
@@ -566,7 +566,7 @@ All notable changes to this project will be documented in this file.
 ## [7.0.11](https://github.com/Fdawgs/docsmith/compare/v7.0.10...v7.0.11) (2022-08-04)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **routes:** invalid openapi shared schema definitions ([#949](https://github.com/Fdawgs/docsmith/issues/949)) ([c0338c5](https://github.com/Fdawgs/docsmith/commit/c0338c5e553de85d0fed404be26ee0f934d10b74))
 * **server:** reduce `content-security-policy` for options routes ([#951](https://github.com/Fdawgs/docsmith/issues/951)) ([a228aca](https://github.com/Fdawgs/docsmith/commit/a228aca1f6d750638a251915d5a7810781644a36))
@@ -584,7 +584,7 @@ All notable changes to this project will be documented in this file.
 * migrate from fastify v3 to v4 ([#933](https://github.com/Fdawgs/docsmith/issues/933)) ([c8a879e](https://github.com/Fdawgs/docsmith/commit/c8a879e213ca6f8ced3e667c613581d13258d26a))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** audit npm package signatures ([dd6e0a1](https://github.com/Fdawgs/docsmith/commit/dd6e0a1b913e818f6775cba770642ab3dec91a1e))
 
@@ -705,7 +705,7 @@ All notable changes to this project will be documented in this file.
 ### [7.0.6](https://github.com/Fdawgs/docsmith/compare/v7.0.5...v7.0.6) (2022-06-01)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **app:** ignore error throw on closure if temp folder already removed ([a28db7e](https://github.com/Fdawgs/docsmith/commit/a28db7edc7424cd4e50ce3cd7c1af79c0a229e2b))
 
@@ -744,7 +744,7 @@ All notable changes to this project will be documented in this file.
 ### [7.0.5](https://github.com/Fdawgs/docsmith/compare/v7.0.4...v7.0.5) (2022-05-19)
 
 
-### Continuous Integration
+### Continuous integration
 
 * remove git credentials after checkout ([#842](https://github.com/Fdawgs/docsmith/issues/842)) ([cfa1540](https://github.com/Fdawgs/docsmith/commit/cfa1540a7efc50c564b039608a4e5985418afcd2))
 
@@ -762,7 +762,7 @@ All notable changes to this project will be documented in this file.
 ### [7.0.4](https://github.com/Fdawgs/docsmith/compare/v7.0.3...v7.0.4) (2022-05-18)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **server:** do not transform 503 http err into 500 http err response ([84b7b24](https://github.com/Fdawgs/docsmith/commit/84b7b24ebdddfacf9719f77a76ec09ff3928738f))
 
@@ -780,7 +780,7 @@ All notable changes to this project will be documented in this file.
 * **server:** use optional chaining for error message logging ([0bb745e](https://github.com/Fdawgs/docsmith/commit/0bb745e0299c05455a5e0c40a8515fcc28705fb3))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** fix context ([7ae3807](https://github.com/Fdawgs/docsmith/commit/7ae3807a25f489831a220faf52e8428880ea329c))
 * check `user.login` is dependabot instead of `actor` ([45bdf1b](https://github.com/Fdawgs/docsmith/commit/45bdf1b8bbb5e011480372398855816ee4555161))
@@ -822,7 +822,7 @@ All notable changes to this project will be documented in this file.
 * **readme:** remove snyk badge ([cdf64fb](https://github.com/Fdawgs/docsmith/commit/cdf64fbfe326ee38736703086f737a137d8233ff))
 
 
-### Continuous Integration
+### Continuous integration
 
 * add dependency-review job ([ca5da5a](https://github.com/Fdawgs/docsmith/commit/ca5da5a1582077b59994508b78d2df8c9a8969f4))
 * **link-check:** replace `npx linkinator` call with github action ([#797](https://github.com/Fdawgs/docsmith/issues/797)) ([cd44cd2](https://github.com/Fdawgs/docsmith/commit/cd44cd2defa0c50432b79a0829c58f2c7e7adf94))
@@ -869,7 +869,7 @@ All notable changes to this project will be documented in this file.
 * **readme:** add mention of insomnia example requests ([72f14dd](https://github.com/Fdawgs/docsmith/commit/72f14dd6cc94665f11daadde690f8896dc77688b))
 
 
-### Continuous Integration
+### Continuous integration
 
 * fix htmltidy permissions ([bc0a8e2](https://github.com/Fdawgs/docsmith/commit/bc0a8e2c2c488396f2c76e7813d18217c83e2fc8))
 * revert to using `windows-latest` runners ([46163fc](https://github.com/Fdawgs/docsmith/commit/46163fc9eafd0b6a129d51d6a1b586d70ec8b83b))
@@ -896,7 +896,7 @@ All notable changes to this project will be documented in this file.
 * **server:** call reply object over raw when overwriting header ([#765](https://github.com/Fdawgs/docsmith/issues/765)) ([48db35c](https://github.com/Fdawgs/docsmith/commit/48db35cdea9dc145f48e7ebf1b77416d8226dad5))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** set correct `contents` permission level ([52eef71](https://github.com/Fdawgs/docsmith/commit/52eef71b9f5db89ff6428f3fd4866b23bb056658))
 * **automerge:** squash automerge prs ([10f45be](https://github.com/Fdawgs/docsmith/commit/10f45be4fab20cc19a458c27467111b8ab1b1d45))
@@ -961,7 +961,7 @@ All notable changes to this project will be documented in this file.
 ### [6.0.5](https://github.com/Fdawgs/docsmith/compare/v6.0.4...v6.0.5) (2022-03-24)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/rtf-to-txt:** remove leading comments from rtf output ([#721](https://github.com/Fdawgs/docsmith/issues/721)) ([c6d1f9c](https://github.com/Fdawgs/docsmith/commit/c6d1f9c19bbd3bc105b9654ce0702550370fd654))
 * **routes/docs:** add ie unsupported script ([#725](https://github.com/Fdawgs/docsmith/issues/725)) ([eb60cd8](https://github.com/Fdawgs/docsmith/commit/eb60cd8322d65f5f2f47e36740439d9246c1fcfb))
@@ -989,7 +989,7 @@ All notable changes to this project will be documented in this file.
 * **scripts:** use shorter arg aliases; remove debugging args from jest ([a12d17b](https://github.com/Fdawgs/docsmith/commit/a12d17b137cfcc88a6a9ec5705b7484d204242de))
 
 
-### Continuous Integration
+### Continuous integration
 
 * add job step names, workflow comments, and whitespace ([14a240e](https://github.com/Fdawgs/docsmith/commit/14a240e444286e0aedba01f85b1ddfa7484bb113))
 * **codeql-analysis:** remove unused autobuild step ([f1bf9af](https://github.com/Fdawgs/docsmith/commit/f1bf9af400438abda65633715371bd8e8024c620))
@@ -1032,7 +1032,7 @@ All notable changes to this project will be documented in this file.
 * **routes:** add `preValidation` hooks directly into routes ([4af0a17](https://github.com/Fdawgs/docsmith/commit/4af0a17b5c1061b56cb627f2b6174c2f6dc1086d))
 
 
-### Continuous Integration
+### Continuous integration
 
 * add image optimisation workflow ([#706](https://github.com/Fdawgs/docsmith/issues/706)) ([484c2e5](https://github.com/Fdawgs/docsmith/commit/484c2e565620ad60eef14ddc458d230ed9d7362b))
 * only install chromium and firefox with playwright ([54d2810](https://github.com/Fdawgs/docsmith/commit/54d281059578ba69b922b31c00ed61283e0ae72d))
@@ -1062,7 +1062,7 @@ All notable changes to this project will be documented in this file.
 ### [6.0.3](https://github.com/Fdawgs/docsmith/compare/v6.0.2...v6.0.3) (2022-02-28)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** renew rate-limit if user attempts req in limit time window ([#665](https://github.com/Fdawgs/docsmith/issues/665)) ([d224384](https://github.com/Fdawgs/docsmith/commit/d2243848b63373491a641bd568718e759795e7fa))
 * **public/docs:** add x-ua-compatible meta tag ([25f9157](https://github.com/Fdawgs/docsmith/commit/25f91576d8e14f18efa5ae9dfd0a186a9d154804))
@@ -1116,7 +1116,7 @@ All notable changes to this project will be documented in this file.
 ### [6.0.2](https://github.com/Fdawgs/docsmith/compare/v6.0.1...v6.0.2) (2022-02-01)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **routes/docs:** resolve `token "definitions" does not exist` error ([#629](https://github.com/Fdawgs/docsmith/issues/629)) ([812b19a](https://github.com/Fdawgs/docsmith/commit/812b19aa28af87c357cb179e2030ee0acc21fa65))
 
@@ -1128,7 +1128,7 @@ All notable changes to this project will be documented in this file.
 * **server:** reorder plugin registers ([836d42a](https://github.com/Fdawgs/docsmith/commit/836d42a8dff8255d7975e0ac403171b170124d05))
 
 
-### Continuous Integration
+### Continuous integration
 
 * install playwright ([3e17949](https://github.com/Fdawgs/docsmith/commit/3e17949fa2610cc21040dc5bcc8688a4e4ee44cf))
 
@@ -1176,7 +1176,7 @@ All notable changes to this project will be documented in this file.
 * **contributing:** update husky hook mention ([5f0e3a9](https://github.com/Fdawgs/docsmith/commit/5f0e3a9ba69647a96b0e3c52ab74b08b6b55707b))
 
 
-### Continuous Integration
+### Continuous integration
 
 * remove spellcheck workflow ([#621](https://github.com/Fdawgs/docsmith/issues/621)) ([964f031](https://github.com/Fdawgs/docsmith/commit/964f03142331c0f248a5f3d6fb419c4010246e1b))
 
@@ -1251,7 +1251,7 @@ All notable changes to this project will be documented in this file.
 ### [5.2.5](https://github.com/Fdawgs/docsmith/compare/v5.2.4...v5.2.5) (2021-12-02)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/rtf-to-txt:** remove metadata comments from beginning of file ([4c5095f](https://github.com/Fdawgs/docsmith/commit/4c5095f9fe63b42b729cf10d9bc1cd4a26abb83d))
 * **plugins/tidy-html:** hide html comment tags ([d4285d9](https://github.com/Fdawgs/docsmith/commit/d4285d9a320fad6f058fc6d71a00fb17cccf8c7c))
@@ -1302,12 +1302,12 @@ All notable changes to this project will be documented in this file.
 ### [5.2.4](https://github.com/Fdawgs/docsmith/compare/v5.2.3...v5.2.4) (2021-11-16)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **app:** delete temp directory and leftover files on shutdown ([#555](https://github.com/Fdawgs/docsmith/issues/555)) ([208c341](https://github.com/Fdawgs/docsmith/commit/208c3417942e806d13e4b851b0b165769ea28035))
 
 
-### Continuous Integration
+### Continuous integration
 
 * trigger workflows when drafts marked as "ready to review" ([#550](https://github.com/Fdawgs/docsmith/issues/550)) ([1acd2c2](https://github.com/Fdawgs/docsmith/commit/1acd2c2b351cf8cde7dd41ddcac946475f4c3ccd))
 
@@ -1332,7 +1332,7 @@ All notable changes to this project will be documented in this file.
 ### [5.2.3](https://github.com/Fdawgs/docsmith/compare/v5.2.2...v5.2.3) (2021-11-11)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/embed-html-images:** create image path safely ([ebd2b7d](https://github.com/Fdawgs/docsmith/commit/ebd2b7d2f3683f824fffd7151fabd17c226bfbb8))
 * **plugins:** separate user and server error responses ([#548](https://github.com/Fdawgs/docsmith/issues/548)) ([0fdc0f3](https://github.com/Fdawgs/docsmith/commit/0fdc0f3fb54a0046b61c10808378994290464c77))
@@ -1345,7 +1345,7 @@ All notable changes to this project will be documented in this file.
 * rename `fsp` variable to `fs` ([19f3015](https://github.com/Fdawgs/docsmith/commit/19f3015fac2c0734a61bc23e963a69754da29474))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** do not run clean-up on draft prs ([4a13559](https://github.com/Fdawgs/docsmith/commit/4a135596b5c89349e7d860c4990cef3abda3ee9d))
 * **spell-check:** do not run on draft prs ([888ab78](https://github.com/Fdawgs/docsmith/commit/888ab78095036989467ef3c0f44da68ed1004350))
@@ -1385,7 +1385,7 @@ All notable changes to this project will be documented in this file.
 ### [5.2.2](https://github.com/Fdawgs/docsmith/compare/v5.2.1...v5.2.2) (2021-11-01)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/tidy-css:** correct escaping for `fonts` param ([#514](https://github.com/Fdawgs/docsmith/issues/514)) ([67bb360](https://github.com/Fdawgs/docsmith/commit/67bb3609f77d108bb43189409807076766134085))
 * **plugins/tidy-css:** remove global flag from regex ([#511](https://github.com/Fdawgs/docsmith/issues/511)) ([88560e2](https://github.com/Fdawgs/docsmith/commit/88560e23bee568e2a3aee887c3735890896d27e6))
@@ -1409,7 +1409,7 @@ All notable changes to this project will be documented in this file.
 ### [5.2.1](https://github.com/Fdawgs/docsmith/compare/v5.2.0...v5.2.1) (2021-10-29)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** remove additional env variables ([ef5f9bf](https://github.com/Fdawgs/docsmith/commit/ef5f9bf49f52687b13d78077e60b5d42f89e5288))
 * **routes/pdf:** set max length for password params ([864d218](https://github.com/Fdawgs/docsmith/commit/864d218853063842bda9e8f4cae8d1fdf377ddf0))
@@ -1464,7 +1464,7 @@ All notable changes to this project will be documented in this file.
 * **plugins/tidy-html:** check `language` is valid IANA language tag ([#464](https://github.com/Fdawgs/docsmith/issues/464)) ([6894d37](https://github.com/Fdawgs/docsmith/commit/6894d3706f5203067e910c15837cfac612b1ade4))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/pdf-to-html:** correct key name for output encoding ([10c8044](https://github.com/Fdawgs/docsmith/commit/10c8044247fdd5ced36615e6876959458611743d))
 * **routes/docs:** remove cors support ([0659e47](https://github.com/Fdawgs/docsmith/commit/0659e47abb16d2341404547df4af4b9a2cbe39ed))
@@ -1509,7 +1509,7 @@ All notable changes to this project will be documented in this file.
 ### [5.1.3](https://github.com/Fdawgs/docsmith/compare/v5.1.2...v5.1.3) (2021-10-06)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **routes/docs/json:** add missing cache-control header ([579776d](https://github.com/Fdawgs/docsmith/commit/579776dc5f27078ca5fc9166c45126afe4379a99))
 
@@ -1564,7 +1564,7 @@ All notable changes to this project will be documented in this file.
 * **docker:** remove package versioning ([e1ebc61](https://github.com/Fdawgs/docsmith/commit/e1ebc6189939f4d75a11919b274b19dcb7a32778))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** update location of octokit rest methods ([#449](https://github.com/Fdawgs/docsmith/issues/449)) ([5b46430](https://github.com/Fdawgs/docsmith/commit/5b464308f1bf908005c8a728de75e59c2bd61eb4))
 * ignore hadolint rule DL3008 ([cadb6c0](https://github.com/Fdawgs/docsmith/commit/cadb6c093dbc520bb63b26172ada79dbff16e013))
@@ -1583,7 +1583,7 @@ All notable changes to this project will be documented in this file.
 ### [5.1.1](https://github.com/Fdawgs/docsmith/compare/v5.1.0...v5.1.1) (2021-09-24)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/docx-to-txt:** add missing content-type response header ([85f39bf](https://github.com/Fdawgs/docsmith/commit/85f39bfee8bce8f0929b31d12a56534b6fb96786))
 * **public/site.webmanifest:** set name values ([255fbf6](https://github.com/Fdawgs/docsmith/commit/255fbf6579f1038cca0fab7cd08e15b02f189efa))
@@ -1664,7 +1664,7 @@ All notable changes to this project will be documented in this file.
 ### [5.0.1](https://github.com/Fdawgs/docsmith/compare/v5.0.0...v5.0.1) (2021-09-07)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/pdf-to-txt:** remove test code ([eb5699e](https://github.com/Fdawgs/docsmith/commit/eb5699e66d78d8943cc1fb04694e79e454a017cb))
 
@@ -1675,7 +1675,7 @@ All notable changes to this project will be documented in this file.
 
 * **config:** `OCR_ENABLED` environment variable now defaults to false. Lower spec servers were struggling to run with the defaults, due to how CPU intensive Tesseract OCR workers are.
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** `OCR_ENABLED` defaults to false ([a3d1036](https://github.com/Fdawgs/docsmith/commit/a3d10362c9334388a864ee14467d7e71a410b904))
 * **plugins:** use `onSend` hook to remove files for all requests ([#395](https://github.com/Fdawgs/docsmith/issues/395)) ([703faef](https://github.com/Fdawgs/docsmith/commit/703faef214e6e12eb59dafa1a514639211ff5ca3))
@@ -1702,7 +1702,7 @@ All notable changes to this project will be documented in this file.
 * **config:** add option to set `Access-Control-Max-Age` CORS header ([#377](https://github.com/Fdawgs/docsmith/issues/377)) ([b86846c](https://github.com/Fdawgs/docsmith/commit/b86846c851f3532c2c28e2efe707f7a6962567ff))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **server:** rate limit all 4xx and 5xx responses ([6183f4a](https://github.com/Fdawgs/docsmith/commit/6183f4af37f854cc5e2d2dac17be882e11f35288))
 
@@ -1718,7 +1718,7 @@ All notable changes to this project will be documented in this file.
 * **.github:** use new YAML configured GitHub issue forms ([#380](https://github.com/Fdawgs/docsmith/issues/380)) ([75d3d1c](https://github.com/Fdawgs/docsmith/commit/75d3d1c6c72d4b7c9e76a7f8c5d81608931e7548))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** replace workflow-run-cleanup-action with github concurrency ([#381](https://github.com/Fdawgs/docsmith/issues/381)) ([e7b63d7](https://github.com/Fdawgs/docsmith/commit/e7b63d71f31713a7960f8bfad92655e344121eb0))
 
@@ -1743,7 +1743,7 @@ All notable changes to this project will be documented in this file.
 * **routes/docs:** replace swagger ui with redoc ui ([43faf18](https://github.com/Fdawgs/docsmith/commit/43faf18684faa752b7b0032e8c7b515400882fd6))
 
 
-### Bug Fixes
+### Bug fixes
 
 * add 400 and 415 responses to shared schema ([d4954df](https://github.com/Fdawgs/docsmith/commit/d4954df981dc12673e9fd049b4ed29ee6bf8953a))
 * **config:** bearer token security scheme format ([33b05d2](https://github.com/Fdawgs/docsmith/commit/33b05d266fb2b492ff5e2550a5b5a44168269434))
@@ -1800,7 +1800,7 @@ All notable changes to this project will be documented in this file.
 * **routes/rtf/html:** add `language` query string param ([db783d8](https://github.com/Fdawgs/docsmith/commit/db783d846edb205bf2a9859a6ba71809b48da6fe))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **app:** logging grammar fixes ([31e6f26](https://github.com/Fdawgs/docsmith/commit/31e6f2659d6e2d05611d289d78f224f72eac4c6a))
 * **config:** allow for empty logger env variables ([b3d3567](https://github.com/Fdawgs/docsmith/commit/b3d35678c2a5fc6f4e7e5e4df6e9599f42e831ce))
@@ -1846,7 +1846,7 @@ All notable changes to this project will be documented in this file.
 * **routes:** add docx-to-txt route ([25a01b4](https://github.com/Fdawgs/docsmith/commit/25a01b4ce966f38731dc9879fe7b6f1f1e815a5c))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/docx-to-html:** set content-type meta; fix utf-8 ([1bccb7b](https://github.com/Fdawgs/docsmith/commit/1bccb7b885ed2773482e12c38962c4708908f3be))
 
@@ -1895,7 +1895,7 @@ All notable changes to this project will be documented in this file.
 * **config:** add ability to specify number of tesseract ocr workers ([8a13c93](https://github.com/Fdawgs/docsmith/commit/8a13c93aae489f9914187e5829e8e61f93808a63))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** fall back to default if `CORS_ORIGIN` env variable not set ([63431f1](https://github.com/Fdawgs/docsmith/commit/63431f1cc0dd7e0334d2a33b9cd2818880473c32))
 * **docker-compose:** wrap variables in quotes ([05afefe](https://github.com/Fdawgs/docsmith/commit/05afefe94b5a1fefc16f636e8cbe7cf828a352bb))
@@ -1941,7 +1941,7 @@ All notable changes to this project will be documented in this file.
 ### [2.4.3](https://github.com/Fdawgs/docsmith/compare/v2.4.2...v2.4.3) (2021-07-19)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **package:** move `pino-pretty` to production dependency list ([#298](https://github.com/Fdawgs/docsmith/issues/298)) ([55ec7e7](https://github.com/Fdawgs/docsmith/commit/55ec7e75eb990b77cd0d9127c461a16c93c1a8f3))
 
@@ -1971,7 +1971,7 @@ All notable changes to this project will be documented in this file.
 ### [2.4.2](https://github.com/Fdawgs/docsmith/compare/v2.4.1...v2.4.2) (2021-07-12)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **routes:** `Accept` header handling encapsulation ([#292](https://github.com/Fdawgs/docsmith/issues/292)) ([d8e3d3d](https://github.com/Fdawgs/docsmith/commit/d8e3d3d4fc213e638c57fe3e37e6cf88820200d1))
 
@@ -1992,14 +1992,14 @@ All notable changes to this project will be documented in this file.
 * **deps:** bump pino from 6.11.3 to 6.12.0 ([dd61325](https://github.com/Fdawgs/docsmith/commit/dd61325ac97d44acb38a19088efeccc92b2d96d5))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** disable homebrew analytics for macos builds ([#293](https://github.com/Fdawgs/docsmith/issues/293)) ([ad32eae](https://github.com/Fdawgs/docsmith/commit/ad32eaeb49b1b1850077b96eaba59ab147f86423))
 
 ### [2.4.1](https://github.com/Fdawgs/docsmith/compare/v2.4.0...v2.4.1) (2021-07-09)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins:** check conv object is present before removing temp files ([1fb4eb9](https://github.com/Fdawgs/docsmith/commit/1fb4eb950271fe5f6b6b1b60509751a81333cc3d))
 * **routes:** add `Accept` request header handling  ([#281](https://github.com/Fdawgs/docsmith/issues/281)) ([89e05c0](https://github.com/Fdawgs/docsmith/commit/89e05c0122d3d3c6d71c7d6f577bdd0bd24ad08a))
@@ -2072,7 +2072,7 @@ All notable changes to this project will be documented in this file.
 ### [2.3.3](https://github.com/Fdawgs/docsmith/compare/v2.3.2...v2.3.3) (2021-06-22)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **server:** add "base-uri" directive to `Content-Security-Policy` ([#244](https://github.com/Fdawgs/docsmith/issues/244)) ([f4a12e6](https://github.com/Fdawgs/docsmith/commit/f4a12e67c6d0c01553e2c288dcb895fb2a6bd62a))
 * **server:** increase `Strict-Transport-Security` max age to 365 days ([1c9f303](https://github.com/Fdawgs/docsmith/commit/1c9f303b1432bd2120d47371de4be95428996fee))
@@ -2080,7 +2080,7 @@ All notable changes to this project will be documented in this file.
 * **server:** use stricter `Content-Security-Policy` values ([b833c6b](https://github.com/Fdawgs/docsmith/commit/b833c6b0318fe9895fbc8cda6244ea6fa643b144))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **link-check:** reduce frequency from weekly to monthly ([#241](https://github.com/Fdawgs/docsmith/issues/241)) ([3a3c13f](https://github.com/Fdawgs/docsmith/commit/3a3c13f69361446fbb97e081d043d4833f4b6b06))
 
@@ -2113,7 +2113,7 @@ All notable changes to this project will be documented in this file.
 ### [2.3.1](https://github.com/Fdawgs/docsmith/compare/v2.3.0...v2.3.1) (2021-06-16)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** add `NODE_ENV` to env schema validation ([4d7fa47](https://github.com/Fdawgs/docsmith/commit/4d7fa47070b13eaeb1ab753ff30b88a32a8fc691))
 * **config:** prettyprint conditional ([101a520](https://github.com/Fdawgs/docsmith/commit/101a520b51b18e80c2693ebcd7e3a70d46fc920a))
@@ -2154,7 +2154,7 @@ All notable changes to this project will be documented in this file.
 * **server:** add content-encoding support ([4b03b8e](https://github.com/Fdawgs/docsmith/commit/4b03b8ed2624f416530b848400900e5fc09c6330))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins:** return full serialization of  HTML document ([#219](https://github.com/Fdawgs/docsmith/issues/219)) ([f924996](https://github.com/Fdawgs/docsmith/commit/f92499654794aac52915ee200d4e74829bea220e))
 
@@ -2179,7 +2179,7 @@ All notable changes to this project will be documented in this file.
 ### [2.2.1](https://github.com/Fdawgs/docsmith/compare/v2.2.0...v2.2.1) (2021-06-09)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins:** await `Object.assign()` and `fixUtf8()` ([d3bdbc3](https://github.com/Fdawgs/docsmith/commit/d3bdbc303315b0475f685d607de3129059ae357a))
 * **routes/pdf/html:** hardcoded `removealt` query param ([6e96a29](https://github.com/Fdawgs/docsmith/commit/6e96a29d624f10dfcbcfa200a6de8b5de5d9202a))
@@ -2192,14 +2192,14 @@ All notable changes to this project will be documented in this file.
 * **config:** add env variable for setting req body size limit ([53b97b8](https://github.com/Fdawgs/docsmith/commit/53b97b885e64df6869200bcef16db1a3e809cd13))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins:** `outputencoding` query param use ([768161e](https://github.com/Fdawgs/docsmith/commit/768161ee6cdcf46f25d36c69db3fd0f25ae1aa63))
 
 ### [2.1.4](https://github.com/Fdawgs/docsmith/compare/v2.1.3...v2.1.4) (2021-06-08)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** redact request authorization header from logs ([9300384](https://github.com/Fdawgs/docsmith/commit/9300384926e32962668edb0db7e8736d57cd6ed9))
 * **server:** remove swagger from csp for all routes apart from doc route ([5be469d](https://github.com/Fdawgs/docsmith/commit/5be469df586c09185a6191036d8eefafb70382ad))
@@ -2218,7 +2218,7 @@ All notable changes to this project will be documented in this file.
 ### [2.1.3](https://github.com/Fdawgs/docsmith/compare/v2.1.2...v2.1.3) (2021-06-07)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/tidy-css:** incomplete multi-character sanitization ([9abf965](https://github.com/Fdawgs/docsmith/commit/9abf9651e8ea40936595d9f23de4d7ecb2c6f46f))
 
@@ -2252,7 +2252,7 @@ All notable changes to this project will be documented in this file.
 * **dockerignore:** ignore all temp directories ([33495d4](https://github.com/Fdawgs/docsmith/commit/33495d49106874afc0dd552f48b6e20fbbab85bd))
 
 
-### Continuous Integration
+### Continuous integration
 
 * remove redundant docker build job ([78e3abd](https://github.com/Fdawgs/docsmith/commit/78e3abd235f9a3f5617c1c0195ca603a104c3d60))
 
@@ -2295,7 +2295,7 @@ All notable changes to this project will be documented in this file.
 * **routes:** mimetype detection payload return ([1db2c3a](https://github.com/Fdawgs/docsmith/commit/1db2c3aa886bfbc3d73e1db1289bf08b62a0e304))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** move perf optimizations and refactoring into same section ([b5e1b23](https://github.com/Fdawgs/docsmith/commit/b5e1b23341c52e834eefe6d4e2c5eab24b6bcd58))
 
@@ -2342,7 +2342,7 @@ All notable changes to this project will be documented in this file.
 ### [2.0.3](https://github.com/Fdawgs/docsmith/compare/v2.0.2...v2.0.3) (2021-05-21)
 
 
-### Continuous Integration
+### Continuous integration
 
 * fix key usage in `action/setup-node` ([f8ccbe1](https://github.com/Fdawgs/docsmith/commit/f8ccbe108d36ab8d091836791fe1c77fcc5eb949))
 
@@ -2371,7 +2371,7 @@ All notable changes to this project will be documented in this file.
 ### [2.0.2](https://github.com/Fdawgs/docsmith/compare/v2.0.1...v2.0.2) (2021-05-11)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** `LOG_LEVEL` env variable validation ([404568f](https://github.com/Fdawgs/docsmith/commit/404568f7b4234cd53c33f14c3bd264ff1ecfeb2e))
 
@@ -2381,7 +2381,7 @@ All notable changes to this project will be documented in this file.
 * **readme:** remove in-progress features from confirmed features list ([3cbc55c](https://github.com/Fdawgs/docsmith/commit/3cbc55c909f2746fc31ac003bff68d24acd5d334))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **link-check:** run once a week on monday ([5a08a45](https://github.com/Fdawgs/docsmith/commit/5a08a455a9c981702e395ad2a0323c0ecc4a3af7))
 
@@ -2431,13 +2431,13 @@ All notable changes to this project will be documented in this file.
 * **server:** disable google floc support ([1e630cd](https://github.com/Fdawgs/docsmith/commit/1e630cd88727bdb6d383cf9fd00159fa3eac8446))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **env:** add missing cors_allow_credentials variable ([3243de8](https://github.com/Fdawgs/docsmith/commit/3243de8b0bfb185476d7f7ed8507a664177a6b69))
 * **routes:** hide options routes from swagger docs ([e939c6e](https://github.com/Fdawgs/docsmith/commit/e939c6e292e358c66dbed8a58ae80c517303a82b))
 
 
-### Continuous Integration
+### Continuous integration
 
 * add nodejs v16 to unit test matrix ([afd12cb](https://github.com/Fdawgs/docsmith/commit/afd12cb03cd069386ae25dda6e514573d3fac522))
 * do not run coveralls steps/jobs on forks ([1772604](https://github.com/Fdawgs/docsmith/commit/1772604e6abab87b680ff0257100156dc1ec8955))
@@ -2495,7 +2495,7 @@ All notable changes to this project will be documented in this file.
 * **server:** use `strict-origin-when-cross-origin` referrer policy ([22b5311](https://github.com/Fdawgs/docsmith/commit/22b5311122ec2fb0306e46c605274d5f9f581f6b))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** comma-delimited string support for cors origin value ([4e74ecd](https://github.com/Fdawgs/docsmith/commit/4e74ecdb25044fab8ba552aef9d8a63878867d22))
 * **docker:** use node command over npm ([74c019d](https://github.com/Fdawgs/docsmith/commit/74c019d484384a7476c278f45cfc482484954503))
@@ -2508,7 +2508,7 @@ All notable changes to this project will be documented in this file.
 * **server:** use new exposed CSP dir from `fastify-helmet` ([9fcdf75](https://github.com/Fdawgs/docsmith/commit/9fcdf75c410499f2add833a6563438e4f92f9987))
 
 
-### Continuous Integration
+### Continuous integration
 
 * add cleanup-run job ([707c983](https://github.com/Fdawgs/docsmith/commit/707c9838129cde58c77c185eddab297465228861))
 
@@ -2532,13 +2532,13 @@ All notable changes to this project will be documented in this file.
 * **routes/pdf/txt:** add pdf-to-txt route and plugin ([56fb784](https://github.com/Fdawgs/docsmith/commit/56fb784d69dae872e369220efe2b22305ea57bc1))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **routes/pdf/html:** options not passed to `tidyCss` function ([f0ba18d](https://github.com/Fdawgs/docsmith/commit/f0ba18dfff4d2a2360db443897d8e13ccb680c23))
 * **routes/pdf/html:** remove body from schema validation ([a8e640a](https://github.com/Fdawgs/docsmith/commit/a8e640a7e4123ad0e97e7933ca43f72900176687))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** move automerge job into new workflow ([400b525](https://github.com/Fdawgs/docsmith/commit/400b525c2bc6258d461496747f7dcb1bb9f66121))
 * **ci:** ignore dependabot prs for commit message linting ([e6620d1](https://github.com/Fdawgs/docsmith/commit/e6620d191a614fb1742877fb5cb2ee4eb75b0957))
