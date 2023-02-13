@@ -115,7 +115,7 @@
 		"fluent-json-schema": "^4.0.0",
 		"glob": "^8.1.0",
 		"html-minifier-terser": "^7.1.0",
-		"htmltidy2": "^1.0.0",
+		"htmltidy2": "^1.0.1",
 		"jsdom": "^21.1.0",
 		"language-tags": "^1.0.7",
 		"mammoth": "^1.5.1",
