@@ -240,7 +240,7 @@ async function getConfig() {
 					},
 					license: {
 						name: license,
-						url: "https://raw.githubusercontent.com/Fdawgs/docsmith/master/LICENSE",
+						url: "https://raw.githubusercontent.com/Fdawgs/docsmith/main/LICENSE",
 					},
 					version,
 					// Redoc specific extension to support loading image in docs

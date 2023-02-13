@@ -6,7 +6,7 @@ name: Optimise Images
 on:
     push:
         branches:
-            - master
+            - main
         paths:
             - "**.jpg"
             - "**.jpeg"
@@ -28,7 +28,7 @@ jobs:
     build:
         name: Optimise Images
         runs-on: ubuntu-latest
-        # Only run on master repo and PRs that match the master repo
+        # Only run on main repo and PRs that match the main repo
         if: >
             github.repository == 'Fdawgs/docsmith' &&
             (github.event_name != 'pull_request' ||
