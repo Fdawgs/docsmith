@@ -18,7 +18,7 @@ const { randomUUID } = require("crypto");
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to UnRTF binary.
  * @param {object=} options.rtfToHtmlOptions - Refer to
- * https://github.com/Fdawgs/node-unrtf/blob/master/API.md
+ * https://github.com/Fdawgs/node-unrtf/blob/main/API.md
  * for options.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.

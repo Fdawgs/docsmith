@@ -2,7 +2,7 @@
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/docsmith.svg)](https://github.com/Fdawgs/docsmith/releases/latest/)
 ![CI](https://github.com/Fdawgs/docsmith/workflows/CI/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/docsmith/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/docsmith?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/docsmith/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/docsmith?branch=main)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 > RESTful API for converting clinical documents and files
@@ -105,7 +105,7 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 API documentation can be found at `/docs`:
 
-<img alttext="Screenshot of Docsmith documentation page" src="https://raw.githubusercontent.com/Fdawgs/docsmith/master/docs/images/api_documentation_screenshot.png" width="720">
+<img alttext="Screenshot of Docsmith documentation page" src="https://raw.githubusercontent.com/Fdawgs/docsmith/main/docs/images/api_documentation_screenshot.png" width="720">
 
 ## Contributing
 
