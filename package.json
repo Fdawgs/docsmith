@@ -65,7 +65,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.4.2",
-		"@commitlint/config-conventional": "^17.4.2",
+		"@commitlint/config-conventional": "^17.4.3",
 		"autocannon": "^7.10.0",
 		"esbuild": "^0.17.5",
 		"esbuild-plugin-glob": "^2.2.1",
