@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.6](https://github.com/Fdawgs/docsmith/compare/v10.0.5...v10.0.6) (2023-02-13)
+
+
+### Documentation
+
+* **readme:** use more inclusive language ([3ec2517](https://github.com/Fdawgs/docsmith/commit/3ec2517dd780f9a64a45d63cfc52d41481edde44))
+
+
+### Miscellaneous
+
+* use sentence case over ap style for titles and headings ([3a59481](https://github.com/Fdawgs/docsmith/commit/3a59481a3b0a71ea56c206dbb0f66b6148726d60))
+
+
+### Continuous integration
+
+* **cd:** use sentence case for changelog headings ([306a5ca](https://github.com/Fdawgs/docsmith/commit/306a5ca7956d9cbb86c41278da9e7d4ed0274cd2))
+
 ## [10.0.5](https://github.com/Fdawgs/docsmith/compare/v10.0.4...v10.0.5) (2023-02-08)
 
 
