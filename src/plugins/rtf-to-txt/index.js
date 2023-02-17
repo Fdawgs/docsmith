@@ -67,8 +67,8 @@ async function plugin(server, options) {
 				noPictures: true,
 				outputText: true,
 			},
+			...options,
 		};
-		Object.assign(config, options);
 
 		// Build temporary file for UnRTF to write to, and following plugins to read from
 		const id = `docsmith_rtf-to-txt_${randomUUID()}`;
