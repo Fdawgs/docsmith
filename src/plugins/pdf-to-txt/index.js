@@ -106,8 +106,8 @@ async function plugin(server, options) {
 		// Define any default settings the plugin should have to get up and running
 		const config = {
 			pdfToTxtOptions: { outputEncoding: "UTF-8" },
+			...options,
 		};
-		Object.assign(config, options);
 
 		/**
 		 * Create copy of query string params and convert query string params to literal

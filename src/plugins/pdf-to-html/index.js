@@ -90,8 +90,8 @@ async function plugin(server, options) {
 				outputEncoding: "UTF-8",
 				singlePage: true,
 			},
+			...options,
 		};
-		Object.assign(config, options);
 
 		/**
 		 * Create copy of query string params and prune that,
