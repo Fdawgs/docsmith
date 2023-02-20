@@ -20,7 +20,6 @@ const parseString = require("../../utils/parse-string");
  * @param {object=} options.pdfToTxtOptions - Refer to
  * https://github.com/Fdawgs/node-poppler/blob/main/API.md#Poppler+pdfToText
  * for options.
- * @param {string=} options.pdfToTxtOptions.encoding - Sets the encoding to use for text output.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion. Required for OCR.
  */
@@ -78,7 +77,7 @@ async function plugin(server, options) {
 	 * "onSend" hook used instead of "onResponse" ensures
 	 * cancelled request temp data is also removed
 	 */
-	server.addHook("onSend", async (req, res, payload) => {
+	server.addHook("onSend", async (req, _res, payload) => {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(

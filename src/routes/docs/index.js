@@ -48,7 +48,7 @@ async function route(server) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: (req, res) => {
+		handler: (_req, res) => {
 			res.header("cache-control", "public, max-age=300")
 				.removeHeader("pragma")
 				.removeHeader("expires")

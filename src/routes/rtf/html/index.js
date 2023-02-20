@@ -29,7 +29,7 @@ async function route(server, options) {
 	server.addContentTypeParser(
 		"application/rtf",
 		{ parseAs: "buffer" },
-		async (req, payload) => {
+		async (_req, payload) => {
 			/**
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
 			 * this checks for RTF specific magic numbers

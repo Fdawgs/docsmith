@@ -20,10 +20,9 @@ const parseString = require("../../utils/parse-string");
  * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to Poppler binary.
- * @param {object} options.pdfToHtmlOptions - Refer to
+ * @param {object=} options.pdfToHtmlOptions - Refer to
  * https://github.com/Fdawgs/node-poppler/blob/main/API.md#Poppler+pdfToHtml
  * for options.
- * @param {string} options.pdfToHtmlOptions.encoding - Sets the encoding to use for text output.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
  */
@@ -66,7 +65,7 @@ async function plugin(server, options) {
 	 * "onSend" hook used instead of "onResponse" ensures
 	 * cancelled request temp data is also removed.
 	 */
-	server.addHook("onSend", async (req, res, payload) => {
+	server.addHook("onSend", async (req, _res, payload) => {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = glob.sync(

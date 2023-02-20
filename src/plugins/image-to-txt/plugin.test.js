@@ -17,7 +17,7 @@ describe("Image-to-TXT conversion plugin", () => {
 		server.addContentTypeParser(
 			"image/png",
 			{ parseAs: "buffer" },
-			async (req, payload) => payload
+			async (_req, payload) => payload
 		);
 
 		await server.register(plugin, config.tesseract);

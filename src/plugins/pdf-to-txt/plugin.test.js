@@ -20,7 +20,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		server.addContentTypeParser(
 			"application/pdf",
 			{ parseAs: "buffer" },
-			async (req, payload) => payload
+			async (_req, payload) => payload
 		);
 
 		await server

@@ -14,7 +14,7 @@ describe("Tidy-CSS plugin", () => {
 		server.addContentTypeParser(
 			"text/html",
 			{ parseAs: "buffer" },
-			async (req, payload) => payload
+			async (_req, payload) => payload
 		);
 	});
 

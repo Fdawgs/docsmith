@@ -22,7 +22,8 @@ async function plugin(server) {
 	 * @param {boolean=} options.removeAlt - Set `alt` attributes in `<img>` tags to empty string if set to `true`.
 	 * Useful for sending to clinical systems where img tags are stripped from received documents
 	 * (i.e. TPP's SystmOne), and for screen reader users.
-	 * @returns {string|Error} Tidied HTML; throws error if `options.language` is not valid IANA language tag.
+	 * @returns {Promise<string|Error>} Promise of tidied HTML string on resolve, or HTTP Error object on rejection
+	 * if `querystring.language` not a valid IANA language tag.
 	 */
 	async function tidyHtml(html, options = {}) {
 		const dom = new JSDOM(html);

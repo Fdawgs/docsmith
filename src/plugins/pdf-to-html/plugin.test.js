@@ -26,7 +26,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		server.addContentTypeParser(
 			"application/pdf",
 			{ parseAs: "buffer" },
-			async (req, payload) => payload
+			async (_req, payload) => payload
 		);
 
 		await server.register(sensible).register(plugin, config.poppler);

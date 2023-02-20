@@ -84,7 +84,7 @@ async function plugin(server, config) {
 		 * is of use to other content is "frame-ancestors 'none'" to stop responses
 		 * from being wrapped in iframes and used for clickjacking attacks
 		 */
-		.addHook("onSend", async (req, res, payload) => {
+		.addHook("onSend", async (_req, res, payload) => {
 			if (
 				!res.getHeader("content-type")?.includes("html") &&
 				!res.getHeader("content-type")?.includes("xml")
@@ -153,7 +153,7 @@ async function plugin(server, config) {
 				.register(helmet, relaxedHelmetConfig)
 
 				// Stop fastify-disablecache overwriting @fastify/static's cache headers
-				.addHook("onRequest", async (req, res) => {
+				.addHook("onRequest", async (_req, res) => {
 					res.removeHeader("cache-control")
 						.removeHeader("expires")
 						.removeHeader("pragma")
@@ -185,7 +185,7 @@ async function plugin(server, config) {
 		)
 
 		// Errors thrown by routes and plugins are caught here
-		.setErrorHandler(async (err, req, res) => {
+		.setErrorHandler(async (err, _req, res) => {
 			if (
 				(err.statusCode >= 500 &&
 					/* istanbul ignore next: under-pressure plugin throws valid 503s */
