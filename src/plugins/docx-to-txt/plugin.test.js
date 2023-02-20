@@ -13,7 +13,7 @@ describe("DOCX-to-TXT conversion plugin", () => {
 		server.addContentTypeParser(
 			"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			{ parseAs: "buffer" },
-			async (req, payload) => payload
+			async (_req, payload) => payload
 		);
 
 		await server.register(sensible).register(plugin);

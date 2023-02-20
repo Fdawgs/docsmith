@@ -18,7 +18,7 @@ describe("Embed-HTML-Images plugin", () => {
 		server.addContentTypeParser(
 			"text/html",
 			{ parseAs: "buffer" },
-			async (req, payload) => payload
+			async (_req, payload) => payload
 		);
 	});
 

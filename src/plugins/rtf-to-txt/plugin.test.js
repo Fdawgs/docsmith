@@ -19,7 +19,7 @@ describe("RTF-to-TXT conversion plugin", () => {
 		server.addContentTypeParser(
 			"application/rtf",
 			{ parseAs: "buffer" },
-			async (req, payload) => payload
+			async (_req, payload) => payload
 		);
 
 		await server.register(sensible).register(plugin, config.unrtf);
