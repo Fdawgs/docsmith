@@ -20,7 +20,6 @@ const parseString = require("../../utils/parse-string");
  * @param {object=} options.pdfToTxtOptions - Refer to
  * https://github.com/Fdawgs/node-poppler/blob/main/API.md#Poppler+pdfToText
  * for options.
- * @param {string=} options.pdfToTxtOptions.encoding - Sets the encoding to use for text output.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion. Required for OCR.
  */

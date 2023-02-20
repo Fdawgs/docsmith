@@ -16,7 +16,7 @@ const path = require("upath");
 async function plugin(server, options) {
 	/**
 	 * @param {string} html - Valid HTML.
-	 * @returns {string} HTML with images embedded.
+	 * @returns {Promise<string|Error>} Promise of tidied HTML string with images embedded on resolve, or Error object on rejection.
 	 */
 	async function embedHtmlImages(html) {
 		const dom = new JSDOM(html);

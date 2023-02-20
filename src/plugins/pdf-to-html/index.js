@@ -20,10 +20,9 @@ const parseString = require("../../utils/parse-string");
  * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to Poppler binary.
- * @param {object} options.pdfToHtmlOptions - Refer to
+ * @param {object=} options.pdfToHtmlOptions - Refer to
  * https://github.com/Fdawgs/node-poppler/blob/main/API.md#Poppler+pdfToHtml
  * for options.
- * @param {string} options.pdfToHtmlOptions.encoding - Sets the encoding to use for text output.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
  */
