@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.7](https://github.com/Fdawgs/docsmith/compare/v10.0.6...v10.0.7) (2023-02-22)
+
+
+### Documentation
+
+* **images:** update api documentation screenshot ([c8b30d3](https://github.com/Fdawgs/docsmith/commit/c8b30d359e7cfce52360dffa6479d1177ca43d6c))
+
+
+### Improvements
+
+* **plugins:** replace `Object.assign()` with spread syntax ([#1258](https://github.com/Fdawgs/docsmith/issues/1258)) ([9634321](https://github.com/Fdawgs/docsmith/commit/96343218208321b4593d60aff8b7dc65772360e4))
+
+
+### Miscellaneous
+
+* correct jsdoc param types ([c55e710](https://github.com/Fdawgs/docsmith/commit/c55e7107cb13cd8143897eeba8b7b3f5ebfb966d))
+* prefix unused params with underscores ([902364d](https://github.com/Fdawgs/docsmith/commit/902364db0b2ffe329b7b4b8f702b0e22ef087e20))
+
+
+### Bug fixes
+
+* **config:** misleading thrown error message ([93b8f3a](https://github.com/Fdawgs/docsmith/commit/93b8f3a994f18ca7b245f3981037fc2ee99179ca))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.4.3 to 17.4.4 ([#1270](https://github.com/Fdawgs/docsmith/issues/1270)) ([7048c23](https://github.com/Fdawgs/docsmith/commit/7048c233479faad88b19f708548e0279a0a744a0))
+* **deps-dev:** bump @commitlint/config-conventional ([#1262](https://github.com/Fdawgs/docsmith/issues/1262)) ([d4ac884](https://github.com/Fdawgs/docsmith/commit/d4ac884749e294cf00ec51a1fab471eb7f9cd059))
+* **deps-dev:** bump jest from 29.4.2 to 29.4.3 ([#1263](https://github.com/Fdawgs/docsmith/issues/1263)) ([608cad3](https://github.com/Fdawgs/docsmith/commit/608cad3bc05f3902114674622b2247b0310badd2))
+* **deps-dev:** bump pino-pretty from 9.2.0 to 9.3.0 ([#1264](https://github.com/Fdawgs/docsmith/issues/1264)) ([fe505ce](https://github.com/Fdawgs/docsmith/commit/fe505ceb4b428f2cc455637e249669d4b95b36f3))
+* **deps-dev:** bump playwright from 1.30.0 to 1.31.0 ([#1267](https://github.com/Fdawgs/docsmith/issues/1267)) ([cd15d4a](https://github.com/Fdawgs/docsmith/commit/cd15d4a2fe2c50fa6a4d2dda21990bf2144bb56a))
+* **deps:** bump fastify-disablecache from 3.0.6 to 3.1.0 ([#1266](https://github.com/Fdawgs/docsmith/issues/1266)) ([33f1b7b](https://github.com/Fdawgs/docsmith/commit/33f1b7bf486c6677ef1f163abde9ac1533466641))
+* **deps:** bump fastify-floc-off from 2.0.6 to 2.1.0 ([#1261](https://github.com/Fdawgs/docsmith/issues/1261)) ([b588238](https://github.com/Fdawgs/docsmith/commit/b588238661a4f105e8af54fffdedce1e66c857d1))
+* **deps:** bump fastify-json-to-xml from 1.0.2 to 1.1.0 ([#1265](https://github.com/Fdawgs/docsmith/issues/1265)) ([6e13dd0](https://github.com/Fdawgs/docsmith/commit/6e13dd0dc23b93ee17328a0a99d6e18983e1b664))
+* **deps:** bump fluent-json-schema from 4.0.0 to 4.1.0 ([#1260](https://github.com/Fdawgs/docsmith/issues/1260)) ([b666e2a](https://github.com/Fdawgs/docsmith/commit/b666e2a822520d0518de0d6a159a76c5b33f490e))
+* **deps:** bump node-poppler from 6.1.2 to 6.2.0 ([#1268](https://github.com/Fdawgs/docsmith/issues/1268)) ([0d82d5b](https://github.com/Fdawgs/docsmith/commit/0d82d5bd48ef2b5d12570703ff6ca16b91563df8))
+* **deps:** bump node-unrtf from 3.0.6 to 3.1.0 ([#1269](https://github.com/Fdawgs/docsmith/issues/1269)) ([7053a8b](https://github.com/Fdawgs/docsmith/commit/7053a8b0885c31ab4619cfb39b2040c7773b0fa0))
+
 ## [10.0.6](https://github.com/Fdawgs/docsmith/compare/v10.0.5...v10.0.6) (2023-02-15)
 
 
