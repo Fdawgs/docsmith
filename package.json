@@ -110,7 +110,7 @@
 		"fastify-json-to-xml": "^1.1.0",
 		"fastify-plugin": "^4.5.0",
 		"file-stream-rotator": "^1.0.0",
-		"file-type": "^16.5.4",
+		"file-type": "^18.2.1",
 		"fix-utf8": "^1.1.2",
 		"fluent-json-schema": "^4.1.0",
 		"glob": "^8.1.0",
