@@ -112,7 +112,7 @@
 		"file-stream-rotator": "^1.0.0",
 		"file-type": "^16.5.4",
 		"fix-utf8": "^1.1.2",
-		"fluent-json-schema": "^4.0.0",
+		"fluent-json-schema": "^4.1.0",
 		"glob": "^8.1.0",
 		"html-minifier-terser": "^7.1.0",
 		"htmltidy2": "^1.0.1",
