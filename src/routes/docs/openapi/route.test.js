@@ -28,7 +28,7 @@ describe("OpenAPI route", () => {
 			await server.close();
 		});
 
-		test("Should return OpenAPI specification", async () => {
+		test("Should return OpenAPI definitions", async () => {
 			const response = await server.inject({
 				method: "GET",
 				url: "/",

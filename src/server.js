@@ -57,7 +57,7 @@ async function plugin(server, config) {
 		// Reusable schemas
 		.register(sharedSchemas)
 
-		// Generate OpenAPI/Swagger schemas
+		// Generate OpenAPI/Swagger definitions
 		.register(swagger, config.swagger)
 
 		// Process load and 503 response handling
