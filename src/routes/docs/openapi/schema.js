@@ -8,8 +8,8 @@ const S = require("fluent-json-schema");
  */
 const docsOpenapiGetSchema = {
 	hide: true,
-	summary: "List OpenAPI specification",
-	description: "Retrieves OpenAPI specification.",
+	summary: "List OpenAPI definitions",
+	description: "Retrieves OpenAPI definitions.",
 	operationId: "getDocsOpenapi",
 	produces: ["application/json", "application/xml"],
 	response: {

@@ -107,6 +107,8 @@ API documentation can be found at `/docs`:
 
 <img alttext="Screenshot of Docsmith documentation page" src="https://raw.githubusercontent.com/Fdawgs/docsmith/main/docs/images/api_documentation_screenshot.png" width="720">
 
+The underlying OpenAPI definitions are found at `/docs/openapi`.
+
 ## Contributing
 
 Contributions are welcome, and any help is greatly appreciated!
