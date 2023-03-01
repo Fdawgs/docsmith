@@ -92,6 +92,28 @@ async function plugin(server, options) {
 			dom.window.document.head.prepend(element);
 
 			/**
+			 * UnRTF < v0.20.4 ignores `noPictures` option and
+			 * generates img tags whilst placing images in cwd.
+			 *
+			 * UnRTF generates the image name i.e. `pict001.wmf`, `pict002.wmf` and so on.
+			 * This means can files can be safely removed from the cwd without running the
+			 * risk of removing any important files such as `package.json`, should an image
+			 * ever have the same name.
+			 */
+			const images = dom.window.document.querySelectorAll("img");
+
+			/* istanbul ignore if: dependent on UnRTF binary used */
+			if (images.length > 0) {
+				await Promise.all(
+					Array.from(images).map((image) => {
+						const { src } = image;
+						image.remove();
+						return fs.unlink(path.joinSafe(process.cwd(), src));
+					})
+				);
+			}
+
+			/**
 			 * `fixUtf8` function replaces most common incorrectly converted
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info
