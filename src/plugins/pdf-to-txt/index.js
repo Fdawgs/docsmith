@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fp = require("fastify-plugin");
 const fs = require("fs/promises");
-const glob = require("glob");
+const { glob } = require("glob");
 const path = require("upath");
 const { Poppler } = require("node-poppler");
 const { randomUUID } = require("crypto");
@@ -80,7 +80,7 @@ async function plugin(server, options) {
 	server.addHook("onSend", async (req, _res, payload) => {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
-			const files = glob.sync(
+			const files = await glob(
 				`${path.joinSafe(
 					req.conversionResults.docLocation.directory,
 					req.conversionResults.docLocation.id
@@ -160,7 +160,7 @@ async function plugin(server, options) {
 			}
 
 			// glob sorts files alphabetically
-			const files = glob.sync(`${tempFile}*.png`);
+			const files = await glob(`${tempFile}*.png`);
 
 			// Pass each image file generate to Tesseract OCR
 			const results = await Promise.all(

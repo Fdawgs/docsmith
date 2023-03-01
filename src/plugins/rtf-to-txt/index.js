@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fp = require("fastify-plugin");
 const fs = require("fs/promises");
-const glob = require("glob");
+const { glob } = require("glob");
 const path = require("upath");
 const { UnRTF } = require("node-unrtf");
 const { randomUUID } = require("crypto");
@@ -47,7 +47,7 @@ async function plugin(server, options) {
 	server.addHook("onSend", async (req, _res, payload) => {
 		if (req?.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
-			const files = glob.sync(
+			const files = await glob(
 				`${path.joinSafe(
 					req.conversionResults.docLocation.directory,
 					req.conversionResults.docLocation.id
