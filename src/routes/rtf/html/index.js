@@ -69,13 +69,13 @@ async function route(server, options) {
 			}
 		},
 		handler: async (req) => {
-			const embeddedHtml = await server.embedHtmlImages(
-				req.conversionResults.body
+			const tidiedHtml = await server.tidyHtml(
+				req.conversionResults.body,
+				{
+					language: req.query.language,
+					removeAlt: req.query.removeAlt,
+				}
 			);
-			const tidiedHtml = await server.tidyHtml(embeddedHtml, {
-				language: req.query.language,
-				removeAlt: req.query.removeAlt,
-			});
 
 			return server.tidyCss(tidiedHtml, {
 				fonts: req.query.fonts,
