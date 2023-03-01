@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.8](https://github.com/Fdawgs/docsmith/compare/v10.0.7...v10.0.8) (2023-03-01)
+
+
+### Miscellaneous
+
+* **routes/docs:** use correct terminology for openapi definitions ([#1276](https://github.com/Fdawgs/docsmith/issues/1276)) ([08e302a](https://github.com/Fdawgs/docsmith/commit/08e302af8dbd31f5905ba260a7f864b57884934d))
+
+
+### Improvements
+
+* **routes/docs:** defer non-critical css ([#1272](https://github.com/Fdawgs/docsmith/issues/1272)) ([f2d35e4](https://github.com/Fdawgs/docsmith/commit/f2d35e4f5d3e8ad8f3a4ea1e9fdae368dc9fea75))
+* use glob promise api ([2ccbe5b](https://github.com/Fdawgs/docsmith/commit/2ccbe5bfde4126369c0c553b3f11a89bd8490d90))
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild from 0.17.5 to 0.17.10 ([#1285](https://github.com/Fdawgs/docsmith/issues/1285)) ([152d757](https://github.com/Fdawgs/docsmith/commit/152d757342b09fc24038537434aa441dc9cf8f0f))
+* **deps-dev:** bump eslint from 8.34.0 to 8.35.0 ([#1282](https://github.com/Fdawgs/docsmith/issues/1282)) ([8ffe212](https://github.com/Fdawgs/docsmith/commit/8ffe2129a62071e928e4ea1cdf63a8263b3a6e2c))
+* **deps-dev:** bump pino-pretty from 9.3.0 to 9.4.0 ([#1280](https://github.com/Fdawgs/docsmith/issues/1280)) ([b1d90b6](https://github.com/Fdawgs/docsmith/commit/b1d90b6337c27c9e47508117fb6f1af13ffe708a))
+* **deps-dev:** bump playwright from 1.31.0 to 1.31.1 ([#1283](https://github.com/Fdawgs/docsmith/issues/1283)) ([26641f8](https://github.com/Fdawgs/docsmith/commit/26641f8e33e0f21894ca72b7343dacc0370c5888))
+* **deps:** bump coverallsapp/github-action from 1.1.3 to 1.2.3 ([#1278](https://github.com/Fdawgs/docsmith/issues/1278)) ([3f25595](https://github.com/Fdawgs/docsmith/commit/3f2559587d18a148213411b678ab9da89ce567e5))
+* **deps:** bump glob from 8.1.0 to 9.1.0 ([35638a2](https://github.com/Fdawgs/docsmith/commit/35638a2ccb3e15f21d150e84fc59cfe06e435db0))
+* **deps:** bump pino from 8.10.0 to 8.11.0 ([#1281](https://github.com/Fdawgs/docsmith/issues/1281)) ([e92df9a](https://github.com/Fdawgs/docsmith/commit/e92df9ae4530593f3eb57329c42bd47cf5fa2185))
+* **deps:** bump transistive dependencies ([#1286](https://github.com/Fdawgs/docsmith/issues/1286)) ([c8f3c57](https://github.com/Fdawgs/docsmith/commit/c8f3c5719aebf86190756f9c4ceed6b3f2fbbcfd))
+
 ## [10.0.7](https://github.com/Fdawgs/docsmith/compare/v10.0.6...v10.0.7) (2023-02-22)
 
 
