@@ -67,7 +67,7 @@
 		"@commitlint/cli": "^17.4.4",
 		"@commitlint/config-conventional": "^17.4.4",
 		"autocannon": "^7.10.0",
-		"esbuild": "^0.17.5",
+		"esbuild": "^0.17.10",
 		"esbuild-plugin-glob": "^2.2.1",
 		"eslint": "^8.35.0",
 		"eslint-config-airbnb-base": "^15.0.0",
