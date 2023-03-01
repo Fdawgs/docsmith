@@ -96,7 +96,7 @@ async function plugin(server, options) {
 			 * generates img tags whilst placing images in cwd.
 			 *
 			 * UnRTF generates the image name i.e. `pict001.wmf`, `pict002.wmf` and so on.
-			 * This means can files can be safely removed from the cwd without running the
+			 * This means files can be safely removed from the cwd without running the
 			 * risk of removing any important files such as `package.json`, should an image
 			 * ever have the same name.
 			 */
