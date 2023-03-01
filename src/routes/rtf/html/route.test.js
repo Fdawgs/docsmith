@@ -8,7 +8,6 @@ const route = require(".");
 const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
 
-const embedHtmlImages = require("../../../plugins/embed-html-images");
 const tidyCss = require("../../../plugins/tidy-css");
 const tidyHtml = require("../../../plugins/tidy-html");
 
@@ -31,7 +30,6 @@ describe("RTF-to-HTML route", () => {
 		await server
 			.register(accepts)
 			.register(sensible)
-			.register(embedHtmlImages, config.unrtf)
 			.register(sharedSchemas)
 			.register(tidyCss)
 			.register(tidyHtml)
