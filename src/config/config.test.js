@@ -1,5 +1,5 @@
 const fs = require("fs/promises");
-const glob = require("glob");
+const { glob } = require("glob");
 const path = require("upath");
 const getConfig = require(".");
 
@@ -8,7 +8,7 @@ describe("Configuration", () => {
 	const tempDir = path.joinSafe(__dirname, "../temp");
 
 	afterAll(async () => {
-		const files = glob.sync("./test_resources/+(test-log*|.audit.json)", {
+		const files = await glob("./test_resources/+(test-log*|.audit.json)", {
 			dot: true,
 		});
 
