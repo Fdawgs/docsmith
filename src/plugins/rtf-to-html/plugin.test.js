@@ -66,7 +66,13 @@ describe("RTF-to-HTML conversion plugin", () => {
 		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
-		expect(typeof response.docLocation).toBe("object");
+		expect(response.docLocation).toEqual(
+			expect.objectContaining({
+				directory: expect.any(String),
+				rtf: expect.any(String),
+				id: expect.any(String),
+			})
+		);
 		expect(fs.existsSync(response.docLocation.rtf)).toBe(false);
 		expect(fs.existsSync(config.unrtf.tempDir)).toBe(true);
 	});
