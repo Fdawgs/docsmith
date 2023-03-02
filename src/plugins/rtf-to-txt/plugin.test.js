@@ -58,7 +58,13 @@ describe("RTF-to-TXT conversion plugin", () => {
 			expect.stringContaining("Ask not what your country can do for you")
 		);
 		expect(isHtml(response.body)).toBe(false);
-		expect(typeof response.docLocation).toBe("object");
+		expect(response.docLocation).toEqual(
+			expect.objectContaining({
+				directory: expect.any(String),
+				rtf: expect.any(String),
+				id: expect.any(String),
+			})
+		);
 		expect(fs.existsSync(response.docLocation.rtf)).toBe(false);
 		expect(fs.existsSync(config.unrtf.tempDir)).toBe(true);
 	});

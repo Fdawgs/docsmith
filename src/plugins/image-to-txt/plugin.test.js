@@ -54,7 +54,6 @@ describe("Image-to-TXT conversion plugin", () => {
 		expect(response.body).toEqual(
 			expect.stringContaining("Super Test Hospital")
 		);
-		expect(typeof response.body).toBe("string");
 		expect(isHtml(response.body)).toBe(false);
 		expect(response.statusCode).toBe(200);
 	});

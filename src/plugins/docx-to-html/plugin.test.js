@@ -49,7 +49,6 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		expect(response.body).toEqual(
 			expect.stringContaining("Ask not what your country can do for you")
 		);
-		expect(typeof response.body).toBe("string");
 		expect(isHtml(response.body)).toBe(true);
 	});
 

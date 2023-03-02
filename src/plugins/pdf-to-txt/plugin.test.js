@@ -62,7 +62,6 @@ describe("PDF-to-TXT conversion plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(response.body).toEqual(expect.stringContaining("for England"));
-		expect(typeof response.body).toBe("string");
 		expect(isHtml(response.body)).toBe(false);
 	});
 
@@ -85,7 +84,6 @@ describe("PDF-to-TXT conversion plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(response.body).toEqual(expect.stringContaining("NHS"));
-		expect(typeof response.body).toBe("string");
 		expect(isHtml(response.body)).toBe(false);
 	});
 
@@ -133,7 +131,6 @@ describe("PDF-to-TXT conversion plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(response.body).toEqual(expect.stringContaining("for England"));
-		expect(typeof response.body).toBe("string");
 		expect(isHtml(response.body)).toBe(false);
 	});
 
@@ -156,7 +153,6 @@ describe("PDF-to-TXT conversion plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(response.body).toEqual(expect.stringContaining("for England"));
-		expect(typeof response.body).toBe("string");
 		expect(isHtml(response.body)).toBe(true);
 	});
 

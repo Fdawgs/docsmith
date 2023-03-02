@@ -70,7 +70,13 @@ describe("PDF-to-HTML conversion plugin", () => {
 		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
-		expect(typeof response.docLocation).toBe("object");
+		expect(response.docLocation).toEqual(
+			expect.objectContaining({
+				directory: expect.any(String),
+				html: expect.any(String),
+				id: expect.any(String),
+			})
+		);
 		expect(fs.existsSync(response.docLocation.html)).toBe(false);
 		expect(fs.existsSync(config.poppler.tempDir)).toBe(true);
 	});
@@ -100,7 +106,13 @@ describe("PDF-to-HTML conversion plugin", () => {
 		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
-		expect(typeof response.docLocation).toBe("object");
+		expect(response.docLocation).toEqual(
+			expect.objectContaining({
+				directory: expect.any(String),
+				html: expect.any(String),
+				id: expect.any(String),
+			})
+		);
 		expect(fs.existsSync(response.docLocation.html)).toBe(false);
 		expect(fs.existsSync(config.poppler.tempDir)).toBe(true);
 	});
