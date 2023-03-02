@@ -1,6 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fs = require("fs");
 const Fastify = require("fastify");
+const { JSDOM } = require("jsdom");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
@@ -21,7 +22,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		config = await getConfig();
 		config.unrtf.tempDir = "./src/temp-test-rtf-to-html/";
 
-		server = Fastify();
+		server = Fastify({ bodyLimit: 10485760 });
 
 		server.addContentTypeParser(
 			"application/rtf",
@@ -60,12 +61,16 @@ describe("RTF-to-HTML conversion plugin", () => {
 		});
 
 		response = JSON.parse(response.payload);
+		const dom = new JSDOM(response);
 
 		expect(response.body).toEqual(
-			expect.stringContaining("Ask not what your country can do for you")
+			expect.stringContaining(
+				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+			)
 		);
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
+		expect(dom.window.document.querySelectorAll("img")).toHaveLength(0);
 		expect(response.docLocation).toEqual(
 			expect.objectContaining({
 				directory: expect.any(String),

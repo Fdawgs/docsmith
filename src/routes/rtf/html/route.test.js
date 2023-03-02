@@ -26,7 +26,7 @@ describe("RTF-to-HTML route", () => {
 	beforeAll(async () => {
 		config = await getConfig();
 
-		server = Fastify();
+		server = Fastify({ bodyLimit: 10485760 });
 		await server
 			.register(accepts)
 			.register(sensible)
@@ -60,7 +60,7 @@ describe("RTF-to-HTML route", () => {
 					.then((response) => {
 						expect(response.payload).toEqual(
 							expect.stringContaining(
-								"Ask not what your country can do for you"
+								"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 							)
 						);
 						expect(isHtml(response.payload)).toBe(true);
