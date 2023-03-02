@@ -66,6 +66,15 @@ async function plugin(server, options) {
 		// Define any default settings the plugin should have to get up and running
 		const config = {
 			rtfToHtmlOptions: {
+				/**
+				 * Images are removed because UnRTF generates image names as `pict001.wmf`,
+				 * `pict002.wmf`, and so on. This poses a confidentiality and clinical risk as,
+				 * should two concurrent requests have the same image name, the second request
+				 * would overwrite the first request's image and that image would be embedded
+				 * into both HTML documents.
+				 *
+				 * We wouldn't want to add one patient's image to another patient's document.
+				 */
 				noPictures: true,
 				outputHtml: true,
 			},
@@ -95,7 +104,7 @@ async function plugin(server, options) {
 			 * UnRTF < v0.20.4 ignores `noPictures` option and
 			 * generates img tags whilst placing images in cwd.
 			 *
-			 * UnRTF generates the image name i.e. `pict001.wmf`, `pict002.wmf` and so on.
+			 * UnRTF generates the image name as `pict001.wmf`, `pict002.wmf`, and so on.
 			 * This means files can be safely removed from the cwd without running the
 			 * risk of removing any important files such as `package.json`, should an image
 			 * ever have the same name.
