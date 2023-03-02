@@ -98,7 +98,7 @@ describe("Server deployment", () => {
 			});
 			config = await getConfig();
 
-			server = Fastify({ pluginTimeout: 30000 });
+			server = Fastify({ bodyLimit: 10485760, pluginTimeout: 30000 });
 			await server.register(startServer, config).ready();
 		});
 
@@ -296,7 +296,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/rtf/html",
 					body: await fs.readFile(
-						"./test_resources/test_files/valid_rtf_simple.rtf"
+						"./test_resources/test_files/valid_rtf.rtf"
 					),
 					headers: {
 						accept: "application/json, text/html",
@@ -306,7 +306,7 @@ describe("Server deployment", () => {
 
 				expect(response.payload).toEqual(
 					expect.stringContaining(
-						"Ask not what your country can do for you"
+						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 					)
 				);
 				expect(isHtml(response.payload)).toBe(true);
@@ -321,7 +321,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/rtf/txt",
 					body: await fs.readFile(
-						"./test_resources/test_files/valid_rtf_simple.rtf"
+						"./test_resources/test_files/valid_rtf.rtf"
 					),
 					headers: {
 						accept: "application/json, text/plain",
@@ -331,7 +331,7 @@ describe("Server deployment", () => {
 
 				expect(response.payload).toEqual(
 					expect.stringContaining(
-						"Ask not what your country can do for you"
+						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 					)
 				);
 				expect(isHtml(response.payload)).toBe(false);

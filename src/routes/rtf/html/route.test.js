@@ -49,41 +49,7 @@ describe("RTF-to-HTML route", () => {
 						method: "POST",
 						url: "/",
 						body: await fs.readFile(
-							"./test_resources/test_files/valid_rtf_simple.rtf"
-						),
-						query,
-						headers: {
-							accept: "application/json, text/html",
-							"content-type": "application/rtf",
-						},
-					})
-					.then((response) => {
-						expect(response.payload).toEqual(
-							expect.stringContaining(
-								"Ask not what your country can do for you"
-							)
-						);
-						expect(isHtml(response.payload)).toBe(true);
-						expect(response.headers).toMatchObject({
-							"content-type": "text/html",
-						});
-						expect(response.statusCode).toBe(200);
-
-						return response.statusCode;
-					})
-			)
-		);
-	});
-
-	test("Should return RTF file converted to HTML, with images removed", async () => {
-		await Promise.all(
-			queryStrings.map(async (query) =>
-				server
-					.inject({
-						method: "POST",
-						url: "/",
-						body: await fs.readFile(
-							"./test_resources/test_files/valid_rtf_complex.rtf"
+							"./test_resources/test_files/valid_rtf.rtf"
 						),
 						query,
 						headers: {
@@ -201,7 +167,7 @@ describe("RTF-to-HTML route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_rtf_simple.rtf"
+				"./test_resources/test_files/valid_rtf.rtf"
 			),
 			headers: {
 				accept: "application/javascript",

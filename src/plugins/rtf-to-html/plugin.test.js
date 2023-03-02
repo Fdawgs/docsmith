@@ -53,37 +53,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.promises.readFile(
-				"./test_resources/test_files/valid_rtf_simple.rtf"
-			),
-			headers: {
-				"content-type": "application/rtf",
-			},
-		});
-
-		response = JSON.parse(response.payload);
-
-		expect(response.body).toEqual(
-			expect.stringContaining("Ask not what your country can do for you")
-		);
-		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
-		expect(isHtml(response.body)).toBe(true);
-		expect(response.docLocation).toEqual(
-			expect.objectContaining({
-				directory: expect.any(String),
-				rtf: expect.any(String),
-				id: expect.any(String),
-			})
-		);
-		expect(fs.existsSync(response.docLocation.rtf)).toBe(false);
-		expect(fs.existsSync(config.unrtf.tempDir)).toBe(true);
-	});
-
-	test("Should convert RTF file to HTML, with images removed, and place in specified directory", async () => {
-		let response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: await fs.promises.readFile(
-				"./test_resources/test_files/valid_rtf_complex.rtf"
+				"./test_resources/test_files/valid_rtf.rtf"
 			),
 			headers: {
 				"content-type": "application/rtf",
@@ -101,7 +71,13 @@ describe("RTF-to-HTML conversion plugin", () => {
 		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(response.body)).toBe(true);
 		expect(dom.window.document.querySelectorAll("img")).toHaveLength(0);
-		expect(typeof response.docLocation).toBe("object");
+		expect(response.docLocation).toEqual(
+			expect.objectContaining({
+				directory: expect.any(String),
+				rtf: expect.any(String),
+				id: expect.any(String),
+			})
+		);
 		expect(fs.existsSync(response.docLocation.rtf)).toBe(false);
 		expect(fs.existsSync(config.unrtf.tempDir)).toBe(true);
 	});

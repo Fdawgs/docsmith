@@ -14,7 +14,7 @@ describe("RTF-to-TXT route", () => {
 	beforeAll(async () => {
 		config = await getConfig();
 
-		server = Fastify();
+		server = Fastify({ bodyLimit: 10485760 });
 		await server
 			.register(accepts)
 			.register(sensible)
@@ -32,7 +32,7 @@ describe("RTF-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_rtf_simple.rtf"
+				"./test_resources/test_files/valid_rtf.rtf"
 			),
 			headers: {
 				accept: "application/json, text/plain",
@@ -41,7 +41,9 @@ describe("RTF-to-TXT route", () => {
 		});
 
 		expect(response.payload).toEqual(
-			expect.stringContaining("Ask not what your country can do for you")
+			expect.stringContaining(
+				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+			)
 		);
 		expect(isHtml(response.payload)).toBe(false);
 		expect(response.headers).toMatchObject({
@@ -119,7 +121,7 @@ describe("RTF-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_rtf_simple.rtf"
+				"./test_resources/test_files/valid_rtf.rtf"
 			),
 			headers: {
 				accept: "application/javascript",

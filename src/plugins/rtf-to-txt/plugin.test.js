@@ -14,7 +14,7 @@ describe("RTF-to-TXT conversion plugin", () => {
 		config = await getConfig();
 		config.unrtf.tempDir = "./src/temp-test-rtf-to-txt/";
 
-		server = Fastify();
+		server = Fastify({ bodyLimit: 10485760 });
 
 		server.addContentTypeParser(
 			"application/rtf",
@@ -45,7 +45,7 @@ describe("RTF-to-TXT conversion plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.promises.readFile(
-				"./test_resources/test_files/valid_rtf_simple.rtf"
+				"./test_resources/test_files/valid_rtf.rtf"
 			),
 			headers: {
 				"content-type": "application/rtf",
@@ -55,7 +55,9 @@ describe("RTF-to-TXT conversion plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(response.body).toEqual(
-			expect.stringContaining("Ask not what your country can do for you")
+			expect.stringContaining(
+				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+			)
 		);
 		expect(isHtml(response.body)).toBe(false);
 		expect(response.docLocation).toEqual(
