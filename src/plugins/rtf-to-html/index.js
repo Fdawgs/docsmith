@@ -123,7 +123,7 @@ async function plugin(server, options) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info
 			 */
-			req.conversionResults.body = await fixUtf8(dom.serialize());
+			req.conversionResults.body = fixUtf8(dom.serialize());
 		} catch (err) {
 			/**
 			 * UnRTF will throw if the .rtf file provided
