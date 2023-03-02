@@ -45,7 +45,7 @@ describe("RTF-to-TXT conversion plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.promises.readFile(
-				"./test_resources/test_files/valid_rtf.rtf"
+				"./test_resources/test_files/valid_rtf_simple.rtf"
 			),
 			headers: {
 				"content-type": "application/rtf",

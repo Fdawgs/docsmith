@@ -101,14 +101,19 @@ async function plugin(server, options) {
 			 * ever have the same name.
 			 */
 			const images = dom.window.document.querySelectorAll("img");
-
-			/* istanbul ignore if: dependent on UnRTF binary used */
 			if (images.length > 0) {
 				await Promise.all(
 					Array.from(images).map((image) => {
 						const { src } = image;
 						image.remove();
-						return fs.unlink(path.joinSafe(process.cwd(), src));
+						/**
+						 * `rm()` used instead of `unlink()` because concurrent requests may create duplicate files,
+						 * which could cause `unlink()` to throw an ENOENT error if the file has already been removed
+						 * by another request's call of this hook.
+						 */
+						return fs.rm(path.joinSafe(process.cwd(), src), {
+							force: true,
+						});
 					})
 				);
 			}

@@ -296,7 +296,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/rtf/html",
 					body: await fs.readFile(
-						"./test_resources/test_files/valid_rtf.rtf"
+						"./test_resources/test_files/valid_rtf_simple.rtf"
 					),
 					headers: {
 						accept: "application/json, text/html",
@@ -321,7 +321,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/rtf/txt",
 					body: await fs.readFile(
-						"./test_resources/test_files/valid_rtf.rtf"
+						"./test_resources/test_files/valid_rtf_simple.rtf"
 					),
 					headers: {
 						accept: "application/json, text/plain",
