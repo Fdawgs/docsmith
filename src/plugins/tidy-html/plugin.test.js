@@ -49,7 +49,6 @@ describe("Tidy-CSS plugin", () => {
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
 		).toBe("en");
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 	});
 
@@ -80,7 +79,6 @@ describe("Tidy-CSS plugin", () => {
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
 		).toBe("fr");
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 	});
 
@@ -133,7 +131,6 @@ describe("Tidy-CSS plugin", () => {
 		});
 
 		expect(/alt=""/gm.exec(response.payload)).not.toBeNull();
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 	});
 });

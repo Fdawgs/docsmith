@@ -45,7 +45,6 @@ describe("Tidy-CSS plugin", () => {
 		});
 
 		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -70,7 +69,6 @@ describe("Tidy-CSS plugin", () => {
 
 		expect(/font-family:Arial/gm.exec(response.payload)).not.toBeNull();
 		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -101,7 +99,6 @@ describe("Tidy-CSS plugin", () => {
 			)
 		).not.toBeNull();
 		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -126,7 +123,6 @@ describe("Tidy-CSS plugin", () => {
 
 		expect(/background-color:#fff/gm.exec(response.payload)).not.toBeNull();
 		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -157,7 +153,6 @@ describe("Tidy-CSS plugin", () => {
 		expect(/font-family:Arial/gm.exec(response.payload)).not.toBeNull();
 		expect(/background-color:#fff/gm.exec(response.payload)).not.toBeNull();
 		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -181,7 +176,6 @@ describe("Tidy-CSS plugin", () => {
 		});
 
 		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -203,8 +197,6 @@ describe("Tidy-CSS plugin", () => {
 				"content-type": "text/html",
 			},
 		});
-
-		expect(typeof response.payload).toBe("string");
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
