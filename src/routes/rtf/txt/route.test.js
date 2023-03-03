@@ -17,7 +17,7 @@ describe("RTF-to-TXT route", () => {
 	beforeAll(async () => {
 		config = await getConfig();
 
-		server = Fastify({ bodyLimit: 10485760, logger: { level: "debug" } });
+		server = Fastify({ bodyLimit: 10485760 });
 		await server
 			.register(accepts)
 			.register(sensible)
