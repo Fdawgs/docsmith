@@ -22,6 +22,7 @@ const { randomUUID } = require("crypto");
  * for options.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
+ * @param {string} [options.tempFilePrefix="docsmith_rtf-to-html"] - Prefix for temporary file names.
  */
 async function plugin(server, options) {
 	const directory = path.normalizeTrim(options.tempDir);
@@ -78,11 +79,12 @@ async function plugin(server, options) {
 				noPictures: true,
 				outputHtml: true,
 			},
+			tempFilePrefix: "docsmith_rtf-to-html",
 			...options,
 		};
 
 		// Build temporary file for UnRTF to write to, and following plugins to read from
-		const id = `docsmith_rtf-to-html_${randomUUID()}`;
+		const id = `${config.tempFilePrefix}_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
 		req.conversionResults.docLocation = {
 			directory,
@@ -110,6 +112,7 @@ async function plugin(server, options) {
 			 * ever have the same name.
 			 */
 			const images = dom.window.document.querySelectorAll("img");
+			/* istanbul ignore if: dependant on UnRTF version used */
 			if (images.length > 0) {
 				await Promise.all(
 					Array.from(images).map((image) => {
@@ -122,6 +125,9 @@ async function plugin(server, options) {
 						 */
 						return fs.rm(path.joinSafe(process.cwd(), src), {
 							force: true,
+							maxRetries: 10,
+							recursive: true,
+							retryDelay: 100,
 						});
 					})
 				);

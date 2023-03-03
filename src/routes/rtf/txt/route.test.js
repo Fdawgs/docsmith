@@ -7,6 +7,9 @@ const route = require(".");
 const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
 
+const tidyCss = require("../../../plugins/tidy-css");
+const tidyHtml = require("../../../plugins/tidy-html");
+
 describe("RTF-to-TXT route", () => {
 	let config;
 	let server;
@@ -19,6 +22,8 @@ describe("RTF-to-TXT route", () => {
 			.register(accepts)
 			.register(sensible)
 			.register(sharedSchemas)
+			.register(tidyCss)
+			.register(tidyHtml)
 			.register(route, config)
 			.ready();
 	});
