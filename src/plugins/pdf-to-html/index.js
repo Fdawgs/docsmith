@@ -25,6 +25,7 @@ const parseString = require("../../utils/parse-string");
  * for options.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
+ * @param {string} [options.tempFilePrefix="docsmith_pdf-to-html"] - Prefix for temporary file names.
  */
 async function plugin(server, options) {
 	const directory = path.normalizeTrim(options.tempDir);
@@ -89,6 +90,7 @@ async function plugin(server, options) {
 				outputEncoding: "UTF-8",
 				singlePage: true,
 			},
+			tempFilePrefix: "docsmith_pdf-to-html",
 			...options,
 		};
 
@@ -111,7 +113,7 @@ async function plugin(server, options) {
 		Object.assign(config.pdfToHtmlOptions, query);
 
 		// Build temporary file for Poppler to write to, and following plugins to read from
-		const id = `docsmith_pdf-to-html_${randomUUID()}`;
+		const id = `${config.tempFilePrefix}_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, id);
 		req.conversionResults.docLocation = {
 			directory,
