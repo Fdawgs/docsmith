@@ -17,8 +17,7 @@ async function plugin(server) {
 	/**
 	 * @param {string} html - Valid HTML.
 	 * @param {object} options - Function config values.
-	 * @param {string=} options.language - Set `lang` and `xml:lang` attributes of `<html>` tag.
-	 * Defaults to `en` if not set.
+	 * @param {string} [options.language="en"] - Set `lang` and `xml:lang` attributes of `<html>` tag.
 	 * @param {boolean=} options.removeAlt - Set `alt` attributes in `<img>` tags to empty string if set to `true`.
 	 * Useful for sending to clinical systems where img tags are stripped from received documents
 	 * (i.e. TPP's SystmOne), and for screen reader users.
