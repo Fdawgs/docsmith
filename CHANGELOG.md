@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.9](https://github.com/Fdawgs/docsmith/compare/v10.0.8...v10.0.9) (2023-03-03)
+
+
+### Miscellaneous
+
+* clarify why images are removed from rtf-to-html results ([#1295](https://github.com/Fdawgs/docsmith/issues/1295)) ([0ef7262](https://github.com/Fdawgs/docsmith/commit/0ef7262dd307b403bcacd000059e46eafc8e7059))
+* **plugins/tidy-html:** add default to jsdoc param ([#1298](https://github.com/Fdawgs/docsmith/issues/1298)) ([50bb545](https://github.com/Fdawgs/docsmith/commit/50bb545d6adc32d125772006eb37ec5638e5ec10))
+
+
+### Improvements
+
+* **plugins/rtf-to-html:** remove redundant `await` ([#1294](https://github.com/Fdawgs/docsmith/issues/1294)) ([7582b22](https://github.com/Fdawgs/docsmith/commit/7582b22f2be16358bd7bafee3c45ae2b81538337))
+* **plugins:** allow temp file prefixes to be configured ([#1299](https://github.com/Fdawgs/docsmith/issues/1299)) ([dde4fef](https://github.com/Fdawgs/docsmith/commit/dde4fefe0d324f433d8aef5584f65bf4b3f6a771))
+* **routes/rtf/html:** remove embedding of html images ([#1288](https://github.com/Fdawgs/docsmith/issues/1288)) ([da7b329](https://github.com/Fdawgs/docsmith/commit/da7b329c1fa42f7900229400e8bf60f7d0914471))
+
+
+### Bug fixes
+
+* **plugins/rtf-to-html:** hyperlinks being removed ([#1300](https://github.com/Fdawgs/docsmith/issues/1300)) ([00bc9e1](https://github.com/Fdawgs/docsmith/commit/00bc9e12246cfca5eefba3a829ad152644dc02c4))
+* **plugins/rtf-to-html:** rtf images dumped into cwd ([#1287](https://github.com/Fdawgs/docsmith/issues/1287)) ([d089f68](https://github.com/Fdawgs/docsmith/commit/d089f681a2a959676c037438809fb14ef3ab1fe9))
+* **routes/rtf/txt:** rtf images dumped into cwd ([#1297](https://github.com/Fdawgs/docsmith/issues/1297)) ([20144e8](https://github.com/Fdawgs/docsmith/commit/20144e865a3bb74734b3dd0cf1e8655da05abee2))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 40.0.0 to 40.0.1 ([#1307](https://github.com/Fdawgs/docsmith/issues/1307)) ([5aa6b4b](https://github.com/Fdawgs/docsmith/commit/5aa6b4b3054ff24f55894fc7d4d889f1d1653dbc))
+* **deps-dev:** bump nodemon from 2.0.20 to 2.0.21 ([#1304](https://github.com/Fdawgs/docsmith/issues/1304)) ([02d6b9a](https://github.com/Fdawgs/docsmith/commit/02d6b9a673dc80379e9ae86d0f491754d29b5f05))
+* **deps-dev:** bump playwright from 1.31.1 to 1.31.2 ([#1305](https://github.com/Fdawgs/docsmith/issues/1305)) ([3296baf](https://github.com/Fdawgs/docsmith/commit/3296baff57447ad07c63e07206eab4a94fd14154))
+* **deps:** bump @fastify/rate-limit from 7.6.0 to 8.0.0 ([#1302](https://github.com/Fdawgs/docsmith/issues/1302)) ([a2a1c72](https://github.com/Fdawgs/docsmith/commit/a2a1c722e9ea3f7c12501462df272f7260b606c3))
+* **deps:** bump coverallsapp/github-action from 1.2.3 to 1.2.4 ([#1301](https://github.com/Fdawgs/docsmith/issues/1301)) ([4eab7fa](https://github.com/Fdawgs/docsmith/commit/4eab7fa099388d2ba3103e2e6ea86d6a88f21558))
+* **deps:** bump fastify from 4.13.0 to 4.14.0 ([#1306](https://github.com/Fdawgs/docsmith/issues/1306)) ([d11be58](https://github.com/Fdawgs/docsmith/commit/d11be581cabe3ac6b48d392cf259f6a09f97176e))
+
 ## [10.0.8](https://github.com/Fdawgs/docsmith/compare/v10.0.7...v10.0.8) (2023-03-01)
 
 
