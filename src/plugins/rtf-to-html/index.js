@@ -83,6 +83,18 @@ async function plugin(server, options) {
 			...options,
 		};
 
+		/**
+		 * UnRTF removes hyperlinks and replaces them with the text of the hyperlink,
+		 * however older versions of UnRTF remove the hyperlink text entirely.
+		 * Remove RTF hyperlinks prior to conversion to ensure consistent results
+		 */
+		req.body = req.body
+			.toString()
+			.replace(
+				/{\\field{\\\*\\fldinst HYPERLINK ".*?" }{\\fldrslt (.*?)}/gs,
+				"$1"
+			);
+
 		// Build temporary file for UnRTF to write to, and following plugins to read from
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
