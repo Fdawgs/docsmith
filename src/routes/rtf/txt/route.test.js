@@ -7,6 +7,9 @@ const route = require(".");
 const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
 
+const tidyCss = require("../../../plugins/tidy-css");
+const tidyHtml = require("../../../plugins/tidy-html");
+
 describe("RTF-to-TXT route", () => {
 	let config;
 	let server;
@@ -14,11 +17,13 @@ describe("RTF-to-TXT route", () => {
 	beforeAll(async () => {
 		config = await getConfig();
 
-		server = Fastify({ bodyLimit: 10485760 });
+		server = Fastify({ bodyLimit: 10485760, logger: { level: "debug" } });
 		await server
 			.register(accepts)
 			.register(sensible)
 			.register(sharedSchemas)
+			.register(tidyCss)
+			.register(tidyHtml)
 			.register(route, config)
 			.ready();
 	});
