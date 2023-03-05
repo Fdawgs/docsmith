@@ -136,6 +136,7 @@ dist
 .clinic
 
 # lock files
+bun.lockb
 pnpm-lock.yaml
 yarn.lock
 
