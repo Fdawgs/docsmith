@@ -32,7 +32,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 	});
 
 	test("Should convert DOCX file to HTML", async () => {
-		let response = await server.inject({
+		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
@@ -44,14 +44,14 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			},
 		});
 
-		response = JSON.parse(response.payload);
+		const { body } = JSON.parse(response.payload);
 
-		expect(response.body).toEqual(
+		expect(body).toEqual(
 			expect.stringContaining(
 				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 			)
 		);
-		expect(isHtml(response.body)).toBe(true);
+		expect(isHtml(body)).toBe(true);
 	});
 
 	test("Should return HTTP status code 400 if DOCX file is missing", async () => {

@@ -45,7 +45,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 	});
 
 	test("Should convert PDF file to TXT", async () => {
-		let response = await server.inject({
+		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
@@ -59,14 +59,14 @@ describe("PDF-to-TXT conversion plugin", () => {
 			},
 		});
 
-		response = JSON.parse(response.payload);
+		const { body } = JSON.parse(response.payload);
 
-		expect(response.body).toEqual(expect.stringContaining("for England"));
-		expect(isHtml(response.body)).toBe(false);
+		expect(body).toEqual(expect.stringContaining("for England"));
+		expect(isHtml(body)).toBe(false);
 	});
 
 	test("Should convert PDF file to TXT using OCR", async () => {
-		let response = await server.inject({
+		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
@@ -81,10 +81,10 @@ describe("PDF-to-TXT conversion plugin", () => {
 			},
 		});
 
-		response = JSON.parse(response.payload);
+		const { body } = JSON.parse(response.payload);
 
-		expect(response.body).toEqual(expect.stringContaining("NHS"));
-		expect(isHtml(response.body)).toBe(false);
+		expect(body).toEqual(expect.stringContaining("NHS"));
+		expect(isHtml(body)).toBe(false);
 	});
 
 	test("Should return HTTP status code 400 if PDF file is not a valid PDF file for OCR", async () => {
@@ -112,7 +112,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 	});
 
 	test("Should ignore invalid `test` query string params and convert PDF file to TXT", async () => {
-		let response = await server.inject({
+		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			query: {
@@ -128,14 +128,14 @@ describe("PDF-to-TXT conversion plugin", () => {
 			},
 		});
 
-		response = JSON.parse(response.payload);
+		const { body } = JSON.parse(response.payload);
 
-		expect(response.body).toEqual(expect.stringContaining("for England"));
-		expect(isHtml(response.body)).toBe(false);
+		expect(body).toEqual(expect.stringContaining("for England"));
+		expect(isHtml(body)).toBe(false);
 	});
 
 	test("Should convert PDF file to TXT wrapped in HTML", async () => {
-		let response = await server.inject({
+		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
@@ -150,10 +150,10 @@ describe("PDF-to-TXT conversion plugin", () => {
 			},
 		});
 
-		response = JSON.parse(response.payload);
+		const { body } = JSON.parse(response.payload);
 
-		expect(response.body).toEqual(expect.stringContaining("for England"));
-		expect(isHtml(response.body)).toBe(true);
+		expect(body).toEqual(expect.stringContaining("for England"));
+		expect(isHtml(body)).toBe(true);
 	});
 
 	test("Should return HTTP status code 400 if PDF file is not a valid PDF file", async () => {
