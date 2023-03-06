@@ -130,7 +130,7 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(/alt=""/gm.exec(response.payload)).not.toBeNull();
+		expect(/alt=""/.test(response.payload)).toBe(true);
 		expect(isHtml(response.payload)).toBe(true);
 	});
 });
