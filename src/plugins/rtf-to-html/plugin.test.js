@@ -61,7 +61,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		});
 
 		const { body, docLocation } = JSON.parse(response.payload);
-		const dom = new JSDOM(response.body);
+		const dom = new JSDOM(body);
 
 		expect(body).toEqual(
 			expect.stringContaining(
