@@ -47,7 +47,9 @@ describe("DOCX-to-TXT conversion plugin", () => {
 		response = JSON.parse(response.payload);
 
 		expect(response.body).toEqual(
-			expect.stringContaining("Ask not what your country can do for you")
+			expect.stringContaining(
+				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+			)
 		);
 		expect(isHtml(response.body)).toBe(false);
 	});
