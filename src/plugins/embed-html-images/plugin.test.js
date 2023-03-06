@@ -47,10 +47,10 @@ describe("Embed-HTML-Images plugin", () => {
 			},
 		});
 
-		expect(
-			/src="valid_bullet_issues001.png"/gm.exec(response.payload)
-		).toBeNull();
-		expect(/alt=""/gm.exec(response.payload)).toBeNull();
+		expect(/src="valid_bullet_issues001.png"/.test(response.payload)).toBe(
+			false
+		);
+		expect(/alt=""/.test(response.payload)).toBe(false);
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});

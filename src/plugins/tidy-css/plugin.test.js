@@ -44,7 +44,7 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
+		expect(/;}|<!--|--!?>/.test(response.payload)).toBe(false);
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -67,8 +67,8 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(/font-family:Arial/gm.exec(response.payload)).not.toBeNull();
-		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
+		expect(/font-family:Arial/.test(response.payload)).toBe(true);
+		expect(/;}|<!--|--!?>/.test(response.payload)).toBe(false);
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -94,11 +94,9 @@ describe("Tidy-CSS plugin", () => {
 		});
 
 		expect(
-			/font-family:"Sans Serif","\\"Gill Sans\\""/gm.exec(
-				response.payload
-			)
-		).not.toBeNull();
-		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
+			/font-family:"Sans Serif","\\"Gill Sans\\""/.test(response.payload)
+		).toBe(true);
+		expect(/;}|<!--|--!?>/.test(response.payload)).toBe(false);
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -121,8 +119,8 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(/background-color:#fff/gm.exec(response.payload)).not.toBeNull();
-		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
+		expect(/background-color:#fff/.test(response.payload)).toBe(true);
+		expect(/;}|<!--|--!?>/.test(response.payload)).toBe(false);
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -150,9 +148,9 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(/font-family:Arial/gm.exec(response.payload)).not.toBeNull();
-		expect(/background-color:#fff/gm.exec(response.payload)).not.toBeNull();
-		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
+		expect(/font-family:Arial/.test(response.payload)).toBe(true);
+		expect(/background-color:#fff/.test(response.payload)).toBe(true);
+		expect(/;}|<!--|--!?>/.test(response.payload)).toBe(false);
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
@@ -175,7 +173,7 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(/;}|<!--|--!?>/gm.exec(response.payload)).toBeNull();
+		expect(/;}|<!--|--!?>/.test(response.payload)).toBe(false);
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});

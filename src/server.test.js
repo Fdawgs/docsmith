@@ -178,7 +178,7 @@ describe("Server deployment", () => {
 
 				expect(response.payload).toEqual(
 					expect.stringContaining(
-						"Ask not what your country can do for you"
+						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 					)
 				);
 				expect(isHtml(response.payload)).toBe(true);
@@ -204,7 +204,7 @@ describe("Server deployment", () => {
 
 				expect(response.payload).toEqual(
 					expect.stringContaining(
-						"Ask not what your country can do for you"
+						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 					)
 				);
 				expect(isHtml(response.payload)).toBe(false);

@@ -1,8 +1,8 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fs = require("fs");
 const Fastify = require("fastify");
-const { JSDOM } = require("jsdom");
 const isHtml = require("is-html");
+const { JSDOM } = require("jsdom");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
@@ -49,7 +49,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 	});
 
 	test("Should convert RTF file to HTML and place in specified directory", async () => {
-		let response = await server.inject({
+		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await fs.promises.readFile(
@@ -60,25 +60,25 @@ describe("RTF-to-HTML conversion plugin", () => {
 			},
 		});
 
-		response = JSON.parse(response.payload);
-		const dom = new JSDOM(response);
+		const { body, docLocation } = JSON.parse(response.payload);
+		const dom = new JSDOM(response.body);
 
-		expect(response.body).toEqual(
+		expect(body).toEqual(
 			expect.stringContaining(
 				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 			)
 		);
-		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
-		expect(isHtml(response.body)).toBe(true);
+		expect(body).not.toEqual(expect.stringMatching(artifacts));
+		expect(isHtml(body)).toBe(true);
 		expect(dom.window.document.querySelectorAll("img")).toHaveLength(0);
-		expect(response.docLocation).toEqual(
+		expect(docLocation).toEqual(
 			expect.objectContaining({
 				directory: expect.any(String),
 				rtf: expect.any(String),
 				id: expect.any(String),
 			})
 		);
-		expect(fs.existsSync(response.docLocation.rtf)).toBe(false);
+		expect(fs.existsSync(docLocation.rtf)).toBe(false);
 		expect(fs.existsSync(config.unrtf.tempDir)).toBe(true);
 	});
 

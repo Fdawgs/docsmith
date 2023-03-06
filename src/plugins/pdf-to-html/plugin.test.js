@@ -2,6 +2,7 @@
 const fs = require("fs");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
+const { JSDOM } = require("jsdom");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
@@ -48,7 +49,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 	});
 
 	test("Should convert PDF file to HTML and place in specified directory", async () => {
-		let response = await server.inject({
+		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await fs.promises.readFile(
@@ -63,26 +64,27 @@ describe("PDF-to-HTML conversion plugin", () => {
 			},
 		});
 
-		response = JSON.parse(response.payload);
+		const { body, docLocation } = JSON.parse(response.payload);
+		const dom = new JSDOM(body);
 
-		expect(response.body).toEqual(
-			expect.stringContaining("for&nbsp;England")
-		);
-		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
-		expect(isHtml(response.body)).toBe(true);
-		expect(response.docLocation).toEqual(
+		expect(body).toEqual(expect.stringContaining("for&nbsp;England"));
+		expect(body).not.toEqual(expect.stringMatching(artifacts));
+		expect(isHtml(body)).toBe(true);
+		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);
+		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
+		expect(docLocation).toEqual(
 			expect.objectContaining({
 				directory: expect.any(String),
 				html: expect.any(String),
 				id: expect.any(String),
 			})
 		);
-		expect(fs.existsSync(response.docLocation.html)).toBe(false);
+		expect(fs.existsSync(docLocation.html)).toBe(false);
 		expect(fs.existsSync(config.poppler.tempDir)).toBe(true);
 	});
 
 	test("Should ignore invalid `test` query string params and convert PDF file to HTML", async () => {
-		let response = await server.inject({
+		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			query: {
@@ -99,21 +101,22 @@ describe("PDF-to-HTML conversion plugin", () => {
 			},
 		});
 
-		response = JSON.parse(response.payload);
+		const { body, docLocation } = JSON.parse(response.payload);
+		const dom = new JSDOM(body);
 
-		expect(response.body).toEqual(
-			expect.stringContaining("for&nbsp;England")
-		);
-		expect(response.body).not.toEqual(expect.stringMatching(artifacts));
-		expect(isHtml(response.body)).toBe(true);
-		expect(response.docLocation).toEqual(
+		expect(body).toEqual(expect.stringContaining("for&nbsp;England"));
+		expect(body).not.toEqual(expect.stringMatching(artifacts));
+		expect(isHtml(body)).toBe(true);
+		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);
+		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
+		expect(docLocation).toEqual(
 			expect.objectContaining({
 				directory: expect.any(String),
 				html: expect.any(String),
 				id: expect.any(String),
 			})
 		);
-		expect(fs.existsSync(response.docLocation.html)).toBe(false);
+		expect(fs.existsSync(docLocation.html)).toBe(false);
 		expect(fs.existsSync(config.poppler.tempDir)).toBe(true);
 	});
 
