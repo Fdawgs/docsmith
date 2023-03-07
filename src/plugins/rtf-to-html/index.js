@@ -127,7 +127,7 @@ async function plugin(server, options) {
 			/* istanbul ignore if: dependant on UnRTF version used */
 			if (images.length > 0) {
 				await Promise.all(
-					Array.from(images).map((image) => {
+					Array.from(images, (image) => {
 						const { src } = image;
 						image.remove();
 						/**
