@@ -74,7 +74,7 @@ async function plugin(server, options) {
 				 * would overwrite the first request's image and that image would be embedded
 				 * into both HTML documents.
 				 *
-				 * We wouldn't want to add one patient's image to another patient's document.
+				 * We wouldn't want to add one patient's image to another patient's document
 				 */
 				noPictures: true,
 				outputHtml: true,
@@ -121,7 +121,7 @@ async function plugin(server, options) {
 			 * UnRTF generates the image name as `pict001.wmf`, `pict002.wmf`, and so on.
 			 * This means files can be safely removed from the cwd without running the
 			 * risk of removing any important files such as `package.json`, should an image
-			 * ever have the same name.
+			 * ever have the same name
 			 */
 			const images = dom.window.document.querySelectorAll("img");
 			/* istanbul ignore if: dependant on UnRTF version used */
@@ -133,7 +133,7 @@ async function plugin(server, options) {
 						/**
 						 * `rm()` used instead of `unlink()` because concurrent requests may create duplicate files,
 						 * which could cause `unlink()` to throw an ENOENT error if the file has already been removed
-						 * by another request's call of this hook.
+						 * by another request's call of this hook
 						 */
 						return fs.rm(path.joinSafe(process.cwd(), src), {
 							force: true,
