@@ -718,10 +718,11 @@ describe("Server deployment", () => {
 				},
 			},
 		];
-		corsTests.forEach((testObject) => {
-			describe(`${testObject.testName}`, () => {
+		describe.each(corsTests)(
+			"$testName",
+			({ envVariables, expected, request }) => {
 				beforeAll(async () => {
-					Object.assign(process.env, testObject.envVariables);
+					Object.assign(process.env, envVariables);
 					config = await getConfig();
 
 					server = Fastify();
@@ -742,26 +743,26 @@ describe("Server deployment", () => {
 							url: "/admin/healthcheck",
 							headers: {
 								accept: "text/plain",
-								origin: testObject.request.headers.origin,
+								origin: request.headers.origin,
 							},
 						});
 
 						expect(response.payload).toBe("ok");
 						expect(response.headers).toEqual(
-							testObject.expected.response.headers.text
+							expected.response.headers.text
 						);
 						expect(response.statusCode).toBe(200);
 					});
 
 					// Only applicable if CORS enabled
-					if (testObject.envVariables.CORS_ORIGIN) {
+					if (envVariables.CORS_ORIGIN) {
 						test("Should return response to CORS preflight request", async () => {
 							const response = await server.inject({
 								method: "OPTIONS",
 								url: "/admin/healthcheck",
 								headers: {
 									"access-control-request-method": "GET",
-									origin: testObject.request.headers.origin,
+									origin: request.headers.origin,
 								},
 							});
 
@@ -772,9 +773,9 @@ describe("Server deployment", () => {
 									process.env.CORS_ALLOWED_HEADERS,
 								"access-control-allow-methods": "GET, HEAD",
 								"access-control-allow-origin":
-									testObject.envVariables.CORS_ORIGIN === "*"
+									envVariables.CORS_ORIGIN === "*"
 										? "*"
-										: testObject.request.headers.origin,
+										: request.headers.origin,
 								"access-control-max-age": String(
 									process.env.CORS_MAX_AGE
 								),
@@ -791,7 +792,7 @@ describe("Server deployment", () => {
 							url: "/admin/healthcheck",
 							headers: {
 								accept: "application/javascript",
-								origin: testObject.request.headers.origin,
+								origin: request.headers.origin,
 							},
 						});
 
@@ -801,7 +802,7 @@ describe("Server deployment", () => {
 							statusCode: 406,
 						});
 						expect(response.headers).toEqual(
-							testObject.expected.response.headers.json
+							expected.response.headers.json
 						);
 						expect(response.statusCode).toBe(406);
 					});
@@ -814,7 +815,7 @@ describe("Server deployment", () => {
 							url: "/invalid",
 							headers: {
 								accept: "application/json",
-								origin: testObject.request.headers.origin,
+								origin: request.headers.origin,
 							},
 						});
 
@@ -829,8 +830,8 @@ describe("Server deployment", () => {
 						expect(response.statusCode).toBe(404);
 					});
 				});
-			});
-		});
+			}
+		);
 	});
 
 	describe("API documentation", () => {
