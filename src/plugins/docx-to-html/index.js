@@ -42,7 +42,7 @@ async function plugin(server) {
 			).serialize();
 
 			res.type("text/html; charset=utf-8");
-		} catch (err) {
+		} catch {
 			/**
 			 * Mammoth will throw if the .docx file provided
 			 * by client is malformed, thus client error code

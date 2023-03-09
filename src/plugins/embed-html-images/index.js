@@ -24,13 +24,13 @@ async function plugin(server, options) {
 		const directory = path.normalizeTrim(options.tempDir);
 
 		await Promise.all(
-			Array.from(images).map((element) => {
-				const imgForm = path.extname(element.src).substring(1);
+			Array.from(images, (image) => {
+				const imgForm = path.extname(image.src).substring(1);
 
 				return fs
-					.readFile(path.joinSafe(directory, element.src), "base64")
+					.readFile(path.joinSafe(directory, image.src), "base64")
 					.then((imageAsBase64) =>
-						element.setAttribute(
+						image.setAttribute(
 							"src",
 							`data:image/${imgForm};base64,${imageAsBase64}`
 						)
