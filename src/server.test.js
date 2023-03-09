@@ -838,9 +838,6 @@ describe("Server deployment", () => {
 		let config;
 		let server;
 
-		let browser;
-		let page;
-
 		beforeAll(async () => {
 			Object.assign(process.env, {
 				HOST: "localhost",
@@ -898,17 +895,16 @@ describe("Server deployment", () => {
 		});
 
 		describe("Frontend", () => {
-			afterEach(async () => {
-				await page.close();
-				await browser.close();
-			});
-
 			// Webkit not tested as it is flakey in context of Playwright
-			const browsers = [chromium, firefox];
-			browsers.forEach((browserType) => {
-				test(`Should render docs page without error components - ${browserType.name()}`, async () => {
-					browser = await browserType.launch();
-					page = await browser.newPage();
+			// TODO: use `test.concurrent.each()` once it is no longer experimental
+			test.each([
+				{ browser: chromium, name: "Chromium" },
+				{ browser: firefox, name: "Firefox" },
+			])(
+				"Should render docs page without error components - $name",
+				async ({ browser }) => {
+					const browserType = await browser.launch();
+					const page = await browserType.newPage();
 
 					await page.goto("http://localhost:3000/docs");
 					expect(await page.title()).toBe("Docsmith | Documentation");
@@ -922,8 +918,11 @@ describe("Server deployment", () => {
 					expect(await heading.textContent()).not.toEqual(
 						expect.stringMatching(/something\s*went\s*wrong/i)
 					);
-				});
-			});
+
+					await page.close();
+					await browserType.close();
+				}
+			);
 		});
 	});
 
