@@ -56,7 +56,7 @@ async function plugin(server, options) {
 				await worker.loadLanguage(options.languages);
 				await worker.initialize(options.languages);
 				await worker.setParameters(workerParams);
-				scheduler.addWorker(worker);
+				return scheduler.addWorker(worker);
 			})
 	);
 
