@@ -47,11 +47,10 @@ async function plugin(server) {
 
 		// Combine style elements into single element
 		const combinedStyle = dom.window.document.createElement("style");
-		styles.forEach((style) => {
-			const element = style;
-			combinedStyle.innerHTML += element.innerHTML;
-			element.remove();
-		});
+		combinedStyle.innerHTML = Array.from(styles, (style) => {
+			style.remove();
+			return style.innerHTML;
+		}).join("");
 
 		const styleObj = CSSOM.parse(combinedStyle.innerHTML);
 		styleObj.cssRules.forEach((styleRule) => {
