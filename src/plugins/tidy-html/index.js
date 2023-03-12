@@ -47,8 +47,7 @@ async function plugin(server) {
 		 * As such, alt attributes in <img> tags are set to an empty string rather than removed here
 		 */
 		if (options?.removeAlt === true) {
-			const images = dom.window.document.querySelectorAll("img");
-			images.forEach((element) => {
+			dom.window.document.querySelectorAll("img").forEach((element) => {
 				element.setAttribute("alt", "");
 			});
 		}
