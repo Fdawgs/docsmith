@@ -41,9 +41,8 @@ async function route(server, options) {
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 			) {
 				throw server.httpErrors.unsupportedMediaType();
-			} else {
-				return payload;
 			}
+			return payload;
 		}
 	);
 
