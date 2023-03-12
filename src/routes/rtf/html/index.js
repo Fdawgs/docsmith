@@ -41,9 +41,8 @@ async function route(server, options) {
 				results.mime !== "application/rtf"
 			) {
 				throw server.httpErrors.unsupportedMediaType();
-			} else {
-				return payload;
 			}
+			return payload;
 		}
 	);
 

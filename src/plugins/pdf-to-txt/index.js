@@ -153,12 +153,11 @@ async function plugin(server, options) {
 				 * Poppler will throw if the .pdf file provided
 				 * by client is malformed, thus client error code
 				 */
-				/* istanbul ignore else: unable to test unknown errors */
 				if (/Syntax Error:/.test(err)) {
 					throw server.httpErrors.badRequest();
-				} else {
-					throw err;
 				}
+				/* istanbul ignore next: unable to test unknown errors */
+				throw err;
 			}
 
 			// glob sorts files alphabetically
@@ -194,12 +193,11 @@ async function plugin(server, options) {
 				 * Poppler will throw if the .pdf file provided
 				 * by client is malformed, thus client error code
 				 */
-				/* istanbul ignore else: unable to test unknown errors */
 				if (/Syntax Error:/.test(err)) {
 					throw server.httpErrors.badRequest();
-				} else {
-					throw err;
 				}
+				/* istanbul ignore next: unable to test unknown errors */
+				throw err;
 			}
 		}
 

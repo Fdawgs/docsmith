@@ -156,12 +156,11 @@ async function plugin(server, options) {
 			 * UnRTF will throw if the .rtf file provided
 			 * by client is malformed, thus client error code
 			 */
-			/* istanbul ignore else: unable to test unknown errors */
 			if (/File is not the correct media type/.test(err)) {
 				throw server.httpErrors.badRequest();
-			} else {
-				throw err;
 			}
+			/* istanbul ignore next: unable to test unknown errors */
+			throw err;
 		}
 
 		res.type("text/html");
