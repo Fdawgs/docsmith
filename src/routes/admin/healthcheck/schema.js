@@ -1,6 +1,6 @@
 const S = require("fluent-json-schema");
 
-const tags = ["System Administration"];
+const tags = ["System administration"];
 
 /**
  * Fastify uses AJV for JSON Schema Validation,
