@@ -29,15 +29,14 @@ async function plugin(server) {
 
 		// Set document language if valid IANA language tag and subtag
 		const language = options?.language || "en";
-		if (check(language)) {
-			const innerHtml = dom.window.document.querySelector("html");
-			innerHtml.setAttribute("lang", language);
-			innerHtml.setAttribute("xml:lang", language);
-		} else {
+		if (!check(language)) {
 			throw server.httpErrors.badRequest(
 				"querystring.language not a valid IANA language tag"
 			);
 		}
+		const innerHtml = dom.window.document.querySelector("html");
+		innerHtml.setAttribute("lang", language);
+		innerHtml.setAttribute("xml:lang", language);
 
 		/**
 		 * When an alt attribute is not present in an <img> tag, screen readers may announce the image's file name instead.
