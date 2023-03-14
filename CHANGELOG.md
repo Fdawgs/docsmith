@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.10](https://github.com/Fdawgs/docsmith/compare/v10.0.9...v10.0.10) (2023-03-14)
+
+
+### Documentation
+
+* **readme:** replace nhs digital mention with nhs england ([61650c8](https://github.com/Fdawgs/docsmith/commit/61650c8b8290fa309b2863bc7aa958fdb7d85efb))
+
+
+### Miscellaneous
+
+* ignore bun lockfile ([#1308](https://github.com/Fdawgs/docsmith/issues/1308)) ([fe37840](https://github.com/Fdawgs/docsmith/commit/fe378405ed490a347842bea33b1f646a4eb0bff1))
+* **package:** add funding url ([f953f5b](https://github.com/Fdawgs/docsmith/commit/f953f5bc8fb3b525adab223f21bb3d9bbaef7224))
+* **plugins/rtf-to-html:** remove trailing punctuation mark ([170e00d](https://github.com/Fdawgs/docsmith/commit/170e00dca4bdc3a0f899a6702655dac35ee7a7eb))
+* **routes/admin/healthcheck:** sentence case of tags ([#1321](https://github.com/Fdawgs/docsmith/issues/1321)) ([8d02b89](https://github.com/Fdawgs/docsmith/commit/8d02b89168e1723911b6d56daf88ce2b9d120bbe))
+
+
+### Improvements
+
+* **plugins/image-to-txt:** return worker ([#1315](https://github.com/Fdawgs/docsmith/issues/1315)) ([d858b4c](https://github.com/Fdawgs/docsmith/commit/d858b4c0de1e469f886935dc647ce0eb2be3ef0f))
+* **plugins/tidy-css:** remove useless var reassignment ([#1318](https://github.com/Fdawgs/docsmith/issues/1318)) ([2b6897e](https://github.com/Fdawgs/docsmith/commit/2b6897e08013a1f4eaa4edda472373ab8615da17))
+* **plugins/tidy-html:** remove `else` blocks after throw ([#1322](https://github.com/Fdawgs/docsmith/issues/1322)) ([b1af9bd](https://github.com/Fdawgs/docsmith/commit/b1af9bd7fd3440dcb69ff49bd0098ed3d5f99659))
+* **plugins/tidy-html:** remove unused var assignment ([5369a6b](https://github.com/Fdawgs/docsmith/commit/5369a6b7ff4d08f2d53825333c0f2828f64d8207))
+* **plugins:** remove unused exception variables ([4fcdf75](https://github.com/Fdawgs/docsmith/commit/4fcdf757107e70f6156e832b0498e13db20aac75))
+* **plugins:** use `array.from()` mapfn to stop intermediate array init ([95ac3b3](https://github.com/Fdawgs/docsmith/commit/95ac3b36859f555143f41108c87e1dd5c119b2ea))
+* remove unnecessary `else` blocks after throws ([#1317](https://github.com/Fdawgs/docsmith/issues/1317)) ([e79699e](https://github.com/Fdawgs/docsmith/commit/e79699e681a276c86ad47a80d97d35479973a2c9))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 8.35.0 to 8.36.0 ([#1329](https://github.com/Fdawgs/docsmith/issues/1329)) ([d432de1](https://github.com/Fdawgs/docsmith/commit/d432de18e6c7906370b92bc833f83423da7350d6))
+* **deps-dev:** bump eslint-config-prettier from 8.6.0 to 8.7.0 ([#1328](https://github.com/Fdawgs/docsmith/issues/1328)) ([06e4a2e](https://github.com/Fdawgs/docsmith/commit/06e4a2ebe0d15f984efaa9e0e045896abc388600))
+* **deps-dev:** bump eslint-plugin-jsdoc from 40.0.1 to 40.0.2 ([#1330](https://github.com/Fdawgs/docsmith/issues/1330)) ([cddcf56](https://github.com/Fdawgs/docsmith/commit/cddcf56f2593fdf77add1d868a3f279ba8b3f807))
+* **deps-dev:** bump jest from 29.4.3 to 29.5.0 ([#1327](https://github.com/Fdawgs/docsmith/issues/1327)) ([9c2254a](https://github.com/Fdawgs/docsmith/commit/9c2254a7e92dc43a1114f12ac7c64ca7f73d1bfc))
+* **deps-dev:** bump pino-pretty from 9.4.0 to 10.0.0 ([#1324](https://github.com/Fdawgs/docsmith/issues/1324)) ([f594fc8](https://github.com/Fdawgs/docsmith/commit/f594fc8020f8d53aea429f08ccb942e94fadf66c))
+* **deps:** bump fastify from 4.14.0 to 4.14.1 ([#1325](https://github.com/Fdawgs/docsmith/issues/1325)) ([fa8ffeb](https://github.com/Fdawgs/docsmith/commit/fa8ffeb86497036af182f63fe21ee72d8da71a74))
+* **deps:** bump glob from 9.1.0 to 9.2.1 ([#1303](https://github.com/Fdawgs/docsmith/issues/1303)) ([b473e01](https://github.com/Fdawgs/docsmith/commit/b473e01bdb1cf75786fd3390e1619e780c174d0f))
+* **deps:** bump htmltidy2 from 1.0.1 to 1.1.1 ([#1326](https://github.com/Fdawgs/docsmith/issues/1326)) ([245dbca](https://github.com/Fdawgs/docsmith/commit/245dbca48680c4cfc6f5353b5ee766b23c06455d))
+* **deps:** bump jsdom from 21.1.0 to 21.1.1 ([#1323](https://github.com/Fdawgs/docsmith/issues/1323)) ([81b3a60](https://github.com/Fdawgs/docsmith/commit/81b3a6022c152767656c5617a7d4ca04b37bc1c5))
+
 ## [10.0.9](https://github.com/Fdawgs/docsmith/compare/v10.0.8...v10.0.9) (2023-03-03)
 
 
