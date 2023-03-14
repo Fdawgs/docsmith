@@ -118,7 +118,7 @@
 		"html-minifier-terser": "^7.1.0",
 		"html-to-text": "^9.0.4",
 		"htmltidy2": "^1.0.1",
-		"jsdom": "^21.1.0",
+		"jsdom": "^21.1.1",
 		"language-tags": "^1.0.8",
 		"mammoth": "^1.5.1",
 		"node-poppler": "^6.2.0",
