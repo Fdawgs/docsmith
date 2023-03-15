@@ -21,7 +21,7 @@
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
-		"lint:licenses": "license-checker --direct --excludePackages=\"caniuse-lite@1.0.30001458;duck@0.1.12;language-subtag-registry@0.3.22;tesseract.js-core@4.0.2;path-scurry@1.6.1;url-template@2.0.8\" --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Python-2.0;Unlicense\" --production --summary",
+		"lint:licenses": " node scripts/license-checker.js",
 		"lint:prettier": "prettier . -w -u",
 		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",
@@ -86,7 +86,8 @@
 		"nodemon": "^2.0.21",
 		"pino-pretty": "^10.0.0",
 		"playwright": "^1.31.2",
-		"prettier": "^2.8.4"
+		"prettier": "^2.8.4",
+		"spdx-copyleft": "^1.0.0"
 	},
 	"dependencies": {
 		"@fastify/accepts": "^4.1.0",
