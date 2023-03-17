@@ -186,6 +186,11 @@ async function plugin(server, config) {
 
 		// Errors thrown by routes and plugins are caught here
 		.setErrorHandler(async (err, _req, res) => {
+			/**
+			 * Catch 5xx errors, log them, and return a generic 500
+			 * response. This avoids leaking internal server error details
+			 * to the client
+			 */
 			if (
 				(err.statusCode >= 500 &&
 					/* istanbul ignore next: under-pressure plugin throws valid 503s */
@@ -197,7 +202,7 @@ async function plugin(server, config) {
 				(res.statusCode === 200 && !err.statusCode)
 			) {
 				res.log.error(err);
-				return res.internalServerError();
+				throw server.httpErrors.internalServerError();
 			}
 
 			throw err;
