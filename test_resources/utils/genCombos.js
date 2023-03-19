@@ -1,7 +1,7 @@
-/* eslint-disable security/detect-object-injection */
 const btPowerSetRecursive = require("./btPowerSet");
 
 /**
+ * @author Frazer Smith
  * @description Utility function to generate unique combinations when provided with an
  * array of objects
  * @param {Array.<object>} originalSet - Array of objects.
@@ -10,39 +10,14 @@ const btPowerSetRecursive = require("./btPowerSet");
 function generateCombos(originalSet) {
 	const powerSet = btPowerSetRecursive(originalSet);
 
-	let reducedPowerSet = [];
+	// Combine resulting array of arrays of objects from `btPowerSetRecursive()`
+	// into a single array of combined objects
+	const reducedPowerSet = powerSet.map((subset) =>
+		subset.reduce((acc, cur) => ({ ...acc, ...cur }), {})
+	);
 
-	// Combine resulting array of objects from `btPowerSetRecursive()`
-	powerSet.forEach((assArray) => {
-		reducedPowerSet.push(
-			JSON.stringify(
-				assArray.reduce((previousValue, currentValue) => {
-					const result = previousValue;
-					Object.keys(currentValue).forEach((key) => {
-						if (
-							Object.prototype.hasOwnProperty.call(
-								currentValue,
-								key
-							)
-						) {
-							result[key] = currentValue[key];
-						}
-					});
-
-					return result;
-				}, {})
-			)
-		);
-	});
-
-	// Remove duplicate objects
-	const powerSetSet = new Set(reducedPowerSet);
-	reducedPowerSet = [];
-	powerSetSet.forEach((obj) => {
-		reducedPowerSet.push(JSON.parse(obj));
-	});
-
-	return reducedPowerSet;
+	// Remove duplicates and return
+	return [...new Set(reducedPowerSet)];
 }
 
 module.exports = generateCombos;
