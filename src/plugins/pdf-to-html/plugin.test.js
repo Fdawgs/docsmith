@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
-const fs = require("fs");
+const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
@@ -43,7 +43,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 
 	afterAll(async () => {
 		await Promise.all([
-			fs.promises.rm(config.poppler.tempDir, { recursive: true }),
+			fs.rm(config.poppler.tempDir, { recursive: true }),
 			server.close(),
 		]);
 	});
@@ -52,7 +52,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.promises.readFile(
+			body: await fs.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
@@ -79,8 +79,10 @@ describe("PDF-to-HTML conversion plugin", () => {
 				id: expect.any(String),
 			})
 		);
-		expect(fs.existsSync(docLocation.html)).toBe(false);
-		expect(fs.existsSync(config.poppler.tempDir)).toBe(true);
+		await expect(fs.readFile(docLocation.html)).rejects.toThrow();
+		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
+			0
+		);
 	});
 
 	test("Should ignore invalid `test` query string params and convert PDF file to HTML", async () => {
@@ -93,7 +95,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 				lastPageToConvert: 2,
 				test: "test",
 			},
-			body: await fs.promises.readFile(
+			body: await fs.readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			headers: {
@@ -116,8 +118,10 @@ describe("PDF-to-HTML conversion plugin", () => {
 				id: expect.any(String),
 			})
 		);
-		expect(fs.existsSync(docLocation.html)).toBe(false);
-		expect(fs.existsSync(config.poppler.tempDir)).toBe(true);
+		await expect(fs.readFile(docLocation.html)).rejects.toThrow();
+		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
+			0
+		);
 	});
 
 	test("Should return HTTP status code 400 if PDF file is missing", async () => {
@@ -141,7 +145,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.promises.readFile(
+			body: await fs.readFile(
 				"./test_resources/test_files/invalid_pdf.pdf"
 			),
 			headers: {
