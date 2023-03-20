@@ -28,7 +28,7 @@ async function plugin(server) {
 		const dom = new JSDOM(html);
 
 		// Set document language if valid IANA language tag and subtag
-		const language = options?.language || "en";
+		const language = options.language || "en";
 		if (!check(language)) {
 			throw server.httpErrors.badRequest(
 				"querystring.language not a valid IANA language tag"
@@ -45,7 +45,7 @@ async function plugin(server) {
 		 *
 		 * As such, alt attributes in <img> tags are set to an empty string rather than removed here
 		 */
-		if (options?.removeAlt === true) {
+		if (options.removeAlt === true) {
 			dom.window.document.querySelectorAll("img").forEach((element) => {
 				element.setAttribute("alt", "");
 			});

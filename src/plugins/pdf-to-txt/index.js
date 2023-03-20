@@ -79,7 +79,7 @@ async function plugin(server, options) {
 	 * cancelled request temp data is also removed
 	 */
 	server.addHook("onSend", async (req, _res, payload) => {
-		if (req?.conversionResults?.docLocation) {
+		if (req.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = await glob(
 				`${path.joinSafe(
@@ -125,7 +125,7 @@ async function plugin(server, options) {
 		 * image-to-txt plugin adds the "tesseract" decorator to server instance,
 		 * if this is missing then OCR is not supported
 		 */
-		if (query?.ocr === true && server.tesseract) {
+		if (query.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
 			Object.keys(query).forEach((value) => {
 				if (!pdfToCairoAcceptedParams.includes(value)) {
