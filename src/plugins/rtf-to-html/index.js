@@ -103,7 +103,8 @@ async function plugin(server, options) {
 			rtf: tempFile,
 			id,
 		};
-		await fs.writeFile(tempFile, req.body);
+		// 0600 permissions (read/write for owner only)
+		await fs.writeFile(tempFile, req.body, { mode: 0o600 });
 
 		try {
 			// Add title to document
