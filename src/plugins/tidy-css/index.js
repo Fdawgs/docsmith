@@ -26,15 +26,10 @@ async function plugin(server) {
 		const dom = new JSDOM(html);
 		let styles = dom.window.document.querySelectorAll("style");
 
-		let newBackgroundColor;
-		if (options.backgroundColor) {
-			newBackgroundColor = String(options.backgroundColor);
-		}
-
-		let newFonts;
-		if (options.fonts) {
-			newFonts = String(options.fonts);
-		}
+		const newBackgroundColor = options.backgroundColor
+			? String(options.backgroundColor)
+			: undefined;
+		const newFonts = options.fonts ? String(options.fonts) : undefined;
 
 		// Create style element inside head if none already exist
 		if (styles.length === 0 && (newFonts || newBackgroundColor)) {
@@ -87,12 +82,12 @@ async function plugin(server) {
 				);
 			}
 
-			/**
-			 * Stop pages overrunning the next page, leading to overlapping text.
-			 * "page-break-inside" is a legacy property, replaced by "break-inside".
-			 * "page-break-inside" should be treated by browsers as an alias of "break-inside"
-			 */
 			if (styleRule.selectorText.substring(0, 3) === "div") {
+				/**
+				 * Stop pages overrunning the next page, leading to overlapping text.
+				 * "page-break-inside" is a legacy property, replaced by "break-inside".
+				 * "page-break-inside" should be treated by browsers as an alias of "break-inside"
+				 */
 				styleRule.style.setProperty("page-break-inside", "avoid");
 
 				// Replace default color
