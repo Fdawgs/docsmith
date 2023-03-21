@@ -87,12 +87,12 @@ async function plugin(server) {
 				);
 			}
 
-			/**
-			 * Stop pages overrunning the next page, leading to overlapping text.
-			 * "page-break-inside" is a legacy property, replaced by "break-inside".
-			 * "page-break-inside" should be treated by browsers as an alias of "break-inside"
-			 */
 			if (styleRule.selectorText.substring(0, 3) === "div") {
+				/**
+				 * Stop pages overrunning the next page, leading to overlapping text.
+				 * "page-break-inside" is a legacy property, replaced by "break-inside".
+				 * "page-break-inside" should be treated by browsers as an alias of "break-inside"
+				 */
 				styleRule.style.setProperty("page-break-inside", "avoid");
 
 				// Replace default color
