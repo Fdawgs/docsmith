@@ -14,7 +14,7 @@ const parseString = require("../../utils/parse-string");
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Poppler to convert Buffer containing
- * PDF file in `req.body` to HTML and places HTML file in a temporary directory.
+ * PDF file in `req.body` to HTML and places HTML file in a temp directory.
  * `req` object is decorated with `conversionResults` object detailing document
  * location and contents.
  * @param {object} server - Fastify instance.
@@ -25,7 +25,7 @@ const parseString = require("../../utils/parse-string");
  * for options.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
- * @param {string} [options.tempFilePrefix="docsmith_pdf-to-html"] - Prefix for temporary file names.
+ * @param {string} [options.tempFilePrefix="docsmith_pdf-to-html"] - Prefix for temp file names.
  */
 async function plugin(server, options) {
 	const directory = path.normalizeTrim(options.tempDir);
@@ -112,12 +112,18 @@ async function plugin(server, options) {
 		});
 		Object.assign(config.pdfToHtmlOptions, query);
 
-		// Build temporary file for Poppler to write to, and following plugins to read from
+		// Build temp file pattern for Poppler to use for output
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, id);
+
+		/**
+		 * Create document location object for use by following plugins/hooks
+		 * for clean up and auditing purposes
+		 */
 		req.conversionResults.docLocation = {
 			directory,
-			html: tempFile,
+			// Poppler appends `-html` to the file name
+			html: `${tempFile}-html.html`,
 			id,
 		};
 
@@ -142,7 +148,7 @@ async function plugin(server, options) {
 
 		/**
 		 * Remove excess title and meta elements left behind by Poppler;
-		 * Poppler appends `-html` to the file name, thus the template literal here
+		 * Poppler appends `-html` to the file name
 		 */
 		const dom = new JSDOM(
 			await fs.readFile(`${tempFile}-html.html`, {

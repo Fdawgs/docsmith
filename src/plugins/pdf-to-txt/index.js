@@ -22,7 +22,7 @@ const parseString = require("../../utils/parse-string");
  * for options.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion. Required for OCR.
- * @param {string} [options.tempFilePrefix="docsmith_pdf-to-txt"] - Prefix for temporary file names.
+ * @param {string} [options.tempFilePrefix="docsmith_pdf-to-txt"] - Prefix for temp file names.
  */
 async function plugin(server, options) {
 	const directory = path.normalizeTrim(options.tempDir);
@@ -133,9 +133,14 @@ async function plugin(server, options) {
 				}
 			});
 
-			// Build temporary file for Poppler to write to, and following plugins to read from
+			// Build temp file pattern for Poppler to use for output
 			const id = `${config.tempFilePrefix}_${randomUUID()}`;
 			const tempFile = path.joinSafe(directory, id);
+
+			/**
+			 * Create document location object for use by following plugins/hooks
+			 * for clean up and auditing purposes
+			 */
 			req.conversionResults.docLocation = {
 				directory,
 				id,
