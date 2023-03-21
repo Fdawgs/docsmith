@@ -122,7 +122,8 @@ async function plugin(server, options) {
 		 */
 		req.conversionResults.docLocation = {
 			directory,
-			html: tempFile,
+			// Poppler appends `-html` to the file name
+			html: `${tempFile}-html.html`,
 			id,
 		};
 
