@@ -11,7 +11,7 @@ const { randomUUID } = require("crypto");
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses UnRTF to convert Buffer containing
- * RTF file in `req.body` to HTML and places RTF file in a temporary directory.
+ * RTF file in `req.body` to HTML and places RTF file in a temp directory.
  * `req` object is decorated with `conversionResults` object detailing document
  * location and contents.
  * @param {object} server - Fastify instance.
@@ -22,7 +22,7 @@ const { randomUUID } = require("crypto");
  * for options.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
- * @param {string} [options.tempFilePrefix="docsmith_rtf-to-html"] - Prefix for temporary file names.
+ * @param {string} [options.tempFilePrefix="docsmith_rtf-to-html"] - Prefix for temp file names.
  */
 async function plugin(server, options) {
 	const directory = path.normalizeTrim(options.tempDir);
@@ -95,16 +95,21 @@ async function plugin(server, options) {
 				"$1"
 			);
 
-		// Build temporary file for UnRTF to write to, and following plugins to read from
+		// Build temp RTF file for UnRTF to read from
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
+		// 0600 permissions (read/write for owner only)
+		await fs.writeFile(tempFile, req.body, { mode: 0o600 });
+
+		/**
+		 * Create document location object for use by following plugins/hooks
+		 * for clean up and auditing purposes
+		 */
 		req.conversionResults.docLocation = {
 			directory,
 			rtf: tempFile,
 			id,
 		};
-		// 0600 permissions (read/write for owner only)
-		await fs.writeFile(tempFile, req.body, { mode: 0o600 });
 
 		try {
 			// Add title to document
