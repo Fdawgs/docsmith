@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.11](https://github.com/Fdawgs/docsmith/compare/v10.0.10...v10.0.11) (2023-03-21)
+
+
+### Improvements
+
+* remove optional chaining for first level properties ([#1338](https://github.com/Fdawgs/docsmith/issues/1338)) ([1b14dc7](https://github.com/Fdawgs/docsmith/commit/1b14dc7784f60db7d04294f7fea311521031b738))
+
+
+### Bug fixes
+
+* **plugins/pdf-to-html:** `docLocation.html` filename ([1d02c00](https://github.com/Fdawgs/docsmith/commit/1d02c00f6e4f5f1972657a76494063a755d429b2))
+* **plugins/rtf-to-html:** restrict temp file permissions ([#1339](https://github.com/Fdawgs/docsmith/issues/1339)) ([fa32bbc](https://github.com/Fdawgs/docsmith/commit/fa32bbc4f92318fb815fe145448d9d3410af65c6))
+* **server:** premature closes crashing server ([3f623f0](https://github.com/Fdawgs/docsmith/commit/3f623f0397df78701422fb9771dce5137c785c95))
+
+
+### Miscellaneous
+
+* **plugins/tidy-css:** correct inline comment location ([665ea00](https://github.com/Fdawgs/docsmith/commit/665ea00a42ea42754e646ceb2d6f7c1da99f11a0))
+* **plugins/tidy-css:** use ternary operator over if...else statement ([2f06fdb](https://github.com/Fdawgs/docsmith/commit/2f06fdb6ee90d4e0f26d61dae135431dc529d3f9))
+* **plugins:** add inline comment for `docLocation` object purpose ([28e196a](https://github.com/Fdawgs/docsmith/commit/28e196a03e0409364d5605ca8c538ed97a9f7f5d))
+* **routes:** update schema inline comment re injection attacks ([#1341](https://github.com/Fdawgs/docsmith/issues/1341)) ([a1f99d0](https://github.com/Fdawgs/docsmith/commit/a1f99d01724b6d85ae14a41ca7f75758c78b5125))
+* **scripts:** move esbuild to script dir ([#1334](https://github.com/Fdawgs/docsmith/issues/1334)) ([54ded95](https://github.com/Fdawgs/docsmith/commit/54ded9553a261f5b6507f31e166a4a5b390daca4))
+* **scripts:** remove redundant export ([bca682c](https://github.com/Fdawgs/docsmith/commit/bca682c637e7e0e609110f74838a1fda5a2a7663))
+* **scripts:** sort eslint comments alphabetically ([71e6cf3](https://github.com/Fdawgs/docsmith/commit/71e6cf3ecc98b1102ca213361ef125d1129dc01a))
+* **scripts:** use js script to check licenses ([#1331](https://github.com/Fdawgs/docsmith/issues/1331)) ([85a2ff1](https://github.com/Fdawgs/docsmith/commit/85a2ff1c158a398a4236d88473c2622d9852ae36))
+* **server:** inline comment re internal server error handling ([d5d579f](https://github.com/Fdawgs/docsmith/commit/d5d579f8c707bc49c62bf05d44c11d88b55ebed2))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-config-prettier from 8.7.0 to 8.8.0 ([#1349](https://github.com/Fdawgs/docsmith/issues/1349)) ([3fd863c](https://github.com/Fdawgs/docsmith/commit/3fd863c25af2c2d8a0309c675090ca9be35ceb30))
+* **deps-dev:** bump eslint-plugin-jsdoc from 40.0.2 to 40.1.0 ([#1348](https://github.com/Fdawgs/docsmith/issues/1348)) ([9796730](https://github.com/Fdawgs/docsmith/commit/9796730451c437b925b5f146d3c5c055b34e85ee))
+* **deps-dev:** bump prettier from 2.8.4 to 2.8.6 ([#1345](https://github.com/Fdawgs/docsmith/issues/1345)) ([9adeb98](https://github.com/Fdawgs/docsmith/commit/9adeb98154ff962b4b68252a57f19008beffc57f))
+* **deps:** bump @fastify/cors from 8.2.0 to 8.2.1 ([#1344](https://github.com/Fdawgs/docsmith/issues/1344)) ([7984019](https://github.com/Fdawgs/docsmith/commit/7984019b1e521709e2447d144a968768b229492c))
+* **deps:** bump coverallsapp/github-action from 1.2.4 to 2.0.0 ([#1343](https://github.com/Fdawgs/docsmith/issues/1343)) ([810f276](https://github.com/Fdawgs/docsmith/commit/810f27604cbc2408450d7560d4fe884b259bc579))
+* **deps:** bump fastify from 4.14.1 to 4.15.0 ([#1347](https://github.com/Fdawgs/docsmith/issues/1347)) ([510d8e0](https://github.com/Fdawgs/docsmith/commit/510d8e0a5100a662e798e1e9ee8e4d5352c8cf42))
+* **deps:** bump glob from 9.2.1 to 9.3.1 ([#1346](https://github.com/Fdawgs/docsmith/issues/1346)) ([8cf26b0](https://github.com/Fdawgs/docsmith/commit/8cf26b0206f746f87cc84726ae562a518d4096fa))
+* **deps:** bump webpack from 5.75.0 to 5.76.1 ([#1332](https://github.com/Fdawgs/docsmith/issues/1332)) ([046868c](https://github.com/Fdawgs/docsmith/commit/046868cd92e064386d96648127ed2073ceff94f5))
+
 ## [10.0.10](https://github.com/Fdawgs/docsmith/compare/v10.0.9...v10.0.10) (2023-03-14)
 
 
