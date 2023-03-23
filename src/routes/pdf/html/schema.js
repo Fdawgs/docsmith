@@ -98,6 +98,7 @@ const pdfToHtmlPostSchema = {
 				.description("Sets the encoding to use for text output")
 				// Encodings supported by Poppler
 				.enum([
+					"ASCII7",
 					"Big5",
 					"Big5ascii",
 					"EUC-CN",
@@ -111,12 +112,14 @@ const pdfToHtmlPostSchema = {
 					"ISO-8859-8",
 					"ISO-8859-9",
 					"KOI8-R",
+					"Latin1",
 					"Latin2",
 					"Shift-JIS",
 					"TIS-620",
 					"UTF-8",
 					"UTF-16",
 					"Windows-1255",
+					"ZapfDingbats",
 				])
 		)
 		.prop(
