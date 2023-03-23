@@ -83,10 +83,6 @@ const pdfToTxtPostSchema = {
 			S.number().description("Last page to convert")
 		)
 		.prop(
-			"listEncodingOptions",
-			S.boolean().description("List the available encodings")
-		)
-		.prop(
 			"maintainLayout",
 			S.boolean().description(
 				"Maintain (as best as possible) the original physical layout of the text. The default is to undo physical layout (columns, hyphenation, etc.) and output the text in reading order"
