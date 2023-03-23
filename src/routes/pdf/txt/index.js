@@ -35,11 +35,7 @@ async function route(server, options) {
 			 * this checks for PDF specific magic numbers
 			 */
 			const results = await fromBuffer(payload);
-			if (
-				results === undefined ||
-				results.mime === undefined ||
-				results.mime !== "application/pdf"
-			) {
+			if (results?.mime !== "application/pdf") {
 				throw server.httpErrors.unsupportedMediaType();
 			}
 			return payload;

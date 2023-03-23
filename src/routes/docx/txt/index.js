@@ -35,10 +35,8 @@ async function route(server, options) {
 			 */
 			const results = await fromBuffer(payload);
 			if (
-				results === undefined ||
-				results.mime === undefined ||
-				results.mime !==
-					"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+				results?.mime !==
+				"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 			) {
 				throw server.httpErrors.unsupportedMediaType();
 			}

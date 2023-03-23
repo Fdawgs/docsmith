@@ -35,11 +35,7 @@ async function route(server, options) {
 			 * this checks for RTF specific magic numbers
 			 */
 			const results = await fromBuffer(payload);
-			if (
-				results === undefined ||
-				results.mime === undefined ||
-				results.mime !== "application/rtf"
-			) {
+			if (results?.mime !== "application/rtf") {
 				throw server.httpErrors.unsupportedMediaType();
 			}
 			return payload;
