@@ -20,9 +20,9 @@ updates:
           # Below are deps that have migrate to ESM in their
           # next major version so we can't use them
           - dependency-name: file-type
-            update-types: version-update:semver-major
+            update-types: ["version-update:semver-major"]
           - dependency-name: is-html
-            update-types: version-update:semver-major
+            update-types: ["version-update:semver-major"]
       open-pull-requests-limit: 20
       schedule:
           interval: monthly
