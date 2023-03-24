@@ -147,15 +147,13 @@ async function plugin(server, options) {
 		}
 
 		/**
-		 * Remove excess title and meta elements left behind by Poppler;
+		 * Remove excess title and meta elements created by Poppler
+		 * as it generates a new title and meta element for each page
+		 * of the PDF document.
 		 * Poppler appends `-html` to the file name
 		 */
 		const dom = new JSDOM(await fs.readFile(`${tempFile}-html.html`));
 		const titles = dom.window.document.querySelectorAll("title");
-
-		// Overwrite title set by Poppler, which reveals directories
-		titles[0].innerHTML = id;
-
 		for (let index = 1; index < titles.length; index += 1) {
 			titles[index].parentNode.removeChild(titles[index]);
 		}
@@ -163,6 +161,12 @@ async function plugin(server, options) {
 		for (let index = 1; index < metas.length; index += 1) {
 			metas[index].parentNode.removeChild(metas[index]);
 		}
+
+		/**
+		 * Overwrite title of remaining title element with temp file id,
+		 * as Poppler reveals directory structure in title
+		 */
+		titles[0].innerHTML = id;
 
 		/**
 		 * `fixUtf8` function replaces most common incorrectly converted
