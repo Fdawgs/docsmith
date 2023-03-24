@@ -150,11 +150,7 @@ async function plugin(server, options) {
 		 * Remove excess title and meta elements left behind by Poppler;
 		 * Poppler appends `-html` to the file name
 		 */
-		const dom = new JSDOM(
-			await fs.readFile(`${tempFile}-html.html`, {
-				encoding: config.pdfToHtmlOptions.outputEncoding,
-			})
-		);
+		const dom = new JSDOM(await fs.readFile(`${tempFile}-html.html`));
 		const titles = dom.window.document.querySelectorAll("title");
 
 		// Overwrite title set by Poppler, which reveals directories

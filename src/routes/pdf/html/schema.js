@@ -96,7 +96,31 @@ const pdfToHtmlPostSchema = {
 			S.string()
 				.default("UTF-8")
 				.description("Sets the encoding to use for text output")
-				.pattern(/^[-\w]+$/m)
+				// Encodings supported by Poppler
+				.enum([
+					"ASCII7",
+					"Big5",
+					"Big5ascii",
+					"EUC-CN",
+					"EUC-JP",
+					"GBK",
+					"ISO-2022-CN",
+					"ISO-2022-JP",
+					"ISO-2022-KR",
+					"ISO-8859-6",
+					"ISO-8859-7",
+					"ISO-8859-8",
+					"ISO-8859-9",
+					"KOI8-R",
+					"Latin1",
+					"Latin2",
+					"Shift-JIS",
+					"TIS-620",
+					"UTF-8",
+					"UTF-16",
+					"Windows-1255",
+					"ZapfDingbats",
+				])
 		)
 		.prop(
 			"ownerPassword",
