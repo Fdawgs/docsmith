@@ -60,7 +60,6 @@ async function plugin(server, options) {
 		"fixedWidthLayout",
 		"generateHtmlMetaFile",
 		"lastPageToConvert",
-		"listEncodingOptions",
 		"maintainLayout",
 		"noDiagonalText",
 		"noPageBreaks",
