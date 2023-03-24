@@ -35,7 +35,7 @@ async function plugin(server) {
 		if (styles.length === 0 && (newFonts || newBackgroundColor)) {
 			const element = dom.window.document.createElement("style");
 			element.innerHTML = "div {}";
-			dom.window.document.head.appendChild(element);
+			dom.window.document.head.append(element);
 
 			styles = dom.window.document.querySelectorAll("style");
 		}
@@ -108,7 +108,7 @@ async function plugin(server) {
 
 		// Stop empty <style> element being added
 		if (combinedStyle.innerHTML !== "") {
-			dom.window.document.head.appendChild(combinedStyle);
+			dom.window.document.head.append(combinedStyle);
 		}
 
 		return dom.serialize();
