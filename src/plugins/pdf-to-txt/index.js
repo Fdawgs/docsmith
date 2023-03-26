@@ -178,6 +178,7 @@ async function plugin(server, options) {
 			);
 
 			req.conversionResults.body = results.join(" ");
+			res.type("text/plain; charset=utf-8");
 		} else {
 			// Prune params that pdfToTxt cannot accept
 			Object.keys(query).forEach((value) => {
@@ -205,20 +206,20 @@ async function plugin(server, options) {
 				/* istanbul ignore next: unable to test unknown errors */
 				throw err;
 			}
-		}
 
-		// Certain querystring options alter output to HTML rather than TXT
-		let contentType = "text/plain";
-		if (
-			query.boundingBoxXhtml ||
-			query.boundingBoxXhtmlLayout ||
-			query.generateHtmlMetaFile
-		) {
-			contentType = "text/html";
+			// Certain querystring options alter output to HTML rather than TXT
+			let contentType = "text/plain";
+			if (
+				query.boundingBoxXhtml ||
+				query.boundingBoxXhtmlLayout ||
+				query.generateHtmlMetaFile
+			) {
+				contentType = "text/html";
+			}
+			res.type(
+				`${contentType}; charset=${config.pdfToTxtOptions.outputEncoding.toLowerCase()}`
+			);
 		}
-		res.type(
-			`${contentType}; charset=${config.pdfToTxtOptions.outputEncoding.toLowerCase()}`
-		);
 	});
 }
 
