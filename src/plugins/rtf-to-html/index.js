@@ -99,7 +99,10 @@ async function plugin(server, options) {
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
 		// 0600 permissions (read/write for owner only)
-		await fs.writeFile(tempFile, req.body, { mode: 0o600 });
+		await fs.writeFile(tempFile, req.body, {
+			encoding: "utf8",
+			mode: 0o600,
+		});
 
 		/**
 		 * Create document location object for use by following plugins/hooks
@@ -112,13 +115,16 @@ async function plugin(server, options) {
 		};
 
 		try {
-			// Add title to document
+			// Add meta and title elements to HTML document
 			const dom = new JSDOM(
 				await unrtf.convert(tempFile, config.rtfToHtmlOptions)
 			);
-			const element = dom.window.document.createElement("title");
-			element.innerHTML = id;
-			dom.window.document.head.prepend(element);
+			const meta = dom.window.document.createElement("meta");
+			meta.content = "text/html; charset=utf-8";
+			meta.httpEquiv = "content-type";
+			const title = dom.window.document.createElement("title");
+			title.innerHTML = id;
+			dom.window.document.head.append(meta, title);
 
 			/**
 			 * UnRTF < v0.20.4 ignores `noPictures` option and
@@ -170,7 +176,7 @@ async function plugin(server, options) {
 			throw err;
 		}
 
-		res.type("text/html");
+		res.type("text/html; charset=utf-8");
 	});
 }
 
