@@ -87,8 +87,8 @@ async function route(server, options) {
 				}
 			);
 
-			// RTF-to-HTML plugin sets type to "text/html", override that
-			res.type("text/plain");
+			// RTF-to-HTML plugin sets type to "text/html; charset=utf-8", override that
+			res.type("text/plain; charset=utf-8");
 			return req.conversionResults.body;
 		},
 	});

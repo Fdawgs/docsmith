@@ -99,7 +99,10 @@ async function plugin(server, options) {
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
 		// 0600 permissions (read/write for owner only)
-		await fs.writeFile(tempFile, req.body, { mode: 0o600 });
+		await fs.writeFile(tempFile, req.body, {
+			encoding: "utf8",
+			mode: 0o600,
+		});
 
 		/**
 		 * Create document location object for use by following plugins/hooks
@@ -170,7 +173,7 @@ async function plugin(server, options) {
 			throw err;
 		}
 
-		res.type("text/html");
+		res.type("text/html; charset=utf-8");
 	});
 }
 
