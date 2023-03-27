@@ -124,7 +124,7 @@ async function plugin(server, options) {
 			meta.httpEquiv = "content-type";
 			const title = dom.window.document.createElement("title");
 			title.innerHTML = id;
-			dom.window.document.head.append(meta, title);
+			dom.window.document.head.prepend(meta, title);
 
 			/**
 			 * UnRTF < v0.20.4 ignores `noPictures` option and
