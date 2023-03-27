@@ -29,8 +29,8 @@ async function plugin(server) {
 			req.conversionResults.body = new JSDOM(
 				`<!DOCTYPE html>
 			<head>
-				<title>docsmith_docx-to-html_${randomUUID()}</title>
 				<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+				<title>docsmith_docx-to-html_${randomUUID()}</title>
 			</head>
 			<html>
 				<body>
