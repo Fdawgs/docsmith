@@ -115,13 +115,16 @@ async function plugin(server, options) {
 		};
 
 		try {
-			// Add title to document
+			// Add meta and title elements to HTML document
 			const dom = new JSDOM(
 				await unrtf.convert(tempFile, config.rtfToHtmlOptions)
 			);
-			const element = dom.window.document.createElement("title");
-			element.innerHTML = id;
-			dom.window.document.head.prepend(element);
+			const meta = dom.window.document.createElement("meta");
+			meta.content = "text/html; charset=utf-8";
+			meta.httpEquiv = "content-type";
+			const title = dom.window.document.createElement("title");
+			title.innerHTML = id;
+			dom.window.document.head.append(meta, title);
 
 			/**
 			 * UnRTF < v0.20.4 ignores `noPictures` option and
