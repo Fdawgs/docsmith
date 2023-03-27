@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.12](https://github.com/Fdawgs/docsmith/compare/v10.0.11...v10.0.12) (2023-03-27)
+
+
+### Documentation
+
+* **contributing:** add link to conventional config ([#1352](https://github.com/Fdawgs/docsmith/issues/1352)) ([02db613](https://github.com/Fdawgs/docsmith/commit/02db6133a07dc18b86f5c897b9113eafb237a9c6))
+
+
+### Continuous integration
+
+* **dependabot:** change commit message prefix for gh actions to `ci` ([#1351](https://github.com/Fdawgs/docsmith/issues/1351)) ([aaa6c5b](https://github.com/Fdawgs/docsmith/commit/aaa6c5bc2a993473b800e3f6cd026051371c4eff))
+* **dependabot:** correct property type ([#1361](https://github.com/Fdawgs/docsmith/issues/1361)) ([42a4790](https://github.com/Fdawgs/docsmith/commit/42a47904d35c6c0332f80fad07f431990a203999))
+* **dependabot:** ignore esm major versions ([#1350](https://github.com/Fdawgs/docsmith/issues/1350)) ([b965bc1](https://github.com/Fdawgs/docsmith/commit/b965bc1d1eda1acde9bd653aecba920046cf5bd6))
+
+
+### Miscellaneous
+
+* **plugins/pdf-to-html:** add comment re poppler title handling ([#1362](https://github.com/Fdawgs/docsmith/issues/1362)) ([8300d4b](https://github.com/Fdawgs/docsmith/commit/8300d4b84e33c40dee53796b488129086b6dffd3))
+
+
+### Bug fixes
+
+* **plugins/pdf-to-txt:** charset and content can't be altered with ocr ([#1369](https://github.com/Fdawgs/docsmith/issues/1369)) ([5550aa2](https://github.com/Fdawgs/docsmith/commit/5550aa2773a58186abb38a73cd0597880fdcedab))
+* **plugins/rtf-to-html:** add content-type meta element to html ([61523a0](https://github.com/Fdawgs/docsmith/commit/61523a0c21931e932064b2098664b54f6b26b234))
+* **routes/pdf/txt:** remove `listEncodingOptions` qs param ([#1354](https://github.com/Fdawgs/docsmith/issues/1354)) ([3eb0d71](https://github.com/Fdawgs/docsmith/commit/3eb0d71c93e22365cb1d657cfed95de8a856e4e7))
+* **routes/pdf:** limit `outputEncoding` qs params to poppler charsets ([#1353](https://github.com/Fdawgs/docsmith/issues/1353)) ([92500d6](https://github.com/Fdawgs/docsmith/commit/92500d6b04f35cd510b1f7ea04742c751af44cc1))
+* **routes/rtf:** declare charset for rtf documents ([e287a15](https://github.com/Fdawgs/docsmith/commit/e287a15e3e3c9211d1a321a5ad5b9393b895b222))
+
+
+### Improvements
+
+* **plugins/docx-to-html:** move meta element to first thing in head ([#1371](https://github.com/Fdawgs/docsmith/issues/1371)) ([ca7da79](https://github.com/Fdawgs/docsmith/commit/ca7da798c43719a61c21698ee1b89f18f47c18b8))
+* **plugins/docx-to-html:** only fix utf-8 chars in converted body ([#1370](https://github.com/Fdawgs/docsmith/issues/1370)) ([847a8e1](https://github.com/Fdawgs/docsmith/commit/847a8e1819eccd79e116521fb2958966657f641e))
+* **plugins/pdf-to-html:** move meta element to first child in head ([#1372](https://github.com/Fdawgs/docsmith/issues/1372)) ([7b691a5](https://github.com/Fdawgs/docsmith/commit/7b691a5c64476c8d4ada50c27c79e472b793f5f7))
+* **plugins/rtf-to-html:** ensure charset is first child in head ([#1373](https://github.com/Fdawgs/docsmith/issues/1373)) ([f37dcf9](https://github.com/Fdawgs/docsmith/commit/f37dcf9b11da3fe6bd57d66215560915d28b48f0))
+* **plugins/tidy-css:** replace `appendChild` with `append` ([#1365](https://github.com/Fdawgs/docsmith/issues/1365)) ([b2af657](https://github.com/Fdawgs/docsmith/commit/b2af65795e69b51b02b2c1e4b26ebdd71212758a))
+* **routes:** use optional chaining for file type result object ([#1366](https://github.com/Fdawgs/docsmith/issues/1366)) ([c69f82b](https://github.com/Fdawgs/docsmith/commit/c69f82b4e3c82345825e5d901f9847f349c686ae))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.4.4 to 17.5.0 ([#1357](https://github.com/Fdawgs/docsmith/issues/1357)) ([e2376ec](https://github.com/Fdawgs/docsmith/commit/e2376ec820c3cc18ec80345683aeaebdea5d484b))
+* **deps-dev:** bump nodemon from 2.0.21 to 2.0.22 ([#1358](https://github.com/Fdawgs/docsmith/issues/1358)) ([70b06a0](https://github.com/Fdawgs/docsmith/commit/70b06a0a8d86b2a0cbb260d3c3abdb4f1275a3c1))
+* **deps-dev:** bump playwright from 1.31.2 to 1.32.0 ([#1359](https://github.com/Fdawgs/docsmith/issues/1359)) ([5edb5d6](https://github.com/Fdawgs/docsmith/commit/5edb5d6c2e05dce5a40400020b33f7784cdcc2a8))
+* **deps-dev:** bump playwright from 1.32.0 to 1.32.1 ([#1376](https://github.com/Fdawgs/docsmith/issues/1376)) ([4d4bce9](https://github.com/Fdawgs/docsmith/commit/4d4bce9da7cfad2723613a2171eb35c347d4a8cf))
+* **deps-dev:** bump prettier from 2.8.6 to 2.8.7 ([#1374](https://github.com/Fdawgs/docsmith/issues/1374)) ([ee61208](https://github.com/Fdawgs/docsmith/commit/ee61208d475b79481412ff5c62c1c5b81040905e))
+* **deps:** bump @fastify/compress from 6.2.0 to 6.2.1 ([#1375](https://github.com/Fdawgs/docsmith/issues/1375)) ([2c84bf8](https://github.com/Fdawgs/docsmith/commit/2c84bf86e5ac84bc78b291c9b677560766420770))
+* **deps:** bump glob from 9.3.1 to 9.3.2 ([#1355](https://github.com/Fdawgs/docsmith/issues/1355)) ([71640eb](https://github.com/Fdawgs/docsmith/commit/71640eb17c635aa62e171f2cecb8827e2d175b4b))
+* **deps:** bump html-to-text from 9.0.4 to 9.0.5 ([#1356](https://github.com/Fdawgs/docsmith/issues/1356)) ([2b05df2](https://github.com/Fdawgs/docsmith/commit/2b05df21b4a17c309688112138e681afd877fe34))
+
 ## [10.0.11](https://github.com/Fdawgs/docsmith/compare/v10.0.10...v10.0.11) (2023-03-21)
 
 
