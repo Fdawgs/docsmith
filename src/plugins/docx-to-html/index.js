@@ -27,7 +27,7 @@ async function plugin(server) {
 			 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info
 			 */
 			req.conversionResults.body = new JSDOM(
-				fixUtf8(`<!DOCTYPE html>
+				`<!DOCTYPE html>
 			<head>
 				<title>docsmith_docx-to-html_${randomUUID()}</title>
 				<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -35,10 +35,10 @@ async function plugin(server) {
 			<html>
 				<body>
 					<div>
-						${value}
+						${fixUtf8(value)}
 					</div>
 				</body>
-			</html>`)
+			</html>`
 			).serialize();
 
 			res.type("text/html; charset=utf-8");
