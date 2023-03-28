@@ -48,7 +48,19 @@ describe("PDF-to-HTML conversion plugin", () => {
 		]);
 	});
 
-	test("Should convert PDF file to HTML and place in specified directory", async () => {
+	test.each([
+		{
+			testName:
+				"convert PDF file to HTML and place in specified directory",
+		},
+		{
+			testName:
+				"convert PDF file to HTML and ignore invalid `test` query string param",
+			query: {
+				test: "test",
+			},
+		},
+	])(`Should $testName`, async ({ query }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -58,6 +70,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 			query: {
 				lastPageToConvert: 2,
 				ignoreImages: false,
+				...query,
 			},
 			headers: {
 				"content-type": "application/pdf",
@@ -67,55 +80,39 @@ describe("PDF-to-HTML conversion plugin", () => {
 		const { body, docLocation } = JSON.parse(response.payload);
 		const dom = new JSDOM(body);
 
-		expect(body).toEqual(expect.stringContaining("for&nbsp;England"));
 		expect(body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(body)).toBe(true);
+		// Check only one meta and title element exists
 		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);
 		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
-		expect(docLocation).toEqual(
+		// Check that head element contains only a meta and title element in the correct order
+		expect(dom.window.document.head.firstChild.tagName).toBe("META");
+		expect(dom.window.document.head.firstChild).toEqual(
 			expect.objectContaining({
-				directory: expect.any(String),
-				html: expect.any(String),
-				id: expect.any(String),
+				content: expect.stringMatching(/^text\/html; charset=utf-8$/im),
+				httpEquiv: expect.stringMatching(/^content-type$/im),
 			})
 		);
-		await expect(fs.readFile(docLocation.html)).rejects.toThrow();
-		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
-			0
+		expect(
+			dom.window.document.head.querySelector("title").textContent
+		).toMatch(/^docsmith_pdf-to-html_/m);
+		// String found in first paragraph of the test document
+		expect(dom.window.document.querySelector("p").textContent).toMatch(
+			/for\sEngland\s/
 		);
-	});
-
-	test("Should ignore invalid `test` query string params and convert PDF file to HTML", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			query: {
-				firstPageToConvert: 1,
-				ignoreImages: true,
-				lastPageToConvert: 2,
-				test: "test",
-			},
-			body: await fs.readFile(
-				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-			),
-			headers: {
-				"content-type": "application/pdf",
-			},
-		});
-
-		const { body, docLocation } = JSON.parse(response.payload);
-		const dom = new JSDOM(body);
-
-		expect(body).toEqual(expect.stringContaining("for&nbsp;England"));
-		expect(body).not.toEqual(expect.stringMatching(artifacts));
-		expect(isHtml(body)).toBe(true);
-		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);
-		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
+		// String found in last paragraph of the test document
+		expect(
+			dom.window.document.querySelectorAll("p")[
+				dom.window.document.querySelectorAll("p").length - 1
+			].textContent
+		).toMatch(
+			/a\sfull\sand\stransparent\sdebate\swith\sthe\spublic,\spatients\sand\sstaff.\s$/m
+		);
 		expect(docLocation).toEqual(
 			expect.objectContaining({
 				directory: expect.any(String),
-				html: expect.any(String),
-				id: expect.any(String),
+				html: expect.stringMatching(/-html\.html$/im),
+				id: expect.stringMatching(/^docsmith_pdf-to-html_/m),
 			})
 		);
 		await expect(fs.readFile(docLocation.html)).rejects.toThrow();
