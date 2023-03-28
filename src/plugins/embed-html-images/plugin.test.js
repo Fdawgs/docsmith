@@ -1,6 +1,7 @@
 const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
+const { JSDOM } = require("jsdom");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -47,11 +48,12 @@ describe("Embed-HTML-Images plugin", () => {
 			},
 		});
 
-		expect(/src="valid_bullet_issues001.png"/.test(response.payload)).toBe(
-			false
-		);
-		expect(/alt=""/.test(response.payload)).toBe(false);
+		const dom = new JSDOM(response.payload);
+
 		expect(isHtml(response.payload)).toBe(true);
+		dom.window.document.querySelectorAll("img").forEach((image) => {
+			expect(image.src).toMatch(/^data:image\/(jp[e]?g|png);base64/im);
+		});
 		expect(response.statusCode).toBe(200);
 	});
 
