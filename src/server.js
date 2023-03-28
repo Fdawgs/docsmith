@@ -1,7 +1,6 @@
 const autoLoad = require("@fastify/autoload");
 const fp = require("fastify-plugin");
 const path = require("upath");
-const secJSON = require("secure-json-parse");
 
 // Import plugins
 const accepts = require("@fastify/accepts");
@@ -132,26 +131,10 @@ async function plugin(server, config) {
 
 		/**
 		 * Encapsulate the docs routes into a child context, so that the
-		 * CSP can be relaxed, and cache enabled, without affecting
-		 * security of other routes
+		 * cache enabled without affecting security of other routes
 		 */
 		.register(async (publicContext) => {
-			const relaxedHelmetConfig = secJSON.parse(
-				JSON.stringify(config.helmet)
-			);
-			Object.assign(
-				relaxedHelmetConfig.contentSecurityPolicy.directives,
-				{
-					"script-src": ["'self'", "'unsafe-inline'"],
-					"style-src": ["'self'", "'unsafe-inline'"],
-					"child-src": ["'self'"],
-				}
-			);
-
 			await publicContext
-				// Set relaxed response headers
-				.register(helmet, relaxedHelmetConfig)
-
 				// Stop fastify-disablecache overwriting @fastify/static's cache headers
 				.addHook("onRequest", async (_req, res) => {
 					res.removeHeader("cache-control")
