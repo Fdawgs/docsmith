@@ -46,10 +46,15 @@ describe("DOCX-to-TXT conversion plugin", () => {
 
 		const { body } = JSON.parse(response.payload);
 
+		// String found in first heading of the test document
 		expect(body).toEqual(
 			expect.stringContaining(
-				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
 			)
+		);
+		// String found at end of the test document
+		expect(body).toMatch(
+			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/m
 		);
 		expect(isHtml(body)).toBe(false);
 	});
