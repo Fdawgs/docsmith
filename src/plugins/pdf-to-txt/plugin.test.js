@@ -2,6 +2,7 @@
 const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
+const { JSDOM } = require("jsdom");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
@@ -92,8 +93,9 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
+				firstPageToConvert: 2,
 				generateHtmlMetaFile: true,
-				lastPageToConvert: 1,
+				lastPageToConvert: 2,
 			},
 			headers: {
 				"content-type": "application/pdf",
@@ -101,9 +103,33 @@ describe("PDF-to-TXT conversion plugin", () => {
 		});
 
 		const { body } = JSON.parse(response.payload);
+		const dom = new JSDOM(body);
 
-		expect(body).toEqual(expect.stringContaining("for England"));
 		expect(isHtml(body)).toBe(true);
+		// Check only one meta and title element exists
+		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);
+		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
+		// Check that head element contains only a meta and title element in the correct order
+		expect(dom.window.document.head.firstChild.tagName).toBe("META");
+		expect(dom.window.document.head.firstChild).toEqual(
+			expect.objectContaining({
+				content: expect.stringMatching(/^text\/html; charset=utf-8$/im),
+				httpEquiv: expect.stringMatching(/^content-type$/im),
+			})
+		);
+		expect(
+			dom.window.document.head.querySelector("title").textContent
+		).toMatch(/^docsmith_pdf-to-txt_/m);
+		// String found at the start of the HTML document
+		expect(dom.window.document.querySelector("pre").textContent).toEqual(
+			expect.stringContaining("The NHS belongs to the people")
+		);
+		// String found at the end of the HTML document
+		expect(dom.window.document.querySelector("pre").textContent).toEqual(
+			expect.stringContaining(
+				"a full and transparent debate with the public, patients and staff."
+			)
+		);
 	});
 
 	test.each([

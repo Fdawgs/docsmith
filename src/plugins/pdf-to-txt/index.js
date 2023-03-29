@@ -1,7 +1,9 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
+const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const fs = require("fs/promises");
 const { glob } = require("glob");
+const { JSDOM } = require("jsdom");
 const path = require("upath");
 const { Poppler } = require("node-poppler");
 const { randomUUID } = require("crypto");
@@ -119,6 +121,8 @@ async function plugin(server, options) {
 			query[value] = parseString(query[value]);
 		});
 
+		const id = `${config.tempFilePrefix}_${randomUUID()}`;
+
 		/**
 		 * If `ocr` query string param passed then use pdfToCairo and Tesseract OCR engine.
 		 * image-to-txt plugin adds the "tesseract" decorator to server instance,
@@ -133,7 +137,6 @@ async function plugin(server, options) {
 			});
 
 			// Build temp file pattern for Poppler to use for output
-			const id = `${config.tempFilePrefix}_${randomUUID()}`;
 			const tempFile = path.joinSafe(directory, id);
 
 			/**
@@ -215,6 +218,21 @@ async function plugin(server, options) {
 				query.generateHtmlMetaFile
 			) {
 				contentType = "text/html";
+				const dom = new JSDOM(req.conversionResults.body);
+				const meta = dom.window.document.createElement("meta");
+				meta.content = `text/html; charset=${config.pdfToTxtOptions.outputEncoding.toLowerCase()}`;
+				meta.httpEquiv = "content-type";
+				dom.window.document.head.prepend(meta);
+
+				// Overwrite content of remaining title element with temp file id
+				dom.window.document.title = id;
+
+				/**
+				 * `fixUtf8` function replaces most common incorrectly converted
+				 * Windows-1252 to UTF-8 results with HTML equivalents.
+				 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info
+				 */
+				req.conversionResults.body = fixUtf8(dom.serialize());
 			}
 			res.type(
 				`${contentType}; charset=${config.pdfToTxtOptions.outputEncoding.toLowerCase()}`
