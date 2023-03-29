@@ -138,8 +138,8 @@ describe("PDF-to-TXT conversion plugin", () => {
 			});
 
 			expect(JSON.parse(response.payload)).toEqual({
-			error: "Bad Request",
-			message: "Bad Request",
+				error: "Bad Request",
+				message: "Bad Request",
 				statusCode: 400,
 			});
 			expect(response.statusCode).toBe(400);
