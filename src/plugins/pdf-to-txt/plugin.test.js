@@ -117,7 +117,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 				id: expect.stringMatching(/^docsmith_pdf-to-txt_/m),
 			})
 		);
-		// Check that the image files has been removed from the temp directory
+		// Check the image files has been removed from the temp directory
 		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
 			0
 		);
@@ -148,7 +148,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		// Check only one meta and title element exists
 		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);
 		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
-		// Check that head element contains only a meta and title element in the correct order
+		// Check head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.firstChild.tagName).toBe("META");
 		expect(dom.window.document.head.firstChild).toEqual(
 			expect.objectContaining({

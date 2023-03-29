@@ -78,7 +78,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		).toMatch(/^docsmith_rtf-to-html_/m);
 		// Check all images are removed
 		expect(dom.window.document.querySelectorAll("img")).toHaveLength(0);
-		// Check that the body contains no links and has not removed any link inner text
+		// Check the body contains no links and has not removed any link inner text
 		expect(dom.window.document.querySelectorAll("a")).toHaveLength(0);
 		expect(dom.window.document.body.textContent).toEqual(
 			expect.stringContaining("Mauris id ex erat")
@@ -103,7 +103,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 				id: expect.stringMatching(/^docsmith_rtf-to-html_/m),
 			})
 		);
-		// Check that the RTF file has been removed from the temp directory
+		// Check the RTF file has been removed from the temp directory
 		await expect(fs.readFile(docLocation.rtf)).rejects.toThrow();
 		await expect(fs.readdir(config.unrtf.tempDir)).resolves.toHaveLength(0);
 		expect(response.statusCode).toBe(200);
