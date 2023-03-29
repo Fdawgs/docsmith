@@ -46,29 +46,48 @@ describe("DOCX-to-TXT conversion plugin", () => {
 
 		const { body } = JSON.parse(response.payload);
 
+		// String found in first heading of the test document
 		expect(body).toEqual(
 			expect.stringContaining(
-				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
 			)
+		);
+		// String found at end of the test document
+		expect(body).toMatch(
+			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/m
 		);
 		expect(isHtml(body)).toBe(false);
 	});
 
-	test("Should return HTTP status code 400 if DOCX file is missing", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			headers: {
-				"content-type":
-					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-			},
-		});
+	test.each([
+		{ testName: "is missing" },
+		{
+			testName: "is not a valid DOCX file",
+			readFile: true,
+		},
+	])(
+		"Should return HTTP status code 400 if DOCX file $testName",
+		async ({ readFile }) => {
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				headers: {
+					"content-type":
+						"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+				},
+				body: readFile
+					? await fs.readFile(
+							"./test_resources/test_files/invalid_docx.docx"
+					  )
+					: undefined,
+			});
 
-		expect(JSON.parse(response.payload)).toEqual({
-			error: "Bad Request",
-			message: "Bad Request",
-			statusCode: 400,
-		});
-		expect(response.statusCode).toBe(400);
-	});
+			expect(JSON.parse(response.payload)).toEqual({
+				error: "Bad Request",
+				message: "Bad Request",
+				statusCode: 400,
+			});
+			expect(response.statusCode).toBe(400);
+		}
+	);
 });

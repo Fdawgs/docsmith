@@ -48,7 +48,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		]);
 	});
 
-	test("Should convert RTF file to HTML and place in specified directory", async () => {
+	test("Should convert RTF file to HTML", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -63,39 +63,79 @@ describe("RTF-to-HTML conversion plugin", () => {
 		const { body, docLocation } = JSON.parse(response.payload);
 		const dom = new JSDOM(body);
 
-		expect(body).toEqual(
-			expect.stringContaining(
-				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-			)
-		);
 		expect(body).not.toEqual(expect.stringMatching(artifacts));
 		expect(isHtml(body)).toBe(true);
+		// Check that head element contains only a meta and title element in the correct order
+		expect(dom.window.document.head.firstChild.tagName).toBe("META");
+		expect(dom.window.document.head.firstChild).toEqual(
+			expect.objectContaining({
+				content: expect.stringMatching(/^text\/html; charset=utf-8$/im),
+				httpEquiv: expect.stringMatching(/^content-type$/im),
+			})
+		);
+		expect(
+			dom.window.document.head.querySelector("title").textContent
+		).toMatch(/^docsmith_rtf-to-html_/m);
+		// Check all images are removed
 		expect(dom.window.document.querySelectorAll("img")).toHaveLength(0);
+		// Check that the body contains no links and has not removed any link inner text
+		expect(dom.window.document.querySelectorAll("a")).toHaveLength(0);
+		expect(dom.window.document.body.textContent).toEqual(
+			expect.stringContaining("Mauris id ex erat")
+		);
+		// String found at beginning of body of the test document
+		expect(dom.window.document.body.textContent).toEqual(
+			expect.stringContaining(
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
+			)
+		);
+		// String found at end of body of the test document
+		expect(dom.window.document.body.textContent).toEqual(
+			expect.stringContaining(
+				"Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien"
+			)
+		);
+		// Check the docLocation object contains the expected properties
 		expect(docLocation).toEqual(
 			expect.objectContaining({
 				directory: expect.any(String),
-				rtf: expect.any(String),
-				id: expect.any(String),
+				rtf: expect.stringMatching(/.rtf$/im),
+				id: expect.stringMatching(/^docsmith_rtf-to-html_/m),
 			})
 		);
+		// Check that the RTF file has been removed from the temp directory
 		await expect(fs.readFile(docLocation.rtf)).rejects.toThrow();
 		await expect(fs.readdir(config.unrtf.tempDir)).resolves.toHaveLength(0);
 	});
 
-	test("Should return HTTP status code 400 if RTF file is missing", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			headers: {
-				"content-type": "application/rtf",
-			},
-		});
+	test.each([
+		{ testName: "is missing" },
+		{
+			testName: "is not a valid RTF file",
+			readFile: true,
+		},
+	])(
+		"Should return HTTP status code 400 if RTF file $testName",
+		async ({ readFile }) => {
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				headers: {
+					"content-type": "application/rtf",
+				},
+				body: readFile
+					? await fs.readFile(
+							"./test_resources/test_files/invalid_rtf.rtf"
+					  )
+					: undefined,
+			});
 
-		expect(JSON.parse(response.payload)).toEqual({
-			error: "Bad Request",
-			message: "Bad Request",
-			statusCode: 400,
-		});
-		expect(response.statusCode).toBe(400);
-	});
+			expect(JSON.parse(response.payload)).toEqual({
+				error: "Bad Request",
+				message: "Bad Request",
+				statusCode: 400,
+			});
+			expect(response.statusCode).toBe(400);
+		}
+	);
 });
