@@ -5,7 +5,7 @@ const { JSDOM } = require("jsdom");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
-describe("Tidy-CSS plugin", () => {
+describe("Tidy-HTML plugin", () => {
 	let server;
 
 	beforeEach(() => {
