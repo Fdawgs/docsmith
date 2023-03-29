@@ -166,7 +166,7 @@ async function plugin(server, options) {
 		dom.window.document.head.prepend(metas[0]);
 
 		/**
-		 * Overwrite title of remaining title element with temp file id,
+		 * Overwrite content of remaining title element with temp file id,
 		 * as Poppler reveals directory structure in title
 		 */
 		titles[0].innerHTML = id;
