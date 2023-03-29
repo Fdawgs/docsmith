@@ -22,9 +22,16 @@ describe("Tidy-CSS plugin", () => {
 		await server.close();
 	});
 
-	test("Should tidy HTML", async () => {
+	test.each([
+		{ testName: "tidy HTML" },
+		{ testName: "tidy HTML and set language", options: { language: "fr" } },
+		{
+			testName: "tidy HTML and set img alt attributes to empty string",
+			options: { removeAlt: true },
+		},
+	])("Should $testName", async ({ options }) => {
 		server.post("/", async (req) => {
-			const result = await server.tidyHtml(req.body);
+			const result = await server.tidyHtml(req.body, options);
 			return result;
 		});
 		await server.register(sensible).register(plugin).ready();
@@ -43,43 +50,42 @@ describe("Tidy-CSS plugin", () => {
 
 		const dom = new JSDOM(response.payload);
 
+		expect(isHtml(response.payload)).toBe(true);
+		// Check language is set to default or options.language
 		expect(
 			dom.window.document.querySelector("html").getAttribute("lang")
-		).toBe("en");
+		).toBe(options?.language || "en");
 		expect(
 			dom.window.document.querySelector("html").getAttribute("xml:lang")
-		).toBe("en");
-		expect(isHtml(response.payload)).toBe(true);
-	});
+		).toBe(options?.language || "en");
 
-	test("Should tidy HTML and set language", async () => {
-		server.post("/", async (req) => {
-			const result = await server.tidyHtml(req.body, { language: "fr" });
-			return result;
-		});
-		await server.register(sensible).register(plugin).ready();
-
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/valid_bullet_issues_html.html",
-				{ encoding: "UTF-8" }
-			),
-			headers: {
-				"content-type": "text/html",
-			},
+		// Check alt attributes are removed if options.removeAlt is true
+		dom.window.document.querySelectorAll("img").forEach((image) => {
+			expect(image.alt).toBe(
+				options?.removeAlt ? "" : "background image"
+			);
 		});
 
-		const dom = new JSDOM(response.payload);
-
-		expect(
-			dom.window.document.querySelector("html").getAttribute("lang")
-		).toBe("fr");
-		expect(
-			dom.window.document.querySelector("html").getAttribute("xml:lang")
-		).toBe("fr");
-		expect(isHtml(response.payload)).toBe(true);
+		// Check smart quotes and em dashes are replaced with ASCII equivalents
+		expect(dom.window.document.body.textContent).not.toEqual(
+			expect.stringMatching(/“|”|‘|’|—/)
+		);
+		// Check `&nbsp;` is replaced with spaces
+		expect(dom.window.document.body.textContent).not.toEqual(
+			expect.stringMatching("&nbsp;")
+		);
+		// Check legacy HTML elements are removed
+		expect(dom.window.document.querySelector("center")).toBeNull();
+		expect(dom.window.document.querySelector("font")).toBeNull();
+		// Check `<![CDATA[]]>` is escaped
+		expect(dom.window.document.head.textContent).toEqual(
+			expect.stringContaining("/*<![CDATA[*/")
+		);
+		// Check HTML comments are removed
+		expect(dom.window.document.body.textContent).not.toEqual(
+			expect.stringMatching(/<!--.*-->/)
+		);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should return HTTP status code 400 if language querystring param is not valid IANA language tag", async () => {
@@ -109,28 +115,5 @@ describe("Tidy-CSS plugin", () => {
 			message: "querystring.language not a valid IANA language tag",
 		});
 		expect(response.statusCode).toBe(400);
-	});
-
-	test("Should set alt attribute in img tags to empty string", async () => {
-		server.post("/", async (req) => {
-			const result = await server.tidyHtml(req.body, { removeAlt: true });
-			return result;
-		});
-		await server.register(sensible).register(plugin).ready();
-
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/valid_bullet_issues_html.html",
-				{ encoding: "UTF-8" }
-			),
-			headers: {
-				"content-type": "text/html",
-			},
-		});
-
-		expect(/alt=""/.test(response.payload)).toBe(true);
-		expect(isHtml(response.payload)).toBe(true);
 	});
 });
