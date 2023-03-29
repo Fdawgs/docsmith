@@ -50,8 +50,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 
 	test.each([
 		{
-			testName:
-				"convert PDF file to HTML and place in specified directory",
+			testName: "convert PDF file to HTML",
 		},
 		{
 			testName:
@@ -108,6 +107,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		).toMatch(
 			/a\sfull\sand\stransparent\sdebate\swith\sthe\spublic,\spatients\sand\sstaff.\s$/m
 		);
+		// Check the docLocation object contains the expected properties
 		expect(docLocation).toEqual(
 			expect.objectContaining({
 				directory: expect.any(String),
@@ -115,46 +115,41 @@ describe("PDF-to-HTML conversion plugin", () => {
 				id: expect.stringMatching(/^docsmith_pdf-to-html_/m),
 			})
 		);
+		// Check that the HTML file has been removed from the temp directory
 		await expect(fs.readFile(docLocation.html)).rejects.toThrow();
 		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
 			0
 		);
 	});
 
-	test("Should return HTTP status code 400 if PDF file is missing", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			headers: {
-				"content-type": "application/pdf",
-			},
-		});
+	test.each([
+		{ testName: "is missing" },
+		{
+			testName: "is not a valid PDF file",
+			readFile: true,
+		},
+	])(
+		"Should return HTTP status code 400 if PDF file $testName",
+		async ({ readFile }) => {
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				headers: {
+					"content-type": "application/pdf",
+				},
+				body: readFile
+					? await fs.readFile(
+							"./test_resources/test_files/invalid_pdf.pdf"
+					  )
+					: undefined,
+			});
 
-		expect(JSON.parse(response.payload)).toEqual({
-			error: "Bad Request",
-			message: "Bad Request",
-			statusCode: 400,
-		});
-		expect(response.statusCode).toBe(400);
-	});
-
-	test("Should return HTTP status code 400 if PDF file is not a valid PDF file", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/invalid_pdf.pdf"
-			),
-			headers: {
-				"content-type": "application/pdf",
-			},
-		});
-
-		expect(JSON.parse(response.payload)).toEqual({
-			error: "Bad Request",
-			message: "Bad Request",
-			statusCode: 400,
-		});
-		expect(response.statusCode).toBe(400);
-	});
+			expect(JSON.parse(response.payload)).toEqual({
+				error: "Bad Request",
+				message: "Bad Request",
+				statusCode: 400,
+			});
+			expect(response.statusCode).toBe(400);
+		}
+	);
 });

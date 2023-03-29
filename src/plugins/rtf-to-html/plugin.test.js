@@ -82,20 +82,34 @@ describe("RTF-to-HTML conversion plugin", () => {
 		await expect(fs.readdir(config.unrtf.tempDir)).resolves.toHaveLength(0);
 	});
 
-	test("Should return HTTP status code 400 if RTF file is missing", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			headers: {
-				"content-type": "application/rtf",
-			},
-		});
+	test.each([
+		{ testName: "is missing" },
+		{
+			testName: "is not a valid RTF file",
+			readFile: true,
+		},
+	])(
+		"Should return HTTP status code 400 if RTF file $testName",
+		async ({ readFile }) => {
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				headers: {
+					"content-type": "application/rtf",
+				},
+				body: readFile
+					? await fs.readFile(
+							"./test_resources/test_files/invalid_rtf.rtf"
+					  )
+					: undefined,
+			});
 
-		expect(JSON.parse(response.payload)).toEqual({
+			expect(JSON.parse(response.payload)).toEqual({
 			error: "Bad Request",
 			message: "Bad Request",
-			statusCode: 400,
-		});
-		expect(response.statusCode).toBe(400);
-	});
+				statusCode: 400,
+			});
+			expect(response.statusCode).toBe(400);
+		}
+	);
 });
