@@ -49,16 +49,10 @@ describe("PDF-to-TXT conversion plugin", () => {
 		{ testName: "convert PDF file to TXT" },
 		{
 			testName:
-				"convert PDF file to HTML and ignore invalid `test` query string param",
+				"convert PDF file to TXT and ignore invalid `test` query string param",
 			query: {
 				test: "test",
 			},
-		},
-		{ testName: "convert PDF file to TXT using OCR", query: { ocr: true } },
-		{
-			testName:
-				"convert PDF file to TXT using OCR and ignore invalid `test` query string param ",
-			query: { ocr: true, test: "test" },
 		},
 	])("Should $testName", async ({ query }) => {
 		const response = await server.inject({
@@ -83,6 +77,50 @@ describe("PDF-to-TXT conversion plugin", () => {
 			expect.stringContaining("The NHS belongs to the people")
 		);
 		expect(isHtml(body)).toBe(false);
+	});
+
+	// OCR tests that use pdftocairo and tesseract
+	test.each([
+		{ testName: "convert PDF file to TXT using OCR", query: { ocr: true } },
+		{
+			testName:
+				"convert PDF file to TXT using OCR and ignore invalid `test` query string param ",
+			query: { ocr: true, test: "test" },
+		},
+	])("Should $testName", async ({ query }) => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: await fs.readFile(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				firstPageToConvert: 2,
+				lastPageToConvert: 2,
+				...query,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		const { body, docLocation } = JSON.parse(response.payload);
+
+		expect(body).toEqual(
+			expect.stringContaining("The NHS belongs to the people")
+		);
+		expect(isHtml(body)).toBe(false);
+		// Check the docLocation object contains the expected properties
+		expect(docLocation).toEqual(
+			expect.objectContaining({
+				directory: expect.any(String),
+				id: expect.stringMatching(/^docsmith_pdf-to-txt_/m),
+			})
+		);
+		// Check that the image files has been removed from the temp directory
+		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
+			0
+		);
 	});
 
 	test("Should convert PDF file to TXT wrapped in HTML", async () => {
