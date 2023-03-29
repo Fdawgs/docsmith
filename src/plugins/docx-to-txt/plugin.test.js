@@ -57,6 +57,7 @@ describe("DOCX-to-TXT conversion plugin", () => {
 			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/m
 		);
 		expect(isHtml(body)).toBe(false);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test.each([

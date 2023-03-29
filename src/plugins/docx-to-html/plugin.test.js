@@ -65,6 +65,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		dom.window.document.querySelectorAll("img").forEach((image) => {
 			expect(image.src).toMatch(/^data:image\/(jp[e]?g|png);base64/im);
 		});
+		expect(response.statusCode).toBe(200);
 	});
 
 	test.each([

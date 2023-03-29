@@ -120,6 +120,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
 			0
 		);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test.each([

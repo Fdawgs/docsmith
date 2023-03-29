@@ -121,6 +121,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
 			0
 		);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should convert PDF file to TXT wrapped in HTML", async () => {
@@ -168,6 +169,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"a full and transparent debate with the public, patients and staff."
 			)
 		);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test.each([

@@ -106,6 +106,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		// Check that the RTF file has been removed from the temp directory
 		await expect(fs.readFile(docLocation.rtf)).rejects.toThrow();
 		await expect(fs.readdir(config.unrtf.tempDir)).resolves.toHaveLength(0);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test.each([
