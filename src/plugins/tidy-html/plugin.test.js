@@ -82,9 +82,7 @@ describe("Tidy-CSS plugin", () => {
 			expect.stringContaining("/*<![CDATA[*/")
 		);
 		// Check HTML comments are removed
-		expect(dom.window.document.body.textContent).not.toEqual(
-			expect.stringMatching(/<!--.*-->/)
-		);
+		expect(dom.window.document.body.textContent).not.toMatch(/<!--|--!?>/);
 		expect(response.statusCode).toBe(200);
 	});
 
