@@ -67,12 +67,10 @@ describe("RTF-to-HTML conversion plugin", () => {
 		expect(isHtml(body)).toBe(true);
 		// Check that head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.firstChild.tagName).toBe("META");
-		expect(dom.window.document.head.firstChild).toEqual(
-			expect.objectContaining({
-				content: expect.stringMatching(/^text\/html; charset=utf-8$/im),
-				httpEquiv: expect.stringMatching(/^content-type$/im),
-			})
-		);
+		expect(dom.window.document.head.firstChild).toMatchObject({
+			content: expect.stringMatching(/^text\/html; charset=utf-8$/im),
+			httpEquiv: expect.stringMatching(/^content-type$/im),
+		});
 		expect(
 			dom.window.document.head.querySelector("title").textContent
 		).toMatch(/^docsmith_rtf-to-html_/m);
@@ -92,13 +90,11 @@ describe("RTF-to-HTML conversion plugin", () => {
 			"Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien"
 		);
 		// Check the docLocation object contains the expected properties
-		expect(docLocation).toEqual(
-			expect.objectContaining({
-				directory: expect.any(String),
-				rtf: expect.stringMatching(/.rtf$/im),
-				id: expect.stringMatching(/^docsmith_rtf-to-html_/m),
-			})
-		);
+		expect(docLocation).toMatchObject({
+			directory: expect.any(String),
+			rtf: expect.stringMatching(/.rtf$/im),
+			id: expect.stringMatching(/^docsmith_rtf-to-html_/m),
+		});
 		// Check the RTF file has been removed from the temp directory
 		await expect(fs.readFile(docLocation.rtf)).rejects.toThrow();
 		await expect(fs.readdir(config.unrtf.tempDir)).resolves.toHaveLength(0);
