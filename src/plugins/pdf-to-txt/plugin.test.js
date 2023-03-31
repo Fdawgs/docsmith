@@ -49,16 +49,10 @@ describe("PDF-to-TXT conversion plugin", () => {
 		{ testName: "convert PDF file to TXT" },
 		{
 			testName:
-				"convert PDF file to HTML and ignore invalid `test` query string param",
+				"convert PDF file to TXT and ignore invalid `test` query string param",
 			query: {
 				test: "test",
 			},
-		},
-		{ testName: "convert PDF file to TXT using OCR", query: { ocr: true } },
-		{
-			testName:
-				"convert PDF file to TXT using OCR and ignore invalid `test` query string param ",
-			query: { ocr: true, test: "test" },
 		},
 	])("Should $testName", async ({ query }) => {
 		const response = await server.inject({
@@ -85,6 +79,51 @@ describe("PDF-to-TXT conversion plugin", () => {
 		expect(isHtml(body)).toBe(false);
 	});
 
+	// OCR tests that use pdftocairo and tesseract
+	test.each([
+		{ testName: "convert PDF file to TXT using OCR", query: { ocr: true } },
+		{
+			testName:
+				"convert PDF file to TXT using OCR and ignore invalid `test` query string param ",
+			query: { ocr: true, test: "test" },
+		},
+	])("Should $testName", async ({ query }) => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: await fs.readFile(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				firstPageToConvert: 2,
+				lastPageToConvert: 2,
+				...query,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		const { body, docLocation } = JSON.parse(response.payload);
+
+		expect(body).toEqual(
+			expect.stringContaining("The NHS belongs to the people")
+		);
+		expect(isHtml(body)).toBe(false);
+		// Check the docLocation object contains the expected properties
+		expect(docLocation).toEqual(
+			expect.objectContaining({
+				directory: expect.any(String),
+				id: expect.stringMatching(/^docsmith_pdf-to-txt_/m),
+			})
+		);
+		// Check the image files has been removed from the temp directory
+		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
+			0
+		);
+		expect(response.statusCode).toBe(200);
+	});
+
 	test("Should convert PDF file to TXT wrapped in HTML", async () => {
 		const response = await server.inject({
 			method: "POST",
@@ -109,7 +148,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		// Check only one meta and title element exists
 		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);
 		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
-		// Check that head element contains only a meta and title element in the correct order
+		// Check head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.firstChild.tagName).toBe("META");
 		expect(dom.window.document.head.firstChild).toEqual(
 			expect.objectContaining({
@@ -130,6 +169,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"a full and transparent debate with the public, patients and staff."
 			)
 		);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test.each([
