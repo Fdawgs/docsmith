@@ -24,10 +24,15 @@ describe("Tidy-HTML plugin", () => {
 
 	test.each([
 		{ testName: "tidy HTML" },
-		{ testName: "tidy HTML and set language", options: { language: "fr" } },
 		{
 			testName: "tidy HTML and set img alt attributes to empty string",
 			options: { removeAlt: true },
+		},
+		{ testName: "tidy HTML and set language", options: { language: "fr" } },
+		{
+			testName:
+				"tidy HTML, set img alt attributes to empty string, and set language",
+			options: { language: "fr", removeAlt: true },
 		},
 	])("Should $testName", async ({ options }) => {
 		server.post("/", async (req) => {
