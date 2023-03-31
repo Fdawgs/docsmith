@@ -45,10 +45,8 @@ describe("RTF-to-TXT route", () => {
 			},
 		});
 
-		expect(response.payload).toEqual(
-			expect.stringContaining(
-				"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-			)
+		expect(response.payload).toMatch(
+			"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 		);
 		expect(isHtml(response.payload)).toBe(false);
 		expect(response.headers).toMatchObject({

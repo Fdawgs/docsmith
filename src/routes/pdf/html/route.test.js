@@ -65,9 +65,7 @@ describe("PDF-to-HTML route", () => {
 						},
 					})
 					.then((response) => {
-						expect(response.payload).toEqual(
-							expect.stringContaining("for England")
-						);
+						expect(response.payload).toMatch("for England");
 						expect(isHtml(response.payload)).toBe(true);
 						expect(response.headers).toMatchObject({
 							"content-type": "text/html; charset=utf-8",

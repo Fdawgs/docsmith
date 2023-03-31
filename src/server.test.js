@@ -176,10 +176,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
@@ -202,10 +200,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
@@ -230,9 +226,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("for England")
-				);
+				expect(response.payload).toMatch("for England");
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
@@ -281,9 +275,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("for England")
-				);
+				expect(response.payload).toMatch("for England");
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
@@ -304,10 +296,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
@@ -329,10 +319,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
@@ -434,9 +422,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("for England")
-				);
+				expect(response.payload).toMatch("for England");
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
@@ -512,9 +498,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("NHS")
-				);
+				expect(response.payload).toMatch("NHS");
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);

@@ -73,9 +73,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 
 		const { body } = JSON.parse(response.payload);
 
-		expect(body).toEqual(
-			expect.stringContaining("The NHS belongs to the people")
-		);
+		expect(body).toMatch("The NHS belongs to the people");
 		expect(isHtml(body)).toBe(false);
 	});
 
@@ -106,9 +104,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 
 		const { body, docLocation } = JSON.parse(response.payload);
 
-		expect(body).toEqual(
-			expect.stringContaining("The NHS belongs to the people")
-		);
+		expect(body).toMatch("The NHS belongs to the people");
 		expect(isHtml(body)).toBe(false);
 		// Check the docLocation object contains the expected properties
 		expect(docLocation).toEqual(
@@ -160,14 +156,12 @@ describe("PDF-to-TXT conversion plugin", () => {
 			dom.window.document.head.querySelector("title").textContent
 		).toMatch(/^docsmith_pdf-to-txt_/m);
 		// String found at the start of the HTML document
-		expect(dom.window.document.querySelector("pre").textContent).toEqual(
-			expect.stringContaining("The NHS belongs to the people")
+		expect(dom.window.document.querySelector("pre").textContent).toMatch(
+			"The NHS belongs to the people"
 		);
 		// String found at the end of the HTML document
-		expect(dom.window.document.querySelector("pre").textContent).toEqual(
-			expect.stringContaining(
-				"a full and transparent debate with the public, patients and staff."
-			)
+		expect(dom.window.document.querySelector("pre").textContent).toMatch(
+			"a full and transparent debate with the public, patients and staff."
 		);
 		expect(response.statusCode).toBe(200);
 	});

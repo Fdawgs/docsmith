@@ -80,20 +80,16 @@ describe("RTF-to-HTML conversion plugin", () => {
 		expect(dom.window.document.querySelectorAll("img")).toHaveLength(0);
 		// Check the body contains no links and has not removed any link inner text
 		expect(dom.window.document.querySelectorAll("a")).toHaveLength(0);
-		expect(dom.window.document.body.textContent).toEqual(
-			expect.stringContaining("Mauris id ex erat")
+		expect(dom.window.document.body.textContent).toMatch(
+			"Mauris id ex erat"
 		);
 		// String found at beginning of body of the test document
-		expect(dom.window.document.body.textContent).toEqual(
-			expect.stringContaining(
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
-			)
+		expect(dom.window.document.body.textContent).toMatch(
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
 		);
 		// String found at end of body of the test document
-		expect(dom.window.document.body.textContent).toEqual(
-			expect.stringContaining(
-				"Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien"
-			)
+		expect(dom.window.document.body.textContent).toMatch(
+			"Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien"
 		);
 		// Check the docLocation object contains the expected properties
 		expect(docLocation).toEqual(
