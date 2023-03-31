@@ -161,7 +161,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		);
 		// String found at the end of the HTML document
 		expect(dom.window.document.querySelector("pre").textContent).toMatch(
-			"a full and transparent debate with the public, patients and staff."
+			/a full and transparent debate with the public, patients and staff.$/m
 		);
 		expect(response.statusCode).toBe(200);
 	});
