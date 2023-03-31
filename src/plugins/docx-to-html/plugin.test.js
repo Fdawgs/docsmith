@@ -59,11 +59,11 @@ describe("DOCX-to-HTML conversion plugin", () => {
 				dom.window.document.querySelectorAll("p").length - 2
 			].textContent
 		).toMatch(
-			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/m
+			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/
 		);
 		// Expect all images to be embedded
 		dom.window.document.querySelectorAll("img").forEach((image) => {
-			expect(image.src).toMatch(/^data:image\/(jp[e]?g|png);base64/im);
+			expect(image.src).toMatch(/^data:image\/(jp[e]?g|png);base64/i);
 		});
 		expect(response.statusCode).toBe(200);
 	});

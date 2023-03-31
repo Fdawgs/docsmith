@@ -68,12 +68,12 @@ describe("RTF-to-HTML conversion plugin", () => {
 		// Check that head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.firstChild.tagName).toBe("META");
 		expect(dom.window.document.head.firstChild).toMatchObject({
-			content: expect.stringMatching(/^text\/html; charset=utf-8$/im),
-			httpEquiv: expect.stringMatching(/^content-type$/im),
+			content: expect.stringMatching(/^text\/html; charset=utf-8$/i),
+			httpEquiv: expect.stringMatching(/^content-type$/i),
 		});
 		expect(
 			dom.window.document.head.querySelector("title").textContent
-		).toMatch(/^docsmith_rtf-to-html_/m);
+		).toMatch(/^docsmith_rtf-to-html_/);
 		// Check all images are removed
 		expect(dom.window.document.querySelectorAll("img")).toHaveLength(0);
 		// Check the body contains no links and has not removed any link inner text
@@ -92,8 +92,8 @@ describe("RTF-to-HTML conversion plugin", () => {
 		// Check the docLocation object contains the expected properties
 		expect(docLocation).toMatchObject({
 			directory: expect.any(String),
-			rtf: expect.stringMatching(/.rtf$/im),
-			id: expect.stringMatching(/^docsmith_rtf-to-html_/m),
+			rtf: expect.stringMatching(/.rtf$/i),
+			id: expect.stringMatching(/^docsmith_rtf-to-html_/),
 		});
 		// Check the RTF file has been removed from the temp directory
 		await expect(fs.readFile(docLocation.rtf)).rejects.toThrow();
