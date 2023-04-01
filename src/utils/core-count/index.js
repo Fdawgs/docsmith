@@ -1,4 +1,3 @@
-/* eslint-disable security/detect-child-process */
 const { cpus, EOL, platform } = require("os");
 const { execSync } = require("child_process");
 
