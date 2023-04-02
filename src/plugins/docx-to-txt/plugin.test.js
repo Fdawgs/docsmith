@@ -47,10 +47,8 @@ describe("DOCX-to-TXT conversion plugin", () => {
 		const { body } = JSON.parse(response.payload);
 
 		// String found in first heading of the test document
-		expect(body).toEqual(
-			expect.stringContaining(
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
-			)
+		expect(body).toMatch(
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
 		);
 		// String found at end of the test document
 		expect(body).toMatch(

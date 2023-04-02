@@ -83,9 +83,7 @@ describe("Tidy-HTML plugin", () => {
 		expect(dom.window.document.querySelector("center")).toBeNull();
 		expect(dom.window.document.querySelector("font")).toBeNull();
 		// Check `<![CDATA[]]>` is escaped
-		expect(dom.window.document.head.textContent).toEqual(
-			expect.stringContaining("/*<![CDATA[*/")
-		);
+		expect(dom.window.document.head.textContent).toMatch("/*<![CDATA[*/");
 		// Check HTML comments are removed
 		expect(dom.window.document.body.textContent).not.toMatch(/<!--|--!?>/);
 		expect(response.statusCode).toBe(200);

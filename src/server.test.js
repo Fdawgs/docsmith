@@ -10,7 +10,7 @@ const expResHeaders = {
 	connection: "keep-alive",
 	"content-length": expect.stringMatching(/\d+/),
 	"content-security-policy": "default-src 'self';frame-ancestors 'none'",
-	"content-type": expect.stringContaining("text/plain"),
+	"content-type": expect.stringMatching(/^text\/plain; charset=utf-8$/i),
 	date: expect.any(String),
 	expires: "0",
 	"permissions-policy": "interest-cohort=()",
@@ -33,7 +33,7 @@ const expResHeadersHtml = {
 	...expResHeaders,
 	"content-security-policy":
 		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-	"content-type": expect.stringContaining("text/html"),
+	"content-type": expect.stringMatching(/^text\/html; charset=utf-8$/i),
 	"x-xss-protection": "0",
 };
 
@@ -57,7 +57,7 @@ const expeResHeadersPublicImage = {
 	"accept-ranges": "bytes",
 	"cache-control": "public, max-age=31536000, immutable",
 	"content-length": expect.any(Number), // @fastify/static plugin returns content-length as number
-	"content-type": expect.stringContaining("image/"),
+	"content-type": expect.stringMatching(/^image\//i),
 	etag: expect.any(String),
 	expires: undefined,
 	"last-modified": expect.any(String),
@@ -68,12 +68,14 @@ const expeResHeadersPublicImage = {
 
 const expResHeadersJson = {
 	...expResHeaders,
-	"content-type": expect.stringContaining("application/json"),
+	"content-type": expect.stringMatching(
+		/^application\/json; charset=utf-8$/i
+	),
 };
 
 const expResHeadersText = {
 	...expResHeaders,
-	"content-type": expect.stringContaining("text/plain"),
+	"content-type": expect.stringMatching(/^text\/plain; charset=utf-8$/i),
 };
 
 const expResHeaders404Errors = {
@@ -176,10 +178,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
@@ -202,10 +202,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
@@ -230,9 +228,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("for England")
-				);
+				expect(response.payload).toMatch("for England");
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
@@ -281,9 +277,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("for England")
-				);
+				expect(response.payload).toMatch("for England");
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
@@ -304,10 +298,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
@@ -329,10 +321,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
@@ -434,9 +424,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("for England")
-				);
+				expect(response.payload).toMatch("for England");
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
@@ -512,9 +500,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("NHS")
-				);
+				expect(response.payload).toMatch("NHS");
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
@@ -907,7 +893,9 @@ describe("Server deployment", () => {
 					const page = await browserType.newPage();
 
 					await page.goto("http://localhost:3000/docs");
-					expect(await page.title()).toBe("Docsmith | Documentation");
+					await expect(page.title()).resolves.toBe(
+						"Docsmith | Documentation"
+					);
 					/**
 					 * Checks redoc has not rendered an error component:
 					 * https://github.com/Redocly/redoc/blob/main/src/components/ErrorBoundary.tsx
@@ -915,8 +903,8 @@ describe("Server deployment", () => {
 					const heading = page.locator("h1 >> nth=0");
 					await heading.waitFor();
 
-					expect(await heading.textContent()).not.toEqual(
-						expect.stringMatching(/something\s*went\s*wrong/i)
+					await expect(heading.textContent()).resolves.not.toMatch(
+						/something\s*went\s*wrong/i
 					);
 
 					await page.close();

@@ -66,9 +66,7 @@ describe("PDF-to-TXT route", () => {
 						},
 					})
 					.then((response) => {
-						expect(response.payload).toEqual(
-							expect.stringContaining("for England")
-						);
+						expect(response.payload).toMatch("for England");
 						expect(isHtml(response.payload)).toBe(false);
 						expect(response.headers).toMatchObject({
 							"content-type": "text/plain; charset=utf-8",
@@ -98,7 +96,7 @@ describe("PDF-to-TXT route", () => {
 			},
 		});
 
-		expect(response.payload).toEqual(expect.stringContaining("NHS"));
+		expect(response.payload).toMatch("NHS");
 		expect(isHtml(response.payload)).toBe(false);
 		expect(response.headers).toMatchObject({
 			"content-type": "text/plain; charset=utf-8",
@@ -123,9 +121,7 @@ describe("PDF-to-TXT route", () => {
 			},
 		});
 
-		expect(response.payload).toEqual(
-			expect.stringContaining("for England")
-		);
+		expect(response.payload).toMatch("for England");
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.headers).toMatchObject({
 			"content-type": "text/html; charset=utf-8",

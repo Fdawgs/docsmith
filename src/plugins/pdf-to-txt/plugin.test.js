@@ -73,9 +73,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 
 		const { body } = JSON.parse(response.payload);
 
-		expect(body).toEqual(
-			expect.stringContaining("The NHS belongs to the people")
-		);
+		expect(body).toMatch("The NHS belongs to the people");
 		expect(isHtml(body)).toBe(false);
 	});
 
@@ -106,17 +104,13 @@ describe("PDF-to-TXT conversion plugin", () => {
 
 		const { body, docLocation } = JSON.parse(response.payload);
 
-		expect(body).toEqual(
-			expect.stringContaining("The NHS belongs to the people")
-		);
+		expect(body).toMatch("The NHS belongs to the people");
 		expect(isHtml(body)).toBe(false);
 		// Check the docLocation object contains the expected properties
-		expect(docLocation).toEqual(
-			expect.objectContaining({
-				directory: expect.any(String),
-				id: expect.stringMatching(/^docsmith_pdf-to-txt_/m),
-			})
-		);
+		expect(docLocation).toMatchObject({
+			directory: expect.any(String),
+			id: expect.stringMatching(/^docsmith_pdf-to-txt_/),
+		});
 		// Check the image files has been removed from the temp directory
 		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
 			0
@@ -150,24 +144,20 @@ describe("PDF-to-TXT conversion plugin", () => {
 		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
 		// Check head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.firstChild.tagName).toBe("META");
-		expect(dom.window.document.head.firstChild).toEqual(
-			expect.objectContaining({
-				content: expect.stringMatching(/^text\/html; charset=utf-8$/im),
-				httpEquiv: expect.stringMatching(/^content-type$/im),
-			})
-		);
+		expect(dom.window.document.head.firstChild).toMatchObject({
+			content: expect.stringMatching(/^text\/html; charset=utf-8$/i),
+			httpEquiv: expect.stringMatching(/^content-type$/i),
+		});
 		expect(
 			dom.window.document.head.querySelector("title").textContent
-		).toMatch(/^docsmith_pdf-to-txt_/m);
+		).toMatch(/^docsmith_pdf-to-txt_/);
 		// String found at the start of the HTML document
-		expect(dom.window.document.querySelector("pre").textContent).toEqual(
-			expect.stringContaining("The NHS belongs to the people")
+		expect(dom.window.document.querySelector("pre").textContent).toMatch(
+			"The NHS belongs to the people"
 		);
 		// String found at the end of the HTML document
-		expect(dom.window.document.querySelector("pre").textContent).toEqual(
-			expect.stringContaining(
-				"a full and transparent debate with the public, patients and staff."
-			)
+		expect(dom.window.document.querySelector("pre").textContent).toMatch(
+			/a full and transparent debate with the public, patients and staff.$/m
 		);
 		expect(response.statusCode).toBe(200);
 	});

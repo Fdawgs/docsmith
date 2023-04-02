@@ -103,9 +103,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
-			',"time"'
-		);
+		expect(config.fastifyInit.logger.timestamp()).toMatch(/^,"time"/);
 
 		expect(config.fastifyInit.https).toBeUndefined();
 		expect(config.fastifyInit.http2).toBeUndefined();
@@ -180,16 +178,12 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
-		expect(config.fastifyInit.logger.stream.config.options).toEqual(
-			expect.objectContaining({
-				filename: LOG_ROTATION_FILENAME,
-				date_format: "YYYY-MM-DD",
-				frequency: "daily",
-			})
-		);
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
-			',"time"'
-		);
+		expect(config.fastifyInit.logger.stream.config.options).toMatchObject({
+			filename: LOG_ROTATION_FILENAME,
+			date_format: "YYYY-MM-DD",
+			frequency: "daily",
+		});
+		expect(config.fastifyInit.logger.timestamp()).toMatch(/^,"time"/);
 	});
 
 	test("Should return values according to environment variables - HTTPS (SSL cert) enabled, HTTP2 enabled, and OCR enabled", async () => {
@@ -274,18 +268,14 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
-		expect(config.fastifyInit.logger.stream.config.options).toEqual(
-			expect.objectContaining({
-				date_format: LOG_ROTATION_DATE_FORMAT,
-				filename: LOG_ROTATION_FILENAME,
-				frequency: LOG_ROTATION_FREQUENCY,
-				max_logs: LOG_ROTATION_MAX_LOGS,
-				size: LOG_ROTATION_MAX_SIZE,
-			})
-		);
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
-			',"time"'
-		);
+		expect(config.fastifyInit.logger.stream.config.options).toMatchObject({
+			date_format: LOG_ROTATION_DATE_FORMAT,
+			filename: LOG_ROTATION_FILENAME,
+			frequency: LOG_ROTATION_FREQUENCY,
+			max_logs: LOG_ROTATION_MAX_LOGS,
+			size: LOG_ROTATION_MAX_SIZE,
+		});
+		expect(config.fastifyInit.logger.timestamp()).toMatch(/^,"time"/);
 
 		expect(config.fastifyInit.https).toEqual({
 			allowHTTP1: true,
