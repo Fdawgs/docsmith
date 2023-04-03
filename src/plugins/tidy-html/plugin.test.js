@@ -86,6 +86,8 @@ describe("Tidy-HTML plugin", () => {
 		expect(dom.window.document.head.textContent).toMatch("/*<![CDATA[*/");
 		// Check HTML comments are removed
 		expect(dom.window.document.body.textContent).not.toMatch(/<!--|--!?>/);
+		// Check HTML is minified
+		expect(dom.window.document.body.textContent).not.toMatch(/\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
 	});
 
