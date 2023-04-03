@@ -1,6 +1,7 @@
 const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
+const { JSDOM } = require("jsdom");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -44,8 +45,14 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(response.payload).not.toMatch(/;}|<!--|--!?>/);
+		const dom = new JSDOM(response.payload);
+		const style = dom.window.document.querySelector("style");
+
 		expect(isHtml(response.payload)).toBe(true);
+		// Check CSS is combined into one style tag
+		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
+		// Check CSS is tidied and minified
+		expect(style.innerHTML).not.toMatch(/;}|<!--|--!?>|\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -68,8 +75,15 @@ describe("Tidy-CSS plugin", () => {
 		});
 
 		expect(response.payload).toMatch(/font-family:Arial/);
-		expect(response.payload).not.toMatch(/;}|<!--|--!?>/);
+
+		const dom = new JSDOM(response.payload);
+		const style = dom.window.document.querySelector("style");
+
 		expect(isHtml(response.payload)).toBe(true);
+		// Check CSS is combined into one style tag
+		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
+		// Check CSS is tidied and minified
+		expect(style.innerHTML).not.toMatch(/;}|<!--|--!?>|\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -96,8 +110,15 @@ describe("Tidy-CSS plugin", () => {
 		expect(response.payload).toMatch(
 			/font-family:"Sans Serif","\\"Gill Sans\\""/
 		);
-		expect(response.payload).not.toMatch(/;}|<!--|--!?>/);
+
+		const dom = new JSDOM(response.payload);
+		const style = dom.window.document.querySelector("style");
+
 		expect(isHtml(response.payload)).toBe(true);
+		// Check CSS is combined into one style tag
+		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
+		// Check CSS is tidied and minified
+		expect(style.innerHTML).not.toMatch(/;}|<!--|--!?>|\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -120,8 +141,15 @@ describe("Tidy-CSS plugin", () => {
 		});
 
 		expect(response.payload).toMatch(/background-color:#fff/);
-		expect(response.payload).not.toMatch(/;}|<!--|--!?>/);
+
+		const dom = new JSDOM(response.payload);
+		const style = dom.window.document.querySelector("style");
+
 		expect(isHtml(response.payload)).toBe(true);
+		// Check CSS is combined into one style tag
+		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
+		// Check CSS is tidied and minified
+		expect(style.innerHTML).not.toMatch(/;}|<!--|--!?>|\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -150,8 +178,15 @@ describe("Tidy-CSS plugin", () => {
 
 		expect(response.payload).toMatch(/font-family:Arial/);
 		expect(response.payload).toMatch(/background-color:#fff/);
-		expect(response.payload).not.toMatch(/;}|<!--|--!?>/);
+
+		const dom = new JSDOM(response.payload);
+		const style = dom.window.document.querySelector("style");
+
 		expect(isHtml(response.payload)).toBe(true);
+		// Check CSS is combined into one style tag
+		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
+		// Check CSS is tidied and minified
+		expect(style.innerHTML).not.toMatch(/;}|<!--|--!?>|\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -173,8 +208,14 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(response.payload).not.toMatch(/;}|<!--|--!?>/);
+		const dom = new JSDOM(response.payload);
+		const style = dom.window.document.querySelector("style");
+
 		expect(isHtml(response.payload)).toBe(true);
+		// Check CSS is combined into one style tag
+		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
+		// Check CSS is tidied and minified
+		expect(style.innerHTML).not.toMatch(/;}|<!--|--!?>|\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -195,6 +236,7 @@ describe("Tidy-CSS plugin", () => {
 				"content-type": "text/html",
 			},
 		});
+
 		expect(isHtml(response.payload)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
