@@ -1,4 +1,4 @@
-<img alttext="Docsmith logo" src="https://raw.githubusercontent.com/Fdawgs/docsmith/main/docs/images/docsmith-logo.svg" width="480" />
+<img alttext="Docsmith logo" src="https://raw.githubusercontent.com/Fdawgs/docsmith/main/docs/images/docsmith-logo.svg" width="480" height="auto" />
 
 # Docsmith
 
