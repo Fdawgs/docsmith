@@ -80,7 +80,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		const { body, docLocation } = JSON.parse(response.payload);
 		const dom = new JSDOM(body);
 
-		expect(body).not.toEqual(expect.stringMatching(artifacts));
+		expect(body).not.toMatch(artifacts);
 		expect(isHtml(body)).toBe(true);
 		// Check only one meta and title element exists
 		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);

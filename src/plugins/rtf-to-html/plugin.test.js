@@ -63,7 +63,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		const { body, docLocation } = JSON.parse(response.payload);
 		const dom = new JSDOM(body);
 
-		expect(body).not.toEqual(expect.stringMatching(artifacts));
+		expect(body).not.toMatch(artifacts);
 		expect(isHtml(body)).toBe(true);
 		// Check that head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.firstChild.tagName).toBe("META");
