@@ -48,7 +48,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		]);
 	});
 
-	test("Should convert RTF file to HTML", async () => {
+	it("Converts RTF file to HTML", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -101,14 +101,15 @@ describe("RTF-to-HTML conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test.each([
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid RTF file",
 			readFile: true,
 		},
 	])(
-		"Should return HTTP status code 400 if RTF file $testName",
+		"Returns HTTP status code 400 if RTF file $testName",
 		async ({ readFile }) => {
 			const response = await server.inject({
 				method: "POST",

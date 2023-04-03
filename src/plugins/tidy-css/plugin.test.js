@@ -26,7 +26,7 @@ describe("Tidy-CSS plugin", () => {
 		await server.close();
 	});
 
-	test("Should tidy CSS in HTML", async () => {
+	it("Tidies CSS in HTML", async () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body));
 		});
@@ -49,7 +49,7 @@ describe("Tidy-CSS plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should tidy CSS in HTML and set new font", async () => {
+	it("Tidies CSS in HTML and set new font", async () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body, { fonts: "Arial" }));
 		});
@@ -73,7 +73,7 @@ describe("Tidy-CSS plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should tidy CSS in HTML and set new font in quotation marks", async () => {
+	it("Tidies CSS in HTML and set new font in quotation marks", async () => {
 		server.post("/", (req, res) => {
 			res.send(
 				server.tidyCss(req.body, { fonts: 'Sans Serif, "Gill Sans"' })
@@ -101,7 +101,7 @@ describe("Tidy-CSS plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should tidy CSS in HTML and set new background color", async () => {
+	it("Tidies CSS in HTML and set new background color", async () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body, { backgroundColor: "white" }));
 		});
@@ -125,7 +125,7 @@ describe("Tidy-CSS plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should create new style element if none exist but query string param passed", async () => {
+	it("Creates new style element if none exist but query string param passed", async () => {
 		server.post("/", (req, res) => {
 			res.send(
 				server.tidyCss(req.body, {
@@ -155,7 +155,7 @@ describe("Tidy-CSS plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should continue to parse style elements with no type attribute", async () => {
+	it("Continues to parse style elements with no type attribute", async () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body));
 		});
@@ -178,7 +178,7 @@ describe("Tidy-CSS plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should continue if it cannot find any CSS to tidy", async () => {
+	it("Continues if it cannot find any CSS to tidy", async () => {
 		server.post("/", (req, res) => {
 			res.send(server.tidyCss(req.body));
 		});
