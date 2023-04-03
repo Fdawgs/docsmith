@@ -39,7 +39,7 @@ describe("Image-to-TXT conversion plugin", () => {
 		await server.close();
 	});
 
-	test("Should read text from image file", async () => {
+	it("Reads text from image file", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",

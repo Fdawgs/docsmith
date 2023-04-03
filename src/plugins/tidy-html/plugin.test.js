@@ -22,19 +22,23 @@ describe("Tidy-HTML plugin", () => {
 		await server.close();
 	});
 
-	test.each([
-		{ testName: "tidy HTML" },
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
+		{ testName: "Tidies HTML" },
 		{
-			testName: "tidy HTML and set img alt attributes to empty string",
+			testName: "Tidies HTML and set img alt attributes to empty string",
 			options: { removeAlt: true },
 		},
-		{ testName: "tidy HTML and set language", options: { language: "fr" } },
+		{
+			testName: "Tidies HTML and set language",
+			options: { language: "fr" },
+		},
 		{
 			testName:
-				"tidy HTML, set img alt attributes to empty string, and set language",
+				"Tidies HTML, set img alt attributes to empty string, and set language",
 			options: { language: "fr", removeAlt: true },
 		},
-	])("Should $testName", async ({ options }) => {
+	])("$testName", async ({ options }) => {
 		server.post("/", async (req) => {
 			const result = await server.tidyHtml(req.body, options);
 			return result;
@@ -89,7 +93,7 @@ describe("Tidy-HTML plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should return HTTP status code 400 if language querystring param is not valid IANA language tag", async () => {
+	it("Returns HTTP status code 400 if language querystring param is not valid IANA language tag", async () => {
 		server.post("/", async (req) => {
 			const result = await server.tidyHtml(req.body, {
 				language: "en-Somerset",

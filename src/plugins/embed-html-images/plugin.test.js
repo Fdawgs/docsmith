@@ -27,7 +27,7 @@ describe("Embed-HTML-Images plugin", () => {
 		await server.close();
 	});
 
-	test("Should embed images into HTML", async () => {
+	it("Embeds images into HTML", async () => {
 		const altConfig = await getConfig();
 		altConfig.poppler.tempDir = "./test_resources/test_files/";
 		server.post("/", async (req) => {
@@ -57,7 +57,7 @@ describe("Embed-HTML-Images plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should throw error if it cannot find images to embed in specified directory", async () => {
+	it("Throws error if it cannot find images to embed in specified directory", async () => {
 		server.post("/", async (req) => {
 			const result = await server.embedHtmlImages(req.body);
 			return result;

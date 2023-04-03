@@ -32,7 +32,7 @@ describe("RTF-to-TXT route", () => {
 		await server.close();
 	});
 
-	test("Should return RTF file converted to TXT", async () => {
+	it("Returns RTF file converted to TXT", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -55,7 +55,7 @@ describe("RTF-to-TXT route", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should return HTTP status code 415 if file is missing", async () => {
+	it("Returns HTTP status code 415 if file is missing", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -74,7 +74,7 @@ describe("RTF-to-TXT route", () => {
 		expect(response.statusCode).toBe(415);
 	});
 
-	test("Should return HTTP status code 415 if file with '.rtf' extension is not a valid RTF file", async () => {
+	it("Returns HTTP status code 415 if file with '.rtf' extension is not a valid RTF file", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -98,7 +98,7 @@ describe("RTF-to-TXT route", () => {
 		expect(response.statusCode).toBe(415);
 	});
 
-	test("Should return HTTP status code 415 if file media type is not supported by route", async () => {
+	it("Returns HTTP status code 415 if file media type is not supported by route", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -119,7 +119,7 @@ describe("RTF-to-TXT route", () => {
 		expect(response.statusCode).toBe(415);
 	});
 
-	test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+	it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",

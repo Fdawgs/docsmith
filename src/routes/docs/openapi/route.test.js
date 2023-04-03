@@ -28,7 +28,7 @@ describe("OpenAPI route", () => {
 			await server.close();
 		});
 
-		test("Should return OpenAPI definitions", async () => {
+		it("Returns OpenAPI definitions", async () => {
 			const response = await server.inject({
 				method: "GET",
 				url: "/",
@@ -44,7 +44,7 @@ describe("OpenAPI route", () => {
 			expect(response.statusCode).toBe(200);
 		});
 
-		test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+		it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 			const response = await server.inject({
 				method: "GET",
 				url: "/",

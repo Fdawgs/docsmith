@@ -48,18 +48,19 @@ describe("PDF-to-HTML conversion plugin", () => {
 		]);
 	});
 
-	test.each([
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
 		{
-			testName: "convert PDF file to HTML",
+			testName: "Converts PDF file to HTML",
 		},
 		{
 			testName:
-				"convert PDF file to HTML and ignore invalid `test` query string param",
+				"Converts PDF file to HTML and ignore invalid `test` query string param",
 			query: {
 				test: "test",
 			},
 		},
-	])(`Should $testName`, async ({ query }) => {
+	])(`$testName`, async ({ query }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -119,14 +120,15 @@ describe("PDF-to-HTML conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test.each([
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid PDF file",
 			readFile: true,
 		},
 	])(
-		"Should return HTTP status code 400 if PDF file $testName",
+		"Returns HTTP status code 400 if PDF file $testName",
 		async ({ readFile }) => {
 			const response = await server.inject({
 				method: "POST",

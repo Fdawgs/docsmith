@@ -21,7 +21,7 @@ describe("Configuration", () => {
 		Object.assign(process.env, currentEnv);
 	});
 
-	test("Should use defaults if values missing and return values according to environment variables", async () => {
+	it("Uses defaults if values missing and return values according to environment variables", async () => {
 		const HOST = "";
 		const PORT = "";
 		const CORS_ORIGIN = false;
@@ -149,7 +149,7 @@ describe("Configuration", () => {
 		});
 	});
 
-	test("Should use defaults logging values if values missing", async () => {
+	it("Uses defaults logging values if values missing", async () => {
 		const LOG_LEVEL = "";
 		const LOG_ROTATION_DATE_FORMAT = "";
 		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
@@ -186,7 +186,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger.timestamp()).toMatch(/^,"time"/);
 	});
 
-	test("Should return values according to environment variables - HTTPS (SSL cert) enabled, HTTP2 enabled, and OCR enabled", async () => {
+	it("Returns values according to environment variables - HTTPS (SSL cert) enabled, HTTP2 enabled, and OCR enabled", async () => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
 		const REQ_BODY_MAX_BYTES = 100000000;
@@ -316,7 +316,7 @@ describe("Configuration", () => {
 		});
 	});
 
-	test("Should return values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {
+	it("Returns values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
 		const HTTPS_PFX_FILE_PATH =
@@ -350,7 +350,7 @@ describe("Configuration", () => {
 	});
 
 	// CORS env variables
-	test.each([
+	it.each([
 		{
 			testName: "CORS origin set to true and credentials enabled",
 			envVariables: {
@@ -393,7 +393,7 @@ describe("Configuration", () => {
 			},
 		},
 	])(
-		"Should return values according to environment variables - $testName",
+		"Returns values according to environment variables - $testName",
 		async ({ envVariables, expected }) => {
 			const HOST = "0.0.0.0";
 			const PORT = 80;
@@ -436,7 +436,7 @@ describe("Configuration", () => {
 	);
 
 	// HTTPS cert path env variables
-	test.each([
+	it.each([
 		{
 			testName: "invalid PFX file path",
 			envVariables: {
@@ -452,7 +452,7 @@ describe("Configuration", () => {
 				HTTPS_SSL_KEY_PATH: "./test_resources/test_ssl_cert/error.key",
 			},
 		},
-	])("Should throw error if $testName", async ({ envVariables }) => {
+	])("Throws error if $testName", async ({ envVariables }) => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
 		const HTTPS_SSL_KEY_PATH = envVariables.HTTPS_SSL_KEY_PATH || "";

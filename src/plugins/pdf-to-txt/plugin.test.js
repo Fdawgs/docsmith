@@ -45,16 +45,17 @@ describe("PDF-to-TXT conversion plugin", () => {
 		]);
 	});
 
-	test.each([
-		{ testName: "convert PDF file to TXT" },
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
+		{ testName: "Converts PDF file to TXT" },
 		{
 			testName:
-				"convert PDF file to TXT and ignore invalid `test` query string param",
+				"Converts PDF file to TXT and ignore invalid `test` query string param",
 			query: {
 				test: "test",
 			},
 		},
-	])("Should $testName", async ({ query }) => {
+	])("$testName", async ({ query }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -78,14 +79,18 @@ describe("PDF-to-TXT conversion plugin", () => {
 	});
 
 	// OCR tests that use pdftocairo and tesseract
-	test.each([
-		{ testName: "convert PDF file to TXT using OCR", query: { ocr: true } },
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
+		{
+			testName: "Converts PDF file to TXT using OCR",
+			query: { ocr: true },
+		},
 		{
 			testName:
-				"convert PDF file to TXT using OCR and ignore invalid `test` query string param ",
+				"Converts PDF file to TXT using OCR and ignore invalid `test` query string param ",
 			query: { ocr: true, test: "test" },
 		},
-	])("Should $testName", async ({ query }) => {
+	])("$testName", async ({ query }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -118,7 +123,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should convert PDF file to TXT wrapped in HTML", async () => {
+	it("Converts PDF file to TXT wrapped in HTML", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -162,7 +167,8 @@ describe("PDF-to-TXT conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test.each([
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid PDF file",
@@ -177,7 +183,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 			},
 		},
 	])(
-		"Should return HTTP status code 400 if PDF file $testName",
+		"Returns HTTP status code 400 if PDF file $testName",
 		async ({ readFile, query }) => {
 			const response = await server.inject({
 				method: "POST",

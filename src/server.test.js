@@ -109,7 +109,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/admin/healthcheck route", () => {
-			test("Should return `ok`", async () => {
+			it("Returns `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/admin/healthcheck",
@@ -123,7 +123,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/admin/healthcheck",
@@ -143,7 +143,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("Undeclared route", () => {
-			test("Should return HTTP status code 404 if route not found", async () => {
+			it("Returns HTTP status code 404 if route not found", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/invalid",
@@ -164,7 +164,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/docx/html route", () => {
-			test("Should return DOCX file converted to HTML, with expected headers set", async () => {
+			it("Returns DOCX file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/docx/html",
@@ -188,7 +188,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/docx/txt route", () => {
-			test("Should return DOCX file converted to TXT, with expected headers set", async () => {
+			it("Returns DOCX file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/docx/txt",
@@ -212,7 +212,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/pdf/html route", () => {
-			test("Should return PDF file converted to HTML, with expected headers set", async () => {
+			it("Returns PDF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -234,7 +234,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -261,7 +261,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/pdf/txt route", () => {
-			test("Should return PDF file converted to TXT, with expected headers set", async () => {
+			it("Returns PDF file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
@@ -285,7 +285,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/rtf/html route", () => {
-			test("Should return RTF file converted to HTML, with expected headers set", async () => {
+			it("Returns RTF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/rtf/html",
@@ -308,7 +308,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/rtf/txt route", () => {
-			test("Should return RTF file converted to TXT, with expected headers set", async () => {
+			it("Returns RTF file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/rtf/txt",
@@ -352,7 +352,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/admin/healthcheck route", () => {
-			test("Should return `ok`", async () => {
+			it("Returns `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/admin/healthcheck",
@@ -366,7 +366,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/admin/healthcheck",
@@ -386,7 +386,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("Undeclared route", () => {
-			test("Should return HTTP status code 404 if route not found", async () => {
+			it("Returns HTTP status code 404 if route not found", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/invalid",
@@ -407,7 +407,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/pdf/html route", () => {
-			test("Should return PDF file converted to HTML, with expected headers set", async () => {
+			it("Returns PDF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -430,7 +430,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 401 if invalid bearer token provided in header", async () => {
+			it("Returns HTTP status code 401 if invalid bearer token provided in header", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -454,7 +454,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(401);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -482,7 +482,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/pdf/txt route", () => {
-			test("Should return PDF file converted to TXT, with expected headers set", async () => {
+			it("Returns PDF file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
@@ -506,7 +506,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 401 if invalid bearer token provided in header", async () => {
+			it("Returns HTTP status code 401 if invalid bearer token provided in header", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
@@ -531,7 +531,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(401);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
@@ -704,6 +704,7 @@ describe("Server deployment", () => {
 				},
 			},
 		];
+		// TODO: use `describe.concurrent.each()` once it is no longer experimental
 		describe.each(corsTests)(
 			"$testName",
 			({ envVariables, expected, request }) => {
@@ -723,7 +724,7 @@ describe("Server deployment", () => {
 				});
 
 				describe("/admin/healthcheck route", () => {
-					test("Should return `ok`", async () => {
+					it("Returns `ok`", async () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/admin/healthcheck",
@@ -742,7 +743,7 @@ describe("Server deployment", () => {
 
 					// Only applicable if CORS enabled
 					if (envVariables.CORS_ORIGIN) {
-						test("Should return response to CORS preflight request", async () => {
+						it("Returns response to CORS preflight request", async () => {
 							const response = await server.inject({
 								method: "OPTIONS",
 								url: "/admin/healthcheck",
@@ -772,7 +773,7 @@ describe("Server deployment", () => {
 						});
 					}
 
-					test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+					it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/admin/healthcheck",
@@ -795,7 +796,7 @@ describe("Server deployment", () => {
 				});
 
 				describe("Undeclared route", () => {
-					test("Should return HTTP status code 404 if route not found", async () => {
+					it("Returns HTTP status code 404 if route not found", async () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/invalid",
@@ -849,7 +850,7 @@ describe("Server deployment", () => {
 
 		describe("Content", () => {
 			describe("/docs route", () => {
-				test("Should return HTML", async () => {
+				it("Returns HTML", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/docs",
@@ -865,7 +866,7 @@ describe("Server deployment", () => {
 			});
 
 			describe("/public route", () => {
-				test("Should return image", async () => {
+				it("Returns image", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/public/images/icons/favicon.ico",
@@ -882,12 +883,12 @@ describe("Server deployment", () => {
 
 		describe("Frontend", () => {
 			// Webkit not tested as it is flakey in context of Playwright
-			// TODO: use `test.concurrent.each()` once it is no longer experimental
-			test.each([
+			// TODO: use `it.concurrent.each()` once it is no longer experimental
+			it.each([
 				{ browser: chromium, name: "Chromium" },
 				{ browser: firefox, name: "Firefox" },
 			])(
-				"Should render docs page without error components - $name",
+				"Renders docs page without error components - $name",
 				async ({ browser }) => {
 					const browserType = await browser.launch();
 					const page = await browserType.newPage();
@@ -940,7 +941,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/error route", () => {
-			test("Should return HTTP status code 500", async () => {
+			it("Returns HTTP status code 500", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/error",
