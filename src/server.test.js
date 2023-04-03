@@ -704,7 +704,6 @@ describe("Server deployment", () => {
 				},
 			},
 		];
-		// TODO: use `describe.concurrent.each()` once it is no longer experimental
 		describe.each(corsTests)(
 			"$testName",
 			({ envVariables, expected, request }) => {
