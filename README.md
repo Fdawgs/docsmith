@@ -1,3 +1,5 @@
+<img alttext="Docsmith logo" src="https://raw.githubusercontent.com/Fdawgs/docsmith/main/docs/images/docsmith-logo.svg" width="480" height="auto" />
+
 # Docsmith
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/docsmith.svg)](https://github.com/Fdawgs/docsmith/releases/latest/)
