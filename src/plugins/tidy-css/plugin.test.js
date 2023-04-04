@@ -110,12 +110,18 @@ describe("Tidy-CSS plugin", () => {
 		const style = dom.window.document.querySelector("style");
 
 		expect(isHtml(response.payload)).toBe(true);
+		// Check CSS is combined into one style tag
+		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
 		// Check font-family is set to expected value
 		expect(style.innerHTML).toMatch(expected?.fonts || /./);
 		// Check background-color is set to expected value
 		expect(style.innerHTML).toMatch(expected?.backgroundColor || /./);
-		// Check CSS is combined into one style tag
-		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
+		// Check page-break-inside is set to avoid
+		expect(style.innerHTML).toMatch(
+			file !== "valid_no_style_type_html.html"
+				? /page-break-inside:avoid/
+				: /./
+		);
 		// Check CSS is tidied and minified
 		expect(style.innerHTML).not.toMatch(/;}|<!--|--!?>|\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
