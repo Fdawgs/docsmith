@@ -26,16 +26,16 @@ describe("Tidy-HTML plugin", () => {
 	it.each([
 		{ testName: "Tidies HTML" },
 		{
-			testName: "Tidies HTML and set img alt attributes to empty string",
+			testName: "Tidies HTML and sets img alt attributes to empty string",
 			options: { removeAlt: true },
 		},
 		{
-			testName: "Tidies HTML and set language",
+			testName: "Tidies HTML and sets language",
 			options: { language: "fr" },
 		},
 		{
 			testName:
-				"Tidies HTML, set img alt attributes to empty string, and set language",
+				"Tidies HTML, sets img alt attributes to empty string, and sets language",
 			options: { language: "fr", removeAlt: true },
 		},
 	])("$testName", async ({ options }) => {
