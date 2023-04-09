@@ -53,10 +53,11 @@ jobs:
             - name: Build
               run: npm run build
 
-            - name: Remove dev values from package.json
+            - name: Remove dev values from package.json and package-lock.json
               run: |
                   npm pkg delete commitlint devDependencies jest nodemonConfig scripts
                   npm pkg set scripts.start="node ."
+                  npm i --ignore-scripts
 
             - name: Create release asset
               run: >
