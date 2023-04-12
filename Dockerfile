@@ -25,7 +25,7 @@ RUN npm ci --ignore-scripts --omit=dev && \
     # Remove included Windows and macOS binaries
     rm -rf ./node_modules/node-poppler/src/lib/* && \
     rm -rf ./node_modules/node-unrtf/src/lib/* && \
-    rm -rf ./node_modules/htmltidy2/bin/win32 && \
+    rm -rf ./node_modules/htmltidy2/bin/win64 && \
     rm -rf ./node_modules/htmltidy2/bin/darwin
 
 # Copy source
