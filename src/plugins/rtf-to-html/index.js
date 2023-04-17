@@ -169,7 +169,7 @@ async function plugin(server, options) {
 			 * by client is malformed, thus client error code
 			 */
 			/* istanbul ignore else */
-			if (/File is not the correct media type/.test(err)) {
+			if (err.message.includes("File is not the correct media type")) {
 				throw server.httpErrors.badRequest();
 			}
 			/* istanbul ignore next: unable to test unknown errors */

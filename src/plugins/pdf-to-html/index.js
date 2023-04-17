@@ -139,7 +139,7 @@ async function plugin(server, options) {
 			 * by client is malformed, thus client error code
 			 */
 			/* istanbul ignore else */
-			if (/Syntax Error:/.test(err)) {
+			if (err.message.includes("Syntax Error:")) {
 				throw server.httpErrors.badRequest();
 			}
 			/* istanbul ignore next: unable to test unknown errors */
