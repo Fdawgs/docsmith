@@ -83,6 +83,14 @@ const expResHeaders404Errors = {
 	vary: undefined,
 };
 
+const expResHeaders404ErrorsXml = {
+	...expResHeaders404Errors,
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+	"content-type": expect.stringMatching(/^application\/xml; charset=utf-8$/i),
+	"x-xss-protection": "0",
+};
+
 const expResHeaders5xxErrors = {
 	...expResHeadersJson,
 	vary: "accept-encoding",
@@ -159,6 +167,22 @@ describe("Server deployment", () => {
 				});
 
 				expect(response.headers).toEqual(expResHeaders404Errors);
+				expect(response.statusCode).toBe(404);
+			});
+
+			it("Returns an XML response if media type in `Accept` request header is `application/xml`", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/invalid",
+					headers: {
+						accept: "application/xml",
+					},
+				});
+
+				expect(response.payload).toBe(
+					'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
+				);
+				expect(response.headers).toEqual(expResHeaders404ErrorsXml);
 				expect(response.statusCode).toBe(404);
 			});
 		});
@@ -402,6 +426,22 @@ describe("Server deployment", () => {
 				});
 
 				expect(response.headers).toEqual(expResHeaders404Errors);
+				expect(response.statusCode).toBe(404);
+			});
+
+			it("Returns an XML response if media type in `Accept` request header is `application/xml`", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/invalid",
+					headers: {
+						accept: "application/xml",
+					},
+				});
+
+				expect(response.payload).toBe(
+					'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
+				);
+				expect(response.headers).toEqual(expResHeaders404ErrorsXml);
 				expect(response.statusCode).toBe(404);
 			});
 		});
@@ -812,6 +852,24 @@ describe("Server deployment", () => {
 						});
 						expect(response.headers).toEqual(
 							expResHeaders404Errors
+						);
+						expect(response.statusCode).toBe(404);
+					});
+
+					it("Returns an XML response if media type in `Accept` request header is `application/xml`", async () => {
+						const response = await server.inject({
+							method: "GET",
+							url: "/invalid",
+							headers: {
+								accept: "application/xml",
+							},
+						});
+
+						expect(response.payload).toBe(
+							'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
+						);
+						expect(response.headers).toEqual(
+							expResHeaders404ErrorsXml
 						);
 						expect(response.statusCode).toBe(404);
 					});
