@@ -59,8 +59,7 @@ async function plugin(server) {
 					.prop("error", S.string().const("Unsupported Media Type"))
 					.prop(
 						"message",
-						// JSON Schema does not support Regex flags, added for posterity
-						S.string().pattern(/^Unsupported Media Type.*$/m)
+						S.string().pattern(/^Unsupported Media Type.*$/)
 					)
 			)
 			.prop(

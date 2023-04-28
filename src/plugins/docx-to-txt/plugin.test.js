@@ -31,7 +31,7 @@ describe("DOCX-to-TXT conversion plugin", () => {
 		await server.close();
 	});
 
-	test("Should convert DOCX file to TXT", async () => {
+	it("Converts DOCX file to TXT", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -47,10 +47,8 @@ describe("DOCX-to-TXT conversion plugin", () => {
 		const { body } = JSON.parse(response.payload);
 
 		// String found in first heading of the test document
-		expect(body).toEqual(
-			expect.stringContaining(
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
-			)
+		expect(body).toMatch(
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
 		);
 		// String found at end of the test document
 		expect(body).toMatch(
@@ -60,14 +58,15 @@ describe("DOCX-to-TXT conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test.each([
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid DOCX file",
 			readFile: true,
 		},
 	])(
-		"Should return HTTP status code 400 if DOCX file $testName",
+		"Returns HTTP status code 400 if DOCX file $testName",
 		async ({ readFile }) => {
 			const response = await server.inject({
 				method: "POST",

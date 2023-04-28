@@ -48,18 +48,19 @@ describe("PDF-to-HTML conversion plugin", () => {
 		]);
 	});
 
-	test.each([
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
 		{
-			testName: "convert PDF file to HTML",
+			testName: "Converts PDF file to HTML",
 		},
 		{
 			testName:
-				"convert PDF file to HTML and ignore invalid `test` query string param",
+				"Converts PDF file to HTML and ignore invalid `test` query string param",
 			query: {
 				test: "test",
 			},
 		},
-	])(`Should $testName`, async ({ query }) => {
+	])(`$testName`, async ({ query }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -79,22 +80,20 @@ describe("PDF-to-HTML conversion plugin", () => {
 		const { body, docLocation } = JSON.parse(response.payload);
 		const dom = new JSDOM(body);
 
-		expect(body).not.toEqual(expect.stringMatching(artifacts));
+		expect(body).not.toMatch(artifacts);
 		expect(isHtml(body)).toBe(true);
 		// Check only one meta and title element exists
 		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);
 		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
 		// Check head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.firstChild.tagName).toBe("META");
-		expect(dom.window.document.head.firstChild).toEqual(
-			expect.objectContaining({
-				content: expect.stringMatching(/^text\/html; charset=utf-8$/im),
-				httpEquiv: expect.stringMatching(/^content-type$/im),
-			})
-		);
+		expect(dom.window.document.head.firstChild).toMatchObject({
+			content: expect.stringMatching(/^text\/html; charset=utf-8$/i),
+			httpEquiv: expect.stringMatching(/^content-type$/i),
+		});
 		expect(
 			dom.window.document.head.querySelector("title").textContent
-		).toMatch(/^docsmith_pdf-to-html_/m);
+		).toMatch(/^docsmith_pdf-to-html_/);
 		// String found in first paragraph of the test document
 		expect(dom.window.document.querySelector("p").textContent).toMatch(
 			/for\sEngland\s/
@@ -105,16 +104,14 @@ describe("PDF-to-HTML conversion plugin", () => {
 				dom.window.document.querySelectorAll("p").length - 1
 			].textContent
 		).toMatch(
-			/a\sfull\sand\stransparent\sdebate\swith\sthe\spublic,\spatients\sand\sstaff.\s$/m
+			/a\sfull\sand\stransparent\sdebate\swith\sthe\spublic,\spatients\sand\sstaff.\s$/
 		);
 		// Check the docLocation object contains the expected properties
-		expect(docLocation).toEqual(
-			expect.objectContaining({
-				directory: expect.any(String),
-				html: expect.stringMatching(/-html\.html$/im),
-				id: expect.stringMatching(/^docsmith_pdf-to-html_/m),
-			})
-		);
+		expect(docLocation).toMatchObject({
+			directory: expect.any(String),
+			html: expect.stringMatching(/-html\.html$/i),
+			id: expect.stringMatching(/^docsmith_pdf-to-html_/),
+		});
 		// Check the HTML file has been removed from the temp directory
 		await expect(fs.readFile(docLocation.html)).rejects.toThrow();
 		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
@@ -123,14 +120,15 @@ describe("PDF-to-HTML conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test.each([
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid PDF file",
 			readFile: true,
 		},
 	])(
-		"Should return HTTP status code 400 if PDF file $testName",
+		"Returns HTTP status code 400 if PDF file $testName",
 		async ({ readFile }) => {
 			const response = await server.inject({
 				method: "POST",

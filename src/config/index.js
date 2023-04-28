@@ -19,9 +19,13 @@ const { description, license, version } = require("../../package.json");
  * @returns {boolean|Array<string>|string} CORS parameter.
  */
 function parseCorsParameter(param) {
-	if (param?.toLowerCase().trim() === "true") return true;
-	if (param?.toLowerCase().trim() === "false") return false;
-	if (param?.includes(",")) {
+	if (param.toLowerCase().trim() === "true") {
+		return true;
+	}
+	if (param.toLowerCase().trim() === "false") {
+		return false;
+	}
+	if (param.includes(",")) {
 		return param
 			.trim()
 			.split(",")
@@ -88,7 +92,7 @@ async function getConfig() {
 				S.anyOf([
 					// daily, date, [1-12]h, or [1-30]m
 					S.string().pattern(
-						/^(?:daily|date|(?:[1-9]|1[012])h|(?:[1-9]|[1-2][0-9]|30)m)$/m
+						/^(?:daily|date|(?:[1-9]|1[012])h|(?:[1-9]|[1-2][0-9]|30)m)$/
 					),
 					S.null(),
 				])
@@ -112,14 +116,20 @@ async function getConfig() {
 			.prop("PROC_LOAD_MAX_RSS_BYTES", S.anyOf([S.number(), S.null()]))
 
 			// Rate limiting
-			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
+			.prop(
+				"RATE_LIMIT_EXCLUDED_ARRAY",
+				S.anyOf([S.string().pattern(/^\[.*\]$/), S.null()])
+			)
 			.prop(
 				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
 				S.anyOf([S.number(), S.null()])
 			)
 
 			// Bearer token auth
-			.prop("AUTH_BEARER_TOKEN_ARRAY", S.anyOf([S.string(), S.null()]))
+			.prop(
+				"AUTH_BEARER_TOKEN_ARRAY",
+				S.anyOf([S.string().pattern(/^\[\{.*\}\]$/), S.null()])
+			)
 
 			// Binary paths
 			.prop("POPPLER_BINARY_PATH", S.anyOf([S.string(), S.null()]))

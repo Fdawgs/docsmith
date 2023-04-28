@@ -22,9 +22,11 @@ RUN npm ci --ignore-scripts --omit=dev && \
     npm cache clean --force && \
     chown node ./node_modules/htmltidy2/bin/linux64/tidy && \
     chmod 100 ./node_modules/htmltidy2/bin/linux64/tidy && \
-    # Remove included Windows binaries
+    # Remove included Windows and macOS binaries
     rm -rf ./node_modules/node-poppler/src/lib/* && \
-    rm -rf ./node_modules/node-unrtf/src/lib/*
+    rm -rf ./node_modules/node-unrtf/src/lib/* && \
+    rm -rf ./node_modules/htmltidy2/bin/win64 && \
+    rm -rf ./node_modules/htmltidy2/bin/darwin
 
 # Copy source
 COPY . .

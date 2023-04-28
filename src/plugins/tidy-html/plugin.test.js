@@ -22,19 +22,23 @@ describe("Tidy-HTML plugin", () => {
 		await server.close();
 	});
 
-	test.each([
-		{ testName: "tidy HTML" },
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
+		{ testName: "Tidies HTML" },
 		{
-			testName: "tidy HTML and set img alt attributes to empty string",
+			testName: "Tidies HTML and sets img alt attributes to empty string",
 			options: { removeAlt: true },
 		},
-		{ testName: "tidy HTML and set language", options: { language: "fr" } },
+		{
+			testName: "Tidies HTML and sets language",
+			options: { language: "fr" },
+		},
 		{
 			testName:
-				"tidy HTML, set img alt attributes to empty string, and set language",
+				"Tidies HTML, sets img alt attributes to empty string, and sets language",
 			options: { language: "fr", removeAlt: true },
 		},
-	])("Should $testName", async ({ options }) => {
+	])("$testName", async ({ options }) => {
 		server.post("/", async (req) => {
 			const result = await server.tidyHtml(req.body, options);
 			return result;
@@ -72,26 +76,22 @@ describe("Tidy-HTML plugin", () => {
 		});
 
 		// Check smart quotes and em dashes are replaced with ASCII equivalents
-		expect(dom.window.document.body.textContent).not.toEqual(
-			expect.stringMatching(/“|”|‘|’|—/)
-		);
+		expect(dom.window.document.body.textContent).not.toMatch(/“|”|‘|’|—/);
 		// Check `&nbsp;` is replaced with spaces
-		expect(dom.window.document.body.textContent).not.toEqual(
-			expect.stringMatching("&nbsp;")
-		);
+		expect(dom.window.document.body.textContent).not.toMatch("&nbsp;");
 		// Check legacy HTML elements are removed
 		expect(dom.window.document.querySelector("center")).toBeNull();
 		expect(dom.window.document.querySelector("font")).toBeNull();
 		// Check `<![CDATA[]]>` is escaped
-		expect(dom.window.document.head.textContent).toEqual(
-			expect.stringContaining("/*<![CDATA[*/")
-		);
+		expect(dom.window.document.head.textContent).toMatch("/*<![CDATA[*/");
 		// Check HTML comments are removed
 		expect(dom.window.document.body.textContent).not.toMatch(/<!--|--!?>/);
+		// Check HTML is minified
+		expect(dom.window.document.body.textContent).not.toMatch(/\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should return HTTP status code 400 if language querystring param is not valid IANA language tag", async () => {
+	it("Returns HTTP status code 400 if language querystring param is not valid IANA language tag", async () => {
 		server.post("/", async (req) => {
 			const result = await server.tidyHtml(req.body, {
 				language: "en-Somerset",

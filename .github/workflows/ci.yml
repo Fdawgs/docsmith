@@ -153,7 +153,7 @@ jobs:
 
             - name: Coveralls parallel
               if: github.repository == 'Fdawgs/docsmith'
-              uses: coverallsapp/github-action@v2.0.0
+              uses: coverallsapp/github-action@v2.1.2
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel: true
@@ -222,7 +222,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Coveralls finished
-              uses: coverallsapp/github-action@v2.0.0
+              uses: coverallsapp/github-action@v2.1.2
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel-finished: true

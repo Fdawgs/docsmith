@@ -39,7 +39,7 @@ describe("Image-to-TXT conversion plugin", () => {
 		await server.close();
 	});
 
-	test("Should read text from image file", async () => {
+	it("Reads text from image file", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -51,9 +51,7 @@ describe("Image-to-TXT conversion plugin", () => {
 			},
 		});
 
-		expect(response.body).toEqual(
-			expect.stringContaining("Super Test Hospital")
-		);
+		expect(response.body).toMatch("Super Test Hospital");
 		expect(isHtml(response.body)).toBe(false);
 		expect(response.statusCode).toBe(200);
 	});

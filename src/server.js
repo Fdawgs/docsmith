@@ -1,7 +1,6 @@
 const autoLoad = require("@fastify/autoload");
 const fp = require("fastify-plugin");
 const path = require("upath");
-const secJSON = require("secure-json-parse");
 
 // Import plugins
 const accepts = require("@fastify/accepts");
@@ -136,15 +135,12 @@ async function plugin(server, config) {
 		 * security of other routes
 		 */
 		.register(async (publicContext) => {
-			const relaxedHelmetConfig = secJSON.parse(
-				JSON.stringify(config.helmet)
-			);
+			const relaxedHelmetConfig = structuredClone(config.helmet);
 			Object.assign(
 				relaxedHelmetConfig.contentSecurityPolicy.directives,
 				{
 					"script-src": ["'self'", "'unsafe-inline'"],
 					"style-src": ["'self'", "'unsafe-inline'"],
-					"child-src": ["'self'"],
 				}
 			);
 

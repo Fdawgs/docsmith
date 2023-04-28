@@ -10,7 +10,7 @@ const expResHeaders = {
 	connection: "keep-alive",
 	"content-length": expect.stringMatching(/\d+/),
 	"content-security-policy": "default-src 'self';frame-ancestors 'none'",
-	"content-type": expect.stringContaining("text/plain"),
+	"content-type": expect.stringMatching(/^text\/plain; charset=utf-8$/i),
 	date: expect.any(String),
 	expires: "0",
 	"permissions-policy": "interest-cohort=()",
@@ -33,7 +33,7 @@ const expResHeadersHtml = {
 	...expResHeaders,
 	"content-security-policy":
 		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-	"content-type": expect.stringContaining("text/html"),
+	"content-type": expect.stringMatching(/^text\/html; charset=utf-8$/i),
 	"x-xss-protection": "0",
 };
 
@@ -57,7 +57,7 @@ const expeResHeadersPublicImage = {
 	"accept-ranges": "bytes",
 	"cache-control": "public, max-age=31536000, immutable",
 	"content-length": expect.any(Number), // @fastify/static plugin returns content-length as number
-	"content-type": expect.stringContaining("image/"),
+	"content-type": expect.stringMatching(/^image\//i),
 	etag: expect.any(String),
 	expires: undefined,
 	"last-modified": expect.any(String),
@@ -68,17 +68,27 @@ const expeResHeadersPublicImage = {
 
 const expResHeadersJson = {
 	...expResHeaders,
-	"content-type": expect.stringContaining("application/json"),
+	"content-type": expect.stringMatching(
+		/^application\/json; charset=utf-8$/i
+	),
 };
 
 const expResHeadersText = {
 	...expResHeaders,
-	"content-type": expect.stringContaining("text/plain"),
+	"content-type": expect.stringMatching(/^text\/plain; charset=utf-8$/i),
 };
 
 const expResHeaders404Errors = {
 	...expResHeadersJson,
 	vary: undefined,
+};
+
+const expResHeaders404ErrorsXml = {
+	...expResHeaders404Errors,
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+	"content-type": expect.stringMatching(/^application\/xml; charset=utf-8$/i),
+	"x-xss-protection": "0",
 };
 
 const expResHeaders5xxErrors = {
@@ -107,7 +117,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/admin/healthcheck route", () => {
-			test("Should return `ok`", async () => {
+			it("Returns `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/admin/healthcheck",
@@ -121,7 +131,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/admin/healthcheck",
@@ -141,7 +151,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("Undeclared route", () => {
-			test("Should return HTTP status code 404 if route not found", async () => {
+			it("Returns HTTP status code 404 if route not found", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/invalid",
@@ -159,10 +169,26 @@ describe("Server deployment", () => {
 				expect(response.headers).toEqual(expResHeaders404Errors);
 				expect(response.statusCode).toBe(404);
 			});
+
+			it("Returns an XML response if media type in `Accept` request header is `application/xml`", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/invalid",
+					headers: {
+						accept: "application/xml",
+					},
+				});
+
+				expect(response.payload).toBe(
+					'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
+				);
+				expect(response.headers).toEqual(expResHeaders404ErrorsXml);
+				expect(response.statusCode).toBe(404);
+			});
 		});
 
 		describe("/docx/html route", () => {
-			test("Should return DOCX file converted to HTML, with expected headers set", async () => {
+			it("Returns DOCX file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/docx/html",
@@ -176,10 +202,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
@@ -188,7 +212,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/docx/txt route", () => {
-			test("Should return DOCX file converted to TXT, with expected headers set", async () => {
+			it("Returns DOCX file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/docx/txt",
@@ -202,10 +226,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
@@ -214,7 +236,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/pdf/html route", () => {
-			test("Should return PDF file converted to HTML, with expected headers set", async () => {
+			it("Returns PDF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -230,15 +252,13 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("for England")
-				);
+				expect(response.payload).toMatch("for England");
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -265,7 +285,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/pdf/txt route", () => {
-			test("Should return PDF file converted to TXT, with expected headers set", async () => {
+			it("Returns PDF file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
@@ -281,9 +301,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("for England")
-				);
+				expect(response.payload).toMatch("for England");
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
@@ -291,7 +309,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/rtf/html route", () => {
-			test("Should return RTF file converted to HTML, with expected headers set", async () => {
+			it("Returns RTF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/rtf/html",
@@ -304,10 +322,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
@@ -316,7 +332,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/rtf/txt route", () => {
-			test("Should return RTF file converted to TXT, with expected headers set", async () => {
+			it("Returns RTF file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/rtf/txt",
@@ -329,10 +345,8 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					)
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
@@ -362,7 +376,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/admin/healthcheck route", () => {
-			test("Should return `ok`", async () => {
+			it("Returns `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/admin/healthcheck",
@@ -376,7 +390,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/admin/healthcheck",
@@ -396,7 +410,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("Undeclared route", () => {
-			test("Should return HTTP status code 404 if route not found", async () => {
+			it("Returns HTTP status code 404 if route not found", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/invalid",
@@ -414,10 +428,26 @@ describe("Server deployment", () => {
 				expect(response.headers).toEqual(expResHeaders404Errors);
 				expect(response.statusCode).toBe(404);
 			});
+
+			it("Returns an XML response if media type in `Accept` request header is `application/xml`", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/invalid",
+					headers: {
+						accept: "application/xml",
+					},
+				});
+
+				expect(response.payload).toBe(
+					'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
+				);
+				expect(response.headers).toEqual(expResHeaders404ErrorsXml);
+				expect(response.statusCode).toBe(404);
+			});
 		});
 
 		describe("/pdf/html route", () => {
-			test("Should return PDF file converted to HTML, with expected headers set", async () => {
+			it("Returns PDF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -434,15 +464,13 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("for England")
-				);
+				expect(response.payload).toMatch("for England");
 				expect(isHtml(response.payload)).toBe(true);
 				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 401 if invalid bearer token provided in header", async () => {
+			it("Returns HTTP status code 401 if invalid bearer token provided in header", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -466,7 +494,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(401);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/html",
@@ -494,7 +522,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/pdf/txt route", () => {
-			test("Should return PDF file converted to TXT, with expected headers set", async () => {
+			it("Returns PDF file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
@@ -512,15 +540,13 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual(
-					expect.stringContaining("NHS")
-				);
+				expect(response.payload).toMatch("NHS");
 				expect(isHtml(response.payload)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
 			});
 
-			test("Should return HTTP status code 401 if invalid bearer token provided in header", async () => {
+			it("Returns HTTP status code 401 if invalid bearer token provided in header", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
@@ -545,7 +571,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(401);
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+			it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/pdf/txt",
@@ -737,7 +763,7 @@ describe("Server deployment", () => {
 				});
 
 				describe("/admin/healthcheck route", () => {
-					test("Should return `ok`", async () => {
+					it("Returns `ok`", async () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/admin/healthcheck",
@@ -756,7 +782,7 @@ describe("Server deployment", () => {
 
 					// Only applicable if CORS enabled
 					if (envVariables.CORS_ORIGIN) {
-						test("Should return response to CORS preflight request", async () => {
+						it("Returns response to CORS preflight request", async () => {
 							const response = await server.inject({
 								method: "OPTIONS",
 								url: "/admin/healthcheck",
@@ -786,7 +812,7 @@ describe("Server deployment", () => {
 						});
 					}
 
-					test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+					it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/admin/healthcheck",
@@ -809,7 +835,7 @@ describe("Server deployment", () => {
 				});
 
 				describe("Undeclared route", () => {
-					test("Should return HTTP status code 404 if route not found", async () => {
+					it("Returns HTTP status code 404 if route not found", async () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/invalid",
@@ -826,6 +852,24 @@ describe("Server deployment", () => {
 						});
 						expect(response.headers).toEqual(
 							expResHeaders404Errors
+						);
+						expect(response.statusCode).toBe(404);
+					});
+
+					it("Returns an XML response if media type in `Accept` request header is `application/xml`", async () => {
+						const response = await server.inject({
+							method: "GET",
+							url: "/invalid",
+							headers: {
+								accept: "application/xml",
+							},
+						});
+
+						expect(response.payload).toBe(
+							'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
+						);
+						expect(response.headers).toEqual(
+							expResHeaders404ErrorsXml
 						);
 						expect(response.statusCode).toBe(404);
 					});
@@ -863,7 +907,7 @@ describe("Server deployment", () => {
 
 		describe("Content", () => {
 			describe("/docs route", () => {
-				test("Should return HTML", async () => {
+				it("Returns HTML", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/docs",
@@ -879,7 +923,7 @@ describe("Server deployment", () => {
 			});
 
 			describe("/public route", () => {
-				test("Should return image", async () => {
+				it("Returns image", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/public/images/icons/favicon.ico",
@@ -896,18 +940,20 @@ describe("Server deployment", () => {
 
 		describe("Frontend", () => {
 			// Webkit not tested as it is flakey in context of Playwright
-			// TODO: use `test.concurrent.each()` once it is no longer experimental
-			test.each([
+			// TODO: use `it.concurrent.each()` once it is no longer experimental
+			it.each([
 				{ browser: chromium, name: "Chromium" },
 				{ browser: firefox, name: "Firefox" },
 			])(
-				"Should render docs page without error components - $name",
+				"Renders docs page without error components - $name",
 				async ({ browser }) => {
 					const browserType = await browser.launch();
 					const page = await browserType.newPage();
 
 					await page.goto("http://localhost:3000/docs");
-					expect(await page.title()).toBe("Docsmith | Documentation");
+					await expect(page.title()).resolves.toBe(
+						"Docsmith | Documentation"
+					);
 					/**
 					 * Checks redoc has not rendered an error component:
 					 * https://github.com/Redocly/redoc/blob/main/src/components/ErrorBoundary.tsx
@@ -915,8 +961,8 @@ describe("Server deployment", () => {
 					const heading = page.locator("h1 >> nth=0");
 					await heading.waitFor();
 
-					expect(await heading.textContent()).not.toEqual(
-						expect.stringMatching(/something\s*went\s*wrong/i)
+					await expect(heading.textContent()).resolves.not.toMatch(
+						/something\s*went\s*wrong/i
 					);
 
 					await page.close();
@@ -952,7 +998,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/error route", () => {
-			test("Should return HTTP status code 500", async () => {
+			it("Returns HTTP status code 500", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/error",

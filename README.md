@@ -1,3 +1,5 @@
+<img alttext="Docsmith logo" src="https://raw.githubusercontent.com/Fdawgs/docsmith/main/docs/images/docsmith-logo.svg" width="480" height="auto" />
+
 # Docsmith
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/docsmith.svg)](https://github.com/Fdawgs/docsmith/releases/latest/)
@@ -21,11 +23,11 @@ Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify
 
 ### Why Docsmith?
 
-Docsmith was created in my spare time outside of work, after identifying the need for an open-source document conversion service at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/).
+Docsmith was created in my spare time outside of work after identifying the need for an open-source document conversion service at Yeovil Hospital (ran by [Somerset NHS Foundation Trust](https://www.somersetft.nhs.uk/)).
 
 Being open-source, with the ability to be self-hosted, enables a data processor (i.e. an NHS trust) to confirm that a service is not storing and logging files with confidential patient identifiable data (PID) in them, which is essential for preventing potential GDPR breaches. This is something that the majority of existing closed-source document conversion services cannot offer. Docsmith was built to remedy this.
 
-Before Docsmith, Yeovil District Hospital was using expensive proprietary conversion tools that would regularly produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries in Somerset and Dorset would receive these corrupted documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and be unable to read them. This resulted in time and money wasted either posting or faxing them again, opening up the potential for further data breaches.
+Before Docsmith, Yeovil Hospital was using expensive proprietary conversion tools that would regularly produce unreadable documents with issues such as text running off the page, paragraphs overlapping each other, and Windows-1252 to UTF-8 character encoding problems. GP surgeries in Somerset and Dorset would receive these corrupted documents through [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) and be unable to read them. This resulted in time and money wasted either posting or faxing them again, opening up the potential for further data breaches.
 
 Docsmith enables a data processor to use a comprehensive, GDPR-compliant, open-source document conversion service. In comparison with equivalents in the market today it completes this vital task at a fraction of the cost (free!), whilst also ensuring a higher level of security and privacy for the data subjects.
 

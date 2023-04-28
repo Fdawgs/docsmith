@@ -32,7 +32,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		await server.close();
 	});
 
-	test("Should convert DOCX file to HTML", async () => {
+	it("Converts DOCX file to HTML", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -59,23 +59,24 @@ describe("DOCX-to-HTML conversion plugin", () => {
 				dom.window.document.querySelectorAll("p").length - 2
 			].textContent
 		).toMatch(
-			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/m
+			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/
 		);
 		// Expect all images to be embedded
 		dom.window.document.querySelectorAll("img").forEach((image) => {
-			expect(image.src).toMatch(/^data:image\/(jp[e]?g|png);base64/im);
+			expect(image.src).toMatch(/^data:image\/(jp[e]?g|png);base64/i);
 		});
 		expect(response.statusCode).toBe(200);
 	});
 
-	test.each([
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid DOCX file",
 			readFile: true,
 		},
 	])(
-		"Should return HTTP status code 400 if DOCX file $testName",
+		"Returns HTTP status code 400 if DOCX file $testName",
 		async ({ readFile }) => {
 			const response = await server.inject({
 				method: "POST",
