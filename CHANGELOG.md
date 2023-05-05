@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.15](https://github.com/Fdawgs/docsmith/compare/v10.0.14...v10.0.15) (2023-05-05)
+
+
+### Continuous integration
+
+* **cd:** remove dev dependencies from package-lock.json ([#1413](https://github.com/Fdawgs/docsmith/issues/1413)) ([fcb4ec3](https://github.com/Fdawgs/docsmith/commit/fcb4ec319c70a105ac183c5457520ed8a48c7de4))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.6.1 to 17.6.3 ([#1450](https://github.com/Fdawgs/docsmith/issues/1450)) ([23c0751](https://github.com/Fdawgs/docsmith/commit/23c0751255427ff9d7fe37f9fb9ed33a0801742c))
+* **deps-dev:** bump @commitlint/config-conventional ([#1448](https://github.com/Fdawgs/docsmith/issues/1448)) ([08d9ae1](https://github.com/Fdawgs/docsmith/commit/08d9ae17f313ef17d6f2585ec73cbe45c8f5b6cc))
+* **deps-dev:** bump autocannon from 7.10.0 to 7.11.0 ([#1446](https://github.com/Fdawgs/docsmith/issues/1446)) ([d8e4322](https://github.com/Fdawgs/docsmith/commit/d8e4322ccde35cc6d953c06db4f9e3094240c32b))
+* **deps-dev:** bump eslint-plugin-jsdoc from 43.0.7 to 43.1.1 ([#1443](https://github.com/Fdawgs/docsmith/issues/1443)) ([2158a63](https://github.com/Fdawgs/docsmith/commit/2158a6318c16caf73f685282df705bd83fe7b065))
+* **deps-dev:** bump playwright from 1.32.3 to 1.33.0 ([#1442](https://github.com/Fdawgs/docsmith/issues/1442)) ([da0c818](https://github.com/Fdawgs/docsmith/commit/da0c81843c79b0da3579107d54427922986a4871))
+* **deps:** bump fastify from 4.15.0 to 4.17.0 ([#1441](https://github.com/Fdawgs/docsmith/issues/1441)) ([e03d9b3](https://github.com/Fdawgs/docsmith/commit/e03d9b31afc293f1cfba6103d40d5745bb34838b))
+* **deps:** bump jsdom from 21.1.1 to 22.0.0 ([#1449](https://github.com/Fdawgs/docsmith/issues/1449)) ([454b63f](https://github.com/Fdawgs/docsmith/commit/454b63fe8e7ba186d7a9e46568d902102a14eda5))
+* **deps:** bump pino from 8.11.0 to 8.12.1 ([#1451](https://github.com/Fdawgs/docsmith/issues/1451)) ([3454b38](https://github.com/Fdawgs/docsmith/commit/3454b3834f1b64874f4a6fd67e390a1ad15d114e))
+* **deps:** bump tesseract.js from 4.0.3 to 4.0.4 ([#1444](https://github.com/Fdawgs/docsmith/issues/1444)) ([ab760d7](https://github.com/Fdawgs/docsmith/commit/ab760d70a702f9579b284f16935c3de276cfbd20))
+* **deps:** bump tesseract.js from 4.0.4 to 4.0.5 ([#1447](https://github.com/Fdawgs/docsmith/issues/1447)) ([e71e060](https://github.com/Fdawgs/docsmith/commit/e71e0600c04bbc1b60f67880678b865c1978d6e6))
+* **deps:** bump yaml from 2.2.1 to 2.2.2 ([#1438](https://github.com/Fdawgs/docsmith/issues/1438)) ([b51854a](https://github.com/Fdawgs/docsmith/commit/b51854a4b090c4b4ebfa0f4cf6db3c4c7bf9bb1d))
+
 ## [10.0.14](https://github.com/Fdawgs/docsmith/compare/v10.0.13...v10.0.14) (2023-04-24)
 
 
