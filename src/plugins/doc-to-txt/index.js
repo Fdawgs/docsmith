@@ -23,7 +23,7 @@ async function plugin(server) {
 				includeFooters: false,
 			})}\n${results.getTextboxes({
 				includeHeadersAndFooters: false,
-			})}\n${results.getBody()}\n${results.getEndnotes()}\n${results.getFootnotes()}\n${results.getFooters()}`;
+			})}\n${results.getBody()}\n${results.getEndnotes()}\n${results.getFootnotes()}\n${results.getFooters()}`.trim();
 
 			req.conversionResults.body = value;
 			res.type("text/plain; charset=utf-8");

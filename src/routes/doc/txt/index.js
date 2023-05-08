@@ -1,4 +1,4 @@
-const { fromBuffer } = require("file-type");
+const cfb = require("cfb");
 
 // Import plugins
 const cors = require("@fastify/cors");
@@ -31,10 +31,18 @@ async function route(server, options) {
 		async (_req, payload) => {
 			/**
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
-			 * this checks for DOC specific magic numbers
+			 * this checks the file is actually a DOC file
 			 */
-			const results = await fromBuffer(payload);
-			if (results?.mime !== "application/x-cfb") {
+			try {
+				const results = cfb.parse(payload);
+				if (
+					!results?.FileIndex.find(
+						(file) => file.name === "WordDocument"
+					)
+				) {
+					throw new Error();
+				}
+			} catch {
 				throw server.httpErrors.unsupportedMediaType();
 			}
 			return payload;
