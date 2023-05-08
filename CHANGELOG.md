@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.1.0](https://github.com/Fdawgs/docsmith/compare/v10.0.15...v10.1.0) (2023-05-08)
+
+
+### Features
+
+* **routes:** add doc-to-txt route ([#1445](https://github.com/Fdawgs/docsmith/issues/1445)) ([66a7739](https://github.com/Fdawgs/docsmith/commit/66a7739ad8a1aa4dd8e499fabe8965aac2cc5ab3))
+
+
+### Continuous integration
+
+* **ci:** add node 20 to test matrix ([#1452](https://github.com/Fdawgs/docsmith/issues/1452)) ([1746e7c](https://github.com/Fdawgs/docsmith/commit/1746e7cbec7bc975411c3b197adb670e8a87e0e7))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 8.39.0 to 8.40.0 ([#1456](https://github.com/Fdawgs/docsmith/issues/1456)) ([6a0bf7f](https://github.com/Fdawgs/docsmith/commit/6a0bf7f32b65cb68bea8752b03f4483e3681613a))
+* **deps-dev:** bump eslint-plugin-jsdoc from 43.1.1 to 44.0.0 ([#1458](https://github.com/Fdawgs/docsmith/issues/1458)) ([baeefa6](https://github.com/Fdawgs/docsmith/commit/baeefa619e156829b4e2b252bde7d3b2bd5c8d41))
+* **deps:** bump @fastify/helmet from 10.1.0 to 10.1.1 ([#1459](https://github.com/Fdawgs/docsmith/issues/1459)) ([fa4de26](https://github.com/Fdawgs/docsmith/commit/fa4de26a0e7126bd4dc6411f092a602d6f4e45a0))
+* **deps:** bump pino from 8.12.1 to 8.14.1 ([#1457](https://github.com/Fdawgs/docsmith/issues/1457)) ([4b36540](https://github.com/Fdawgs/docsmith/commit/4b365404b5fec34bbbd677a73f2cc8980a8ce221))
+* **deps:** bump transistive dependencies ([#1462](https://github.com/Fdawgs/docsmith/issues/1462)) ([b9efd46](https://github.com/Fdawgs/docsmith/commit/b9efd4654eb2bdf4a3a70f334851d6f15e08b882))
+
 ## [10.0.15](https://github.com/Fdawgs/docsmith/compare/v10.0.14...v10.0.15) (2023-05-05)
 
 
