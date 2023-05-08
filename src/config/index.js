@@ -264,6 +264,11 @@ async function getConfig() {
 				},
 				tags: [
 					{
+						name: "DOC",
+						description:
+							"Endpoints used for the conversion of DOC documents",
+					},
+					{
 						name: "DOCX",
 						description:
 							"Endpoints used for the conversion of DOCX documents",
