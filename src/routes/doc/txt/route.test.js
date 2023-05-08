@@ -69,29 +69,40 @@ describe("DOC-to-TXT route", () => {
 		expect(response.statusCode).toBe(415);
 	});
 
-	it("Returns HTTP status code 415 if file with '.doc' extension is not a valid DOC file", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/invalid_doc.doc"
-			),
-			query: {
-				lastPageToConvert: 1,
-			},
-			headers: {
-				accept: "application/json, text/plain",
-				"content-type": "application/msword",
-			},
-		});
+	it.each([
+		{
+			testName: "with '.doc' extension is not a valid DOC file",
+			filePath: "./test_resources/test_files/invalid_doc.doc",
+		},
+		{
+			testName: "is a valid CFBF file but is not a Microsoft Word file",
+			filePath: "./test_resources/test_files/valid_xls.xls",
+		},
+	])(
+		"Returns HTTP status code 415 if file $testName",
+		async ({ filePath }) => {
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				// eslint-disable-next-line security/detect-non-literal-fs-filename
+				body: await fs.readFile(filePath),
+				query: {
+					lastPageToConvert: 1,
+				},
+				headers: {
+					accept: "application/json, text/plain",
+					"content-type": "application/msword",
+				},
+			});
 
-		expect(JSON.parse(response.payload)).toEqual({
-			error: "Unsupported Media Type",
-			message: "Unsupported Media Type",
-			statusCode: 415,
-		});
-		expect(response.statusCode).toBe(415);
-	});
+			expect(JSON.parse(response.payload)).toEqual({
+				error: "Unsupported Media Type",
+				message: "Unsupported Media Type",
+				statusCode: 415,
+			});
+			expect(response.statusCode).toBe(415);
+		}
+	);
 
 	it("Returns HTTP status code 415 if file media type is not supported by route", async () => {
 		const response = await server.inject({

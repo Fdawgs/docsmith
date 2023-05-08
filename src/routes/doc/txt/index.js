@@ -31,10 +31,13 @@ async function route(server, options) {
 		async (_req, payload) => {
 			/**
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
-			 * this checks the file is actually a DOC file
+			 * this checks the file is actually a DOC file.
+			 * DOC files use the Compound File Binary Format (CFBF), which the
+			 * file-type package does not support; use cfb instead
 			 */
 			try {
 				const results = cfb.parse(payload);
+				// Check the CFBF file is a DOC file by looking for the WordDocument stream
 				if (
 					!results?.FileIndex.find(
 						(file) => file.name === "WordDocument"
