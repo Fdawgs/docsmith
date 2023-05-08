@@ -1,8 +1,8 @@
 {
 	"_type": "export",
 	"__export_format": 4,
-	"__export_date": "2022-04-04T09:55:25.731Z",
-	"__export_source": "insomnia.desktop.app:v2022.2.1",
+	"__export_date": "2023-05-08T14:07:22.796Z",
+	"__export_source": "insomnia.desktop.app:v2023.2.0",
 	"resources": [
 		{
 			"_id": "req_23382b680be24b1ebd26e2f9fbbabec7",
@@ -50,6 +50,44 @@
 			"_type": "workspace"
 		},
 		{
+			"_id": "req_d5bf2ebcfebc43e7b460903f7f628368",
+			"parentId": "fld_bba76ae0e31345849cb11e6a4ce75f46",
+			"modified": 1683554646217,
+			"created": 1683125131753,
+			"url": "http://localhost:3000/doc/txt",
+			"name": "doc/txt",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/octet-stream",
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\valid_doc.doc"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_42a225d71e9d448e9561562b8a2bbdd5",
+					"name": "Accept-Encoding",
+					"value": "br, gzip, deflate",
+					"description": ""
+				},
+				{
+					"id": "pair_4a5d095d750e40adb5e9657757bd27b2",
+					"name": "Content-Type",
+					"value": "application/msword"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1581358899696.875,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
 			"_id": "req_182b72d7e1194212b02b8fdb5f7de826",
 			"parentId": "fld_bba76ae0e31345849cb11e6a4ce75f46",
 			"modified": 1649066094797,
@@ -75,7 +113,7 @@
 		{
 			"_id": "req_72e5d2361d5a4b9584643e2360716d8a",
 			"parentId": "fld_bba76ae0e31345849cb11e6a4ce75f46",
-			"modified": 1649066102546,
+			"modified": 1683554659801,
 			"created": 1647505422745,
 			"url": "http://localhost:3000/docx/html",
 			"name": "docx/html",
@@ -189,7 +227,7 @@
 		{
 			"_id": "req_92a21319c6c346038489705331e89d02",
 			"parentId": "fld_bba76ae0e31345849cb11e6a4ce75f46",
-			"modified": 1647508482000,
+			"modified": 1683554804613,
 			"created": 1647505422715,
 			"url": "http://localhost:3000/pdf/txt",
 			"name": "pdf/txt",
@@ -201,7 +239,7 @@
 			},
 			"parameters": [
 				{
-					"id": "pair_7ca915cb4e584fbf91527435d1329600",
+					"id": "pair_fc9a7c2074924ea69223ee65ed8f6221",
 					"name": "lastPageToConvert",
 					"value": "2",
 					"description": ""
@@ -234,7 +272,7 @@
 		{
 			"_id": "req_622790f9ca9145ab9b924a90aacac4f1",
 			"parentId": "fld_bba76ae0e31345849cb11e6a4ce75f46",
-			"modified": 1647508487684,
+			"modified": 1683554774139,
 			"created": 1647505422738,
 			"url": "http://localhost:3000/pdf/txt",
 			"name": "pdf/txt?ocr=true",
@@ -248,7 +286,7 @@
 				{
 					"id": "pair_4772fa5aabcb422bb139858fe5b5773f",
 					"name": "lastPageToConvert",
-					"value": "1",
+					"value": "2",
 					"description": ""
 				},
 				{
