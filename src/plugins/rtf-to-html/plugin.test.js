@@ -48,7 +48,8 @@ describe("RTF-to-HTML conversion plugin", () => {
 		]);
 	});
 
-	it("Converts RTF file to HTML", async () => {
+	// TODO: fix rtf-to-html plugin to include header and footer
+	it.failing("Converts RTF file to HTML", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -81,6 +82,8 @@ describe("RTF-to-HTML conversion plugin", () => {
 		expect(dom.window.document.body.textContent).toMatch(
 			"Mauris id ex erat"
 		);
+		// String found in header of the test document
+		expect(body).toMatch("I am a header");
 		// String found at beginning of body of the test document
 		expect(dom.window.document.body.textContent).toMatch(
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
@@ -89,6 +92,8 @@ describe("RTF-to-HTML conversion plugin", () => {
 		expect(dom.window.document.body.textContent).toMatch(
 			"Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien"
 		);
+		// String found in footer of the test document
+		expect(body).toMatch("I am a footer");
 		// Check the docLocation object contains the expected properties
 		expect(docLocation).toMatchObject({
 			directory: expect.any(String),
