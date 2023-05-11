@@ -31,8 +31,7 @@ describe("DOCX-to-TXT conversion plugin", () => {
 		await server.close();
 	});
 
-	// TODO: fix docx-to-txt plugin to include header and footer
-	it.failing("Converts DOCX file to TXT", async () => {
+	it("Converts DOCX file to TXT", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
