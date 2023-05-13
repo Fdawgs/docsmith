@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.1.1](https://github.com/Fdawgs/docsmith/compare/v10.1.0...v10.1.1) (2023-05-13)
+
+
+### Bug fixes
+
+* **plugins/docx-to-html:** add header and footer to response payload ([0d2e0a3](https://github.com/Fdawgs/docsmith/commit/0d2e0a35670ceccb989ec5dd3fc1378c033c49f9))
+* **plugins/docx-to-txt:** add header and footer to response payload ([e0b8519](https://github.com/Fdawgs/docsmith/commit/e0b8519458b3c02068e8fd552d4f19e9e38d070b))
+
+
+### Miscellaneous
+
+* **.vscode:** add debugger launch config ([#1472](https://github.com/Fdawgs/docsmith/issues/1472)) ([f3d4677](https://github.com/Fdawgs/docsmith/commit/f3d4677ee25bd091f6935ca534eafad748f9e40e))
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild from 0.17.18 to 0.17.19 ([#1477](https://github.com/Fdawgs/docsmith/issues/1477)) ([3d4e143](https://github.com/Fdawgs/docsmith/commit/3d4e1438f56a6fdfeee510fafe5e0264eb61ec36))
+* **deps-dev:** bump eslint-plugin-jsdoc from 44.0.0 to 44.2.3 ([#1476](https://github.com/Fdawgs/docsmith/issues/1476)) ([f62c100](https://github.com/Fdawgs/docsmith/commit/f62c100d94e284a253ed20ea7113747c98025393))
+* **deps:** bump glob from 10.2.2 to 10.2.3 ([#1475](https://github.com/Fdawgs/docsmith/issues/1475)) ([04ea0aa](https://github.com/Fdawgs/docsmith/commit/04ea0aae82d88730c31bafe29aee32a54a501e4a))
+* **deps:** bump node-poppler from 6.2.2 to 6.2.3 ([#1473](https://github.com/Fdawgs/docsmith/issues/1473)) ([21301a5](https://github.com/Fdawgs/docsmith/commit/21301a53d901a334d3a7c6734205b5e792a9edb3))
+* **deps:** bump node-unrtf from 3.1.2 to 3.1.3 ([#1474](https://github.com/Fdawgs/docsmith/issues/1474)) ([99ba936](https://github.com/Fdawgs/docsmith/commit/99ba936be79f47f44f64036ecd3318be13369fcc))
+
 ## [10.1.0](https://github.com/Fdawgs/docsmith/compare/v10.0.15...v10.1.0) (2023-05-08)
 
 
