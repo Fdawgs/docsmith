@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 4,
-	"__export_date": "2023-05-08T14:07:22.796Z",
+	"__export_date": "2023-05-16T18:56:21.196Z",
 	"__export_source": "insomnia.desktop.app:v2023.2.0",
 	"resources": [
 		{
@@ -177,6 +177,44 @@
 			],
 			"authentication": {},
 			"metaSortKey": -1581358899687.5,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_daeca56e411e43dfabc59db16d7ab802",
+			"parentId": "fld_bba76ae0e31345849cb11e6a4ce75f46",
+			"modified": 1684263360210,
+			"created": 1684255531376,
+			"url": "http://localhost:3000/html/txt",
+			"name": "html/txt",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/octet-stream",
+				"fileName": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\valid_html.html"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_42a225d71e9d448e9561562b8a2bbdd5",
+					"name": "Accept-Encoding",
+					"value": "br, gzip, deflate",
+					"description": ""
+				},
+				{
+					"id": "pair_4a5d095d750e40adb5e9657757bd27b2",
+					"name": "Content-Type",
+					"value": "text/html"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1581358899681.25,
 			"isPrivate": false,
 			"settingStoreCookies": true,
 			"settingSendCookies": true,
