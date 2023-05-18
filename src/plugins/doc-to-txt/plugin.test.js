@@ -4,14 +4,14 @@ const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
-describe("DOCX-to-TXT conversion plugin", () => {
+describe("DOC-to-TXT conversion plugin", () => {
 	let server;
 
 	beforeAll(async () => {
 		server = Fastify();
 
 		server.addContentTypeParser(
-			"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			"application/msword",
 			{ parseAs: "buffer" },
 			async (_req, payload) => payload
 		);
@@ -31,16 +31,15 @@ describe("DOCX-to-TXT conversion plugin", () => {
 		await server.close();
 	});
 
-	it("Converts DOCX file to TXT", async () => {
+	it("Converts DOC file to TXT", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_docx.docx"
+				"./test_resources/test_files/valid_doc.doc"
 			),
 			headers: {
-				"content-type":
-					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+				"content-type": "application/msword",
 			},
 		});
 
@@ -66,22 +65,21 @@ describe("DOCX-to-TXT conversion plugin", () => {
 	it.each([
 		{ testName: "is missing" },
 		{
-			testName: "is not a valid DOCX file",
+			testName: "is not a valid DOC file",
 			readFile: true,
 		},
 	])(
-		"Returns HTTP status code 400 if DOCX file $testName",
+		"Returns HTTP status code 400 if DOC file $testName",
 		async ({ readFile }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
 				headers: {
-					"content-type":
-						"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+					"content-type": "application/msword",
 				},
 				body: readFile
 					? await fs.readFile(
-							"./test_resources/test_files/invalid_docx.docx"
+							"./test_resources/test_files/invalid_doc.doc"
 					  )
 					: undefined,
 			});

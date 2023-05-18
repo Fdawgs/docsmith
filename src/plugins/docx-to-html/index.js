@@ -3,21 +3,25 @@ const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 const { convertToHtml } = require("mammoth");
 const { randomUUID } = require("crypto");
+const WordExtractor = require("word-extractor");
 
 /**
  * @author Frazer Smith
- * @description Pre-handler plugin that uses Mammoth to convert Buffer containing
+ * @description Pre-handler plugin that uses Mammoth and Word-Extractor to convert Buffer containing
  * DOCX file in `req.body` to HTML.
  * `req` object is decorated with `conversionResults.body` holding the converted document.
  * @param {object} server - Fastify instance.
  */
 async function plugin(server) {
+	const wordExtractor = new WordExtractor();
+
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
 	});
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
+			const results = await wordExtractor.extract(req.body);
 			const { value } = await convertToHtml(req.body);
 
 			/**
@@ -35,7 +39,9 @@ async function plugin(server) {
 			<html>
 				<body>
 					<div>
+						<header>${fixUtf8(results.getHeaders({ includeFooters: false }))}</header>
 						${fixUtf8(value)}
+						<footer>${fixUtf8(results.getFooters())}</footer>
 					</div>
 				</body>
 			</html>`
