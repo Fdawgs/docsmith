@@ -74,22 +74,23 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: async (req, res) => {
-			const tidiedHtml = await server.tidyHtml(
-				req.conversionResults.body
-			);
-
-			req.conversionResults.body = htmlToText(
-				server.tidyCss(tidiedHtml),
-				{
-					selectors: [{ selector: "table", format: "dataTable" }],
-					wordwrap: null,
-				}
-			);
-
+		handler: (req, res) => {
 			// RTF-to-HTML plugin sets type to "text/html; charset=utf-8", override that
-			res.type("text/plain; charset=utf-8");
-			return req.conversionResults.body;
+			res.type("text/plain; charset=utf-8").send(
+				htmlToText(req.conversionResults.body, {
+					selectors: [
+						{ selector: "a", options: { ignoreHref: true } },
+						{ selector: "h1", options: { uppercase: false } },
+						{ selector: "img", format: "skip" },
+						{
+							selector: "table",
+							format: "dataTable",
+							options: { uppercaseHeaderCells: false },
+						},
+					],
+					wordwrap: null,
+				}).trim()
+			);
 		},
 	});
 }
