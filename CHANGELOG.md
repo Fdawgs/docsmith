@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.2.0](https://github.com/Fdawgs/docsmith/compare/v10.1.1...v10.2.0) (2023-05-20)
+
+
+### Features
+
+* **routes:** add html-to-txt route ([#1478](https://github.com/Fdawgs/docsmith/issues/1478)) ([41be9ce](https://github.com/Fdawgs/docsmith/commit/41be9cea3b5303835e4f743d17ffd1432a8613ec))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 8.40.0 to 8.41.0 ([#1480](https://github.com/Fdawgs/docsmith/issues/1480)) ([0ed76de](https://github.com/Fdawgs/docsmith/commit/0ed76deee4685633b7aea9b2a088f98fe116345e))
+* **deps-dev:** bump eslint-plugin-jsdoc from 44.2.3 to 44.2.4 ([#1481](https://github.com/Fdawgs/docsmith/issues/1481)) ([a3eacb5](https://github.com/Fdawgs/docsmith/commit/a3eacb5313116d7384432990807b0756157ece4d))
+* **deps-dev:** bump playwright from 1.33.0 to 1.34.0 ([#1486](https://github.com/Fdawgs/docsmith/issues/1486)) ([c23b1ba](https://github.com/Fdawgs/docsmith/commit/c23b1baf6f663287b6120b5ee0336e8a4b0667b7))
+* **deps:** bump @fastify/compress from 6.2.1 to 6.3.0 ([#1482](https://github.com/Fdawgs/docsmith/issues/1482)) ([cb32c23](https://github.com/Fdawgs/docsmith/commit/cb32c2358b17bb1a174f29c2cbb780d50df3f345))
+* **deps:** bump @fastify/swagger from 8.3.1 to 8.4.0 ([#1485](https://github.com/Fdawgs/docsmith/issues/1485)) ([2464882](https://github.com/Fdawgs/docsmith/commit/246488262d20d87b23384de2a045710331a3aa18))
+* **deps:** bump glob from 10.2.3 to 10.2.5 ([#1483](https://github.com/Fdawgs/docsmith/issues/1483)) ([2529c5e](https://github.com/Fdawgs/docsmith/commit/2529c5e80c1adcf1f9f45dab7d0260caf76c7ff4))
+* **deps:** bump tesseract.js from 4.0.5 to 4.0.6 ([#1484](https://github.com/Fdawgs/docsmith/issues/1484)) ([71ed415](https://github.com/Fdawgs/docsmith/commit/71ed4157dd6ecf5319fc75245088b859b6008309))
+
+
+### Bug fixes
+
+* **routes/rtf/txt:** cleaner resulting txt ([#1487](https://github.com/Fdawgs/docsmith/issues/1487)) ([33594c7](https://github.com/Fdawgs/docsmith/commit/33594c74e7970e23dee9d34160fe9d4fe33a6853))
+
 ## [10.1.1](https://github.com/Fdawgs/docsmith/compare/v10.1.0...v10.1.1) (2023-05-13)
 
 
