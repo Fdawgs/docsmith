@@ -187,6 +187,29 @@ describe("Server deployment", () => {
 			});
 		});
 
+		describe("/doc/txt route", () => {
+			it("Returns DOC file converted to TXT, with expected headers set", async () => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/doc/txt",
+					body: await fs.readFile(
+						"./test_resources/test_files/valid_doc.doc"
+					),
+					headers: {
+						accept: "application/json, text/plain",
+						"content-type": "application/msword",
+					},
+				});
+
+				expect(response.payload).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+				);
+				expect(isHtml(response.payload)).toBe(false);
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
+			});
+		});
+
 		describe("/docx/html route", () => {
 			it("Returns DOCX file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
