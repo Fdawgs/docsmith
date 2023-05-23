@@ -32,7 +32,7 @@ const tidyHtml = require("./plugins/tidy-html");
 async function plugin(server, config) {
 	/**
 	 * Stop routes from accepting 'application/json' and 'text/plain'
-	 * requests by removing included default parsers
+	 * POST/PUT/PATCH requests by removing included default parsers
 	 */
 	await server.removeAllContentTypeParsers();
 
