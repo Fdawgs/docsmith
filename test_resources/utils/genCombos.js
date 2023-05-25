@@ -3,7 +3,7 @@ const btPowerSetRecursive = require("./btPowerSet");
 /**
  * @author Frazer Smith
  * @description Utility function to generate unique combinations when provided with an
- * array of objects
+ * array of objects.
  * @param {Array.<object>} originalSet - Array of objects.
  * @returns {Array} All subsets of array of objects provided.
  */
