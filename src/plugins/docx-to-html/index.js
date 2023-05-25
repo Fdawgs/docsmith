@@ -39,9 +39,11 @@ async function plugin(server) {
 			<html>
 				<body>
 					<div>
-						<header>${fixUtf8(results.getHeaders({ includeFooters: false }))}</header>
+						<header>${fixUtf8(
+							results.getHeaders({ includeFooters: false })
+						).trim()}</header>
 						${fixUtf8(value)}
-						<footer>${fixUtf8(results.getFooters())}</footer>
+						<footer>${fixUtf8(results.getFooters()).trim()}</footer>
 					</div>
 				</body>
 			</html>`
