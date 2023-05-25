@@ -50,7 +50,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 
 		expect(isHtml(body)).toBe(true);
 		// String found in header of the test document
-		expect(dom.window.document.querySelector("header").textContent).toMatch(
+		expect(dom.window.document.querySelector("header").textContent).toBe(
 			"I am a header"
 		);
 		// String found in first heading of the test document
@@ -66,7 +66,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/
 		);
 		// String found in footer of the test document
-		expect(dom.window.document.querySelector("footer").textContent).toMatch(
+		expect(dom.window.document.querySelector("footer").textContent).toBe(
 			"I am a footer"
 		);
 		// Expect all images to be embedded
