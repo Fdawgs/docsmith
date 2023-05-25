@@ -4,7 +4,7 @@ const WordExtractor = require("word-extractor");
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Word-Extractor to convert Buffer containing
- * DOC file in `req.body` to TXT.
+ * a DOC or DOCX file in `req.body` to TXT.
  * `req` object is decorated with `conversionResults.body` holding the converted document.
  * @param {object} server - Fastify instance.
  */
@@ -19,17 +19,23 @@ async function plugin(server) {
 		try {
 			const results = await wordExtractor.extract(req.body);
 
-			const value = `${results.getHeaders({
-				includeFooters: false,
-			})}\n${results.getTextboxes({
+			const value = `${results
+				.getHeaders({
+					includeFooters: false,
+				})
+				.trim()}\n${results.getTextboxes({
 				includeHeadersAndFooters: false,
-			})}\n${results.getBody()}\n${results.getEndnotes()}\n${results.getFootnotes()}\n${results.getFooters()}`.trim();
+			})}\n${results.getBody().trim()}\n${results
+				.getEndnotes()
+				.trim()}\n${results.getFootnotes().trim()}\n${results
+				.getFooters()
+				.trim()}`;
 
 			req.conversionResults.body = value;
 			res.type("text/plain; charset=utf-8");
 		} catch {
 			/**
-			 * Word-Extractor will throw if the .doc file provided
+			 * Word-Extractor will throw if the .doc or .docx file provided
 			 * by client is malformed, thus client error code
 			 */
 			throw server.httpErrors.badRequest();

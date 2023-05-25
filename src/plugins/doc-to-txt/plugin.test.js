@@ -15,6 +15,11 @@ describe("DOC-to-TXT conversion plugin", () => {
 			{ parseAs: "buffer" },
 			async (_req, payload) => payload
 		);
+		server.addContentTypeParser(
+			"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			{ parseAs: "buffer" },
+			async (_req, payload) => payload
+		);
 
 		await server.register(sensible).register(plugin);
 
@@ -31,22 +36,35 @@ describe("DOC-to-TXT conversion plugin", () => {
 		await server.close();
 	});
 
-	it("Converts DOC file to TXT", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/valid_doc.doc"
-			),
+	it.each([
+		{
+			testName: "DOC file to TXT",
 			headers: {
 				"content-type": "application/msword",
 			},
+			readFile: "./test_resources/test_files/valid_doc.doc",
+		},
+		{
+			testName: "DOCX file to TXT",
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			},
+			readFile: "./test_resources/test_files/valid_docx.docx",
+		},
+	])("Converts $testName", async ({ headers, readFile }) => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			// eslint-disable-next-line security/detect-non-literal-fs-filename
+			body: await fs.readFile(readFile),
+			headers,
 		});
 
 		const { body } = JSON.parse(response.payload);
 
 		// String found in header of the test document
-		expect(body).toMatch("I am a header");
+		expect(body).toMatch(/^I am a header/);
 		// String found in first heading of the test document
 		expect(body).toMatch(
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
@@ -56,7 +74,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/m
 		);
 		// String found in footer of the test document
-		expect(body).toMatch("I am a footer");
+		expect(body).toMatch(/I am a footer$/);
 		expect(isHtml(body)).toBe(false);
 		expect(response.statusCode).toBe(200);
 	});
@@ -66,22 +84,28 @@ describe("DOC-to-TXT conversion plugin", () => {
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid DOC file",
-			readFile: true,
+			headers: {
+				"content-type": "application/msword",
+			},
+			readFile: "./test_resources/test_files/invalid_doc.doc",
+		},
+		{
+			testName: "is not a valid DOCX file",
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			},
+			readFile: "./test_resources/test_files/invalid_docx.docx",
 		},
 	])(
-		"Returns HTTP status code 400 if DOC file $testName",
-		async ({ readFile }) => {
+		"Returns HTTP status code 400 if file $testName",
+		async ({ headers, readFile }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				headers: {
-					"content-type": "application/msword",
-				},
-				body: readFile
-					? await fs.readFile(
-							"./test_resources/test_files/invalid_doc.doc"
-					  )
-					: undefined,
+				headers,
+				// eslint-disable-next-line security/detect-non-literal-fs-filename
+				body: readFile ? await fs.readFile(readFile) : undefined,
 			});
 
 			expect(JSON.parse(response.payload)).toEqual({
