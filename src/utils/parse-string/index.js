@@ -1,6 +1,6 @@
 /**
  * @author Frazer Smith
- * @description Convert string boolean to boolean
+ * @description Converts string boolean to boolean
  * or string number to number.
  * @param {*} param - String to convert.
  * @returns {*} Parsed string, or original value

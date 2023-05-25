@@ -25,7 +25,7 @@ const tidyHtml = require("./plugins/tidy-html");
 
 /**
  * @author Frazer Smith
- * @description Build Fastify instance.
+ * @description Builds Fastify instance.
  * @param {object} server - Fastify instance.
  * @param {object} config - Fastify configuration values.
  */
