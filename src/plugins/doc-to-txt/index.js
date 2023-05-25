@@ -19,11 +19,17 @@ async function plugin(server) {
 		try {
 			const results = await wordExtractor.extract(req.body);
 
-			const value = `${results.getHeaders({
-				includeFooters: false,
-			})}\n${results.getTextboxes({
+			const value = `${results
+				.getHeaders({
+					includeFooters: false,
+				})
+				.trim()}\n${results.getTextboxes({
 				includeHeadersAndFooters: false,
-			})}\n${results.getBody()}\n${results.getEndnotes()}\n${results.getFootnotes()}\n${results.getFooters()}`.trim();
+			})}\n${results.getBody().trim()}\n${results
+				.getEndnotes()
+				.trim()}\n${results.getFootnotes().trim()}\n${results
+				.getFooters()
+				.trim()}`;
 
 			req.conversionResults.body = value;
 			res.type("text/plain; charset=utf-8");
