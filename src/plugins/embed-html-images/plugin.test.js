@@ -41,16 +41,16 @@ describe("Embed-HTML-Images plugin", () => {
 			url: "/",
 			body: await fs.readFile(
 				"./test_resources/test_files/valid_bullet_issues_html.html",
-				{ encoding: "UTF-8" }
+				"utf8"
 			),
 			headers: {
 				"content-type": "text/html",
 			},
 		});
 
-		const dom = new JSDOM(response.payload);
+		const dom = new JSDOM(response.body);
 
-		expect(isHtml(response.payload)).toBe(true);
+		expect(isHtml(response.body)).toBe(true);
 		dom.window.document.querySelectorAll("img").forEach((image) => {
 			expect(image.src).toMatch(/^data:image\/(jp[e]?g|png);base64/i);
 		});
@@ -69,14 +69,14 @@ describe("Embed-HTML-Images plugin", () => {
 			url: "/",
 			body: await fs.readFile(
 				"./test_resources/test_files/valid_bullet_issues_html.html",
-				{ encoding: "UTF-8" }
+				"utf8"
 			),
 			headers: {
 				"content-type": "text/html",
 			},
 		});
 
-		expect(JSON.parse(response.payload)).toEqual({
+		expect(JSON.parse(response.body)).toEqual({
 			code: "ENOENT",
 			errno: expect.any(Number),
 			path: expect.any(String),

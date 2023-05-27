@@ -36,7 +36,7 @@ describe("Docs route", () => {
 				},
 			});
 
-			expect(isHtml(response.payload)).toBe(true);
+			expect(isHtml(response.body)).toBe(true);
 			expect(response.headers).toMatchObject({
 				"cache-control": "public, max-age=300",
 				"content-type": "text/html; charset=utf-8",
@@ -53,7 +53,7 @@ describe("Docs route", () => {
 				},
 			});
 
-			expect(JSON.parse(response.payload)).toEqual({
+			expect(JSON.parse(response.body)).toEqual({
 				error: "Not Acceptable",
 				message: "Not Acceptable",
 				statusCode: 406,

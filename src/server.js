@@ -54,7 +54,7 @@ async function plugin(server, config) {
 		.register(helmet, config.helmet)
 
 		// Utility functions and error handlers
-		.register(sensible, { errorHandler: false })
+		.register(sensible)
 
 		// Serialisation support for XML responses
 		.register(serialiseJsonToXml)
@@ -91,8 +91,8 @@ async function plugin(server, config) {
 		 */
 		.addHook("onSend", async (_req, res, payload) => {
 			if (
-				!res.getHeader("content-type")?.includes("html") &&
-				!res.getHeader("content-type")?.includes("xml")
+				!res.getHeader("content-type")?.toString()?.includes("html") &&
+				!res.getHeader("content-type")?.toString()?.includes("xml")
 			) {
 				res.header(
 					"content-security-policy",

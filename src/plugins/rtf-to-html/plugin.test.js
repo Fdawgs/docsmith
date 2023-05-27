@@ -61,13 +61,13 @@ describe("RTF-to-HTML conversion plugin", () => {
 			},
 		});
 
-		const { body, docLocation } = JSON.parse(response.payload);
+		const { body, docLocation } = JSON.parse(response.body);
 		const dom = new JSDOM(body);
 
 		expect(body).not.toMatch(artifacts);
 		expect(isHtml(body)).toBe(true);
 		// Check that head element contains only a meta and title element in the correct order
-		expect(dom.window.document.head.firstChild.tagName).toBe("META");
+		expect(dom.window.document.head.children[0].tagName).toBe("META");
 		expect(dom.window.document.head.firstChild).toMatchObject({
 			content: expect.stringMatching(/^text\/html; charset=utf-8$/i),
 			httpEquiv: expect.stringMatching(/^content-type$/i),
@@ -129,7 +129,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 					: undefined,
 			});
 
-			expect(JSON.parse(response.payload)).toEqual({
+			expect(JSON.parse(response.body)).toEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,

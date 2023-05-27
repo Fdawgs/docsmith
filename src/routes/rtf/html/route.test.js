@@ -58,10 +58,10 @@ describe("RTF-to-HTML route", () => {
 						},
 					})
 					.then((response) => {
-						expect(response.payload).toMatch(
+						expect(response.body).toMatch(
 							"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 						);
-						expect(isHtml(response.payload)).toBe(true);
+						expect(isHtml(response.body)).toBe(true);
 						expect(response.headers).toMatchObject({
 							"content-type": "text/html; charset=utf-8",
 						});
@@ -87,7 +87,7 @@ describe("RTF-to-HTML route", () => {
 						},
 					})
 					.then((response) => {
-						expect(JSON.parse(response.payload)).toEqual({
+						expect(JSON.parse(response.body)).toEqual({
 							error: "Unsupported Media Type",
 							message: "Unsupported Media Type",
 							statusCode: 415,
@@ -117,7 +117,7 @@ describe("RTF-to-HTML route", () => {
 						},
 					})
 					.then((response) => {
-						expect(JSON.parse(response.payload)).toEqual({
+						expect(JSON.parse(response.body)).toEqual({
 							error: "Unsupported Media Type",
 							message: "Unsupported Media Type",
 							statusCode: 415,
@@ -147,7 +147,7 @@ describe("RTF-to-HTML route", () => {
 						},
 					})
 					.then((response) => {
-						expect(JSON.parse(response.payload)).toEqual({
+						expect(JSON.parse(response.body)).toEqual({
 							error: "Unsupported Media Type",
 							message: "Unsupported Media Type: application/html",
 							statusCode: 415,
@@ -173,7 +173,7 @@ describe("RTF-to-HTML route", () => {
 			},
 		});
 
-		expect(JSON.parse(response.payload)).toEqual({
+		expect(JSON.parse(response.body)).toEqual({
 			error: "Not Acceptable",
 			message: "Not Acceptable",
 			statusCode: 406,

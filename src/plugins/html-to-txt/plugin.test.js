@@ -43,7 +43,7 @@ describe("HTML-to-TXT conversion plugin", () => {
 			},
 		});
 
-		const { body } = JSON.parse(response.payload);
+		const { body } = JSON.parse(response.body);
 
 		// String found in header of the test document
 		expect(body).toMatch("I am a header");
@@ -84,7 +84,7 @@ describe("HTML-to-TXT conversion plugin", () => {
 					: undefined,
 			});
 
-			expect(JSON.parse(response.payload)).toEqual({
+			expect(JSON.parse(response.body)).toEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,

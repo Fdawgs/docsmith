@@ -5,13 +5,15 @@ const btPowerSetRecursive = require("./btPowerSet");
  * @description Utility function to generate unique combinations when provided with an
  * array of objects.
  * @param {Array.<object>} originalSet - Array of objects.
- * @returns {Array} All subsets of array of objects provided.
+ * @returns {Array.<object>} All subsets of array of objects provided.
  */
 function generateCombos(originalSet) {
 	const powerSet = btPowerSetRecursive(originalSet);
 
-	// Combine resulting array of arrays of objects from `btPowerSetRecursive()`
-	// into a single array of combined objects
+	/**
+	 * Combine resulting array of arrays of objects from `btPowerSetRecursive()`
+	 * into a single array of combined objects
+	 */
 	const reducedPowerSet = powerSet.map((subset) =>
 		subset.reduce((acc, cur) => ({ ...acc, ...cur }), {})
 	);

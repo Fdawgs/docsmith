@@ -98,18 +98,19 @@ describe("Tidy-CSS plugin", () => {
 			method: "POST",
 			url: "/",
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			body: await fs.readFile(`./test_resources/test_files/${file}`, {
-				encoding: "UTF-8",
-			}),
+			body: await fs.readFile(
+				`./test_resources/test_files/${file}`,
+				"utf8"
+			),
 			headers: {
 				"content-type": "text/html",
 			},
 		});
 
-		const dom = new JSDOM(response.payload);
+		const dom = new JSDOM(response.body);
 		const style = dom.window.document.querySelector("style");
 
-		expect(isHtml(response.payload)).toBe(true);
+		expect(isHtml(response.body)).toBe(true);
 		// Check CSS is combined into one style tag
 		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
 		// Check font-family is set to expected value
@@ -138,14 +139,14 @@ describe("Tidy-CSS plugin", () => {
 			url: "/",
 			body: await fs.readFile(
 				"./test_resources/test_files/valid_empty_html.html",
-				{ encoding: "UTF-8" }
+				"utf8"
 			),
 			headers: {
 				"content-type": "text/html",
 			},
 		});
 
-		expect(isHtml(response.payload)).toBe(true);
+		expect(isHtml(response.body)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
 });

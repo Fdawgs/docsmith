@@ -50,16 +50,16 @@ describe("Tidy-HTML plugin", () => {
 			url: "/",
 			body: await fs.readFile(
 				"./test_resources/test_files/valid_bullet_issues_html.html",
-				{ encoding: "UTF-8" }
+				"utf8"
 			),
 			headers: {
 				"content-type": "text/html",
 			},
 		});
 
-		const dom = new JSDOM(response.payload);
+		const dom = new JSDOM(response.body);
 
-		expect(isHtml(response.payload)).toBe(true);
+		expect(isHtml(response.body)).toBe(true);
 		// Check language is set to default or options.language
 		expect(
 			dom.window.document.querySelector("html").getAttribute("lang")
@@ -105,14 +105,14 @@ describe("Tidy-HTML plugin", () => {
 			url: "/",
 			body: await fs.readFile(
 				"./test_resources/test_files/valid_bullet_issues_html.html",
-				{ encoding: "UTF-8" }
+				"utf8"
 			),
 			headers: {
 				"content-type": "text/html",
 			},
 		});
 
-		expect(JSON.parse(response.payload)).toEqual({
+		expect(JSON.parse(response.body)).toEqual({
 			statusCode: 400,
 			error: "Bad Request",
 			message: "querystring.language not a valid IANA language tag",

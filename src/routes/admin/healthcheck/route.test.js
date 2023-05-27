@@ -35,7 +35,7 @@ describe("Healthcheck route", () => {
 				},
 			});
 
-			expect(response.payload).toBe("ok");
+			expect(response.body).toBe("ok");
 			expect(response.statusCode).toBe(200);
 		});
 
@@ -48,7 +48,7 @@ describe("Healthcheck route", () => {
 				},
 			});
 
-			expect(JSON.parse(response.payload)).toEqual({
+			expect(JSON.parse(response.body)).toEqual({
 				error: "Not Acceptable",
 				message: "Not Acceptable",
 				statusCode: 406,
