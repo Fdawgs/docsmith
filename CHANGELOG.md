@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.2.1](https://github.com/Fdawgs/docsmith/compare/v10.2.0...v10.2.1) (2023-05-27)
+
+
+### Miscellaneous
+
+* fix inline comment style ([f75d177](https://github.com/Fdawgs/docsmith/commit/f75d17799d5938d4bc556eb42fde00a832916b72))
+* use nouns for leading word in function description tags ([#1494](https://github.com/Fdawgs/docsmith/issues/1494)) ([dcee4b5](https://github.com/Fdawgs/docsmith/commit/dcee4b5eb2e2f21be9f4190e7971fdbd92907f43))
+
+
+### Improvements
+
+* **plugins:** merge doc-to-txt and docx-to-txt plugins ([04f8455](https://github.com/Fdawgs/docsmith/commit/04f845521c1340d1b91628cef96fa39c35f8bae6))
+* **server:** remove outdated sensible plugin option ([9f857e7](https://github.com/Fdawgs/docsmith/commit/9f857e74f40dd441dfe900060c41593bd8f9182c))
+* **server:** remove redundant `await` ([#1491](https://github.com/Fdawgs/docsmith/issues/1491)) ([01ba28e](https://github.com/Fdawgs/docsmith/commit/01ba28e12246f5703fcee1a8919f4487df58d62f))
+
+
+### Bug fixes
+
+* **plugins/doc-to-txt:** remove excess whitespace in header and footer ([ef6f065](https://github.com/Fdawgs/docsmith/commit/ef6f065bb325173e4493054a977698615d2389a3))
+* **plugins/docx-to-html:** remove excess whitespace in header and footer ([#1492](https://github.com/Fdawgs/docsmith/issues/1492)) ([4371e9a](https://github.com/Fdawgs/docsmith/commit/4371e9a30115a1d5716330a861b2b566b37df099))
+* **server:** handle arrays when pruning csp headers ([c7415a0](https://github.com/Fdawgs/docsmith/commit/c7415a04aed44854530aeca838345df2d59f8f07))
+* **server:** stop routes from accepting default text and json requests ([#1489](https://github.com/Fdawgs/docsmith/issues/1489)) ([e89a563](https://github.com/Fdawgs/docsmith/commit/e89a56343a963faac3ee44bb0fe7de0a84f803cd))
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild-plugin-glob from 2.2.1 to 2.2.2 ([d6e98c6](https://github.com/Fdawgs/docsmith/commit/d6e98c6216c8a1e957f443ca90e9bdbf86d93afc))
+* **deps-dev:** bump eslint-plugin-jsdoc from 44.2.4 to 44.2.7 ([#1497](https://github.com/Fdawgs/docsmith/issues/1497)) ([799ffcb](https://github.com/Fdawgs/docsmith/commit/799ffcb89d230df0cc81872fef165c1bfd6ec4a1))
+* **deps-dev:** bump playwright from 1.34.0 to 1.34.3 ([#1498](https://github.com/Fdawgs/docsmith/issues/1498)) ([437cae6](https://github.com/Fdawgs/docsmith/commit/437cae6fb691809ececcbc8b32aefbd8aac45071))
+* **deps:** bump @fastify/compress from 6.3.0 to 6.4.0 ([#1500](https://github.com/Fdawgs/docsmith/issues/1500)) ([2f119a2](https://github.com/Fdawgs/docsmith/commit/2f119a2844ec8f136a88c43fdf27d05d666d06ca))
+* **deps:** bump @fastify/cors from 8.2.1 to 8.3.0 ([#1501](https://github.com/Fdawgs/docsmith/issues/1501)) ([fb7e708](https://github.com/Fdawgs/docsmith/commit/fb7e708872862d3a0a60084430116840638ba2e2))
+* **deps:** bump @fastify/static from 6.10.1 to 6.10.2 ([#1496](https://github.com/Fdawgs/docsmith/issues/1496)) ([e25f598](https://github.com/Fdawgs/docsmith/commit/e25f5982e2780c19d090a8cc10873c282231376d))
+* **deps:** bump @fastify/swagger from 8.4.0 to 8.5.1 ([#1502](https://github.com/Fdawgs/docsmith/issues/1502)) ([c9bd24a](https://github.com/Fdawgs/docsmith/commit/c9bd24a93581239aa21f7ca460b3e75f01077c0b))
+* **deps:** bump fastify-json-to-xml from 1.1.2 to 1.1.3 ([#1504](https://github.com/Fdawgs/docsmith/issues/1504)) ([9ee2e8d](https://github.com/Fdawgs/docsmith/commit/9ee2e8d91ce590b33a25f45181394a3c63ccd1d0))
+* **deps:** bump glob from 10.2.5 to 10.2.6 ([#1499](https://github.com/Fdawgs/docsmith/issues/1499)) ([0be1205](https://github.com/Fdawgs/docsmith/commit/0be120554f5c8988597f6012b1aa7922fabbf330))
+* **deps:** bump jsdom from 22.0.0 to 22.1.0 ([#1503](https://github.com/Fdawgs/docsmith/issues/1503)) ([8e89692](https://github.com/Fdawgs/docsmith/commit/8e896922f2e3f77b584c03c4062f0b8d92073577))
+* **deps:** bump transistive dependencies ([d64c2d3](https://github.com/Fdawgs/docsmith/commit/d64c2d303d64ba63f4c8f58573eb9f7289c64c44))
+
 ## [10.2.0](https://github.com/Fdawgs/docsmith/compare/v10.1.1...v10.2.0) (2023-05-20)
 
 
