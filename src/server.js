@@ -54,7 +54,7 @@ async function plugin(server, config) {
 		.register(helmet, config.helmet)
 
 		// Utility functions and error handlers
-		.register(sensible, { errorHandler: false })
+		.register(sensible)
 
 		// Serialisation support for XML responses
 		.register(serialiseJsonToXml)
