@@ -107,10 +107,10 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		const dom = new JSDOM(response.payload);
+		const dom = new JSDOM(response.body);
 		const style = dom.window.document.querySelector("style");
 
-		expect(isHtml(response.payload)).toBe(true);
+		expect(isHtml(response.body)).toBe(true);
 		// Check CSS is combined into one style tag
 		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
 		// Check font-family is set to expected value
@@ -146,7 +146,7 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(isHtml(response.payload)).toBe(true);
+		expect(isHtml(response.body)).toBe(true);
 		expect(response.statusCode).toBe(200);
 	});
 });

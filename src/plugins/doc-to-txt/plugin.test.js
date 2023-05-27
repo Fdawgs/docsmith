@@ -61,7 +61,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 			headers,
 		});
 
-		const { body } = JSON.parse(response.payload);
+		const { body } = JSON.parse(response.body);
 
 		// String found in header of the test document
 		expect(body).toMatch(/^I am a header/);
@@ -108,7 +108,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 				body: readFile ? await fs.readFile(readFile) : undefined,
 			});
 
-			expect(JSON.parse(response.payload)).toEqual({
+			expect(JSON.parse(response.body)).toEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,

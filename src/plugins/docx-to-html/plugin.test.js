@@ -45,7 +45,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			},
 		});
 
-		const { body } = JSON.parse(response.payload);
+		const { body } = JSON.parse(response.body);
 		const dom = new JSDOM(body);
 
 		expect(isHtml(body)).toBe(true);
@@ -100,7 +100,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 					: undefined,
 			});
 
-			expect(JSON.parse(response.payload)).toEqual({
+			expect(JSON.parse(response.body)).toEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,

@@ -65,8 +65,8 @@ describe("PDF-to-HTML route", () => {
 						},
 					})
 					.then((response) => {
-						expect(response.payload).toMatch("for England");
-						expect(isHtml(response.payload)).toBe(true);
+						expect(response.body).toMatch("for England");
+						expect(isHtml(response.body)).toBe(true);
 						expect(response.headers).toMatchObject({
 							"content-type": "text/html; charset=utf-8",
 						});
@@ -95,7 +95,7 @@ describe("PDF-to-HTML route", () => {
 						},
 					})
 					.then((response) => {
-						expect(JSON.parse(response.payload)).toEqual({
+						expect(JSON.parse(response.body)).toEqual({
 							error: "Unsupported Media Type",
 							message: "Unsupported Media Type",
 							statusCode: 415,
@@ -128,7 +128,7 @@ describe("PDF-to-HTML route", () => {
 						},
 					})
 					.then((response) => {
-						expect(JSON.parse(response.payload)).toEqual({
+						expect(JSON.parse(response.body)).toEqual({
 							error: "Unsupported Media Type",
 							message: "Unsupported Media Type",
 							statusCode: 415,
@@ -161,7 +161,7 @@ describe("PDF-to-HTML route", () => {
 						},
 					})
 					.then((response) => {
-						expect(JSON.parse(response.payload)).toEqual({
+						expect(JSON.parse(response.body)).toEqual({
 							error: "Unsupported Media Type",
 							message: "Unsupported Media Type: application/html",
 							statusCode: 415,
@@ -190,7 +190,7 @@ describe("PDF-to-HTML route", () => {
 			},
 		});
 
-		expect(JSON.parse(response.payload)).toEqual({
+		expect(JSON.parse(response.body)).toEqual({
 			error: "Not Acceptable",
 			message: "Not Acceptable",
 			statusCode: 406,

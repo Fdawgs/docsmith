@@ -77,7 +77,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 			},
 		});
 
-		const { body, docLocation } = JSON.parse(response.payload);
+		const { body, docLocation } = JSON.parse(response.body);
 		const dom = new JSDOM(body);
 
 		expect(body).not.toMatch(artifacts);
@@ -143,7 +143,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 					: undefined,
 			});
 
-			expect(JSON.parse(response.payload)).toEqual({
+			expect(JSON.parse(response.body)).toEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,
