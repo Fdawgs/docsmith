@@ -25,17 +25,10 @@ const main = async () => {
 			server.log.info({ signal }, "Closing application");
 			try {
 				await Promise.all([
-					fs
-						.rm(config.tempDir, {
-							recursive: true,
-						})
-						.catch((err) => {
-							// Ignore "ENOENT: no such file or directory" error
-							/* istanbul ignore if */
-							if (err.code !== "ENOENT") {
-								throw err;
-							}
-						}),
+					fs.rm(config.tempDir, {
+						force: true,
+						recursive: true,
+					}),
 					server.close(),
 				]);
 

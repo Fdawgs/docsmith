@@ -98,10 +98,7 @@ describe("Tidy-CSS plugin", () => {
 			method: "POST",
 			url: "/",
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			body: await fs.readFile(
-				`./test_resources/test_files/${file}`,
-				"utf8"
-			),
+			body: await fs.readFile(`./test_resources/test_files/${file}`),
 			headers: {
 				"content-type": "text/html",
 			},
@@ -138,8 +135,7 @@ describe("Tidy-CSS plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_empty_html.html",
-				"utf8"
+				"./test_resources/test_files/valid_empty_html.html"
 			),
 			headers: {
 				"content-type": "text/html",
