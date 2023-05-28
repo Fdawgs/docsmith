@@ -40,8 +40,7 @@ describe("Embed-HTML-Images plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_bullet_issues_html.html",
-				"utf8"
+				"./test_resources/test_files/valid_bullet_issues_html.html"
 			),
 			headers: {
 				"content-type": "text/html",
@@ -68,8 +67,7 @@ describe("Embed-HTML-Images plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_bullet_issues_html.html",
-				"utf8"
+				"./test_resources/test_files/valid_bullet_issues_html.html"
 			),
 			headers: {
 				"content-type": "text/html",
