@@ -7,7 +7,7 @@ const route = require(".");
 const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
 
-describe("DOC-to-TXT route", () => {
+describe("DOT-to-TXT route", () => {
 	let config;
 	let server;
 
@@ -27,12 +27,12 @@ describe("DOC-to-TXT route", () => {
 		await server.close();
 	});
 
-	it("Returns DOC file converted to TXT", async () => {
+	it("Returns DOT file converted to TXT", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/doc_valid.doc"
+				"./test_resources/test_files/dot_valid.dot"
 			),
 			headers: {
 				accept: "application/json, text/plain",
@@ -71,8 +71,8 @@ describe("DOC-to-TXT route", () => {
 
 	it.each([
 		{
-			testName: "with '.doc' extension is not a valid DOC file",
-			filePath: "./test_resources/test_files/doc_invalid.doc",
+			testName: "with '.dot' extension is not a valid DOT file",
+			filePath: "./test_resources/test_files/dot_invalid.dot",
 		},
 		{
 			testName: "is a valid CFBF file but is not a Microsoft Word file",
@@ -127,7 +127,7 @@ describe("DOC-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/doc_valid.doc"
+				"./test_resources/test_files/dot_valid.dot"
 			),
 			headers: {
 				accept: "application/javascript",

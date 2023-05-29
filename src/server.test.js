@@ -258,6 +258,52 @@ describe("Server deployment", () => {
 			});
 		});
 
+		describe("/dot/txt route", () => {
+			it("Returns DOT file converted to TXT, with expected headers set", async () => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/dot/txt",
+					body: await fs.readFile(
+						"./test_resources/test_files/dot_valid.dot"
+					),
+					headers: {
+						accept: "application/json, text/plain",
+						"content-type": "application/msword",
+					},
+				});
+
+				expect(response.body).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+				);
+				expect(isHtml(response.body)).toBe(false);
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
+			});
+		});
+
+		describe("/dotx/txt route", () => {
+			it("Returns DOT file converted to TXT, with expected headers set", async () => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/dotx/txt",
+					body: await fs.readFile(
+						"./test_resources/test_files/dotx_valid.dotx"
+					),
+					headers: {
+						accept: "application/json, text/plain",
+						"content-type":
+							"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+					},
+				});
+
+				expect(response.body).toMatch(/^I am a header/);
+				expect(response.body).toMatch(/I am a footer$/);
+				expect(isHtml(response.body)).toBe(false);
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
+			});
+		});
+
 		describe("/pdf/html route", () => {
 			it("Returns PDF file converted to HTML, with expected headers set", async () => {
 				const response = await server.inject({
