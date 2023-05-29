@@ -32,7 +32,7 @@ describe("HTML-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_html.html"
+				"./test_resources/test_files/html_valid.html"
 			),
 			headers: {
 				accept: "application/json, text/plain",
@@ -74,7 +74,7 @@ describe("HTML-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/invalid_html.html"
+				"./test_resources/test_files/html_invalid.html"
 			),
 			query: {
 				lastPageToConvert: 1,
@@ -98,7 +98,7 @@ describe("HTML-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_empty_html.html"
+				"./test_resources/test_files/html_valid_empty.html"
 			),
 			headers: {
 				accept: "application/json, text/plain",
@@ -119,7 +119,7 @@ describe("HTML-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_html.html"
+				"./test_resources/test_files/html_valid.html"
 			),
 			headers: {
 				accept: "application/javascript",

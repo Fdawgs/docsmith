@@ -32,7 +32,7 @@ describe("DOCX-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_docx.docx"
+				"./test_resources/test_files/docx_valid.docx"
 			),
 			headers: {
 				accept: "application/json, text/plain",
@@ -76,7 +76,7 @@ describe("DOCX-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/invalid_docx.docx"
+				"./test_resources/test_files/docx_invalid.docx"
 			),
 			query: {
 				lastPageToConvert: 1,
@@ -101,7 +101,7 @@ describe("DOCX-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_empty_html.html"
+				"./test_resources/test_files/html_valid_empty.html"
 			),
 			headers: {
 				accept: "application/json, text/plain",
@@ -122,7 +122,7 @@ describe("DOCX-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_docx.docx"
+				"./test_resources/test_files/docx_valid.docx"
 			),
 			headers: {
 				accept: "application/javascript",

@@ -31,7 +31,7 @@ describe("Tidy-CSS plugin", () => {
 	it.each([
 		{
 			testName: "Tidies CSS in HTML",
-			file: "valid_bullet_issues_html.html",
+			file: "html_valid_bullet_issues.html",
 			expected: {
 				// Original font-family of test file
 				fonts: /font-family:Times/,
@@ -39,7 +39,7 @@ describe("Tidy-CSS plugin", () => {
 		},
 		{
 			testName: "Tidies CSS in HTML and sets new font",
-			file: "valid_bullet_issues_html.html",
+			file: "html_valid_bullet_issues.html",
 			options: { fonts: "Arial" },
 			expected: {
 				fonts: /font-family:Arial/,
@@ -47,7 +47,7 @@ describe("Tidy-CSS plugin", () => {
 		},
 		{
 			testName: "Tidies CSS in HTML and sets new font in quotation marks",
-			file: "valid_bullet_issues_html.html",
+			file: "html_valid_bullet_issues.html",
 			options: { fonts: 'Sans Serif, "Gill Sans"' },
 			expected: {
 				fonts: /Sans Serif","\\"Gill Sans\\"/,
@@ -55,7 +55,7 @@ describe("Tidy-CSS plugin", () => {
 		},
 		{
 			testName: "Tidies CSS in HTML and sets new background color",
-			file: "valid_bullet_issues_html.html",
+			file: "html_valid_bullet_issues.html",
 			options: { backgroundColor: "white" },
 			expected: {
 				backgroundColor: /background-color:#fff/,
@@ -66,7 +66,7 @@ describe("Tidy-CSS plugin", () => {
 		{
 			testName:
 				"Tidies CSS in HTML, sets new background color, and sets new font",
-			file: "valid_bullet_issues_html.html",
+			file: "html_valid_bullet_issues.html",
 			options: { backgroundColor: "white", fonts: "Arial" },
 			expected: {
 				backgroundColor: /background-color:#fff/,
@@ -76,7 +76,7 @@ describe("Tidy-CSS plugin", () => {
 		{
 			testName:
 				"Creates new style element if none exist in HTML but query string params passed",
-			file: "valid_empty_html.html",
+			file: "html_valid_empty.html",
 			options: { fonts: "Arial", backgroundColor: "white" },
 			expected: {
 				fonts: /font-family:Arial/,
@@ -86,7 +86,7 @@ describe("Tidy-CSS plugin", () => {
 		{
 			testName:
 				"Continues to parse style elements with no type attribute in HTML",
-			file: "valid_no_style_type_html.html",
+			file: "html_valid_no_style_type.html",
 		},
 	])("$testName", async ({ expected, file, options }) => {
 		server.post("/", (req, res) => {
@@ -116,7 +116,7 @@ describe("Tidy-CSS plugin", () => {
 		expect(style.innerHTML).toMatch(expected?.backgroundColor || /./);
 		// Check page-break-inside is set to avoid
 		expect(style.innerHTML).toMatch(
-			file !== "valid_no_style_type_html.html"
+			file !== "html_valid_no_style_type.html"
 				? /page-break-inside:avoid/
 				: /./
 		);
@@ -135,7 +135,7 @@ describe("Tidy-CSS plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_empty_html.html"
+				"./test_resources/test_files/html_valid_empty.html"
 			),
 			headers: {
 				"content-type": "text/html",

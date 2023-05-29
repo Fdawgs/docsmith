@@ -119,7 +119,7 @@ describe("PDF-to-HTML route", () => {
 						method: "POST",
 						url: "/",
 						body: await fs.readFile(
-							"./test_resources/test_files/invalid_pdf.pdf"
+							"./test_resources/test_files/pdf_invalid.pdf"
 						),
 						query,
 						headers: {
@@ -152,7 +152,7 @@ describe("PDF-to-HTML route", () => {
 						method: "POST",
 						url: "/",
 						body: await fs.readFile(
-							"./test_resources/test_files/valid_empty_html.html"
+							"./test_resources/test_files/html_valid_empty.html"
 						),
 						query,
 						headers: {

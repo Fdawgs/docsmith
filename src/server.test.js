@@ -193,7 +193,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/doc/txt",
 					body: await fs.readFile(
-						"./test_resources/test_files/valid_doc.doc"
+						"./test_resources/test_files/doc_valid.doc"
 					),
 					headers: {
 						accept: "application/json, text/plain",
@@ -216,7 +216,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/docx/html",
 					body: await fs.readFile(
-						"./test_resources/test_files/valid_docx.docx"
+						"./test_resources/test_files/docx_valid.docx"
 					),
 					headers: {
 						accept: "application/json, text/html",
@@ -240,7 +240,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/docx/txt",
 					body: await fs.readFile(
-						"./test_resources/test_files/valid_docx.docx"
+						"./test_resources/test_files/docx_valid.docx"
 					),
 					headers: {
 						accept: "application/json, text/plain",
@@ -337,7 +337,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/rtf/html",
 					body: await fs.readFile(
-						"./test_resources/test_files/valid_rtf.rtf"
+						"./test_resources/test_files/rtf_valid.rtf"
 					),
 					headers: {
 						accept: "application/json, text/html",
@@ -360,7 +360,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/rtf/txt",
 					body: await fs.readFile(
-						"./test_resources/test_files/valid_rtf.rtf"
+						"./test_resources/test_files/rtf_valid.rtf"
 					),
 					headers: {
 						accept: "application/json, text/plain",

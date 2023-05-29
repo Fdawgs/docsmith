@@ -138,7 +138,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 				},
 				body: readFile
 					? await fs.readFile(
-							"./test_resources/test_files/invalid_pdf.pdf"
+							"./test_resources/test_files/pdf_invalid.pdf"
 					  )
 					: undefined,
 			});

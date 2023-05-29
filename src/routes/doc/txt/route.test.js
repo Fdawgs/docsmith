@@ -32,7 +32,7 @@ describe("DOC-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_doc.doc"
+				"./test_resources/test_files/doc_valid.doc"
 			),
 			headers: {
 				accept: "application/json, text/plain",
@@ -72,11 +72,11 @@ describe("DOC-to-TXT route", () => {
 	it.each([
 		{
 			testName: "with '.doc' extension is not a valid DOC file",
-			filePath: "./test_resources/test_files/invalid_doc.doc",
+			filePath: "./test_resources/test_files/doc_invalid.doc",
 		},
 		{
 			testName: "is a valid CFBF file but is not a Microsoft Word file",
-			filePath: "./test_resources/test_files/valid_xls.xls",
+			filePath: "./test_resources/test_files/xls_valid.xls",
 		},
 	])(
 		"Returns HTTP status code 415 if file $testName",
@@ -109,7 +109,7 @@ describe("DOC-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_empty_html.html"
+				"./test_resources/test_files/html_valid_empty.html"
 			),
 			headers: {
 				accept: "application/json, text/plain",
@@ -130,7 +130,7 @@ describe("DOC-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_doc.doc"
+				"./test_resources/test_files/doc_valid.doc"
 			),
 			headers: {
 				accept: "application/javascript",
