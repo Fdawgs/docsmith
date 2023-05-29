@@ -26,7 +26,7 @@ async function route(server, options) {
 	}
 
 	server.addContentTypeParser(
-		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+		docxToTxtPostSchema.consumes,
 		{ parseAs: "buffer" },
 		async (_req, payload) => {
 			/**
@@ -34,10 +34,7 @@ async function route(server, options) {
 			 * this checks for DOCX specific magic numbers
 			 */
 			const results = await fromBuffer(payload);
-			if (
-				results?.mime !==
-				"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-			) {
+			if (!docxToTxtPostSchema.consumes.includes(results?.mime)) {
 				throw server.httpErrors.unsupportedMediaType();
 			}
 			return payload;

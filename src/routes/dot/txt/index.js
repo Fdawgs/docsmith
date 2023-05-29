@@ -26,7 +26,7 @@ async function route(server, options) {
 	}
 
 	server.addContentTypeParser(
-		"application/msword",
+		dotToTxtPostSchema.consumes,
 		{ parseAs: "buffer" },
 		async (_req, payload) => {
 			/**

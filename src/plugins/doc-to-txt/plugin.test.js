@@ -13,8 +13,8 @@ describe("DOC-to-TXT conversion plugin", () => {
 		server.addContentTypeParser(
 			[
 				"application/msword",
+				"application/vnd.ms-word.document.macroEnabled.12",
 				"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-				"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
 			],
 			{ parseAs: "buffer" },
 			async (_req, payload) => payload
@@ -44,19 +44,27 @@ describe("DOC-to-TXT conversion plugin", () => {
 			readFile: "./test_resources/test_files/doc_valid.doc",
 		},
 		{
+			testName: "DOT file to TXT",
+			headers: {
+				"content-type": "application/msword",
+			},
+			readFile: "./test_resources/test_files/dot_valid.dot",
+		},
+		{
+			testName: "DOCM file to TXT",
+			headers: {
+				"content-type":
+					"application/vnd.ms-word.document.macroEnabled.12",
+			},
+			readFile: "./test_resources/test_files/docm_valid.docm",
+		},
+		{
 			testName: "DOCX file to TXT",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
 			readFile: "./test_resources/test_files/docx_valid.docx",
-		},
-		{
-			testName: "DOT file to TXT",
-			headers: {
-				"content-type": "application/msword",
-			},
-			readFile: "./test_resources/test_files/dot_valid.dot",
 		},
 	])("Converts $testName", async ({ headers, readFile }) => {
 		const response = await server.inject({
@@ -85,34 +93,6 @@ describe("DOC-to-TXT conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	it.each([
-		{
-			testName: "DOTX file to TXT",
-			headers: {
-				"content-type":
-					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
-			},
-			readFile: "./test_resources/test_files/dotx_valid.dotx",
-		},
-	])("Converts $testName", async ({ headers, readFile }) => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			body: await fs.readFile(readFile),
-			headers,
-		});
-
-		const { body } = JSON.parse(response.body);
-
-		// String found in header of the test document
-		expect(body).toMatch(/^I am a header/);
-		// String found in footer of the test document
-		expect(body).toMatch(/I am a footer$/);
-		expect(isHtml(body)).toBe(false);
-		expect(response.statusCode).toBe(200);
-	});
-
 	// TODO: use `it.concurrent.each()` once it is no longer experimental
 	it.each([
 		{ testName: "is missing" },
@@ -124,14 +104,6 @@ describe("DOC-to-TXT conversion plugin", () => {
 			readFile: "./test_resources/test_files/doc_invalid.doc",
 		},
 		{
-			testName: "is not a valid DOCX file",
-			headers: {
-				"content-type":
-					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-			},
-			readFile: "./test_resources/test_files/docx_invalid.docx",
-		},
-		{
 			testName: "is not a valid DOT file",
 			headers: {
 				"content-type": "application/msword",
@@ -139,12 +111,20 @@ describe("DOC-to-TXT conversion plugin", () => {
 			readFile: "./test_resources/test_files/dot_invalid.dot",
 		},
 		{
-			testName: "is not a valid DOTX file",
+			testName: "is not a valid DOCM file",
 			headers: {
 				"content-type":
-					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+					"application/vnd.ms-word.document.macroEnabled.12",
 			},
-			readFile: "./test_resources/test_files/dotx_invalid.dotx",
+			readFile: "./test_resources/test_files/docm_invalid.docm",
+		},
+		{
+			testName: "is not a valid DOCX file",
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			},
+			readFile: "./test_resources/test_files/docx_invalid.docx",
 		},
 	])(
 		"Returns HTTP status code 400 if file $testName",

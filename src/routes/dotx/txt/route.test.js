@@ -41,8 +41,9 @@ describe("DOTX-to-TXT route", () => {
 			},
 		});
 
-		expect(response.body).toMatch(/^I am a header/);
-		expect(response.body).toMatch(/I am a footer$/);
+		expect(response.body).toMatch(
+			"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+		);
 		expect(isHtml(response.body)).toBe(false);
 		expect(response.headers).toMatchObject({
 			"content-type": "text/plain; charset=utf-8",

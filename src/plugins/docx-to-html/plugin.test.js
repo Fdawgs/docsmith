@@ -12,7 +12,12 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		server = Fastify();
 
 		server.addContentTypeParser(
-			"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			[
+				"application/vnd.ms-word.document.macroEnabled.12",
+				"application/vnd.ms-word.template.macroEnabled.12",
+				"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+				"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+			],
 			{ parseAs: "buffer" },
 			async (_req, payload) => payload
 		);
@@ -32,17 +37,46 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		await server.close();
 	});
 
-	it("Converts DOCX file to HTML", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/docx_valid.docx"
-			),
+	it.each([
+		{
+			testName: "DOCM file to HTML",
+			headers: {
+				"content-type":
+					"application/vnd.ms-word.document.macroEnabled.12",
+			},
+			readFile: "./test_resources/test_files/docm_valid.docm",
+		},
+		{
+			testName: "DOCX file to HTML",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
+			readFile: "./test_resources/test_files/docx_valid.docx",
+		},
+		{
+			testName: "DOTX file to HTML",
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+			},
+			readFile: "./test_resources/test_files/dotx_valid.dotx",
+		},
+		{
+			testName: "DOTM file to HTML",
+			headers: {
+				"content-type":
+					"application/vnd.ms-word.template.macroEnabled.12",
+			},
+			readFile: "./test_resources/test_files/dotm_valid.dotm",
+		},
+	])("Converts $testName", async ({ headers, readFile }) => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			// eslint-disable-next-line security/detect-non-literal-fs-filename
+			body: await fs.readFile(readFile),
+			headers,
 		});
 
 		const { body } = JSON.parse(response.body);
@@ -80,24 +114,46 @@ describe("DOCX-to-HTML conversion plugin", () => {
 	it.each([
 		{ testName: "is missing" },
 		{
+			testName: "is not a valid DOCM file",
+			headers: {
+				"content-type":
+					"application/vnd.ms-word.document.macroEnabled.12",
+			},
+			readFile: "./test_resources/test_files/docm_invalid.docm",
+		},
+		{
 			testName: "is not a valid DOCX file",
-			readFile: true,
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			},
+			readFile: "./test_resources/test_files/docx_invalid.docx",
+		},
+		{
+			testName: "is not a valid DOTM file",
+			headers: {
+				"content-type":
+					"application/vnd.ms-word.template.macroEnabled.12",
+			},
+			readFile: "./test_resources/test_files/dotm_invalid.dotm",
+		},
+		{
+			testName: "is not a valid DOTX file",
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+			},
+			readFile: "./test_resources/test_files/dotx_invalid.dotx",
 		},
 	])(
-		"Returns HTTP status code 400 if DOCX file $testName",
-		async ({ readFile }) => {
+		"Returns HTTP status code 400 if file $testName",
+		async ({ headers, readFile }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				headers: {
-					"content-type":
-						"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-				},
-				body: readFile
-					? await fs.readFile(
-							"./test_resources/test_files/docx_invalid.docx"
-					  )
-					: undefined,
+				headers,
+				// eslint-disable-next-line security/detect-non-literal-fs-filename
+				body: readFile ? await fs.readFile(readFile) : undefined,
 			});
 
 			expect(JSON.parse(response.body)).toEqual({

@@ -16,7 +16,7 @@ const dotxToTxtPostSchema = {
 		"Returns the result of converting a DOTX document to TXT format.",
 	operationId: "postDotxToTxt",
 	consumes: [
-		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+		"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
 	],
 	produces: ["application/json", "application/xml"],
 	response: {
