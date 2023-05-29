@@ -26,7 +26,7 @@ async function route(server, options) {
 	}
 
 	server.addContentTypeParser(
-		"text/html",
+		htmlToTxtPostSchema.consumes,
 		{ parseAs: "string" },
 		async (_req, payload) => {
 			/**

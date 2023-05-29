@@ -27,7 +27,7 @@ async function route(server, options) {
 	}
 
 	server.addContentTypeParser(
-		"application/pdf",
+		pdfToHtmlPostSchema.consumes,
 		{ parseAs: "buffer" },
 		async (_req, payload) => {
 			/**
@@ -35,7 +35,7 @@ async function route(server, options) {
 			 * this checks for PDF specific magic numbers
 			 */
 			const results = await fromBuffer(payload);
-			if (results?.mime !== "application/pdf") {
+			if (!pdfToHtmlPostSchema.consumes.includes(results?.mime)) {
 				throw server.httpErrors.unsupportedMediaType();
 			}
 			return payload;

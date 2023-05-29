@@ -27,7 +27,7 @@ async function route(server, options) {
 	}
 
 	server.addContentTypeParser(
-		"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+		dotxToTxtPostSchema.consumes,
 		{ parseAs: "buffer" },
 		async (_req, payload) => {
 			/**
