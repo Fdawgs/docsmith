@@ -86,9 +86,6 @@ describe("DOCX-to-HTML route", () => {
 			body: await fs.readFile(
 				"./test_resources/test_files/docx_invalid.docx"
 			),
-			query: {
-				lastPageToConvert: 1,
-			},
 			headers: {
 				accept: "application/json, text/html",
 				"content-type":
