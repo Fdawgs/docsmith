@@ -42,7 +42,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 			headers: {
 				"content-type": "application/msword",
 			},
-			readFile: "./test_resources/test_files/valid_doc.doc",
+			readFile: "./test_resources/test_files/doc_valid.doc",
 		},
 		{
 			testName: "DOCX file to TXT",
@@ -50,7 +50,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
-			readFile: "./test_resources/test_files/valid_docx.docx",
+			readFile: "./test_resources/test_files/docx_valid.docx",
 		},
 	])("Converts $testName", async ({ headers, readFile }) => {
 		const response = await server.inject({
@@ -87,7 +87,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 			headers: {
 				"content-type": "application/msword",
 			},
-			readFile: "./test_resources/test_files/invalid_doc.doc",
+			readFile: "./test_resources/test_files/doc_invalid.doc",
 		},
 		{
 			testName: "is not a valid DOCX file",
@@ -95,7 +95,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
-			readFile: "./test_resources/test_files/invalid_docx.docx",
+			readFile: "./test_resources/test_files/docx_invalid.docx",
 		},
 	])(
 		"Returns HTTP status code 400 if file $testName",

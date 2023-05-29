@@ -49,7 +49,7 @@ describe("RTF-to-HTML route", () => {
 						method: "POST",
 						url: "/",
 						body: await fs.readFile(
-							"./test_resources/test_files/valid_rtf.rtf"
+							"./test_resources/test_files/rtf_valid.rtf"
 						),
 						query,
 						headers: {
@@ -108,7 +108,7 @@ describe("RTF-to-HTML route", () => {
 						method: "POST",
 						url: "/",
 						body: await fs.readFile(
-							"./test_resources/test_files/invalid_rtf.rtf"
+							"./test_resources/test_files/rtf_invalid.rtf"
 						),
 						query,
 						headers: {
@@ -138,7 +138,7 @@ describe("RTF-to-HTML route", () => {
 						method: "POST",
 						url: "/",
 						body: await fs.readFile(
-							"./test_resources/test_files/valid_empty_html.html"
+							"./test_resources/test_files/html_valid_empty.html"
 						),
 						query,
 						headers: {
@@ -165,7 +165,7 @@ describe("RTF-to-HTML route", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_rtf.rtf"
+				"./test_resources/test_files/rtf_valid.rtf"
 			),
 			headers: {
 				accept: "application/javascript",

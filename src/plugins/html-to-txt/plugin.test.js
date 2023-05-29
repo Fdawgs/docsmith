@@ -36,7 +36,7 @@ describe("HTML-to-TXT conversion plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_html.html"
+				"./test_resources/test_files/html_valid.html"
 			),
 			headers: {
 				"content-type": "text/html",
@@ -79,7 +79,7 @@ describe("HTML-to-TXT conversion plugin", () => {
 				},
 				body: readFile
 					? await fs.readFile(
-							"./test_resources/test_files/invalid_html.html"
+							"./test_resources/test_files/html_invalid.html"
 					  )
 					: undefined,
 			});

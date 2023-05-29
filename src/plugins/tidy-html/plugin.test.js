@@ -49,7 +49,7 @@ describe("Tidy-HTML plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_bullet_issues_html.html"
+				"./test_resources/test_files/html_valid_bullet_issues.html"
 			),
 			headers: {
 				"content-type": "text/html",
@@ -103,7 +103,7 @@ describe("Tidy-HTML plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_bullet_issues_html.html"
+				"./test_resources/test_files/html_valid_bullet_issues.html"
 			),
 			headers: {
 				"content-type": "text/html",

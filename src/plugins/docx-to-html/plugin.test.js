@@ -37,7 +37,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_docx.docx"
+				"./test_resources/test_files/docx_valid.docx"
 			),
 			headers: {
 				"content-type":
@@ -95,7 +95,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 				},
 				body: readFile
 					? await fs.readFile(
-							"./test_resources/test_files/invalid_docx.docx"
+							"./test_resources/test_files/docx_invalid.docx"
 					  )
 					: undefined,
 			});

@@ -54,7 +54,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 			method: "POST",
 			url: "/",
 			body: await fs.readFile(
-				"./test_resources/test_files/valid_rtf.rtf"
+				"./test_resources/test_files/rtf_valid.rtf"
 			),
 			headers: {
 				"content-type": "application/rtf",
@@ -124,7 +124,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 				},
 				body: readFile
 					? await fs.readFile(
-							"./test_resources/test_files/invalid_rtf.rtf"
+							"./test_resources/test_files/rtf_invalid.rtf"
 					  )
 					: undefined,
 			});
