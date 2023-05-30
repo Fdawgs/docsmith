@@ -188,26 +188,37 @@ describe("Server deployment", () => {
 		});
 
 		describe("/doc/txt route", () => {
-			it("Returns DOC file converted to TXT, with expected headers set", async () => {
-				const response = await server.inject({
-					method: "POST",
-					url: "/doc/txt",
-					body: await fs.readFile(
-						"./test_resources/test_files/doc_valid.doc"
-					),
-					headers: {
-						accept: "application/json, text/plain",
-						"content-type": "application/msword",
-					},
-				});
+			it.each([
+				{
+					testName: "DOC file",
+					filePath: "./test_resources/test_files/doc_valid.doc",
+				},
+				{
+					testName: "DOT file",
+					filePath: "./test_resources/test_files/dot_valid.dot",
+				},
+			])(
+				"Returns $testName converted to TXT, with expected headers set",
+				async ({ filePath }) => {
+					const response = await server.inject({
+						method: "POST",
+						url: "/doc/txt",
+						// eslint-disable-next-line security/detect-non-literal-fs-filename
+						body: await fs.readFile(filePath),
+						headers: {
+							accept: "application/json, text/plain",
+							"content-type": "application/msword",
+						},
+					});
 
-				expect(response.body).toMatch(
-					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-				);
-				expect(isHtml(response.body)).toBe(false);
-				expect(response.headers).toEqual(expResHeaders);
-				expect(response.statusCode).toBe(200);
-			});
+					expect(response.body).toMatch(
+						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+					);
+					expect(isHtml(response.body)).toBe(false);
+					expect(response.headers).toEqual(expResHeaders);
+					expect(response.statusCode).toBe(200);
+				}
+			);
 		});
 
 		describe("/docx/html route", () => {
@@ -246,29 +257,6 @@ describe("Server deployment", () => {
 						accept: "application/json, text/plain",
 						"content-type":
 							"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-					},
-				});
-
-				expect(response.body).toMatch(
-					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-				);
-				expect(isHtml(response.body)).toBe(false);
-				expect(response.headers).toEqual(expResHeaders);
-				expect(response.statusCode).toBe(200);
-			});
-		});
-
-		describe("/dot/txt route", () => {
-			it("Returns DOT file converted to TXT, with expected headers set", async () => {
-				const response = await server.inject({
-					method: "POST",
-					url: "/dot/txt",
-					body: await fs.readFile(
-						"./test_resources/test_files/dot_valid.dot"
-					),
-					headers: {
-						accept: "application/json, text/plain",
-						"content-type": "application/msword",
 					},
 				});
 

@@ -38,40 +38,40 @@ describe("DOC-to-TXT conversion plugin", () => {
 	it.each([
 		{
 			testName: "DOC file to TXT",
+			filePath: "./test_resources/test_files/doc_valid.doc",
 			headers: {
 				"content-type": "application/msword",
 			},
-			readFile: "./test_resources/test_files/doc_valid.doc",
 		},
 		{
 			testName: "DOT file to TXT",
+			filePath: "./test_resources/test_files/dot_valid.dot",
 			headers: {
 				"content-type": "application/msword",
 			},
-			readFile: "./test_resources/test_files/dot_valid.dot",
 		},
 		{
 			testName: "DOCM file to TXT",
+			filePath: "./test_resources/test_files/docm_valid.docm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
 			},
-			readFile: "./test_resources/test_files/docm_valid.docm",
 		},
 		{
 			testName: "DOCX file to TXT",
+			filePath: "./test_resources/test_files/docx_valid.docx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
-			readFile: "./test_resources/test_files/docx_valid.docx",
 		},
-	])("Converts $testName", async ({ headers, readFile }) => {
+	])("Converts $testName", async ({ filePath, headers }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			body: await fs.readFile(readFile),
+			body: await fs.readFile(filePath),
 			headers,
 		});
 
@@ -101,14 +101,14 @@ describe("DOC-to-TXT conversion plugin", () => {
 			headers: {
 				"content-type": "application/msword",
 			},
-			readFile: "./test_resources/test_files/doc_invalid.doc",
+			filePath: "./test_resources/test_files/doc_invalid.doc",
 		},
 		{
 			testName: "is not a valid DOT file",
 			headers: {
 				"content-type": "application/msword",
 			},
-			readFile: "./test_resources/test_files/dot_invalid.dot",
+			filePath: "./test_resources/test_files/dot_invalid.dot",
 		},
 		{
 			testName: "is not a valid DOCM file",
@@ -116,7 +116,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
 			},
-			readFile: "./test_resources/test_files/docm_invalid.docm",
+			filePath: "./test_resources/test_files/docm_invalid.docm",
 		},
 		{
 			testName: "is not a valid DOCX file",
@@ -124,17 +124,17 @@ describe("DOC-to-TXT conversion plugin", () => {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
-			readFile: "./test_resources/test_files/docx_invalid.docx",
+			filePath: "./test_resources/test_files/docx_invalid.docx",
 		},
 	])(
 		"Returns HTTP status code 400 if file $testName",
-		async ({ headers, readFile }) => {
+		async ({ filePath, headers }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
 				headers,
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				body: readFile ? await fs.readFile(readFile) : undefined,
+				body: filePath ? await fs.readFile(filePath) : undefined,
 			});
 
 			expect(JSON.parse(response.body)).toEqual({

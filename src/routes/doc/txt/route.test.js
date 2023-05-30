@@ -27,13 +27,21 @@ describe("DOC-to-TXT route", () => {
 		await server.close();
 	});
 
-	it("Returns DOC file converted to TXT", async () => {
+	it.each([
+		{
+			testName: "DOC file",
+			filePath: "./test_resources/test_files/doc_valid.doc",
+		},
+		{
+			testName: "DOT file",
+			filePath: "./test_resources/test_files/dot_valid.dot",
+		},
+	])("Returns $testName converted to TXT", async ({ filePath }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/doc_valid.doc"
-			),
+			// eslint-disable-next-line security/detect-non-literal-fs-filename
+			body: await fs.readFile(filePath),
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "application/msword",
@@ -73,6 +81,10 @@ describe("DOC-to-TXT route", () => {
 		{
 			testName: "with '.doc' extension is not a valid DOC file",
 			filePath: "./test_resources/test_files/doc_invalid.doc",
+		},
+		{
+			testName: "with '.dot' extension is not a valid DOT file",
+			filePath: "./test_resources/test_files/dot_invalid.dot",
 		},
 		{
 			testName: "is a valid CFBF file but is not a Microsoft Word file",
