@@ -222,27 +222,61 @@ describe("Server deployment", () => {
 		});
 
 		describe("/docx/html route", () => {
-			it("Returns DOCX file converted to HTML, with expected headers set", async () => {
-				const response = await server.inject({
-					method: "POST",
-					url: "/docx/html",
-					body: await fs.readFile(
-						"./test_resources/test_files/docx_valid.docx"
-					),
+			it.each([
+				{
+					testName: "DOCM file",
+					filePath: "./test_resources/test_files/docm_valid.docm",
 					headers: {
-						accept: "application/json, text/html",
+						"content-type":
+							"application/vnd.ms-word.document.macroEnabled.12",
+					},
+				},
+				{
+					testName: "DOCX file",
+					filePath: "./test_resources/test_files/docx_valid.docx",
+					headers: {
 						"content-type":
 							"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 					},
-				});
+				},
+				{
+					testName: "DOTX file",
+					filePath: "./test_resources/test_files/dotx_valid.dotx",
+					headers: {
+						"content-type":
+							"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+					},
+				},
+				{
+					testName: "DOTM file",
+					filePath: "./test_resources/test_files/dotm_valid.dotm",
+					headers: {
+						"content-type":
+							"application/vnd.ms-word.template.macroEnabled.12",
+					},
+				},
+			])(
+				"Returns $testName converted to HTML, with expected headers set",
+				async ({ filePath, headers }) => {
+					const response = await server.inject({
+						method: "POST",
+						url: "/docx/html",
+						// eslint-disable-next-line security/detect-non-literal-fs-filename
+						body: await fs.readFile(filePath),
+						headers: {
+							accept: "application/json, text/html",
+							...headers,
+						},
+					});
 
-				expect(response.body).toMatch(
-					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-				);
-				expect(isHtml(response.body)).toBe(true);
-				expect(response.headers).toEqual(expResHeadersHtml);
-				expect(response.statusCode).toBe(200);
-			});
+					expect(response.body).toMatch(
+						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+					);
+					expect(isHtml(response.body)).toBe(true);
+					expect(response.headers).toEqual(expResHeadersHtml);
+					expect(response.statusCode).toBe(200);
+				}
+			);
 		});
 
 		describe("/docx/txt route", () => {
@@ -265,30 +299,6 @@ describe("Server deployment", () => {
 				);
 				expect(isHtml(response.body)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
-				expect(response.statusCode).toBe(200);
-			});
-		});
-
-		describe("/dotx/html route", () => {
-			it("Returns DOTX file converted to HTML, with expected headers set", async () => {
-				const response = await server.inject({
-					method: "POST",
-					url: "/dotx/html",
-					body: await fs.readFile(
-						"./test_resources/test_files/dotx_valid.dotx"
-					),
-					headers: {
-						accept: "application/json, text/html",
-						"content-type":
-							"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
-					},
-				});
-
-				expect(response.body).toMatch(
-					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-				);
-				expect(isHtml(response.body)).toBe(true);
-				expect(response.headers).toEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 		});

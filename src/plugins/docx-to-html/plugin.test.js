@@ -40,42 +40,42 @@ describe("DOCX-to-HTML conversion plugin", () => {
 	it.each([
 		{
 			testName: "DOCM file to HTML",
+			filePath: "./test_resources/test_files/docm_valid.docm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
 			},
-			readFile: "./test_resources/test_files/docm_valid.docm",
 		},
 		{
 			testName: "DOCX file to HTML",
+			filePath: "./test_resources/test_files/docx_valid.docx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
-			readFile: "./test_resources/test_files/docx_valid.docx",
 		},
 		{
 			testName: "DOTX file to HTML",
+			filePath: "./test_resources/test_files/dotx_valid.dotx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
 			},
-			readFile: "./test_resources/test_files/dotx_valid.dotx",
 		},
 		{
 			testName: "DOTM file to HTML",
+			filePath: "./test_resources/test_files/dotm_valid.dotm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.template.macroEnabled.12",
 			},
-			readFile: "./test_resources/test_files/dotm_valid.dotm",
 		},
-	])("Converts $testName", async ({ headers, readFile }) => {
+	])("Converts $testName", async ({ filePath, headers }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			body: await fs.readFile(readFile),
+			body: await fs.readFile(filePath),
 			headers,
 		});
 
@@ -115,45 +115,45 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid DOCM file",
+			filePath: "./test_resources/test_files/docm_invalid.docm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
 			},
-			readFile: "./test_resources/test_files/docm_invalid.docm",
 		},
 		{
 			testName: "is not a valid DOCX file",
+			filePath: "./test_resources/test_files/docx_invalid.docx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
-			readFile: "./test_resources/test_files/docx_invalid.docx",
 		},
 		{
 			testName: "is not a valid DOTM file",
+			filePath: "./test_resources/test_files/dotm_invalid.dotm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.template.macroEnabled.12",
 			},
-			readFile: "./test_resources/test_files/dotm_invalid.dotm",
 		},
 		{
 			testName: "is not a valid DOTX file",
+			filePath: "./test_resources/test_files/dotx_invalid.dotx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
 			},
-			readFile: "./test_resources/test_files/dotx_invalid.dotx",
 		},
 	])(
 		"Returns HTTP status code 400 if file $testName",
-		async ({ headers, readFile }) => {
+		async ({ filePath, headers }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
 				headers,
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				body: readFile ? await fs.readFile(readFile) : undefined,
+				body: filePath ? await fs.readFile(filePath) : undefined,
 			});
 
 			expect(JSON.parse(response.body)).toEqual({
