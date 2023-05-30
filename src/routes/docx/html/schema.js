@@ -1,6 +1,6 @@
 const S = require("fluent-json-schema");
 
-const tags = ["DOCX"];
+const tags = ["DOCM", "DOCX", "DOTM", "DOTX"];
 
 /**
  * Fastify uses AJV for JSON Schema Validation,
@@ -13,10 +13,13 @@ const docxToHtmlPostSchema = {
 	tags,
 	summary: "Convert DOCX to HTML",
 	description:
-		"Returns the result of converting a DOCX document to HTML format.",
+		"Returns the result of converting a DOCX document (or a DOCM, DOTM, or DOTX variant) to HTML format.",
 	operationId: "postDocxToHtml",
 	consumes: [
+		"application/vnd.ms-word.document.macroEnabled.12",
+		"application/vnd.ms-word.template.macroEnabled.12",
 		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+		"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
 	],
 	produces: ["application/json", "application/xml"],
 	query: S.object()

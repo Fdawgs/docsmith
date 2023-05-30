@@ -269,6 +269,11 @@ async function getConfig() {
 							"Endpoints used for the conversion of DOC documents",
 					},
 					{
+						name: "DOCM",
+						description:
+							"Endpoints used for the conversion of DOCM documents",
+					},
+					{
 						name: "DOCX",
 						description:
 							"Endpoints used for the conversion of DOCX documents",
@@ -277,6 +282,11 @@ async function getConfig() {
 						name: "DOT",
 						description:
 							"Endpoints used for the conversion of DOT documents",
+					},
+					{
+						name: "DOTM",
+						description:
+							"Endpoints used for the conversion of DOTM documents",
 					},
 					{
 						name: "DOTX",
