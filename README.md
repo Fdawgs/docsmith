@@ -11,19 +11,21 @@
 
 ## Overview
 
-Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify.io/) web framework, that can convert files from:
+Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify.io/) web framework, that can convert a range of files:
 
--   DOC to TXT
--   DOCX to HTML
--   DOCX to TXT
--   DOT to TXT
--   DOTX to TXT
--   HTML to TXT
--   PDF to HTML
--   PDF to TXT
--   RTF to HTML (images are removed)
--   RTF to TXT
--   Scanned documents (as PDFs) to TXT using OCR
+| Input | Output | Notes                                      |
+| ----- | ------ | ------------------------------------------ |
+| DOC   | TXT    |                                            |
+| DOCX  | HTML   |                                            |
+| DOCX  | TXT    |                                            |
+| DOT   | TXT    |                                            |
+| DOTX  | HTML   |                                            |
+| DOTX  | TXT    |                                            |
+| HTML  | TXT    |                                            |
+| PDF   | HTML   |                                            |
+| PDF   | TXT    | Scanned documents also supported using OCR |
+| RTF   | HTML   | Images are removed                         |
+| RTF   | TXT    |                                            |
 
 ### Why Docsmith?
 
