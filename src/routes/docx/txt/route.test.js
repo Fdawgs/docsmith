@@ -27,17 +27,48 @@ describe("DOCX-to-TXT route", () => {
 		await server.close();
 	});
 
-	it("Returns DOCX file converted to TXT", async () => {
+	it.each([
+		{
+			testName: "DOCM file",
+			filePath: "./test_resources/test_files/docm_valid.docm",
+			headers: {
+				"content-type":
+					"application/vnd.ms-word.document.macroEnabled.12",
+			},
+		},
+		{
+			testName: "DOCX file",
+			filePath: "./test_resources/test_files/docx_valid.docx",
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			},
+		},
+		{
+			testName: "DOTX file",
+			filePath: "./test_resources/test_files/dotx_valid.dotx",
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+			},
+		},
+		{
+			testName: "DOTM file",
+			filePath: "./test_resources/test_files/dotm_valid.dotm",
+			headers: {
+				"content-type":
+					"application/vnd.ms-word.template.macroEnabled.12",
+			},
+		},
+	])("Returns $testName converted to TXT", async ({ filePath, headers }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/docx_valid.docx"
-			),
+			// eslint-disable-next-line security/detect-non-literal-fs-filename
+			body: await fs.readFile(filePath),
 			headers: {
 				accept: "application/json, text/plain",
-				"content-type":
-					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+				...headers,
 			},
 		});
 
@@ -70,6 +101,62 @@ describe("DOCX-to-TXT route", () => {
 		});
 		expect(response.statusCode).toBe(415);
 	});
+
+	it.each([
+		{
+			testName: "with '.docm' extension is not a valid DOCM file",
+			filePath: "./test_resources/test_files/docm_invalid.docm",
+			headers: {
+				"content-type":
+					"application/vnd.ms-word.document.macroEnabled.12",
+			},
+		},
+		{
+			testName: "with '.docx' extension is not a valid DOCX file",
+			filePath: "./test_resources/test_files/docx_invalid.docx",
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			},
+		},
+		{
+			testName: "with '.dotm' extension is not a valid DOTM file",
+			filePath: "./test_resources/test_files/dotm_invalid.dotm",
+			headers: {
+				"content-type":
+					"application/vnd.ms-word.template.macroEnabled.12",
+			},
+		},
+		{
+			testName: "with '.dotx' extension is not a valid DOTX file",
+			filePath: "./test_resources/test_files/dotx_invalid.dotx",
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+			},
+		},
+	])(
+		"Returns HTTP status code 415 if file $testName",
+		async ({ filePath, headers }) => {
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				// eslint-disable-next-line security/detect-non-literal-fs-filename
+				body: await fs.readFile(filePath),
+				headers: {
+					accept: "application/json, text/plain",
+					...headers,
+				},
+			});
+
+			expect(JSON.parse(response.body)).toEqual({
+				error: "Unsupported Media Type",
+				message: "Unsupported Media Type",
+				statusCode: 415,
+			});
+			expect(response.statusCode).toBe(415);
+		}
+	);
 
 	it("Returns HTTP status code 415 if file with '.docx' extension is not a valid DOCX file", async () => {
 		const response = await server.inject({

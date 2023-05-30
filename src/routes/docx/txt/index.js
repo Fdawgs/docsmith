@@ -1,8 +1,9 @@
 const { fromBuffer } = require("file-type");
+const { htmlToText } = require("html-to-text");
 
 // Import plugins
 const cors = require("@fastify/cors");
-const docxToTxt = require("../../../plugins/doc-to-txt");
+const docxToHtml = require("../../../plugins/docx-to-html");
 
 const { docxToTxtPostSchema } = require("./schema");
 
@@ -48,7 +49,7 @@ async function route(server, options) {
 			...options.cors,
 			methods: ["POST"],
 		})
-		.register(docxToTxt);
+		.register(docxToHtml);
 
 	server.route({
 		method: "POST",
@@ -63,7 +64,22 @@ async function route(server, options) {
 			}
 		},
 		handler: (req, res) => {
-			res.send(req.conversionResults.body);
+			// DOCX-to-HTML plugin sets type to "text/html; charset=utf-8", override that
+			res.type("text/plain; charset=utf-8").send(
+				htmlToText(req.conversionResults.body, {
+					selectors: [
+						{ selector: "a", options: { ignoreHref: true } },
+						{ selector: "h1", options: { uppercase: false } },
+						{ selector: "img", format: "skip" },
+						{
+							selector: "table",
+							format: "dataTable",
+							options: { uppercaseHeaderCells: false },
+						},
+					],
+					wordwrap: null,
+				}).trim()
+			);
 		},
 	});
 }
