@@ -281,8 +281,32 @@ describe("Server deployment", () => {
 			});
 		});
 
+		describe("/dotx/html route", () => {
+			it("Returns DOTX file converted to HTML, with expected headers set", async () => {
+				const response = await server.inject({
+					method: "POST",
+					url: "/dotx/html",
+					body: await fs.readFile(
+						"./test_resources/test_files/dotx_valid.dotx"
+					),
+					headers: {
+						accept: "application/json, text/html",
+						"content-type":
+							"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+					},
+				});
+
+				expect(response.body).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+				);
+				expect(isHtml(response.body)).toBe(true);
+				expect(response.headers).toEqual(expResHeadersHtml);
+				expect(response.statusCode).toBe(200);
+			});
+		});
+
 		describe("/dotx/txt route", () => {
-			it("Returns DOT file converted to TXT, with expected headers set", async () => {
+			it("Returns DOTX file converted to TXT, with expected headers set", async () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/dotx/txt",
@@ -296,8 +320,9 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.body).toMatch(/^I am a header/);
-				expect(response.body).toMatch(/I am a footer$/);
+				expect(response.body).toMatch(
+					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
+				);
 				expect(isHtml(response.body)).toBe(false);
 				expect(response.headers).toEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
