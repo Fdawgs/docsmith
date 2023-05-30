@@ -104,7 +104,7 @@
 		"clean-css": "^5.3.2",
 		"cssesc": "^3.0.0",
 		"cssom": "^0.5.0",
-		"dotenv": "^16.0.3",
+		"dotenv": "^16.1.0",
 		"env-schema": "^5.2.0",
 		"fastify": "^4.17.0",
 		"fastify-disablecache": "^3.1.2",
