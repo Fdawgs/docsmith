@@ -1,6 +1,6 @@
 const S = require("fluent-json-schema");
 
-const tags = ["DOC"];
+const tags = ["DOC", "DOT"];
 
 /**
  * Fastify uses AJV for JSON Schema Validation,
@@ -13,7 +13,7 @@ const docToTxtPostSchema = {
 	tags,
 	summary: "Convert DOC to TXT",
 	description:
-		"Returns the result of converting a DOC document to TXT format.",
+		"Returns the result of converting a DOC document (or a DOT variant) to TXT format.",
 	operationId: "postDocToTxt",
 	consumes: ["application/msword"],
 	produces: ["application/json", "application/xml"],

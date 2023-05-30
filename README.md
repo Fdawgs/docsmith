@@ -15,10 +15,9 @@ Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify
 
 | Input | Output | Notes                                      |
 | ----- | ------ | ------------------------------------------ |
-| DOC   | TXT    |                                            |
+| DOC   | TXT    | DOT file variant also supported            |
 | DOCX  | HTML   |                                            |
 | DOCX  | TXT    |                                            |
-| DOT   | TXT    |                                            |
 | DOTX  | HTML   |                                            |
 | DOTX  | TXT    |                                            |
 | HTML  | TXT    |                                            |
