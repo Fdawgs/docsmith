@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.3.0](https://github.com/Fdawgs/docsmith/compare/v10.2.1...v10.3.0) (2023-05-30)
+
+
+### Features
+
+* **routes:** add dot-to-txt and dotx-to-txt routes ([#1511](https://github.com/Fdawgs/docsmith/issues/1511)) ([d30d9b3](https://github.com/Fdawgs/docsmith/commit/d30d9b3baaa3b01e60d2fbf6f5f29b828457478f))
+* **routes:** add dotx-to-html route ([dbf8734](https://github.com/Fdawgs/docsmith/commit/dbf8734feb7546941d25fd387926fd1ef76a4544))
+
+
+### Bug fixes
+
+* **routes/dotx/txt:** body content ([71f5fdc](https://github.com/Fdawgs/docsmith/commit/71f5fdca79293c60f76661b5e4277d12c30a6e18))
+
+
+### Improvements
+
+* **app:** use `force` option to ignore enoent exceptions ([b547ee5](https://github.com/Fdawgs/docsmith/commit/b547ee539c73e94520c14aac9a921d66ec9cba07))
+* **routes:** use consumes array from schemas ([2ebc8f6](https://github.com/Fdawgs/docsmith/commit/2ebc8f66e88d312a471bf6cd562fbbcebf2adfe4))
+
+
+### Documentation
+
+* **readme:** change conversion list to table ([45a2317](https://github.com/Fdawgs/docsmith/commit/45a2317ad1d2b1f8ea0c2996f206273117249009))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.6.3 to 17.6.5 ([#1518](https://github.com/Fdawgs/docsmith/issues/1518)) ([7358ca1](https://github.com/Fdawgs/docsmith/commit/7358ca198fad3204b78cd101c244b52439ea6510))
+* **deps-dev:** bump @commitlint/config-conventional ([#1516](https://github.com/Fdawgs/docsmith/issues/1516)) ([cfa7e96](https://github.com/Fdawgs/docsmith/commit/cfa7e96008e4264118333b8f9fdad4c61fded35d))
+* **deps-dev:** bump eslint-plugin-jsdoc from 44.2.7 to 45.0.0 ([#1517](https://github.com/Fdawgs/docsmith/issues/1517)) ([7164e00](https://github.com/Fdawgs/docsmith/commit/7164e00da99df9bf942762592f6d857b6d8d9e22))
+* **deps:** bump dotenv from 16.0.3 to 16.1.0 ([#1515](https://github.com/Fdawgs/docsmith/issues/1515)) ([5c871cb](https://github.com/Fdawgs/docsmith/commit/5c871cb55360830d6269a3a52f5d6987aaf04616))
+* **deps:** bump mammoth from 1.5.1 to 1.6.0 ([#1519](https://github.com/Fdawgs/docsmith/issues/1519)) ([cb81c47](https://github.com/Fdawgs/docsmith/commit/cb81c471dcc1f8e389101a27469eb0d96c394de7))
+
 ## [10.2.1](https://github.com/Fdawgs/docsmith/compare/v10.2.0...v10.2.1) (2023-05-27)
 
 
