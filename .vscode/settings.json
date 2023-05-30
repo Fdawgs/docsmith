@@ -10,5 +10,6 @@
 	"redhat.telemetry.enabled": false,
 	"[xml]": {
 		"editor.defaultFormatter": "redhat.vscode-xml"
-	}
+	},
+	"githubPullRequests.ignoredPullRequestBranches": ["main"]
 }

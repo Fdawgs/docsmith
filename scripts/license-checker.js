@@ -17,6 +17,7 @@ async function checkLicenses() {
 
 	/**
 	 * List of deprecated copyleft license identifiers
+	 *
 	 * @see https://spdx.org/licenses/
 	 */
 	const deprecatedLicenseList = [
