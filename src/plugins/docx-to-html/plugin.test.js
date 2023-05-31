@@ -39,7 +39,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 
 	it.each([
 		{
-			testName: "DOCM file to HTML",
+			testName: "DOCM file",
 			filePath: "./test_resources/test_files/docm_valid.docm",
 			headers: {
 				"content-type":
@@ -47,7 +47,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			},
 		},
 		{
-			testName: "DOCX file to HTML",
+			testName: "DOCX file",
 			filePath: "./test_resources/test_files/docx_valid.docx",
 			headers: {
 				"content-type":
@@ -55,7 +55,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			},
 		},
 		{
-			testName: "DOTX file to HTML",
+			testName: "DOTX file",
 			filePath: "./test_resources/test_files/dotx_valid.dotx",
 			headers: {
 				"content-type":
@@ -63,14 +63,14 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			},
 		},
 		{
-			testName: "DOTM file to HTML",
+			testName: "DOTM file",
 			filePath: "./test_resources/test_files/dotm_valid.dotm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.template.macroEnabled.12",
 			},
 		},
-	])("Converts $testName", async ({ filePath, headers }) => {
+	])("Converts $testName to HTML", async ({ filePath, headers }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",

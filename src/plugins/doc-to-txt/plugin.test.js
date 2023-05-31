@@ -37,21 +37,21 @@ describe("DOC-to-TXT conversion plugin", () => {
 
 	it.each([
 		{
-			testName: "DOC file to TXT",
+			testName: "DOC file",
 			filePath: "./test_resources/test_files/doc_valid.doc",
 			headers: {
 				"content-type": "application/msword",
 			},
 		},
 		{
-			testName: "DOT file to TXT",
+			testName: "DOT file",
 			filePath: "./test_resources/test_files/dot_valid.dot",
 			headers: {
 				"content-type": "application/msword",
 			},
 		},
 		{
-			testName: "DOCM file to TXT",
+			testName: "DOCM file",
 			filePath: "./test_resources/test_files/docm_valid.docm",
 			headers: {
 				"content-type":
@@ -59,14 +59,14 @@ describe("DOC-to-TXT conversion plugin", () => {
 			},
 		},
 		{
-			testName: "DOCX file to TXT",
+			testName: "DOCX file",
 			filePath: "./test_resources/test_files/docx_valid.docx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
 		},
-	])("Converts $testName", async ({ filePath, headers }) => {
+	])("Converts $testName to TXT", async ({ filePath, headers }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
