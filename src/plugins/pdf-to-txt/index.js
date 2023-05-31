@@ -65,7 +65,6 @@ async function plugin(server, options) {
 		"maintainLayout",
 		"noDiagonalText",
 		"noPageBreaks",
-		"outputEncoding",
 		"ownerPassword",
 		"rawLayout",
 		"userPassword",

@@ -51,7 +51,6 @@ async function plugin(server, options) {
 		"lastPageToConvert",
 		"noDrm",
 		"noMergeParagraph",
-		"outputEncoding",
 		"ownerPassword",
 		"userPassword",
 		"wordBreakThreshold",
