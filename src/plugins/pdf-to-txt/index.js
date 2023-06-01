@@ -175,7 +175,7 @@ async function plugin(server, options) {
 				files.map((file) =>
 					server.tesseract
 						.addJob("recognize", file)
-						.then((result) => result?.data?.text)
+						.then((result) => result?.data.text)
 				)
 			);
 
