@@ -54,7 +54,6 @@ describe("HTML-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "text/html",

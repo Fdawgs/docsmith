@@ -62,7 +62,6 @@ describe("DOC-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "application/msword",
