@@ -35,8 +35,8 @@ async function plugin(server) {
 			);
 		}
 		const innerHtml = dom.window.document.querySelector("html");
-		innerHtml.setAttribute("lang", language);
-		innerHtml.setAttribute("xml:lang", language);
+		innerHtml?.setAttribute("lang", language);
+		innerHtml?.setAttribute("xml:lang", language);
 
 		/**
 		 * When an alt attribute is not present in an <img> tag, screen readers may announce the image's file name instead.
