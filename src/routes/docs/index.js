@@ -30,7 +30,7 @@ async function route(server) {
 				"bundles"
 			),
 			allowedPath: (pathName) =>
-				pathName.match(/\/redoc\.standalone\.js(?:.map|)/),
+				pathName.match(/\/redoc\.standalone\.js(?:.map|)/) !== null,
 			decorateReply: false,
 			maxAge: "1 day",
 			prefix: "/redoc/",
