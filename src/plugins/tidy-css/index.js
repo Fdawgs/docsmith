@@ -8,7 +8,7 @@ const { JSDOM } = require("jsdom");
  * @author Frazer Smith
  * @description Decorator plugin that adds function that parses,
  * tidies, and minifies CSS in `<style>` elements in HTML passed.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	const cssCleaner = new CleanCSS({ compatibility: "ie7" });

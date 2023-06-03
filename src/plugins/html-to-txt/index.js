@@ -7,7 +7,7 @@ const isHtml = require("is-html");
  * @description Pre-handler plugin that uses html-to-text to convert string containing
  * HTML file in `req.body` to TXT.
  * `req` object is decorated with `conversionResults.body` holding the converted document.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	server.addHook("onRequest", async (req) => {

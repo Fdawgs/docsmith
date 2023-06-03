@@ -17,7 +17,7 @@ const parseString = require("../../utils/parse-string");
  * PDF file in `req.body` to HTML and places HTML file in a temp directory.
  * `req` object is decorated with `conversionResults` object detailing document
  * location and contents.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to Poppler binary.
  * @param {object=} options.pdfToHtmlOptions - Refer to

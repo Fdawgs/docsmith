@@ -10,7 +10,7 @@ const WordExtractor = require("word-extractor");
  * @description Pre-handler plugin that uses Mammoth and Word-Extractor to convert Buffer containing
  * DOCM, DOCX, DOTM, or DOTX file in `req.body` to HTML.
  * `req` object is decorated with `conversionResults.body` holding the converted document.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	const wordExtractor = new WordExtractor();

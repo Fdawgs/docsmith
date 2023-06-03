@@ -11,7 +11,7 @@ const tidyP = promisify(tidy);
  * @author Frazer Smith
  * @description Decorator plugin that adds function that uses HTMLTidy2
  * and HTMLMinifier to parse, tidy, and minify HTML passed.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	/**

@@ -10,7 +10,7 @@ const accepts = ["text/html"];
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function route(server) {
 	// Register plugins

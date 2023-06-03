@@ -5,7 +5,7 @@ const path = require("upath");
 /**
  * @author Frazer Smith
  * @description Decorator plugin that adds Tesseract Scheduler and Workers.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.languages - Languages to load trained data for.
  * Multiple languages are concatenated with a `+` i.e. `eng+cym`
