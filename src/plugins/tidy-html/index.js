@@ -21,7 +21,7 @@ async function plugin(server) {
 	 * @param {boolean=} options.removeAlt - Set `alt` attributes in `<img>` tags to empty string if set to `true`.
 	 * Useful for sending to clinical systems where img tags are stripped from received documents
 	 * (i.e. TPP's SystmOne), and for screen reader users.
-	 * @returns {Promise<string|Error>} Promise of tidied HTML string on resolve, or HTTP Error object on rejection
+	 * @returns {Promise<string>} A promise that resolves with a tidied HTML string, or rejects with an `Error` object
 	 * if `querystring.language` not a valid IANA language tag.
 	 */
 	async function tidyHtml(html, options = {}) {
