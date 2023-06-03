@@ -94,7 +94,6 @@ describe("DOCX-to-HTML route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-
 			headers: {
 				accept: "application/json, text/html",
 				"content-type":

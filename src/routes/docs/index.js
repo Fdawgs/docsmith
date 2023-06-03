@@ -10,7 +10,7 @@ const accepts = ["text/html"];
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function route(server) {
 	// Register plugins
@@ -30,7 +30,7 @@ async function route(server) {
 				"bundles"
 			),
 			allowedPath: (pathName) =>
-				pathName.match(/\/redoc\.standalone\.js(?:.map|)/),
+				pathName.match(/\/redoc\.standalone\.js(?:.map|)/) !== null,
 			decorateReply: false,
 			maxAge: "1 day",
 			prefix: "/redoc/",

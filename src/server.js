@@ -26,7 +26,7 @@ const tidyHtml = require("./plugins/tidy-html");
 /**
  * @author Frazer Smith
  * @description Builds Fastify instance.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} config - Fastify configuration values.
  */
 async function plugin(server, config) {
@@ -82,7 +82,7 @@ async function plugin(server, config) {
 		.register(rateLimit, config.rateLimit);
 
 	// Register routes
-	await server
+	server
 		/**
 		 * Helmet sets `x-xss-protection` and `content-security-policy` by default.
 		 * These are only useful for HTML/XML content; the only CSP directive that
@@ -187,6 +187,7 @@ async function plugin(server, config) {
 		)
 
 		// Errors thrown by routes and plugins are caught here
+		// eslint-disable-next-line promise/prefer-await-to-callbacks
 		.setErrorHandler(async (err, _req, res) => {
 			/**
 			 * Catch 5xx errors, log them, and return a generic 500

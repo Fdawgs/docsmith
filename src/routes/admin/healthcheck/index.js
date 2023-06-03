@@ -10,7 +10,7 @@ const accepts = ["text/plain"];
  * @description Sets routing options for server for healthcheck endpoint.
  * Monitoring software polls this to confirm the API is running,
  * so needs no authentication.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Route config values.
  * @param {object} options.cors - CORS settings.
  */

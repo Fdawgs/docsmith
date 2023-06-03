@@ -16,7 +16,7 @@ const parseString = require("../../utils/parse-string");
  * @description Pre-handler plugin that uses Poppler to convert Buffer containing
  * PDF file in `req.body` to TXT.
  * `req` object is decorated with `conversionResults.body` holding the converted document.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to Poppler binary.
  * @param {object=} options.pdfToTxtOptions - Refer to
@@ -175,7 +175,7 @@ async function plugin(server, options) {
 				files.map((file) =>
 					server.tesseract
 						.addJob("recognize", file)
-						.then((result) => result?.data?.text)
+						.then((result) => result?.data.text)
 				)
 			);
 

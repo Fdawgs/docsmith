@@ -37,7 +37,8 @@ function parseCorsParameter(param) {
 /**
  * @author Frazer Smith
  * @description Validates environment variables and builds server config.
- * @returns {Promise<object|Error>} Promise of server config object on resolve, or Error object on rejection.
+ * @returns {Promise<object>} A promise that resolves with a server config object, or rejects with an `Error` object
+ * if HTTPS is enabled and the required files are not found.
  */
 async function getConfig() {
 	// Directory for temporarily storing files during conversion

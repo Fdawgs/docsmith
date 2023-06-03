@@ -6,7 +6,7 @@ const WordExtractor = require("word-extractor");
  * @description Pre-handler plugin that uses Word-Extractor to convert Buffer containing
  * DOC, DOT, DOCM, or DOCX file in `req.body` to TXT.
  * `req` object is decorated with `conversionResults.body` holding the converted document.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	const wordExtractor = new WordExtractor();

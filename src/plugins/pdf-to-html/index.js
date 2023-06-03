@@ -17,7 +17,7 @@ const parseString = require("../../utils/parse-string");
  * PDF file in `req.body` to HTML and places HTML file in a temp directory.
  * `req` object is decorated with `conversionResults` object detailing document
  * location and contents.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.binPath - Path to Poppler binary.
  * @param {object=} options.pdfToHtmlOptions - Refer to
@@ -153,12 +153,12 @@ async function plugin(server, options) {
 		 */
 		const dom = new JSDOM(await fs.readFile(`${tempFile}-html.html`));
 		const titles = dom.window.document.querySelectorAll("title");
-		for (let index = 1; index < titles.length; index += 1) {
-			titles[index].parentNode.removeChild(titles[index]);
+		for (let i = 1; i < titles.length; i += 1) {
+			titles[i].remove();
 		}
 		const metas = dom.window.document.querySelectorAll("meta");
-		for (let index = 1; index < metas.length; index += 1) {
-			metas[index].parentNode.removeChild(metas[index]);
+		for (let i = 1; i < metas.length; i += 1) {
+			metas[i].remove();
 		}
 
 		// Move meta element to beginning of head element

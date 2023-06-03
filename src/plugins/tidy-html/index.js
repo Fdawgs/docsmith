@@ -11,7 +11,7 @@ const tidyP = promisify(tidy);
  * @author Frazer Smith
  * @description Decorator plugin that adds function that uses HTMLTidy2
  * and HTMLMinifier to parse, tidy, and minify HTML passed.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	/**
@@ -21,7 +21,7 @@ async function plugin(server) {
 	 * @param {boolean=} options.removeAlt - Set `alt` attributes in `<img>` tags to empty string if set to `true`.
 	 * Useful for sending to clinical systems where img tags are stripped from received documents
 	 * (i.e. TPP's SystmOne), and for screen reader users.
-	 * @returns {Promise<string|Error>} Promise of tidied HTML string on resolve, or HTTP Error object on rejection
+	 * @returns {Promise<string>} A promise that resolves with a tidied HTML string, or rejects with an `Error` object
 	 * if `querystring.language` not a valid IANA language tag.
 	 */
 	async function tidyHtml(html, options = {}) {
@@ -35,8 +35,8 @@ async function plugin(server) {
 			);
 		}
 		const innerHtml = dom.window.document.querySelector("html");
-		innerHtml.setAttribute("lang", language);
-		innerHtml.setAttribute("xml:lang", language);
+		innerHtml?.setAttribute("lang", language);
+		innerHtml?.setAttribute("xml:lang", language);
 
 		/**
 		 * When an alt attribute is not present in an <img> tag, screen readers may announce the image's file name instead.

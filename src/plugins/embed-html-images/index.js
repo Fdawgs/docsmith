@@ -8,7 +8,7 @@ const path = require("upath");
  * @author Frazer Smith
  * @description Decorator plugin that adds function to embed images into HTML,
  * after encoding with Base64.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
@@ -16,7 +16,8 @@ const path = require("upath");
 async function plugin(server, options) {
 	/**
 	 * @param {string} html - Valid HTML.
-	 * @returns {Promise<string|Error>} Promise of tidied HTML string with images embedded on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a tidied HTML string with images embedded, or rejects with an `Error` object
+	 * if the images to embed cannot be found.
 	 */
 	async function embedHtmlImages(html) {
 		const dom = new JSDOM(html);

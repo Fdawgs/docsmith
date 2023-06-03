@@ -59,7 +59,6 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "application/rtf",
