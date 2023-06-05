@@ -35,7 +35,6 @@
 		]
 	},
 	"jest": {
-		"clearMocks": true,
 		"collectCoverageFrom": [
 			"src/**/*.js",
 			"!src/app.js",
@@ -45,7 +44,6 @@
 			"text",
 			"lcovonly"
 		],
-		"resetMocks": true,
 		"testEnvironment": "node",
 		"testTimeout": 60000
 	},
