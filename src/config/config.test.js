@@ -84,13 +84,13 @@ describe("Configuration", () => {
 
 		expect(config.tempDir).toBe(tempDir);
 
-		expect(config.fastify).toEqual({
+		expect(config.fastify).toStrictEqual({
 			port: 3000,
 		});
 
 		expect(config.fastifyInit.bodyLimit).toBe(10485760);
 
-		expect(config.fastifyInit.logger).toEqual({
+		expect(config.fastifyInit.logger).toStrictEqual({
 			formatters: { level: expect.any(Function) },
 			level: "info",
 			redact: ["req.body", "req.headers.authorization", "res.body"],
@@ -100,7 +100,7 @@ describe("Configuration", () => {
 			},
 			timestamp: expect.any(Function),
 		});
-		expect(config.fastifyInit.logger.formatters.level()).toEqual({
+		expect(config.fastifyInit.logger.formatters.level()).toStrictEqual({
 			level: undefined,
 		});
 		expect(config.fastifyInit.logger.timestamp()).toMatch(/^,"time"/);
@@ -108,7 +108,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.https).toBeUndefined();
 		expect(config.fastifyInit.http2).toBeUndefined();
 
-		expect(config.cors).toEqual({
+		expect(config.cors).toStrictEqual({
 			allowedHeaders: null,
 			credentials: false,
 			exposedHeaders: null,
@@ -117,14 +117,14 @@ describe("Configuration", () => {
 			origin: false,
 		});
 
-		expect(config.processLoad).toEqual({
+		expect(config.processLoad).toStrictEqual({
 			maxEventLoopDelay: 0,
 			maxEventLoopUtilization: 0,
 			maxHeapUsedBytes: 0,
 			maxRssBytes: 0,
 		});
 
-		expect(config.rateLimit).toEqual({
+		expect(config.rateLimit).toStrictEqual({
 			allowList: null,
 			continueExceeding: true,
 			hook: "onSend",
@@ -132,18 +132,18 @@ describe("Configuration", () => {
 			timeWindow: 60000,
 		});
 
-		expect(config.poppler).toEqual({
+		expect(config.poppler).toStrictEqual({
 			binPath: POPPLER_BINARY_PATH,
 			tempDir,
 		});
 
-		expect(config.tesseract).toEqual({
+		expect(config.tesseract).toStrictEqual({
 			enabled: false,
 			languages: "eng",
 			workers: expect.any(Number),
 		});
 
-		expect(config.unrtf).toEqual({
+		expect(config.unrtf).toStrictEqual({
 			binPath: UNRTF_BINARY_PATH,
 			tempDir,
 		});
@@ -164,7 +164,7 @@ describe("Configuration", () => {
 
 		const config = await getConfig();
 
-		expect(config.fastifyInit.logger).toEqual({
+		expect(config.fastifyInit.logger).toStrictEqual({
 			formatters: { level: expect.any(Function) },
 			level: "info",
 			redact: ["req.body", "req.headers.authorization", "res.body"],
@@ -175,7 +175,7 @@ describe("Configuration", () => {
 			stream: expect.any(Object),
 			timestamp: expect.any(Function),
 		});
-		expect(config.fastifyInit.logger.formatters.level()).toEqual({
+		expect(config.fastifyInit.logger.formatters.level()).toStrictEqual({
 			level: undefined,
 		});
 		expect(config.fastifyInit.logger.stream.config.options).toMatchObject({
@@ -247,14 +247,14 @@ describe("Configuration", () => {
 
 		expect(config.tempDir).toBe(tempDir);
 
-		expect(config.fastify).toEqual({
+		expect(config.fastify).toStrictEqual({
 			host: HOST,
 			port: PORT,
 		});
 
 		expect(config.fastifyInit.bodyLimit).toBe(REQ_BODY_MAX_BYTES);
 
-		expect(config.fastifyInit.logger).toEqual({
+		expect(config.fastifyInit.logger).toStrictEqual({
 			formatters: { level: expect.any(Function) },
 			level: LOG_LEVEL,
 			redact: ["req.body", "req.headers.authorization", "res.body"],
@@ -265,7 +265,7 @@ describe("Configuration", () => {
 			stream: expect.any(Object),
 			timestamp: expect.any(Function),
 		});
-		expect(config.fastifyInit.logger.formatters.level()).toEqual({
+		expect(config.fastifyInit.logger.formatters.level()).toStrictEqual({
 			level: undefined,
 		});
 		expect(config.fastifyInit.logger.stream.config.options).toMatchObject({
@@ -277,21 +277,21 @@ describe("Configuration", () => {
 		});
 		expect(config.fastifyInit.logger.timestamp()).toMatch(/^,"time"/);
 
-		expect(config.fastifyInit.https).toEqual({
+		expect(config.fastifyInit.https).toStrictEqual({
 			allowHTTP1: true,
 			cert: expect.any(Buffer),
 			key: expect.any(Buffer),
 		});
 		expect(config.fastifyInit.http2).toBe(true);
 
-		expect(config.processLoad).toEqual({
+		expect(config.processLoad).toStrictEqual({
 			maxEventLoopDelay: PROC_LOAD_MAX_EVENT_LOOP_DELAY,
 			maxEventLoopUtilization: PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
 			maxHeapUsedBytes: PROC_LOAD_MAX_HEAP_USED_BYTES,
 			maxRssBytes: PROC_LOAD_MAX_RSS_BYTES,
 		});
 
-		expect(config.rateLimit).toEqual({
+		expect(config.rateLimit).toStrictEqual({
 			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
 			continueExceeding: true,
 			hook: "onSend",
@@ -299,18 +299,18 @@ describe("Configuration", () => {
 			timeWindow: 60000,
 		});
 
-		expect(config.poppler).toEqual({
+		expect(config.poppler).toStrictEqual({
 			binPath: POPPLER_BINARY_PATH,
 			tempDir,
 		});
 
-		expect(config.tesseract).toEqual({
+		expect(config.tesseract).toStrictEqual({
 			enabled: OCR_ENABLED,
 			languages: OCR_LANGUAGES,
 			workers: OCR_WORKERS,
 		});
 
-		expect(config.unrtf).toEqual({
+		expect(config.unrtf).toStrictEqual({
 			binPath: UNRTF_BINARY_PATH,
 			tempDir,
 		});
@@ -336,12 +336,12 @@ describe("Configuration", () => {
 
 		const config = await getConfig();
 
-		expect(config.fastify).toEqual({
+		expect(config.fastify).toStrictEqual({
 			host: HOST,
 			port: PORT,
 		});
 
-		expect(config.fastifyInit.https).toEqual({
+		expect(config.fastifyInit.https).toStrictEqual({
 			allowHTTP1: true,
 			passphrase: HTTPS_PFX_PASSPHRASE,
 			pfx: expect.any(Buffer),
@@ -419,12 +419,12 @@ describe("Configuration", () => {
 
 			const config = await getConfig();
 
-			expect(config.fastify).toEqual({
+			expect(config.fastify).toStrictEqual({
 				host: HOST,
 				port: PORT,
 			});
 
-			expect(config.cors).toEqual({
+			expect(config.cors).toStrictEqual({
 				origin: expected.origin,
 				allowedHeaders: CORS_ALLOWED_HEADERS,
 				credentials: expected.credentials || false,

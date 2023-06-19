@@ -143,7 +143,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 					: undefined,
 			});
 
-			expect(JSON.parse(response.body)).toEqual({
+			expect(JSON.parse(response.body)).toStrictEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,

@@ -156,7 +156,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 				body: filePath ? await fs.readFile(filePath) : undefined,
 			});
 
-			expect(JSON.parse(response.body)).toEqual({
+			expect(JSON.parse(response.body)).toStrictEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,

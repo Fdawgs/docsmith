@@ -23,6 +23,6 @@ describe("Parse-String util", () => {
 
 	it("Returns object", () => {
 		const response = util({});
-		expect(response).toEqual({});
+		expect(response).toStrictEqual({});
 	});
 });
