@@ -74,14 +74,14 @@ describe("HTML-to-TXT conversion plugin", () => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				headers: {
-					"content-type": "text/html",
-				},
 				body: readFile
 					? await fs.readFile(
 							"./test_resources/test_files/html_invalid.html"
 					  )
 					: undefined,
+				headers: {
+					"content-type": "text/html",
+				},
 			});
 
 			expect(JSON.parse(response.body)).toStrictEqual({

@@ -119,14 +119,14 @@ describe("RTF-to-HTML conversion plugin", () => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				headers: {
-					"content-type": "application/rtf",
-				},
 				body: readFile
 					? await fs.readFile(
 							"./test_resources/test_files/rtf_invalid.rtf"
 					  )
 					: undefined,
+				headers: {
+					"content-type": "application/rtf",
+				},
 			});
 
 			expect(JSON.parse(response.body)).toStrictEqual({

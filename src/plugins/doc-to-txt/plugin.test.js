@@ -132,9 +132,9 @@ describe("DOC-to-TXT conversion plugin", () => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				headers,
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
 				body: filePath ? await fs.readFile(filePath) : undefined,
+				headers,
 			});
 
 			expect(JSON.parse(response.body)).toStrictEqual({

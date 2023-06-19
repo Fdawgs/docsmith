@@ -188,15 +188,15 @@ describe("PDF-to-TXT conversion plugin", () => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				headers: {
-					"content-type": "application/pdf",
-				},
-				query,
 				body: readFile
 					? await fs.readFile(
 							"./test_resources/test_files/pdf_invalid.pdf"
 					  )
 					: undefined,
+				query,
+				headers: {
+					"content-type": "application/pdf",
+				},
 			});
 
 			expect(JSON.parse(response.body)).toStrictEqual({
