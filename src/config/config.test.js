@@ -7,6 +7,11 @@ describe("Configuration", () => {
 	const currentEnv = { ...process.env, NODE_ENV: "development" };
 	const tempDir = path.joinSafe(__dirname, "../temp");
 
+	afterEach(() => {
+		// Reset the process.env to default after each test
+		Object.assign(process.env, currentEnv);
+	});
+
 	afterAll(async () => {
 		const files = await glob("./test_resources/+(test-log*|.audit.json)", {
 			dot: true,
@@ -14,11 +19,6 @@ describe("Configuration", () => {
 
 		// eslint-disable-next-line security/detect-non-literal-fs-filename
 		await Promise.all(files.map((file) => fs.unlink(file)));
-	});
-
-	afterEach(() => {
-		// Reset the process.env to default after each test
-		Object.assign(process.env, currentEnv);
 	});
 
 	it("Uses defaults if values missing and return values according to environment variables", async () => {
