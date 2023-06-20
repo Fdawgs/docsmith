@@ -32,15 +32,7 @@ async function plugin(server, options) {
 	const poppler = new Poppler(options.binPath);
 
 	// Create temp directory if missing
-	try {
-		await fs.mkdir(directory);
-	} catch (err) {
-		// Ignore "EEXIST: An object by the name pathname already exists" error
-		/* istanbul ignore if */
-		if (err.code !== "EEXIST") {
-			throw err;
-		}
-	}
+	await fs.mkdir(directory, { recursive: true });
 
 	const pdfToHtmlAcceptedParams = [
 		"exchangePdfLinks",
