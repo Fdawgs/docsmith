@@ -1,5 +1,5 @@
 const fp = require("fastify-plugin");
-const S = require("fluent-json-schema");
+const S = require("fluent-json-schema").default;
 
 /**
  * @author Frazer Smith

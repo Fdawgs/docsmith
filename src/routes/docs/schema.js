@@ -1,4 +1,4 @@
-const S = require("fluent-json-schema");
+const S = require("fluent-json-schema").default;
 
 /**
  * Fastify uses AJV for JSON Schema Validation,
