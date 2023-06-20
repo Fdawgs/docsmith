@@ -128,7 +128,7 @@ async function plugin(server, options) {
 			 * ever have the same name
 			 */
 			const images = dom.window.document.querySelectorAll("img");
-			/* istanbul ignore if: dependant on UnRTF version used */
+			/* istanbul ignore next: dependant on UnRTF version used */
 			if (images.length > 0) {
 				await Promise.all(
 					Array.from(images, (image) => {
