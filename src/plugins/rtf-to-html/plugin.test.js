@@ -140,9 +140,9 @@ describe("RTF-to-HTML conversion plugin", () => {
 	);
 
 	it("Returns HTTP status code 400 if unrtf.convert() throws an error", async () => {
-		jest.spyOn(UnRTF.prototype, "convert").mockRejectedValue(
-			new Error("test error")
-		);
+		const mockUnrtf = jest
+			.spyOn(UnRTF.prototype, "convert")
+			.mockRejectedValue(new Error("test error"));
 
 		const response = await server.inject({
 			method: "POST",
@@ -161,5 +161,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 			statusCode: 500,
 		});
 		expect(response.statusCode).toBe(500);
+
+		mockUnrtf.mockRestore();
 	});
 });

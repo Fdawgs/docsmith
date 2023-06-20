@@ -42,10 +42,6 @@ describe("PDF-to-HTML conversion plugin", () => {
 		await server.ready();
 	});
 
-	afterEach(async () => {
-		jest.restoreAllMocks();
-	});
-
 	afterAll(async () => {
 		await Promise.all([
 			fs.rm(config.poppler.tempDir, { recursive: true }),
@@ -158,9 +154,9 @@ describe("PDF-to-HTML conversion plugin", () => {
 	);
 
 	it("Returns HTTP status code 400 if poppler.pdfToHtml() throws an error", async () => {
-		jest.spyOn(Poppler.prototype, "pdfToHtml").mockRejectedValue(
-			new Error("test error")
-		);
+		const mockPoppler = jest
+			.spyOn(Poppler.prototype, "pdfToHtml")
+			.mockRejectedValue(new Error("test error"));
 
 		const response = await server.inject({
 			method: "POST",
@@ -183,5 +179,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 			statusCode: 500,
 		});
 		expect(response.statusCode).toBe(500);
+
+		mockPoppler.mockRestore();
 	});
 });
