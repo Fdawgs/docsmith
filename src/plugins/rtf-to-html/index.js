@@ -29,15 +29,7 @@ async function plugin(server, options) {
 	const unrtf = new UnRTF(options.binPath);
 
 	// Create temp directory if missing
-	try {
-		await fs.mkdir(directory);
-	} catch (err) {
-		// Ignore "EEXIST: An object by the name pathname already exists" error
-		/* istanbul ignore if */
-		if (err.code !== "EEXIST") {
-			throw err;
-		}
-	}
+	await fs.mkdir(directory, { recursive: true });
 
 	server.addHook("onRequest", async (req) => {
 		req.conversionResults = { body: undefined };
@@ -136,7 +128,7 @@ async function plugin(server, options) {
 			 * ever have the same name
 			 */
 			const images = dom.window.document.querySelectorAll("img");
-			/* istanbul ignore if: dependant on UnRTF version used */
+			/* istanbul ignore next: dependant on UnRTF version used */
 			if (images.length > 0) {
 				await Promise.all(
 					Array.from(images, (image) => {
@@ -168,11 +160,10 @@ async function plugin(server, options) {
 			 * UnRTF will throw if the .rtf file provided
 			 * by client is malformed, thus client error code
 			 */
-			/* istanbul ignore else */
 			if (err.message.includes("File is not the correct media type")) {
 				throw server.httpErrors.badRequest();
 			}
-			/* istanbul ignore next: unable to test unknown errors */
+
 			throw err;
 		}
 

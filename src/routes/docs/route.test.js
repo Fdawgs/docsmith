@@ -53,7 +53,7 @@ describe("Docs route", () => {
 				},
 			});
 
-			expect(JSON.parse(response.body)).toEqual({
+			expect(JSON.parse(response.body)).toStrictEqual({
 				error: "Not Acceptable",
 				message: "Not Acceptable",
 				statusCode: 406,

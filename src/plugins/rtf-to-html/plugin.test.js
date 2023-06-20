@@ -4,6 +4,7 @@ const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
 const sensible = require("@fastify/sensible");
+const { UnRTF } = require("node-unrtf");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -119,17 +120,17 @@ describe("RTF-to-HTML conversion plugin", () => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				headers: {
-					"content-type": "application/rtf",
-				},
 				body: readFile
 					? await fs.readFile(
 							"./test_resources/test_files/rtf_invalid.rtf"
 					  )
 					: undefined,
+				headers: {
+					"content-type": "application/rtf",
+				},
 			});
 
-			expect(JSON.parse(response.body)).toEqual({
+			expect(JSON.parse(response.body)).toStrictEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,
@@ -137,4 +138,30 @@ describe("RTF-to-HTML conversion plugin", () => {
 			expect(response.statusCode).toBe(400);
 		}
 	);
+
+	it("Returns HTTP status code 400 if unrtf.convert() throws an error", async () => {
+		const mockUnrtf = jest
+			.spyOn(UnRTF.prototype, "convert")
+			.mockRejectedValue(new Error("test error"));
+
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: await fs.readFile(
+				"./test_resources/test_files/rtf_valid.rtf"
+			),
+			headers: {
+				"content-type": "application/rtf",
+			},
+		});
+
+		expect(JSON.parse(response.body)).toStrictEqual({
+			error: "Internal Server Error",
+			message: "test error",
+			statusCode: 500,
+		});
+		expect(response.statusCode).toBe(500);
+
+		mockUnrtf.mockRestore();
+	});
 });

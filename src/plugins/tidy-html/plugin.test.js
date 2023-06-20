@@ -110,7 +110,7 @@ describe("Tidy-HTML plugin", () => {
 			},
 		});
 
-		expect(JSON.parse(response.body)).toEqual({
+		expect(JSON.parse(response.body)).toStrictEqual({
 			statusCode: 400,
 			error: "Bad Request",
 			message: "querystring.language not a valid IANA language tag",

@@ -31,15 +31,7 @@ async function plugin(server, options) {
 	const poppler = new Poppler(options.binPath);
 
 	// Create temp directory if missing
-	try {
-		await fs.mkdir(directory);
-	} catch (err) {
-		// Ignore "EEXIST: An object by the name pathname already exists" error
-		/* istanbul ignore if */
-		if (err.code !== "EEXIST") {
-			throw err;
-		}
-	}
+	await fs.mkdir(directory, { recursive: true });
 
 	const pdfToCairoAcceptedParams = [
 		"cropHeight",
@@ -159,11 +151,10 @@ async function plugin(server, options) {
 				 * Poppler will throw if the .pdf file provided
 				 * by client is malformed, thus client error code
 				 */
-				/* istanbul ignore else */
 				if (err.message.includes("Syntax Error:")) {
 					throw server.httpErrors.badRequest();
 				}
-				/* istanbul ignore next: unable to test unknown errors */
+
 				throw err;
 			}
 
@@ -201,11 +192,10 @@ async function plugin(server, options) {
 				 * Poppler will throw if the .pdf file provided
 				 * by client is malformed, thus client error code
 				 */
-				/* istanbul ignore else */
 				if (err.message.includes("Syntax Error:")) {
 					throw server.httpErrors.badRequest();
 				}
-				/* istanbul ignore next: unable to test unknown errors */
+
 				throw err;
 			}
 

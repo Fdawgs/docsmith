@@ -3,6 +3,7 @@ const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
+const { Poppler } = require("node-poppler");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
@@ -188,23 +189,69 @@ describe("PDF-to-TXT conversion plugin", () => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				headers: {
-					"content-type": "application/pdf",
-				},
-				query,
 				body: readFile
 					? await fs.readFile(
 							"./test_resources/test_files/pdf_invalid.pdf"
 					  )
 					: undefined,
+				query,
+				headers: {
+					"content-type": "application/pdf",
+				},
 			});
 
-			expect(JSON.parse(response.body)).toEqual({
+			expect(JSON.parse(response.body)).toStrictEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,
 			});
 			expect(response.statusCode).toBe(400);
+		}
+	);
+
+	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	it.each([
+		{
+			testName: "poppler.pdfToText()",
+			funcName: "pdfToText",
+		},
+		{
+			testName: "poppler.pdfToCairo() for OCR",
+			funcName: "pdfToCairo",
+			query: {
+				ocr: true,
+			},
+		},
+	])(
+		"Returns HTTP status code 400 if $testName throws an error",
+		async ({ funcName, query }) => {
+			const mockPoppler = jest
+				.spyOn(Poppler.prototype, funcName)
+				.mockRejectedValue(new Error("test error"));
+
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				body: await fs.readFile(
+					"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+				),
+				query: {
+					lastPageToConvert: 1,
+					...query,
+				},
+				headers: {
+					"content-type": "application/pdf",
+				},
+			});
+
+			expect(JSON.parse(response.body)).toStrictEqual({
+				error: "Internal Server Error",
+				message: "test error",
+				statusCode: 500,
+			});
+			expect(response.statusCode).toBe(500);
+
+			mockPoppler.mockRestore();
 		}
 	);
 });

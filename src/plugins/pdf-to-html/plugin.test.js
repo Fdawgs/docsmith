@@ -3,6 +3,7 @@ const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
+const { Poppler } = require("node-poppler");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
@@ -133,17 +134,17 @@ describe("PDF-to-HTML conversion plugin", () => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				headers: {
-					"content-type": "application/pdf",
-				},
 				body: readFile
 					? await fs.readFile(
 							"./test_resources/test_files/pdf_invalid.pdf"
 					  )
 					: undefined,
+				headers: {
+					"content-type": "application/pdf",
+				},
 			});
 
-			expect(JSON.parse(response.body)).toEqual({
+			expect(JSON.parse(response.body)).toStrictEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,
@@ -151,4 +152,34 @@ describe("PDF-to-HTML conversion plugin", () => {
 			expect(response.statusCode).toBe(400);
 		}
 	);
+
+	it("Returns HTTP status code 400 if poppler.pdfToHtml() throws an error", async () => {
+		const mockPoppler = jest
+			.spyOn(Poppler.prototype, "pdfToHtml")
+			.mockRejectedValue(new Error("test error"));
+
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: await fs.readFile(
+				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				lastPageToConvert: 1,
+				ignoreImages: false,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		expect(JSON.parse(response.body)).toStrictEqual({
+			error: "Internal Server Error",
+			message: "test error",
+			statusCode: 500,
+		});
+		expect(response.statusCode).toBe(500);
+
+		mockPoppler.mockRestore();
+	});
 });
