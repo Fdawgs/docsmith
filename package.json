@@ -95,7 +95,7 @@
 		"spdx-copyleft": "^1.0.0"
 	},
 	"dependencies": {
-		"@fastify/accepts": "^4.1.0",
+		"@fastify/accepts": "^4.2.0",
 		"@fastify/autoload": "^5.7.1",
 		"@fastify/bearer-auth": "^9.0.0",
 		"@fastify/compress": "^6.4.0",
