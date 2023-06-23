@@ -25,7 +25,8 @@ const parseString = require("../../utils/parse-string");
  * for options.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
- * @param {string} [options.tempFilePrefix="docsmith_pdf-to-html"] - Prefix for temp file names.
+ * @param {string} [options.tempFilePrefix] - Prefix for temp file names.
+ * Defaults to `docsmith_pdf-to-html`.
  */
 async function plugin(server, options) {
 	const directory = path.normalizeTrim(options.tempDir);
