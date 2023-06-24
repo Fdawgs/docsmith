@@ -2,6 +2,85 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.0.0](https://github.com/Fdawgs/docsmith/compare/v10.3.0...v11.0.0) (2023-06-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* outputEncoding param removed from pdf/html and pdf/txt routes
+* **routes:** `/dotx/txt` route removed, use `/docx/txt` instead
+* **routes:** `/dotx/html` route removed, use `/docx/html` instead
+* **routes:** `/dot/txt` route removed, use `/doc/txt` instead
+
+### Features
+
+* **routes:** add docm and dotm support to docx/html route ([#1521](https://github.com/Fdawgs/docsmith/issues/1521)) ([4e12c9d](https://github.com/Fdawgs/docsmith/commit/4e12c9dfffac15624b331415c8d8ffda105a2a3c))
+* **routes:** add docm and dotm support to docx/txt route ([#1523](https://github.com/Fdawgs/docsmith/issues/1523)) ([fc0665b](https://github.com/Fdawgs/docsmith/commit/fc0665b9391858dbee9d75acc2a82414bc89d52e))
+
+
+### Bug fixes
+
+* **plugins/tidy-html:** do not throw if innerhtml missing ([7465016](https://github.com/Fdawgs/docsmith/commit/7465016ac9fbc467cc9167fdaddcfdd8f3f7822d))
+* **routes/docs:** stop all redoc files from being served ([d90c65a](https://github.com/Fdawgs/docsmith/commit/d90c65a43e1b773c211e025f1ec110db41587220))
+
+
+### Improvements
+
+* **plugins/pdf-to-html:** less verbose html node removal ([7b44fac](https://github.com/Fdawgs/docsmith/commit/7b44face1cbf4664a23153543843bfc2079306a1))
+* **plugins/pdf-to-txt:** remove optional chaining for first level property ([5023c8c](https://github.com/Fdawgs/docsmith/commit/5023c8c0c7f5fe91f1f3589a86fdcd7e501f6242))
+* **plugins:** use recursive option with `fs.mkdir()` ([df98f25](https://github.com/Fdawgs/docsmith/commit/df98f25ab9cee06f997de0ba55c2f5590f028659))
+* remove `outputEncoding` param for pdf routes ([#1524](https://github.com/Fdawgs/docsmith/issues/1524)) ([cda68b4](https://github.com/Fdawgs/docsmith/commit/cda68b46d92119d607f1361736f85f43b9e264c3))
+* **routes:** add dot support to doc/txt route ([#1520](https://github.com/Fdawgs/docsmith/issues/1520)) ([e1b0ad1](https://github.com/Fdawgs/docsmith/commit/e1b0ad1e64f0fd2504084558532984ff1cc6a199))
+* **server:** remove redundant `await` ([49a2d74](https://github.com/Fdawgs/docsmith/commit/49a2d74fb43cdec5fed8862d9717ca19d1e21a46))
+
+
+### Continuous integration
+
+* **dependabot:** ignore fix-utf8 esm versions ([38edf5e](https://github.com/Fdawgs/docsmith/commit/38edf5ee18c5a816427549df37500b48092845af))
+* **deps:** bump coverallsapp/github-action from 2.1.2 to 2.2.0 ([#1537](https://github.com/Fdawgs/docsmith/issues/1537)) ([d0ab2dc](https://github.com/Fdawgs/docsmith/commit/d0ab2dcccf28d2cccef10f2765e10a4937248ed8))
+
+
+### Miscellaneous
+
+* **.env.template:** punctuation fixes ([7bb13ed](https://github.com/Fdawgs/docsmith/commit/7bb13edee3e0e98ce6cf4786c1ba02b4d57d95d3))
+* **.eslintrc:** enable additional jest plugin rules ([b6d58e9](https://github.com/Fdawgs/docsmith/commit/b6d58e9258b7eae88bb67748bcb4ae1417cd8420))
+* **.eslintrc:** enable additional jsdoc plugin rules ([94a3806](https://github.com/Fdawgs/docsmith/commit/94a380634ebdf2772e08dd68e2f85562871e705f))
+* **.eslintrc:** only use jest plugin to lint test-related files ([c23fb41](https://github.com/Fdawgs/docsmith/commit/c23fb41412762dc3839b2bc4d89f1e48dc8ea39c))
+* enable fluent-json-schema type definitions ([43d08fc](https://github.com/Fdawgs/docsmith/commit/43d08fc7f0afe363558699b280f9d512c4d58096))
+* import fastify type for server jsdoc params ([1353778](https://github.com/Fdawgs/docsmith/commit/1353778ebb72a0f0071a404b6c7818a64a299d92))
+* **package:** remove global jest mock config values ([#1534](https://github.com/Fdawgs/docsmith/issues/1534)) ([cee9430](https://github.com/Fdawgs/docsmith/commit/cee9430b795d00a95c2222ef1a231262283b99b6))
+* **package:** set jest coverage threshold ([580faa3](https://github.com/Fdawgs/docsmith/commit/580faa3d5e049f6762618861ee20e39ca2c936a4))
+* **plugins:** update inaccurate jsdoc param defaults ([62b725f](https://github.com/Fdawgs/docsmith/commit/62b725fd4bdd5e5819456851686e5725697772e7))
+* return types don't support promise rejection values ([87f55c7](https://github.com/Fdawgs/docsmith/commit/87f55c7bc3882255de271608b3b2febb89f0854e))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 8.41.0 to 8.42.0 ([#1530](https://github.com/Fdawgs/docsmith/issues/1530)) ([704841f](https://github.com/Fdawgs/docsmith/commit/704841f1a4a31a863807ac19cfb9a0d7cd78654f))
+* **deps-dev:** bump eslint from 8.42.0 to 8.43.0 ([#1538](https://github.com/Fdawgs/docsmith/issues/1538)) ([80410ef](https://github.com/Fdawgs/docsmith/commit/80410ef22a496a2bace71dc888442ec7fda9290c))
+* **deps-dev:** bump eslint-plugin-jest from 27.2.1 to 27.2.2 ([#1546](https://github.com/Fdawgs/docsmith/issues/1546)) ([a9fbd06](https://github.com/Fdawgs/docsmith/commit/a9fbd066fa3e749f03e2a4d429fb0222f1884d8b))
+* **deps-dev:** bump eslint-plugin-jsdoc from 45.0.0 to 46.1.0 ([#1526](https://github.com/Fdawgs/docsmith/issues/1526)) ([17862c3](https://github.com/Fdawgs/docsmith/commit/17862c32732cca42167ed53d48b805be72b88173))
+* **deps-dev:** bump eslint-plugin-jsdoc from 46.1.0 to 46.2.0 ([#1532](https://github.com/Fdawgs/docsmith/issues/1532)) ([e98bcea](https://github.com/Fdawgs/docsmith/commit/e98bceaca1483fb7b70c3cd6e08f1b80d1800f47))
+* **deps-dev:** bump eslint-plugin-jsdoc from 46.2.0 to 46.2.6 ([#1541](https://github.com/Fdawgs/docsmith/issues/1541)) ([dd11618](https://github.com/Fdawgs/docsmith/commit/dd11618870c2219a858e0ae73e012a92590f0945))
+* **deps-dev:** bump playwright from 1.34.3 to 1.35.1 ([#1540](https://github.com/Fdawgs/docsmith/issues/1540)) ([6b6db16](https://github.com/Fdawgs/docsmith/commit/6b6db16233d6030ac77d06b98b04f4d56fd4d3c7))
+* **deps:** bump @fastify/accepts from 4.1.0 to 4.2.0 ([#1547](https://github.com/Fdawgs/docsmith/issues/1547)) ([49e1c24](https://github.com/Fdawgs/docsmith/commit/49e1c24031183f50670b01a32b47f7061ebeb004))
+* **deps:** bump @fastify/rate-limit from 8.0.0 to 8.0.1 ([#1539](https://github.com/Fdawgs/docsmith/issues/1539)) ([efe556f](https://github.com/Fdawgs/docsmith/commit/efe556f9e3256c5367e2900a4405990fcce0245c))
+* **deps:** bump @fastify/swagger from 8.5.1 to 8.6.0 ([#1543](https://github.com/Fdawgs/docsmith/issues/1543)) ([895749f](https://github.com/Fdawgs/docsmith/commit/895749f0db2cf045481db4c583e1c09ad5e43f41))
+* **deps:** bump dotenv from 16.1.0 to 16.1.3 ([#1525](https://github.com/Fdawgs/docsmith/issues/1525)) ([3849bca](https://github.com/Fdawgs/docsmith/commit/3849bca96051bd80ddf07795e9428c8772f405a0))
+* **deps:** bump dotenv from 16.1.3 to 16.3.1 ([#1545](https://github.com/Fdawgs/docsmith/issues/1545)) ([7dc0e20](https://github.com/Fdawgs/docsmith/commit/7dc0e20015de10174d833c23a1b8eb8918691e9c))
+* **deps:** bump fastify from 4.17.0 to 4.18.0 ([#1542](https://github.com/Fdawgs/docsmith/issues/1542)) ([af836c0](https://github.com/Fdawgs/docsmith/commit/af836c080272e2071cbe01e38f3b4bd4b1001e39))
+* **deps:** bump fastify-disablecache from 3.1.2 to 3.1.3 ([#1552](https://github.com/Fdawgs/docsmith/issues/1552)) ([57533b8](https://github.com/Fdawgs/docsmith/commit/57533b867c2a2c3be1fb63c59fbca15c94b5dc84))
+* **deps:** bump fastify-floc-off from 2.1.2 to 2.1.3 ([#1550](https://github.com/Fdawgs/docsmith/issues/1550)) ([b93e51c](https://github.com/Fdawgs/docsmith/commit/b93e51c2678f4962f5241b0789593a8aa02caaf5))
+* **deps:** bump fastify-json-to-xml from 1.1.3 to 1.1.4 ([#1554](https://github.com/Fdawgs/docsmith/issues/1554)) ([606bc48](https://github.com/Fdawgs/docsmith/commit/606bc48b140c279dd3b0fcced583f07485e01c79))
+* **deps:** bump fix-utf8 from 1.1.2 to 1.2.1 ([0c72da8](https://github.com/Fdawgs/docsmith/commit/0c72da871ad9a4b15b039bfd15322f055dbc9ce4))
+* **deps:** bump glob from 10.2.6 to 10.3.0 ([#1544](https://github.com/Fdawgs/docsmith/issues/1544)) ([b793261](https://github.com/Fdawgs/docsmith/commit/b7932618a08466f57875237e28a36181299106cd))
+* **deps:** bump node-poppler from 6.2.3 to 6.2.4 ([#1529](https://github.com/Fdawgs/docsmith/issues/1529)) ([1187f87](https://github.com/Fdawgs/docsmith/commit/1187f87316444a14a6602606c4da0fb04598fa35))
+* **deps:** bump node-poppler from 6.2.4 to 6.2.5 ([#1553](https://github.com/Fdawgs/docsmith/issues/1553)) ([74e4ffa](https://github.com/Fdawgs/docsmith/commit/74e4ffa755950505598cb58d97bdbb8e9856f8d4))
+* **deps:** bump node-unrtf from 3.1.3 to 3.1.4 ([#1531](https://github.com/Fdawgs/docsmith/issues/1531)) ([ffeac3f](https://github.com/Fdawgs/docsmith/commit/ffeac3fcb8668c0f30818c8bd9cb6626a0c25adc))
+* **deps:** bump node-unrtf from 3.1.4 to 3.1.5 ([#1551](https://github.com/Fdawgs/docsmith/issues/1551)) ([e7c3af9](https://github.com/Fdawgs/docsmith/commit/e7c3af9f7958d1db03e54d3cd17763e3344fc816))
+* **deps:** bump tesseract.js from 4.0.6 to 4.1.0 ([#1533](https://github.com/Fdawgs/docsmith/issues/1533)) ([69988e0](https://github.com/Fdawgs/docsmith/commit/69988e0a79e330b84fc66d1c2e55509fdb41d405))
+* **deps:** bump tesseract.js from 4.1.0 to 4.1.1 ([#1548](https://github.com/Fdawgs/docsmith/issues/1548)) ([51803dd](https://github.com/Fdawgs/docsmith/commit/51803dd222c419d7babaa1f1d1cc70655f45e881))
+
 ## [10.3.0](https://github.com/Fdawgs/docsmith/compare/v10.2.1...v10.3.0) (2023-05-30)
 
 
