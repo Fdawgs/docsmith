@@ -47,6 +47,7 @@ describe("PDF-to-TXT route", () => {
 	});
 
 	it("Returns PDF file converted to TXT", async () => {
+		expect.assertions(queryStrings.length * 4);
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
@@ -130,6 +131,7 @@ describe("PDF-to-TXT route", () => {
 	});
 
 	it("Returns HTTP status code 415 if file is missing", async () => {
+		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
 			queryStrings.map((queryString) => {
 				const query = queryString;
@@ -160,6 +162,7 @@ describe("PDF-to-TXT route", () => {
 	});
 
 	it("Returns HTTP status code 415 if file with '.pdf' extension is not a valid PDF file", async () => {
+		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
@@ -193,6 +196,7 @@ describe("PDF-to-TXT route", () => {
 	});
 
 	it("Returns HTTP status code 415 if file media type is not supported by route", async () => {
+		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
