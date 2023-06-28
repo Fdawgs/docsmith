@@ -27,7 +27,7 @@ async function plugin(server) {
 			throw server.httpErrors.badRequest();
 		}
 
-		const results = htmlToText(req.body, {
+		req.conversionResults.body = htmlToText(req.body, {
 			selectors: [
 				{ selector: "a", options: { ignoreHref: true } },
 				{ selector: "h1", options: { uppercase: false } },
@@ -41,7 +41,6 @@ async function plugin(server) {
 			wordwrap: null,
 		});
 
-		req.conversionResults.body = results;
 		res.type("text/plain; charset=utf-8");
 	});
 }
