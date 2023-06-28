@@ -19,7 +19,7 @@ async function plugin(server) {
 		try {
 			const results = await wordExtractor.extract(req.body);
 
-			const value = `${results
+			req.conversionResults.body = `${results
 				.getHeaders({
 					includeFooters: false,
 				})
@@ -30,8 +30,6 @@ async function plugin(server) {
 				.trim()}\n${results.getFootnotes().trim()}\n${results
 				.getFooters()
 				.trim()}`;
-
-			req.conversionResults.body = value;
 			res.type("text/plain; charset=utf-8");
 		} catch {
 			/**
