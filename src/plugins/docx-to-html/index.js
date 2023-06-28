@@ -48,7 +48,6 @@ async function plugin(server) {
 				</body>
 			</html>`
 			).serialize();
-
 			res.type("text/html; charset=utf-8");
 		} catch {
 			/**

@@ -167,7 +167,6 @@ async function plugin(server, options) {
 
 			throw err;
 		}
-
 		res.type("text/html; charset=utf-8");
 	});
 }

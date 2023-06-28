@@ -40,7 +40,6 @@ async function plugin(server) {
 			],
 			wordwrap: null,
 		});
-
 		res.type("text/plain; charset=utf-8");
 	});
 }
