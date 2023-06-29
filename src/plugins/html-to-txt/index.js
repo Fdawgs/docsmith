@@ -10,9 +10,25 @@ const isHtml = require("is-html");
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
-	server.addHook("onRequest", async (req) => {
-		req.conversionResults = { body: undefined };
-	});
+	const htmlToTextConfig = {
+		selectors: [
+			{ selector: "a", options: { ignoreHref: true } },
+			{ selector: "h1", options: { uppercase: false } },
+			{ selector: "img", format: "skip" },
+			{
+				selector: "table",
+				format: "dataTable",
+				options: { uppercaseHeaderCells: false },
+			},
+		],
+		wordwrap: null,
+	};
+
+	server
+		.decorateRequest("conversionResults", null)
+		.addHook("onRequest", async (req) => {
+			req.conversionResults = { body: undefined };
+		});
 
 	server.addHook("preHandler", async (req, res) => {
 		/**
@@ -27,21 +43,7 @@ async function plugin(server) {
 			throw server.httpErrors.badRequest();
 		}
 
-		const results = htmlToText(req.body, {
-			selectors: [
-				{ selector: "a", options: { ignoreHref: true } },
-				{ selector: "h1", options: { uppercase: false } },
-				{ selector: "img", format: "skip" },
-				{
-					selector: "table",
-					format: "dataTable",
-					options: { uppercaseHeaderCells: false },
-				},
-			],
-			wordwrap: null,
-		});
-
-		req.conversionResults.body = results;
+		req.conversionResults.body = htmlToText(req.body, htmlToTextConfig);
 		res.type("text/plain; charset=utf-8");
 	});
 }

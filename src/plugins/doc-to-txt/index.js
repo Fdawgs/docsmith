@@ -11,15 +11,17 @@ const WordExtractor = require("word-extractor");
 async function plugin(server) {
 	const wordExtractor = new WordExtractor();
 
-	server.addHook("onRequest", async (req) => {
-		req.conversionResults = { body: undefined };
-	});
+	server
+		.decorateRequest("conversionResults", null)
+		.addHook("onRequest", async (req) => {
+			req.conversionResults = { body: undefined };
+		});
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
 			const results = await wordExtractor.extract(req.body);
 
-			const value = `${results
+			req.conversionResults.body = `${results
 				.getHeaders({
 					includeFooters: false,
 				})
@@ -30,8 +32,6 @@ async function plugin(server) {
 				.trim()}\n${results.getFootnotes().trim()}\n${results
 				.getFooters()
 				.trim()}`;
-
-			req.conversionResults.body = value;
 			res.type("text/plain; charset=utf-8");
 		} catch {
 			/**

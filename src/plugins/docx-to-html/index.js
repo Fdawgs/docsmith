@@ -15,9 +15,11 @@ const WordExtractor = require("word-extractor");
 async function plugin(server) {
 	const wordExtractor = new WordExtractor();
 
-	server.addHook("onRequest", async (req) => {
-		req.conversionResults = { body: undefined };
-	});
+	server
+		.decorateRequest("conversionResults", null)
+		.addHook("onRequest", async (req) => {
+			req.conversionResults = { body: undefined };
+		});
 
 	server.addHook("preHandler", async (req, res) => {
 		try {
@@ -48,7 +50,6 @@ async function plugin(server) {
 				</body>
 			</html>`
 			).serialize();
-
 			res.type("text/html; charset=utf-8");
 		} catch {
 			/**

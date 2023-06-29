@@ -50,9 +50,11 @@ async function plugin(server, options) {
 		"zoom",
 	];
 
-	server.addHook("onRequest", async (req) => {
-		req.conversionResults = { body: undefined };
-	});
+	server
+		.decorateRequest("conversionResults", null)
+		.addHook("onRequest", async (req) => {
+			req.conversionResults = { body: undefined };
+		});
 
 	/**
 	 * "onSend" hook used instead of "onResponse" ensures
@@ -168,7 +170,6 @@ async function plugin(server, options) {
 		 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info
 		 */
 		req.conversionResults.body = fixUtf8(dom.serialize());
-
 		res.type(
 			`text/html; charset=${config.pdfToHtmlOptions.outputEncoding.toLowerCase()}`
 		);

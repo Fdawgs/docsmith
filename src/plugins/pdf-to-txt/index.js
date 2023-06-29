@@ -63,9 +63,11 @@ async function plugin(server, options) {
 		"userPassword",
 	];
 
-	server.addHook("onRequest", async (req) => {
-		req.conversionResults = { body: undefined };
-	});
+	server
+		.decorateRequest("conversionResults", null)
+		.addHook("onRequest", async (req) => {
+			req.conversionResults = { body: undefined };
+		});
 
 	/**
 	 * "onSend" hook used instead of "onResponse" ensures

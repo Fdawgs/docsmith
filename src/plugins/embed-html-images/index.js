@@ -14,6 +14,8 @@ const path = require("upath");
  * files during conversion.
  */
 async function plugin(server, options) {
+	const directory = path.normalizeTrim(options.tempDir);
+
 	/**
 	 * @param {string} html - Valid HTML.
 	 * @returns {Promise<string>} A promise that resolves with a tidied HTML string with images embedded, or rejects with an `Error` object
@@ -22,7 +24,6 @@ async function plugin(server, options) {
 	async function embedHtmlImages(html) {
 		const dom = new JSDOM(html);
 		const images = dom.window.document.querySelectorAll("img");
-		const directory = path.normalizeTrim(options.tempDir);
 
 		await Promise.all(
 			Array.from(images, (image) => {
