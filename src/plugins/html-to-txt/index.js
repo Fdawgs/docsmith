@@ -10,6 +10,20 @@ const isHtml = require("is-html");
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
+	const htmlToTextConfig = {
+		selectors: [
+			{ selector: "a", options: { ignoreHref: true } },
+			{ selector: "h1", options: { uppercase: false } },
+			{ selector: "img", format: "skip" },
+			{
+				selector: "table",
+				format: "dataTable",
+				options: { uppercaseHeaderCells: false },
+			},
+		],
+		wordwrap: null,
+	};
+
 	server
 		.decorateRequest("conversionResults", null)
 		.addHook("onRequest", async (req) => {
@@ -29,19 +43,7 @@ async function plugin(server) {
 			throw server.httpErrors.badRequest();
 		}
 
-		req.conversionResults.body = htmlToText(req.body, {
-			selectors: [
-				{ selector: "a", options: { ignoreHref: true } },
-				{ selector: "h1", options: { uppercase: false } },
-				{ selector: "img", format: "skip" },
-				{
-					selector: "table",
-					format: "dataTable",
-					options: { uppercaseHeaderCells: false },
-				},
-			],
-			wordwrap: null,
-		});
+		req.conversionResults.body = htmlToText(req.body, htmlToTextConfig);
 		res.type("text/plain; charset=utf-8");
 	});
 }
