@@ -10,9 +10,11 @@ const isHtml = require("is-html");
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
-	server.addHook("onRequest", async (req) => {
-		req.conversionResults = { body: undefined };
-	});
+	server
+		.decorateRequest("conversionResults", null)
+		.addHook("onRequest", async (req) => {
+			req.conversionResults = { body: undefined };
+		});
 
 	server.addHook("preHandler", async (req, res) => {
 		/**

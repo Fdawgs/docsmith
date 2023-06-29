@@ -32,9 +32,11 @@ async function plugin(server, options) {
 	// Create temp directory if missing
 	await fs.mkdir(directory, { recursive: true });
 
-	server.addHook("onRequest", async (req) => {
-		req.conversionResults = { body: undefined };
-	});
+	server
+		.decorateRequest("conversionResults", null)
+		.addHook("onRequest", async (req) => {
+			req.conversionResults = { body: undefined };
+		});
 
 	/**
 	 * "onSend" hook used instead of "onResponse" ensures
