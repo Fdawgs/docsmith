@@ -130,7 +130,7 @@ describe("PDF-to-TXT route", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	it("Returns HTTP status code 415 if file is missing", async () => {
+	it("Returns HTTP status code 400 if file is missing", async () => {
 		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
 			queryStrings.map((queryString) => {
@@ -149,11 +149,11 @@ describe("PDF-to-TXT route", () => {
 					})
 					.then((response) => {
 						expect(JSON.parse(response.body)).toStrictEqual({
-							error: "Unsupported Media Type",
-							message: "Unsupported Media Type",
-							statusCode: 415,
+							error: "Bad Request",
+							message: "Body cannot be empty",
+							statusCode: 400,
 						});
-						expect(response.statusCode).toBe(415);
+						expect(response.statusCode).toBe(400);
 
 						return response.statusCode;
 					});
