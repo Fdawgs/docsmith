@@ -29,6 +29,10 @@ async function route(server, options) {
 		docxToHtmlPostSchema.consumes,
 		{ parseAs: "buffer" },
 		async (_req, payload) => {
+			if (payload.length === 0) {
+				throw server.httpErrors.badRequest("Body cannot be empty");
+			}
+
 			/**
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
 			 * this checks for DOCX specific magic numbers
