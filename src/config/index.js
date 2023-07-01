@@ -295,6 +295,11 @@ async function getConfig() {
 							"Endpoints used for the conversion of DOTX documents",
 					},
 					{
+						name: "HL7v2",
+						description:
+							"Endpoints used for the conversion of HL7 v2.x messages",
+					},
+					{
 						name: "HTML",
 						description:
 							"Endpoints used for the conversion of HTML documents",
