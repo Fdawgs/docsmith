@@ -66,7 +66,7 @@ async function plugin(server) {
 			if (styleRule.style["font-family"]) {
 				const fonts = styleRule.style["font-family"].split(",");
 				const parsedFonts = fonts.map((font) => {
-					if (/[^a-zA-Z-]+/u.test(font.trim())) {
+					if (/[^-A-Za-z]+/u.test(font.trim())) {
 						// Stop escaping of <style> elements and code injection
 						return cssEsc(font.replace(/<\/style>/gu, "").trim(), {
 							quotes: "double",
