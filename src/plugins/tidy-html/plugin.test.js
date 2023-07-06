@@ -75,7 +75,7 @@ describe("Tidy-HTML plugin", () => {
 		});
 
 		// Check smart quotes and em dashes are replaced with ASCII equivalents
-		expect(dom.window.document.body.textContent).not.toMatch(/[“”‘’—]/u);
+		expect(dom.window.document.body.textContent).not.toMatch(/[—‘’“”]/u);
 		// Check `&nbsp;` is replaced with spaces
 		expect(dom.window.document.body.textContent).not.toMatch("&nbsp;");
 		// Check legacy HTML elements are removed
