@@ -121,7 +121,7 @@ describe("Tidy-CSS plugin", () => {
 				: /./
 		);
 		// Check CSS is tidied and minified
-		expect(style.innerHTML).not.toMatch(/;}|<!--|--!?>|\n|\r|\r\n/);
+		expect(style.innerHTML).not.toMatch(/;\}|<!--|--!?>|\n|\r|\r\n/);
 		expect(response.statusCode).toBe(200);
 	});
 
