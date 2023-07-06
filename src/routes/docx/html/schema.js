@@ -30,7 +30,7 @@ const docxToHtmlPostSchema = {
 				.description(
 					"HTML document background color; set or replace the `background-color` property value of `div` CSS selectors"
 				)
-				.pattern(/^[#a-zA-Z0-9()%, .]+$/u)
+				.pattern(/^[#a-zA-Z\d()%, .]+$/u)
 				.examples([
 					"white",
 					"#FFFFFF",
@@ -52,7 +52,7 @@ const docxToHtmlPostSchema = {
 				.description(
 					"Set the `lang` and `xml:lang` attributes of the `<html>` tag. Must be a valid IANA language tag"
 				)
-				.pattern(/^[-a-zA-Z0-9]+$/u)
+				.pattern(/^[-a-zA-Z\d]+$/u)
 				.default("en")
 		)
 		.prop(
