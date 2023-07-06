@@ -34,7 +34,7 @@ describe("Tidy-CSS plugin", () => {
 			file: "html_valid_bullet_issues.html",
 			expected: {
 				// Original font-family of test file
-				fonts: /font-family:Times/,
+				fonts: /font-family:Times/u,
 			},
 		},
 		{
@@ -42,7 +42,7 @@ describe("Tidy-CSS plugin", () => {
 			file: "html_valid_bullet_issues.html",
 			options: { fonts: "Arial" },
 			expected: {
-				fonts: /font-family:Arial/,
+				fonts: /font-family:Arial/u,
 			},
 		},
 		{
@@ -50,7 +50,7 @@ describe("Tidy-CSS plugin", () => {
 			file: "html_valid_bullet_issues.html",
 			options: { fonts: 'Sans Serif, "Gill Sans"' },
 			expected: {
-				fonts: /Sans Serif","\\"Gill Sans\\"/,
+				fonts: /Sans Serif","\\"Gill Sans\\"/u,
 			},
 		},
 		{
@@ -58,9 +58,9 @@ describe("Tidy-CSS plugin", () => {
 			file: "html_valid_bullet_issues.html",
 			options: { backgroundColor: "white" },
 			expected: {
-				backgroundColor: /background-color:#fff/,
+				backgroundColor: /background-color:#fff/u,
 				// Original font-family of test file
-				fonts: /font-family:Times/,
+				fonts: /font-family:Times/u,
 			},
 		},
 		{
@@ -69,8 +69,8 @@ describe("Tidy-CSS plugin", () => {
 			file: "html_valid_bullet_issues.html",
 			options: { backgroundColor: "white", fonts: "Arial" },
 			expected: {
-				backgroundColor: /background-color:#fff/,
-				fonts: /font-family:Arial/,
+				backgroundColor: /background-color:#fff/u,
+				fonts: /font-family:Arial/u,
 			},
 		},
 		{
@@ -79,8 +79,8 @@ describe("Tidy-CSS plugin", () => {
 			file: "html_valid_empty.html",
 			options: { fonts: "Arial", backgroundColor: "white" },
 			expected: {
-				fonts: /font-family:Arial/,
-				backgroundColor: /background-color:#fff/,
+				fonts: /font-family:Arial/u,
+				backgroundColor: /background-color:#fff/u,
 			},
 		},
 		{
@@ -111,17 +111,17 @@ describe("Tidy-CSS plugin", () => {
 		// Check CSS is combined into one style tag
 		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
 		// Check font-family is set to expected value
-		expect(style.innerHTML).toMatch(expected?.fonts || /./);
+		expect(style.innerHTML).toMatch(expected?.fonts || /./u);
 		// Check background-color is set to expected value
-		expect(style.innerHTML).toMatch(expected?.backgroundColor || /./);
+		expect(style.innerHTML).toMatch(expected?.backgroundColor || /./u);
 		// Check page-break-inside is set to avoid
 		expect(style.innerHTML).toMatch(
 			file !== "html_valid_no_style_type.html"
-				? /page-break-inside:avoid/
-				: /./
+				? /page-break-inside:avoid/u
+				: /./u
 		);
 		// Check CSS is tidied and minified
-		expect(style.innerHTML).not.toMatch(/;\}|<!--|--!?>|\n|\r|\r\n/);
+		expect(style.innerHTML).not.toMatch(/;\}|<!--|--!?>|\n|\r|\r\n/u);
 		expect(response.statusCode).toBe(200);
 	});
 

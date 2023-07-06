@@ -86,7 +86,7 @@ async function plugin(server, options) {
 		req.body = req.body
 			.toString()
 			.replace(
-				/\{\\field\{\\\*\\fldinst HYPERLINK ".*?" \}\{\\fldrslt (.*?)\}/gs,
+				/\{\\field\{\\\*\\fldinst HYPERLINK ".*?" \}\{\\fldrslt (.*?)\}/gsu,
 				"$1"
 			);
 

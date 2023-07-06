@@ -115,7 +115,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		// Check the docLocation object contains the expected properties
 		expect(docLocation).toMatchObject({
 			directory: expect.any(String),
-			id: expect.stringMatching(/^docsmith_pdf-to-txt_/),
+			id: expect.stringMatching(/^docsmith_pdf-to-txt_/u),
 		});
 		// Check the image files has been removed from the temp directory
 		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
@@ -151,19 +151,19 @@ describe("PDF-to-TXT conversion plugin", () => {
 		// Check head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.children[0].tagName).toBe("META");
 		expect(dom.window.document.head.firstChild).toMatchObject({
-			content: expect.stringMatching(/^text\/html; charset=utf-8$/i),
-			httpEquiv: expect.stringMatching(/^content-type$/i),
+			content: expect.stringMatching(/^text\/html; charset=utf-8$/iu),
+			httpEquiv: expect.stringMatching(/^content-type$/iu),
 		});
 		expect(
 			dom.window.document.head.querySelector("title").textContent
-		).toMatch(/^docsmith_pdf-to-txt_/);
+		).toMatch(/^docsmith_pdf-to-txt_/u);
 		// String found at the start of the HTML document
 		expect(dom.window.document.querySelector("pre").textContent).toMatch(
 			"The NHS belongs to the people"
 		);
 		// String found at the end of the HTML document
 		expect(dom.window.document.querySelector("pre").textContent).toMatch(
-			/a full and transparent debate with the public, patients and staff.$/m
+			/a full and transparent debate with the public, patients and staff.$/mu
 		);
 		expect(response.statusCode).toBe(200);
 	});

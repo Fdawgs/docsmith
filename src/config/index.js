@@ -93,7 +93,7 @@ async function getConfig() {
 				S.anyOf([
 					// daily, date, [1-12]h, or [1-30]m
 					S.string().pattern(
-						/^(?:daily|date|(?:[1-9]|1[012])h|(?:[1-9]|[1-2][0-9]|30)m)$/
+						/^(?:daily|date|(?:[1-9]|1[012])h|(?:[1-9]|[1-2][0-9]|30)m)$/u
 					),
 					S.null(),
 				])
@@ -119,7 +119,7 @@ async function getConfig() {
 			// Rate limiting
 			.prop(
 				"RATE_LIMIT_EXCLUDED_ARRAY",
-				S.anyOf([S.string().pattern(/^\[.*\]$/), S.null()])
+				S.anyOf([S.string().pattern(/^\[.*\]$/u), S.null()])
 			)
 			.prop(
 				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
@@ -129,7 +129,7 @@ async function getConfig() {
 			// Bearer token auth
 			.prop(
 				"AUTH_BEARER_TOKEN_ARRAY",
-				S.anyOf([S.string().pattern(/^\[\{.*\}\]$/), S.null()])
+				S.anyOf([S.string().pattern(/^\[\{.*\}\]$/u), S.null()])
 			)
 
 			// Binary paths

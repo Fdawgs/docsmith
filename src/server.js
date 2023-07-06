@@ -130,7 +130,7 @@ async function plugin(server, config) {
 				// Import and register service routes
 				.register(autoLoad, {
 					dir: path.joinSafe(__dirname, "routes"),
-					ignorePattern: /(admin|docs)/,
+					ignorePattern: /(admin|docs)/u,
 					options: config,
 				});
 		})

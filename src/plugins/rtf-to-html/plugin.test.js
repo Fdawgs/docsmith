@@ -13,7 +13,7 @@ const getConfig = require("../../config");
  * to UTF-8 values are removed by the `fix-utf8` module
  */
 const artifacts =
-	/â‚¬|â€š|Æ’|â€ž|â€¦|â€¡|Ë†|â€°|â€¹|Å½|â€˜|â€™|â€œ|â€¢|â€“|â€”|Ëœ|Å¡|Å¾|Å¸|Â¯|Â·|Â´|Â°|Ã‚|ï‚·|âˆš|�|Ã€|Ãƒ|Ã„|Ã…|Ã†|Ã‡|Ãˆ|Ã‰|ÃŠ|Ã‹|ÃŒ|ÃŽ|Ã‘|Ã’|Ã“|Ã”|Ã•|Ã–|Ã—|Ã˜|Ã™|Ãš|Ã›|Ãœ|Ãž|ÃŸ|Ã¡|Ã¢|Ã£|Ã¤|Ã¥|Ã¦|Ã§|Ã¨|Ã©|Ãª|Ã«|Ã¬|Ã­|Ã®|Ã¯|Ã°|Ã±|Ã²|Ã³|Ã´|Ãµ|Ã¶|Ã·|Ã¸|Ã¹|Ãº|Ã»|Ã¼|Ã½|Ã¾|Ã¿|â‰¤|â‰¥|Â|Ã|â€|�/g;
+	/â‚¬|â€š|Æ’|â€ž|â€¦|â€¡|Ë†|â€°|â€¹|Å½|â€˜|â€™|â€œ|â€¢|â€“|â€”|Ëœ|Å¡|Å¾|Å¸|Â¯|Â·|Â´|Â°|Ã‚|ï‚·|âˆš|�|Ã€|Ãƒ|Ã„|Ã…|Ã†|Ã‡|Ãˆ|Ã‰|ÃŠ|Ã‹|ÃŒ|ÃŽ|Ã‘|Ã’|Ã“|Ã”|Ã•|Ã–|Ã—|Ã˜|Ã™|Ãš|Ã›|Ãœ|Ãž|ÃŸ|Ã¡|Ã¢|Ã£|Ã¤|Ã¥|Ã¦|Ã§|Ã¨|Ã©|Ãª|Ã«|Ã¬|Ã­|Ã®|Ã¯|Ã°|Ã±|Ã²|Ã³|Ã´|Ãµ|Ã¶|Ã·|Ã¸|Ã¹|Ãº|Ã»|Ã¼|Ã½|Ã¾|Ã¿|â‰¤|â‰¥|Â|Ã|â€|�/gu;
 
 describe("RTF-to-HTML conversion plugin", () => {
 	let config;
@@ -70,12 +70,12 @@ describe("RTF-to-HTML conversion plugin", () => {
 		// Check that head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.children[0].tagName).toBe("META");
 		expect(dom.window.document.head.firstChild).toMatchObject({
-			content: expect.stringMatching(/^text\/html; charset=utf-8$/i),
-			httpEquiv: expect.stringMatching(/^content-type$/i),
+			content: expect.stringMatching(/^text\/html; charset=utf-8$/iu),
+			httpEquiv: expect.stringMatching(/^content-type$/iu),
 		});
 		expect(
 			dom.window.document.head.querySelector("title").textContent
-		).toMatch(/^docsmith_rtf-to-html_/);
+		).toMatch(/^docsmith_rtf-to-html_/u);
 		// Check all images are removed
 		expect(dom.window.document.querySelectorAll("img")).toHaveLength(0);
 		// Check the body contains no links and has not removed any link inner text
@@ -98,8 +98,8 @@ describe("RTF-to-HTML conversion plugin", () => {
 		// Check the docLocation object contains the expected properties
 		expect(docLocation).toMatchObject({
 			directory: expect.any(String),
-			rtf: expect.stringMatching(/.rtf$/i),
-			id: expect.stringMatching(/^docsmith_rtf-to-html_/),
+			rtf: expect.stringMatching(/.rtf$/iu),
+			id: expect.stringMatching(/^docsmith_rtf-to-html_/u),
 		});
 		// Check the RTF file has been removed from the temp directory
 		await expect(fs.readFile(docLocation.rtf)).rejects.toThrow();

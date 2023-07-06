@@ -78,17 +78,17 @@ describe("DOC-to-TXT conversion plugin", () => {
 		const { body } = JSON.parse(response.body);
 
 		// String found in header of the test document
-		expect(body).toMatch(/^I am a header/);
+		expect(body).toMatch(/^I am a header/u);
 		// String found in first heading of the test document
 		expect(body).toMatch(
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio."
 		);
 		// String found at end of the test document
 		expect(body).toMatch(
-			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/m
+			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/mu
 		);
 		// String found in footer of the test document
-		expect(body).toMatch(/I am a footer$/);
+		expect(body).toMatch(/I am a footer$/u);
 		expect(isHtml(body)).toBe(false);
 		expect(response.statusCode).toBe(200);
 	});
