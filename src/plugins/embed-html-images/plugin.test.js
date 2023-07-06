@@ -51,7 +51,7 @@ describe("Embed-HTML-Images plugin", () => {
 
 		expect(isHtml(response.body)).toBe(true);
 		dom.window.document.querySelectorAll("img").forEach((image) => {
-			expect(image.src).toMatch(/^data:image\/(jpe?g|png);base64/iu);
+			expect(image.src).toMatch(/^data:image\/(?:jpe?g|png);base64/iu);
 		});
 		expect(response.statusCode).toBe(200);
 	});

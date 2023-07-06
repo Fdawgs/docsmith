@@ -105,7 +105,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		);
 		// Expect all images to be embedded
 		dom.window.document.querySelectorAll("img").forEach((image) => {
-			expect(image.src).toMatch(/^data:image\/(jpe?g|png);base64/iu);
+			expect(image.src).toMatch(/^data:image\/(?:jpe?g|png);base64/iu);
 		});
 		expect(response.statusCode).toBe(200);
 	});
