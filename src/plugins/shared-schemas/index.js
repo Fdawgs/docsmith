@@ -59,7 +59,7 @@ async function plugin(server) {
 					.prop("error", S.string().const("Unsupported Media Type"))
 					.prop(
 						"message",
-						S.string().pattern(/^Unsupported Media Type.*$/)
+						S.string().pattern(/^Unsupported Media Type.*$/u)
 					)
 			)
 			.prop(

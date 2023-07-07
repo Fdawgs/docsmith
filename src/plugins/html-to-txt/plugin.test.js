@@ -53,7 +53,7 @@ describe("HTML-to-TXT conversion plugin", () => {
 		);
 		// String found at end of the test document
 		expect(body).toMatch(
-			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/m
+			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/mu
 		);
 		// String found in footer of the test document
 		expect(body).toMatch("I am a footer");

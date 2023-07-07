@@ -13,7 +13,8 @@ const getConfig = require("../../config");
  * to UTF-8 values are removed by the `fix-utf8` module
  */
 const artifacts =
-	/â‚¬|â€š|Æ’|â€ž|â€¦|â€¡|Ë†|â€°|â€¹|Å½|â€˜|â€™|â€œ|â€¢|â€“|â€”|Ëœ|Å¡|Å¾|Å¸|Â¯|Â·|Â´|Â°|Ã‚|ï‚·|âˆš|�|Ã€|Ãƒ|Ã„|Ã…|Ã†|Ã‡|Ãˆ|Ã‰|ÃŠ|Ã‹|ÃŒ|ÃŽ|Ã‘|Ã’|Ã“|Ã”|Ã•|Ã–|Ã—|Ã˜|Ã™|Ãš|Ã›|Ãœ|Ãž|ÃŸ|Ã¡|Ã¢|Ã£|Ã¤|Ã¥|Ã¦|Ã§|Ã¨|Ã©|Ãª|Ã«|Ã¬|Ã­|Ã®|Ã¯|Ã°|Ã±|Ã²|Ã³|Ã´|Ãµ|Ã¶|Ã·|Ã¸|Ã¹|Ãº|Ã»|Ã¼|Ã½|Ã¾|Ã¿|â‰¤|â‰¥|Â|Ã|â€|�/g;
+	// eslint-disable-next-line regexp/prefer-character-class
+	/â‚¬|â€š|Æ’|â€ž|â€¦|â€¡|Ë†|â€°|â€¹|Å½|â€˜|â€™|â€œ|â€¢|â€“|â€”|Ëœ|Å¡|Å¾|Å¸|Â¯|Â·|Â´|Â°|Ã‚|ï‚·|âˆš|�|Ã€|Ãƒ|Ã„|Ã…|Ã†|Ã‡|Ãˆ|Ã‰|ÃŠ|Ã‹|ÃŒ|ÃŽ|Ã‘|Ã’|Ã“|Ã”|Ã•|Ã–|Ã—|Ã˜|Ã™|Ãš|Ã›|Ãœ|Ãž|ÃŸ|Ã¡|Ã¢|Ã£|Ã¤|Ã¥|Ã¦|Ã§|Ã¨|Ã©|Ãª|Ã«|Ã¬|Ã­|Ã®|Ã¯|Ã°|Ã±|Ã²|Ã³|Ã´|Ãµ|Ã¶|Ã·|Ã¸|Ã¹|Ãº|Ã»|Ã¼|Ã½|Ã¾|Ã¿|â‰¤|â‰¥|Â|Ã|â€/gu;
 
 describe("PDF-to-HTML conversion plugin", () => {
 	let config;
@@ -89,15 +90,15 @@ describe("PDF-to-HTML conversion plugin", () => {
 		// Check head element contains only a meta and title element in the correct order
 		expect(dom.window.document.head.children[0].tagName).toBe("META");
 		expect(dom.window.document.head.firstChild).toMatchObject({
-			content: expect.stringMatching(/^text\/html; charset=utf-8$/i),
-			httpEquiv: expect.stringMatching(/^content-type$/i),
+			content: expect.stringMatching(/^text\/html; charset=utf-8$/iu),
+			httpEquiv: expect.stringMatching(/^content-type$/iu),
 		});
 		expect(
 			dom.window.document.head.querySelector("title").textContent
-		).toMatch(/^docsmith_pdf-to-html_/);
+		).toMatch(/^docsmith_pdf-to-html_/u);
 		// String found in first paragraph of the test document
 		expect(dom.window.document.querySelector("p").textContent).toMatch(
-			/for\sEngland\s/
+			/for\sEngland\s/u
 		);
 		// String found in last paragraph of the test document
 		expect(
@@ -105,13 +106,13 @@ describe("PDF-to-HTML conversion plugin", () => {
 				dom.window.document.querySelectorAll("p").length - 1
 			].textContent
 		).toMatch(
-			/a\sfull\sand\stransparent\sdebate\swith\sthe\spublic,\spatients\sand\sstaff.\s$/
+			/a\sfull\sand\stransparent\sdebate\swith\sthe\spublic,\spatients\sand\sstaff.\s$/u
 		);
 		// Check the docLocation object contains the expected properties
 		expect(docLocation).toMatchObject({
 			directory: expect.any(String),
-			html: expect.stringMatching(/-html\.html$/i),
-			id: expect.stringMatching(/^docsmith_pdf-to-html_/),
+			html: expect.stringMatching(/-html\.html$/iu),
+			id: expect.stringMatching(/^docsmith_pdf-to-html_/u),
 		});
 		// Check the HTML file has been removed from the temp directory
 		await expect(fs.readFile(docLocation.html)).rejects.toThrow();
