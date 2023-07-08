@@ -1,3 +1,5 @@
+"use strict";
+
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 const { minify } = require("html-minifier-terser");

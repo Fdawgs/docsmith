@@ -1,3 +1,5 @@
+"use strict";
+
 const { chromium, firefox } = require("playwright");
 const fs = require("fs/promises");
 const Fastify = require("fastify");

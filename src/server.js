@@ -1,3 +1,5 @@
+"use strict";
+
 const autoLoad = require("@fastify/autoload");
 const fp = require("fastify-plugin");
 const path = require("upath");

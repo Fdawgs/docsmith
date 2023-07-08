@@ -1,3 +1,5 @@
+"use strict";
+
 const cfb = require("cfb");
 
 // Import plugins

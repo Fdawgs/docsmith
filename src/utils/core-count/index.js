@@ -1,3 +1,5 @@
+"use strict";
+
 const { cpus, EOL, platform } = require("os");
 const { execSync } = require("child_process");
 

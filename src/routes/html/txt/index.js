@@ -1,3 +1,5 @@
+"use strict";
+
 const isHtml = require("is-html");
 
 // Import plugins

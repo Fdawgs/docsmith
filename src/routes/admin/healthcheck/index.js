@@ -1,3 +1,5 @@
+"use strict";
+
 // Import plugins
 const cors = require("@fastify/cors");
 

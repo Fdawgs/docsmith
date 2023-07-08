@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require("fs/promises");
 const { glob } = require("glob");
 const path = require("upath");

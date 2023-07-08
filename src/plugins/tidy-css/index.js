@@ -1,3 +1,5 @@
+"use strict";
+
 const CleanCSS = require("clean-css");
 const cssEsc = require("cssesc");
 const CSSOM = require("cssom");

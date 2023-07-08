@@ -1,3 +1,5 @@
+"use strict";
+
 const S = require("fluent-json-schema").default;
 
 const tags = ["System administration"];

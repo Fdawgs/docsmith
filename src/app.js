@@ -1,3 +1,5 @@
+"use strict";
+
 const Fastify = require("fastify");
 const fs = require("fs/promises");
 const startServer = require("./server");
