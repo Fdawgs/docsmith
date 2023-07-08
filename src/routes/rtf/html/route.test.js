@@ -1,3 +1,5 @@
+"use strict";
+
 const accepts = require("@fastify/accepts");
 const fs = require("fs/promises");
 const Fastify = require("fastify");

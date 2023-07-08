@@ -1,3 +1,5 @@
+"use strict";
+
 const fp = require("fastify-plugin");
 const { createScheduler, createWorker } = require("tesseract.js");
 const path = require("upath");

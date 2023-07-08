@@ -1,3 +1,5 @@
+"use strict";
+
 const { name } = require("./package.json");
 
 // PM2 ecosystem config

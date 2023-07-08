@@ -1,3 +1,5 @@
+"use strict";
+
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");

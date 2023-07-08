@@ -1,3 +1,5 @@
+"use strict";
+
 const esbuild = require("esbuild");
 const { globPlugin } = require("esbuild-plugin-glob");
 

@@ -1,3 +1,5 @@
+"use strict";
+
 const { fromBuffer } = require("file-type");
 const { htmlToText } = require("html-to-text");
 

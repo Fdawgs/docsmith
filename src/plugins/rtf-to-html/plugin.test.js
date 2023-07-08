@@ -1,4 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
+
+"use strict";
+
 const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");

@@ -1,5 +1,7 @@
 /* eslint-disable security/detect-object-injection */
 
+"use strict";
+
 /**
  * @description Bitwise power-set function, adapted from algorithm at
  * https://github.com/trekhleb/javascript-algorithms/blob/master/src/algorithms/sets/power-set/btPowerSet.js

@@ -1,3 +1,5 @@
+"use strict";
+
 const fp = require("fastify-plugin");
 const { htmlToText } = require("html-to-text");
 const isHtml = require("is-html");
