@@ -4,9 +4,7 @@ FROM node:18-bullseye-slim
 WORKDIR /usr/app
 
 # Create temp folder for files to be stored whilst being converted
-RUN mkdir -p ./dist/temp/ && \
-    ## Allow for temp folder to be manipulated
-    chown -R node ./dist/
+RUN mkdir -p ./dist/temp/
 
 # Install OS dependencies
 # Curl needed for healthcheck command
@@ -30,6 +28,8 @@ RUN npm ci --ignore-scripts --omit=dev && \
 
 # Copy source
 COPY . .
+## Allow for temp folder and contents to be removed on container exit
+RUN chown -R node ./dist/
 
 # Node images provide 'node' unprivileged user to run apps and prevent
 # privilege escalation attacks
