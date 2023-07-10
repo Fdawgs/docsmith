@@ -102,7 +102,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				firstPageToConvert: 2,
+				firstPageToConvert: 1,
 				lastPageToConvert: 2,
 				...query,
 			},
@@ -114,6 +114,10 @@ describe("PDF-to-TXT conversion plugin", () => {
 		const { body, docLocation } = JSON.parse(response.body);
 
 		expect(body).toMatch("The NHS belongs to the people");
+		// String found at end of second page
+		expect(body).toMatch(
+			/a full and transparent debate with the public, patients and staff.$/mu
+		);
 		expect(isHtml(body)).toBe(false);
 		// Check the docLocation object contains the expected properties
 		expect(docLocation).toMatchObject({
