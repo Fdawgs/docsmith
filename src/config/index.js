@@ -186,6 +186,12 @@ async function getConfig() {
 				timestamp: () => pino.stdTimeFunctions.isoTime(),
 			},
 			ignoreTrailingSlash: true,
+			/**
+			 * Tesseract OCR's load time is dependent on number of workers
+			 * and languages so is unpredictable. Disable the plugin timeout
+			 * to allow for this
+			 */
+			pluginTimeout: env.OCR_ENABLED === true ? 0 : 30000,
 		},
 		cors: {
 			allowedHeaders: env.CORS_ALLOWED_HEADERS || null,
