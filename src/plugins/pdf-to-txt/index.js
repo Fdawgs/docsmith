@@ -164,16 +164,21 @@ async function plugin(server, options) {
 				throw err;
 			}
 
-			// glob sorts files alphabetically
 			const files = await glob(`${tempFile}*.png`);
 
 			// Pass each image file generate to Tesseract OCR
 			const results = await Promise.all(
-				files.map((file) =>
-					server.tesseract
-						.addJob("recognize", file)
-						.then((result) => result?.data.text)
-				)
+				files
+					/**
+					 * Sort files alphabetically to ensure order is maintained,
+					 * as glob does not guarantee order
+					 */
+					.sort((a, b) => a.localeCompare(b))
+					.map((file) =>
+						server.tesseract
+							.addJob("recognize", file)
+							.then((result) => result?.data.text)
+					)
 			);
 
 			req.conversionResults.body = results.join(" ");
