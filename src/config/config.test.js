@@ -285,6 +285,7 @@ describe("Configuration", () => {
 			key: expect.any(Buffer),
 		});
 		expect(config.fastifyInit.http2).toBe(true);
+		expect(config.fastifyInit.pluginTimeout).toBe(0);
 
 		expect(config.processLoad).toStrictEqual({
 			maxEventLoopDelay: PROC_LOAD_MAX_EVENT_LOOP_DELAY,
