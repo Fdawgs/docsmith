@@ -106,7 +106,7 @@
 		"@fastify/sensible": "^5.2.0",
 		"@fastify/static": "^6.10.2",
 		"@fastify/swagger": "^8.8.0",
-		"@fastify/under-pressure": "^8.2.0",
+		"@fastify/under-pressure": "^8.3.0",
 		"cfb": "^1.2.2",
 		"clean-css": "^5.3.2",
 		"cssesc": "^3.0.0",
