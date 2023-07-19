@@ -470,6 +470,7 @@ describe("Server deployment", () => {
 				AUTH_BEARER_TOKEN_ARRAY:
 					'[{"service": "test", "value": "testtoken"}]',
 				OCR_ENABLED: true,
+				OCR_WORKERS: 1,
 			});
 			config = await getConfig();
 

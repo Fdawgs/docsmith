@@ -14,6 +14,7 @@ describe("Image-to-TXT conversion plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
+		config.tesseract.workers = 1;
 
 		server = Fastify({ pluginTimeout: 30000 });
 
