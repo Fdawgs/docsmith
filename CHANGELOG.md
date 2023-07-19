@@ -2,6 +2,85 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.0.1](https://github.com/Fdawgs/docsmith/compare/v11.0.0...v11.0.1) (2023-07-19)
+
+
+### Bug fixes
+
+* add missing strict mode directives ([#1570](https://github.com/Fdawgs/docsmith/issues/1570)) ([3f10014](https://github.com/Fdawgs/docsmith/commit/3f10014a21d3bde469603bd4013dcc8e1bcd9b52))
+* **config:** disable plugin timeout if `OCR_ENABLED` env variable set ([#1575](https://github.com/Fdawgs/docsmith/issues/1575)) ([824f48d](https://github.com/Fdawgs/docsmith/commit/824f48d01d964415d787fa60322ff423f2202aae))
+* **plugins/pdf-to-txt:** stop ocr pages being returned in unsorted order ([#1572](https://github.com/Fdawgs/docsmith/issues/1572)) ([0eec909](https://github.com/Fdawgs/docsmith/commit/0eec909b8435653355690000cfd579fe8a7438d3))
+* **plugins:** escape regexp quantifier characters ([342c4a0](https://github.com/Fdawgs/docsmith/commit/342c4a0b499816b2f9c18a54e3dd1594c99f6858))
+* **routes:** throw 400 error on empty payload instead of 415 ([#1454](https://github.com/Fdawgs/docsmith/issues/1454)) ([9eb4410](https://github.com/Fdawgs/docsmith/commit/9eb441092a985ac64f8741506366504dc87a17c8))
+* unintentional capture groups to non-capture groups ([298827f](https://github.com/Fdawgs/docsmith/commit/298827f765ade402714d4e110e59a641af5b2338))
+
+
+### Improvements
+
+* add strict `u` flag to all regex patterns ([3c0d334](https://github.com/Fdawgs/docsmith/commit/3c0d334d0a056754172b67cec9bca3d874022b11))
+* **app:** use traditional function syntax ([#1577](https://github.com/Fdawgs/docsmith/issues/1577)) ([5cf6633](https://github.com/Fdawgs/docsmith/commit/5cf66332ce0046c5cea8ea12c99b1777ada3c695))
+* **config:** remove useless range in regex ([67860f8](https://github.com/Fdawgs/docsmith/commit/67860f8464acd86633ff79286fc891ff84f3e9a5))
+* **plugins/doc-to-txt:** remove unused var assignment ([1a9fa7a](https://github.com/Fdawgs/docsmith/commit/1a9fa7aec4ec57d1366122f1864876233788d7d7))
+* **plugins/embed-html-images:** move path normalization out of function ([1bfb28e](https://github.com/Fdawgs/docsmith/commit/1bfb28e6a916576ed669f70a737df335cd8879d5))
+* **plugins/html-to-txt:** remove unused var assignment ([bc0ae86](https://github.com/Fdawgs/docsmith/commit/bc0ae86b9c09d47c92c648b81039b78753068616))
+* **plugins/tidy-css:** remove useless `m` regex flag ([0cf3ea8](https://github.com/Fdawgs/docsmith/commit/0cf3ea8bcd4ff46efc5606063041f21ae1e401fc))
+* **plugins:** decorate request to stop object deoptimisation ([c6741ed](https://github.com/Fdawgs/docsmith/commit/c6741ed55a780214a8a383cfe7274ce28ff1a89c))
+* **plugins:** move large objects out of init ([641eebe](https://github.com/Fdawgs/docsmith/commit/641eebecec759d2eb2fdaf95d586d5fe5f71e7c2))
+* **routes/docs:** use `?` quantifier over empty alternative ([559db03](https://github.com/Fdawgs/docsmith/commit/559db0328d6af43eb5c3afb479be745568a905dd))
+* use `\d` over `[0-9]` in regex patterns ([f73c6ff](https://github.com/Fdawgs/docsmith/commit/f73c6ff2d988e61af3f3a538b8adfaaec7aea25e))
+
+
+### Continuous integration
+
+* **deps:** bump coverallsapp/github-action from 2.2.0 to 2.2.1 ([#1578](https://github.com/Fdawgs/docsmith/issues/1578)) ([893af2f](https://github.com/Fdawgs/docsmith/commit/893af2fb5802c42fcbdfef6c1906e6060c072d7c))
+
+
+### Dependencies
+
+* **deps-dev:** add eslint-plugin-regexp ([0a8a782](https://github.com/Fdawgs/docsmith/commit/0a8a7825f87076522cbfcb877240e1dc0552026d))
+* **deps-dev:** bump @commitlint/cli from 17.6.5 to 17.6.6 ([#1563](https://github.com/Fdawgs/docsmith/issues/1563)) ([bad58c0](https://github.com/Fdawgs/docsmith/commit/bad58c05ba17bce32566141b05d8178881fa7f92))
+* **deps-dev:** bump @commitlint/cli from 17.6.6 to 17.6.7 ([#1595](https://github.com/Fdawgs/docsmith/issues/1595)) ([ee85f3f](https://github.com/Fdawgs/docsmith/commit/ee85f3f5544696a186a1114d9206734383c4ecec))
+* **deps-dev:** bump @commitlint/config-conventional ([#1561](https://github.com/Fdawgs/docsmith/issues/1561)) ([963b515](https://github.com/Fdawgs/docsmith/commit/963b515a138fc2ea1a46f4325ab5f1e33021c63d))
+* **deps-dev:** bump @commitlint/config-conventional ([#1594](https://github.com/Fdawgs/docsmith/issues/1594)) ([78563d2](https://github.com/Fdawgs/docsmith/commit/78563d2b942b282c99c228d1c9c7b0b665acf7a0))
+* **deps-dev:** bump esbuild from 0.17.19 to 0.18.14 ([a5aeb2d](https://github.com/Fdawgs/docsmith/commit/a5aeb2d2fbe98eea2bb1b179698e2083b3042968))
+* **deps-dev:** bump eslint from 8.43.0 to 8.44.0 ([#1558](https://github.com/Fdawgs/docsmith/issues/1558)) ([fe0c0ee](https://github.com/Fdawgs/docsmith/commit/fe0c0ee4b4497378cca942e193b50fbdbf9dd704))
+* **deps-dev:** bump eslint from 8.44.0 to 8.45.0 ([#1589](https://github.com/Fdawgs/docsmith/issues/1589)) ([cea6367](https://github.com/Fdawgs/docsmith/commit/cea6367279c9465ca9d31b461542f162c98d02ba))
+* **deps-dev:** bump eslint-plugin-jest from 27.2.2 to 27.2.3 ([#1579](https://github.com/Fdawgs/docsmith/issues/1579)) ([347a499](https://github.com/Fdawgs/docsmith/commit/347a499a5d16b4af83d52762232e06f2120ab688))
+* **deps-dev:** bump eslint-plugin-jsdoc from 46.2.6 to 46.4.3 ([#1562](https://github.com/Fdawgs/docsmith/issues/1562)) ([bd72648](https://github.com/Fdawgs/docsmith/commit/bd72648194a4a90f7943591080149a8b5b670404))
+* **deps-dev:** bump eslint-plugin-jsdoc from 46.4.3 to 46.4.4 ([#1586](https://github.com/Fdawgs/docsmith/issues/1586)) ([6b2444e](https://github.com/Fdawgs/docsmith/commit/6b2444e2656b916dda964806e49276de2115b3c4))
+* **deps-dev:** bump jest from 29.5.0 to 29.6.1 ([#1568](https://github.com/Fdawgs/docsmith/issues/1568)) ([95141ec](https://github.com/Fdawgs/docsmith/commit/95141ec74f2339fe1f523ddb94d32dcc3db20c7c))
+* **deps-dev:** bump nodemon from 2.0.22 to 3.0.1 ([#1593](https://github.com/Fdawgs/docsmith/issues/1593)) ([2bc8b71](https://github.com/Fdawgs/docsmith/commit/2bc8b710447857fc46cf945a980547c11778adcf))
+* **deps-dev:** bump pino-pretty from 10.0.0 to 10.0.1 ([#1567](https://github.com/Fdawgs/docsmith/issues/1567)) ([49b20e1](https://github.com/Fdawgs/docsmith/commit/49b20e110e6e2fdedfed00cff0decb4174984275))
+* **deps-dev:** bump playwright from 1.35.1 to 1.36.1 ([#1583](https://github.com/Fdawgs/docsmith/issues/1583)) ([aea9112](https://github.com/Fdawgs/docsmith/commit/aea91120f14dbabc9aa6a55e42ff0f70052c4544))
+* **deps-dev:** bump prettier from 2.8.8 to 3.0.0 ([9be942a](https://github.com/Fdawgs/docsmith/commit/9be942aa5342886946b94182406acb42a2c14509))
+* **deps:** bump @fastify/helmet from 10.1.1 to 11.0.0 ([#1557](https://github.com/Fdawgs/docsmith/issues/1557)) ([fc313f1](https://github.com/Fdawgs/docsmith/commit/fc313f16d2840110e1dcadf535165390722725bd))
+* **deps:** bump @fastify/rate-limit from 8.0.1 to 8.0.3 ([#1590](https://github.com/Fdawgs/docsmith/issues/1590)) ([0b4c05e](https://github.com/Fdawgs/docsmith/commit/0b4c05eaddc0b84dd4d2af32ec80be46f997a1d6))
+* **deps:** bump @fastify/swagger from 8.6.0 to 8.8.0 ([#1565](https://github.com/Fdawgs/docsmith/issues/1565)) ([5d79e6d](https://github.com/Fdawgs/docsmith/commit/5d79e6dbb710eb20fea525f7dba75178ca2455c4))
+* **deps:** bump @fastify/under-pressure from 8.2.0 to 8.3.0 ([#1587](https://github.com/Fdawgs/docsmith/issues/1587)) ([1ecec72](https://github.com/Fdawgs/docsmith/commit/1ecec7285d504e14da3cc99ecab96e17613bf872))
+* **deps:** bump fastify from 4.18.0 to 4.19.0 ([#1560](https://github.com/Fdawgs/docsmith/issues/1560)) ([87334d4](https://github.com/Fdawgs/docsmith/commit/87334d49357439264905692dfe57e5fcfbebf254))
+* **deps:** bump fastify from 4.19.0 to 4.19.2 ([#1566](https://github.com/Fdawgs/docsmith/issues/1566)) ([71521d3](https://github.com/Fdawgs/docsmith/commit/71521d3aef49314cec26fe47642d9b35f2c43335))
+* **deps:** bump fastify from 4.19.2 to 4.20.0 ([#1580](https://github.com/Fdawgs/docsmith/issues/1580)) ([4a429d4](https://github.com/Fdawgs/docsmith/commit/4a429d492ea15c22b4f4aa2966827468a512fe42))
+* **deps:** bump fastify-disablecache from 3.1.3 to 3.1.4 ([#1592](https://github.com/Fdawgs/docsmith/issues/1592)) ([bbd3db3](https://github.com/Fdawgs/docsmith/commit/bbd3db3519fdb6653bde2e99cfb38c3cf5fddd11))
+* **deps:** bump fastify-floc-off from 2.1.3 to 2.1.4 ([#1591](https://github.com/Fdawgs/docsmith/issues/1591)) ([bb9d87a](https://github.com/Fdawgs/docsmith/commit/bb9d87a16c48fe6f99bb9b3b3117053e29d7e365))
+* **deps:** bump fastify-json-to-xml from 1.1.4 to 1.1.5 ([#1581](https://github.com/Fdawgs/docsmith/issues/1581)) ([f78b46a](https://github.com/Fdawgs/docsmith/commit/f78b46a3da13fa2e8d43f057de974c65bbf7196c))
+* **deps:** bump fastify-plugin from 4.5.0 to 4.5.1 ([#1582](https://github.com/Fdawgs/docsmith/issues/1582)) ([d9b00ea](https://github.com/Fdawgs/docsmith/commit/d9b00eada3f8a8c002501eef1c696b36b22d7400))
+* **deps:** bump glob from 10.3.0 to 10.3.1 ([#1559](https://github.com/Fdawgs/docsmith/issues/1559)) ([f47a102](https://github.com/Fdawgs/docsmith/commit/f47a102fed0ddccff065232aa3b6eb6315d63990))
+* **deps:** bump glob from 10.3.1 to 10.3.3 ([#1585](https://github.com/Fdawgs/docsmith/issues/1585)) ([2df7117](https://github.com/Fdawgs/docsmith/commit/2df71170b0943018e0c6738f7131686872a3d99b))
+* **deps:** bump node-poppler from 6.2.5 to 6.2.6 ([#1588](https://github.com/Fdawgs/docsmith/issues/1588)) ([c584d3a](https://github.com/Fdawgs/docsmith/commit/c584d3a47de728db9dda78afa9910a94c301a625))
+* **deps:** bump node-unrtf from 3.1.5 to 3.1.6 ([#1584](https://github.com/Fdawgs/docsmith/issues/1584)) ([be6bd87](https://github.com/Fdawgs/docsmith/commit/be6bd87ce02ee83b6f707a1d0a5387438d9cd315))
+* **deps:** bump semver from 5.7.1 to 5.7.2 ([#1576](https://github.com/Fdawgs/docsmith/issues/1576)) ([14d66b9](https://github.com/Fdawgs/docsmith/commit/14d66b98224c52f673b022886786c01c4e34c7e5))
+* **deps:** bump tough-cookie from 4.1.2 to 4.1.3 ([#1573](https://github.com/Fdawgs/docsmith/issues/1573)) ([ee6228d](https://github.com/Fdawgs/docsmith/commit/ee6228ddac4dfecccef1ea880e8791d0db06856c))
+* **deps:** bump transistive dependencies ([9fd45d7](https://github.com/Fdawgs/docsmith/commit/9fd45d787b0ee902584d0865eed916681376c339))
+* **docker:** chown after `COPY` otherwise files will be owned by root ([#1571](https://github.com/Fdawgs/docsmith/issues/1571)) ([1035ccb](https://github.com/Fdawgs/docsmith/commit/1035ccb9bd31dd8059f724aee77ab464de6f5034))
+
+
+### Miscellaneous
+
+* **.eslintrc:** sort `extends` array ([1d53bca](https://github.com/Fdawgs/docsmith/commit/1d53bca7f5173edf8c7315d4392f97bfefaa709a))
+* **plugins:** remove excess whitespace ([ac4ce62](https://github.com/Fdawgs/docsmith/commit/ac4ce6297db657ba7359f7f43a6432d690c173b1))
+* rename `lint:prettier` scripts to reflect their function ([251b407](https://github.com/Fdawgs/docsmith/commit/251b407055dd91795ab89ecd30066a1510f95296))
+* sort regex character class elements ([97bd10d](https://github.com/Fdawgs/docsmith/commit/97bd10d4437d027fc354da79f1a2c8e0628d3069))
+
 ## [11.0.0](https://github.com/Fdawgs/docsmith/compare/v10.3.0...v11.0.0) (2023-06-24)
 
 
