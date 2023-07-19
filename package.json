@@ -22,8 +22,8 @@
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
 		"lint:licenses": "node scripts/license-checker.js",
-		"lint:prettier": "prettier . -w -u",
-		"lint:prettier:ci": "prettier . -c -u",
+		"lint:prettier": "prettier . -c -u",
+		"lint:prettier:fix": "prettier . -w -u",
 		"prepare": "husky install",
 		"start": "node .",
 		"start:dev": "nodemon src/app.js | pino-pretty",
@@ -74,7 +74,7 @@
 		"@commitlint/cli": "^17.6.7",
 		"@commitlint/config-conventional": "^17.6.7",
 		"autocannon": "^7.11.0",
-		"esbuild": "^0.17.19",
+		"esbuild": "^0.18.14",
 		"esbuild-plugin-glob": "^2.2.2",
 		"eslint": "^8.45.0",
 		"eslint-config-airbnb-base": "^15.0.0",
@@ -92,7 +92,7 @@
 		"nodemon": "^3.0.1",
 		"pino-pretty": "^10.0.1",
 		"playwright": "^1.36.1",
-		"prettier": "^2.8.8",
+		"prettier": "^3.0.0",
 		"spdx-copyleft": "^1.0.0"
 	},
 	"dependencies": {
