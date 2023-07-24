@@ -131,7 +131,7 @@ describe("Server deployment", () => {
 				});
 
 				expect(response.body).toBe("ok");
-				expect(response.headers).toEqual(expResHeaders);
+				expect(response.headers).toStrictEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
 			});
 
@@ -149,7 +149,7 @@ describe("Server deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.headers).toStrictEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
@@ -170,7 +170,7 @@ describe("Server deployment", () => {
 					statusCode: 404,
 				});
 
-				expect(response.headers).toEqual(expResHeaders404Errors);
+				expect(response.headers).toStrictEqual(expResHeaders404Errors);
 				expect(response.statusCode).toBe(404);
 			});
 
@@ -186,7 +186,9 @@ describe("Server deployment", () => {
 				expect(response.body).toBe(
 					'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
 				);
-				expect(response.headers).toEqual(expResHeaders404ErrorsXml);
+				expect(response.headers).toStrictEqual(
+					expResHeaders404ErrorsXml
+				);
 				expect(response.statusCode).toBe(404);
 			});
 		});
@@ -219,7 +221,7 @@ describe("Server deployment", () => {
 						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 					);
 					expect(isHtml(response.body)).toBe(false);
-					expect(response.headers).toEqual(expResHeaders);
+					expect(response.headers).toStrictEqual(expResHeaders);
 					expect(response.statusCode).toBe(200);
 				}
 			);
@@ -277,7 +279,7 @@ describe("Server deployment", () => {
 						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 					);
 					expect(isHtml(response.body)).toBe(true);
-					expect(response.headers).toEqual(expResHeadersHtml);
+					expect(response.headers).toStrictEqual(expResHeadersHtml);
 					expect(response.statusCode).toBe(200);
 				}
 			);
@@ -335,7 +337,7 @@ describe("Server deployment", () => {
 						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 					);
 					expect(isHtml(response.body)).toBe(false);
-					expect(response.headers).toEqual(expResHeaders);
+					expect(response.headers).toStrictEqual(expResHeaders);
 					expect(response.statusCode).toBe(200);
 				}
 			);
@@ -360,7 +362,7 @@ describe("Server deployment", () => {
 
 				expect(response.body).toMatch("for England");
 				expect(isHtml(response.body)).toBe(true);
-				expect(response.headers).toEqual(expResHeadersHtml);
+				expect(response.headers).toStrictEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 
@@ -385,7 +387,7 @@ describe("Server deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.headers).toStrictEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
@@ -409,7 +411,7 @@ describe("Server deployment", () => {
 
 				expect(response.body).toMatch("for England");
 				expect(isHtml(response.body)).toBe(false);
-				expect(response.headers).toEqual(expResHeaders);
+				expect(response.headers).toStrictEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
 			});
 		});
@@ -432,7 +434,7 @@ describe("Server deployment", () => {
 					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.body)).toBe(true);
-				expect(response.headers).toEqual(expResHeadersHtml);
+				expect(response.headers).toStrictEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 		});
@@ -455,7 +457,7 @@ describe("Server deployment", () => {
 					"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
 				);
 				expect(isHtml(response.body)).toBe(false);
-				expect(response.headers).toEqual(expResHeaders);
+				expect(response.headers).toStrictEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
 			});
 		});
@@ -493,7 +495,7 @@ describe("Server deployment", () => {
 				});
 
 				expect(response.body).toBe("ok");
-				expect(response.headers).toEqual(expResHeaders);
+				expect(response.headers).toStrictEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
 			});
 
@@ -511,7 +513,7 @@ describe("Server deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.headers).toStrictEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
@@ -532,7 +534,7 @@ describe("Server deployment", () => {
 					statusCode: 404,
 				});
 
-				expect(response.headers).toEqual(expResHeaders404Errors);
+				expect(response.headers).toStrictEqual(expResHeaders404Errors);
 				expect(response.statusCode).toBe(404);
 			});
 
@@ -548,7 +550,9 @@ describe("Server deployment", () => {
 				expect(response.body).toBe(
 					'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
 				);
-				expect(response.headers).toEqual(expResHeaders404ErrorsXml);
+				expect(response.headers).toStrictEqual(
+					expResHeaders404ErrorsXml
+				);
 				expect(response.statusCode).toBe(404);
 			});
 		});
@@ -573,7 +577,7 @@ describe("Server deployment", () => {
 
 				expect(response.body).toMatch("for England");
 				expect(isHtml(response.body)).toBe(true);
-				expect(response.headers).toEqual(expResHeadersHtml);
+				expect(response.headers).toStrictEqual(expResHeadersHtml);
 				expect(response.statusCode).toBe(200);
 			});
 
@@ -594,7 +598,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual({
+				expect(response.headers).toStrictEqual({
 					...expResHeadersJson,
 					vary: "accept-encoding",
 				});
@@ -623,7 +627,7 @@ describe("Server deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.headers).toStrictEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
@@ -649,7 +653,7 @@ describe("Server deployment", () => {
 
 				expect(response.body).toMatch("NHS");
 				expect(isHtml(response.body)).toBe(false);
-				expect(response.headers).toEqual(expResHeaders);
+				expect(response.headers).toStrictEqual(expResHeaders);
 				expect(response.statusCode).toBe(200);
 			});
 
@@ -671,7 +675,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual({
+				expect(response.headers).toStrictEqual({
 					...expResHeadersJson,
 					vary: "accept-encoding",
 				});
@@ -701,7 +705,7 @@ describe("Server deployment", () => {
 					message: "Not Acceptable",
 					statusCode: 406,
 				});
-				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.headers).toStrictEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
 			});
 		});
@@ -881,7 +885,7 @@ describe("Server deployment", () => {
 						});
 
 						expect(response.body).toBe("ok");
-						expect(response.headers).toEqual(
+						expect(response.headers).toStrictEqual(
 							expected.response.headers.text
 						);
 						expect(response.statusCode).toBe(200);
@@ -890,17 +894,7 @@ describe("Server deployment", () => {
 					// Only applicable if CORS enabled
 					if (envVariables.CORS_ORIGIN) {
 						it("Returns response to CORS preflight request", async () => {
-							const response = await server.inject({
-								method: "OPTIONS",
-								url: "/admin/healthcheck",
-								headers: {
-									"access-control-request-method": "GET",
-									origin: request.headers.origin,
-								},
-							});
-
-							expect(response.body).toBe("");
-							expect(response.headers).toEqual({
+							const expResHeadersCors = {
 								...expResHeaders,
 								"access-control-allow-headers":
 									process.env.CORS_ALLOWED_HEADERS,
@@ -912,9 +906,23 @@ describe("Server deployment", () => {
 								"access-control-max-age": String(
 									process.env.CORS_MAX_AGE
 								),
-								"content-type": undefined,
 								vary: "Origin",
+							};
+							delete expResHeadersCors["content-type"];
+
+							const response = await server.inject({
+								method: "OPTIONS",
+								url: "/admin/healthcheck",
+								headers: {
+									"access-control-request-method": "GET",
+									origin: request.headers.origin,
+								},
 							});
+
+							expect(response.body).toBe("");
+							expect(response.headers).toStrictEqual(
+								expResHeadersCors
+							);
 							expect(response.statusCode).toBe(204);
 						});
 					}
@@ -934,7 +942,7 @@ describe("Server deployment", () => {
 							message: "Not Acceptable",
 							statusCode: 406,
 						});
-						expect(response.headers).toEqual(
+						expect(response.headers).toStrictEqual(
 							expected.response.headers.json
 						);
 						expect(response.statusCode).toBe(406);
@@ -957,7 +965,7 @@ describe("Server deployment", () => {
 							message: "Route GET:/invalid not found",
 							statusCode: 404,
 						});
-						expect(response.headers).toEqual(
+						expect(response.headers).toStrictEqual(
 							expResHeaders404Errors
 						);
 						expect(response.statusCode).toBe(404);
@@ -975,7 +983,7 @@ describe("Server deployment", () => {
 						expect(response.body).toBe(
 							'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
 						);
-						expect(response.headers).toEqual(
+						expect(response.headers).toStrictEqual(
 							expResHeaders404ErrorsXml
 						);
 						expect(response.statusCode).toBe(404);
@@ -1024,7 +1032,9 @@ describe("Server deployment", () => {
 					});
 
 					expect(isHtml(response.body)).toBe(true);
-					expect(response.headers).toEqual(expResHeadersHtmlStatic);
+					expect(response.headers).toStrictEqual(
+						expResHeadersHtmlStatic
+					);
 					expect(response.statusCode).toBe(200);
 				});
 			});
@@ -1039,7 +1049,9 @@ describe("Server deployment", () => {
 						},
 					});
 
-					expect(response.headers).toEqual(expResHeadersPublicImage);
+					expect(response.headers).toStrictEqual(
+						expResHeadersPublicImage
+					);
 					expect(response.statusCode).toBe(200);
 				});
 			});
@@ -1119,7 +1131,7 @@ describe("Server deployment", () => {
 					message: "Internal Server Error",
 					statusCode: 500,
 				});
-				expect(response.headers).toEqual(expResHeaders5xxErrors);
+				expect(response.headers).toStrictEqual(expResHeaders5xxErrors);
 				expect(response.statusCode).toBe(500);
 			});
 		});
