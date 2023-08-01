@@ -91,7 +91,7 @@
 		"license-checker": "^25.0.1",
 		"nodemon": "^3.0.1",
 		"pino-pretty": "^10.0.1",
-		"playwright": "^1.36.1",
+		"playwright": "^1.36.2",
 		"prettier": "^3.0.0",
 		"spdx-copyleft": "^1.0.0"
 	},
