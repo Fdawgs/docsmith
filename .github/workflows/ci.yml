@@ -74,7 +74,7 @@ jobs:
               run: npm run lint:licenses
 
             - name: Run Lockfile Linter
-              run: npx lockfile-lint -p package-lock.json -t npm -a npm -s -n
+              run: npm run lint:lockfile
 
     commit-lint:
         name: Lint Commit Messages
