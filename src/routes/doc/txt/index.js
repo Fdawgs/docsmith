@@ -1,6 +1,6 @@
 "use strict";
 
-const cfb = require("cfb");
+const { parse: cfbParse } = require("cfb");
 
 // Import plugins
 const cors = require("@fastify/cors");
@@ -42,7 +42,7 @@ async function route(server, options) {
 			 * file-type package does not support; use cfb instead
 			 */
 			try {
-				const results = cfb.parse(payload);
+				const results = cfbParse(payload);
 				// Check the CFBF file is a DOC file by looking for the WordDocument stream
 				if (
 					!results?.FileIndex.find(

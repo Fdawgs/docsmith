@@ -2,7 +2,7 @@
 
 "use strict";
 
-const fs = require("fs/promises");
+const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const plugin = require(".");
@@ -47,7 +47,7 @@ describe("Image-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/png_valid_bullet_issues001.png"
 			),
 			headers: {

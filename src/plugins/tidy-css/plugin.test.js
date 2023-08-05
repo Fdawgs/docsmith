@@ -1,6 +1,6 @@
 "use strict";
 
-const fs = require("fs/promises");
+const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
@@ -100,7 +100,7 @@ describe("Tidy-CSS plugin", () => {
 			method: "POST",
 			url: "/",
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			body: await fs.readFile(`./test_resources/test_files/${file}`),
+			body: await readFile(`./test_resources/test_files/${file}`),
 			headers: {
 				"content-type": "text/html",
 			},
@@ -136,7 +136,7 @@ describe("Tidy-CSS plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/html_valid_empty.html"
 			),
 			headers: {

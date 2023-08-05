@@ -2,7 +2,7 @@
 
 const CleanCSS = require("clean-css");
 const cssEsc = require("cssesc");
-const CSSOM = require("cssom");
+const { parse: cssomParse } = require("cssom");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 
@@ -50,7 +50,7 @@ async function plugin(server) {
 			element.remove();
 		});
 
-		const styleObj = CSSOM.parse(combinedStyle.innerHTML);
+		const styleObj = cssomParse(combinedStyle.innerHTML);
 		styleObj.cssRules.forEach((styleRule) => {
 			// Replace default font
 			if (

@@ -2,8 +2,8 @@
 
 "use strict";
 
+const { readFile } = require("fs/promises");
 const fp = require("fastify-plugin");
-const fs = require("fs/promises");
 const { JSDOM } = require("jsdom");
 const path = require("upath");
 
@@ -32,14 +32,15 @@ async function plugin(server, options) {
 			Array.from(images, (image) => {
 				const imgForm = path.extname(image.src).substring(1);
 
-				return fs
-					.readFile(path.joinSafe(directory, image.src), "base64")
-					.then((imageAsBase64) =>
-						image.setAttribute(
-							"src",
-							`data:image/${imgForm};base64,${imageAsBase64}`
-						)
-					);
+				return readFile(
+					path.joinSafe(directory, image.src),
+					"base64"
+				).then((imageAsBase64) =>
+					image.setAttribute(
+						"src",
+						`data:image/${imgForm};base64,${imageAsBase64}`
+					)
+				);
 			})
 		);
 

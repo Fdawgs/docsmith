@@ -1,6 +1,6 @@
 "use strict";
 
-const fs = require("fs/promises");
+const { unlink } = require("fs/promises");
 const { glob } = require("glob");
 const path = require("upath");
 const getConfig = require(".");
@@ -20,7 +20,7 @@ describe("Configuration", () => {
 		});
 
 		// eslint-disable-next-line security/detect-non-literal-fs-filename
-		await Promise.all(files.map((file) => fs.unlink(file)));
+		await Promise.all(files.map((file) => unlink(file)));
 	});
 
 	it("Uses defaults if values missing and return values according to environment variables", async () => {

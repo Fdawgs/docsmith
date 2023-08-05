@@ -3,12 +3,12 @@
 
 "use strict";
 
-const checker = require("license-checker");
-const copyLeftLicenses = require("spdx-copyleft");
 const { promisify } = require("util");
-
-const init = promisify(checker.init);
+const { init } = require("license-checker");
+const copyLeftLicenses = require("spdx-copyleft");
 const path = require("upath");
+
+const check = promisify(init);
 
 /**
  * @author Frazer Smith
@@ -52,7 +52,7 @@ async function checkLicenses() {
 	// Merge copyleft licenses with deprecated licenses list
 	copyLeftLicenses.push(...deprecatedLicenseList);
 
-	const licenses = await init({
+	const licenses = await check({
 		direct: true,
 		production: true,
 		start: path.joinSafe(__dirname, ".."),
@@ -63,7 +63,7 @@ async function checkLicenses() {
 	);
 
 	if (copyLeftLicensesList.length > 0) {
-		console.log(
+		console.error(
 			`The following dependencies are using copyleft licenses: ${copyLeftLicensesList.join(
 				", "
 			)}`

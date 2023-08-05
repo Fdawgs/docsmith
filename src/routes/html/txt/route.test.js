@@ -1,7 +1,7 @@
 "use strict";
 
+const { readFile } = require("fs/promises");
 const accepts = require("@fastify/accepts");
-const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
@@ -33,9 +33,7 @@ describe("HTML-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/html_valid.html"
-			),
+			body: await readFile("./test_resources/test_files/html_valid.html"),
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "text/html",
@@ -74,7 +72,7 @@ describe("HTML-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/html_invalid.html"
 			),
 			query: {
@@ -98,7 +96,7 @@ describe("HTML-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/html_valid_empty.html"
 			),
 			headers: {
@@ -119,9 +117,7 @@ describe("HTML-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/html_valid.html"
-			),
+			body: await readFile("./test_resources/test_files/html_valid.html"),
 			headers: {
 				accept: "application/javascript",
 				"content-type": "text/html",

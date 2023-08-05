@@ -1,10 +1,10 @@
 "use strict";
 
+const { randomUUID } = require("crypto");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 const { convertToHtml } = require("mammoth");
-const { randomUUID } = require("crypto");
 const WordExtractor = require("word-extractor");
 
 /**

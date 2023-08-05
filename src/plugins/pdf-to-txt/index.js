@@ -2,14 +2,14 @@
 
 "use strict";
 
+const { randomUUID } = require("crypto");
+const { mkdir, unlink } = require("fs/promises");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
-const fs = require("fs/promises");
 const { glob } = require("glob");
 const { JSDOM } = require("jsdom");
 const path = require("upath");
 const { Poppler } = require("node-poppler");
-const { randomUUID } = require("crypto");
 
 // Import utils
 const parseString = require("../../utils/parse-string");
@@ -35,7 +35,7 @@ async function plugin(server, options) {
 	const poppler = new Poppler(options.binPath);
 
 	// Create temp directory if missing
-	await fs.mkdir(directory, { recursive: true });
+	await mkdir(directory, { recursive: true });
 
 	const pdfToCairoAcceptedParams = [
 		"cropHeight",
@@ -86,7 +86,7 @@ async function plugin(server, options) {
 				)}*`
 			);
 
-			await Promise.all(files.map((file) => fs.unlink(file)));
+			await Promise.all(files.map((file) => unlink(file)));
 		}
 
 		return payload;

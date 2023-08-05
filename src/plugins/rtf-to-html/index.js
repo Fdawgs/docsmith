@@ -2,14 +2,14 @@
 
 "use strict";
 
+const { randomUUID } = require("crypto");
+const { mkdir, rm, unlink, writeFile } = require("fs/promises");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
-const fs = require("fs/promises");
 const { glob } = require("glob");
 const { JSDOM } = require("jsdom");
 const path = require("upath");
 const { UnRTF } = require("node-unrtf");
-const { randomUUID } = require("crypto");
 
 /**
  * @author Frazer Smith
@@ -33,7 +33,7 @@ async function plugin(server, options) {
 	const unrtf = new UnRTF(options.binPath);
 
 	// Create temp directory if missing
-	await fs.mkdir(directory, { recursive: true });
+	await mkdir(directory, { recursive: true });
 
 	server
 		.decorateRequest("conversionResults", null)
@@ -55,7 +55,7 @@ async function plugin(server, options) {
 				)}*`
 			);
 
-			await Promise.all(files.map((file) => fs.unlink(file)));
+			await Promise.all(files.map((file) => unlink(file)));
 		}
 
 		return payload;
@@ -97,7 +97,7 @@ async function plugin(server, options) {
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
 		const tempFile = path.joinSafe(directory, `${id}.rtf`);
 		// 0600 permissions (read/write for owner only)
-		await fs.writeFile(tempFile, req.body, {
+		await writeFile(tempFile, req.body, {
 			encoding: "utf8",
 			mode: 0o600,
 		});
@@ -145,7 +145,7 @@ async function plugin(server, options) {
 						 * which could cause `unlink()` to throw an ENOENT error if the file has already been removed
 						 * by another request's call of this hook
 						 */
-						return fs.rm(path.joinSafe(process.cwd(), src), {
+						return rm(path.joinSafe(process.cwd(), src), {
 							force: true,
 							maxRetries: 10,
 							recursive: true,

@@ -2,7 +2,7 @@
 
 "use strict";
 
-const fs = require("fs/promises");
+const { readFile, readdir, rm } = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
@@ -44,7 +44,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 
 	afterAll(async () => {
 		await Promise.all([
-			fs.rm(config.poppler.tempDir, { recursive: true }),
+			rm(config.poppler.tempDir, { recursive: true }),
 			server.close(),
 		]);
 	});
@@ -63,7 +63,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
@@ -98,7 +98,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
@@ -125,9 +125,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 			id: expect.stringMatching(/^docsmith_pdf-to-txt_/u),
 		});
 		// Check the image files has been removed from the temp directory
-		await expect(fs.readdir(config.poppler.tempDir)).resolves.toHaveLength(
-			0
-		);
+		await expect(readdir(config.poppler.tempDir)).resolves.toHaveLength(0);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -135,7 +133,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
@@ -180,11 +178,11 @@ describe("PDF-to-TXT conversion plugin", () => {
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid PDF file",
-			readFile: true,
+			read: true,
 		},
 		{
 			testName: "is not a valid PDF file for OCR",
-			readFile: true,
+			read: true,
 			query: {
 				lastPageToConvert: 1,
 				ocr: true,
@@ -192,12 +190,12 @@ describe("PDF-to-TXT conversion plugin", () => {
 		},
 	])(
 		"Returns HTTP status code 400 if PDF file $testName",
-		async ({ readFile, query }) => {
+		async ({ read, query }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				body: readFile
-					? await fs.readFile(
+				body: read
+					? await readFile(
 							"./test_resources/test_files/pdf_invalid.pdf"
 					  )
 					: undefined,
@@ -239,7 +237,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				body: await fs.readFile(
+				body: await readFile(
 					"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 				),
 				query: {
