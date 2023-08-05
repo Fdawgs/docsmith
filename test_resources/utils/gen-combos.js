@@ -1,6 +1,6 @@
 "use strict";
 
-const btPowerSetRecursive = require("./btPowerSet");
+const btPowerSetRecursive = require("./bt-power-set");
 
 /**
  * @author Frazer Smith
