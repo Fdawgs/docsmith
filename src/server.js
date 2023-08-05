@@ -49,7 +49,7 @@ async function plugin(server, config) {
 		// Set response headers to disable client-side caching
 		.register(disableCache)
 
-		// Opt-out of Google's FLoC advertising-surveillance network
+		// Opt-out of Google's Topics advertising-surveillance API
 		.register(flocOff)
 
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
