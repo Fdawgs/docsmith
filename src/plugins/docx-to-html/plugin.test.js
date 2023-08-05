@@ -1,6 +1,6 @@
 "use strict";
 
-const fs = require("fs/promises");
+const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
@@ -77,7 +77,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			method: "POST",
 			url: "/",
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			body: await fs.readFile(filePath),
+			body: await readFile(filePath),
 			headers,
 		});
 
@@ -154,7 +154,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 				method: "POST",
 				url: "/",
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				body: filePath ? await fs.readFile(filePath) : undefined,
+				body: filePath ? await readFile(filePath) : undefined,
 				headers,
 			});
 

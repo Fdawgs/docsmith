@@ -1,7 +1,7 @@
 "use strict";
 
+const { readFile } = require("fs/promises");
 const accepts = require("@fastify/accepts");
-const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
@@ -67,7 +67,7 @@ describe("DOCX-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
-			body: await fs.readFile(filePath),
+			body: await readFile(filePath),
 			headers: {
 				accept: "application/json, text/plain",
 				...headers,
@@ -143,7 +143,7 @@ describe("DOCX-to-TXT route", () => {
 				method: "POST",
 				url: "/",
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				body: await fs.readFile(filePath),
+				body: await readFile(filePath),
 				headers: {
 					accept: "application/json, text/plain",
 					...headers,
@@ -163,7 +163,7 @@ describe("DOCX-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/docx_invalid.docx"
 			),
 			headers: {
@@ -185,7 +185,7 @@ describe("DOCX-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/html_valid_empty.html"
 			),
 			headers: {
@@ -206,9 +206,7 @@ describe("DOCX-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/docx_valid.docx"
-			),
+			body: await readFile("./test_resources/test_files/docx_valid.docx"),
 			headers: {
 				accept: "application/javascript",
 				"content-type":

@@ -2,7 +2,7 @@
 
 "use strict";
 
-const fs = require("fs/promises");
+const { readFile, readdir, rm } = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
@@ -48,7 +48,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 
 	afterAll(async () => {
 		await Promise.all([
-			fs.rm(config.unrtf.tempDir, { recursive: true }),
+			rm(config.unrtf.tempDir, { recursive: true }),
 			server.close(),
 		]);
 	});
@@ -58,9 +58,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/rtf_valid.rtf"
-			),
+			body: await readFile("./test_resources/test_files/rtf_valid.rtf"),
 			headers: {
 				"content-type": "application/rtf",
 			},
@@ -106,8 +104,8 @@ describe("RTF-to-HTML conversion plugin", () => {
 			id: expect.stringMatching(/^docsmith_rtf-to-html_/u),
 		});
 		// Check the RTF file has been removed from the temp directory
-		await expect(fs.readFile(docLocation.rtf)).rejects.toThrow();
-		await expect(fs.readdir(config.unrtf.tempDir)).resolves.toHaveLength(0);
+		await expect(readFile(docLocation.rtf)).rejects.toThrow();
+		await expect(readdir(config.unrtf.tempDir)).resolves.toHaveLength(0);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -116,16 +114,16 @@ describe("RTF-to-HTML conversion plugin", () => {
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid RTF file",
-			readFile: true,
+			read: true,
 		},
 	])(
 		"Returns HTTP status code 400 if RTF file $testName",
-		async ({ readFile }) => {
+		async ({ read }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				body: readFile
-					? await fs.readFile(
+				body: read
+					? await readFile(
 							"./test_resources/test_files/rtf_invalid.rtf"
 					  )
 					: undefined,
@@ -151,9 +149,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/rtf_valid.rtf"
-			),
+			body: await readFile("./test_resources/test_files/rtf_valid.rtf"),
 			headers: {
 				"content-type": "application/rtf",
 			},

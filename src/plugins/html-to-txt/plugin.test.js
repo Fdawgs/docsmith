@@ -1,6 +1,6 @@
 "use strict";
 
-const fs = require("fs/promises");
+const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
@@ -37,9 +37,7 @@ describe("HTML-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/html_valid.html"
-			),
+			body: await readFile("./test_resources/test_files/html_valid.html"),
 			headers: {
 				"content-type": "text/html",
 			},
@@ -68,16 +66,16 @@ describe("HTML-to-TXT conversion plugin", () => {
 		{ testName: "is missing" },
 		{
 			testName: "is not a valid HTML file",
-			readFile: true,
+			read: true,
 		},
 	])(
 		"Returns HTTP status code 400 if HTML file $testName",
-		async ({ readFile }) => {
+		async ({ read }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				body: readFile
-					? await fs.readFile(
+				body: read
+					? await readFile(
 							"./test_resources/test_files/html_invalid.html"
 					  )
 					: undefined,

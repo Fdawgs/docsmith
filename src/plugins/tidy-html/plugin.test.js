@@ -1,6 +1,6 @@
 "use strict";
 
-const fs = require("fs/promises");
+const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
@@ -50,7 +50,7 @@ describe("Tidy-HTML plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/html_valid_bullet_issues.html"
 			),
 			headers: {
@@ -104,7 +104,7 @@ describe("Tidy-HTML plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/html_valid_bullet_issues.html"
 			),
 			headers: {

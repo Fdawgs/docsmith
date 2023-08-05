@@ -1,7 +1,7 @@
 "use strict";
 
+const { rm } = require("fs/promises");
 const Fastify = require("fastify");
-const fs = require("fs/promises");
 const startServer = require("./server");
 const getConfig = require("./config");
 
@@ -27,7 +27,7 @@ async function main() {
 			server.log.info({ signal }, "Closing application");
 			try {
 				await Promise.all([
-					fs.rm(config.tempDir, {
+					rm(config.tempDir, {
 						force: true,
 						recursive: true,
 					}),

@@ -1,7 +1,7 @@
 "use strict";
 
+const { readFile } = require("fs/promises");
 const accepts = require("@fastify/accepts");
-const fs = require("fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
@@ -38,9 +38,7 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/rtf_valid.rtf"
-			),
+			body: await readFile("./test_resources/test_files/rtf_valid.rtf"),
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "application/rtf",
@@ -79,9 +77,7 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/rtf_invalid.rtf"
-			),
+			body: await readFile("./test_resources/test_files/rtf_invalid.rtf"),
 			query: {
 				lastPageToConvert: 1,
 			},
@@ -103,7 +99,7 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
+			body: await readFile(
 				"./test_resources/test_files/html_valid_empty.html"
 			),
 			headers: {
@@ -124,9 +120,7 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await fs.readFile(
-				"./test_resources/test_files/rtf_valid.rtf"
-			),
+			body: await readFile("./test_resources/test_files/rtf_valid.rtf"),
 			headers: {
 				accept: "application/javascript",
 				"content-type": "application/rtf",
