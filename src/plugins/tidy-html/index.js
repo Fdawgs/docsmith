@@ -1,10 +1,10 @@
 "use strict";
 
+const { promisify } = require("util");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 const { minify } = require("html-minifier-terser");
 const { tidy } = require("htmltidy2");
-const { promisify } = require("util");
 const { check } = require("language-tags");
 
 const tidyP = promisify(tidy);
