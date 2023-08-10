@@ -15,7 +15,7 @@ const accepts = ["text/html"];
  * @description Sets routing options for server.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Route config values.
- * @param {*=} options.bearerTokenAuthKeys - Apply `bearerToken` security scheme to route if defined.
+ * @param {*} [options.bearerTokenAuthKeys] - Apply `bearerToken` security scheme to route if defined.
  * @param {object} options.cors - CORS settings.
  * @param {object} options.unrtf - RTF-to-HTML plugin settings.
  */

@@ -18,9 +18,9 @@ async function plugin(server) {
 	/**
 	 * @param {string} html - Valid HTML.
 	 * @param {object} options - Function config values.
-	 * @param {string=} options.backgroundColor - Color to set or replace the document's
+	 * @param {string} [options.backgroundColor] - Color to set or replace the document's
 	 * `background-color` property value of `div` CSS selectors with.
-	 * @param {string=} options.fonts - Font to replace document's original font(s), can be
+	 * @param {string} [options.fonts] - Font to replace document's original font(s), can be
 	 * single font or comma separated list i.e `Arial, Sans Serif`.
 	 * @returns {string} HTML with tidied CSS.
 	 */
