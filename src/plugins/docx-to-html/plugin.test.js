@@ -2,7 +2,6 @@
 
 const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
-const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
@@ -84,27 +83,12 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		const { body } = JSON.parse(response.body);
 		const dom = new JSDOM(body);
 
-		expect(isHtml(body)).toBe(true);
-		// String found in header of the test document
-		expect(dom.window.document.querySelector("header").textContent).toBe(
-			"I am a header"
-		);
-		// String found in first heading of the test document
-		expect(dom.window.document.querySelector("h1").textContent).toBe(
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac faucibus odio. "
-		);
-		// String found in second to last paragraph of the test document
 		expect(
-			dom.window.document.querySelectorAll("p")[
-				dom.window.document.querySelectorAll("p").length - 2
-			].textContent
-		).toMatch(
-			/Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien$/u
-		);
-		// String found in footer of the test document
-		expect(dom.window.document.querySelector("footer").textContent).toBe(
-			"I am a footer"
-		);
+			response.body.replace(
+				/<title>[-\w]+<\/title>/gu,
+				"<title>docsmith</title>"
+			)
+		).toMatchSnapshot();
 		// Expect all images to be embedded
 		dom.window.document.querySelectorAll("img").forEach((image) => {
 			expect(image.src).toMatch(/^data:image\/(?:jpe?g|png);base64/iu);
