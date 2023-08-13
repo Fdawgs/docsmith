@@ -10,6 +10,9 @@ const sharedSchemas = require("../../../plugins/shared-schemas");
 
 describe("DOC-to-TXT route", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {

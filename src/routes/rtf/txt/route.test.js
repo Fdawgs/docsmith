@@ -14,6 +14,9 @@ const tidyHtml = require("../../../plugins/tidy-html");
 
 describe("RTF-to-TXT route", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {
@@ -79,7 +82,7 @@ describe("RTF-to-TXT route", () => {
 			url: "/",
 			body: await readFile("./test_resources/test_files/rtf_invalid.rtf"),
 			query: {
-				lastPageToConvert: 1,
+				lastPageToConvert: "1",
 			},
 			headers: {
 				accept: "application/json, text/plain",

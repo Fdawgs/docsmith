@@ -21,6 +21,9 @@ const artifacts =
 
 describe("PDF-to-HTML conversion plugin", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {
@@ -73,8 +76,8 @@ describe("PDF-to-HTML conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 2,
-				ignoreImages: false,
+				lastPageToConvert: "2",
+				ignoreImages: "false",
 				...query,
 			},
 			headers: {
@@ -97,10 +100,10 @@ describe("PDF-to-HTML conversion plugin", () => {
 			httpEquiv: expect.stringMatching(/^content-type$/iu),
 		});
 		expect(
-			dom.window.document.head.querySelector("title").textContent
+			dom.window.document.head.querySelector("title")?.textContent
 		).toMatch(/^docsmith_pdf-to-html_/u);
 		// String found in first paragraph of the test document
-		expect(dom.window.document.querySelector("p").textContent).toMatch(
+		expect(dom.window.document.querySelector("p")?.textContent).toMatch(
 			/for\sEngland\s/u
 		);
 		// String found in last paragraph of the test document
@@ -167,8 +170,8 @@ describe("PDF-to-HTML conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 1,
-				ignoreImages: false,
+				lastPageToConvert: "1",
+				ignoreImages: "false",
 			},
 			headers: {
 				"content-type": "application/pdf",

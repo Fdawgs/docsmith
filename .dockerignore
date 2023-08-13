@@ -136,6 +136,7 @@ src/
 .pm2.config.js
 .prettierignore
 .prettierrc
+jsconfig.json
 CHANGELOG.md
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
