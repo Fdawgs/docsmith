@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		// Uncomment as and when needed
 		// "checkJs": true,
 		// "strict": true
 		"lib": ["ES2022"],
