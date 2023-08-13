@@ -132,7 +132,7 @@ jobs:
                   brew install unrtf poppler
                   cp .env.template .env
                   chmod 100 ./node_modules/htmltidy2/bin/darwin/tidy
-                  npm run jest:coverage
+                  npm run jest:coverage -- --ci
 
             - name: Run Ubuntu tests
               if: matrix.os == 'ubuntu-latest'
@@ -143,13 +143,13 @@ jobs:
                   sudo apt-get -y install poppler-data poppler-utils unrtf
                   cp .env.template .env
                   chmod 100 ./node_modules/htmltidy2/bin/linux64/tidy
-                  npm run jest:coverage
+                  npm run jest:coverage -- --ci
 
             - name: Run Windows tests
               if: matrix.os == 'windows-latest'
               run: |
                   cp .env.template .env
-                  npm run jest:coverage
+                  npm run jest:coverage -- --ci
 
             - name: Coveralls parallel
               if: github.repository == 'Fdawgs/docsmith'
