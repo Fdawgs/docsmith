@@ -3,7 +3,6 @@
 const { readFile } = require("fs/promises");
 const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
-const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
 const route = require(".");
 const getConfig = require("../../../config");
@@ -82,10 +81,12 @@ describe("DOCX-to-HTML route", () => {
 			},
 		});
 
-		expect(response.body).toMatch(
-			"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-		);
-		expect(isHtml(response.body)).toBe(true);
+		expect(
+			response.body.replace(
+				/<title>[-\w]+<\/title>/gu,
+				"<title>docsmith</title>"
+			)
+		).toMatchSnapshot();
 		expect(response.headers).toMatchObject({
 			"content-type": "text/html; charset=utf-8",
 		});

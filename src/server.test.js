@@ -217,10 +217,7 @@ describe("Server deployment", () => {
 						},
 					});
 
-					expect(response.body).toMatch(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					);
-					expect(isHtml(response.body)).toBe(false);
+					expect(response.body).toMatchSnapshot();
 					expect(response.headers).toStrictEqual(expResHeaders);
 					expect(response.statusCode).toBe(200);
 				}
@@ -275,10 +272,12 @@ describe("Server deployment", () => {
 						},
 					});
 
-					expect(response.body).toMatch(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					);
-					expect(isHtml(response.body)).toBe(true);
+					expect(
+						response.body.replace(
+							/<title>[-\w]+<\/title>/gu,
+							"<title>docsmith</title>"
+						)
+					).toMatchSnapshot();
 					expect(response.headers).toStrictEqual(expResHeadersHtml);
 					expect(response.statusCode).toBe(200);
 				}
@@ -333,10 +332,7 @@ describe("Server deployment", () => {
 						},
 					});
 
-					expect(response.body).toMatch(
-						"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-					);
-					expect(isHtml(response.body)).toBe(false);
+					expect(response.body).toMatchSnapshot();
 					expect(response.headers).toStrictEqual(expResHeaders);
 					expect(response.statusCode).toBe(200);
 				}
@@ -1031,7 +1027,7 @@ describe("Server deployment", () => {
 						},
 					});
 
-					expect(isHtml(response.body)).toBe(true);
+					expect(response.body).toMatchSnapshot();
 					expect(response.headers).toStrictEqual(
 						expResHeadersHtmlStatic
 					);

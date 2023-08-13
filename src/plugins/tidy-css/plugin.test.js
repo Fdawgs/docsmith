@@ -2,7 +2,6 @@
 
 const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
-const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
 const plugin = require(".");
 const getConfig = require("../../config");
@@ -109,7 +108,7 @@ describe("Tidy-CSS plugin", () => {
 		const dom = new JSDOM(response.body);
 		const style = dom.window.document.querySelector("style");
 
-		expect(isHtml(response.body)).toBe(true);
+		expect(response.body).toMatchSnapshot();
 		// Check CSS is combined into one style tag
 		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
 		// Check font-family is set to expected value
@@ -144,7 +143,7 @@ describe("Tidy-CSS plugin", () => {
 			},
 		});
 
-		expect(isHtml(response.body)).toBe(true);
+		expect(response.body).toMatchSnapshot();
 		expect(response.statusCode).toBe(200);
 	});
 });

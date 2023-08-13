@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image-to-TXT conversion plugin Reads text from image file 1`] = `
+"Super Test Hospital [7H
+NHS Foundation Trust
+"
+`;
