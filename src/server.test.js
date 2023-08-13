@@ -1031,7 +1031,7 @@ describe("Server deployment", () => {
 						},
 					});
 
-					expect(isHtml(response.body)).toBe(true);
+					expect(response.body).toMatchSnapshot();
 					expect(response.headers).toStrictEqual(
 						expResHeadersHtmlStatic
 					);

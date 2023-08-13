@@ -53,6 +53,7 @@
 				"statements": 100
 			}
 		},
+		"snapshotResolver": "./.jest.snapshot-resolver.js",
 		"testEnvironment": "node",
 		"testTimeout": 60000
 	},

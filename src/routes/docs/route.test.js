@@ -2,7 +2,6 @@
 
 const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
-const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
 const route = require(".");
 const getConfig = require("../../config");
@@ -38,7 +37,7 @@ describe("Docs route", () => {
 				},
 			});
 
-			expect(isHtml(response.body)).toBe(true);
+			expect(response.body).toMatchSnapshot();
 			expect(response.headers).toMatchObject({
 				"cache-control": "public, max-age=300",
 				"content-type": "text/html; charset=utf-8",
