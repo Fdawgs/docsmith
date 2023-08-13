@@ -13,6 +13,9 @@ const tidyHtml = require("../../../plugins/tidy-html");
 
 describe("DOCX-to-HTML route", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {
@@ -73,7 +76,7 @@ describe("DOCX-to-HTML route", () => {
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
 			body: await readFile(filePath),
 			query: {
-				removeAlt: true,
+				removeAlt: "true",
 			},
 			headers: {
 				accept: "application/json, text/html",
@@ -82,10 +85,9 @@ describe("DOCX-to-HTML route", () => {
 		});
 
 		expect(
-			response.body.replace(
-				/<title>[-\w]+<\/title>/gu,
-				"<title>docsmith</title>"
-			)
+			response.body
+				.toString()
+				.replace(/<title>[-\w]+<\/title>/gu, "<title>docsmith</title>")
 		).toMatchSnapshot();
 		expect(response.headers).toMatchObject({
 			"content-type": "text/html; charset=utf-8",

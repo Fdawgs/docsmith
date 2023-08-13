@@ -7,6 +7,9 @@ const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
 describe("Tidy-HTML plugin", () => {
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeEach(() => {
@@ -62,10 +65,10 @@ describe("Tidy-HTML plugin", () => {
 		expect(response.body).toMatchSnapshot();
 		// Check language is set to default or options.language
 		expect(
-			dom.window.document.querySelector("html").getAttribute("lang")
+			dom.window.document.querySelector("html")?.getAttribute("lang")
 		).toBe(options?.language || "en");
 		expect(
-			dom.window.document.querySelector("html").getAttribute("xml:lang")
+			dom.window.document.querySelector("html")?.getAttribute("xml:lang")
 		).toBe(options?.language || "en");
 
 		// Check alt attributes are removed if options.removeAlt is true

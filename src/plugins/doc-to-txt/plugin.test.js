@@ -6,6 +6,9 @@ const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
 describe("DOC-to-TXT conversion plugin", () => {
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {

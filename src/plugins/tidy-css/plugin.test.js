@@ -8,6 +8,9 @@ const getConfig = require("../../config");
 
 describe("Tidy-CSS plugin", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {
@@ -112,17 +115,17 @@ describe("Tidy-CSS plugin", () => {
 		// Check CSS is combined into one style tag
 		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
 		// Check font-family is set to expected value
-		expect(style.innerHTML).toMatch(expected?.fonts || /./u);
+		expect(style?.innerHTML).toMatch(expected?.fonts || /./u);
 		// Check background-color is set to expected value
-		expect(style.innerHTML).toMatch(expected?.backgroundColor || /./u);
+		expect(style?.innerHTML).toMatch(expected?.backgroundColor || /./u);
 		// Check page-break-inside is set to avoid
-		expect(style.innerHTML).toMatch(
+		expect(style?.innerHTML).toMatch(
 			file !== "html_valid_no_style_type.html"
 				? /page-break-inside:avoid/u
 				: /./u
 		);
 		// Check CSS is tidied and minified
-		expect(style.innerHTML).not.toMatch(/;\}|<!--|--!?>|\n|\r/u);
+		expect(style?.innerHTML).not.toMatch(/;\}|<!--|--!?>|\n|\r/u);
 		expect(response.statusCode).toBe(200);
 	});
 

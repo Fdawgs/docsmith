@@ -11,6 +11,9 @@ const sharedSchemas = require("../../../plugins/shared-schemas");
 
 describe("HTML-to-TXT route", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {
@@ -76,7 +79,7 @@ describe("HTML-to-TXT route", () => {
 				"./test_resources/test_files/html_invalid.html"
 			),
 			query: {
-				lastPageToConvert: 1,
+				lastPageToConvert: "1",
 			},
 			headers: {
 				accept: "application/json, text/plain",

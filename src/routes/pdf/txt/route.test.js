@@ -15,15 +15,18 @@ const tidyHtml = require("../../../plugins/tidy-html");
 
 // Generates 32 different combinations
 const queryStrings = generateCombos([
-	{ firstPageToConvert: 1 },
+	{ firstPageToConvert: "1" },
 	{ eolConvention: "unix" },
-	{ maintainLayout: true },
-	{ noDiagonalText: true },
-	{ noPageBreaks: true },
+	{ maintainLayout: "true" },
+	{ noDiagonalText: "true" },
+	{ noPageBreaks: "true" },
 ]);
 
 describe("PDF-to-TXT route", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {
@@ -53,7 +56,7 @@ describe("PDF-to-TXT route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 1;
+				query.lastPageToConvert = "1";
 
 				return server
 					.inject({
@@ -90,8 +93,8 @@ describe("PDF-to-TXT route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 1,
-				ocr: true,
+				lastPageToConvert: "1",
+				ocr: "true",
 			},
 			headers: {
 				accept: "application/json, text/plain",
@@ -115,8 +118,8 @@ describe("PDF-to-TXT route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				generateHtmlMetaFile: true,
-				lastPageToConvert: 1,
+				generateHtmlMetaFile: "true",
+				lastPageToConvert: "1",
 			},
 			headers: {
 				accept: "application/json, text/html",
@@ -137,7 +140,7 @@ describe("PDF-to-TXT route", () => {
 		await Promise.all(
 			queryStrings.map((queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 1;
+				query.lastPageToConvert = "1";
 
 				return server
 					.inject({
@@ -168,7 +171,7 @@ describe("PDF-to-TXT route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 1;
+				query.lastPageToConvert = "1";
 
 				return server
 					.inject({
@@ -202,7 +205,7 @@ describe("PDF-to-TXT route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 1;
+				query.lastPageToConvert = "1";
 
 				return server
 					.inject({
@@ -239,7 +242,7 @@ describe("PDF-to-TXT route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 1,
+				lastPageToConvert: "1",
 			},
 			headers: {
 				accept: "application/javascript",

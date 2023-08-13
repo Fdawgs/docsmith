@@ -14,6 +14,9 @@ const imageToTxt = require("../image-to-txt");
 
 describe("PDF-to-TXT conversion plugin", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {
@@ -67,8 +70,8 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				firstPageToConvert: 2,
-				lastPageToConvert: 2,
+				firstPageToConvert: "2",
+				lastPageToConvert: "2",
 				...query,
 			},
 			headers: {
@@ -87,12 +90,12 @@ describe("PDF-to-TXT conversion plugin", () => {
 	it.each([
 		{
 			testName: "Converts PDF file to TXT using OCR",
-			query: { ocr: true },
+			query: { ocr: "true" },
 		},
 		{
 			testName:
 				"Converts PDF file to TXT using OCR and ignore invalid `test` query string param ",
-			query: { ocr: true, test: "test" },
+			query: { ocr: "true", test: "test" },
 		},
 	])("$testName", async ({ query }) => {
 		const response = await server.inject({
@@ -102,8 +105,8 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				firstPageToConvert: 1,
-				lastPageToConvert: 2,
+				firstPageToConvert: "1",
+				lastPageToConvert: "2",
 				...query,
 			},
 			headers: {
@@ -137,9 +140,9 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				firstPageToConvert: 2,
-				generateHtmlMetaFile: true,
-				lastPageToConvert: 2,
+				firstPageToConvert: "2",
+				generateHtmlMetaFile: "true",
+				lastPageToConvert: "2",
 			},
 			headers: {
 				"content-type": "application/pdf",
@@ -160,14 +163,14 @@ describe("PDF-to-TXT conversion plugin", () => {
 			httpEquiv: expect.stringMatching(/^content-type$/iu),
 		});
 		expect(
-			dom.window.document.head.querySelector("title").textContent
+			dom.window.document.head.querySelector("title")?.textContent
 		).toMatch(/^docsmith_pdf-to-txt_/u);
 		// String found at the start of the HTML document
-		expect(dom.window.document.querySelector("pre").textContent).toMatch(
+		expect(dom.window.document.querySelector("pre")?.textContent).toMatch(
 			"The NHS belongs to the people"
 		);
 		// String found at the end of the HTML document
-		expect(dom.window.document.querySelector("pre").textContent).toMatch(
+		expect(dom.window.document.querySelector("pre")?.textContent).toMatch(
 			/a full and transparent debate with the public, patients and staff.$/mu
 		);
 		expect(response.statusCode).toBe(200);
@@ -184,8 +187,8 @@ describe("PDF-to-TXT conversion plugin", () => {
 			testName: "is not a valid PDF file for OCR",
 			read: true,
 			query: {
-				lastPageToConvert: 1,
-				ocr: true,
+				lastPageToConvert: "1",
+				ocr: "true",
 			},
 		},
 	])(
@@ -224,7 +227,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 			testName: "poppler.pdfToCairo() for OCR",
 			funcName: "pdfToCairo",
 			query: {
-				ocr: true,
+				ocr: "true",
 			},
 		},
 	])(
@@ -241,7 +244,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 					"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 				),
 				query: {
-					lastPageToConvert: 1,
+					lastPageToConvert: "1",
 					...query,
 				},
 				headers: {

@@ -17,15 +17,18 @@ const tidyHtml = require("../../../plugins/tidy-html");
 // Generates 64 different combinations
 const queryStrings = generateCombos([
 	{ backgroundColor: "white" },
-	{ firstPageToConvert: 1 },
+	{ firstPageToConvert: "1" },
 	{ fonts: "Arial" },
-	{ ignoreImages: true },
-	{ noDrm: true },
-	{ removeAlt: true },
+	{ ignoreImages: "true" },
+	{ noDrm: "true" },
+	{ removeAlt: "true" },
 ]);
 
 describe("PDF-to-HTML route", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {
@@ -52,7 +55,7 @@ describe("PDF-to-HTML route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 1;
+				query.lastPageToConvert = "1";
 
 				return server
 					.inject({
@@ -86,7 +89,7 @@ describe("PDF-to-HTML route", () => {
 		await Promise.all(
 			queryStrings.map((queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 1;
+				query.lastPageToConvert = "1";
 
 				return server
 					.inject({
@@ -117,7 +120,7 @@ describe("PDF-to-HTML route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 1;
+				query.lastPageToConvert = "1";
 
 				return server
 					.inject({
@@ -151,7 +154,7 @@ describe("PDF-to-HTML route", () => {
 		await Promise.all(
 			queryStrings.map(async (queryString) => {
 				const query = queryString;
-				query.lastPageToConvert = 1;
+				query.lastPageToConvert = "1";
 
 				return server
 					.inject({
@@ -188,7 +191,7 @@ describe("PDF-to-HTML route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: 1,
+				lastPageToConvert: "1",
 			},
 			headers: {
 				accept: "application/javascript",

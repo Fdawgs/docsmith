@@ -23,6 +23,9 @@ const queryStrings = generateCombos([
 
 describe("RTF-to-HTML route", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {

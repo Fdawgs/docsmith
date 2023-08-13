@@ -103,6 +103,9 @@ const expResHeaders5xxErrors = {
 describe("Server deployment", () => {
 	describe("Bearer token and OCR disabled", () => {
 		let config;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
 		let server;
 
 		beforeAll(async () => {
@@ -348,7 +351,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 1,
+						lastPageToConvert: "1",
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -370,7 +373,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 1,
+						lastPageToConvert: "1",
 					},
 					headers: {
 						accept: "application/javascript",
@@ -397,7 +400,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 1,
+						lastPageToConvert: "1",
 					},
 					headers: {
 						accept: "application/json, text/plain",
@@ -461,6 +464,9 @@ describe("Server deployment", () => {
 
 	describe("Bearer token and OCR enabled", () => {
 		let config;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
 		let server;
 
 		beforeAll(async () => {
@@ -562,7 +568,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 1,
+						lastPageToConvert: "1",
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -585,7 +591,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 1,
+						lastPageToConvert: "1",
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -609,7 +615,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 1,
+						lastPageToConvert: "1",
 					},
 					headers: {
 						accept: "application/javascript",
@@ -637,8 +643,8 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 1,
-						ocr: true,
+						lastPageToConvert: "1",
+						ocr: "true",
 					},
 					headers: {
 						accept: "application/json, text/plain",
@@ -661,8 +667,8 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 1,
-						ocr: true,
+						lastPageToConvert: "1",
+						ocr: "true",
 					},
 					headers: {
 						accept: "application/json, text/plain",
@@ -686,8 +692,8 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: 1,
-						ocr: true,
+						lastPageToConvert: "1",
+						ocr: "true",
 					},
 					headers: {
 						accept: "application/javascript",
@@ -709,8 +715,14 @@ describe("Server deployment", () => {
 
 	describe("CORS", () => {
 		let config;
-		let server;
+		/**
+		 * @type {{ [x: string]: any }}
+		 */
 		let currentEnv;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
+		let server;
 
 		beforeAll(() => {
 			Object.assign(process.env, {
@@ -729,7 +741,7 @@ describe("Server deployment", () => {
 				},
 				request: {
 					headers: {
-						origin: null,
+						origin: "",
 					},
 				},
 				expected: {
@@ -991,6 +1003,9 @@ describe("Server deployment", () => {
 
 	describe("API documentation", () => {
 		let config;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
 		let server;
 
 		beforeAll(async () => {
@@ -1008,6 +1023,7 @@ describe("Server deployment", () => {
 
 			// Turn off logging for test runs
 			config.fastifyInit.logger = undefined;
+			// @ts-ignore
 			server = Fastify({ ...config.fastifyInit, pluginTimeout: 0 });
 			await server.register(startServer, config).listen(config.fastify);
 		});
@@ -1089,6 +1105,9 @@ describe("Server deployment", () => {
 
 	describe("Error handling", () => {
 		let config;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
 		let server;
 
 		beforeAll(async () => {

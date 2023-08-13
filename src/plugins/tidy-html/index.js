@@ -3,6 +3,7 @@
 const { promisify } = require("util");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
+// @ts-ignore
 const { minify } = require("html-minifier-terser");
 const { tidy } = require("htmltidy2");
 const { check } = require("language-tags");

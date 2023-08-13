@@ -21,6 +21,9 @@ const artifacts =
 
 describe("RTF-to-HTML conversion plugin", () => {
 	let config;
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(async () => {
@@ -76,7 +79,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 			httpEquiv: expect.stringMatching(/^content-type$/iu),
 		});
 		expect(
-			dom.window.document.head.querySelector("title").textContent
+			dom.window.document.head.querySelector("title")?.textContent
 		).toMatch(/^docsmith_rtf-to-html_/u);
 		// Check all images are removed
 		expect(dom.window.document.querySelectorAll("img")).toHaveLength(0);
