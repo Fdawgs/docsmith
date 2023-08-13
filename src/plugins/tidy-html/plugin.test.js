@@ -2,7 +2,6 @@
 
 const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
-const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");
@@ -60,7 +59,7 @@ describe("Tidy-HTML plugin", () => {
 
 		const dom = new JSDOM(response.body);
 
-		expect(isHtml(response.body)).toBe(true);
+		expect(response.body).toMatchSnapshot();
 		// Check language is set to default or options.language
 		expect(
 			dom.window.document.querySelector("html").getAttribute("lang")

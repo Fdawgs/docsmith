@@ -2,7 +2,6 @@
 
 const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
-const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
 const plugin = require(".");
 const getConfig = require("../../config");
@@ -51,7 +50,7 @@ describe("Embed-HTML-Images plugin", () => {
 
 		const dom = new JSDOM(response.body);
 
-		expect(isHtml(response.body)).toBe(true);
+		expect(response.body).toMatchSnapshot();
 		dom.window.document.querySelectorAll("img").forEach((image) => {
 			expect(image.src).toMatch(/^data:image\/(?:jpe?g|png);base64/iu);
 		});

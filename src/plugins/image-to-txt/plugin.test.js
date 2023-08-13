@@ -4,7 +4,6 @@
 
 const { readFile } = require("fs/promises");
 const Fastify = require("fastify");
-const isHtml = require("is-html");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -55,8 +54,7 @@ describe("Image-to-TXT conversion plugin", () => {
 			},
 		});
 
-		expect(response.body).toMatch("Super Test Hospital");
-		expect(isHtml(response.body)).toBe(false);
+		expect(response.body).toMatchSnapshot();
 		expect(response.statusCode).toBe(200);
 	});
 });
