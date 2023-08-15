@@ -21,6 +21,7 @@ const sharedSchemas = require("./plugins/shared-schemas");
 
 // Import local decorator plugins
 const embedHtmlImages = require("./plugins/embed-html-images");
+const htmlToTxt = require("./plugins/html-to-txt");
 const imageToTxt = require("./plugins/image-to-txt");
 const tidyCss = require("./plugins/tidy-css");
 const tidyHtml = require("./plugins/tidy-html");
@@ -72,6 +73,7 @@ async function plugin(server, config) {
 
 		// HTML and CSS parsing plugins used in routes
 		.register(embedHtmlImages, config.poppler)
+		.register(htmlToTxt)
 		.register(tidyCss)
 		.register(tidyHtml);
 

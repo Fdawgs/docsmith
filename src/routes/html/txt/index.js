@@ -4,7 +4,6 @@ const isHtml = require("is-html");
 
 // Import plugins
 const cors = require("@fastify/cors");
-const htmlToTxt = require("../../../plugins/html-to-txt");
 
 const { htmlToTxtPostSchema } = require("./schema");
 
@@ -52,8 +51,7 @@ async function route(server, options) {
 		.register(cors, {
 			...options.cors,
 			methods: ["POST"],
-		})
-		.register(htmlToTxt);
+		});
 
 	server.route({
 		method: "POST",
@@ -68,7 +66,9 @@ async function route(server, options) {
 			}
 		},
 		handler: (req, res) => {
-			res.send(req.conversionResults.body);
+			res.type("text/plain; charset=utf-8").send(
+				server.htmlToTxt(req.body)
+			);
 		},
 	});
 }

@@ -6,9 +6,8 @@ const isHtml = require("is-html");
 
 /**
  * @author Frazer Smith
- * @description Pre-handler plugin that uses html-to-text to convert string containing
- * HTML file in `req.body` to TXT.
- * `req` object is decorated with `conversionResults.body` holding the converted document.
+ * @description Decorator plugin that adds function that uses html-to-text
+ * to convert HTML to TXT.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
@@ -26,32 +25,27 @@ async function plugin(server) {
 		wordwrap: null,
 	};
 
-	server
-		.decorateRequest("conversionResults", null)
-		.addHook("onRequest", async (req) => {
-			req.conversionResults = { body: undefined };
-		});
-
-	server.addHook("preHandler", async (req, res) => {
+	/**
+	 * @param {string} html - Valid HTML.
+	 * @returns {string} HTML converted to TXT.
+	 */
+	function htmlToTxt(html) {
 		/**
 		 * `htmlToText` function still attempts to parse empty bodies/input or invalid HTML
 		 * and produces results, so catch them here
 		 */
-		if (
-			req.body === undefined ||
-			Object.keys(req.body).length === 0 ||
-			!isHtml(req.body)
-		) {
+		if (html === undefined || !isHtml(html)) {
 			throw server.httpErrors.badRequest();
 		}
 
-		req.conversionResults.body = htmlToText(req.body, htmlToTextConfig);
-		res.type("text/plain; charset=utf-8");
-	});
+		return htmlToText(html, htmlToTextConfig).trim();
+	}
+
+	server.decorate("htmlToTxt", htmlToTxt);
 }
 
 module.exports = fp(plugin, {
 	fastify: "4.x",
-	name: "htmlToTxt",
+	name: "html-to-txt",
 	dependencies: ["@fastify/sensible"],
 });

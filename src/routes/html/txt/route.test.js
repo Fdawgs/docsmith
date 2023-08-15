@@ -3,11 +3,12 @@
 const { readFile } = require("fs/promises");
 const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
-const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
 const route = require(".");
 const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
+
+const htmlToTxt = require("../../../plugins/html-to-txt");
 
 describe("HTML-to-TXT route", () => {
 	let config;
@@ -23,6 +24,7 @@ describe("HTML-to-TXT route", () => {
 		await server
 			.register(accepts)
 			.register(sensible)
+			.register(htmlToTxt)
 			.register(sharedSchemas)
 			.register(route, config)
 			.ready();
@@ -43,10 +45,7 @@ describe("HTML-to-TXT route", () => {
 			},
 		});
 
-		expect(response.body).toMatch(
-			"Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, fermentum dui."
-		);
-		expect(isHtml(response.body)).toBe(false);
+		expect(response.body).toMatchSnapshot();
 		expect(response.headers).toMatchObject({
 			"content-type": "text/plain; charset=utf-8",
 		});
