@@ -6,7 +6,8 @@ const isHtml = require("is-html");
 
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds function that converts HTML to TXT.
+ * @description Decorator plugin that adds function that uses html-to-text
+ * to convert HTML to TXT.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
@@ -37,7 +38,7 @@ async function plugin(server) {
 			throw server.httpErrors.badRequest();
 		}
 
-		return htmlToText(html, htmlToTextConfig);
+		return htmlToText(html, htmlToTextConfig).trim();
 	}
 
 	server.decorate("htmlToTxt", htmlToTxt);
