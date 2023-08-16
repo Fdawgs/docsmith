@@ -169,18 +169,24 @@ async function getConfig() {
 				 */
 				redact: ["req.body", "req.headers.authorization", "res.body"],
 				serializers: {
+					/**
+					 * @param {import("http").IncomingMessage} req - Request message.
+					 * @returns {import("pino").SerializedRequest} Serialized request.
+					 */
 					/* istanbul ignore next: pino functions not explicitly tested */
 					req(req) {
 						return stdSerializers.req(req);
 					},
+					/**
+					 * @param {import("http").ServerResponse<import("http").IncomingMessage>} res - Response message.
+					 * @returns {import("pino").SerializedResponse} Serialized response.
+					 */
 					/* istanbul ignore next: pino functions not explicitly tested */
 					res(res) {
-						/**
-						 * Required for the statusCode to be logged:
-						 * https://github.com/pinojs/pino-std-serializers/blob/901dae44c2b71497cdb0f76f6b5af62588107e3e/lib/res.js#L37
-						 */
-						res.headersSent = true;
-						return stdSerializers.res(res);
+						return {
+							...stdSerializers.res(res),
+							statusCode: res.statusCode,
+						};
 					},
 				},
 				timestamp: () => stdTimeFunctions.isoTime(),
