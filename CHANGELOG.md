@@ -2,6 +2,72 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.0.2](https://github.com/Fdawgs/docsmith/compare/v11.0.1...v11.0.2) (2023-08-16)
+
+
+### Bug fixes
+
+* **config:** stop crash when logs written async ([#1626](https://github.com/Fdawgs/docsmith/issues/1626)) ([dbb11d6](https://github.com/Fdawgs/docsmith/commit/dbb11d60ed135bf3440991287c5e564b25ec20cb))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.6.7 to 17.7.1 ([#1623](https://github.com/Fdawgs/docsmith/issues/1623)) ([b5157f9](https://github.com/Fdawgs/docsmith/commit/b5157f974f399ce0edc7587d1e3d9ef69c5dd5be))
+* **deps-dev:** bump @commitlint/config-conventional ([#1621](https://github.com/Fdawgs/docsmith/issues/1621)) ([0ccd2ad](https://github.com/Fdawgs/docsmith/commit/0ccd2adbcded9a37d54e0a71b96bd5f5dc3a74e7))
+* **deps-dev:** bump autocannon from 7.11.0 to 7.12.0 ([#1610](https://github.com/Fdawgs/docsmith/issues/1610)) ([019e857](https://github.com/Fdawgs/docsmith/commit/019e85757fc60a4d9d76f90d910ae2d0e1708f25))
+* **deps-dev:** bump esbuild from 0.18.14 to 0.19.2 ([c605d0e](https://github.com/Fdawgs/docsmith/commit/c605d0ecb3f1c57acfa0d3914d261126181ce15d))
+* **deps-dev:** bump eslint from 8.45.0 to 8.46.0 ([#1602](https://github.com/Fdawgs/docsmith/issues/1602)) ([59f8a84](https://github.com/Fdawgs/docsmith/commit/59f8a845374b66d629e1534e82c3638147de63f3))
+* **deps-dev:** bump eslint from 8.46.0 to 8.47.0 ([#1620](https://github.com/Fdawgs/docsmith/issues/1620)) ([1114731](https://github.com/Fdawgs/docsmith/commit/11147310f97de6f6462340960cf21c40fb24f057))
+* **deps-dev:** bump eslint-config-prettier from 8.10.0 to 9.0.0 ([#1619](https://github.com/Fdawgs/docsmith/issues/1619)) ([90861cb](https://github.com/Fdawgs/docsmith/commit/90861cb54b17e0f8a14a516f9b5f8ea87ba0795b))
+* **deps-dev:** bump eslint-config-prettier from 8.8.0 to 8.9.0 ([#1604](https://github.com/Fdawgs/docsmith/issues/1604)) ([820d05e](https://github.com/Fdawgs/docsmith/commit/820d05e2fe8c6f28c53c6f5d86ec46ec78534019))
+* **deps-dev:** bump eslint-config-prettier from 8.9.0 to 8.10.0 ([#1613](https://github.com/Fdawgs/docsmith/issues/1613)) ([9b6e1b9](https://github.com/Fdawgs/docsmith/commit/9b6e1b98b176dff2d939a1fcbda8e90354957023))
+* **deps-dev:** bump eslint-plugin-import from 2.27.5 to 2.28.0 ([#1600](https://github.com/Fdawgs/docsmith/issues/1600)) ([aa9e890](https://github.com/Fdawgs/docsmith/commit/aa9e890021a78acdab6ade6dc529f87b2042e9cd))
+* **deps-dev:** bump eslint-plugin-jsdoc from 46.4.4 to 46.4.5 ([#1598](https://github.com/Fdawgs/docsmith/issues/1598)) ([e5e52c8](https://github.com/Fdawgs/docsmith/commit/e5e52c8325eb369f86c34f42bfe88ef0349f6a98))
+* **deps-dev:** bump eslint-plugin-jsdoc from 46.4.5 to 46.4.6 ([#1622](https://github.com/Fdawgs/docsmith/issues/1622)) ([59d5fe0](https://github.com/Fdawgs/docsmith/commit/59d5fe088d0cfe8e7e8a42d7d9aa96d5cbc6b577))
+* **deps-dev:** bump jest from 29.6.1 to 29.6.2 ([#1607](https://github.com/Fdawgs/docsmith/issues/1607)) ([ff71712](https://github.com/Fdawgs/docsmith/commit/ff717123c866fdd74d860d768096321f4e0eb2ea))
+* **deps-dev:** bump playwright from 1.36.1 to 1.36.2 ([#1599](https://github.com/Fdawgs/docsmith/issues/1599)) ([113c33a](https://github.com/Fdawgs/docsmith/commit/113c33a83bde48b36e2f6d62488435ea02244a1b))
+* **deps-dev:** bump playwright from 1.36.2 to 1.37.0 ([#1624](https://github.com/Fdawgs/docsmith/issues/1624)) ([67afcb3](https://github.com/Fdawgs/docsmith/commit/67afcb3a5dc1566e4c20ee6e1a7631a676c47865))
+* **deps-dev:** bump prettier from 3.0.0 to 3.0.1 ([#1611](https://github.com/Fdawgs/docsmith/issues/1611)) ([c3cd8bf](https://github.com/Fdawgs/docsmith/commit/c3cd8bf80f1f94e370c97b215722db09c89ef5db))
+* **deps-dev:** bump prettier from 3.0.1 to 3.0.2 ([#1630](https://github.com/Fdawgs/docsmith/issues/1630)) ([99fc687](https://github.com/Fdawgs/docsmith/commit/99fc687608bd00ff589d7409f014c0d1cef48845))
+* **deps-dev:** install lockfile-lint locally ([#1609](https://github.com/Fdawgs/docsmith/issues/1609)) ([5788d90](https://github.com/Fdawgs/docsmith/commit/5788d90d7bf39a1746be2b7b8a36dbb09c0381d5))
+* **deps:** bump fastify from 4.20.0 to 4.21.0 ([#1605](https://github.com/Fdawgs/docsmith/issues/1605)) ([c93c539](https://github.com/Fdawgs/docsmith/commit/c93c539122b987f30b1acaec2b1ba6d4b56ccc02))
+* **deps:** bump fastify-disablecache from 3.1.4 to 3.1.5 ([#1632](https://github.com/Fdawgs/docsmith/issues/1632)) ([59e8f3c](https://github.com/Fdawgs/docsmith/commit/59e8f3cfb6021a37613e75b1b1c3b4e12f54cb97))
+* **deps:** bump fastify-floc-off from 2.1.4 to 2.1.5 ([#1628](https://github.com/Fdawgs/docsmith/issues/1628)) ([1268872](https://github.com/Fdawgs/docsmith/commit/1268872725932c9acd5f3e3ba6c9b3a33c28f57b))
+* **deps:** bump fastify-json-to-xml from 1.1.5 to 1.1.6 ([#1629](https://github.com/Fdawgs/docsmith/issues/1629)) ([6dced84](https://github.com/Fdawgs/docsmith/commit/6dced84ac5ed358c83177192daddffc7ea6ecca0))
+* **deps:** bump fluent-json-schema from 4.1.0 to 4.1.1 ([#1601](https://github.com/Fdawgs/docsmith/issues/1601)) ([c10c5c3](https://github.com/Fdawgs/docsmith/commit/c10c5c394eae65539a302f7ae589ea0d90f68406))
+* **deps:** bump node-poppler from 6.2.6 to 6.2.7 ([#1631](https://github.com/Fdawgs/docsmith/issues/1631)) ([49054f3](https://github.com/Fdawgs/docsmith/commit/49054f32bc8f002c3768c7326bf924306ad06584))
+* **deps:** bump node-unrtf from 3.1.6 to 3.1.7 ([#1627](https://github.com/Fdawgs/docsmith/issues/1627)) ([9d5a2a5](https://github.com/Fdawgs/docsmith/commit/9d5a2a591d092553ee0c5de763658d2dfd2794ca))
+* **deps:** bump pino from 8.14.1 to 8.14.2 ([#1606](https://github.com/Fdawgs/docsmith/issues/1606)) ([9c02268](https://github.com/Fdawgs/docsmith/commit/9c02268c0072321254965e719a710ee2f58bbca5))
+* **deps:** bump pino from 8.14.2 to 8.15.0 ([#1612](https://github.com/Fdawgs/docsmith/issues/1612)) ([2624197](https://github.com/Fdawgs/docsmith/commit/26241976235f0bb025f8f10bcee98facc3e3bf2e))
+* **deps:** bump transistive dependencies ([ac8f3c2](https://github.com/Fdawgs/docsmith/commit/ac8f3c27d856294395d4088c10481ee2246b5842))
+
+
+### Miscellaneous
+
+* **.eslintrc:** error on google closure jsdoc syntax ([8cda084](https://github.com/Fdawgs/docsmith/commit/8cda0843868491ae15325882ae30369daf1ffd31))
+* add jsconfig; type check js ([#1618](https://github.com/Fdawgs/docsmith/issues/1618)) ([c0199d7](https://github.com/Fdawgs/docsmith/commit/c0199d72471e41b610c0c2633c672c26c380ea64))
+* **config:** sort param types alphabetically ([05bff9b](https://github.com/Fdawgs/docsmith/commit/05bff9b4f9e832d872557022cdd9f546baba8b7b))
+* **jsconfig:** add comment re commenting ([a23bff7](https://github.com/Fdawgs/docsmith/commit/a23bff779a56ba8cb8ec578bed3e939e0b145158))
+* **jsconfig:** add target ([e05ab46](https://github.com/Fdawgs/docsmith/commit/e05ab462bdc369f061002deaf5c9c57bdff1bfd0))
+* **scripts/license-checker:** use `console.error()` to log failures ([e8dc1ca](https://github.com/Fdawgs/docsmith/commit/e8dc1caca6bf57ec0bab58557a7027266164b55f))
+* **server:** update inline comment re plugin function ([4708bd8](https://github.com/Fdawgs/docsmith/commit/4708bd8c03d0dc330d1583f64edd862954ff9afa))
+* sort import order ([20046ad](https://github.com/Fdawgs/docsmith/commit/20046adaf10328110b2711066b91477598a524c1))
+* **test-resources:** use dash over camelcase for naming files ([e733869](https://github.com/Fdawgs/docsmith/commit/e7338699c701ae213bf009d66c8ecef399694c4e))
+* use jsdoc syntax for arrays over interfaces ([03c557e](https://github.com/Fdawgs/docsmith/commit/03c557e32a95d9ccc6063fd344d1bc135f4e23c4))
+* use jsdoc syntax for opt params over google closure syntax ([171c152](https://github.com/Fdawgs/docsmith/commit/171c152821e627ae707a5fa128cb4c3a7918af51))
+
+
+### Continuous integration
+
+* **ci:** error on new jest snapshot ([#1616](https://github.com/Fdawgs/docsmith/issues/1616)) ([365e2d1](https://github.com/Fdawgs/docsmith/commit/365e2d1892ebfa7ea1d56ea93193a27962f4e7e2))
+
+
+### Improvements
+
+* destruct imports ([cdb610b](https://github.com/Fdawgs/docsmith/commit/cdb610bde9f0b64269d7a52b5ad64ebcc96c266c))
+* **plugins/html-to-txt:** change to decorator plugin to be reusable ([cb2fdac](https://github.com/Fdawgs/docsmith/commit/cb2fdacd075775d2a473ef8d010c2999a1ee1714))
+* **routes/rtf/txt:** use html-to-txt plugin; remove dupe code ([ee7b268](https://github.com/Fdawgs/docsmith/commit/ee7b268dbd166401f5073e727dc61f43001e375d))
+
 ## [11.0.1](https://github.com/Fdawgs/docsmith/compare/v11.0.0...v11.0.1) (2023-07-19)
 
 
