@@ -120,7 +120,7 @@
 		"fastify": "^4.21.0",
 		"fastify-disablecache": "^3.1.4",
 		"fastify-floc-off": "^2.1.4",
-		"fastify-json-to-xml": "^1.1.5",
+		"fastify-json-to-xml": "^1.1.6",
 		"fastify-plugin": "^4.5.1",
 		"file-stream-rotator": "^1.0.0",
 		"file-type": "^16.5.4",
