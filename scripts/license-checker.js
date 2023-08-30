@@ -3,7 +3,7 @@
 
 "use strict";
 
-const { promisify } = require("util");
+const { promisify } = require("node:util");
 const { init } = require("license-checker");
 const copyLeftLicenses = require("spdx-copyleft");
 const path = require("upath");

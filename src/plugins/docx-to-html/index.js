@@ -1,6 +1,6 @@
 "use strict";
 
-const { randomUUID } = require("crypto");
+const { randomUUID } = require("node:crypto");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");

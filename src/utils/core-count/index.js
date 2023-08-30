@@ -1,7 +1,7 @@
 "use strict";
 
-const { execSync } = require("child_process");
-const { cpus, EOL, platform } = require("os");
+const { execSync } = require("node:child_process");
+const { cpus, EOL, platform } = require("node:os");
 
 /**
  * @author Frazer Smith

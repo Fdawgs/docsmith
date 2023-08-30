@@ -2,7 +2,7 @@
 
 require("dotenv").config();
 
-const { readFile } = require("fs/promises");
+const { readFile } = require("node:fs/promises");
 const envSchema = require("env-schema");
 const { getStream } = require("file-stream-rotator");
 const S = require("fluent-json-schema").default;

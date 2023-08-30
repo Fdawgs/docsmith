@@ -2,7 +2,7 @@
 
 "use strict";
 
-const { readFile } = require("fs/promises");
+const { readFile } = require("node:fs/promises");
 const Fastify = require("fastify");
 const plugin = require(".");
 const getConfig = require("../../config");

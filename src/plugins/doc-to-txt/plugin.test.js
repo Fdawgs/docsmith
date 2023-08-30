@@ -1,6 +1,6 @@
 "use strict";
 
-const { readFile } = require("fs/promises");
+const { readFile } = require("node:fs/promises");
 const Fastify = require("fastify");
 const sensible = require("@fastify/sensible");
 const plugin = require(".");

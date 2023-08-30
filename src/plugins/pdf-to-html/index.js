@@ -2,8 +2,8 @@
 
 "use strict";
 
-const { randomUUID } = require("crypto");
-const { mkdir, readFile, unlink } = require("fs/promises");
+const { randomUUID } = require("node:crypto");
+const { mkdir, readFile, unlink } = require("node:fs/promises");
 const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const { glob } = require("glob");

@@ -1,6 +1,6 @@
 "use strict";
 
-const { readFile } = require("fs/promises");
+const { readFile } = require("node:fs/promises");
 const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const isHtml = require("is-html");

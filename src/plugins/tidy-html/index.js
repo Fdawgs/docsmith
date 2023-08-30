@@ -1,6 +1,6 @@
 "use strict";
 
-const { promisify } = require("util");
+const { promisify } = require("node:util");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 // @ts-ignore
