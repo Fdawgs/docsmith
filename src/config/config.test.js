@@ -1,6 +1,6 @@
 "use strict";
 
-const { unlink } = require("fs/promises");
+const { unlink } = require("node:fs/promises");
 const { glob } = require("glob");
 const path = require("upath");
 const getConfig = require(".");

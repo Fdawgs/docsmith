@@ -2,7 +2,7 @@
 
 "use strict";
 
-const { readFile } = require("fs/promises");
+const { readFile } = require("node:fs/promises");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 const path = require("upath");

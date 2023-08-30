@@ -2,7 +2,7 @@
 
 "use strict";
 
-const { readFile, readdir, rm } = require("fs/promises");
+const { readFile, readdir, rm } = require("node:fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
