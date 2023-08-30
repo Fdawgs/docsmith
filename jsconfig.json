@@ -4,7 +4,8 @@
 		// "checkJs": true,
 		// "strict": true,
 		"lib": ["ES2022"],
-		"moduleResolution": "nodenext",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
 		"target": "ES2022"
 	},
