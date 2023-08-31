@@ -138,7 +138,7 @@
 		"node-poppler": "^6.2.7",
 		"node-unrtf": "^3.1.7",
 		"pino": "^8.15.0",
-		"redoc": "^2.0.0",
+		"redoc": "^2.1.1",
 		"secure-json-parse": "^2.7.0",
 		"tesseract.js": "^4.1.1",
 		"upath": "^2.0.1",
