@@ -23,7 +23,6 @@ async function plugin(server) {
 	 * - clean (replace legacy HTML tags)
 	 * - dropProprietaryAttributes (remove proprietary attributes, such as Microsoft data binding attributes)
 	 * - escapeCdata (convert <![CDATA[]]> sections to normal text)
-	 * - sortAttributes (sort attributes in element in ascending alphabetic sort)
 	 * @see {@link https://api.html-tidy.org/tidy/tidylib_api_5.8.0/tidy_quickref.html | HTMLTidy2 options}
 	 */
 	const htmlTidyConfig = {
