@@ -64,13 +64,12 @@
 			"SUPPRESS_SUPPORT": 1
 		},
 		"ignore": [
-			"src/temp",
-			"test_resources"
+			"src/temp"
 		],
 		"verbose": true,
 		"watch": [
 			".env",
-			"src"
+			"src/**/!(*.test).*"
 		]
 	},
 	"devDependencies": {

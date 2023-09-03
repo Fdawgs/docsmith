@@ -5,11 +5,10 @@ const S = require("fluent-json-schema").default;
 const tags = ["System administration"];
 
 /**
- * Fastify uses AJV for JSON Schema Validation,
- * see https://fastify.io/docs/latest/Reference/Validation-and-Serialization/
- *
+ * Fastify uses AJV for JSON Schema Validation.
  * Input validation protects against XSS, HPP, prototype pollution,
- * and most other injection attacks
+ * and most other injection attacks.
+ * @see {@link https://fastify.io/docs/latest/Reference/Validation-and-Serialization | Fastify Validation and Serialization}
  */
 const healthcheckGetSchema = {
 	tags,

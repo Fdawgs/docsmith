@@ -21,7 +21,10 @@
 	</head>
 	<body>
 		<script>
-			// Redoc no longer supports IE, see https://github.com/Redocly/redoc/issues/1936
+			/**
+			 * @description Detect IE and display message if detected.
+			 * @see {@link https://github.com/Redocly/redoc/issues/1936 | Redoc Issue #1936}
+			 */
 			if (window.document.documentMode) {
 				var p = document.createElement("p");
 				p.innerHTML =

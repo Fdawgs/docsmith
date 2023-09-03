@@ -5,6 +5,8 @@
 
 const { promisify } = require("node:util");
 const { init } = require("license-checker");
+/** @type {string[]} */
+// @ts-ignore: module is a JSON file
 const copyLeftLicenses = require("spdx-copyleft");
 const path = require("upath");
 
@@ -20,7 +22,7 @@ async function checkLicenses() {
 
 	/**
 	 * List of deprecated copyleft license identifiers
-	 * @see https://spdx.org/licenses/
+	 * @see {@link https://spdx.org/licenses/ | SPDX License List}
 	 */
 	const deprecatedLicenseList = [
 		"AGPL-1.0",

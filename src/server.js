@@ -53,7 +53,10 @@ async function plugin(server, config) {
 		// Opt-out of Google's Topics advertising-surveillance API
 		.register(flocOff)
 
-		// Use Helmet to set response security headers: https://helmetjs.github.io/
+		/**
+		 * Use Helmet to set response security headers.
+		 * @see {@link https://helmetjs.github.io | Helmet}
+		 */
 		.register(helmet, config.helmet)
 
 		// Utility functions and error handlers
@@ -116,7 +119,7 @@ async function plugin(server, config) {
 		/**
 		 * Encapsulate plugins and routes into a secured child context, so that admin and
 		 * docs routes do not inherit the bearer token auth plugin.
-		 * See https://fastify.io/docs/latest/Reference/Encapsulation/ for more info
+		 * @see {@link https://fastify.io/docs/latest/Reference/Encapsulation | Fastify Encapsulation}
 		 */
 		.register(async (securedContext) => {
 			if (config.bearerTokenAuthKeys) {

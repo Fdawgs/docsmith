@@ -7,7 +7,7 @@ const { cpus, EOL, platform } = require("node:os");
  * @author Frazer Smith
  * @description Count number of physical CPU cores a system has,
  * taking into account Intel Hyper-Threading.
- * @see https://github.com/nodejs/node/issues/7730
+ * @see {@link https://github.com/nodejs/node/issues/7730 | Node.js Issue #7730}
  * @returns {number} Number of physical cores the system has.
  */
 function coreCount() {

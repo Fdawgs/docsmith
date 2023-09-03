@@ -29,10 +29,12 @@ async function plugin(server) {
 			const { value } = await convertToHtml(req.body);
 
 			/**
-			 * Mammoth does not wrap the results inside <html> and <body> tags itself.
+			 * Mammoth does not wrap the results inside <html> and <body> tags itself, so
+			 * do that here.
+			 *
 			 * `fixUtf8` function replaces most common incorrectly converted
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
-			 * Refer to https://i18nqa.com/debug/utf8-debug.html for more info
+			 * @see {@link https://i18nqa.com/debug/utf8-debug.html | UTF-8 Encoding Debugging Chart}
 			 */
 			req.conversionResults.body = new JSDOM(
 				`<!DOCTYPE html>
