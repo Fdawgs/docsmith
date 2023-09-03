@@ -12,7 +12,7 @@ async function plugin(server) {
 	/**
 	 * NOTE: `.definition()` definitions have been replaced with `.prop()` properties, and
 	 * `.id()` ids removed due to definitions breaking in v4.12.1 of fastify-swagger.
-	 * See https://github.com/fastify/fastify-swagger/issues/524
+	 * @see {@link https://github.com/fastify/fastify-swagger/issues/524 | fastify-swagger Issue #524}
 	 */
 
 	// Response schemas

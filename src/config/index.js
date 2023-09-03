@@ -153,8 +153,8 @@ async function getConfig() {
 			// The maximum payload, in bytes, the server is allowed to accept
 			bodyLimit: env.REQ_BODY_MAX_BYTES || 10485760,
 			/**
-			 * See https://fastify.io/docs/latest/Reference/Logging/
-			 * and https://getpino.io/#/docs/api for logger options
+			 * @see {@link https://fastify.io/docs/latest/Reference/Logging | Fastify logging}
+			 * @see {@link https://getpino.io/#/docs/api | Pino API}
 			 */
 			logger: {
 				formatters: {
@@ -330,17 +330,16 @@ async function getConfig() {
 				],
 			},
 		},
+		/**
+		 * The following options have been turned on:
+		 * - bare (remove Microsoft specific HTML and replace `&nbsp;` with spaces)
+		 * - clean (replace legacy HTML tags)
+		 * - dropProprietaryAttributes (remove proprietary attributes, such as Microsoft data binding attributes)
+		 * - escapeCdata (convert <![CDATA[]]> sections to normal text)
+		 * - sortAttributes (sort attributes in element in ascending alphabetic sort)
+		 * @see {@link https://api.html-tidy.org/tidy/tidylib_api_5.8.0/tidy_quickref.html | HTMLTidy2 options}
+		 */
 		htmltidy: {
-			/**
-			 * Refer to http://api.html-tidy.org/tidy/tidylib_api_5.6.0/tidy_quickref.html for tidy options
-			 *
-			 * The following options have been turned on:
-			 * - bare (remove Microsoft specific HTML and replace `&nbsp;` with spaces)
-			 * - clean (replace legacy HTML tags)
-			 * - dropProprietaryAttributes (remove proprietary attributes, such as Microsoft data binding attributes)
-			 * - escapeCdata (convert <![CDATA[]]> sections to normal text)
-			 * - sortAttributes (sort attributes in element in ascending alphabetic sort)
-			 */
 			bare: true,
 			clean: true,
 			dropProprietaryAttributes: true,
@@ -415,7 +414,9 @@ async function getConfig() {
 	if (env.LOG_ROTATION_FILENAME) {
 		const logFile = path.normalizeTrim(env.LOG_ROTATION_FILENAME);
 
-		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
+		/**
+		 * @see {@link https://github.com/rogerc/file-stream-rotator/#options | File stream rotator options}
+		 */
 		config.fastifyInit.logger.stream = getStream({
 			audit_file: path.joinSafe(path.dirname(logFile), ".audit.json"),
 			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
