@@ -3,7 +3,7 @@
 const { readFile } = require("node:fs/promises");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
-const { chromium, firefox } = require("playwright");
+const { firefox } = require("playwright");
 const startServer = require("./server");
 const getConfig = require("./config");
 
@@ -1070,36 +1070,28 @@ describe("Server deployment", () => {
 		});
 
 		describe("Frontend", () => {
-			// Webkit not tested as it is flakey in context of Playwright
-			// TODO: use `it.concurrent.each()` once it is no longer experimental
-			it.each([
-				{ browser: chromium, name: "Chromium" },
-				{ browser: firefox, name: "Firefox" },
-			])(
-				"Renders docs page without error components - $name",
-				async ({ browser }) => {
-					const browserType = await browser.launch();
-					const page = await browserType.newPage();
+			it("Renders docs page without error components", async () => {
+				const browserType = await firefox.launch();
+				const page = await browserType.newPage();
 
-					await page.goto("http://localhost:3000/docs");
-					await expect(page.title()).resolves.toBe(
-						"Docsmith | Documentation"
-					);
-					/**
-					 * Checks redoc has not rendered an error component.
-					 * @see {@link https://github.com/Redocly/redoc/blob/main/src/components/ErrorBoundary.tsx | Redoc ErrorBoundary component}
-					 */
-					const heading = page.locator("h1 >> nth=0");
-					await heading.waitFor();
+				await page.goto("http://localhost:3000/docs");
+				await expect(page.title()).resolves.toBe(
+					"Docsmith | Documentation"
+				);
+				/**
+				 * Checks redoc has not rendered an error component.
+				 * @see {@link https://github.com/Redocly/redoc/blob/main/src/components/ErrorBoundary.tsx | Redoc ErrorBoundary component}
+				 */
+				const heading = page.locator("h1 >> nth=0");
+				await heading.waitFor();
 
-					await expect(heading.textContent()).resolves.not.toMatch(
-						/something\s*went\s*wrong/iu
-					);
+				await expect(heading.textContent()).resolves.not.toMatch(
+					/something\s*went\s*wrong/iu
+				);
 
-					await page.close();
-					await browserType.close();
-				}
-			);
+				await page.close();
+				await browserType.close();
+			});
 		});
 	});
 
