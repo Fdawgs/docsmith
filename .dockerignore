@@ -131,6 +131,7 @@ scripts/
 src/
 .env.template
 .eslintrc.js
+.gitattributes
 .gitignore
 .jest.snapshot-resolver.js
 .pm2.config.js
