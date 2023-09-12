@@ -2,12 +2,12 @@
 
 const { unlink } = require("node:fs/promises");
 const { glob } = require("glob");
-const path = require("upath");
+const { joinSafe } = require("upath");
 const getConfig = require(".");
 
 describe("Configuration", () => {
 	const currentEnv = { ...process.env, NODE_ENV: "development" };
-	const tempDir = path.joinSafe(__dirname, "../temp");
+	const tempDir = joinSafe(__dirname, "../temp");
 
 	afterEach(() => {
 		// Reset the process.env to default after each test

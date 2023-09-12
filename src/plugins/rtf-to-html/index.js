@@ -8,7 +8,7 @@ const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const { glob } = require("glob");
 const { JSDOM } = require("jsdom");
-const path = require("upath");
+const { joinSafe, normalizeTrim } = require("upath");
 const { UnRTF } = require("node-unrtf");
 
 /**
@@ -29,7 +29,7 @@ const { UnRTF } = require("node-unrtf");
  * Defaults to `docsmith_rtf-to-html`.
  */
 async function plugin(server, options) {
-	const directory = path.normalizeTrim(options.tempDir);
+	const directory = normalizeTrim(options.tempDir);
 	const unrtf = new UnRTF(options.binPath);
 
 	// Create temp directory if missing
@@ -49,7 +49,7 @@ async function plugin(server, options) {
 		if (req.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = await glob(
-				`${path.joinSafe(
+				`${joinSafe(
 					req.conversionResults.docLocation.directory,
 					req.conversionResults.docLocation.id
 				)}*`
@@ -95,7 +95,7 @@ async function plugin(server, options) {
 
 		// Build temp RTF file for UnRTF to read from
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
-		const tempFile = path.joinSafe(directory, `${id}.rtf`);
+		const tempFile = joinSafe(directory, `${id}.rtf`);
 		// 0600 permissions (read/write for owner only)
 		await writeFile(tempFile, req.body, {
 			encoding: "utf8",
@@ -145,7 +145,7 @@ async function plugin(server, options) {
 						 * which could cause `unlink()` to throw an ENOENT error if the file has already been removed
 						 * by another request's call of this hook
 						 */
-						return rm(path.joinSafe(process.cwd(), src), {
+						return rm(joinSafe(process.cwd(), src), {
 							force: true,
 							maxRetries: 10,
 							recursive: true,

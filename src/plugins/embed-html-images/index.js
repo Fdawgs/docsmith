@@ -5,7 +5,7 @@
 const { readFile } = require("node:fs/promises");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
-const path = require("upath");
+const { extname, joinSafe, normalizeTrim } = require("upath");
 
 /**
  * @author Frazer Smith
@@ -17,7 +17,7 @@ const path = require("upath");
  * files during conversion.
  */
 async function plugin(server, options) {
-	const directory = path.normalizeTrim(options.tempDir);
+	const directory = normalizeTrim(options.tempDir);
 
 	/**
 	 * @param {string} html - Valid HTML.
@@ -30,16 +30,14 @@ async function plugin(server, options) {
 
 		await Promise.all(
 			Array.from(images, (image) => {
-				const imgForm = path.extname(image.src).substring(1);
+				const imgForm = extname(image.src).substring(1);
 
-				return readFile(
-					path.joinSafe(directory, image.src),
-					"base64"
-				).then((imageAsBase64) =>
-					image.setAttribute(
-						"src",
-						`data:image/${imgForm};base64,${imageAsBase64}`
-					)
+				return readFile(joinSafe(directory, image.src), "base64").then(
+					(imageAsBase64) =>
+						image.setAttribute(
+							"src",
+							`data:image/${imgForm};base64,${imageAsBase64}`
+						)
 				);
 			})
 		);

@@ -8,7 +8,7 @@ const { getStream } = require("file-stream-rotator");
 const S = require("fluent-json-schema").default;
 const { stdSerializers, stdTimeFunctions } = require("pino");
 const { parse: secureParse } = require("secure-json-parse");
-const path = require("upath");
+const { dirname, joinSafe, normalizeSafe, normalizeTrim } = require("upath");
 
 const coreCount = require("../utils/core-count");
 const { description, license, version } = require("../../package.json");
@@ -44,7 +44,7 @@ function parseCorsParameter(param) {
  */
 async function getConfig() {
 	// Directory for temporarily storing files during conversion
-	const tempDir = path.joinSafe(__dirname, "../temp");
+	const tempDir = joinSafe(__dirname, "../temp");
 
 	// Validate env variables
 	const env = envSchema({
@@ -332,7 +332,7 @@ async function getConfig() {
 		},
 		poppler: {
 			binPath: env.POPPLER_BINARY_PATH
-				? path.normalizeSafe(env.POPPLER_BINARY_PATH)
+				? normalizeSafe(env.POPPLER_BINARY_PATH)
 				: env.POPPLER_BINARY_PATH,
 			tempDir,
 		},
@@ -344,7 +344,7 @@ async function getConfig() {
 		},
 		unrtf: {
 			binPath: env.UNRTF_BINARY_PATH
-				? path.normalizeSafe(env.UNRTF_BINARY_PATH)
+				? normalizeSafe(env.UNRTF_BINARY_PATH)
 				: env.UNRTF_BINARY_PATH,
 			tempDir,
 		},
@@ -360,11 +360,9 @@ async function getConfig() {
 		try {
 			config.fastifyInit.https = {
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				cert: await readFile(
-					path.normalizeTrim(env.HTTPS_SSL_CERT_PATH)
-				),
+				cert: await readFile(normalizeTrim(env.HTTPS_SSL_CERT_PATH)),
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				key: await readFile(path.normalizeTrim(env.HTTPS_SSL_KEY_PATH)),
+				key: await readFile(normalizeTrim(env.HTTPS_SSL_KEY_PATH)),
 			};
 		} catch (err) {
 			throw new Error(
@@ -378,9 +376,7 @@ async function getConfig() {
 			config.fastifyInit.https = {
 				passphrase: env.HTTPS_PFX_PASSPHRASE,
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				pfx: await readFile(
-					path.normalizeTrim(env.HTTPS_PFX_FILE_PATH)
-				),
+				pfx: await readFile(normalizeTrim(env.HTTPS_PFX_FILE_PATH)),
 			};
 		} catch (err) {
 			throw new Error(
@@ -396,13 +392,13 @@ async function getConfig() {
 
 	// Set Pino transport
 	if (env.LOG_ROTATION_FILENAME) {
-		const logFile = path.normalizeTrim(env.LOG_ROTATION_FILENAME);
+		const logFile = normalizeTrim(env.LOG_ROTATION_FILENAME);
 
 		/**
 		 * @see {@link https://github.com/rogerc/file-stream-rotator/#options | File stream rotator options}
 		 */
 		config.fastifyInit.logger.stream = getStream({
-			audit_file: path.joinSafe(path.dirname(logFile), ".audit.json"),
+			audit_file: joinSafe(dirname(logFile), ".audit.json"),
 			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
 			filename: logFile,
 			frequency: env.LOG_ROTATION_FREQUENCY || "daily",
