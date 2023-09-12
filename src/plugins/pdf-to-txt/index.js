@@ -8,7 +8,7 @@ const fixUtf8 = require("fix-utf8");
 const fp = require("fastify-plugin");
 const { glob } = require("glob");
 const { JSDOM } = require("jsdom");
-const path = require("upath");
+const { joinSafe, normalizeTrim } = require("upath");
 const { Poppler } = require("node-poppler");
 
 // Import utils
@@ -31,7 +31,7 @@ const parseString = require("../../utils/parse-string");
  * Defaults to `docsmith_pdf-to-txt`.
  */
 async function plugin(server, options) {
-	const directory = path.normalizeTrim(options.tempDir);
+	const directory = normalizeTrim(options.tempDir);
 	const poppler = new Poppler(options.binPath);
 
 	// Create temp directory if missing
@@ -80,7 +80,7 @@ async function plugin(server, options) {
 		if (req.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = await glob(
-				`${path.joinSafe(
+				`${joinSafe(
 					req.conversionResults.docLocation.directory,
 					req.conversionResults.docLocation.id
 				)}*`
@@ -134,7 +134,7 @@ async function plugin(server, options) {
 			});
 
 			// Build temp file pattern for Poppler to use for output
-			const tempFile = path.joinSafe(directory, id);
+			const tempFile = joinSafe(directory, id);
 
 			/**
 			 * Create document location object for use by following plugins/hooks

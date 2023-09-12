@@ -2,7 +2,7 @@
 
 const fp = require("fastify-plugin");
 const { createScheduler, createWorker } = require("tesseract.js");
-const path = require("upath");
+const { joinSafe } = require("upath");
 
 /**
  * @author Frazer Smith
@@ -28,13 +28,13 @@ async function plugin(server, options) {
 	 */
 	const workerConfig = {
 		cacheMethod: "readOnly",
-		cachePath: path.joinSafe(__dirname, "../../.."),
-		corePath: path.joinSafe(
+		cachePath: joinSafe(__dirname, "../../.."),
+		corePath: joinSafe(
 			__dirname,
 			"../../../node_modules/tesseract.js-core/tesseract-core.wasm.js"
 		),
-		langPath: path.joinSafe(__dirname, "../../../ocr_lang_data"),
-		workerPath: path.joinSafe(
+		langPath: joinSafe(__dirname, "../../../ocr_lang_data"),
+		workerPath: joinSafe(
 			__dirname,
 			"../../../node_modules/tesseract.js/src/worker-script/node/index.js"
 		),
