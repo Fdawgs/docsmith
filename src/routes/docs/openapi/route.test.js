@@ -11,9 +11,7 @@ const sharedSchemas = require("../../../plugins/shared-schemas");
 describe("OpenAPI route", () => {
 	describe("GET requests", () => {
 		let config;
-		/**
-		 * @type {Fastify.FastifyInstance}
-		 */
+		/** @type {Fastify.FastifyInstance} */
 		let server;
 
 		beforeAll(async () => {

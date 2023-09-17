@@ -8,9 +8,7 @@ const getConfig = require("../../config");
 
 describe("Tidy-CSS plugin", () => {
 	let config;
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeAll(async () => {

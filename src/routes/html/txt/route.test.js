@@ -12,9 +12,7 @@ const htmlToTxt = require("../../../plugins/html-to-txt");
 
 describe("HTML-to-TXT route", () => {
 	let config;
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeAll(async () => {

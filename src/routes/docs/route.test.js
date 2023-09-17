@@ -10,9 +10,7 @@ const sharedSchemas = require("../../plugins/shared-schemas");
 describe("Docs route", () => {
 	describe("GET requests", () => {
 		let config;
-		/**
-		 * @type {Fastify.FastifyInstance}
-		 */
+		/** @type {Fastify.FastifyInstance} */
 		let server;
 
 		beforeAll(async () => {

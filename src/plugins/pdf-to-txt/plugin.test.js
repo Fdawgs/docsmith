@@ -14,9 +14,7 @@ const imageToTxt = require("../image-to-txt");
 
 describe("PDF-to-TXT conversion plugin", () => {
 	let config;
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeAll(async () => {

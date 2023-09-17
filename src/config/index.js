@@ -394,9 +394,7 @@ async function getConfig() {
 	if (env.LOG_ROTATION_FILENAME) {
 		const logFile = normalizeTrim(env.LOG_ROTATION_FILENAME);
 
-		/**
-		 * @see {@link https://github.com/rogerc/file-stream-rotator/#options | File stream rotator options}
-		 */
+		/** @see {@link https://github.com/rogerc/file-stream-rotator/#options | File stream rotator options} */
 		config.fastifyInit.logger.stream = getStream({
 			audit_file: joinSafe(dirname(logFile), ".audit.json"),
 			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",

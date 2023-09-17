@@ -13,9 +13,7 @@ const tidyHtml = require("../../../plugins/tidy-html");
 
 describe("DOCX-to-HTML route", () => {
 	let config;
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeAll(async () => {

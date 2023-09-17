@@ -15,9 +15,7 @@ const tidyHtml = require("../../../plugins/tidy-html");
 
 describe("RTF-to-TXT route", () => {
 	let config;
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeAll(async () => {
