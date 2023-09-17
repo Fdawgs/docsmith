@@ -3,11 +3,11 @@
 		// Uncomment as and when needed
 		// "checkJs": true,
 		// "strict": true,
-		"lib": ["ES2022"],
+		"lib": ["ES2023"],
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
-		"target": "ES2022"
+		"target": "ES2023"
 	},
 	"exclude": ["dist", "node_modules"]
 }

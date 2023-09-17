@@ -2,7 +2,7 @@
 
 module.exports = {
 	env: {
-		es2022: true,
+		es2023: true,
 		node: true,
 	},
 	extends: [
@@ -35,7 +35,7 @@ module.exports = {
 		},
 	],
 	parserOptions: {
-		ecmaVersion: 2022,
+		ecmaVersion: 2023,
 		// Explicitly tell ESLint to parse JavaScript as CommonJS, as airbnb-base sets this to "modules" for ECMAScript
 		sourceType: "script",
 	},
