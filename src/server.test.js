@@ -1100,9 +1100,15 @@ describe("Server deployment", () => {
 			server = Fastify({ pluginTimeout: 0 });
 			await server.register(startServer, config);
 
-			server.get("/error", async () => {
-				throw new Error("test");
-			});
+			server
+				.get("/error", async () => {
+					throw new Error("test");
+				})
+				.get("/error/503", async () => {
+					const error = new Error("test");
+					error.statusCode = 503;
+					throw error;
+				});
 
 			await server.ready();
 		});
@@ -1128,6 +1134,24 @@ describe("Server deployment", () => {
 				});
 				expect(response.headers).toStrictEqual(expResHeaders5xxErrors);
 				expect(response.statusCode).toBe(500);
+			});
+
+			it("Returns HTTP status code 503 and does not override error message", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/error/503",
+					headers: {
+						accept: "*/*",
+					},
+				});
+
+				expect(JSON.parse(response.body)).toStrictEqual({
+					error: "Service Unavailable",
+					message: "test",
+					statusCode: 503,
+				});
+				expect(response.headers).toStrictEqual(expResHeaders5xxErrors);
+				expect(response.statusCode).toBe(503);
 			});
 		});
 	});
