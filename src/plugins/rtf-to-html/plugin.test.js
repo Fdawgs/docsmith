@@ -21,9 +21,7 @@ const artifacts =
 
 describe("RTF-to-HTML conversion plugin", () => {
 	let config;
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeAll(async () => {

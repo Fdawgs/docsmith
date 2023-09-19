@@ -32,9 +32,7 @@ async function plugin(server) {
 		escapeCdata: true,
 	};
 
-	/**
-	 * @see {@link https://github.com/terser/html-minifier-terser#options-quick-reference | HTMLMinifier options}
-	 */
+	/** @see {@link https://github.com/terser/html-minifier-terser#options-quick-reference | HTMLMinifier options} */
 	const htmlMinifyConfig = {
 		collapseWhitespace: true,
 		decodeEntities: true,

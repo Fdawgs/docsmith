@@ -7,9 +7,7 @@ const sensible = require("@fastify/sensible");
 const plugin = require(".");
 
 describe("Tidy-HTML plugin", () => {
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeEach(() => {

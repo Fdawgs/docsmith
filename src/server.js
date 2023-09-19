@@ -202,9 +202,7 @@ async function plugin(server, config) {
 			 * to the client
 			 */
 			if (
-				(err.statusCode >= 500 &&
-					/* istanbul ignore next: under-pressure plugin throws valid 503s */
-					err.statusCode !== 503) ||
+				(err.statusCode >= 500 && err.statusCode !== 503) ||
 				/**
 				 * Uncaught errors will have a res.statusCode but not
 				 * an err.statusCode as @fastify/sensible sets that

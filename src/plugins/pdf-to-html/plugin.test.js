@@ -21,9 +21,7 @@ const artifacts =
 
 describe("PDF-to-HTML conversion plugin", () => {
 	let config;
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeAll(async () => {
