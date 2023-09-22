@@ -95,7 +95,7 @@
 		"lockfile-lint": "^4.12.1",
 		"nodemon": "^3.0.1",
 		"pino-pretty": "^10.0.1",
-		"playwright": "^1.37.1",
+		"playwright": "^1.38.1",
 		"prettier": "^3.0.3",
 		"spdx-copyleft": "^1.0.0"
 	},
