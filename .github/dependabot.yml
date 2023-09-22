@@ -14,11 +14,30 @@ updates:
           include: scope
           prefix: build
       directory: /
+      groups:
+          "@commitlint cli":
+              dependency-type: development
+              patterns:
+                  - "@commitlint*"
+          "eslint configs":
+              dependency-type: development
+              patterns:
+                  - "eslint-config*"
+          "eslint plugins":
+              dependency-type: development
+              patterns:
+                  - "eslint-plugin*"
+          "@fastify core plugins":
+              dependency-type: production
+              patterns:
+                  - "@fastify*"
       ignore:
+          # Tests do not cover these dependencies,
+          # so we don't want to update them automatically
           - dependency-name: esbuild
           - dependency-name: esbuild-plugin-glob
-          # Below are deps that have migrate to ESM in their
-          # next major version so we can't use them
+          # Below are dependencies that have migrate to ESM
+          # in their next major version so we can't use them
           - dependency-name: file-type
             update-types: ["version-update:semver-major"]
           - dependency-name: fix-utf8
