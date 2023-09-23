@@ -18,12 +18,9 @@ updates:
           commitlint:
               patterns:
                   - "@commitlint*"
-          eslint-configs:
+          eslint:
               patterns:
-                  - "eslint-config*"
-          eslint-plugins:
-              patterns:
-                  - "eslint-plugin*"
+                  - "eslint*"
           fastify-core:
               patterns:
                   - "@fastify*"
@@ -41,7 +38,7 @@ updates:
           # so we don't want to update them automatically
           - dependency-name: esbuild
           - dependency-name: esbuild-plugin-glob
-          # Below are dependencies that have migrate to ESM
+          # Below are dependencies that have migrated to ESM
           # in their next major version so we can't use them
           - dependency-name: file-type
             update-types: ["version-update:semver-major"]
