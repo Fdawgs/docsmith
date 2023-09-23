@@ -15,22 +15,27 @@ updates:
           prefix: build
       directory: /
       groups:
-          "@commitlint cli":
-              dependency-type: development
+          commitlint:
               patterns:
                   - "@commitlint*"
-          "eslint configs":
-              dependency-type: development
+          eslint-configs:
               patterns:
                   - "eslint-config*"
-          "eslint plugins":
-              dependency-type: development
+          eslint-plugins:
               patterns:
                   - "eslint-plugin*"
-          "@fastify core plugins":
-              dependency-type: production
+          fastify-core:
               patterns:
                   - "@fastify*"
+                  - "fastify"
+                  - "fastify-plugin"
+                  - "fluent-json-schema"
+                  - "env-schema"
+                  - "secure-json-parse"
+          pino-core:
+              patterns:
+                  - "pino"
+                  - "pino-pretty"
       ignore:
           # Tests do not cover these dependencies,
           # so we don't want to update them automatically
