@@ -711,7 +711,7 @@ describe("Server deployment", () => {
 
 	describe("CORS", () => {
 		let config;
-		/** @type {{ [key: string]: any }} */
+		/** @type {{[key: string]: any}} */
 		let currentEnv;
 		/** @type {Fastify.FastifyInstance} */
 		let server;
