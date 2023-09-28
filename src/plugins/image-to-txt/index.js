@@ -31,7 +31,7 @@ async function plugin(server, options) {
 		cachePath: joinSafe(__dirname, "../../.."),
 		corePath: joinSafe(
 			__dirname,
-			"../../../node_modules/tesseract.js-core/tesseract-core.wasm.js"
+			"../../../node_modules/tesseract.js-core"
 		),
 		langPath: joinSafe(__dirname, "../../../ocr_lang_data"),
 		workerPath: joinSafe(
@@ -54,9 +54,11 @@ async function plugin(server, options) {
 		Array(options.workers)
 			.fill(0)
 			.map(async () => {
-				const worker = await createWorker(workerConfig);
-				await worker.loadLanguage(options.languages);
-				await worker.initialize(options.languages);
+				const worker = await createWorker(
+					options.languages,
+					1,
+					workerConfig
+				);
 				await worker.setParameters(workerParams);
 				return scheduler.addWorker(worker);
 			})
