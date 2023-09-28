@@ -54,7 +54,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		]);
 	});
 
-	// TODO: fix rtf-to-html plugin to include header and footer
+	/** @todo fix rtf-to-html plugin to include header and footer */
 	it.failing("Converts RTF file to HTML", async () => {
 		const response = await server.inject({
 			method: "POST",
@@ -110,7 +110,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{ testName: "is missing" },
 		{

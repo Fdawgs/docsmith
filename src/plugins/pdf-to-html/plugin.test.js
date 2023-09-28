@@ -54,7 +54,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		]);
 	});
 
-	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{
 			testName: "Converts PDF file to HTML",
@@ -124,7 +124,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{ testName: "is missing" },
 		{

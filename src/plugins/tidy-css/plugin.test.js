@@ -29,7 +29,7 @@ describe("Tidy-CSS plugin", () => {
 		await server.close();
 	});
 
-	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{
 			testName: "Tidies CSS in HTML",
