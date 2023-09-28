@@ -24,7 +24,7 @@ describe("Tidy-HTML plugin", () => {
 		await server.close();
 	});
 
-	// TODO: use `it.concurrent.each()` once it is no longer experimental
+	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{ testName: "Tidies HTML" },
 		{
