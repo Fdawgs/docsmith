@@ -37,16 +37,16 @@ async function plugin(server, options) {
 	// Create temp directory if missing
 	await mkdir(directory, { recursive: true });
 
-	const pdfToCairoAcceptedParams = [
+	const pdfToCairoAcceptedParams = new Set([
 		"cropHeight",
 		"cropWidth",
 		"cropXAxis",
 		"cropYAxis",
 		"firstPageToConvert",
 		"lastPageToConvert",
-	];
+	]);
 
-	const pdfToTxtAcceptedParams = [
+	const pdfToTxtAcceptedParams = new Set([
 		"boundingBoxXhtml",
 		"boundingBoxXhtmlLayout",
 		"cropHeight",
@@ -64,7 +64,7 @@ async function plugin(server, options) {
 		"ownerPassword",
 		"rawLayout",
 		"userPassword",
-	];
+	]);
 
 	server
 		.decorateRequest("conversionResults", null)
@@ -128,7 +128,7 @@ async function plugin(server, options) {
 		if (query.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
 			Object.keys(query).forEach((value) => {
-				if (!pdfToCairoAcceptedParams.includes(value)) {
+				if (!pdfToCairoAcceptedParams.has(value)) {
 					delete query[value];
 				}
 			});
@@ -186,7 +186,7 @@ async function plugin(server, options) {
 		} else {
 			// Prune params that pdfToTxt cannot accept
 			Object.keys(query).forEach((value) => {
-				if (!pdfToTxtAcceptedParams.includes(value)) {
+				if (!pdfToTxtAcceptedParams.has(value)) {
 					delete query[value];
 				}
 			});

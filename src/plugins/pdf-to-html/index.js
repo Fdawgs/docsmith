@@ -38,7 +38,7 @@ async function plugin(server, options) {
 	// Create temp directory if missing
 	await mkdir(directory, { recursive: true });
 
-	const pdfToHtmlAcceptedParams = [
+	const pdfToHtmlAcceptedParams = new Set([
 		"exchangePdfLinks",
 		"extractHidden",
 		"firstPageToConvert",
@@ -51,7 +51,7 @@ async function plugin(server, options) {
 		"userPassword",
 		"wordBreakThreshold",
 		"zoom",
-	];
+	]);
 
 	server
 		.decorateRequest("conversionResults", null)
@@ -97,7 +97,7 @@ async function plugin(server, options) {
 		 */
 		const query = { ...req.query };
 		Object.keys(query).forEach((value) => {
-			if (!pdfToHtmlAcceptedParams.includes(value)) {
+			if (!pdfToHtmlAcceptedParams.has(value)) {
 				delete query[value];
 			} else {
 				/**
