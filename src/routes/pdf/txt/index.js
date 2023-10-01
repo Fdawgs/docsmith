@@ -70,16 +70,12 @@ async function route(server, options) {
 			}
 		},
 		handler: async (req) => {
-			let result;
-			if (
+			const result =
 				req.query.boundingBoxXhtml ||
 				req.query.boundingBoxXhtmlLayout ||
 				req.query.generateHtmlMetaFile
-			) {
-				result = await server.tidyHtml(req.conversionResults.body);
-			} else {
-				result = req.conversionResults.body;
-			}
+					? await server.tidyHtml(req.conversionResults.body)
+					: req.conversionResults.body;
 			return result;
 		},
 	});
