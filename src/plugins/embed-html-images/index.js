@@ -30,7 +30,7 @@ async function plugin(server, options) {
 
 		await Promise.all(
 			Array.from(images, (image) => {
-				const imgForm = extname(image.src).substring(1);
+				const imgForm = extname(image.src).slice(1);
 
 				return readFile(joinSafe(directory, image.src), "base64").then(
 					(imageAsBase64) =>

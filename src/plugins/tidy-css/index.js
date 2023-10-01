@@ -84,7 +84,7 @@ async function plugin(server) {
 				);
 			}
 
-			if (styleRule.selectorText.substring(0, 3) === "div") {
+			if (styleRule.selectorText.slice(0, 3) === "div") {
 				/**
 				 * Stop pages overrunning the next page, leading to overlapping text.
 				 * "page-break-inside" is a legacy property, replaced by "break-inside".
