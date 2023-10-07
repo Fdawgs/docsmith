@@ -11,7 +11,7 @@ const getConfig = require("./config");
  */
 async function main() {
 	process.on("unhandledRejection", (err) => {
-		// eslint-disable-next-line no-console
+		// eslint-disable-next-line no-console -- Pino logger may not be initialised
 		console.error(err);
 		process.exit(1);
 	});

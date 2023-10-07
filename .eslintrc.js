@@ -52,6 +52,7 @@ module.exports = {
 	rules: {
 		"@eslint-community/eslint-comments/disable-enable-pair": "off",
 		"@eslint-community/eslint-comments/no-unused-disable": "error",
+		"@eslint-community/eslint-comments/require-description": "error",
 		"import/no-extraneous-dependencies": "error",
 		"jsdoc/check-syntax": "error",
 		"jsdoc/require-hyphen-before-param-description": "error",
