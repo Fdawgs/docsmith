@@ -60,13 +60,11 @@
 	},
 	"nodemonConfig": {
 		"env": {
-			"NODE_ENV": "development",
-			"SUPPRESS_SUPPORT": 1
+			"NODE_ENV": "development"
 		},
 		"ignore": [
 			"src/temp"
 		],
-		"verbose": true,
 		"watch": [
 			".env",
 			"src/**/!(*.test).*"
