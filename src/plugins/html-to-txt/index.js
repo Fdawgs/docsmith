@@ -26,6 +26,8 @@ async function plugin(server) {
 	};
 
 	/**
+	 * @author Frazer Smith
+	 * @description Converts HTML to TXT.
 	 * @param {string} html - Valid HTML.
 	 * @returns {string} HTML converted to TXT.
 	 */

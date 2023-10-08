@@ -16,6 +16,8 @@ async function plugin(server) {
 	const cssCleaner = new CleanCSS({ compatibility: "ie7" });
 
 	/**
+	 * @author Frazer Smith
+	 * @description Parses, tidies, and minifies CSS in `<style>` elements in HTML passed.
 	 * @param {string} html - Valid HTML.
 	 * @param {object} options - Function config values.
 	 * @param {string} [options.backgroundColor] - Color to set or replace the document's

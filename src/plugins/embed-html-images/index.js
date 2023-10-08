@@ -18,6 +18,8 @@ async function plugin(server, options) {
 	const directory = normalizeTrim(options.tempDir);
 
 	/**
+	 * @author Frazer Smith
+	 * @description Embeds images into HTML, after encoding with Base64.
 	 * @param {string} html - Valid HTML.
 	 * @returns {Promise<string>} A promise that resolves with a tidied HTML string with images embedded, or rejects with an `Error` object
 	 * if the images to embed cannot be found.
