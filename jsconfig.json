@@ -3,7 +3,7 @@
 		// Uncomment as and when needed
 		// "checkJs": true,
 		// "strict": true,
-		"lib": ["ES2023"],
+		"lib": ["ES2022"],
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
