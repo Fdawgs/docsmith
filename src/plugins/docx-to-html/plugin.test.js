@@ -1,3 +1,5 @@
+/* eslint-disable security/detect-non-literal-fs-filename -- Test filenames are not user-provided */
+
 "use strict";
 
 const { readFile } = require("node:fs/promises");
@@ -76,7 +78,6 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			// eslint-disable-next-line security/detect-non-literal-fs-filename
 			body: await readFile(filePath),
 			headers,
 		});
@@ -138,7 +139,6 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				// eslint-disable-next-line security/detect-non-literal-fs-filename
 				body: filePath ? await readFile(filePath) : undefined,
 				headers,
 			});

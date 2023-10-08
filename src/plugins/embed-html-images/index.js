@@ -1,11 +1,9 @@
-/* eslint-disable security/detect-non-literal-fs-filename */
-
 "use strict";
 
 const { readFile } = require("node:fs/promises");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
-const { extname, joinSafe, normalizeTrim } = require("upath");
+const { joinSafe, normalizeTrim, parse } = require("upath");
 
 /**
  * @author Frazer Smith
@@ -14,12 +12,14 @@ const { extname, joinSafe, normalizeTrim } = require("upath");
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.tempDir - Directory for temporarily storing
- * files during conversion.
+ * files during conversion. Location of the images to embed.
  */
 async function plugin(server, options) {
 	const directory = normalizeTrim(options.tempDir);
 
 	/**
+	 * @author Frazer Smith
+	 * @description Embeds images into HTML, after encoding with Base64.
 	 * @param {string} html - Valid HTML.
 	 * @returns {Promise<string>} A promise that resolves with a tidied HTML string with images embedded, or rejects with an `Error` object
 	 * if the images to embed cannot be found.
@@ -30,9 +30,12 @@ async function plugin(server, options) {
 
 		await Promise.all(
 			Array.from(images, (image) => {
-				const imgForm = extname(image.src).slice(1);
+				// Base is used to negate directory traversal attacks
+				const { base, ext } = parse(image.src);
+				const imgForm = ext.slice(1);
 
-				return readFile(joinSafe(directory, image.src), "base64").then(
+				// eslint-disable-next-line security/detect-non-literal-fs-filename -- imgSrc is not user-provided
+				return readFile(joinSafe(directory, base), "base64").then(
 					(imageAsBase64) =>
 						image.setAttribute(
 							"src",

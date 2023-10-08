@@ -44,6 +44,8 @@ async function plugin(server) {
 	};
 
 	/**
+	 * @author Frazer Smith
+	 * @description Parses, tidies, and minifies HTML passed.
 	 * @param {string} html - Valid HTML.
 	 * @param {object} options - Function config values.
 	 * @param {string} [options.language] - Set `lang` and `xml:lang` attributes of `<html>` tag.

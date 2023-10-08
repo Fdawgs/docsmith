@@ -1,3 +1,5 @@
+/* eslint-disable security/detect-non-literal-fs-filename -- Test filenames are not user-provided */
+
 "use strict";
 
 const { readFile } = require("node:fs/promises");
@@ -210,7 +212,6 @@ describe("Server deployment", () => {
 					const response = await server.inject({
 						method: "POST",
 						url: "/doc/txt",
-						// eslint-disable-next-line security/detect-non-literal-fs-filename
 						body: await readFile(filePath),
 						headers: {
 							accept: "application/json, text/plain",
@@ -265,7 +266,6 @@ describe("Server deployment", () => {
 					const response = await server.inject({
 						method: "POST",
 						url: "/docx/html",
-						// eslint-disable-next-line security/detect-non-literal-fs-filename
 						body: await readFile(filePath),
 						headers: {
 							accept: "application/json, text/html",
@@ -325,7 +325,6 @@ describe("Server deployment", () => {
 					const response = await server.inject({
 						method: "POST",
 						url: "/docx/txt",
-						// eslint-disable-next-line security/detect-non-literal-fs-filename
 						body: await readFile(filePath),
 						headers: {
 							accept: "application/json, text/plain",

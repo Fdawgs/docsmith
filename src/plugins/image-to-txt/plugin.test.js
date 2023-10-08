@@ -1,5 +1,3 @@
-/* eslint-disable security/detect-non-literal-fs-filename */
-
 "use strict";
 
 const { readFile } = require("node:fs/promises");

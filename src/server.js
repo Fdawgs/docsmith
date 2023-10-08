@@ -194,7 +194,7 @@ async function plugin(server, config) {
 		)
 
 		// Errors thrown by routes and plugins are caught here
-		// eslint-disable-next-line promise/prefer-await-to-callbacks
+		// eslint-disable-next-line promise/prefer-await-to-callbacks -- False positive
 		.setErrorHandler(async (err, _req, res) => {
 			/**
 			 * Catch 5xx errors, log them, and return a generic 500

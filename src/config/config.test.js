@@ -1,3 +1,5 @@
+/* eslint-disable security/detect-non-literal-fs-filename -- Test filenames are not user-provided */
+
 "use strict";
 
 const { unlink } = require("node:fs/promises");
@@ -19,7 +21,6 @@ describe("Configuration", () => {
 			dot: true,
 		});
 
-		// eslint-disable-next-line security/detect-non-literal-fs-filename
 		await Promise.all(files.map((file) => unlink(file)));
 	});
 
