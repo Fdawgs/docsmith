@@ -2,6 +2,59 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.0.4](https://github.com/Fdawgs/docsmith/compare/v11.0.3...v11.0.4) (2023-10-19)
+
+
+### Bug fixes
+
+* **plugins/embed-html-images:** protect against dir traversal attacks ([ccf6829](https://github.com/Fdawgs/docsmith/commit/ccf6829dd36de831b48c4a0c09aa981d99f9c7a5))
+
+
+### Dependencies
+
+* **deps-dev:** add eslint-community/eslint-plugin-eslint-comments ([e5e9422](https://github.com/Fdawgs/docsmith/commit/e5e94220ff77f41b37fbf96f7b7c0b45009890d9))
+* **deps-dev:** bump @types/jest from 29.5.5 to 29.5.6 ([#1693](https://github.com/Fdawgs/docsmith/issues/1693)) ([008a217](https://github.com/Fdawgs/docsmith/commit/008a217f21533148c82dda3169706c8cd6799df7))
+* **deps-dev:** bump esbuild from 0.19.4 to 0.19.5 ([f63d68b](https://github.com/Fdawgs/docsmith/commit/f63d68b4d3061e78f463b9ba7fe81f8d9a843033))
+* **deps-dev:** bump playwright from 1.38.1 to 1.39.0 ([#1692](https://github.com/Fdawgs/docsmith/issues/1692)) ([39f3edb](https://github.com/Fdawgs/docsmith/commit/39f3edb96a1a6eb9950a2485519716b5a3c03d69))
+* **deps-dev:** bump the commitlint group with 1 update ([#1678](https://github.com/Fdawgs/docsmith/issues/1678)) ([fc0038b](https://github.com/Fdawgs/docsmith/commit/fc0038b1884d4009acb13999e5c7d7c14f17299d))
+* **deps-dev:** bump the commitlint group with 2 updates ([#1689](https://github.com/Fdawgs/docsmith/issues/1689)) ([e503ddb](https://github.com/Fdawgs/docsmith/commit/e503ddbf3dbccfc4f9d4782207337483b9fc9cdd))
+* **deps-dev:** bump the eslint group with 1 update ([#1679](https://github.com/Fdawgs/docsmith/issues/1679)) ([caff920](https://github.com/Fdawgs/docsmith/commit/caff9208fa04fc36c03159ba7f81ee4b63f025ac))
+* **deps-dev:** bump the eslint group with 1 update ([#1686](https://github.com/Fdawgs/docsmith/issues/1686)) ([d3608f8](https://github.com/Fdawgs/docsmith/commit/d3608f8086e39400926826aab4ad694e1712b0e9))
+* **deps-dev:** bump the eslint group with 1 update ([#1691](https://github.com/Fdawgs/docsmith/issues/1691)) ([64bb8d3](https://github.com/Fdawgs/docsmith/commit/64bb8d3af54f115eb8c674bd83635990633d2394))
+* **deps:** bump @babel/traverse from 7.23.0 to 7.23.2 ([#1694](https://github.com/Fdawgs/docsmith/issues/1694)) ([010ee9f](https://github.com/Fdawgs/docsmith/commit/010ee9fe70310f0f5e4ddebad3a33eeb42b1851c))
+* **deps:** bump @fastify/autoload from 5.7.1 to 5.8.0 ([817815d](https://github.com/Fdawgs/docsmith/commit/817815d7b86cb053c8da3a0d157261fc39408288))
+* **deps:** bump postcss from 8.4.30 to 8.4.31 ([#1683](https://github.com/Fdawgs/docsmith/issues/1683)) ([7725a12](https://github.com/Fdawgs/docsmith/commit/7725a12a5ba6bd3788ec9a43cd57fbff205330fa))
+* **deps:** bump tesseract.js from 5.0.0 to 5.0.2 ([#1687](https://github.com/Fdawgs/docsmith/issues/1687)) ([f1c8b59](https://github.com/Fdawgs/docsmith/commit/f1c8b591df4a29cbe4cb770e262a04db5fe5af23))
+* **deps:** bump the fastify-core group with 1 update ([#1684](https://github.com/Fdawgs/docsmith/issues/1684)) ([aefabf8](https://github.com/Fdawgs/docsmith/commit/aefabf8c1645782622230d1fe35c6702af248d20))
+* **deps:** bump the fastify-core group with 3 updates ([#1690](https://github.com/Fdawgs/docsmith/issues/1690)) ([41beafb](https://github.com/Fdawgs/docsmith/commit/41beafb07800280ff6da8f3dbb8e2ea6e7a86e49))
+* **deps:** bump the pino-core group with 1 update ([#1688](https://github.com/Fdawgs/docsmith/issues/1688)) ([4bbfca5](https://github.com/Fdawgs/docsmith/commit/4bbfca5d1502ee0e9e42c06ef45586df68c4837a))
+* **deps:** bump the pino-core group with 2 updates ([#1685](https://github.com/Fdawgs/docsmith/issues/1685)) ([d086268](https://github.com/Fdawgs/docsmith/commit/d08626866d9066a4bd195484406b555816f3da51))
+* **deps:** bump transistive dependencies ([5d334ac](https://github.com/Fdawgs/docsmith/commit/5d334ac160c5162f70bb5b125be6b6360232aa3f))
+
+
+### Miscellaneous
+
+* **.vscode:** add github-markdown-preview to recommended extensions ([9958511](https://github.com/Fdawgs/docsmith/commit/99585111a239699b1fbac11234c70cdfc8fb69b7))
+* **.vscode:** add gitlens to recommended extensions ([d6e73e8](https://github.com/Fdawgs/docsmith/commit/d6e73e8e20e64fff9af3af6ff9c44e0010a024fa))
+* consolidate eslint comments, add justification for disabling ([9a01884](https://github.com/Fdawgs/docsmith/commit/9a01884eff41ba83b0525dcb7a657ced7eee6ee0))
+* **jsconfig:** use es2022 lib ([af64b62](https://github.com/Fdawgs/docsmith/commit/af64b620ca6935ba80f56699f07be744b34b0179))
+* **package:** remove redundant nodemon config values ([f8e6238](https://github.com/Fdawgs/docsmith/commit/f8e6238a15f3e6146f8bc6b5b74666e78b6d2f1c))
+* **plugins:** add description and author to decorator function jsdocs ([00c4b3b](https://github.com/Fdawgs/docsmith/commit/00c4b3b3c3b17fe45864fcefc4db20e34b9146c5))
+* remove redundant eslint comments ([bf69b67](https://github.com/Fdawgs/docsmith/commit/bf69b67bcaf929d2e9b2eb9860430bf8bc0ef70a))
+* **scripts/license-checker:** update link to deprecated list ([9c9da5f](https://github.com/Fdawgs/docsmith/commit/9c9da5f28ddbac0c72678fb45054beaa80d9ce88))
+
+
+### Improvements
+
+* **plugins/pdf-to-x:** use set over array ([003c073](https://github.com/Fdawgs/docsmith/commit/003c073a83b34e30bd8ae300bc16fc2241791ad7))
+* **plugins:** use `String.slice()` over `String.substring()` ([2eec30d](https://github.com/Fdawgs/docsmith/commit/2eec30d3490d0b05cc14125cf837ff1f6fd7d77d))
+* **routes/pdf/txt:** use ternary over simple `if... else` ([27245e0](https://github.com/Fdawgs/docsmith/commit/27245e03a8db69b14b1a72935379ddc8f99c6a80))
+
+
+### Documentation
+
+* **readme:** add rtf image removal footnote ([8a9e546](https://github.com/Fdawgs/docsmith/commit/8a9e54679c92ecafb3ac99cdc0e434110fa8a6f4))
+
 ## [11.0.3](https://github.com/Fdawgs/docsmith/compare/v11.0.2...v11.0.3) (2023-09-28)
 
 
