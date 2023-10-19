@@ -21,8 +21,10 @@ Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify
 | HTML  | TXT    |                                              |
 | PDF   | HTML   |                                              |
 | PDF   | TXT    | Scanned documents supported using OCR        |
-| RTF   | HTML   | Images are removed                           |
+| RTF   | HTML   | Images are removed[^1]                       |
 | RTF   | TXT    |                                              |
+
+[^1]: The underlying UnRTF binary converts images and stores them using an incremental naming scheme of `pict001`, `pict002`, and so on. This poses a confidentiality and clinical risk as concurrent requests will overwrite each other's images, which could result in a patient's image being placed in another patient's document. To mitigate this, Docsmith removes all images from the output HTML
 
 ### Why Docsmith?
 
