@@ -9,6 +9,9 @@ const { docsGetSchema } = require("./schema");
 
 const accepts = ["text/html"];
 
+// Cache immutable regex as they are expensive to create and garbage collect
+const pathRegex = /\/redoc\.standalone\.js(?:.map)?/u;
+
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
@@ -31,8 +34,7 @@ async function route(server) {
 				"redoc",
 				"bundles"
 			),
-			allowedPath: (pathName) =>
-				pathName.match(/\/redoc\.standalone\.js(?:.map)?/u) !== null,
+			allowedPath: (pathName) => pathName.match(pathRegex) !== null,
 			decorateReply: false,
 			maxAge: "1 day",
 			prefix: "/redoc/",

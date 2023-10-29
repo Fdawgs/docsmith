@@ -14,6 +14,21 @@ const { Poppler } = require("node-poppler");
 // Import utils
 const parseString = require("../../utils/parse-string");
 
+const pdfToHtmlAcceptedParams = new Set([
+	"exchangePdfLinks",
+	"extractHidden",
+	"firstPageToConvert",
+	"ignoreImages",
+	"imageFormat",
+	"lastPageToConvert",
+	"noDrm",
+	"noMergeParagraph",
+	"ownerPassword",
+	"userPassword",
+	"wordBreakThreshold",
+	"zoom",
+]);
+
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Poppler to convert Buffer containing
@@ -37,21 +52,6 @@ async function plugin(server, options) {
 
 	// Create temp directory if missing
 	await mkdir(directory, { recursive: true });
-
-	const pdfToHtmlAcceptedParams = new Set([
-		"exchangePdfLinks",
-		"extractHidden",
-		"firstPageToConvert",
-		"ignoreImages",
-		"imageFormat",
-		"lastPageToConvert",
-		"noDrm",
-		"noMergeParagraph",
-		"ownerPassword",
-		"userPassword",
-		"wordBreakThreshold",
-		"zoom",
-	]);
 
 	server
 		.decorateRequest("conversionResults", null)

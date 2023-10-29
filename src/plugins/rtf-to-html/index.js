@@ -11,6 +11,10 @@ const { JSDOM } = require("jsdom");
 const { joinSafe, normalizeTrim } = require("upath");
 const { UnRTF } = require("node-unrtf");
 
+// Cache immutable regex as they are expensive to create and garbage collect
+const rtfHyperLinkRegex =
+	/\{\\field\{\\\*\\fldinst HYPERLINK ".*?" \}\{\\fldrslt (.*?)\}/gsu;
+
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses UnRTF to convert Buffer containing
@@ -86,12 +90,7 @@ async function plugin(server, options) {
 		 * however older versions of UnRTF remove the hyperlink text entirely.
 		 * Remove RTF hyperlinks prior to conversion to ensure consistent results
 		 */
-		req.body = req.body
-			.toString()
-			.replace(
-				/\{\\field\{\\\*\\fldinst HYPERLINK ".*?" \}\{\\fldrslt (.*?)\}/gsu,
-				"$1"
-			);
+		req.body = req.body.toString().replace(rtfHyperLinkRegex, "$1");
 
 		// Build temp RTF file for UnRTF to read from
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;

@@ -3,6 +3,8 @@
 const fp = require("fastify-plugin");
 const WordExtractor = require("word-extractor");
 
+const wordExtractor = new WordExtractor();
+
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Word-Extractor to convert Buffer containing
@@ -11,8 +13,6 @@ const WordExtractor = require("word-extractor");
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
-	const wordExtractor = new WordExtractor();
-
 	server
 		.decorateRequest("conversionResults", null)
 		.addHook("onRequest", async (req) => {
