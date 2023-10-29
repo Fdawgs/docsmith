@@ -6,6 +6,10 @@ const { parse: cssomParse } = require("cssom");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 
+// Cache immutable regex as they are expensive to create and garbage collect
+const fontRegex = /[^-A-Za-z]+/u;
+const styleRegex = /<\/style>/gu;
+
 /**
  * @author Frazer Smith
  * @description Decorator plugin that adds function that parses,
@@ -70,9 +74,9 @@ async function plugin(server) {
 			if (styleRule.style["font-family"]) {
 				const fonts = styleRule.style["font-family"].split(",");
 				const parsedFonts = fonts.map((font) => {
-					if (/[^-A-Za-z]+/u.test(font.trim())) {
+					if (fontRegex.test(font.trim())) {
 						// Stop escaping of <style> elements and code injection
-						return cssEsc(font.replace(/<\/style>/gu, "").trim(), {
+						return cssEsc(font.replace(styleRegex, "").trim(), {
 							quotes: "double",
 							wrap: true,
 						});
