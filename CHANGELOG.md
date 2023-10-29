@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.0.5](https://github.com/Fdawgs/docsmith/compare/v11.0.4...v11.0.5) (2023-10-29)
+
+
+### Dependencies
+
+* **deps-dev:** bump the commitlint group with 2 updates ([#1698](https://github.com/Fdawgs/docsmith/issues/1698)) ([871202b](https://github.com/Fdawgs/docsmith/commit/871202bd5488d725b6e8fec4358e3e9b9df804e7))
+* **deps-dev:** bump the eslint group with 4 updates ([#1701](https://github.com/Fdawgs/docsmith/issues/1701)) ([8c87116](https://github.com/Fdawgs/docsmith/commit/8c8711656d213a8dd93eb18b1d1dd2788cfe6cb8))
+* **deps:** bump fastify-json-to-xml from 1.1.7 to 1.1.8 ([#1704](https://github.com/Fdawgs/docsmith/issues/1704)) ([83bdbde](https://github.com/Fdawgs/docsmith/commit/83bdbdeafee8e2c0b49fb681332bd1121355f8ed))
+* **deps:** bump node-unrtf from 4.1.0 to 4.1.1 ([#1703](https://github.com/Fdawgs/docsmith/issues/1703)) ([c0d6a09](https://github.com/Fdawgs/docsmith/commit/c0d6a091c4302771fee84ceb9abc822c3d9b557b))
+* **deps:** bump redoc from 2.1.2 to 2.1.3 ([#1702](https://github.com/Fdawgs/docsmith/issues/1702)) ([0f3bd09](https://github.com/Fdawgs/docsmith/commit/0f3bd096bfb559a95ed00d2bc2e825149b991752))
+* **deps:** bump the fastify-core group with 2 updates ([#1699](https://github.com/Fdawgs/docsmith/issues/1699)) ([44136db](https://github.com/Fdawgs/docsmith/commit/44136db5237a7d53966795372258b150f6b71293))
+* **deps:** bump the pino-core group with 1 update ([#1700](https://github.com/Fdawgs/docsmith/issues/1700)) ([a75928c](https://github.com/Fdawgs/docsmith/commit/a75928c29473a5d064834e53155619d0065f4cca))
+* **deps:** bump transistive dependencies ([96d9d1d](https://github.com/Fdawgs/docsmith/commit/96d9d1d1723f638fc63cbf42ff7fdc9012ba838e))
+* **docker:** bump node from 18-bullseye-slim to 20-bullseye-slim ([3faac00](https://github.com/Fdawgs/docsmith/commit/3faac00a6e003548990a03800cabfe0870516ca8))
+
+
+### Continuous integration
+
+* **deps:** bump actions/setup-node from 3 to 4 ([#1697](https://github.com/Fdawgs/docsmith/issues/1697)) ([c9e2f88](https://github.com/Fdawgs/docsmith/commit/c9e2f883d641cec781f886ec9ad711d26fbb0876))
+
+
+### Improvements
+
+* cache regex literals ([3ad1fc7](https://github.com/Fdawgs/docsmith/commit/3ad1fc74c2d70aa361ec88cf4f9c0ec976e5108c))
+* **plugins:** move shared configs and classes to upper scope ([2e50406](https://github.com/Fdawgs/docsmith/commit/2e50406a00a5d7e0e9a0360a258872a63aa9c6a6))
+* **plugins:** move shared wordextractor class to upper scope ([db980d0](https://github.com/Fdawgs/docsmith/commit/db980d017b190694d72cccf49e7a7241b5e7718d))
+
 ## [11.0.4](https://github.com/Fdawgs/docsmith/compare/v11.0.3...v11.0.4) (2023-10-19)
 
 
