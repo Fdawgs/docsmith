@@ -4,6 +4,20 @@ const fp = require("fastify-plugin");
 const { htmlToText } = require("html-to-text");
 const isHtml = require("is-html");
 
+const htmlToTextConfig = {
+	selectors: [
+		{ selector: "a", options: { ignoreHref: true } },
+		{ selector: "h1", options: { uppercase: false } },
+		{ selector: "img", format: "skip" },
+		{
+			selector: "table",
+			format: "dataTable",
+			options: { uppercaseHeaderCells: false },
+		},
+	],
+	wordwrap: null,
+};
+
 /**
  * @author Frazer Smith
  * @description Decorator plugin that adds function that uses html-to-text
@@ -11,20 +25,6 @@ const isHtml = require("is-html");
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
-	const htmlToTextConfig = {
-		selectors: [
-			{ selector: "a", options: { ignoreHref: true } },
-			{ selector: "h1", options: { uppercase: false } },
-			{ selector: "img", format: "skip" },
-			{
-				selector: "table",
-				format: "dataTable",
-				options: { uppercaseHeaderCells: false },
-			},
-		],
-		wordwrap: null,
-	};
-
 	/**
 	 * @author Frazer Smith
 	 * @description Converts HTML to TXT.

@@ -6,6 +6,8 @@ const { parse: cssomParse } = require("cssom");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 
+const cssCleaner = new CleanCSS({ compatibility: "ie7" });
+
 // Cache immutable regex as they are expensive to create and garbage collect
 const fontRegex = /[^-A-Za-z]+/u;
 const styleRegex = /<\/style>/gu;
@@ -17,8 +19,6 @@ const styleRegex = /<\/style>/gu;
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
-	const cssCleaner = new CleanCSS({ compatibility: "ie7" });
-
 	/**
 	 * @author Frazer Smith
 	 * @description Parses, tidies, and minifies CSS in `<style>` elements in HTML passed.

@@ -14,6 +14,35 @@ const { Poppler } = require("node-poppler");
 // Import utils
 const parseString = require("../../utils/parse-string");
 
+const pdfToCairoAcceptedParams = new Set([
+	"cropHeight",
+	"cropWidth",
+	"cropXAxis",
+	"cropYAxis",
+	"firstPageToConvert",
+	"lastPageToConvert",
+]);
+
+const pdfToTxtAcceptedParams = new Set([
+	"boundingBoxXhtml",
+	"boundingBoxXhtmlLayout",
+	"cropHeight",
+	"cropWidth",
+	"cropXAxis",
+	"cropYAxis",
+	"eolConvention",
+	"firstPageToConvert",
+	"fixedWidthLayout",
+	"generateHtmlMetaFile",
+	"lastPageToConvert",
+	"maintainLayout",
+	"noDiagonalText",
+	"noPageBreaks",
+	"ownerPassword",
+	"rawLayout",
+	"userPassword",
+]);
+
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that uses Poppler to convert Buffer containing
@@ -36,35 +65,6 @@ async function plugin(server, options) {
 
 	// Create temp directory if missing
 	await mkdir(directory, { recursive: true });
-
-	const pdfToCairoAcceptedParams = new Set([
-		"cropHeight",
-		"cropWidth",
-		"cropXAxis",
-		"cropYAxis",
-		"firstPageToConvert",
-		"lastPageToConvert",
-	]);
-
-	const pdfToTxtAcceptedParams = new Set([
-		"boundingBoxXhtml",
-		"boundingBoxXhtmlLayout",
-		"cropHeight",
-		"cropWidth",
-		"cropXAxis",
-		"cropYAxis",
-		"eolConvention",
-		"firstPageToConvert",
-		"fixedWidthLayout",
-		"generateHtmlMetaFile",
-		"lastPageToConvert",
-		"maintainLayout",
-		"noDiagonalText",
-		"noPageBreaks",
-		"ownerPassword",
-		"rawLayout",
-		"userPassword",
-	]);
 
 	server
 		.decorateRequest("conversionResults", null)
