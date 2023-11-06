@@ -73,7 +73,7 @@ async function plugin(server) {
 		/**
 		 * When an alt attribute is not present in an <img> tag, screen readers may announce the image's file name instead.
 		 * This can be a confusing experience if the file name is not representative of the image's contents.
-		 * See https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI
+		 * @see {@link https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI | Deque University: Image alt text}
 		 *
 		 * As such, alt attributes in <img> tags are set to an empty string rather than removed here
 		 */
