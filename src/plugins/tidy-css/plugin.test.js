@@ -27,9 +27,7 @@ describe("Tidy-CSS plugin", () => {
 		);
 	});
 
-	afterEach(async () => {
-		await server.close();
-	});
+	afterEach(async () => server.close());
 
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([

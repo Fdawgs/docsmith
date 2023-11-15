@@ -37,9 +37,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		await server.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it.each([
 		{

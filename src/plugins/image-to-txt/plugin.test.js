@@ -37,9 +37,7 @@ describe("Image-to-TXT conversion plugin", () => {
 		await server.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it("Reads text from image file", async () => {
 		const response = await server.inject({

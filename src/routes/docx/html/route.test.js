@@ -32,9 +32,7 @@ describe("DOCX-to-HTML route", () => {
 			.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it.each([
 		{

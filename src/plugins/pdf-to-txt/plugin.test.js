@@ -43,12 +43,12 @@ describe("PDF-to-TXT conversion plugin", () => {
 		await server.ready();
 	});
 
-	afterAll(async () => {
-		await Promise.all([
+	afterAll(async () =>
+		Promise.all([
 			rm(config.poppler.tempDir, { recursive: true }),
 			server.close(),
-		]);
-	});
+		])
+	);
 
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([

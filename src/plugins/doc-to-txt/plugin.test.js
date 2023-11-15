@@ -35,9 +35,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 		await server.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it.each([
 		{

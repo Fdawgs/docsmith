@@ -25,9 +25,7 @@ describe("Healthcheck route", () => {
 				.ready();
 		});
 
-		afterAll(async () => {
-			await server.close();
-		});
+		afterAll(async () => server.close());
 
 		it("Returns `ok`", async () => {
 			const response = await server.inject({

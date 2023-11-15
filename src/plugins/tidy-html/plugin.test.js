@@ -20,9 +20,7 @@ describe("Tidy-HTML plugin", () => {
 		);
 	});
 
-	afterEach(async () => {
-		await server.close();
-	});
+	afterEach(async () => server.close());
 
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
@@ -41,10 +39,7 @@ describe("Tidy-HTML plugin", () => {
 			options: { language: "fr", removeAlt: true },
 		},
 	])("$testName", async ({ options }) => {
-		server.post("/", async (req) => {
-			const result = await server.tidyHtml(req.body, options);
-			return result;
-		});
+		server.post("/", async (req) => server.tidyHtml(req.body, options));
 		await server.register(sensible).register(plugin).ready();
 
 		const response = await server.inject({
@@ -93,12 +88,11 @@ describe("Tidy-HTML plugin", () => {
 	});
 
 	it("Returns HTTP status code 400 if language querystring param is not valid IANA language tag", async () => {
-		server.post("/", async (req) => {
-			const result = await server.tidyHtml(req.body, {
+		server.post("/", async (req) =>
+			server.tidyHtml(req.body, {
 				language: "en-Somerset",
-			});
-			return result;
-		});
+			})
+		);
 		await server.register(sensible).register(plugin).ready();
 
 		const response = await server.inject({

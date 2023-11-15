@@ -40,9 +40,7 @@ describe("RTF-to-HTML route", () => {
 			.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it("Returns RTF file converted to HTML", async () => {
 		expect.assertions(queryStrings.length * 4);

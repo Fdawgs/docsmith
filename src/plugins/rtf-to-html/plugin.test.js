@@ -46,12 +46,12 @@ describe("RTF-to-HTML conversion plugin", () => {
 		await server.ready();
 	});
 
-	afterAll(async () => {
-		await Promise.all([
+	afterAll(async () =>
+		Promise.all([
 			rm(config.unrtf.tempDir, { recursive: true }),
 			server.close(),
-		]);
-	});
+		])
+	);
 
 	/** @todo fix rtf-to-html plugin to include header and footer */
 	it.failing("Converts RTF file to HTML", async () => {

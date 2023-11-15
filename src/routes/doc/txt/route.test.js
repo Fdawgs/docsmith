@@ -27,9 +27,7 @@ describe("DOC-to-TXT route", () => {
 			.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it.each([
 		{

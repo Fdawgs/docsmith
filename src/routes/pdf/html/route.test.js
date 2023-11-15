@@ -44,25 +44,20 @@ describe("PDF-to-HTML route", () => {
 			.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it("Returns PDF file converted to HTML", async () => {
 		expect.assertions(queryStrings.length * 4);
 		await Promise.all(
-			queryStrings.map(async (queryString) => {
-				const query = queryString;
-				query.lastPageToConvert = "1";
-
-				return server
+			queryStrings.map(async (queryString) =>
+				server
 					.inject({
 						method: "POST",
 						url: "/",
 						body: await readFile(
 							"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 						),
-						query,
+						query: { ...queryString, lastPageToConvert: "1" },
 						headers: {
 							accept: "application/json, text/html",
 							"content-type": "application/pdf",
@@ -77,23 +72,20 @@ describe("PDF-to-HTML route", () => {
 						expect(response.statusCode).toBe(200);
 
 						return response.statusCode;
-					});
-			})
+					})
+			)
 		);
 	});
 
 	it("Returns HTTP status code 400 if file is missing", async () => {
 		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
-			queryStrings.map((queryString) => {
-				const query = queryString;
-				query.lastPageToConvert = "1";
-
-				return server
+			queryStrings.map((queryString) =>
+				server
 					.inject({
 						method: "POST",
 						url: "/",
-						query,
+						query: { ...queryString, lastPageToConvert: "1" },
 						headers: {
 							accept: "application/json, text/html",
 							"content-type": "application/pdf",
@@ -108,26 +100,23 @@ describe("PDF-to-HTML route", () => {
 						expect(response.statusCode).toBe(400);
 
 						return response.statusCode;
-					});
-			})
+					})
+			)
 		);
 	});
 
 	it("Returns HTTP status code 415 if file with '.pdf' extension is not a valid PDF file", async () => {
 		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
-			queryStrings.map(async (queryString) => {
-				const query = queryString;
-				query.lastPageToConvert = "1";
-
-				return server
+			queryStrings.map(async (queryString) =>
+				server
 					.inject({
 						method: "POST",
 						url: "/",
 						body: await readFile(
 							"./test_resources/test_files/pdf_invalid.pdf"
 						),
-						query,
+						query: { ...queryString, lastPageToConvert: "1" },
 						headers: {
 							accept: "application/json, text/html",
 							"content-type": "application/pdf",
@@ -142,26 +131,23 @@ describe("PDF-to-HTML route", () => {
 						expect(response.statusCode).toBe(415);
 
 						return response.statusCode;
-					});
-			})
+					})
+			)
 		);
 	});
 
 	it("Returns HTTP status code 415 if file media type is not supported by route", async () => {
 		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
-			queryStrings.map(async (queryString) => {
-				const query = queryString;
-				query.lastPageToConvert = "1";
-
-				return server
+			queryStrings.map(async (queryString) =>
+				server
 					.inject({
 						method: "POST",
 						url: "/",
 						body: await readFile(
 							"./test_resources/test_files/html_valid_empty.html"
 						),
-						query,
+						query: { ...queryString, lastPageToConvert: "1" },
 						headers: {
 							accept: "application/json, text/html",
 							"content-type": "application/html",
@@ -176,8 +162,8 @@ describe("PDF-to-HTML route", () => {
 						expect(response.statusCode).toBe(415);
 
 						return response.statusCode;
-					});
-			})
+					})
+			)
 		);
 	});
 

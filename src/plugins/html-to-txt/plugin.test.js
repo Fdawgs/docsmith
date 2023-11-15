@@ -29,9 +29,7 @@ describe("HTML-to-TXT conversion plugin", () => {
 		await server.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it("Converts HTML file to TXT", async () => {
 		const response = await server.inject({

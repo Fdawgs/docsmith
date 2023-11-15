@@ -25,9 +25,7 @@ describe("Docs route", () => {
 				.ready();
 		});
 
-		afterAll(async () => {
-			await server.close();
-		});
+		afterAll(async () => server.close());
 
 		it("Returns HTML", async () => {
 			const response = await server.inject({

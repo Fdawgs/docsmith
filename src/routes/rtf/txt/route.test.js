@@ -33,9 +33,7 @@ describe("RTF-to-TXT route", () => {
 			.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it("Returns RTF file converted to TXT", async () => {
 		const response = await server.inject({
