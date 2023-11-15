@@ -145,6 +145,7 @@ describe("Configuration", () => {
 			languages: "eng",
 			workers: expect.any(Number),
 		});
+		expect(config.tesseract.workers).toBeGreaterThan(0);
 
 		expect(config.unrtf).toStrictEqual({
 			binPath: UNRTF_BINARY_PATH,
