@@ -85,8 +85,7 @@ async function plugin(server) {
 
 		const parsedHtml = dom.serialize();
 		const tidiedHtml = await tidyP(parsedHtml, htmlTidyConfig);
-		const minifiedHtml = await minify(tidiedHtml, htmlMinifyConfig);
-		return minifiedHtml;
+		return minify(tidiedHtml, htmlMinifyConfig);
 	}
 
 	server.decorate("tidyHtml", tidyHtml);
