@@ -34,10 +34,8 @@ async function plugin(server) {
 		const dom = new JSDOM(html);
 		let styles = dom.window.document.querySelectorAll("style");
 
-		const newBackgroundColor = options.backgroundColor
-			? String(options.backgroundColor)
-			: undefined;
-		const newFonts = options.fonts ? String(options.fonts) : undefined;
+		const newBackgroundColor = options.backgroundColor?.toString();
+		const newFonts = options.fonts?.toString();
 
 		// Create style element inside head if none already exist
 		if (styles.length === 0 && (newFonts || newBackgroundColor)) {
