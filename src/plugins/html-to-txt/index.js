@@ -20,8 +20,8 @@ const htmlToTextConfig = {
 
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds function that uses html-to-text
- * to convert HTML to TXT.
+ * @description Decorator plugin that adds the `htmlToTxt` function,
+ * which converts HTML to TXT.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {

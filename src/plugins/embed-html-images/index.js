@@ -7,8 +7,8 @@ const { joinSafe, normalizeTrim, parse } = require("upath");
 
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds function to embed images into HTML,
- * after encoding with Base64.
+ * @description Decorator plugin that adds the `embedHtmlImages` function,
+ * which embeds images into HTML, after encoding with Base64.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.tempDir - Directory for temporarily storing
@@ -20,7 +20,7 @@ async function plugin(server, options) {
 	/**
 	 * @author Frazer Smith
 	 * @description Embeds images into HTML, after encoding with Base64.
-	 * @param {string} html - Valid HTML.
+	 * @param {Buffer|string} html - Valid HTML.
 	 * @returns {Promise<string>} A promise that resolves with a tidied HTML string with images embedded, or rejects with an `Error` object
 	 * if the images to embed cannot be found.
 	 */

@@ -38,15 +38,15 @@ const htmlMinifyConfig = {
 
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds function that uses HTMLTidy2
- * and HTMLMinifier to parse, tidy, and minify HTML passed.
+ * @description Decorator plugin that adds the function the `tidyHtml` function,
+ * which parses, tidies, and minifies HTML passed.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	/**
 	 * @author Frazer Smith
 	 * @description Parses, tidies, and minifies HTML passed.
-	 * @param {string} html - Valid HTML.
+	 * @param {Buffer|string} html - Valid HTML.
 	 * @param {object} options - Function config values.
 	 * @param {string} [options.language] - Set `lang` and `xml:lang` attributes of `<html>` tag.
 	 * Defaults to `en`.

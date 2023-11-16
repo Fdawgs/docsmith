@@ -14,15 +14,15 @@ const styleRegex = /<\/style>/gu;
 
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds function that parses,
- * tidies, and minifies CSS in `<style>` elements in HTML passed.
+ * @description Decorator plugin that adds the `tidyCss` function, which
+ * parses, tidies, and minifies CSS in `<style>` elements in HTML passed.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	/**
 	 * @author Frazer Smith
 	 * @description Parses, tidies, and minifies CSS in `<style>` elements in HTML passed.
-	 * @param {string} html - Valid HTML.
+	 * @param {Buffer|string} html - Valid HTML.
 	 * @param {object} options - Function config values.
 	 * @param {string} [options.backgroundColor] - Color to set or replace the document's
 	 * `background-color` property value of `div` CSS selectors with.
