@@ -83,8 +83,8 @@ async function plugin(server) {
 			});
 		}
 
-		const parsedHtml = dom.serialize();
-		const tidiedHtml = await tidyP(parsedHtml, htmlTidyConfig);
+		/** @type {string} */
+		const tidiedHtml = await tidyP(dom.serialize(), htmlTidyConfig);
 		return minify(tidiedHtml, htmlMinifyConfig);
 	}
 
