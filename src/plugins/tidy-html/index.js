@@ -66,7 +66,7 @@ async function plugin(server) {
 				"querystring.language not a valid IANA language tag"
 			);
 		}
-		const innerHtml = dom.window.document.querySelector("html");
+		const innerHtml = dom.window.document.documentElement;
 		innerHtml?.setAttribute("lang", language);
 		innerHtml?.setAttribute("xml:lang", language);
 
