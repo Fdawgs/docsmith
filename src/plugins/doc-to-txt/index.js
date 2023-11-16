@@ -7,23 +7,23 @@ const wordExtractor = new WordExtractor();
 
 /**
  * @author Frazer Smith
- * @description Pre-handler plugin that uses Word-Extractor to convert Buffer containing
- * DOC, DOT, DOCM, or DOCX file in `req.body` to TXT.
- * `req` object is decorated with `conversionResults.body` holding the converted document.
+ * @description Decorator plugin that adds the `docToTxt` function,
+ * which converts Buffers or Uint8Arrays containing a DOC, DOT, DOCM,
+ * or DOCX file to TXT.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
-	server
-		.decorateRequest("conversionResults", null)
-		.addHook("onRequest", async (req) => {
-			req.conversionResults = { body: undefined };
-		});
-
-	server.addHook("preHandler", async (req, res) => {
+	/**
+	 * @author Frazer Smith
+	 * @description Converts DOC, DOT, DOCM, or DOCX file to TXT.
+	 * @param {Buffer|Uint8Array} doc - DOC, DOT, DOCM, or DOCX file.
+	 * @returns {Promise<string>} A promise that resolves with the document converted to TXT string,
+	 * or rejects with an `Error` object.
+	 */
+	async function docToTxt(doc) {
 		try {
-			const results = await wordExtractor.extract(req.body);
-
-			req.conversionResults.body = `${results
+			const results = await wordExtractor.extract(doc);
+			return `${results
 				.getHeaders({
 					includeFooters: false,
 				})
@@ -34,7 +34,6 @@ async function plugin(server) {
 				.trim()}\n${results.getFootnotes().trim()}\n${results
 				.getFooters()
 				.trim()}`;
-			res.type("text/plain; charset=utf-8");
 		} catch {
 			/**
 			 * Word-Extractor will throw if the .doc, .docx, .dot, or .dotx file provided
@@ -42,7 +41,9 @@ async function plugin(server) {
 			 */
 			throw server.httpErrors.badRequest();
 		}
-	});
+	}
+
+	server.decorate("docToTxt", docToTxt);
 }
 
 module.exports = fp(plugin, {

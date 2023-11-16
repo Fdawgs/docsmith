@@ -26,10 +26,9 @@ describe("DOC-to-TXT conversion plugin", () => {
 
 		await server.register(sensible).register(plugin);
 
-		server.post("/", (req, res) => {
-			res.header("content-type", "application/json").send(
-				req.conversionResults
-			);
+		server.post("/", async (req, res) => {
+			res.type("text/plain; charset=utf-8");
+			return server.docToTxt(req.body);
 		});
 
 		await server.ready();
@@ -76,9 +75,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 			headers,
 		});
 
-		const { body } = JSON.parse(response.body);
-
-		expect(body).toMatchSnapshot();
+		expect(response.body).toMatchSnapshot();
 		expect(response.statusCode).toBe(200);
 	});
 
