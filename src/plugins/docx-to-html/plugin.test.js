@@ -28,10 +28,9 @@ describe("DOCX-to-HTML conversion plugin", () => {
 
 		await server.register(sensible).register(plugin);
 
-		server.post("/", (req, res) => {
-			res.header("content-type", "application/json").send(
-				req.conversionResults
-			);
+		server.post("/", async (req, res) => {
+			res.type("text/html; charset=utf-8");
+			return server.docxToHtml(req.body);
 		});
 
 		await server.ready();
@@ -80,8 +79,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 			headers,
 		});
 
-		const { body } = JSON.parse(response.body);
-		const dom = new JSDOM(body);
+		const dom = new JSDOM(response.body);
 
 		expect(
 			response.body.replace(

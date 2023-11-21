@@ -11,22 +11,22 @@ const wordExtractor = new WordExtractor();
 
 /**
  * @author Frazer Smith
- * @description Pre-handler plugin that uses Mammoth and Word-Extractor to convert Buffer containing
- * DOCM, DOCX, DOTM, or DOTX file in `req.body` to HTML.
- * `req` object is decorated with `conversionResults.body` holding the converted document.
+ * @description Decorator plugin that adds the `docxToHtml` function,
+ * which converts Buffers containing a DOC, DOT, DOCM, or DOCX file to HTML.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
-	server
-		.decorateRequest("conversionResults", null)
-		.addHook("onRequest", async (req) => {
-			req.conversionResults = { body: undefined };
-		});
-
-	server.addHook("preHandler", async (req, res) => {
+	/**
+	 * @author Frazer Smith
+	 * @description Converts DOC, DOT, DOCM, or DOCX file to HTML.
+	 * @param {Buffer} doc - DOC, DOT, DOCM, or DOCX file.
+	 * @returns {Promise<string>} A promise that resolves with the document converted to HTML string,
+	 * or rejects with an `Error` object.
+	 */
+	async function docxToHtml(doc) {
 		try {
-			const results = await wordExtractor.extract(req.body);
-			const { value } = await convertToHtml(req.body);
+			const results = await wordExtractor.extract(doc);
+			const { value } = await convertToHtml(doc);
 
 			/**
 			 * Mammoth does not wrap the results inside <html> and <body> tags itself, so
@@ -36,7 +36,7 @@ async function plugin(server) {
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * @see {@link https://i18nqa.com/debug/utf8-debug.html | UTF-8 Encoding Debugging Chart}
 			 */
-			req.conversionResults.body = new JSDOM(
+			return new JSDOM(
 				`<!DOCTYPE html>
 			<head>
 				<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -54,7 +54,6 @@ async function plugin(server) {
 				</body>
 			</html>`
 			).serialize();
-			res.type("text/html; charset=utf-8");
 		} catch {
 			/**
 			 * Mammoth will throw if the .docm, .docx, .dotm, or .dotx file provided
@@ -62,7 +61,9 @@ async function plugin(server) {
 			 */
 			throw server.httpErrors.badRequest();
 		}
-	});
+	}
+
+	server.decorate("docxToHtml", docxToHtml);
 }
 
 module.exports = fp(plugin, {
