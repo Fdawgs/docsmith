@@ -26,7 +26,7 @@ async function plugin(server) {
 	async function docxToHtml(doc) {
 		try {
 			const results = await wordExtractor.extract(doc);
-			const { value } = await convertToHtml(doc);
+			const { value } = await convertToHtml({ buffer: doc });
 
 			/**
 			 * Mammoth does not wrap the results inside <html> and <body> tags itself, so
