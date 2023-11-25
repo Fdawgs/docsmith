@@ -8,7 +8,7 @@ const { joinSafe, normalizeTrim, parse } = require("upath");
 /**
  * @author Frazer Smith
  * @description Decorator plugin that adds the `embedHtmlImages` function,
- * which embeds images into HTML, after encoding with Base64.
+ * which embeds images into HTML after encoding with Base64.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.tempDir - Directory for temporarily storing
