@@ -50,7 +50,6 @@ describe("Configuration", () => {
 		const OCR_LANGUAGES = "";
 		const OCR_WORKERS = "";
 		const POPPLER_BINARY_PATH = "";
-		const UNRTF_BINARY_PATH = "";
 
 		Object.assign(process.env, {
 			HOST,
@@ -78,7 +77,6 @@ describe("Configuration", () => {
 			OCR_LANGUAGES,
 			OCR_WORKERS,
 			POPPLER_BINARY_PATH,
-			UNRTF_BINARY_PATH,
 		});
 
 		const config = await getConfig();
@@ -148,7 +146,6 @@ describe("Configuration", () => {
 		expect(config.tesseract.workers).toBeGreaterThan(0);
 
 		expect(config.unrtf).toStrictEqual({
-			binPath: UNRTF_BINARY_PATH,
 			tempDir,
 		});
 	});
@@ -216,7 +213,6 @@ describe("Configuration", () => {
 		const OCR_LANGUAGES = "cym";
 		const OCR_WORKERS = 1;
 		const POPPLER_BINARY_PATH = "/usr/bin";
-		const UNRTF_BINARY_PATH = "/usr/bin";
 
 		Object.assign(process.env, {
 			HOST,
@@ -242,7 +238,6 @@ describe("Configuration", () => {
 			OCR_LANGUAGES,
 			OCR_WORKERS,
 			POPPLER_BINARY_PATH,
-			UNRTF_BINARY_PATH,
 		});
 
 		const config = await getConfig();
@@ -316,7 +311,6 @@ describe("Configuration", () => {
 		});
 
 		expect(config.unrtf).toStrictEqual({
-			binPath: UNRTF_BINARY_PATH,
 			tempDir,
 		});
 	});
