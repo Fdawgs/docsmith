@@ -179,13 +179,14 @@ describe("PDF-to-TXT conversion plugin", () => {
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{ testName: "is missing" },
+		{ testName: "is an empty file", body: Buffer.from("") },
 		{
 			testName: "is not a valid PDF file",
-			read: true,
+			body: Buffer.from("test"),
 		},
 		{
 			testName: "is not a valid PDF file for OCR",
-			read: true,
+			body: Buffer.from("test"),
 			query: {
 				lastPageToConvert: "1",
 				ocr: "true",
@@ -193,15 +194,11 @@ describe("PDF-to-TXT conversion plugin", () => {
 		},
 	])(
 		"Returns HTTP status code 400 if PDF file $testName",
-		async ({ read, query }) => {
+		async ({ body, query }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				body: read
-					? await readFile(
-							"./test_resources/test_files/pdf_invalid.pdf"
-					  )
-					: undefined,
+				body,
 				query,
 				headers: {
 					"content-type": "application/pdf",
