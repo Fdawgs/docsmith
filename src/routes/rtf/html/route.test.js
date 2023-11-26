@@ -75,7 +75,7 @@ describe("RTF-to-HTML route", () => {
 		);
 	});
 
-	it("Returns HTTP status code 400 if file is missing", async () => {
+	it("Returns HTTP status code 400 if body is missing", async () => {
 		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
 			queryStrings.map((query) =>
@@ -103,7 +103,7 @@ describe("RTF-to-HTML route", () => {
 		);
 	});
 
-	it("Returns HTTP status code 415 if file with '.rtf' extension is not a valid RTF file", async () => {
+	it("Returns HTTP status code 415 if body is not a valid RTF file", async () => {
 		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
 			queryStrings.map(async (query) =>
@@ -111,9 +111,7 @@ describe("RTF-to-HTML route", () => {
 					.inject({
 						method: "POST",
 						url: "/",
-						body: await readFile(
-							"./test_resources/test_files/rtf_invalid.rtf"
-						),
+						body: Buffer.from("test"),
 						query,
 						headers: {
 							accept: "application/json, text/html",

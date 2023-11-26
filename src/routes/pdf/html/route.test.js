@@ -77,7 +77,7 @@ describe("PDF-to-HTML route", () => {
 		);
 	});
 
-	it("Returns HTTP status code 400 if file is missing", async () => {
+	it("Returns HTTP status code 400 if body is missing", async () => {
 		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
 			queryStrings.map((queryString) =>
@@ -105,7 +105,7 @@ describe("PDF-to-HTML route", () => {
 		);
 	});
 
-	it("Returns HTTP status code 415 if file with '.pdf' extension is not a valid PDF file", async () => {
+	it("Returns HTTP status code 415 if body is not a valid PDF file", async () => {
 		expect.assertions(queryStrings.length * 2);
 		await Promise.all(
 			queryStrings.map(async (queryString) =>
@@ -113,9 +113,7 @@ describe("PDF-to-HTML route", () => {
 					.inject({
 						method: "POST",
 						url: "/",
-						body: await readFile(
-							"./test_resources/test_files/pdf_invalid.pdf"
-						),
+						body: Buffer.from("test"),
 						query: { ...queryString, lastPageToConvert: "1" },
 						headers: {
 							accept: "application/json, text/html",

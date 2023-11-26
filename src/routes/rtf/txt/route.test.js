@@ -56,7 +56,7 @@ describe("RTF-to-TXT route", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	it("Returns HTTP status code 400 if file is missing", async () => {
+	it("Returns HTTP status code 400 if body is missing", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -74,11 +74,11 @@ describe("RTF-to-TXT route", () => {
 		expect(response.statusCode).toBe(400);
 	});
 
-	it("Returns HTTP status code 415 if file with '.rtf' extension is not a valid RTF file", async () => {
+	it("Returns HTTP status code 415 if body is not a valid RTF file", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/rtf_invalid.rtf"),
+			body: Buffer.from("test"),
 			query: {
 				lastPageToConvert: "1",
 			},
