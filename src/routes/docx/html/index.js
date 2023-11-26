@@ -68,15 +68,14 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: async (req) => {
-			const tidiedHtml = await server.tidyHtml(
-				req.conversionResults.body,
-				{
-					language: req.query.language,
-					removeAlt: req.query.removeAlt,
-				}
-			);
+		handler: async (req, res) => {
+			const html = await server.docxToHtml(req.body);
+			const tidiedHtml = await server.tidyHtml(html, {
+				language: req.query.language,
+				removeAlt: req.query.removeAlt,
+			});
 
+			res.type("text/html; charset=utf-8");
 			return server.tidyCss(tidiedHtml, {
 				fonts: req.query.fonts,
 				backgroundColor: req.query.backgroundColor,

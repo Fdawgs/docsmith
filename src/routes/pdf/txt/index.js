@@ -69,15 +69,12 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: async (req) => {
-			const result =
-				req.query.boundingBoxXhtml ||
-				req.query.boundingBoxXhtmlLayout ||
-				req.query.generateHtmlMetaFile
-					? await server.tidyHtml(req.conversionResults.body)
-					: req.conversionResults.body;
-			return result;
-		},
+		handler: async (req) =>
+			req.query.boundingBoxXhtml ||
+			req.query.boundingBoxXhtmlLayout ||
+			req.query.generateHtmlMetaFile
+				? server.tidyHtml(req.conversionResults.body)
+				: req.conversionResults.body,
 	});
 }
 

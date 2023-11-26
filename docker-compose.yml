@@ -15,7 +15,6 @@ services:
             NODE_ENV: production
             HOST: 0.0.0.0
             POPPLER_BINARY_PATH: /usr/bin/
-            UNRTF_BINARY_PATH: /usr/bin/
         healthcheck:
             test: curl "localhost:${PORT:-3000}/admin/healthcheck"
             interval: 60s

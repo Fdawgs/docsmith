@@ -28,9 +28,7 @@ describe("HTML-to-TXT route", () => {
 			.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it("Returns HTML file converted to TXT", async () => {
 		const response = await server.inject({
@@ -50,7 +48,7 @@ describe("HTML-to-TXT route", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	it("Returns HTTP status code 400 if file is missing", async () => {
+	it("Returns HTTP status code 400 if body is missing", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -68,13 +66,11 @@ describe("HTML-to-TXT route", () => {
 		expect(response.statusCode).toBe(400);
 	});
 
-	it("Returns HTTP status code 415 if file with '.html' extension is not a valid HTML file", async () => {
+	it("Returns HTTP status code 415 if body is not a valid HTML file", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/html_invalid.html"
-			),
+			body: Buffer.from("test"),
 			query: {
 				lastPageToConvert: "1",
 			},

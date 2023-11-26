@@ -33,7 +33,8 @@ const workerParams = {
 
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds Tesseract Scheduler and Workers.
+ * @description Decorator plugin that adds the `tesseract` function,
+ * which exposes the Tesseract OCR scheduler to convert images to TXT.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {string} options.languages - Languages to load trained data for.

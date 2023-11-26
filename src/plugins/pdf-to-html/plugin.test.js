@@ -46,12 +46,12 @@ describe("PDF-to-HTML conversion plugin", () => {
 		await server.ready();
 	});
 
-	afterAll(async () => {
-		await Promise.all([
+	afterAll(async () =>
+		Promise.all([
 			rm(config.poppler.tempDir, { recursive: true }),
 			server.close(),
-		]);
-	});
+		])
+	);
 
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
@@ -126,34 +126,28 @@ describe("PDF-to-HTML conversion plugin", () => {
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{ testName: "is missing" },
+		{ testName: "is empty", body: Buffer.alloc(0) },
 		{
 			testName: "is not a valid PDF file",
-			read: true,
+			body: Buffer.from("test"),
 		},
-	])(
-		"Returns HTTP status code 400 if PDF file $testName",
-		async ({ read }) => {
-			const response = await server.inject({
-				method: "POST",
-				url: "/",
-				body: read
-					? await readFile(
-							"./test_resources/test_files/pdf_invalid.pdf"
-					  )
-					: undefined,
-				headers: {
-					"content-type": "application/pdf",
-				},
-			});
+	])("Returns HTTP status code 400 if body $testName", async ({ body }) => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body,
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
 
-			expect(JSON.parse(response.body)).toStrictEqual({
-				error: "Bad Request",
-				message: "Bad Request",
-				statusCode: 400,
-			});
-			expect(response.statusCode).toBe(400);
-		}
-	);
+		expect(JSON.parse(response.body)).toStrictEqual({
+			error: "Bad Request",
+			message: "Bad Request",
+			statusCode: 400,
+		});
+		expect(response.statusCode).toBe(400);
+	});
 
 	it("Returns HTTP status code 400 if poppler.pdfToHtml() throws an error", async () => {
 		const mockPoppler = jest

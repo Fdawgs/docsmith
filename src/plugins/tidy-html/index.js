@@ -38,15 +38,15 @@ const htmlMinifyConfig = {
 
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds function that uses HTMLTidy2
- * and HTMLMinifier to parse, tidy, and minify HTML passed.
+ * @description Decorator plugin that adds the function the `tidyHtml` function,
+ * which parses, tidies, and minifies HTML passed.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	/**
 	 * @author Frazer Smith
 	 * @description Parses, tidies, and minifies HTML passed.
-	 * @param {string} html - Valid HTML.
+	 * @param {Buffer|string} html - Valid HTML.
 	 * @param {object} options - Function config values.
 	 * @param {string} [options.language] - Set `lang` and `xml:lang` attributes of `<html>` tag.
 	 * Defaults to `en`.
@@ -66,27 +66,28 @@ async function plugin(server) {
 				"querystring.language not a valid IANA language tag"
 			);
 		}
-		const innerHtml = dom.window.document.querySelector("html");
+		const innerHtml = dom.window.document.documentElement;
 		innerHtml?.setAttribute("lang", language);
 		innerHtml?.setAttribute("xml:lang", language);
 
 		/**
 		 * When an alt attribute is not present in an <img> tag, screen readers may announce the image's file name instead.
 		 * This can be a confusing experience if the file name is not representative of the image's contents.
-		 * See https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI
+		 * @see {@link https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI | Deque University: Image alt text}
 		 *
 		 * As such, alt attributes in <img> tags are set to an empty string rather than removed here
 		 */
 		if (options.removeAlt === true) {
-			dom.window.document.querySelectorAll("img").forEach((element) => {
-				element.setAttribute("alt", "");
-			});
+			const images = dom.window.document.querySelectorAll("img");
+			const imageLength = images.length;
+			for (let i = 0; i < imageLength; i += 1) {
+				images[i].setAttribute("alt", "");
+			}
 		}
 
-		const parsedHtml = dom.serialize();
-		const tidiedHtml = await tidyP(parsedHtml, htmlTidyConfig);
-		const minifiedHtml = await minify(tidiedHtml, htmlMinifyConfig);
-		return minifiedHtml;
+		/** @type {string} */
+		const tidiedHtml = await tidyP(dom.serialize(), htmlTidyConfig);
+		return minify(tidiedHtml, htmlMinifyConfig);
 	}
 
 	server.decorate("tidyHtml", tidyHtml);

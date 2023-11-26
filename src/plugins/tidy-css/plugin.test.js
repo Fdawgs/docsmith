@@ -27,9 +27,7 @@ describe("Tidy-CSS plugin", () => {
 		);
 	});
 
-	afterEach(async () => {
-		await server.close();
-	});
+	afterEach(async () => server.close());
 
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
@@ -118,11 +116,35 @@ describe("Tidy-CSS plugin", () => {
 		// Check background-color is set to expected value
 		expect(style?.innerHTML).toMatch(expected?.backgroundColor || /./u);
 		// Check page-break-inside is set to avoid
-		expect(style?.innerHTML).toMatch(
-			file !== "html_valid_no_style_type.html"
-				? /page-break-inside:avoid/u
-				: /./u
-		);
+		expect(style?.innerHTML).toMatch(/page-break-inside:avoid/u);
+		// Check CSS is tidied and minified
+		expect(style?.innerHTML).not.toMatch(/;\}|<!--|--!?>|\n|\r/u);
+		expect(response.statusCode).toBe(200);
+	});
+
+	it("Tidies CSS in HTML that uses @ rules", async () => {
+		server.post("/", (req, res) => {
+			res.send(server.tidyCss(req.body));
+		});
+		await server.register(plugin).ready();
+
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: await readFile(
+				"./test_resources/test_files/html_valid_css_at_rules.html"
+			),
+			headers: {
+				"content-type": "text/html",
+			},
+		});
+
+		const dom = new JSDOM(response.body);
+		const style = dom.window.document.querySelector("style");
+
+		expect(response.body).toMatchSnapshot();
+		// Check CSS is combined into one style tag
+		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
 		// Check CSS is tidied and minified
 		expect(style?.innerHTML).not.toMatch(/;\}|<!--|--!?>|\n|\r/u);
 		expect(response.statusCode).toBe(200);

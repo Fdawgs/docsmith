@@ -136,7 +136,6 @@ async function getConfig() {
 
 			// Binary paths
 			.prop("POPPLER_BINARY_PATH", S.anyOf([S.string(), S.null()]))
-			.prop("UNRTF_BINARY_PATH", S.anyOf([S.string(), S.null()]))
 
 			// OCR
 			.prop("OCR_ENABLED", S.anyOf([S.boolean(), S.null()]))
@@ -343,9 +342,6 @@ async function getConfig() {
 			workers: env.OCR_WORKERS || coreCount(),
 		},
 		unrtf: {
-			binPath: env.UNRTF_BINARY_PATH
-				? normalizeSafe(env.UNRTF_BINARY_PATH)
-				: env.UNRTF_BINARY_PATH,
 			tempDir,
 		},
 	};

@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tidy-CSS plugin Continues if it cannot find any CSS in HTML to tidy 1`] = `
-"<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head></head><body>
+"<!-- Used to test that empty HTML files are still parsed correctly. --><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head></head><body>
 </body></html>"
 `;
 
 exports[`Tidy-CSS plugin Continues to parse style elements with no type attribute in HTML 1`] = `
-"<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+"<!-- Used to test that files with no style type are still parsed correctly. --><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
 		
-	<style>p{margin:0;padding:0}.ft20{font-size:14px;font-family:Times;color:#000}.ft21{font-size:12px;font-family:Times;color:#000}.ft22{font-size:14px;font-family:Times;color:#000}.ft23{font-size:14px;line-height:19px;font-family:Times;color:#000}.ft24{font-size:14px;line-height:19px;font-family:Times;color:#000}</style></head>
+	<style>p{margin:0;padding:0}div{margin:0;padding:0;page-break-inside:avoid}</style></head>
 <body>
 </body></html>"
 `;
 
 exports[`Tidy-CSS plugin Creates new style element if none exist in HTML but query string params passed 1`] = `
-"<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head><style>div{font-family:Arial;page-break-inside:avoid;background-color:#fff}</style></head><body>
+"<!-- Used to test that empty HTML files are still parsed correctly. --><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head><style>div{font-family:Arial;page-break-inside:avoid;background-color:#fff}</style></head><body>
 </body></html>"
 `;
 
@@ -743,6 +743,14 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font in quotation marks
 		</div>
 	
 
+</body></html>"
+`;
+
+exports[`Tidy-CSS plugin Tidies CSS in HTML that uses @ rules 1`] = `
+"<!-- Used to test that the CSS @ rules are not modified or removed. --><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+		
+	<style>@font-face{font-family:Test;src:url("test.ttf")}@page{margin:0;padding:0}</style></head>
+<body>
 </body></html>"
 `;
 

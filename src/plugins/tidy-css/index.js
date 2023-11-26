@@ -2,7 +2,7 @@
 
 const CleanCSS = require("clean-css");
 const cssEsc = require("cssesc");
-const { parse: cssomParse } = require("cssom");
+const { CSSStyleRule, parse: cssomParse } = require("cssom");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
 
@@ -14,15 +14,15 @@ const styleRegex = /<\/style>/gu;
 
 /**
  * @author Frazer Smith
- * @description Decorator plugin that adds function that parses,
- * tidies, and minifies CSS in `<style>` elements in HTML passed.
+ * @description Decorator plugin that adds the `tidyCss` function, which
+ * parses, tidies, and minifies CSS in `<style>` elements in HTML passed.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  */
 async function plugin(server) {
 	/**
 	 * @author Frazer Smith
 	 * @description Parses, tidies, and minifies CSS in `<style>` elements in HTML passed.
-	 * @param {string} html - Valid HTML.
+	 * @param {Buffer|string} html - Valid HTML.
 	 * @param {object} options - Function config values.
 	 * @param {string} [options.backgroundColor] - Color to set or replace the document's
 	 * `background-color` property value of `div` CSS selectors with.
@@ -34,10 +34,8 @@ async function plugin(server) {
 		const dom = new JSDOM(html);
 		let styles = dom.window.document.querySelectorAll("style");
 
-		const newBackgroundColor = options.backgroundColor
-			? String(options.backgroundColor)
-			: undefined;
-		const newFonts = options.fonts ? String(options.fonts) : undefined;
+		const newBackgroundColor = options.backgroundColor?.toString();
+		const newFonts = options.fonts?.toString();
 
 		// Create style element inside head if none already exist
 		if (styles.length === 0 && (newFonts || newBackgroundColor)) {
@@ -57,53 +55,56 @@ async function plugin(server) {
 		});
 
 		const styleObj = cssomParse(combinedStyle.innerHTML);
-		styleObj.cssRules.forEach((styleRule) => {
-			// Replace default font
-			if (
-				newFonts &&
-				(styleRule.style["font-family"] || styles.length === 1)
-			) {
-				styleRule.style.setProperty("font-family", newFonts);
-			}
 
-			/**
-			 * Font family names containing any non-alphabetical characters
-			 * other than hyphens should be quoted.
-			 * @see {@link https://w3.org/TR/css-fonts-4/#family-name-syntax | Syntax of <family-name>}
-			 */
-			if (styleRule.style["font-family"]) {
-				const fonts = styleRule.style["font-family"].split(",");
-				const parsedFonts = fonts.map((font) => {
-					if (fontRegex.test(font.trim())) {
-						// Stop escaping of <style> elements and code injection
-						return cssEsc(font.replace(styleRegex, "").trim(), {
-							quotes: "double",
-							wrap: true,
-						});
-					}
-					return font.trim();
-				});
+		styleObj.cssRules.forEach((rule) => {
+			if (rule instanceof CSSStyleRule) {
+				// Replace default font
+				if (
+					newFonts &&
+					(rule.style["font-family"] || styles.length === 1)
+				) {
+					rule.style.setProperty("font-family", newFonts);
+				}
 
-				styleRule.style.setProperty(
-					"font-family",
-					parsedFonts.join(", ")
-				);
-			}
-
-			if (styleRule.selectorText.slice(0, 3) === "div") {
 				/**
-				 * Stop pages overrunning the next page, leading to overlapping text.
-				 * "page-break-inside" is a legacy property, replaced by "break-inside".
-				 * "page-break-inside" should be treated by browsers as an alias of "break-inside"
+				 * Font family names containing any non-alphabetical characters
+				 * other than hyphens should be quoted.
+				 * @see {@link https://w3.org/TR/css-fonts-4/#family-name-syntax | Syntax of <family-name>}
 				 */
-				styleRule.style.setProperty("page-break-inside", "avoid");
+				if (rule.style["font-family"]) {
+					const fonts = rule.style["font-family"].split(",");
+					const parsedFonts = fonts.map((font) => {
+						if (fontRegex.test(font.trim())) {
+							// Stop escaping of <style> elements and code injection
+							return cssEsc(font.replace(styleRegex, "").trim(), {
+								quotes: "double",
+								wrap: true,
+							});
+						}
+						return font.trim();
+					});
 
-				// Set or replace background color of divs
-				if (newBackgroundColor) {
-					styleRule.style.setProperty(
-						"background-color",
-						newBackgroundColor
+					rule.style.setProperty(
+						"font-family",
+						parsedFonts.join(", ")
 					);
+				}
+
+				if (rule.selectorText.slice(0, 3) === "div") {
+					/**
+					 * Stop pages overrunning the next page, leading to overlapping text.
+					 * "page-break-inside" is a legacy property, replaced by "break-inside".
+					 * "page-break-inside" should be treated by browsers as an alias of "break-inside"
+					 */
+					rule.style.setProperty("page-break-inside", "avoid");
+
+					// Set or replace background color of divs
+					if (newBackgroundColor) {
+						rule.style.setProperty(
+							"background-color",
+							newBackgroundColor
+						);
+					}
 				}
 			}
 		});

@@ -97,7 +97,7 @@ async function plugin(server, options) {
 		 * `pdfToText` Poppler function still attempts to parse empty bodies/input
 		 * and produces results, so catch them here
 		 */
-		if (req.body === undefined || Object.keys(req.body).length === 0) {
+		if (!req.body || Buffer.byteLength(req.body) === 0) {
 			throw server.httpErrors.badRequest();
 		}
 

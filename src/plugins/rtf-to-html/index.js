@@ -23,7 +23,6 @@ const rtfHyperLinkRegex =
  * location and contents.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
- * @param {string} options.binPath - Path to UnRTF binary.
  * @param {object} [options.rtfToHtmlOptions] - Refer to
  * https://github.com/Fdawgs/node-unrtf/blob/main/API.md
  * for options.
@@ -34,7 +33,7 @@ const rtfHyperLinkRegex =
  */
 async function plugin(server, options) {
 	const directory = normalizeTrim(options.tempDir);
-	const unrtf = new UnRTF(options.binPath);
+	const unrtf = new UnRTF();
 
 	// Create temp directory if missing
 	await mkdir(directory, { recursive: true });

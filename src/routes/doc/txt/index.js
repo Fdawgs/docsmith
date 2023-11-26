@@ -79,8 +79,9 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: (req, res) => {
-			res.send(req.conversionResults.body);
+		handler: async (req, res) => {
+			res.type("text/plain; charset=utf-8");
+			return server.docToTxt(req.body);
 		},
 	});
 }

@@ -43,12 +43,12 @@ describe("PDF-to-TXT conversion plugin", () => {
 		await server.ready();
 	});
 
-	afterAll(async () => {
-		await Promise.all([
+	afterAll(async () =>
+		Promise.all([
 			rm(config.poppler.tempDir, { recursive: true }),
 			server.close(),
-		]);
-	});
+		])
+	);
 
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
@@ -179,29 +179,26 @@ describe("PDF-to-TXT conversion plugin", () => {
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{ testName: "is missing" },
+		{ testName: "is empty", body: Buffer.alloc(0) },
 		{
 			testName: "is not a valid PDF file",
-			read: true,
+			body: Buffer.from("test"),
 		},
 		{
 			testName: "is not a valid PDF file for OCR",
-			read: true,
+			body: Buffer.from("test"),
 			query: {
 				lastPageToConvert: "1",
 				ocr: "true",
 			},
 		},
 	])(
-		"Returns HTTP status code 400 if PDF file $testName",
-		async ({ read, query }) => {
+		"Returns HTTP status code 400 if body $testName",
+		async ({ body, query }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				body: read
-					? await readFile(
-							"./test_resources/test_files/pdf_invalid.pdf"
-					  )
-					: undefined,
+				body,
 				query,
 				headers: {
 					"content-type": "application/pdf",

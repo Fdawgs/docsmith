@@ -27,9 +27,7 @@ describe("DOC-to-TXT route", () => {
 			.ready();
 	});
 
-	afterAll(async () => {
-		await server.close();
-	});
+	afterAll(async () => server.close());
 
 	it.each([
 		{
@@ -58,7 +56,7 @@ describe("DOC-to-TXT route", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	it("Returns HTTP status code 400 if file is missing", async () => {
+	it("Returns HTTP status code 400 if body is missing", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
@@ -78,11 +76,11 @@ describe("DOC-to-TXT route", () => {
 
 	it.each([
 		{
-			testName: "with '.doc' extension is not a valid DOC file",
+			testName: "is not a valid DOC file",
 			filePath: "./test_resources/test_files/doc_invalid.doc",
 		},
 		{
-			testName: "with '.dot' extension is not a valid DOT file",
+			testName: "is not a valid DOT file",
 			filePath: "./test_resources/test_files/dot_invalid.dot",
 		},
 		{
@@ -90,7 +88,7 @@ describe("DOC-to-TXT route", () => {
 			filePath: "./test_resources/test_files/xls_valid.xls",
 		},
 	])(
-		"Returns HTTP status code 415 if file $testName",
+		"Returns HTTP status code 415 if body $testName",
 		async ({ filePath }) => {
 			const response = await server.inject({
 				method: "POST",
