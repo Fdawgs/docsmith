@@ -179,7 +179,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{ testName: "is missing" },
-		{ testName: "is an empty file", body: Buffer.from("") },
+		{ testName: "is empty", body: Buffer.alloc(0) },
 		{
 			testName: "is not a valid PDF file",
 			body: Buffer.from("test"),
@@ -193,7 +193,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 			},
 		},
 	])(
-		"Returns HTTP status code 400 if PDF file $testName",
+		"Returns HTTP status code 400 if body $testName",
 		async ({ body, query }) => {
 			const response = await server.inject({
 				method: "POST",

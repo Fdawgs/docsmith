@@ -82,43 +82,44 @@ describe("DOC-to-TXT conversion plugin", () => {
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{ testName: "is missing" },
+		{ testName: "is empty", body: Buffer.alloc(0) },
 		{
 			testName: "is not a valid DOC file",
+			body: Buffer.from("test"),
 			headers: {
 				"content-type": "application/msword",
 			},
-			filePath: "./test_resources/test_files/doc_invalid.doc",
 		},
 		{
 			testName: "is not a valid DOT file",
+			body: Buffer.from("test"),
 			headers: {
 				"content-type": "application/msword",
 			},
-			filePath: "./test_resources/test_files/dot_invalid.dot",
 		},
 		{
 			testName: "is not a valid DOCM file",
+			body: Buffer.from("test"),
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
 			},
-			filePath: "./test_resources/test_files/docm_invalid.docm",
 		},
 		{
 			testName: "is not a valid DOCX file",
+			body: Buffer.from("test"),
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
-			filePath: "./test_resources/test_files/docx_invalid.docx",
 		},
 	])(
-		"Returns HTTP status code 400 if file $testName",
-		async ({ filePath, headers }) => {
+		"Returns HTTP status code 400 if body $testName",
+		async ({ body, headers }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				body: filePath ? await readFile(filePath) : undefined,
+				body,
 				headers,
 			});
 

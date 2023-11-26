@@ -97,9 +97,10 @@ describe("DOCX-to-HTML conversion plugin", () => {
 	/** @todo use `it.concurrent.each()` once it is no longer experimental */
 	it.each([
 		{ testName: "is missing" },
+		{ testName: "is empty", body: Buffer.alloc(0) },
 		{
 			testName: "is not a valid DOCM file",
-			filePath: "./test_resources/test_files/docm_invalid.docm",
+			body: Buffer.from("test"),
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
@@ -107,7 +108,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		},
 		{
 			testName: "is not a valid DOCX file",
-			filePath: "./test_resources/test_files/docx_invalid.docx",
+			body: Buffer.from("test"),
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -115,7 +116,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		},
 		{
 			testName: "is not a valid DOTM file",
-			filePath: "./test_resources/test_files/dotm_invalid.dotm",
+			body: Buffer.from("test"),
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.template.macroEnabled.12",
@@ -123,19 +124,19 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		},
 		{
 			testName: "is not a valid DOTX file",
-			filePath: "./test_resources/test_files/dotx_invalid.dotx",
+			body: Buffer.from("test"),
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
 			},
 		},
 	])(
-		"Returns HTTP status code 400 if file $testName",
-		async ({ filePath, headers }) => {
+		"Returns HTTP status code 400 if body $testName",
+		async ({ body, headers }) => {
 			const response = await server.inject({
 				method: "POST",
 				url: "/",
-				body: filePath ? await readFile(filePath) : undefined,
+				body,
 				headers,
 			});
 
