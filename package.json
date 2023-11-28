@@ -76,7 +76,7 @@
 		"@eslint-community/eslint-plugin-eslint-comments": "^4.1.0",
 		"@types/jest": "^29.5.10",
 		"autocannon": "^7.14.0",
-		"esbuild": "^0.19.5",
+		"esbuild": "^0.19.8",
 		"esbuild-plugin-glob": "^2.2.3",
 		"eslint": "^8.54.0",
 		"eslint-config-airbnb-base": "^15.0.0",
