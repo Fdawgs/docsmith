@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.0.7](https://github.com/Fdawgs/docsmith/compare/v11.0.6...v11.0.7) (2023-12-02)
+
+
+### Dependencies
+
+* **deps-dev:** bump nodemon from 3.0.1 to 3.0.2 ([#1734](https://github.com/Fdawgs/docsmith/issues/1734)) ([88c01da](https://github.com/Fdawgs/docsmith/commit/88c01da727a560a351e3bac5b1f8e8b486d313cf))
+* **deps-dev:** bump playwright from 1.40.0 to 1.40.1 ([#1730](https://github.com/Fdawgs/docsmith/issues/1730)) ([1095e9d](https://github.com/Fdawgs/docsmith/commit/1095e9dae47f9d209695e7c717c922535516faca))
+* **deps-dev:** bump the eslint group with 1 update ([#1733](https://github.com/Fdawgs/docsmith/issues/1733)) ([41cf090](https://github.com/Fdawgs/docsmith/commit/41cf0901a72651c8bcc6d0bd0c171795eacb8218))
+* **deps:** bump clean-css from 5.3.2 to 5.3.3 ([#1727](https://github.com/Fdawgs/docsmith/issues/1727)) ([49d348a](https://github.com/Fdawgs/docsmith/commit/49d348ab9ef808b6b3a544310b62acbaf8f0ae80))
+* **deps:** bump fastify-disablecache from 3.1.6 to 3.1.7 ([#1726](https://github.com/Fdawgs/docsmith/issues/1726)) ([8509fb9](https://github.com/Fdawgs/docsmith/commit/8509fb9c4b7fa4fd5c203cfd934ec77828618f2e))
+* **deps:** bump fastify-floc-off from 2.1.6 to 2.1.7 ([#1729](https://github.com/Fdawgs/docsmith/issues/1729)) ([f5e8fd8](https://github.com/Fdawgs/docsmith/commit/f5e8fd8a29fe920c5475741fea620e06c7732d5e))
+* **deps:** bump fastify-json-to-xml from 1.1.8 to 1.1.9 ([#1728](https://github.com/Fdawgs/docsmith/issues/1728)) ([7f8c218](https://github.com/Fdawgs/docsmith/commit/7f8c2189e6a0d971f11fc5a9a2cbb88371db901a))
+* **deps:** bump jsdom from 23.0.0 to 23.0.1 ([#1725](https://github.com/Fdawgs/docsmith/issues/1725)) ([e16bb23](https://github.com/Fdawgs/docsmith/commit/e16bb235eca3fa5da2789f58ba698be9d1c407a4))
+* **deps:** bump node-unrtf from 4.1.1 to 4.1.2 ([#1731](https://github.com/Fdawgs/docsmith/issues/1731)) ([e3d4ec2](https://github.com/Fdawgs/docsmith/commit/e3d4ec245a81398ca81df98179be9cb3bb65aca7))
+* **deps:** bump the fastify-core group with 1 update ([#1724](https://github.com/Fdawgs/docsmith/issues/1724)) ([1bbcc40](https://github.com/Fdawgs/docsmith/commit/1bbcc40aead1b2da4d8e979e5ec7ae3304ed6333))
+
+
+### Continuous integration
+
+* **dependabot:** ignore release-please-action major updates ([ddf17d5](https://github.com/Fdawgs/docsmith/commit/ddf17d57c7e37daa4a6355c7b1cd3323d5fb5e27))
+* **deps:** bump google-github-actions/release-please-action from 3 to 4 ([#1732](https://github.com/Fdawgs/docsmith/issues/1732)) ([a8ac37a](https://github.com/Fdawgs/docsmith/commit/a8ac37a64ec3cd756f696113e0d55814950ad1f8))
+
 ## [11.0.6](https://github.com/Fdawgs/docsmith/compare/v11.0.5...v11.0.6) (2023-11-29)
 
 
