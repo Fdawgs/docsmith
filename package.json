@@ -74,7 +74,7 @@
 		"@commitlint/cli": "^18.4.3",
 		"@commitlint/config-conventional": "^18.4.3",
 		"@eslint-community/eslint-plugin-eslint-comments": "^4.1.0",
-		"@types/jest": "^29.5.10",
+		"@types/jest": "^29.5.11",
 		"autocannon": "^7.14.0",
 		"esbuild": "^0.19.8",
 		"esbuild-plugin-glob": "^2.2.3",
