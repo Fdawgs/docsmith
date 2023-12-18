@@ -34,7 +34,7 @@ async function plugin(server) {
 	function htmlToTxt(html) {
 		/**
 		 * `htmlToText` function still attempts to parse empty bodies/input or invalid HTML
-		 * and produces results, so catch them here
+		 * and produces results, so catch them here.
 		 */
 		if (html === undefined || !isHtml(html)) {
 			throw server.httpErrors.badRequest();

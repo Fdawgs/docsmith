@@ -98,7 +98,7 @@ const pdfToHtmlPostSchema = {
 				.description("Owner password (for encrypted files)")
 				/**
 				 * PDFs had a max character length of 32 up to PDF 1.7;
-				 * later versions that changed to 127 bytes
+				 * later versions that changed to 127 bytes.
 				 */
 				.maxLength(127)
 		)
@@ -114,7 +114,7 @@ const pdfToHtmlPostSchema = {
 				.description("User password (for encrypted files)")
 				/**
 				 * PDFs had a max character length of 32 up to PDF 1.7;
-				 * later versions that changed to 127 bytes
+				 * later versions that changed to 127 bytes.
 				 */
 				.maxLength(127)
 		)

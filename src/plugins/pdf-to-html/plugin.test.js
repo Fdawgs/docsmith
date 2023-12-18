@@ -13,7 +13,7 @@ const getConfig = require("../../config");
 
 /**
  * Used to check that common incorrectly converted Windows-1252
- * to UTF-8 values are removed by the `fix-utf8` module
+ * to UTF-8 values are removed by the `fix-utf8` module.
  */
 const artifacts =
 	/â‚¬|â€[šž¦¡°¹˜™œ¢“”]|Æ’|Ë[†œ]|Å[½¡¾¸]|Â[¯·´°]|ï‚·|âˆš|[�Â]|Ã[‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿]|â‰[¤¥]|Ã|â€/gu;
@@ -53,7 +53,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		])
 	);
 
-	/** @todo use `it.concurrent.each()` once it is no longer experimental */
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
 	it.each([
 		{
 			testName: "Converts PDF file to HTML",
@@ -123,7 +123,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	/** @todo use `it.concurrent.each()` once it is no longer experimental */
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
 	it.each([
 		{ testName: "is missing" },
 		{ testName: "is empty", body: Buffer.alloc(0) },

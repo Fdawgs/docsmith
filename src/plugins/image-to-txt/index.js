@@ -9,7 +9,7 @@ const { joinSafe } = require("upath");
  * paths stops Tesseract from repeatedly downloading new trained data and workers
  * from a remote repo, allowing OCR to be used offline.
  * This also stops synchronous read/writes of the trained data,
- * which corrupts the trained data
+ * which corrupts the trained data.
  */
 const workerConfig = {
 	cacheMethod: "readOnly",
@@ -24,7 +24,7 @@ const workerConfig = {
 
 /**
  * Disable HOCR (HTML representation of OCR results) and TSV (tab-separated values)
- * in output, not needed
+ * in output, not needed.
  */
 const workerParams = {
 	tessjs_create_hocr: "0",

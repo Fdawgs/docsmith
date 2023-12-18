@@ -38,7 +38,7 @@ async function route(server, options) {
 
 			/**
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
-			 * this checks for PDF specific magic numbers
+			 * this checks for PDF specific magic numbers.
 			 */
 			const results = await fromBuffer(payload);
 			if (!pdfToHtmlPostSchema.consumes.includes(results?.mime)) {

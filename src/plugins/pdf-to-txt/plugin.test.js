@@ -50,7 +50,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		])
 	);
 
-	/** @todo use `it.concurrent.each()` once it is no longer experimental */
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
 	it.each([
 		{ testName: "Converts PDF file to TXT" },
 		{
@@ -84,8 +84,8 @@ describe("PDF-to-TXT conversion plugin", () => {
 	});
 
 	/**
-	 * OCR tests that use pdftocairo and tesseract
-	 * @todo use `it.concurrent.each()` once it is no longer experimental
+	 * OCR tests that use pdftocairo and tesseract.
+	 * @todo Use `it.concurrent.each()` once it is no longer experimental.
 	 */
 	it.each([
 		{
@@ -176,7 +176,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	/** @todo use `it.concurrent.each()` once it is no longer experimental */
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
 	it.each([
 		{ testName: "is missing" },
 		{ testName: "is empty", body: Buffer.alloc(0) },
@@ -214,7 +214,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		}
 	);
 
-	/** @todo use `it.concurrent.each()` once it is no longer experimental */
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
 	it.each([
 		{
 			testName: "poppler.pdfToText()",

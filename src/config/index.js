@@ -164,7 +164,7 @@ async function getConfig() {
 				level: env.LOG_LEVEL || "info",
 				/**
 				 * Fastify does not log the req or res body anyway but better
-				 * to be safe as a future change could break it
+				 * to be safe as a future change could break it.
 				 */
 				redact: ["req.body", "req.headers.authorization", "res.body"],
 				serializers: {
@@ -194,7 +194,7 @@ async function getConfig() {
 			/**
 			 * Tesseract OCR's load time is dependent on number of workers
 			 * and languages so is unpredictable. Disable the plugin timeout
-			 * to allow for this
+			 * to allow for this.
 			 */
 			pluginTimeout: env.OCR_ENABLED === true ? 0 : 30000,
 		},

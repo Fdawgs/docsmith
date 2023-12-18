@@ -74,7 +74,7 @@ async function plugin(server, options) {
 
 	/**
 	 * "onSend" hook used instead of "onResponse" ensures
-	 * cancelled request temp data is also removed
+	 * cancelled request temp data is also removed.
 	 */
 	server.addHook("onSend", async (req, _res, payload) => {
 		if (req.conversionResults?.docLocation) {
@@ -95,7 +95,7 @@ async function plugin(server, options) {
 	server.addHook("preHandler", async (req, res) => {
 		/**
 		 * `pdfToText` Poppler function still attempts to parse empty bodies/input
-		 * and produces results, so catch them here
+		 * and produces results, so catch them here.
 		 */
 		if (!req.body || Buffer.byteLength(req.body) === 0) {
 			throw server.httpErrors.badRequest();
@@ -111,7 +111,7 @@ async function plugin(server, options) {
 		/**
 		 * Create copy of query string params and convert query string params to literal
 		 * values to allow Poppler module to use them, as some of the params may be used
-		 * in other plugins
+		 * in other plugins.
 		 */
 		const query = { ...req.query };
 		Object.keys(query).forEach((value) => {
@@ -122,8 +122,8 @@ async function plugin(server, options) {
 
 		/**
 		 * If `ocr` query string param passed then use pdfToCairo and Tesseract OCR engine.
-		 * image-to-txt plugin adds the "tesseract" decorator to server instance,
-		 * if this is missing then OCR is not supported
+		 * Image-to-txt plugin adds the "tesseract" decorator to server instance,
+		 * if this is missing then OCR is not supported.
 		 */
 		if (query.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
@@ -138,7 +138,7 @@ async function plugin(server, options) {
 
 			/**
 			 * Create document location object for use by following plugins/hooks
-			 * for clean up and auditing purposes
+			 * for clean up and auditing purposes.
 			 */
 			req.conversionResults.docLocation = {
 				directory,
@@ -155,7 +155,7 @@ async function plugin(server, options) {
 			} catch (err) {
 				/**
 				 * Poppler will throw if the .pdf file provided
-				 * by client is malformed, thus client error code
+				 * by client is malformed, thus client error code.
 				 */
 				if (err.message.includes("Syntax Error:")) {
 					throw server.httpErrors.badRequest();
@@ -171,7 +171,7 @@ async function plugin(server, options) {
 				files
 					/**
 					 * Sort files alphabetically to ensure order is maintained,
-					 * as glob does not guarantee order
+					 * as glob does not guarantee order.
 					 */
 					.sort((a, b) => a.localeCompare(b))
 					.map((file) =>
@@ -201,7 +201,7 @@ async function plugin(server, options) {
 			} catch (err) {
 				/**
 				 * Poppler will throw if the .pdf file provided
-				 * by client is malformed, thus client error code
+				 * by client is malformed, thus client error code.
 				 */
 				if (err.message.includes("Syntax Error:")) {
 					throw server.httpErrors.badRequest();

@@ -36,7 +36,7 @@ async function route(server, options) {
 
 			/**
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
-			 * this checks the payload is HTML
+			 * this checks the payload is HTML.
 			 */
 			if (!isHtml(payload)) {
 				throw server.httpErrors.unsupportedMediaType();

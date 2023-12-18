@@ -37,7 +37,7 @@ async function plugin(server) {
 		} catch {
 			/**
 			 * Word-Extractor will throw if the .doc, .docx, .dot, or .dotx file provided
-			 * by client is malformed, thus client error code
+			 * by client is malformed, thus client error code.
 			 */
 			throw server.httpErrors.badRequest();
 		}

@@ -14,7 +14,7 @@ function generateCombos(originalSet) {
 
 	/**
 	 * Combine resulting array of arrays of objects from `btPowerSetRecursive()`
-	 * into a single array of combined objects
+	 * into a single array of combined objects.
 	 */
 	const reducedPowerSet = powerSet.map((subset) =>
 		subset.reduce((acc, cur) => ({ ...acc, ...cur }), {})

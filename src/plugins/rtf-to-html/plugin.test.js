@@ -13,7 +13,7 @@ const getConfig = require("../../config");
 
 /**
  * Used to check that common incorrectly converted Windows-1252
- * to UTF-8 values are removed by the `fix-utf8` module
+ * to UTF-8 values are removed by the `fix-utf8` module.
  */
 const artifacts =
 	/â‚¬|â€[šž¦¡°¹˜™œ¢“”]|Æ’|Ë[†œ]|Å[½¡¾¸]|Â[¯·´°]|ï‚·|âˆš|[�Â]|Ã[‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿]|â‰[¤¥]|Ã|â€/gu;
@@ -53,7 +53,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		])
 	);
 
-	/** @todo fix rtf-to-html plugin to include header and footer */
+	/** @todo Fix rtf-to-html plugin to include header and footer. */
 	it("Converts RTF file to HTML", async () => {
 		const response = await server.inject({
 			method: "POST",
@@ -86,7 +86,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 			"Mauris id ex erat"
 		);
 		// String found in header of the test document
-		/** @todo fix rtf-to-html plugin to include header */
+		/** @todo Fix rtf-to-html plugin to include header. */
 		// expect(body).toMatch("I am a header");
 		// String found at beginning of body of the test document
 		expect(dom.window.document.body.textContent).toMatch(
@@ -97,7 +97,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 			"Nullam venenatis commodo imperdiet. Morbi velit neque, semper quis lorem quis, efficitur dignissim ipsum. Ut ac lorem sed turpis imperdiet eleifend sit amet id sapien"
 		);
 		// String found in footer of the test document
-		/** @todo fix rtf-to-html plugin to include footer */
+		/** @todo Fix rtf-to-html plugin to include footer. */
 		// expect(body).toMatch("I am a footer");
 		// Check the docLocation object contains the expected properties
 		expect(docLocation).toMatchObject({
@@ -111,7 +111,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	/** @todo use `it.concurrent.each()` once it is no longer experimental */
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
 	it.each([
 		{ testName: "is missing" },
 		{ testName: "is empty", body: Buffer.alloc(0) },

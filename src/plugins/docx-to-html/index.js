@@ -57,7 +57,7 @@ async function plugin(server) {
 		} catch {
 			/**
 			 * Mammoth will throw if the .docm, .docx, .dotm, or .dotx file provided
-			 * by client is malformed, thus client error code
+			 * by client is malformed, thus client error code.
 			 */
 			throw server.httpErrors.badRequest();
 		}

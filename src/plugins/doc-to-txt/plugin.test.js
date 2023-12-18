@@ -79,7 +79,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	/** @todo use `it.concurrent.each()` once it is no longer experimental */
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
 	it.each([
 		{ testName: "is missing" },
 		{ testName: "is empty", body: Buffer.alloc(0) },

@@ -93,7 +93,7 @@ async function plugin(server, options) {
 
 		/**
 		 * Create copy of query string params and prune that,
-		 * as some of the params may be used in other plugins
+		 * as some of the params may be used in other plugins.
 		 */
 		const query = { ...req.query };
 		Object.keys(query).forEach((value) => {
@@ -102,7 +102,7 @@ async function plugin(server, options) {
 			} else {
 				/**
 				 * Convert query string params to literal values to
-				 * allow Poppler module to use them
+				 * allow Poppler module to use them.
 				 */
 				query[value] = parseString(query[value]);
 			}
@@ -115,7 +115,7 @@ async function plugin(server, options) {
 
 		/**
 		 * Create document location object for use by following plugins/hooks
-		 * for clean up and auditing purposes
+		 * for clean up and auditing purposes.
 		 */
 		req.conversionResults.docLocation = {
 			directory,
@@ -133,7 +133,7 @@ async function plugin(server, options) {
 		} catch (err) {
 			/**
 			 * Poppler will throw if the .pdf file provided
-			 * by client is malformed, thus client error code
+			 * by client is malformed, thus client error code.
 			 */
 			if (err.message.includes("Syntax Error:")) {
 				throw server.httpErrors.badRequest();
@@ -146,7 +146,7 @@ async function plugin(server, options) {
 		 * Remove excess title and meta elements created by Poppler
 		 * as it generates a new title and meta element for each page
 		 * of the PDF document.
-		 * Poppler appends `-html` to the file name
+		 * Poppler appends `-html` to the file name.
 		 */
 		const dom = new JSDOM(await readFile(`${tempFile}-html.html`));
 		const titles = dom.window.document.querySelectorAll("title");
@@ -163,7 +163,7 @@ async function plugin(server, options) {
 
 		/**
 		 * Overwrite content of remaining title element with temp file id,
-		 * as Poppler reveals directory structure in title
+		 * as Poppler reveals directory structure in title.
 		 */
 		titles[0].innerHTML = id;
 

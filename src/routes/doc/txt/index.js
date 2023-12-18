@@ -39,7 +39,7 @@ async function route(server, options) {
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
 			 * this checks the file is actually a DOC file.
 			 * DOC files use the Compound File Binary Format (CFBF), which the
-			 * file-type package does not support; use cfb instead
+			 * file-type package does not support; use cfb instead.
 			 */
 			try {
 				const results = cfbParse(payload);

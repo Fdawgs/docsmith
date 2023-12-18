@@ -37,7 +37,7 @@ async function route(server, options) {
 
 			/**
 			 * The Content-Type header can be spoofed so is not trusted implicitly,
-			 * this checks for DOCX specific magic numbers
+			 * this checks for DOCX specific magic numbers.
 			 */
 			const results = await fromBuffer(payload);
 			if (!docxToHtmlPostSchema.consumes.includes(results?.mime)) {
