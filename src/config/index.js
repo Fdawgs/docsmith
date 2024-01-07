@@ -1,7 +1,5 @@
 "use strict";
 
-require("dotenv").config();
-
 const { readFile } = require("node:fs/promises");
 const envSchema = require("env-schema");
 const { getStream } = require("file-stream-rotator");
