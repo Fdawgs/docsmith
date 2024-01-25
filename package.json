@@ -33,7 +33,7 @@
 		"prepare": "husky install && npx playwright install firefox --with-deps",
 		"start": "node .",
 		"start:dev": "nodemon src/app.js | pino-pretty",
-		"test": "npm run lint && npm run jest"
+		"test": "npm run lint && npm run lint:prettier && npm run jest"
 	},
 	"commitlint": {
 		"extends": [
