@@ -8,6 +8,7 @@
 	},
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"npm.packageManager": "npm",
+	"prettier.prettierPath": "./node_modules/prettier",
 	"redhat.telemetry.enabled": false,
 	"[xml]": {
 		"editor.defaultFormatter": "redhat.vscode-xml"

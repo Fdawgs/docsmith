@@ -4,7 +4,10 @@
 	"description": "RESTful API for converting clinical documents and files",
 	"main": "dist/app.js",
 	"type": "commonjs",
-	"repository": "git+https://github.com/Fdawgs/docsmith.git",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Fdawgs/docsmith.git"
+	},
 	"homepage": "https://github.com/Fdawgs/docsmith",
 	"bugs": {
 		"url": "https://github.com/Fdawgs/docsmith/issues"
@@ -22,6 +25,7 @@
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
+		"lint:fix": "npm run lint -- --fix",
 		"lint:licenses": "node scripts/license-checker.js",
 		"lint:lockfile": "lockfile-lint -p package-lock.json -t npm -a npm -s -i",
 		"lint:prettier": "prettier . -c -u",
@@ -29,7 +33,7 @@
 		"prepare": "husky install && npx playwright install firefox --with-deps",
 		"start": "node .",
 		"start:dev": "nodemon src/app.js | pino-pretty",
-		"test": "npm run lint && npm run jest"
+		"test": "npm run lint && npm run lint:prettier && npm run jest"
 	},
 	"commitlint": {
 		"extends": [
@@ -94,7 +98,7 @@
 		"nodemon": "^3.0.2",
 		"pino-pretty": "^10.3.1",
 		"playwright": "^1.40.1",
-		"prettier": "^3.1.1",
+		"prettier": "^3.2.4",
 		"spdx-copyleft": "^1.0.0"
 	},
 	"dependencies": {
@@ -113,7 +117,6 @@
 		"clean-css": "^5.3.3",
 		"cssesc": "^3.0.0",
 		"cssom": "^0.5.0",
-		"dotenv": "^16.3.1",
 		"env-schema": "^5.2.1",
 		"fastify": "^4.25.2",
 		"fastify-disablecache": "^3.1.8",
