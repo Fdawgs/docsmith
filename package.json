@@ -4,7 +4,10 @@
 	"description": "RESTful API for converting clinical documents and files",
 	"main": "dist/app.js",
 	"type": "commonjs",
-	"repository": "git+https://github.com/Fdawgs/docsmith.git",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Fdawgs/docsmith.git"
+	},
 	"homepage": "https://github.com/Fdawgs/docsmith",
 	"bugs": {
 		"url": "https://github.com/Fdawgs/docsmith/issues"
