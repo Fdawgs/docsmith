@@ -141,9 +141,7 @@ src/
 .prettierrc
 jsconfig.json
 CHANGELOG.md
-CODE_OF_CONDUCT.md
 CONTRIBUTING.md
-SECURITY.md
 
 # Tesseract trained data cache
 *.traineddata
