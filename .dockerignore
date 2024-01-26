@@ -117,6 +117,8 @@ out
 .clinic
 
 # Test files
+*.wmf
+*.emf
 test_resources/
 dist/temp*/
 **/*.test.*
