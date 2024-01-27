@@ -7,13 +7,14 @@ const { glob } = require("glob");
 const { joinSafe } = require("upath");
 const getConfig = require(".");
 
-describe("Configuration", () => {
-	const currentEnv = { ...process.env, NODE_ENV: "development" };
-	const tempDir = joinSafe(__dirname, "../temp");
+const originalEnv = { ...process.env, NODE_ENV: "development" };
+const tempDir = joinSafe(__dirname, "../temp");
 
+describe("Configuration", () => {
 	afterEach(() => {
-		// Reset the process.env to default after each test
-		Object.assign(process.env, currentEnv);
+		// Reset the process.env to default after all tests in describe block
+		process.env = {};
+		Object.assign(process.env, originalEnv);
 	});
 
 	afterAll(async () => {

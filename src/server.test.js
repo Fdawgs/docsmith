@@ -9,6 +9,8 @@ const { firefox } = require("playwright");
 const startServer = require("./server");
 const getConfig = require("./config");
 
+const originalEnv = { ...process.env };
+
 const expResHeaders = {
 	"cache-control": "no-store, max-age=0, must-revalidate",
 	connection: "keep-alive",
@@ -119,7 +121,13 @@ describe("Server deployment", () => {
 			await server.register(startServer, config).ready();
 		});
 
-		afterAll(async () => server.close());
+		afterAll(async () => {
+			// Reset the process.env to default after all tests in describe block
+			process.env = {};
+			Object.assign(process.env, originalEnv);
+
+			await server.close();
+		});
 
 		describe("/admin/healthcheck route", () => {
 			it("Returns `ok`", async () => {
@@ -475,7 +483,13 @@ describe("Server deployment", () => {
 			await server.register(startServer, config).ready();
 		});
 
-		afterAll(async () => server.close());
+		afterAll(async () => {
+			// Reset the process.env to default after all tests in describe block
+			process.env = {};
+			Object.assign(process.env, originalEnv);
+
+			await server.close();
+		});
 
 		describe("/admin/healthcheck route", () => {
 			it("Returns `ok`", async () => {
@@ -706,19 +720,8 @@ describe("Server deployment", () => {
 
 	describe("CORS", () => {
 		let config;
-		/** @type {{[key: string]: any}} */
-		let currentEnv;
 		/** @type {Fastify.FastifyInstance} */
 		let server;
-
-		beforeAll(() => {
-			Object.assign(process.env, {
-				CORS_ALLOWED_HEADERS:
-					"Accept, Accept-Encoding, Accept-Language, Authorization, Content-Type, Origin, X-Forwarded-For, X-Requested-With",
-				CORS_MAX_AGE: 7200,
-			});
-			currentEnv = { ...process.env };
-		});
 
 		const corsTests = [
 			{
@@ -797,10 +800,8 @@ describe("Server deployment", () => {
 			{
 				testName: "CORS enabled and set to array of strings",
 				envVariables: {
-					CORS_ORIGIN: [
-						"https://notreal.nhs.uk",
-						"https://notreal.sft.nhs.uk",
-					],
+					CORS_ORIGIN:
+						"https://notreal.nhs.uk, https://notreal.sft.nhs.uk",
 				},
 				request: {
 					headers: {
@@ -854,7 +855,12 @@ describe("Server deployment", () => {
 			"$testName",
 			({ envVariables, expected, request }) => {
 				beforeAll(async () => {
-					Object.assign(process.env, envVariables);
+					Object.assign(process.env, {
+						...envVariables,
+						CORS_ALLOWED_HEADERS:
+							"Accept, Accept-Encoding, Accept-Language, Authorization, Content-Type, Origin, X-Forwarded-For, X-Requested-With",
+						CORS_MAX_AGE: 7200,
+					});
 					config = await getConfig();
 
 					server = Fastify({ pluginTimeout: 0 });
@@ -863,7 +869,8 @@ describe("Server deployment", () => {
 
 				afterAll(async () => {
 					// Reset the process.env to default after all tests in describe block
-					Object.assign(process.env, currentEnv);
+					process.env = {};
+					Object.assign(process.env, originalEnv);
 
 					await server.close();
 				});
@@ -1013,7 +1020,13 @@ describe("Server deployment", () => {
 			await server.register(startServer, config).listen(config.fastify);
 		});
 
-		afterAll(async () => server.close());
+		afterAll(async () => {
+			// Reset the process.env to default after all tests in describe block
+			process.env = {};
+			Object.assign(process.env, originalEnv);
+
+			await server.close();
+		});
 
 		describe("Content", () => {
 			describe("/docs route", () => {
@@ -1106,7 +1119,13 @@ describe("Server deployment", () => {
 			await server.ready();
 		});
 
-		afterAll(async () => server.close());
+		afterAll(async () => {
+			// Reset the process.env to default after all tests in describe block
+			process.env = {};
+			Object.assign(process.env, originalEnv);
+
+			await server.close();
+		});
 
 		describe("/error route", () => {
 			it("Returns HTTP status code 500", async () => {
