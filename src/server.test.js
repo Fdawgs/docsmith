@@ -9,6 +9,8 @@ const { firefox } = require("playwright");
 const startServer = require("./server");
 const getConfig = require("./config");
 
+const originalEnv = { ...process.env };
+
 const expResHeaders = {
 	"cache-control": "no-store, max-age=0, must-revalidate",
 	connection: "keep-alive",
@@ -104,7 +106,6 @@ const expResHeaders5xxErrors = {
 
 describe("Server deployment", () => {
 	describe("Bearer token and OCR disabled", () => {
-		let config;
 		/** @type {Fastify.FastifyInstance} */
 		let server;
 
@@ -113,13 +114,19 @@ describe("Server deployment", () => {
 				AUTH_BEARER_TOKEN_ARRAY: "",
 				OCR_ENABLED: false,
 			});
-			config = await getConfig();
+			const config = await getConfig();
 
 			server = Fastify({ bodyLimit: 10485760, pluginTimeout: 0 });
 			await server.register(startServer, config).ready();
 		});
 
-		afterAll(async () => server.close());
+		afterAll(async () => {
+			// Reset the process.env to default after all tests in describe block
+			process.env = {};
+			Object.assign(process.env, originalEnv);
+
+			await server.close();
+		});
 
 		describe("/admin/healthcheck route", () => {
 			it("Returns `ok`", async () => {
@@ -458,7 +465,6 @@ describe("Server deployment", () => {
 	});
 
 	describe("Bearer token and OCR enabled", () => {
-		let config;
 		/** @type {Fastify.FastifyInstance} */
 		let server;
 
@@ -469,13 +475,19 @@ describe("Server deployment", () => {
 				OCR_ENABLED: true,
 				OCR_WORKERS: 1,
 			});
-			config = await getConfig();
+			const config = await getConfig();
 
 			server = Fastify({ pluginTimeout: 0 });
 			await server.register(startServer, config).ready();
 		});
 
-		afterAll(async () => server.close());
+		afterAll(async () => {
+			// Reset the process.env to default after all tests in describe block
+			process.env = {};
+			Object.assign(process.env, originalEnv);
+
+			await server.close();
+		});
 
 		describe("/admin/healthcheck route", () => {
 			it("Returns `ok`", async () => {
@@ -705,20 +717,8 @@ describe("Server deployment", () => {
 	});
 
 	describe("CORS", () => {
-		let config;
-		/** @type {{[key: string]: any}} */
-		let currentEnv;
 		/** @type {Fastify.FastifyInstance} */
 		let server;
-
-		beforeAll(() => {
-			Object.assign(process.env, {
-				CORS_ALLOWED_HEADERS:
-					"Accept, Accept-Encoding, Accept-Language, Authorization, Content-Type, Origin, X-Forwarded-For, X-Requested-With",
-				CORS_MAX_AGE: 7200,
-			});
-			currentEnv = { ...process.env };
-		});
 
 		const corsTests = [
 			{
@@ -797,10 +797,8 @@ describe("Server deployment", () => {
 			{
 				testName: "CORS enabled and set to array of strings",
 				envVariables: {
-					CORS_ORIGIN: [
-						"https://notreal.nhs.uk",
-						"https://notreal.sft.nhs.uk",
-					],
+					CORS_ORIGIN:
+						"https://notreal.nhs.uk, https://notreal.sft.nhs.uk",
 				},
 				request: {
 					headers: {
@@ -854,8 +852,13 @@ describe("Server deployment", () => {
 			"$testName",
 			({ envVariables, expected, request }) => {
 				beforeAll(async () => {
-					Object.assign(process.env, envVariables);
-					config = await getConfig();
+					Object.assign(process.env, {
+						...envVariables,
+						CORS_ALLOWED_HEADERS:
+							"Accept, Accept-Encoding, Accept-Language, Authorization, Content-Type, Origin, X-Forwarded-For, X-Requested-With",
+						CORS_MAX_AGE: 7200,
+					});
+					const config = await getConfig();
 
 					server = Fastify({ pluginTimeout: 0 });
 					await server.register(startServer, config).ready();
@@ -863,7 +866,8 @@ describe("Server deployment", () => {
 
 				afterAll(async () => {
 					// Reset the process.env to default after all tests in describe block
-					Object.assign(process.env, currentEnv);
+					process.env = {};
+					Object.assign(process.env, originalEnv);
 
 					await server.close();
 				});
@@ -989,12 +993,13 @@ describe("Server deployment", () => {
 	});
 
 	describe("API documentation", () => {
-		let config;
 		/** @type {Fastify.FastifyInstance} */
 		let server;
 
 		beforeAll(async () => {
 			Object.assign(process.env, {
+				AUTH_BEARER_TOKEN_ARRAY:
+					'[{"service": "test", "value": "testtoken"}]',
 				HOST: "localhost",
 				PORT: "3000",
 				HTTPS_PFX_PASSPHRASE: "",
@@ -1004,7 +1009,7 @@ describe("Server deployment", () => {
 				HTTPS_HTTP2_ENABLED: "",
 				OCR_ENABLED: "",
 			});
-			config = await getConfig();
+			const config = await getConfig();
 
 			// Turn off logging for test runs
 			config.fastifyInit.logger = undefined;
@@ -1013,7 +1018,13 @@ describe("Server deployment", () => {
 			await server.register(startServer, config).listen(config.fastify);
 		});
 
-		afterAll(async () => server.close());
+		afterAll(async () => {
+			// Reset the process.env to default after all tests in describe block
+			process.env = {};
+			Object.assign(process.env, originalEnv);
+
+			await server.close();
+		});
 
 		describe("Content", () => {
 			describe("/docs route", () => {
@@ -1079,7 +1090,6 @@ describe("Server deployment", () => {
 	});
 
 	describe("Error handling", () => {
-		let config;
 		/** @type {Fastify.FastifyInstance} */
 		let server;
 
@@ -1088,7 +1098,7 @@ describe("Server deployment", () => {
 				AUTH_BEARER_TOKEN_ARRAY: "",
 				OCR_ENABLED: false,
 			});
-			config = await getConfig();
+			const config = await getConfig();
 
 			server = Fastify({ pluginTimeout: 0 });
 			await server.register(startServer, config);
@@ -1106,7 +1116,13 @@ describe("Server deployment", () => {
 			await server.ready();
 		});
 
-		afterAll(async () => server.close());
+		afterAll(async () => {
+			// Reset the process.env to default after all tests in describe block
+			process.env = {};
+			Object.assign(process.env, originalEnv);
+
+			await server.close();
+		});
 
 		describe("/error route", () => {
 			it("Returns HTTP status code 500", async () => {
