@@ -13,7 +13,7 @@ const getConfig = require("../../config");
 
 /**
  * Used to check that common incorrectly converted Windows-1252
- * to UTF-8 values are removed by the `fix-utf8` module.
+ * to UTF-8 values are removed by the fix-latin1-to-utf8` module.
  */
 const artifacts =
 	/â‚¬|â€[šž¦¡°¹˜™œ¢“”]|Æ’|Ë[†œ]|Å[½¡¾¸]|Â[¯·´°]|ï‚·|âˆš|[�Â]|Ã[‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿]|â‰[¤¥]|Ã|â€/gu;
