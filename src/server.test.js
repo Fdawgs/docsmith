@@ -24,7 +24,7 @@ const expResHeaders = {
 	"referrer-policy": "no-referrer",
 	"strict-transport-security": "max-age=31536000; includeSubDomains",
 	"surrogate-control": "no-store",
-	vary: "Origin, accept-encoding",
+	vary: "accept-encoding",
 	"x-content-type-options": "nosniff",
 	"x-dns-prefetch-control": "off",
 	"x-download-options": "noopen",
@@ -52,7 +52,6 @@ const expResHeadersHtmlStatic = {
 		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content;script-src 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline'",
 	etag: expect.any(String),
 	"last-modified": expect.any(String),
-	vary: "accept-encoding",
 };
 delete expResHeadersHtmlStatic.expires;
 delete expResHeadersHtmlStatic.pragma;
@@ -66,7 +65,6 @@ const expResHeadersPublicImage = {
 	"content-type": expect.stringMatching(/^image\//iu),
 	etag: expect.any(String),
 	"last-modified": expect.any(String),
-	vary: "accept-encoding",
 };
 delete expResHeadersPublicImage.expires;
 delete expResHeadersPublicImage.pragma;
@@ -101,7 +99,6 @@ const expResHeaders404ErrorsXml = {
 
 const expResHeaders5xxErrors = {
 	...expResHeadersJson,
-	vary: "accept-encoding",
 };
 
 describe("Server deployment", () => {
@@ -603,10 +600,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.headers).toStrictEqual({
-					...expResHeadersJson,
-					vary: "accept-encoding",
-				});
+				expect(response.headers).toStrictEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(401);
 			});
 
@@ -680,10 +674,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(response.headers).toStrictEqual({
-					...expResHeadersJson,
-					vary: "accept-encoding",
-				});
+				expect(response.headers).toStrictEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(401);
 			});
 
@@ -757,11 +748,13 @@ describe("Server deployment", () => {
 								...expResHeadersJson,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
+								vary: "Origin, accept-encoding",
 							},
 							text: {
 								...expResHeadersText,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
+								vary: "Origin, accept-encoding",
 							},
 						},
 					},
@@ -812,11 +805,13 @@ describe("Server deployment", () => {
 								...expResHeadersJson,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
+								vary: "Origin, accept-encoding",
 							},
 							text: {
 								...expResHeadersText,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
+								vary: "Origin, accept-encoding",
 							},
 						},
 					},
@@ -908,6 +903,18 @@ describe("Server deployment", () => {
 								vary: "Origin",
 							};
 							delete expResHeadersCors["content-type"];
+
+							/**
+							 * Vary header should not be set if CORS_ORIGIN is a a single domain
+							 * or wildcard.
+							 * @see {@link https://github.com/fastify/fastify-cors/issues/287}
+							 */
+							if (
+								typeof envVariables.CORS_ORIGIN === "string" &&
+								!envVariables.CORS_ORIGIN.includes(",")
+							) {
+								delete expResHeadersCors.vary;
+							}
 
 							const response = await server.inject({
 								method: "OPTIONS",
