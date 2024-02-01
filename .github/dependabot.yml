@@ -47,8 +47,6 @@ updates:
           # in their next major version so we can't use them
           - dependency-name: file-type
             update-types: ["version-update:semver-major"]
-          - dependency-name: fix-utf8
-            update-types: ["version-update:semver-major"]
           - dependency-name: is-html
             update-types: ["version-update:semver-major"]
       open-pull-requests-limit: 20
