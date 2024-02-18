@@ -5,6 +5,7 @@ const cors = require("@fastify/cors");
 
 const { docsOpenapiGetSchema } = require("./schema");
 
+// Cache supported media types so not having to navigate schema object each time
 const accepts = docsOpenapiGetSchema.produces;
 
 /**

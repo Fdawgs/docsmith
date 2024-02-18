@@ -5,7 +5,8 @@ const cors = require("@fastify/cors");
 
 const { healthcheckGetSchema } = require("./schema");
 
-const accepts = ["text/plain"];
+// Cache supported media types so not having to navigate schema object each time
+const accepts = Object.keys(healthcheckGetSchema.response[200].content);
 
 /**
  * @author Frazer Smith

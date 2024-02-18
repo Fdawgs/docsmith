@@ -16,7 +16,7 @@ const htmlToTxtPostSchema = {
 	description:
 		"Returns the result of converting a HTML document to TXT format.",
 	operationId: "postHtmlToTxt",
-	consumes: ["text/html"],
+	consumes: ["application/xhtml+xml", "text/html"],
 	produces: ["application/json", "application/xml"],
 	response: {
 		200: {
