@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.0](https://github.com/Fdawgs/docsmith/compare/v11.0.8...v11.1.0) (2024-02-18)
+
+
+### Features
+
+* **routes/html:** add support for xhtml documents ([c59cb9f](https://github.com/Fdawgs/docsmith/commit/c59cb9f19b19973af6201e9586b1360da7f9ac84))
+
+
+### Dependencies
+
+* **deps-dev:** bump @types/jest from 29.5.11 to 29.5.12 ([#1795](https://github.com/Fdawgs/docsmith/issues/1795)) ([3d2d59e](https://github.com/Fdawgs/docsmith/commit/3d2d59ee5b87cb5cab385a5c2f425548deb5ff76))
+* **deps-dev:** bump autocannon from 7.14.0 to 7.15.0 ([#1793](https://github.com/Fdawgs/docsmith/issues/1793)) ([a11f243](https://github.com/Fdawgs/docsmith/commit/a11f243319a95cdab458397d2ca08b0a99ec3e71))
+* **deps-dev:** bump esbuild from 0.19.8 to 0.20.0 ([01d5b07](https://github.com/Fdawgs/docsmith/commit/01d5b07d3c6a8c3435cf012656a84b2d2ebf4600))
+* **deps-dev:** bump husky from 9.0.2 to 9.0.6 ([#1776](https://github.com/Fdawgs/docsmith/issues/1776)) ([20d0a24](https://github.com/Fdawgs/docsmith/commit/20d0a24f9c5aa6b222fafa3d639d011320361da0))
+* **deps-dev:** bump husky from 9.0.6 to 9.0.7 ([#1781](https://github.com/Fdawgs/docsmith/issues/1781)) ([ed12714](https://github.com/Fdawgs/docsmith/commit/ed12714c8dc7ef7b7ee1b0df6e81ea5ecad9ceb2))
+* **deps-dev:** bump husky from 9.0.7 to 9.0.9 ([#1786](https://github.com/Fdawgs/docsmith/issues/1786)) ([5c33b94](https://github.com/Fdawgs/docsmith/commit/5c33b9493f512687f3aeb61ab739378fb25922f0))
+* **deps-dev:** bump husky from 9.0.9 to 9.0.11 ([#1792](https://github.com/Fdawgs/docsmith/issues/1792)) ([00c785c](https://github.com/Fdawgs/docsmith/commit/00c785c562e3772933fb965daf5e77f894449735))
+* **deps-dev:** bump lockfile-lint from 4.12.1 to 4.13.1 ([#1794](https://github.com/Fdawgs/docsmith/issues/1794)) ([f07111f](https://github.com/Fdawgs/docsmith/commit/f07111ff83186a788cf1beb5f5e80393fbd2e1c8))
+* **deps-dev:** bump playwright from 1.41.1 to 1.41.2 ([#1797](https://github.com/Fdawgs/docsmith/issues/1797)) ([6159c0f](https://github.com/Fdawgs/docsmith/commit/6159c0f49dbc13862307f04a9e575bba5b107331))
+* **deps-dev:** bump prettier from 3.2.4 to 3.2.5 ([#1796](https://github.com/Fdawgs/docsmith/issues/1796)) ([b660bd8](https://github.com/Fdawgs/docsmith/commit/b660bd8df0fa1c76f390873206f4e1c499c3e944))
+* **deps-dev:** bump the commitlint group with 2 updates ([#1788](https://github.com/Fdawgs/docsmith/issues/1788)) ([8e77119](https://github.com/Fdawgs/docsmith/commit/8e7711993a69c95256113bc84923b2d2577bb735))
+* **deps-dev:** bump the eslint group with 1 update ([#1775](https://github.com/Fdawgs/docsmith/issues/1775)) ([92bc08c](https://github.com/Fdawgs/docsmith/commit/92bc08cbeb884182643acda788f8920f2b0f9700))
+* **deps-dev:** bump the eslint group with 3 updates ([#1791](https://github.com/Fdawgs/docsmith/issues/1791)) ([650a71f](https://github.com/Fdawgs/docsmith/commit/650a71f4e38d85820b71955762ef57171e5a1a9d))
+* **deps:** bump the fastify-core group with 2 updates ([#1789](https://github.com/Fdawgs/docsmith/issues/1789)) ([2ad4953](https://github.com/Fdawgs/docsmith/commit/2ad495324b2a73c159342f9c9a56ceef4215a67c))
+* **deps:** bump the fastify-core group with 3 updates ([#1783](https://github.com/Fdawgs/docsmith/issues/1783)) ([1f63f36](https://github.com/Fdawgs/docsmith/commit/1f63f3684662bbe71554a6caf5489a0fde80e15e))
+* **deps:** bump the pino-core group with 1 update ([#1785](https://github.com/Fdawgs/docsmith/issues/1785)) ([8a0ae07](https://github.com/Fdawgs/docsmith/commit/8a0ae07b7f992f81ce4934be1e13fec9c270ad5c))
+* **deps:** bump the pino-core group with 1 update ([#1790](https://github.com/Fdawgs/docsmith/issues/1790)) ([06bb071](https://github.com/Fdawgs/docsmith/commit/06bb0715bc2b090de5b0ea580cf70ff2d29dee80))
+* **deps:** replace `fix-utf8` with faster `fix-latin1-to-utf8` ([20cfc28](https://github.com/Fdawgs/docsmith/commit/20cfc281f179bf35b4ace2308e8cda4bc528d0eb))
+
+
+### Miscellaneous
+
+* **.dockerignore:** unignore shared files ([3c2bb2b](https://github.com/Fdawgs/docsmith/commit/3c2bb2be5030352c8d048b074727ae612e6634a1))
+* **.husky:** migrate hooks to v9 style ([2b364fc](https://github.com/Fdawgs/docsmith/commit/2b364fce4e523f2a1cc59d3c43585f20a508de22))
+* **.vscode:** fix `prettier.prettierPath` setting ([161c389](https://github.com/Fdawgs/docsmith/commit/161c3891b7fe614df2723850f8cb29c9430870f4))
+* ignore unrtf generated files ([6650f0e](https://github.com/Fdawgs/docsmith/commit/6650f0e460604e2e8eedbbe143b2f14241674831))
+
+
+### Continuous integration
+
+* **deps:** bump peter-evans/create-pull-request from 5 to 6 ([#1782](https://github.com/Fdawgs/docsmith/issues/1782)) ([6da373e](https://github.com/Fdawgs/docsmith/commit/6da373e634e77fccbd24ca1f2e4d7aed342eac2f))
+
+
+### Improvements
+
+* **routes:** cache accepted types from route schemas ([6ba79e5](https://github.com/Fdawgs/docsmith/commit/6ba79e55a26c614f63a8685adb0477f8ef5eab68))
+
 ## [11.0.8](https://github.com/Fdawgs/docsmith/compare/v11.0.7...v11.0.8) (2024-01-25)
 
 
