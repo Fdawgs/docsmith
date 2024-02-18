@@ -8,7 +8,8 @@ const rtfToHtml = require("../../../plugins/rtf-to-html");
 
 const { rtfToHtmlPostSchema } = require("./schema");
 
-const accepts = ["text/html"];
+// Cache supported media types so not having to navigate schema object each time
+const accepts = Object.keys(rtfToHtmlPostSchema.response[200].content);
 
 /**
  * @author Frazer Smith

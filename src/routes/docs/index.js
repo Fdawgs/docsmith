@@ -7,7 +7,8 @@ const staticPlugin = require("@fastify/static");
 
 const { docsGetSchema } = require("./schema");
 
-const accepts = ["text/html"];
+// Cache supported media types so not having to navigate schema object each time
+const accepts = Object.keys(docsGetSchema.response[200].content);
 
 // Cache immutable regex as they are expensive to create and garbage collect
 const pathRegex = /\/redoc\.standalone\.js(?:.map)?/u;

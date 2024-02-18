@@ -7,7 +7,8 @@ const cors = require("@fastify/cors");
 
 const { htmlToTxtPostSchema } = require("./schema");
 
-const accepts = ["text/plain"];
+// Cache supported media types so not having to navigate schema object each time
+const accepts = Object.keys(htmlToTxtPostSchema.response[200].content);
 
 /**
  * @author Frazer Smith

@@ -9,7 +9,8 @@ const docxToHtml = require("../../../plugins/docx-to-html");
 
 const { docxToTxtPostSchema } = require("./schema");
 
-const accepts = ["text/plain"];
+// Cache supported media types so not having to navigate schema object each time
+const accepts = Object.keys(docxToTxtPostSchema.response[200].content);
 
 /**
  * @author Frazer Smith

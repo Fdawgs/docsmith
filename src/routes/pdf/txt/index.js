@@ -8,7 +8,8 @@ const pdfToTxt = require("../../../plugins/pdf-to-txt");
 
 const { pdfToTxtPostSchema } = require("./schema");
 
-const accepts = ["text/plain", "text/html"];
+// Cache supported media types so not having to navigate schema object each time
+const accepts = Object.keys(pdfToTxtPostSchema.response[200].content);
 
 /**
  * @author Frazer Smith
