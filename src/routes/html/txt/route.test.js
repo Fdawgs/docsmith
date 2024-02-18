@@ -1,3 +1,5 @@
+/* eslint-disable security/detect-non-literal-fs-filename -- Test files are not user-provided */
+
 "use strict";
 
 const { readFile } = require("node:fs/promises");
@@ -30,14 +32,29 @@ describe("HTML-to-TXT route", () => {
 
 	afterAll(async () => server.close());
 
-	it("Returns HTML file converted to TXT", async () => {
+	it.each([
+		{
+			testName: "HTML file",
+			filePath: "./test_resources/test_files/html_valid.html",
+			headers: {
+				"content-type": "text/html",
+			},
+		},
+		{
+			testName: "XHTML file",
+			filePath: "./test_resources/test_files/xhtml_valid.xhtml",
+			headers: {
+				"content-type": "application/xhtml+xml",
+			},
+		},
+	])("Returns $testName converted to TXT", async ({ filePath, headers }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/html_valid.html"),
+			body: await readFile(filePath),
 			headers: {
 				accept: "application/json, text/plain",
-				"content-type": "text/html",
+				...headers,
 			},
 		});
 
@@ -66,7 +83,23 @@ describe("HTML-to-TXT route", () => {
 		expect(response.statusCode).toBe(400);
 	});
 
-	it("Returns HTTP status code 415 if body is not a valid HTML file", async () => {
+	it.each([
+		{
+			testName: "is not a valid HTML file",
+			body: Buffer.from("test"),
+			headers: {
+				"content-type": "text/html",
+			},
+		},
+		{
+			testName: "is not a valid XHTML file",
+			body: Buffer.from("test"),
+			headers: {
+				"content-type": "aapplication/xhtml+xml",
+			},
+		},
+	]);
+	it("Returns HTTP status code 415 if body $testName", async () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
