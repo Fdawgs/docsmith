@@ -11,6 +11,8 @@ const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
 
 const htmlToTxt = require("../../../plugins/html-to-txt");
+const tidyCss = require("../../../plugins/tidy-css");
+const tidyHtml = require("../../../plugins/tidy-html");
 
 describe("HTML-to-TXT route", () => {
 	let config;
@@ -25,6 +27,8 @@ describe("HTML-to-TXT route", () => {
 			.register(accepts)
 			.register(sensible)
 			.register(htmlToTxt)
+			.register(tidyCss)
+			.register(tidyHtml)
 			.register(sharedSchemas)
 			.register(route, config)
 			.ready();
