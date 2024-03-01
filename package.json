@@ -94,7 +94,7 @@
 		"husky": "^9.0.11",
 		"jest": "^29.7.0",
 		"license-checker": "^25.0.1",
-		"lockfile-lint": "^4.13.1",
+		"lockfile-lint": "^4.13.2",
 		"nodemon": "^3.1.0",
 		"pino-pretty": "^10.3.1",
 		"playwright": "^1.42.0",
