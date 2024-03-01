@@ -134,7 +134,7 @@
 		"is-html": "^2.0.0",
 		"jsdom": "^24.0.0",
 		"language-tags": "^1.0.9",
-		"mammoth": "^1.6.0",
+		"mammoth": "^1.7.0",
 		"node-poppler": "^7.1.0",
 		"node-unrtf": "^4.1.6",
 		"pino": "^8.19.0",
