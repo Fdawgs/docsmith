@@ -64,7 +64,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 			},
 		});
 
-		const { body, docLocation } = JSON.parse(response.body);
+		const { body, docLocation } = response.json();
 		const dom = new JSDOM(body);
 
 		expect(body).not.toMatch(artifacts);
@@ -129,7 +129,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 			},
 		});
 
-		expect(JSON.parse(response.body)).toStrictEqual({
+		expect(response.json()).toStrictEqual({
 			error: "Bad Request",
 			message: "Bad Request",
 			statusCode: 400,
@@ -151,7 +151,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 			},
 		});
 
-		expect(JSON.parse(response.body)).toStrictEqual({
+		expect(response.json()).toStrictEqual({
 			error: "Internal Server Error",
 			message: "test error",
 			statusCode: 500,

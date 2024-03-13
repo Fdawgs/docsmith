@@ -66,7 +66,7 @@ describe("DOC-to-TXT route", () => {
 			},
 		});
 
-		expect(JSON.parse(response.body)).toStrictEqual({
+		expect(response.json()).toStrictEqual({
 			error: "Bad Request",
 			message: "Body cannot be empty",
 			statusCode: 400,
@@ -100,7 +100,7 @@ describe("DOC-to-TXT route", () => {
 				},
 			});
 
-			expect(JSON.parse(response.body)).toStrictEqual({
+			expect(response.json()).toStrictEqual({
 				error: "Unsupported Media Type",
 				message: "Unsupported Media Type",
 				statusCode: 415,
@@ -122,7 +122,7 @@ describe("DOC-to-TXT route", () => {
 			},
 		});
 
-		expect(JSON.parse(response.body)).toStrictEqual({
+		expect(response.json()).toStrictEqual({
 			error: "Unsupported Media Type",
 			message: "Unsupported Media Type: application/html",
 			statusCode: 415,
@@ -141,7 +141,7 @@ describe("DOC-to-TXT route", () => {
 			},
 		});
 
-		expect(JSON.parse(response.body)).toStrictEqual({
+		expect(response.json()).toStrictEqual({
 			error: "Not Acceptable",
 			message: "Not Acceptable",
 			statusCode: 406,

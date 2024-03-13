@@ -38,7 +38,7 @@ describe("OpenAPI route", () => {
 				},
 			});
 
-			expect(JSON.parse(response.body)).toHaveProperty("openapi");
+			expect(response.json()).toHaveProperty("openapi");
 			expect(response.headers).toMatchObject({
 				"cache-control": "public, max-age=1800",
 			});
@@ -54,7 +54,7 @@ describe("OpenAPI route", () => {
 				},
 			});
 
-			expect(JSON.parse(response.body)).toStrictEqual({
+			expect(response.json()).toStrictEqual({
 				error: "Not Acceptable",
 				message: "Not Acceptable",
 				statusCode: 406,

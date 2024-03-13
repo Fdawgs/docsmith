@@ -77,7 +77,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 			},
 		});
 
-		const { body } = JSON.parse(response.body);
+		const { body } = response.json();
 
 		expect(body).toMatch("The NHS belongs to the people");
 		expect(isHtml(body)).toBe(false);
@@ -114,7 +114,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 			},
 		});
 
-		const { body, docLocation } = JSON.parse(response.body);
+		const { body, docLocation } = response.json();
 
 		expect(body).toMatch("The NHS belongs to the people");
 		// String found at end of second page
@@ -149,7 +149,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 			},
 		});
 
-		const { body } = JSON.parse(response.body);
+		const { body } = response.json();
 		const dom = new JSDOM(body);
 
 		expect(isHtml(body)).toBe(true);
@@ -205,7 +205,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 				},
 			});
 
-			expect(JSON.parse(response.body)).toStrictEqual({
+			expect(response.json()).toStrictEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,
@@ -249,7 +249,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 				},
 			});
 
-			expect(JSON.parse(response.body)).toStrictEqual({
+			expect(response.json()).toStrictEqual({
 				error: "Internal Server Error",
 				message: "test error",
 				statusCode: 500,

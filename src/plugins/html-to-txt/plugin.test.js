@@ -63,7 +63,7 @@ describe("HTML-to-TXT conversion plugin", () => {
 			},
 		});
 
-		expect(JSON.parse(response.body)).toStrictEqual({
+		expect(response.json()).toStrictEqual({
 			error: "Bad Request",
 			message: "Bad Request",
 			statusCode: 400,

@@ -123,7 +123,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 				headers,
 			});
 
-			expect(JSON.parse(response.body)).toStrictEqual({
+			expect(response.json()).toStrictEqual({
 				error: "Bad Request",
 				message: "Bad Request",
 				statusCode: 400,
