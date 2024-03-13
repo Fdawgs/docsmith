@@ -49,7 +49,7 @@ describe("Healthcheck route", () => {
 				},
 			});
 
-			expect(JSON.parse(response.body)).toStrictEqual({
+			expect(response.json()).toStrictEqual({
 				error: "Not Acceptable",
 				message: "Not Acceptable",
 				statusCode: 406,

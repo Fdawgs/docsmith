@@ -68,7 +68,7 @@ describe("Embed-HTML-Images plugin", () => {
 			},
 		});
 
-		expect(JSON.parse(response.body)).toStrictEqual({
+		expect(response.json()).toStrictEqual({
 			code: "ENOENT",
 			errno: expect.any(Number),
 			path: expect.any(String),

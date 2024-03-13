@@ -149,7 +149,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.body)).toStrictEqual({
+				expect(response.json()).toStrictEqual({
 					error: "Not Acceptable",
 					message: "Not Acceptable",
 					statusCode: 406,
@@ -169,7 +169,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.body)).toStrictEqual({
+				expect(response.json()).toStrictEqual({
 					error: "Not Found",
 					message: "Route GET:/invalid not found",
 					statusCode: 404,
@@ -380,7 +380,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.body)).toStrictEqual({
+				expect(response.json()).toStrictEqual({
 					error: "Not Acceptable",
 					message: "Not Acceptable",
 					statusCode: 406,
@@ -510,7 +510,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.body)).toStrictEqual({
+				expect(response.json()).toStrictEqual({
 					error: "Not Acceptable",
 					message: "Not Acceptable",
 					statusCode: 406,
@@ -530,7 +530,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.body)).toStrictEqual({
+				expect(response.json()).toStrictEqual({
 					error: "Not Found",
 					message: "Route GET:/invalid not found",
 					statusCode: 404,
@@ -621,7 +621,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.body)).toStrictEqual({
+				expect(response.json()).toStrictEqual({
 					error: "Not Acceptable",
 					message: "Not Acceptable",
 					statusCode: 406,
@@ -696,7 +696,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.body)).toStrictEqual({
+				expect(response.json()).toStrictEqual({
 					error: "Not Acceptable",
 					message: "Not Acceptable",
 					statusCode: 406,
@@ -943,7 +943,7 @@ describe("Server deployment", () => {
 							},
 						});
 
-						expect(JSON.parse(response.body)).toStrictEqual({
+						expect(response.json()).toStrictEqual({
 							error: "Not Acceptable",
 							message: "Not Acceptable",
 							statusCode: 406,
@@ -966,7 +966,7 @@ describe("Server deployment", () => {
 							},
 						});
 
-						expect(JSON.parse(response.body)).toStrictEqual({
+						expect(response.json()).toStrictEqual({
 							error: "Not Found",
 							message: "Route GET:/invalid not found",
 							statusCode: 404,
@@ -1141,7 +1141,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.body)).toStrictEqual({
+				expect(response.json()).toStrictEqual({
 					error: "Internal Server Error",
 					message: "Internal Server Error",
 					statusCode: 500,
@@ -1159,7 +1159,7 @@ describe("Server deployment", () => {
 					},
 				});
 
-				expect(JSON.parse(response.body)).toStrictEqual({
+				expect(response.json()).toStrictEqual({
 					error: "Service Unavailable",
 					message: "test",
 					statusCode: 503,
