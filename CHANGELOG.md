@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.1](https://github.com/Fdawgs/docsmith/compare/v11.1.0...v11.1.1) (2024-03-13)
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild from 0.20.0 to 0.20.1 ([a30105d](https://github.com/Fdawgs/docsmith/commit/a30105df771debb5aefef34cc8724d5979fadaca))
+* **deps-dev:** bump lockfile-lint from 4.13.1 to 4.13.2 ([#1805](https://github.com/Fdawgs/docsmith/issues/1805)) ([b52849d](https://github.com/Fdawgs/docsmith/commit/b52849da56b554932cc3ab3387504650f9cab5fb))
+* **deps-dev:** bump nodemon from 3.0.3 to 3.1.0 ([#1804](https://github.com/Fdawgs/docsmith/issues/1804)) ([a12520b](https://github.com/Fdawgs/docsmith/commit/a12520b8919dd9754f7c37150c5d11d1f43bf4eb))
+* **deps-dev:** bump playwright from 1.41.2 to 1.42.0 ([#1803](https://github.com/Fdawgs/docsmith/issues/1803)) ([362925a](https://github.com/Fdawgs/docsmith/commit/362925affd4ef638b59f7eebecc4f69093496a9b))
+* **deps-dev:** bump playwright from 1.42.0 to 1.42.1 ([#1811](https://github.com/Fdawgs/docsmith/issues/1811)) ([70f55c6](https://github.com/Fdawgs/docsmith/commit/70f55c63cdab6ed1bdd8688f5de359b6595cdcbc))
+* **deps-dev:** bump the commitlint group with 2 updates ([#1798](https://github.com/Fdawgs/docsmith/issues/1798)) ([43833d2](https://github.com/Fdawgs/docsmith/commit/43833d2ccc6d23fa296d4cb01dfdd02423d8413d))
+* **deps-dev:** bump the commitlint group with 2 updates ([#1807](https://github.com/Fdawgs/docsmith/issues/1807)) ([8359ec2](https://github.com/Fdawgs/docsmith/commit/8359ec2f2717a4c04a4719105f933ac8a49a229b))
+* **deps-dev:** bump the eslint group with 2 updates ([#1799](https://github.com/Fdawgs/docsmith/issues/1799)) ([3b65e73](https://github.com/Fdawgs/docsmith/commit/3b65e739af333a30eb00f4cf066a5aa74ba52331))
+* **deps-dev:** bump the eslint group with 2 updates ([#1809](https://github.com/Fdawgs/docsmith/issues/1809)) ([1d403d3](https://github.com/Fdawgs/docsmith/commit/1d403d3f0d1544d06b11d1e44cc486905e38e9bb))
+* **deps:** bump fix-latin1-to-utf8 from 1.0.1 to 1.0.2 ([#1813](https://github.com/Fdawgs/docsmith/issues/1813)) ([4a0755c](https://github.com/Fdawgs/docsmith/commit/4a0755cf94853879ad45993c89467766253c0c68))
+* **deps:** bump mammoth from 1.6.0 to 1.7.0 ([#1800](https://github.com/Fdawgs/docsmith/issues/1800)) ([f250bdb](https://github.com/Fdawgs/docsmith/commit/f250bdbf47d780ba1e676be409950419d2a20ae2))
+* **deps:** bump node-poppler from 7.1.0 to 7.1.1 ([#1802](https://github.com/Fdawgs/docsmith/issues/1802)) ([79dfe83](https://github.com/Fdawgs/docsmith/commit/79dfe83757fa4a03eb3990117b655ac273abeb4f))
+* **deps:** bump node-poppler from 7.1.1 to 7.2.0 ([#1810](https://github.com/Fdawgs/docsmith/issues/1810)) ([9102bb2](https://github.com/Fdawgs/docsmith/commit/9102bb243e6932d987116a430005a6041178ce88))
+* **deps:** bump node-unrtf from 4.1.6 to 4.1.7 ([#1801](https://github.com/Fdawgs/docsmith/issues/1801)) ([efc04fb](https://github.com/Fdawgs/docsmith/commit/efc04fbc5425cc3b90d880e64a955d57d104c392))
+* **deps:** bump node-unrtf from 4.1.7 to 5.0.0 ([#1812](https://github.com/Fdawgs/docsmith/issues/1812)) ([9857259](https://github.com/Fdawgs/docsmith/commit/985725975cd41e7bb086d9da416a475081a42dfb))
+* **deps:** bump tesseract.js from 5.0.4 to 5.0.5 ([#1806](https://github.com/Fdawgs/docsmith/issues/1806)) ([0fae780](https://github.com/Fdawgs/docsmith/commit/0fae7808ce2e9677d1257212a057a07929f9d4e0))
+* **deps:** bump the fastify-core group with 1 update ([#1808](https://github.com/Fdawgs/docsmith/issues/1808)) ([02b75d0](https://github.com/Fdawgs/docsmith/commit/02b75d000a26c74b818cb3ea803a8b79e2b113d3))
+* **deps:** bump transistive dependencies ([7ee47c9](https://github.com/Fdawgs/docsmith/commit/7ee47c95309faf4801ac15cdb459997c05dce6e6))
+
+
+### Improvements
+
+* remove `POPPLER_BINARY_PATH` env variable ([93e3e11](https://github.com/Fdawgs/docsmith/commit/93e3e11ef3f0b7b4bdb0b0de41d93000f7b7ef66))
+
 ## [11.1.0](https://github.com/Fdawgs/docsmith/compare/v11.0.8...v11.1.0) (2024-02-18)
 
 
