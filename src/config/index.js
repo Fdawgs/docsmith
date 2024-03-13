@@ -6,7 +6,7 @@ const { getStream } = require("file-stream-rotator");
 const S = require("fluent-json-schema").default;
 const { stdSerializers, stdTimeFunctions } = require("pino");
 const { parse: secureParse } = require("secure-json-parse");
-const { dirname, joinSafe, normalizeSafe, normalizeTrim } = require("upath");
+const { dirname, joinSafe, normalizeTrim } = require("upath");
 
 const coreCount = require("../utils/core-count");
 const { description, license, version } = require("../../package.json");
@@ -131,9 +131,6 @@ async function getConfig() {
 				"AUTH_BEARER_TOKEN_ARRAY",
 				S.anyOf([S.string().pattern(/^\[\{.*\}\]$/u), S.null()])
 			)
-
-			// Binary paths
-			.prop("POPPLER_BINARY_PATH", S.anyOf([S.string(), S.null()]))
 
 			// OCR
 			.prop("OCR_ENABLED", S.anyOf([S.boolean(), S.null()]))
@@ -328,9 +325,6 @@ async function getConfig() {
 			},
 		},
 		poppler: {
-			binPath: env.POPPLER_BINARY_PATH
-				? normalizeSafe(env.POPPLER_BINARY_PATH)
-				: env.POPPLER_BINARY_PATH,
 			tempDir,
 		},
 		tesseract: {
