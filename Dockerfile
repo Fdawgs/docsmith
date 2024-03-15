@@ -18,7 +18,6 @@ COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts --omit=dev && \
     npm pkg delete commitlint devDependencies jest nodemonConfig scripts && \
     npm cache clean --force && \
-    chown node ./node_modules/htmltidy2/bin/linux64/tidy && \
     chmod 100 ./node_modules/htmltidy2/bin/linux64/tidy && \
     # Remove included Windows and macOS binaries
     rm -rf ./node_modules/node-poppler/src/lib/* && \
@@ -28,8 +27,8 @@ RUN npm ci --ignore-scripts --omit=dev && \
 
 # Copy source
 COPY . .
-## Allow for temp folder and contents to be removed on container exit
-RUN chown -R node ./dist/
+# Change ownership of all files and directories
+RUN chown -R node:node .
 
 # Node images provide 'node' unprivileged user to run apps and prevent
 # privilege escalation attacks
