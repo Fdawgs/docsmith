@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.2](https://github.com/Fdawgs/docsmith/compare/v11.1.1...v11.1.2) (2024-03-15)
+
+
+### Bug fixes
+
+* **docker:** node user permissions ([#1818](https://github.com/Fdawgs/docsmith/issues/1818)) ([8e8aac7](https://github.com/Fdawgs/docsmith/commit/8e8aac7fc8c39a9b4b590c41cb9bb815508f7de8))
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild from 0.20.1 to 0.20.2 ([#1819](https://github.com/Fdawgs/docsmith/issues/1819)) ([73bf22f](https://github.com/Fdawgs/docsmith/commit/73bf22f233b748c03e3d93845ae9c3cd1d4bdd0e))
+* **deps-dev:** bump the commitlint group with 1 update ([#1816](https://github.com/Fdawgs/docsmith/issues/1816)) ([caa6646](https://github.com/Fdawgs/docsmith/commit/caa66464779ffe3e4d4f5b1a229810ce7dfa2ab1))
+
 ## [11.1.1](https://github.com/Fdawgs/docsmith/compare/v11.1.0...v11.1.1) (2024-03-13)
 
 
