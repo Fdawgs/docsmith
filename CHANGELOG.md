@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.3](https://github.com/Fdawgs/docsmith/compare/v11.1.2...v11.1.3) (2024-03-19)
+
+
+### Bug fixes
+
+* **utils/core-count:** fallback to `cpus()` if platform not detected ([#1820](https://github.com/Fdawgs/docsmith/issues/1820)) ([d6f1054](https://github.com/Fdawgs/docsmith/commit/d6f10548a55e89b893eaa22bd5240b259ebe0b6f))
+
 ## [11.1.2](https://github.com/Fdawgs/docsmith/compare/v11.1.1...v11.1.2) (2024-03-15)
 
 
