@@ -3,6 +3,9 @@
 const { execSync } = require("node:child_process");
 const { cpus, EOL, platform } = require("node:os");
 
+// Ignore stdin and stderr, pipe stdout
+const config = { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] };
+
 /**
  * @author Frazer Smith
  * @description Count number of physical CPU cores a system has,
@@ -11,35 +14,41 @@ const { cpus, EOL, platform } = require("node:os");
  * @returns {number} Number of physical cores the system has.
  */
 function coreCount() {
-	const config = { encoding: "utf8" };
+	let result = 0;
 
 	switch (platform()) {
 		case "darwin":
-			return parseInt(
-				execSync("sysctl -n hw.physicalcpu_max", config).trim(),
+			result = parseInt(
+				execSync("sysctl -n hw.physicalcpu_max", config),
 				10
 			);
+			break;
 		case "linux":
-			return parseInt(
+			result = parseInt(
 				execSync(
 					'lscpu -p | egrep -v "^#" | sort -u -t, -k 2,4 | wc -l',
 					config
-				).trim(),
+				),
 				10
 			);
+			break;
 		case "win32":
-			return execSync("WMIC CPU Get NumberOfCores", config)
+			result = execSync("WMIC CPU Get NumberOfCores", config)
 				.split(EOL)
 				.map((line) => parseInt(line, 10))
 				.filter((value) => !Number.isNaN(Number(value)))
 				.reduce((sum, number) => sum + number, 0);
+			break;
 		default:
-			return cpus().filter((cpu, index) => {
-				const hasHyperthreading = cpu.model.includes("Intel");
-				const isOdd = index % 2 === 1;
-				return !hasHyperthreading || isOdd;
-			}).length;
+			break;
 	}
+
+	return result > 0
+		? result
+		: cpus().filter(({ model }, index) => {
+				const hasHyperthreading = model.includes("Intel");
+				return !hasHyperthreading || index % 2 === 1;
+			}).length;
 }
 
 module.exports = coreCount;
