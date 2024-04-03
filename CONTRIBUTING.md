@@ -32,7 +32,7 @@ After cloning the repository and installing all the dependencies, there are seve
 
 ### Production workflow
 
--   `npm start` - Runs a production version. No live reload.
+-   `npm start` - Runs a production version. No live reload
 
 ## Documentation style
 
