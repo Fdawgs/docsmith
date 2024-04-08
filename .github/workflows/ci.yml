@@ -56,12 +56,13 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   cache: npm
+                  check-latest: true
                   node-version: lts/*
 
             - name: Install
               run: npm ci --ignore-scripts
 
-            - name: Audit NPM package signatures
+            - name: Audit NPM package signatures and provenance attestations
               run: npm audit signatures
 
             - name: Run ESLint
@@ -112,6 +113,7 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   cache: npm
+                  check-latest: true
                   node-version: ${{ matrix.node-version }}
 
             - name: Install
@@ -168,6 +170,7 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   cache: npm
+                  check-latest: true
                   node-version: lts/*
 
             - name: Install
