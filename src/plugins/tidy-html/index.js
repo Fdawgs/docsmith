@@ -104,7 +104,8 @@ async function plugin(server) {
 				const styleObj = cssomParse(styleElement.innerHTML);
 				const cssRulesLength = styleObj.cssRules.length;
 
-				for (let i = 0; i < cssRulesLength; i += 1) {
+				// Iterate over CSS rules in reverse to avoid index issues
+				for (let i = cssRulesLength - 1; i >= 0; i -= 1) {
 					const rule = styleObj.cssRules[i];
 					if (rule instanceof CSSStyleRule) {
 						if (
@@ -118,8 +119,6 @@ async function plugin(server) {
 								});
 							// Remove rule from style tag
 							styleObj.deleteRule(i);
-							// Decrement the counter as the length of rules has changed
-							i -= 1;
 						}
 					}
 				}
