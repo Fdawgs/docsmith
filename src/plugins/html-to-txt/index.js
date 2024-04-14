@@ -15,7 +15,7 @@ const htmlToTextConfig = {
 			options: { uppercaseHeaderCells: false },
 		},
 	],
-	wordwrap: null,
+	wordwrap: false,
 };
 
 /**

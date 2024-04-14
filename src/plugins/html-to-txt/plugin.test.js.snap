@@ -72,5 +72,13 @@ Etiam vehicula luctus fermentum. In vel metus congue, pulvinar lectus vel, ferme
 
 
 
+This paragraph should not be displayed.
+
+This paragraph should also not be displayed.
+
+This paragraph should not be visible.
+
+This paragraph should also not be visible.
+
 I am a footer"
 `;

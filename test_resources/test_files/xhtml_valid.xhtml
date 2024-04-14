@@ -19,6 +19,12 @@
 				direction: ltr;
 				background: 0 0;
 			}
+			p.hidden {
+				display: none;
+			}
+			p.notvisible {
+				visibility: hidden;
+			}
 			p.western {
 				font-family: '"Liberation Serif"', serif;
 				font-size: 12pt;
@@ -568,6 +574,14 @@
 				width="643"
 			/><br /><br />
 		</p>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<p class="hidden">This paragraph should also not be displayed.</p>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
+		</div>
+		<p class="notvisible">This paragraph should also not be visible.</p>
 		<div title="footer">
 			<p class="c18" lang="en-US" xml:lang="en-US">I am a footer</p>
 		</div>
