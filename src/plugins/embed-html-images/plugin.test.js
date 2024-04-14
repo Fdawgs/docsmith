@@ -53,7 +53,7 @@ describe("Embed-HTML-Images plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	it("Throws error if it cannot find images to embed in specified directory", async () => {
+	it("Throws an error if it cannot find images to embed in specified directory", async () => {
 		server.post("/", async (req) => server.embedHtmlImages(req.body));
 		await server.register(plugin, config.poppler).ready();
 

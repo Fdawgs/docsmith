@@ -446,7 +446,7 @@ describe("Configuration", () => {
 				HTTPS_SSL_KEY_PATH: "./test_resources/test_ssl_cert/error.key",
 			},
 		},
-	])("Throws error if $testName", async ({ envVariables }) => {
+	])("Throws an error if $testName", async ({ envVariables }) => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
 		const HTTPS_SSL_KEY_PATH = envVariables.HTTPS_SSL_KEY_PATH || "";
