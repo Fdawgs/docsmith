@@ -114,7 +114,7 @@ async function plugin(server) {
 							document
 								.querySelectorAll(rule.selectorText)
 								.forEach((element) => {
-									element.parentNode.removeChild(element);
+									element.remove();
 								});
 							// Remove rule from style tag
 							styleObj.deleteRule(i);
