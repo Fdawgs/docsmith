@@ -68,10 +68,9 @@ async function route(server, options) {
 		},
 		handler: async (req, res) => {
 			const tidiedHtml = await server.tidyHtml(req.body, {
-				removeHidden: true,
+				removeHidden: req.query.extractHidden !== true,
 			});
 
-			console.log(tidiedHtml);
 			res.type("text/plain; charset=utf-8");
 			return server.htmlToTxt(tidiedHtml);
 		},

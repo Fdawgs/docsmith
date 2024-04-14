@@ -38,24 +38,48 @@ describe("HTML-to-TXT route", () => {
 
 	it.each([
 		{
-			testName: "HTML file",
+			testName: "HTML file converted to TXT",
 			filePath: "./test_resources/test_files/html_valid.html",
 			headers: {
 				"content-type": "text/html",
 			},
 		},
 		{
-			testName: "XHTML file",
+			testName: "XHTML file file converted to TXT",
 			filePath: "./test_resources/test_files/xhtml_valid.xhtml",
 			headers: {
 				"content-type": "application/xhtml+xml",
 			},
 		},
-	])("Returns $testName converted to TXT", async ({ filePath, headers }) => {
+		{
+			testName: "HTML converted to TXT with hidden elements extracted",
+			filePath: "./test_resources/test_files/html_valid.html",
+			headers: {
+				"content-type": "text/html",
+			},
+			query: {
+				extractHidden: "true",
+			},
+		},
+		{
+			testName:
+				"XHTML file converted to TXT with hidden elements extracted",
+			filePath: "./test_resources/test_files/xhtml_valid.xhtml",
+			headers: {
+				"content-type": "application/xhtml+xml",
+			},
+			query: {
+				extractHidden: "true",
+			},
+		},
+	])("Returns $testName", async ({ filePath, headers, query }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await readFile(filePath),
+			query: {
+				...query,
+			},
 			headers: {
 				accept: "application/json, text/plain",
 				...headers,

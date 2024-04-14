@@ -18,6 +18,12 @@ const htmlToTxtPostSchema = {
 	operationId: "postHtmlToTxt",
 	consumes: ["application/xhtml+xml", "text/html"],
 	produces: ["application/json", "application/xml"],
+	query: S.object()
+		.additionalProperties(false)
+		.prop(
+			"extractHidden",
+			S.boolean().description("Force hidden text extraction")
+		),
 	response: {
 		200: {
 			content: {
