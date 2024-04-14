@@ -38,6 +38,11 @@ describe("Tidy-HTML plugin", () => {
 				"Tidies HTML, sets img alt attributes to empty string, and sets language",
 			options: { language: "fr", removeAlt: true },
 		},
+		{
+			testName:
+				"Tidies HTML and removes elements with `display: none` or `visibility: hidden` styles",
+			options: { removeHidden: true },
+		},
 	])("$testName", async ({ options }) => {
 		server.post("/", async (req) => server.tidyHtml(req.body, options));
 		await server.register(sensible).register(plugin).ready();
@@ -78,8 +83,10 @@ describe("Tidy-HTML plugin", () => {
 		// Check legacy HTML elements are removed
 		expect(dom.window.document.querySelector("center")).toBeNull();
 		expect(dom.window.document.querySelector("font")).toBeNull();
-		// Check `<![CDATA[]]>` is escaped
-		expect(dom.window.document.head.textContent).toMatch("/*<![CDATA[*/");
+		// Check `<![CDATA[]]>` is escaped or removed
+		expect(dom.window.document.head.textContent).not.toMatch(
+			/(?<!\/\*)<!\[CDATA\[(?!\*\/)/u
+		);
 		// Check HTML comments are removed
 		expect(dom.window.document.body.textContent).not.toMatch(/<!--|--!?>/u);
 		// Check HTML is minified

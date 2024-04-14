@@ -2,6 +2,7 @@
 
 const { promisify } = require("node:util");
 const fp = require("fastify-plugin");
+const { CSSStyleRule, parse: cssomParse } = require("cssom");
 const { JSDOM } = require("jsdom");
 // @ts-ignore
 const { minify } = require("html-minifier-terser");
@@ -53,6 +54,7 @@ async function plugin(server) {
 	 * @param {boolean} [options.removeAlt] - Set `alt` attributes in `<img>` tags to empty string if set to `true`.
 	 * Useful for sending to clinical systems where img tags are stripped from received documents
 	 * (i.e. TPP's SystmOne), and for screen reader users.
+	 * @param {boolean} [options.removeHidden] - Remove elements with `display: none` or `visibility: hidden` styles if set to `true`.
 	 * @returns {Promise<string>} A promise that resolves with a tidied HTML string, or rejects with an `Error` object
 	 * if `querystring.language` not a valid IANA language tag.
 	 */
@@ -73,9 +75,8 @@ async function plugin(server) {
 		/**
 		 * When an alt attribute is not present in an <img> tag, screen readers may announce the image's file name instead.
 		 * This can be a confusing experience if the file name is not representative of the image's contents.
+		 * As such, alt attributes in <img> tags are set to an empty string rather than removed here.
 		 * @see {@link https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI | Deque University: Image alt text}
-		 *
-		 * As such, alt attributes in <img> tags are set to an empty string rather than removed here
 		 */
 		if (options.removeAlt === true) {
 			const images = dom.window.document.querySelectorAll("img");
@@ -86,8 +87,49 @@ async function plugin(server) {
 		}
 
 		/** @type {string} */
-		const tidiedHtml = await tidyP(dom.serialize(), htmlTidyConfig);
-		return minify(tidiedHtml, htmlMinifyConfig);
+		let result = await tidyP(dom.serialize(), htmlTidyConfig);
+
+		if (options.removeHidden === true) {
+			/**
+			 * HTMLTidy2 consolidates inline styles into classes in multiple style tags.
+			 * This simplifies hidden element removal by eliminating parsing of inline
+			 * styles and classes.
+			 */
+			const hidden = new JSDOM(result);
+			const { document } = hidden.window;
+			const styles = document.querySelectorAll("style");
+
+			styles.forEach((style) => {
+				const styleElement = style;
+				const styleObj = cssomParse(styleElement.innerHTML);
+				const cssRulesLength = styleObj.cssRules.length;
+
+				for (let i = 0; i < cssRulesLength; i += 1) {
+					const rule = styleObj.cssRules[i];
+					if (rule instanceof CSSStyleRule) {
+						if (
+							rule.style.display === "none" ||
+							rule.style.visibility === "hidden"
+						) {
+							document
+								.querySelectorAll(rule.selectorText)
+								.forEach((element) => {
+									element.parentNode.removeChild(element);
+								});
+							// Remove rule from style tag
+							styleObj.deleteRule(i);
+							// Decrement the counter as the length of rules has changed
+							i -= 1;
+						}
+					}
+				}
+
+				styleElement.innerHTML = styleObj.toString();
+			});
+			result = hidden.serialize();
+		}
+
+		return minify(result, htmlMinifyConfig);
 	}
 
 	server.decorate("tidyHtml", tidyHtml);

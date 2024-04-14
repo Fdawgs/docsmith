@@ -195,6 +195,12 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML 1`] = `
 			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
 			<p class="ft20 c72">Notes</p>
 		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
+		</div>
 	
 
 </body></html>"
@@ -376,6 +382,12 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new background color 1`] = 
 			</p>
 			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
 			<p class="ft20 c72">Notes</p>
+		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
 		</div>
 	
 
@@ -559,6 +571,12 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font 1`] = `
 			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
 			<p class="ft20 c72">Notes</p>
 		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
+		</div>
 	
 
 </body></html>"
@@ -740,6 +758,12 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font in quotation marks
 			</p>
 			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
 			<p class="ft20 c72">Notes</p>
+		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
 		</div>
 	
 
@@ -930,6 +954,12 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML, sets new background color, and sets
 			</p>
 			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
 			<p class="ft20 c72">Notes</p>
+		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
 		</div>
 	
 

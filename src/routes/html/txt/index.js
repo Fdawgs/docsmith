@@ -66,10 +66,14 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: (req, res) => {
-			res.type("text/plain; charset=utf-8").send(
-				server.htmlToTxt(req.body)
-			);
+		handler: async (req, res) => {
+			const tidiedHtml = await server.tidyHtml(req.body, {
+				removeHidden: true,
+			});
+
+			console.log(tidiedHtml);
+			res.type("text/plain; charset=utf-8");
+			return server.htmlToTxt(tidiedHtml);
 		},
 	});
 }
