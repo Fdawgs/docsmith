@@ -49,17 +49,15 @@ async function plugin(server, options) {
 
 	// Procedurally create workers based on number passed
 	await Promise.all(
-		Array(options.workers)
-			.fill(0)
-			.map(async () => {
-				const worker = await createWorker(
-					options.languages,
-					1,
-					workerConfig
-				);
-				await worker.setParameters(workerParams);
-				return scheduler.addWorker(worker);
-			})
+		Array.from({ length: options.workers }, async () => {
+			const worker = await createWorker(
+				options.languages,
+				1,
+				workerConfig
+			);
+			await worker.setParameters(workerParams);
+			return scheduler.addWorker(worker);
+		})
 	);
 
 	server.log.info(
