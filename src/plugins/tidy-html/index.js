@@ -104,7 +104,8 @@ async function plugin(server) {
 
 			styles.forEach((style) => {
 				const styleElement = style;
-				const styleObj = cssomParse(styleElement.innerHTML);
+				// @ts-ignore: textContent will never be null
+				const styleObj = cssomParse(styleElement.textContent);
 				const cssRulesLength = styleObj.cssRules.length;
 
 				// Iterate over CSS rules in reverse to avoid index issues
@@ -122,7 +123,7 @@ async function plugin(server) {
 					}
 				}
 
-				styleElement.innerHTML = styleObj.toString();
+				styleElement.textContent = styleObj.toString();
 			});
 
 			// Remove all elements that match the selectors

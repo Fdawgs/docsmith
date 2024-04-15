@@ -164,7 +164,7 @@ async function plugin(server, options) {
 		 * Overwrite content of remaining title element with temp file id,
 		 * as Poppler reveals directory structure in title.
 		 */
-		titles[0].innerHTML = id;
+		titles[0].textContent = id;
 
 		/**
 		 * `fixUtf8` function replaces most common incorrectly converted

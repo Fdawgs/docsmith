@@ -112,13 +112,13 @@ describe("Tidy-CSS plugin", () => {
 		// Check CSS is combined into one style tag
 		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
 		// Check font-family is set to expected value
-		expect(style?.innerHTML).toMatch(expected?.fonts || /./u);
+		expect(style?.textContent).toMatch(expected?.fonts || /./u);
 		// Check background-color is set to expected value
-		expect(style?.innerHTML).toMatch(expected?.backgroundColor || /./u);
+		expect(style?.textContent).toMatch(expected?.backgroundColor || /./u);
 		// Check page-break-inside is set to avoid
-		expect(style?.innerHTML).toMatch(/page-break-inside:avoid/u);
+		expect(style?.textContent).toMatch(/page-break-inside:avoid/u);
 		// Check CSS is tidied and minified
-		expect(style?.innerHTML).not.toMatch(/;\}|<!--|--!?>|\n|\r/u);
+		expect(style?.textContent).not.toMatch(/;\}|<!--|--!?>|\n|\r/u);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -146,7 +146,7 @@ describe("Tidy-CSS plugin", () => {
 		// Check CSS is combined into one style tag
 		expect(dom.window.document.querySelectorAll("style")).toHaveLength(1);
 		// Check CSS is tidied and minified
-		expect(style?.innerHTML).not.toMatch(/;\}|<!--|--!?>|\n|\r/u);
+		expect(style?.textContent).not.toMatch(/;\}|<!--|--!?>|\n|\r/u);
 		expect(response.statusCode).toBe(200);
 	});
 

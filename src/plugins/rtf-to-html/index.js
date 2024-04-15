@@ -119,7 +119,7 @@ async function plugin(server, options) {
 			meta.content = "text/html; charset=utf-8";
 			meta.httpEquiv = "content-type";
 			const title = dom.window.document.createElement("title");
-			title.innerHTML = id;
+			title.textContent = id;
 			dom.window.document.head.prepend(meta, title);
 
 			/**
