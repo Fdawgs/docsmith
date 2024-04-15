@@ -106,8 +106,8 @@ async function plugin(server, options) {
 		 */
 		req.conversionResults.docLocation = {
 			directory,
-			rtf: tempFile,
 			id,
+			rtf: tempFile,
 		};
 
 		try {
