@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.2.0](https://github.com/Fdawgs/docsmith/compare/v11.1.2...v11.2.0) (2024-04-15)
+
+
+### Features
+
+* **routes/html/txt:** add `extractHidden` query string param ([#1831](https://github.com/Fdawgs/docsmith/issues/1831)) ([38ae2d6](https://github.com/Fdawgs/docsmith/commit/38ae2d64a007a2a2c7f710c38f526961580c432a))
+
+
+### Bug fixes
+
+* **plugins/tidy-html:** catch skipped rules ([4a38bee](https://github.com/Fdawgs/docsmith/commit/4a38bee2e8d6e928134fee55ea90a6a72b203bce))
+* **plugins:** use `textContent` to protect against xss ([369dc0a](https://github.com/Fdawgs/docsmith/commit/369dc0a5b4bc9d02b103c5ae35f463c53f5518cb))
+* **routes/html/txt:** remove hidden elements ([#1830](https://github.com/Fdawgs/docsmith/issues/1830)) ([ceb249d](https://github.com/Fdawgs/docsmith/commit/ceb249d850d03a114c7e1580f1b4aa0f05bbe22f))
+* **utils/core-count:** fallback to `cpus()` if platform not detected ([#1820](https://github.com/Fdawgs/docsmith/issues/1820)) ([d6f1054](https://github.com/Fdawgs/docsmith/commit/d6f10548a55e89b893eaa22bd5240b259ebe0b6f))
+
+
+### Dependencies
+
+* **deps-dev:** bump playwright from 1.42.1 to 1.43.1 ([#1833](https://github.com/Fdawgs/docsmith/issues/1833)) ([32413cc](https://github.com/Fdawgs/docsmith/commit/32413cc72bf8f04545296cbc50b194ce23e2b7a0))
+* **deps-dev:** bump the commitlint group with 2 updates ([#1834](https://github.com/Fdawgs/docsmith/issues/1834)) ([3bca610](https://github.com/Fdawgs/docsmith/commit/3bca610556f369acfda127b7192e67e26ef7ddc7))
+* **deps:** bump glob from 10.3.10 to 10.3.12 ([#1827](https://github.com/Fdawgs/docsmith/issues/1827)) ([fe2a6f5](https://github.com/Fdawgs/docsmith/commit/fe2a6f5791b09231acb54fca973ba87dbbe3d718))
+* **deps:** bump mammoth from 1.7.0 to 1.7.1 ([#1828](https://github.com/Fdawgs/docsmith/issues/1828)) ([cd4e980](https://github.com/Fdawgs/docsmith/commit/cd4e98040935aa47e488154d3fdcc3e6db7f2f77))
+* **deps:** bump the pino-core group with 2 updates ([#1832](https://github.com/Fdawgs/docsmith/issues/1832)) ([9d0939d](https://github.com/Fdawgs/docsmith/commit/9d0939d61f15047b10783f54a6169c9e5c0f97cc))
+
+
+### Miscellaneous
+
+* correct inline grammatical errors ([cf651a4](https://github.com/Fdawgs/docsmith/commit/cf651a46489670c6a9bcee4cc7fcd0068af6daba))
+* **plugins:** sort object properties ([510541e](https://github.com/Fdawgs/docsmith/commit/510541ed69808242d750f189df5e66454ce5c037))
+
+
+### Continuous integration
+
+* **deps:** bump wagoid/commitlint-github-action from 5 to 6 ([#1822](https://github.com/Fdawgs/docsmith/issues/1822)) ([81b714c](https://github.com/Fdawgs/docsmith/commit/81b714c9b722fefbbe8a81fce692739bea4c39b4))
+* use latest node lts version ([#1829](https://github.com/Fdawgs/docsmith/issues/1829)) ([00931d3](https://github.com/Fdawgs/docsmith/commit/00931d3fa1bc28b9162ada6dae8e94a2574bdd1b))
+
+
+### Improvements
+
+* **plugins/image-to-txt:** use array.from() mapfn ([6132ab8](https://github.com/Fdawgs/docsmith/commit/6132ab8331fdcd9596ed0cd3e11d5f8bebcde0fc))
+* **plugins/tidy-css:** remove redundant ref variable ([c8961f3](https://github.com/Fdawgs/docsmith/commit/c8961f3b5bf78969b39b8e725b4ed0980e1285fd))
+* **plugins/tidy-html:** only iterate dom once ([f315ebc](https://github.com/Fdawgs/docsmith/commit/f315ebc49ead068e5d8f59a948e941baf5daa39b))
+* **plugins/tidy-html:** remove element directly ([052e08f](https://github.com/Fdawgs/docsmith/commit/052e08fd7ddba5fa821f4d09c98b575a46cbefcf))
+* **utils/core-count:** use `Number.parseInt()` over global ([82cdd46](https://github.com/Fdawgs/docsmith/commit/82cdd46ec1f0b527769adea60084b8525bb52f99))
+
+
+### Documentation
+
+* **contributing:** remove full stop from list item ([375bf39](https://github.com/Fdawgs/docsmith/commit/375bf39d878fb7dc1ae231d5b8cae9c27d7a24d2))
+* **contributing:** update dev script descriptions ([10bc6d4](https://github.com/Fdawgs/docsmith/commit/10bc6d4df95af33872c46949e65f849b28fb5eb6))
+
 ## [11.1.2](https://github.com/Fdawgs/docsmith/compare/v11.1.1...v11.1.2) (2024-03-15)
 
 
