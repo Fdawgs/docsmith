@@ -31,7 +31,6 @@ async function plugin(server) {
 			/**
 			 * Mammoth does not wrap the results inside <html> and <body> tags itself, so
 			 * do that here.
-			 *
 			 * `fixUtf8` function replaces most common incorrectly converted
 			 * Windows-1252 to UTF-8 results with HTML equivalents.
 			 * @see {@link https://i18nqa.com/debug/utf8-debug.html | UTF-8 Encoding Debugging Chart}

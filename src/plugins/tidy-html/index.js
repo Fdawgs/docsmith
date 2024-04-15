@@ -99,33 +99,40 @@ async function plugin(server) {
 			const { document } = hidden.window;
 			const styles = document.querySelectorAll("style");
 
+			/** @type {string[]} */
+			const selectorsToRemove = [];
+
 			styles.forEach((style) => {
 				const styleElement = style;
-				const styleObj = cssomParse(styleElement.innerHTML);
+				// @ts-ignore: textContent will never be null
+				const styleObj = cssomParse(styleElement.textContent);
 				const cssRulesLength = styleObj.cssRules.length;
 
-				for (let i = 0; i < cssRulesLength; i += 1) {
+				// Iterate over CSS rules in reverse to avoid index issues
+				for (let i = cssRulesLength - 1; i >= 0; i -= 1) {
 					const rule = styleObj.cssRules[i];
 					if (rule instanceof CSSStyleRule) {
 						if (
 							rule.style.display === "none" ||
 							rule.style.visibility === "hidden"
 						) {
-							document
-								.querySelectorAll(rule.selectorText)
-								.forEach((element) => {
-									element.parentNode.removeChild(element);
-								});
+							selectorsToRemove.push(rule.selectorText);
 							// Remove rule from style tag
 							styleObj.deleteRule(i);
-							// Decrement the counter as the length of rules has changed
-							i -= 1;
 						}
 					}
 				}
 
-				styleElement.innerHTML = styleObj.toString();
+				styleElement.textContent = styleObj.toString();
 			});
+
+			// Remove all elements that match the selectors
+			selectorsToRemove.forEach((selector) => {
+				document.querySelectorAll(selector).forEach((element) => {
+					element.remove();
+				});
+			});
+
 			result = hidden.serialize();
 		}
 

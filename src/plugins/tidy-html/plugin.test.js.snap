@@ -9,6 +9,13 @@ exports[`Tidy-HTML plugin Tidies HTML 1`] = `
                                 .ft12{font-size:14px;font-family:Times;color:#000000;}
                                 .ft13{font-size:14px;font-family:Times;color:#0000ff;}
                                 .ft14{font-size:14px;line-height:19px;font-family:Times;color:#000000;}
+
+                                        @media print {
+                                                .ft11 {font-size: 12px}
+                                                .ft12 {font-size: 12px}
+                                                .ft13 {font-size: 12px}
+                                                .ft14 {font-size: 12px}
+                                        }
                         -->
                         /*]]>*/</style><style type="text/css">/*<![CDATA[*/
 
@@ -464,7 +471,8 @@ exports[`Tidy-HTML plugin Tidies HTML and removes elements with \`display: none\
 .ft11 {font-size: 14px; font-family: Times; color: #000000;}
 .ft12 {font-size: 14px; font-family: Times; color: #000000;}
 .ft13 {font-size: 14px; font-family: Times; color: #0000ff;}
-.ft14 {font-size: 14px; line-height: 19px; font-family: Times; color: #000000;}</style><style type="text/css"><!--
+.ft14 {font-size: 14px; line-height: 19px; font-family: Times; color: #000000;}
+@media print {.ft11 {font-size: 12px;}.ft12 {font-size: 12px;}.ft13 {font-size: 12px;}.ft14 {font-size: 12px;}}</style><style type="text/css"><!--
                                 p {margin: 0; padding: 0;}
 .ft20 {font-size: 14px; font-family: Times; color: #000000;}
 .ft21 {font-size: 12px; font-family: Times; color: #000000;}
@@ -553,6 +561,13 @@ exports[`Tidy-HTML plugin Tidies HTML and sets img alt attributes to empty strin
                                 .ft12{font-size:14px;font-family:Times;color:#000000;}
                                 .ft13{font-size:14px;font-family:Times;color:#0000ff;}
                                 .ft14{font-size:14px;line-height:19px;font-family:Times;color:#000000;}
+
+                                        @media print {
+                                                .ft11 {font-size: 12px}
+                                                .ft12 {font-size: 12px}
+                                                .ft13 {font-size: 12px}
+                                                .ft14 {font-size: 12px}
+                                        }
                         -->
                         /*]]>*/</style><style type="text/css">/*<![CDATA[*/
 
@@ -1010,6 +1025,13 @@ exports[`Tidy-HTML plugin Tidies HTML and sets language 1`] = `
                                 .ft12{font-size:14px;font-family:Times;color:#000000;}
                                 .ft13{font-size:14px;font-family:Times;color:#0000ff;}
                                 .ft14{font-size:14px;line-height:19px;font-family:Times;color:#000000;}
+
+                                        @media print {
+                                                .ft11 {font-size: 12px}
+                                                .ft12 {font-size: 12px}
+                                                .ft13 {font-size: 12px}
+                                                .ft14 {font-size: 12px}
+                                        }
                         -->
                         /*]]>*/</style><style type="text/css">/*<![CDATA[*/
 
@@ -1467,6 +1489,13 @@ exports[`Tidy-HTML plugin Tidies HTML, sets img alt attributes to empty string, 
                                 .ft12{font-size:14px;font-family:Times;color:#000000;}
                                 .ft13{font-size:14px;font-family:Times;color:#0000ff;}
                                 .ft14{font-size:14px;line-height:19px;font-family:Times;color:#000000;}
+
+                                        @media print {
+                                                .ft11 {font-size: 12px}
+                                                .ft12 {font-size: 12px}
+                                                .ft13 {font-size: 12px}
+                                                .ft14 {font-size: 12px}
+                                        }
                         -->
                         /*]]>*/</style><style type="text/css">/*<![CDATA[*/
 

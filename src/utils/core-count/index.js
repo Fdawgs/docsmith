@@ -18,13 +18,13 @@ function coreCount() {
 
 	switch (platform()) {
 		case "darwin":
-			result = parseInt(
+			result = Number.parseInt(
 				execSync("sysctl -n hw.physicalcpu_max", config),
 				10
 			);
 			break;
 		case "linux":
-			result = parseInt(
+			result = Number.parseInt(
 				execSync(
 					'lscpu -p | egrep -v "^#" | sort -u -t, -k 2,4 | wc -l',
 					config
@@ -35,7 +35,7 @@ function coreCount() {
 		case "win32":
 			result = execSync("WMIC CPU Get NumberOfCores", config)
 				.split(EOL)
-				.map((line) => parseInt(line, 10))
+				.map((line) => Number.parseInt(line, 10))
 				.filter((value) => !Number.isNaN(Number(value)))
 				.reduce((sum, number) => sum + number, 0);
 			break;

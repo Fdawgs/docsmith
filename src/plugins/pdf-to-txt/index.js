@@ -146,9 +146,9 @@ async function plugin(server, options) {
 
 			try {
 				await poppler.pdfToCairo(req.body, tempFile, {
-					resolutionXYAxis: 300,
 					grayscaleFile: true,
 					pngFile: true,
+					resolutionXYAxis: 300,
 					...query,
 				});
 			} catch (err) {
