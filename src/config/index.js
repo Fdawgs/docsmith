@@ -1,6 +1,7 @@
 "use strict";
 
 const { readFile } = require("node:fs/promises");
+const { availableParallelism } = require("node:os");
 const envSchema = require("env-schema");
 const { getStream } = require("file-stream-rotator");
 const S = require("fluent-json-schema").default;
@@ -8,7 +9,6 @@ const { stdSerializers, stdTimeFunctions } = require("pino");
 const { parse: secureParse } = require("secure-json-parse");
 const { dirname, joinSafe, normalizeTrim } = require("upath");
 
-const coreCount = require("../utils/core-count");
 const { description, license, version } = require("../../package.json");
 
 /**
@@ -330,8 +330,8 @@ async function getConfig() {
 		tesseract: {
 			enabled: env.OCR_ENABLED === true,
 			languages: env.OCR_LANGUAGES || "eng",
-			// Use number of physical CPU cores available if ENV variable not specified
-			workers: env.OCR_WORKERS || coreCount(),
+			// Use all but one core for OCR workers to prevent blocking the event loop if ENV variable not specified
+			workers: env.OCR_WORKERS || availableParallelism() - 1,
 		},
 		unrtf: {
 			tempDir,
