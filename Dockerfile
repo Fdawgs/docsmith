@@ -6,13 +6,11 @@ FROM node:20-bullseye-slim AS tmp
 # Workdir
 WORKDIR /usr/app/tmp
 
-# Copy source
-COPY . /usr/app/tmp
-
-# Create temp folder for files to be stored whilst being converted
-RUN mkdir -p ./dist/temp/
-
-# Install node dependencies
+# Copy and install dependencies separately from the app's code
+# to take advantage of Docker's layer caching
+# See: https://docs.docker.com/build/cache/#optimizing-how-you-use-the-build-cache
+COPY package.json .
+COPY package-lock.json .
 RUN npm ci --ignore-scripts --omit=dev && \
     npm pkg delete commitlint devDependencies jest nodemonConfig scripts && \
     npm cache clean --force && \
@@ -22,6 +20,12 @@ RUN npm ci --ignore-scripts --omit=dev && \
     rm -rf ./node_modules/node-unrtf/src/lib/* && \
     rm -rf ./node_modules/htmltidy2/bin/win64 && \
     rm -rf ./node_modules/htmltidy2/bin/darwin
+
+# Copy source
+COPY . .
+
+# Create temp folder for files to be stored whilst being converted
+RUN mkdir -p ./dist/temp/
 
 # ------------------
 # Final image
