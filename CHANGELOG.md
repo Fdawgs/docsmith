@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.2.1](https://github.com/Fdawgs/docsmith/compare/v11.2.0...v11.2.1) (2024-05-01)
+
+
+### Bug fixes
+
+* **server:** convert content-type to lowercase before checking ([4f1af67](https://github.com/Fdawgs/docsmith/commit/4f1af679f3f1c9cede1fe6068005a0d607f18003))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli in the commitlint group ([#1841](https://github.com/Fdawgs/docsmith/issues/1841)) ([d9eb5f0](https://github.com/Fdawgs/docsmith/commit/d9eb5f09127c5ab883eddeb22591e9dcf33ec937))
+* **deps:** bump fastify-json-to-xml from 1.1.11 to 1.1.12 ([#1848](https://github.com/Fdawgs/docsmith/issues/1848)) ([af8d62f](https://github.com/Fdawgs/docsmith/commit/af8d62f96b034c484d2b68c67424bdfef24a69e2))
+* **deps:** bump mammoth from 1.7.1 to 1.7.2 ([#1844](https://github.com/Fdawgs/docsmith/issues/1844)) ([d291cf7](https://github.com/Fdawgs/docsmith/commit/d291cf7e20239202b869f8c0d7e811d0e8d8ec5d))
+* **deps:** bump node-unrtf from 5.0.0 to 5.0.1 ([#1846](https://github.com/Fdawgs/docsmith/issues/1846)) ([4411e61](https://github.com/Fdawgs/docsmith/commit/4411e610164478dee33c7f2e998eb561b2729fb9))
+* **deps:** bump pino from 8.20.0 to 9.0.0 in the pino-core group ([#1842](https://github.com/Fdawgs/docsmith/issues/1842)) ([a4cd17f](https://github.com/Fdawgs/docsmith/commit/a4cd17f996fcb9024b199dbc762842340f3e58b3))
+* **deps:** bump redoc from 2.1.3 to 2.1.4 ([#1843](https://github.com/Fdawgs/docsmith/issues/1843)) ([bd3fa5c](https://github.com/Fdawgs/docsmith/commit/bd3fa5caf00ae802dda7db840c95a61994224567))
+* **deps:** bump the fastify-core group with 4 updates ([#1845](https://github.com/Fdawgs/docsmith/issues/1845)) ([553f4cf](https://github.com/Fdawgs/docsmith/commit/553f4cf8c9976f3922d23d8c126a78f8b3987af8))
+* **dockerfile:** use multi-stage build; reduce size by ~28% ([#1838](https://github.com/Fdawgs/docsmith/issues/1838)) ([b354294](https://github.com/Fdawgs/docsmith/commit/b354294a22922286d77f65f976b44bbb784b00e4))
+
+
+### Improvements
+
+* **plugins/image-to-txt:** use logical core count ([55ce1a2](https://github.com/Fdawgs/docsmith/commit/55ce1a24fd4e4009795c49dc35ab8e5c3ee7c105))
+
 ## [11.2.0](https://github.com/Fdawgs/docsmith/compare/v11.1.2...v11.2.0) (2024-04-15)
 
 
