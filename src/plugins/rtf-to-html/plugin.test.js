@@ -25,7 +25,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
-		config.unrtf.tempDir = "./src/temp-test-rtf-to-html/";
+		config.unrtf.tempDir = "./temp-test-rtf-to-html/";
 
 		server = Fastify({ bodyLimit: 10485760 });
 

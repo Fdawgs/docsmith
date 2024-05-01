@@ -25,7 +25,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
-		config.poppler.tempDir = "./src/temp-test-pdf-to-html/";
+		config.poppler.tempDir = "./temp-test-pdf-to-html/";
 
 		server = Fastify();
 

@@ -119,8 +119,8 @@ out
 # Test files
 *.wmf
 *.emf
+temp*
 test_resources/
-dist/temp*/
 **/*.test.*
 
 # Development files
