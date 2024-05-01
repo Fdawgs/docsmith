@@ -24,7 +24,6 @@ const expResHeaders = {
 	"referrer-policy": "no-referrer",
 	"strict-transport-security": "max-age=31536000; includeSubDomains",
 	"surrogate-control": "no-store",
-	vary: "accept-encoding",
 	"x-content-type-options": "nosniff",
 	"x-dns-prefetch-control": "off",
 	"x-download-options": "noopen",
@@ -748,13 +747,13 @@ describe("Server deployment", () => {
 								...expResHeadersJson,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
-								vary: "Origin, accept-encoding",
+								vary: "Origin",
 							},
 							text: {
 								...expResHeadersText,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
-								vary: "Origin, accept-encoding",
+								vary: "Origin",
 							},
 						},
 					},
@@ -805,13 +804,13 @@ describe("Server deployment", () => {
 								...expResHeadersJson,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
-								vary: "Origin, accept-encoding",
+								vary: "Origin",
 							},
 							text: {
 								...expResHeadersText,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
-								vary: "Origin, accept-encoding",
+								vary: "Origin",
 							},
 						},
 					},
