@@ -18,6 +18,8 @@ async function main() {
 
 	const config = await getConfig();
 
+	console.log(config.tempDir);
+
 	const server = Fastify(config.fastifyInit);
 	await server.register(startServer, config).listen(config.fastify);
 

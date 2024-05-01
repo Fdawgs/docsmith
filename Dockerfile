@@ -25,7 +25,7 @@ RUN npm ci --ignore-scripts --omit=dev && \
 COPY . .
 
 # Create temp folder for files to be stored whilst being converted
-RUN mkdir -p ./dist/temp/
+RUN mkdir -p ./temp/
 
 # ------------------
 # Final image
