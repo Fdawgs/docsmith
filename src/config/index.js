@@ -251,7 +251,7 @@ async function getConfig() {
 					description,
 					contact: {
 						name: "Author",
-						email: "frazer.dev@outlook.com",
+						email: "frazer.dev@icloud.com",
 					},
 					license: {
 						name: license,

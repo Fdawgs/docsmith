@@ -23,7 +23,7 @@ services:
         labels:
             # Using OCI Image Format spec
             # See https://github.com/opencontainers/image-spec/blob/main/annotations.md
-            org.opencontainers.image.authors: Frazer Smith <frazer.dev@outlook.com>
+            org.opencontainers.image.authors: Frazer Smith <frazer.dev@icloud.com>
             org.opencontainers.image.licenses: MIT
             org.opencontainers.image.url: https://github.com/Fdawgs/docsmith
         logging:
