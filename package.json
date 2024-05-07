@@ -103,7 +103,7 @@
 	},
 	"dependencies": {
 		"@fastify/accepts": "^4.3.0",
-		"@fastify/autoload": "^5.8.0",
+		"@fastify/autoload": "^5.8.2",
 		"@fastify/bearer-auth": "^9.4.0",
 		"@fastify/compress": "^7.0.3",
 		"@fastify/cors": "^9.0.1",
