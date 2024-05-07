@@ -140,7 +140,7 @@
 		"pino": "^9.0.0",
 		"redoc": "^2.1.4",
 		"secure-json-parse": "^2.7.0",
-		"tesseract.js": "^5.0.5",
+		"tesseract.js": "^5.1.0",
 		"upath": "^2.0.1",
 		"word-extractor": "^1.0.4"
 	}
