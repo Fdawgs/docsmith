@@ -32,7 +32,7 @@
 		"lint:prettier:fix": "prettier . -w -u",
 		"prepare": "husky && npx playwright install firefox --with-deps",
 		"start": "node .",
-		"start:dev": "nodemon src/app.js | pino-pretty",
+		"start:dev": "node --watch src/app.js | pino-pretty",
 		"test": "npm run lint && npm run lint:prettier && npm run jest"
 	},
 	"commitlint": {
@@ -62,18 +62,6 @@
 		"testEnvironment": "node",
 		"testTimeout": 60000
 	},
-	"nodemonConfig": {
-		"env": {
-			"NODE_ENV": "development"
-		},
-		"ignore": [
-			"src/temp"
-		],
-		"watch": [
-			".env",
-			"src/**/!(*.test).*"
-		]
-	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.3.0",
 		"@commitlint/config-conventional": "^19.2.2",
@@ -95,7 +83,6 @@
 		"jest": "^29.7.0",
 		"license-checker": "^25.0.1",
 		"lockfile-lint": "^4.13.2",
-		"nodemon": "^3.1.0",
 		"pino-pretty": "^11.0.0",
 		"playwright": "^1.44.0",
 		"prettier": "^3.2.5",
