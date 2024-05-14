@@ -12,7 +12,7 @@ WORKDIR /usr/app/tmp
 COPY package.json .
 COPY package-lock.json .
 RUN npm ci --ignore-scripts --omit=dev && \
-    npm pkg delete commitlint devDependencies jest nodemonConfig scripts && \
+    npm pkg delete commitlint devDependencies jest scripts && \
     npm cache clean --force && \
     chmod 100 ./node_modules/htmltidy2/bin/linux64/tidy && \
     # Remove included Windows and macOS binaries
