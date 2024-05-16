@@ -8,8 +8,9 @@ const config = { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] };
 
 /**
  * @author Frazer Smith
- * @description Count number of physical CPU cores a system has,
- * taking into account Intel Hyper-Threading.
+ * @description Counts the number of physical CPU cores
+ * a system has, taking into account Intel Hyper-Threading.
+ *
  * Physical core count is useful for determining the number of
  * workers to spawn for CPU-bound tasks such as image processing.
  * @see {@link https://github.com/nodejs/node/issues/7730 | Node.js Issue #7730}

@@ -25,7 +25,7 @@ exports[`Server deployment API documentation Content /docs route Returns HTML 1`
 	<body>
 		<script>
 			/**
-			 * @description Detect IE and display message if detected.
+			 * @description Detects IE and display message if detected.
 			 * @see {@link https://github.com/Redocly/redoc/issues/1936 | Redoc Issue #1936}
 			 */
 			if (window.document.documentMode) {

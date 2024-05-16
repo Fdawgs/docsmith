@@ -1,12 +1,11 @@
 "use strict";
 
 /**
- * @description Bitwise power-set function, adapted from algorithm at
- * https://github.com/trekhleb/javascript-algorithms/blob/master/src/algorithms/sets/power-set/btPowerSet.js.
+ * @description Generates the power set of a given set using a recursive backtracking approach.
  * @param {*[]} originalSet - Original set of elements we are forming power-set of.
- * @param {*[][]} allSubsets - All subsets that have been formed so far.
- * @param {*[]} currentSubSet - Current subset that we are forming at the moment.
- * @param {number} startAt - The position in original set we are starting to form current subset.
+ * @param {*[][]} [allSubsets] - All subsets that have been formed so far. Used internally for recursion.
+ * @param {*[]} [currentSubSet] - The current subset being formed. Used internally for recursion.
+ * @param {number} [startAt] - The position in the original set from which to start forming the current subset.
  * @returns {*[][]} All subsets of original set.
  */
 function btPowerSetRecursive(
@@ -15,26 +14,10 @@ function btPowerSetRecursive(
 	currentSubSet = [],
 	startAt = 0
 ) {
-	/**
-	 * Let's iterate over originalSet elements that may be added to the subset
-	 * without having duplicates. The value of startAt prevents adding the duplicates.
-	 */
 	for (let position = startAt; position < originalSet.length; position += 1) {
-		// Let's push current element to the subset
 		currentSubSet.push(originalSet[position]);
-
-		/**
-		 * Current subset is already valid so let's memorize it.
-		 * We do array destruction here to save the clone of the currentSubSet.
-		 * We need to save a clone since the original currentSubSet is going to be
-		 * mutated in further recursive calls.
-		 */
 		allSubsets.push([...currentSubSet]);
 
-		/**
-		 * Let's try to generate all other subsets for the current subset.
-		 * We're increasing the position by one to avoid duplicates in subset.
-		 */
 		btPowerSetRecursive(
 			originalSet,
 			allSubsets,
@@ -42,11 +25,10 @@ function btPowerSetRecursive(
 			position + 1
 		);
 
-		// BACKTRACK. Exclude last element from the subset and try the next valid one
+		// Backtrack the current subset
 		currentSubSet.pop();
 	}
 
-	// Return all subsets of a set
 	return allSubsets;
 }
 
