@@ -1,6 +1,6 @@
 {
 	"name": "docsmith",
-	"version": "11.2.1",
+	"version": "11.2.2",
 	"description": "RESTful API for converting clinical documents and files",
 	"main": "dist/app.js",
 	"type": "commonjs",

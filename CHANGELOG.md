@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.2.2](https://github.com/Fdawgs/docsmith/compare/v11.2.1...v11.2.2) (2024-05-16)
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild from 0.20.2 to 0.21.3 ([0ebebee](https://github.com/Fdawgs/docsmith/commit/0ebebee6f8c93fa02908b183d91da771b43ba9c7))
+* **deps-dev:** bump playwright from 1.43.1 to 1.44.0 ([#1853](https://github.com/Fdawgs/docsmith/issues/1853)) ([e069a96](https://github.com/Fdawgs/docsmith/commit/e069a9607185e6b42518132ad96f2236b19126dc))
+* **deps-dev:** bump the eslint group ([#1862](https://github.com/Fdawgs/docsmith/issues/1862)) ([4fb3dec](https://github.com/Fdawgs/docsmith/commit/4fb3deccd8bd0fea03b16b1375cd69e6051fef2e))
+* **deps-dev:** replace nodemon with native watch ([#1855](https://github.com/Fdawgs/docsmith/issues/1855)) ([4f742c2](https://github.com/Fdawgs/docsmith/commit/4f742c279fe0ab00de289aceff402882e525f14c))
+* **deps:** bump @fastify/autoload in the fastify-core group ([#1852](https://github.com/Fdawgs/docsmith/issues/1852)) ([fe70f76](https://github.com/Fdawgs/docsmith/commit/fe70f764d6114e534839a418dc72f58666be98ea))
+* **deps:** bump glob from 10.3.12 to 10.3.15 ([#1860](https://github.com/Fdawgs/docsmith/issues/1860)) ([1ea20b1](https://github.com/Fdawgs/docsmith/commit/1ea20b1dcbbdbc71779139ba3c5b7984da168425))
+* **deps:** bump pino from 9.0.0 to 9.1.0 in the pino-core group ([#1859](https://github.com/Fdawgs/docsmith/issues/1859)) ([0ae1b10](https://github.com/Fdawgs/docsmith/commit/0ae1b10d092753851248f0d1689d4a451f606348))
+* **deps:** bump tesseract.js from 5.0.5 to 5.1.0 ([#1854](https://github.com/Fdawgs/docsmith/issues/1854)) ([7ed5065](https://github.com/Fdawgs/docsmith/commit/7ed5065bcd4f6f575c301fc266d3b84cd54f92f2))
+* **deps:** bump the fastify-core group with 2 updates ([#1858](https://github.com/Fdawgs/docsmith/issues/1858)) ([4cb344a](https://github.com/Fdawgs/docsmith/commit/4cb344a36c09d99af6b6eb7e850bf4acb784442c))
+* **deps:** bump transistive dependencies ([e3f7249](https://github.com/Fdawgs/docsmith/commit/e3f72498470a2aa0d005b8af348bc1a2eb5b3131))
+
+
+### Miscellaneous
+
+* **.env.template:** remove leftover test value ([6091127](https://github.com/Fdawgs/docsmith/commit/6091127c93e9f57e5d76e51afbb7eb0c6c144267))
+* **.env.template:** remove trailing whitespace ([16b40e8](https://github.com/Fdawgs/docsmith/commit/16b40e83509deb3b3636baeb2a1cc72339e92f95))
+* change author email ([285afad](https://github.com/Fdawgs/docsmith/commit/285afad704cd0ad1e4e375ffedf1311d013046b2))
+* tidy jsdoc description suffixes ([9ec245d](https://github.com/Fdawgs/docsmith/commit/9ec245d4add5b71d17177f1fbc38ae78f0a958eb))
+
+
+### Continuous integration
+
+* **deps:** bump coverallsapp/github-action from 2.2.3 to 2.3.0 ([#1857](https://github.com/Fdawgs/docsmith/issues/1857)) ([f7553df](https://github.com/Fdawgs/docsmith/commit/f7553df6db9bc126a8eec9d12aa1fa9f38d617e1))
+
+
+### Improvements
+
+* move temp dirs out of `dist/` and `src/` ([05ccd2e](https://github.com/Fdawgs/docsmith/commit/05ccd2e0695c28b540e891aeb8364b4efc7649ac))
+* revert to physical core count for cpu-bound processing ([#1856](https://github.com/Fdawgs/docsmith/issues/1856)) ([101f949](https://github.com/Fdawgs/docsmith/commit/101f9496aee4fbac898796b1e9454c78f452de2c))
+
+
+### Documentation
+
+* **readme:** correct min node version ([fe15ba1](https://github.com/Fdawgs/docsmith/commit/fe15ba175437de2998e9e9b2fb03d0bce930bdf1))
+
 ## [11.2.1](https://github.com/Fdawgs/docsmith/compare/v11.2.0...v11.2.1) (2024-05-01)
 
 
