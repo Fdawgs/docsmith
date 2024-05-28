@@ -43,4 +43,10 @@ async function main() {
 	});
 }
 
-main();
+// If file called directly, then run function
+/* istanbul ignore if: testing through module exports */
+if (require.main === module) {
+	main();
+}
+
+module.exports = main;
