@@ -83,7 +83,7 @@
 		"jest": "^29.7.0",
 		"license-checker": "^25.0.1",
 		"lockfile-lint": "^4.13.2",
-		"pino-pretty": "^11.0.0",
+		"pino-pretty": "^11.1.0",
 		"playwright": "^1.44.0",
 		"prettier": "^3.2.5",
 		"spdx-copyleft": "^1.0.0"
