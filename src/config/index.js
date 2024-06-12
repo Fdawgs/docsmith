@@ -331,7 +331,7 @@ async function getConfig() {
 			enabled: env.OCR_ENABLED === true,
 			languages: env.OCR_LANGUAGES || "eng",
 			// Use number of physical CPU cores available if ENV variable not specified
-			workers: env.OCR_WORKERS || coreCount(),
+			workers: env.OCR_WORKERS || (await coreCount()),
 		},
 		unrtf: {
 			tempDir,
