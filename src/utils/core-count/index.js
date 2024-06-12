@@ -1,8 +1,10 @@
 "use strict";
 
-const { execSync } = require("node:child_process");
+const { exec: execCallback } = require("node:child_process");
+const { promisify } = require("node:util");
 const { cpus, EOL, platform } = require("node:os");
 
+const exec = promisify(execCallback);
 // Ignore stdin and stderr, pipe stdout
 const config = { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] };
 
@@ -14,36 +16,37 @@ const config = { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] };
  * Physical core count is useful for determining the number of
  * workers to spawn for CPU-bound tasks such as image processing.
  * @see {@link https://github.com/nodejs/node/issues/7730 | Node.js Issue #7730}
- * @returns {number} Number of physical cores the system has.
+ * @returns {Promise<number>} Number of physical cores the system has.
  */
-function coreCount() {
+async function coreCount() {
 	let result = 0;
 
 	switch (platform()) {
-		case "darwin":
-			result = Number.parseInt(
-				execSync("sysctl -n hw.physicalcpu_max", config),
-				10
-			);
+		case "darwin": {
+			const output = await exec("sysctl -n hw.physicalcpu_max", config);
+			result = Number.parseInt(output.stdout, 10);
 			break;
-		case "linux":
-			result = Number.parseInt(
-				execSync(
-					'lscpu -p | egrep -v "^#" | sort -u -t, -k 2,4 | wc -l',
-					config
-				),
-				10
+		}
+		case "linux": {
+			const output = await exec(
+				'lscpu -p | egrep -v "^#" | sort -u -t, -k 2,4 | wc -l',
+				config
 			);
+			result = Number.parseInt(output.stdout, 10);
 			break;
-		case "win32":
-			result = execSync("WMIC CPU Get NumberOfCores", config)
+		}
+		case "win32": {
+			const output = await exec("WMIC CPU Get NumberOfCores", config);
+			result = output.stdout
 				.split(EOL)
 				.map((line) => Number.parseInt(line, 10))
 				.filter((value) => !Number.isNaN(Number(value)))
 				.reduce((sum, number) => sum + number, 0);
 			break;
-		default:
+		}
+		default: {
 			break;
+		}
 	}
 
 	return result > 0
