@@ -85,7 +85,7 @@
 		"lockfile-lint": "^4.13.2",
 		"pino-pretty": "^11.1.0",
 		"playwright": "^1.44.1",
-		"prettier": "^3.2.5",
+		"prettier": "^3.3.2",
 		"spdx-copyleft": "^1.0.0"
 	},
 	"dependencies": {
