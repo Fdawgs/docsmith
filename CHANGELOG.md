@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.2.3](https://github.com/Fdawgs/docsmith/compare/v11.2.2...v11.2.3) (2024-06-17)
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild from 0.21.3 to 0.21.5 ([7762157](https://github.com/Fdawgs/docsmith/commit/776215763295b4dc4a53875eeb127b331d2c2a23))
+* **deps-dev:** bump lockfile-lint from 4.13.2 to 4.14.0 ([#1880](https://github.com/Fdawgs/docsmith/issues/1880)) ([179b0fc](https://github.com/Fdawgs/docsmith/commit/179b0fcb8947df26d5545936d4c117bc4b631ffe))
+* **deps-dev:** bump pino-pretty in the pino-core group ([#1866](https://github.com/Fdawgs/docsmith/issues/1866)) ([9135fd9](https://github.com/Fdawgs/docsmith/commit/9135fd9e1a26afce57b973f916b7fe1a4bf0f0ee))
+* **deps-dev:** bump playwright from 1.44.0 to 1.44.1 ([#1868](https://github.com/Fdawgs/docsmith/issues/1868)) ([7c8b711](https://github.com/Fdawgs/docsmith/commit/7c8b711019fcc45b56a9c4d63380afa8d5106550))
+* **deps-dev:** bump prettier from 3.2.5 to 3.3.2 ([#1873](https://github.com/Fdawgs/docsmith/issues/1873)) ([2571da6](https://github.com/Fdawgs/docsmith/commit/2571da67e9931933cbb8cf3283b2aca6d1acb2b5))
+* **deps-dev:** bump the eslint group ([5cd9602](https://github.com/Fdawgs/docsmith/commit/5cd96023aa020b87bdb531edaba78e54dbcbf919))
+* **deps:** bump braces from 3.0.2 to 3.0.3 in the npm_and_yarn group ([#1875](https://github.com/Fdawgs/docsmith/issues/1875)) ([8f1eef1](https://github.com/Fdawgs/docsmith/commit/8f1eef1413347a87f8b1182a6f85ef4695307d09))
+* **deps:** bump fastify in the fastify-core group ([#1878](https://github.com/Fdawgs/docsmith/issues/1878)) ([01f3da0](https://github.com/Fdawgs/docsmith/commit/01f3da0345dd622fcb2fdc06e8294fb68432e4b1))
+* **deps:** bump glob from 10.3.15 to 10.4.1 ([#1867](https://github.com/Fdawgs/docsmith/issues/1867)) ([2ca6eba](https://github.com/Fdawgs/docsmith/commit/2ca6ebaee3b89d2fa28f5ce15783531ee1e51b78))
+* **deps:** bump jsdom from 24.0.0 to 24.1.0 ([#1869](https://github.com/Fdawgs/docsmith/issues/1869)) ([bee5f4c](https://github.com/Fdawgs/docsmith/commit/bee5f4c877181638b429955891f71da6929bdd5f))
+* **deps:** bump mammoth from 1.7.2 to 1.8.0 ([#1879](https://github.com/Fdawgs/docsmith/issues/1879)) ([8f89999](https://github.com/Fdawgs/docsmith/commit/8f899997e59adae8b29da0fd2d2188eb9f0edf28))
+* **deps:** bump redoc from 2.1.4 to 2.1.5 ([#1874](https://github.com/Fdawgs/docsmith/issues/1874)) ([65922b2](https://github.com/Fdawgs/docsmith/commit/65922b22423c783552d9b05a92e98508ac540310))
+* **deps:** bump the fastify-core group with 2 updates ([#1870](https://github.com/Fdawgs/docsmith/issues/1870)) ([121c7f9](https://github.com/Fdawgs/docsmith/commit/121c7f94277cd66b18af335549f09534cc23433d))
+* **deps:** bump the pino-core group with 2 updates ([#1871](https://github.com/Fdawgs/docsmith/issues/1871)) ([1035395](https://github.com/Fdawgs/docsmith/commit/103539502ba049d4cd10fe14aadd30e3e1c1c71a))
+* **deps:** bump transistive dependencies ([e884643](https://github.com/Fdawgs/docsmith/commit/e884643efdb19cf44e8a5d8efad21935182d0441))
+
+
+### Continuous integration
+
+* **ci:** add node 22 to test matrix ([029e7c9](https://github.com/Fdawgs/docsmith/commit/029e7c90695f33c3b0ce31881ac4a128e45a0113))
+
+
+### Improvements
+
+* **app:** export `main()` ([de3129c](https://github.com/Fdawgs/docsmith/commit/de3129c0894d536ef3938e4dc146462b49f64399))
+* **utils/core-count:** make function async ([45a5bad](https://github.com/Fdawgs/docsmith/commit/45a5bad33819205b46f9924e6204637ac2488bff))
+
 ## [11.2.2](https://github.com/Fdawgs/docsmith/compare/v11.2.1...v11.2.2) (2024-05-16)
 
 
