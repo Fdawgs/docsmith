@@ -35,6 +35,9 @@ FROM node:20-bullseye-slim AS main
 # Workdir
 WORKDIR /usr/app
 
+# Change ownership of workdir to allow for temp dir to be deleted on exit
+RUN chown node:node /usr/app
+
 # Install OS dependencies
 # Curl needed for healthcheck command
 RUN apt-get -q update &&\
