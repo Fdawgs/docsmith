@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.2.4](https://github.com/Fdawgs/docsmith/compare/v11.2.3...v11.2.4) (2024-06-18)
+
+
+### Dependencies
+
+* **deps:** bump @fastify/autoload in the fastify-core group ([#1883](https://github.com/Fdawgs/docsmith/issues/1883)) ([dcac976](https://github.com/Fdawgs/docsmith/commit/dcac976a69b2f91a99493fa945a1d79cbcfc6034))
+* **deps:** bump ws from 8.17.0 to 8.17.1 in the npm_and_yarn group ([#1884](https://github.com/Fdawgs/docsmith/issues/1884)) ([e2f499e](https://github.com/Fdawgs/docsmith/commit/e2f499ed8d7ec09b197c58077ed25b75b554f492))
+* **docker:** change ownership of workdir ([#1881](https://github.com/Fdawgs/docsmith/issues/1881)) ([9335783](https://github.com/Fdawgs/docsmith/commit/93357837558d5706eb4d23887238c4b5e0f4e3fd))
+
 ## [11.2.3](https://github.com/Fdawgs/docsmith/compare/v11.2.2...v11.2.3) (2024-06-17)
 
 
