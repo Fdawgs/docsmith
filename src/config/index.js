@@ -35,9 +35,25 @@ function parseCorsParameter(param) {
 }
 
 /**
+ * @typedef {object} Config
+ * @property {string} tempDir - Directory for temporarily storing files during conversion.
+ * @property {import("fastify").FastifyListenOptions} fastify - Fastify server listen options.
+ * @property {import("fastify").FastifyServerOptions} fastifyInit - Fastify server initialisation options.
+ * @property {import("@fastify/cors").FastifyCorsOptions} cors - CORS configuration.
+ * @property {import("@fastify/under-pressure").UnderPressureOptions} processLoad - Process load handling configuration.
+ * @property {import("@fastify/rate-limit").FastifyRateLimitOptions} rateLimit - Rate limiting configuration.
+ * @property {import("@fastify/helmet").FastifyHelmetOptions} helmet - Helmet configuration.
+ * @property {import("@fastify/swagger").FastifyDynamicSwaggerOptions} swagger - Swagger configuration.
+ * @property {{ tempDir: string }} poppler - Poppler configuration.
+ * @property {{ enabled: boolean; languages: string; workers: number }} tesseract - Tesseract OCR configuration.
+ * @property {{ tempDir: string }} unrtf - UnRTF configuration.
+ * @property {Set<string>} [bearerTokenAuthKeys] - Bearer token auth keys.
+ */
+
+/**
  * @author Frazer Smith
  * @description Validates environment variables and builds server config.
- * @returns {Promise<object>} A promise that resolves with a server config object, or rejects with an `Error` object
+ * @returns {Promise<Config>} A promise that resolves with a server config object, or rejects with an `Error` object
  * if HTTPS is enabled and the required files are not found.
  */
 async function getConfig() {
