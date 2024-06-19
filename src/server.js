@@ -30,7 +30,7 @@ const tidyHtml = require("./plugins/tidy-html");
  * @author Frazer Smith
  * @description Builds Fastify instance.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
- * @param {object} config - Fastify configuration values.
+ * @param {import("./config").Config} config - Server configuration.
  */
 async function plugin(server, config) {
 	/**
