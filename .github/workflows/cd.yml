@@ -30,16 +30,16 @@ jobs:
               with:
                   changelog-types: >
                       [
-                          { "type": "build", "section": "Dependencies", "hidden": false },
-                          { "type": "chore", "section": "Miscellaneous", "hidden": false },
-                          { "type": "ci", "section": "Continuous integration", "hidden": false },
-                          { "type": "docs", "section": "Documentation", "hidden": false },
-                          { "type": "feat", "section": "Features", "hidden": false },
-                          { "type": "fix", "section": "Bug fixes", "hidden": false },
-                          { "type": "perf", "section": "Improvements", "hidden": false },
-                          { "type": "refactor", "section": "Improvements", "hidden": false },
-                          { "type": "style", "section": "Miscellaneous", "hidden": false },
-                          { "type": "test", "section": "Tests", "hidden": false }
+                          { "section": "Bug fixes", "type": "fix", "hidden": false },
+                          { "section": "Continuous integration", "type": "ci", "hidden": false },
+                          { "section": "Dependencies", "type": "build", "hidden": false },
+                          { "section": "Documentation", "type": "docs", "hidden": false },
+                          { "section": "Features", "type": "feat", "hidden": false },
+                          { "section": "Improvements", "type": "perf", "hidden": false },
+                          { "section": "Improvements", "type": "refactor", "hidden": false },
+                          { "section": "Miscellaneous", "type": "chore", "hidden": false },
+                          { "section": "Miscellaneous", "type": "style", "hidden": false },
+                          { "section": "Tests", "type": "test", "hidden": false }
                       ]
                   release-type: node
 
