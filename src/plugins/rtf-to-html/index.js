@@ -23,9 +23,7 @@ const rtfHyperLinkRegex =
  * location and contents.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
- * @param {object} [options.rtfToHtmlOptions] - Refer to
- * https://github.com/Fdawgs/node-unrtf/blob/main/API.md
- * for options.
+ * @param {import("node-unrtf").UnRTFOptions} [options.rtfToHtmlOptions] - UnRTF options.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
  * @param {string} [options.tempFilePrefix] - Prefix for temp file names.
