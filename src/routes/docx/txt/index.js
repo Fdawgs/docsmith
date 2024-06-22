@@ -18,7 +18,7 @@ const accepts = Object.keys(docxToTxtPostSchema.response[200].content);
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Route config values.
  * @param {*} [options.bearerTokenAuthKeys] - Apply `bearerToken` security scheme to route if defined.
- * @param {object} options.cors - CORS settings.
+ * @param {import("@fastify/cors").FastifyCorsOptions} options.cors - CORS settings.
  */
 async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {

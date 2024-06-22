@@ -13,7 +13,7 @@ const accepts = docsOpenapiGetSchema.produces;
  * @description Sets routing options for server.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Route config values.
- * @param {object} options.cors - CORS settings.
+ * @param {import("@fastify/cors").FastifyCorsOptions} options.cors - CORS settings.
  */
 async function route(server, options) {
 	// Register plugins

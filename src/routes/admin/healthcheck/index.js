@@ -15,7 +15,7 @@ const accepts = Object.keys(healthcheckGetSchema.response[200].content);
  * so needs no authentication.
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Route config values.
- * @param {object} options.cors - CORS settings.
+ * @param {import("@fastify/cors").FastifyCorsOptions} options.cors - CORS settings.
  */
 async function route(server, options) {
 	// Register plugins
