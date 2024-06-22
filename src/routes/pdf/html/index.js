@@ -17,7 +17,7 @@ const accepts = Object.keys(pdfToHtmlPostSchema.response[200].content);
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Route config values.
  * @param {*} [options.bearerTokenAuthKeys] - Apply `bearerToken` security scheme to route if defined.
- * @param {object} options.cors - CORS settings.
+ * @param {import("@fastify/cors").FastifyCorsOptions} options.cors - CORS settings.
  * @param {object} options.poppler - PDF-to-HTML plugin settings.
  */
 async function route(server, options) {
