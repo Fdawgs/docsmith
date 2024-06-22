@@ -18,7 +18,7 @@ const accepts = Object.keys(rtfToTxtPostSchema.response[200].content);
  * @param {object} options - Route config values.
  * @param {*} [options.bearerTokenAuthKeys] - Apply `bearerToken` security scheme to route if defined.
  * @param {import("@fastify/cors").FastifyCorsOptions} options.cors - CORS settings.
- * @param {object} options.unrtf - RTF-to-HTML plugin settings.
+ * @param {import("node-unrtf").UnRTFOptions} options.unrtf - RTF-to-HTML plugin settings.
  */
 async function route(server, options) {
 	if (options.bearerTokenAuthKeys) {
