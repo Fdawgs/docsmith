@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.2.5](https://github.com/Fdawgs/docsmith/compare/v11.2.4...v11.2.5) (2024-06-22)
+
+
+### Continuous integration
+
+* **cd:** sort changelog-types alphabetically, add tests to changelog ([d6169e5](https://github.com/Fdawgs/docsmith/commit/d6169e5936acdbf68030e386789fa8668d9ca7c2))
+* **cd:** sort release note sections alphabetically ([5bd74c5](https://github.com/Fdawgs/docsmith/commit/5bd74c5a661f047e7f629f9ef76c2355a657f887))
+* **cd:** use folded block for changelog-types param ([60c9588](https://github.com/Fdawgs/docsmith/commit/60c9588f30151600d5520a574ad698cb432c82d9))
+
+
+### Dependencies
+
+* **deps:** bump node-unrtf from 5.0.1 to 5.0.2 ([fa2c7a2](https://github.com/Fdawgs/docsmith/commit/fa2c7a2d8cd7d841c6a2751b3c3d6dd2f7b69994))
+
+
+### Miscellaneous
+
+* **config:** define returned config obj types ([#1885](https://github.com/Fdawgs/docsmith/issues/1885)) ([e2d0d2c](https://github.com/Fdawgs/docsmith/commit/e2d0d2cb093b4c46065c9f61c97e7bfbd920e192))
+* **routes:** import cors options ([e784d08](https://github.com/Fdawgs/docsmith/commit/e784d0863d7527e9a6f52686ae0b81aeeff96d01))
+
 ## [11.2.4](https://github.com/Fdawgs/docsmith/compare/v11.2.3...v11.2.4) (2024-06-18)
 
 
