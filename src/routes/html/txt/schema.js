@@ -8,7 +8,7 @@ const tags = ["HTML"];
  * Fastify uses AJV for JSON Schema Validation.
  * Input validation protects against XSS, HPP, prototype pollution,
  * and most other injection attacks.
- * @see {@link https://fastify.io/docs/latest/Reference/Validation-and-Serialization | Fastify Validation and Serialization}
+ * @see {@link https://fastify.dev/docs/latest/Reference/Validation-and-Serialization | Fastify Validation and Serialization}
  */
 const htmlToTxtPostSchema = {
 	tags,

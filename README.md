@@ -11,7 +11,7 @@
 
 ## Overview
 
-Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify.io/) web framework, that can convert a range of files:
+Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify.dev/) web framework, that can convert a range of files:
 
 | Input | Output | Notes                                        |
 | ----- | ------ | -------------------------------------------- |
