@@ -138,7 +138,7 @@ jobs:
               if: matrix.os == 'ubuntu-latest'
               run: |
                   sudo apt-get -q update
-                  sudo apt-get -y install poppler-data poppler-utils unrtf
+                  sudo apt-get -y --no-install-recommends install poppler-data poppler-utils unrtf
                   cp .env.template .env
                   chmod 100 ./node_modules/htmltidy2/bin/linux64/tidy
                   npm run jest:coverage -- --ci
