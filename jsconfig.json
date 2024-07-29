@@ -6,7 +6,7 @@
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
-		"target": "ES2022"
+		"target": "ES2023"
 	},
 	"exclude": ["dist", "node_modules"]
 }
