@@ -163,7 +163,7 @@ async function getConfig() {
 			// The maximum payload, in bytes, the server is allowed to accept
 			bodyLimit: env.REQ_BODY_MAX_BYTES || 10485760,
 			/**
-			 * @see {@link https://fastify.io/docs/latest/Reference/Logging | Fastify logging}
+			 * @see {@link https://fastify.dev/docs/latest/Reference/Logging | Fastify logging}
 			 * @see {@link https://getpino.io/#/docs/api | Pino API}
 			 */
 			logger: {
