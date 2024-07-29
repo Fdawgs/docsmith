@@ -83,7 +83,7 @@
 		"jest": "^29.7.0",
 		"license-checker": "^25.0.1",
 		"lockfile-lint": "^4.14.0",
-		"pino-pretty": "^11.2.1",
+		"pino-pretty": "^11.2.2",
 		"playwright": "^1.45.0",
 		"prettier": "^3.3.2",
 		"spdx-copyleft": "^1.0.0"
@@ -124,7 +124,7 @@
 		"mammoth": "^1.8.0",
 		"node-poppler": "^7.2.0",
 		"node-unrtf": "^5.0.2",
-		"pino": "^9.2.0",
+		"pino": "^9.3.2",
 		"redoc": "^2.1.5",
 		"secure-json-parse": "^2.7.0",
 		"tesseract.js": "^5.1.0",
