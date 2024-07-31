@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.2.5](https://github.com/Fdawgs/docsmith/compare/v11.2.4...v11.2.5) (2024-07-31)
+
+
+### Continuous integration
+
+* **cd:** sort changelog-types alphabetically, add tests to changelog ([d6169e5](https://github.com/Fdawgs/docsmith/commit/d6169e5936acdbf68030e386789fa8668d9ca7c2))
+* **cd:** sort release note sections alphabetically ([5bd74c5](https://github.com/Fdawgs/docsmith/commit/5bd74c5a661f047e7f629f9ef76c2355a657f887))
+* **cd:** use folded block for changelog-types param ([60c9588](https://github.com/Fdawgs/docsmith/commit/60c9588f30151600d5520a574ad698cb432c82d9))
+* **ci:** ignore recommended packages ([1939a5e](https://github.com/Fdawgs/docsmith/commit/1939a5e5d1ee8e79997d2dff6df37a58cb10fb85))
+* **ci:** run `apt-get update` for ubuntu tests ([bed3ca4](https://github.com/Fdawgs/docsmith/commit/bed3ca4f78381ef065cfc24a4186cc1fb38a6629))
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild from 0.21.5 to 0.23.0 ([4678a9c](https://github.com/Fdawgs/docsmith/commit/4678a9ce458cb729850348d70c1315ae171f0587))
+* **deps-dev:** bump husky from 9.0.11 to 9.1.3 ([#1897](https://github.com/Fdawgs/docsmith/issues/1897)) ([b28c887](https://github.com/Fdawgs/docsmith/commit/b28c887196dd0273edd0b2f5b04c4b01d601e6cb))
+* **deps-dev:** bump husky from 9.1.3 to 9.1.4 ([#1907](https://github.com/Fdawgs/docsmith/issues/1907)) ([56dfcd6](https://github.com/Fdawgs/docsmith/commit/56dfcd6324bee05fad90f2ca77c1b01daa664abe))
+* **deps-dev:** bump playwright from 1.44.1 to 1.45.0 ([#1890](https://github.com/Fdawgs/docsmith/issues/1890)) ([ac484a5](https://github.com/Fdawgs/docsmith/commit/ac484a557d0ff8719bcf7b03623b5a6929873ada))
+* **deps-dev:** bump playwright from 1.45.0 to 1.45.3 ([#1898](https://github.com/Fdawgs/docsmith/issues/1898)) ([af33aa6](https://github.com/Fdawgs/docsmith/commit/af33aa6f3bfe42d37043a76489efee82369b9f92))
+* **deps-dev:** bump prettier from 3.3.2 to 3.3.3 ([#1896](https://github.com/Fdawgs/docsmith/issues/1896)) ([4416d56](https://github.com/Fdawgs/docsmith/commit/4416d56004e909056049fbc7b73c55fac4f7e9e5))
+* **deps-dev:** bump the eslint group across 1 directory with 3 updates ([801b8e3](https://github.com/Fdawgs/docsmith/commit/801b8e3beddef8a0a745e8a435b88f2b3ecb1084))
+* **deps:** bump fix-latin1-to-utf8 from 1.0.2 to 1.0.3 ([#1906](https://github.com/Fdawgs/docsmith/issues/1906)) ([b7c80b6](https://github.com/Fdawgs/docsmith/commit/b7c80b6ef063560c027536b8f7151d497f7076cb))
+* **deps:** bump glob from 10.4.1 to 10.4.2 ([#1891](https://github.com/Fdawgs/docsmith/issues/1891)) ([4722600](https://github.com/Fdawgs/docsmith/commit/472260014a536d28cf9e441b073da04510de7751))
+* **deps:** bump glob from 10.4.2 to 11.0.0 ([#1899](https://github.com/Fdawgs/docsmith/issues/1899)) ([fac29fd](https://github.com/Fdawgs/docsmith/commit/fac29fd469e987fdd6c3c4d22b0275e598c2c571))
+* **deps:** bump jsdom from 24.1.0 to 24.1.1 ([#1900](https://github.com/Fdawgs/docsmith/issues/1900)) ([842fbf6](https://github.com/Fdawgs/docsmith/commit/842fbf67a97ead2cacb77669230c54e1bac9101f))
+* **deps:** bump node-poppler from 7.2.0 to 7.2.1 ([#1905](https://github.com/Fdawgs/docsmith/issues/1905)) ([9f5824f](https://github.com/Fdawgs/docsmith/commit/9f5824fcbd90ab755b99b804ca352eb56a0584b9))
+* **deps:** bump node-unrtf from 5.0.1 to 5.0.2 ([fa2c7a2](https://github.com/Fdawgs/docsmith/commit/fa2c7a2d8cd7d841c6a2751b3c3d6dd2f7b69994))
+* **deps:** bump node-unrtf from 5.0.2 to 5.0.3 ([#1904](https://github.com/Fdawgs/docsmith/issues/1904)) ([99c58a6](https://github.com/Fdawgs/docsmith/commit/99c58a6d9c84c22d3ff769306e4b2b50e81285e3))
+* **deps:** bump the fastify-core group with 2 updates ([#1889](https://github.com/Fdawgs/docsmith/issues/1889)) ([f1a6e96](https://github.com/Fdawgs/docsmith/commit/f1a6e960734d105a6c0f0d635d530cc3d4893c05))
+* **deps:** bump the fastify-core group with 3 updates ([#1893](https://github.com/Fdawgs/docsmith/issues/1893)) ([4964171](https://github.com/Fdawgs/docsmith/commit/49641713c9609d3842d7fe25e8d890c2757c5cf1))
+* **deps:** bump the pino-core group with 2 updates ([#1895](https://github.com/Fdawgs/docsmith/issues/1895)) ([989552c](https://github.com/Fdawgs/docsmith/commit/989552c9e6696f5417e662790d56524adb9a73b3))
+* **deps:** bump transistive dependencies ([e8ac002](https://github.com/Fdawgs/docsmith/commit/e8ac002944e355d1e0c82a71715d5351f4a18630))
+
+
+### Miscellaneous
+
+* **.husky/commit-msg:** remove `npx` usage ([c89230c](https://github.com/Fdawgs/docsmith/commit/c89230cd863562003b3ac37163ecd1d99dee855b))
+* **.npmrc:** enforce strict engine checks ([#1908](https://github.com/Fdawgs/docsmith/issues/1908)) ([e1cde39](https://github.com/Fdawgs/docsmith/commit/e1cde39dbce19b9eee3dd143946ddb89aca51acd))
+* **config:** define returned config obj types ([#1885](https://github.com/Fdawgs/docsmith/issues/1885)) ([e2d0d2c](https://github.com/Fdawgs/docsmith/commit/e2d0d2cb093b4c46065c9f61c97e7bfbd920e192))
+* **jsconfig:** update target to es2023 ([7ad1e31](https://github.com/Fdawgs/docsmith/commit/7ad1e31e1fe7ff91c69fd566c5cf41dae12cc2f1))
+* **package:** use shorter semver syntax ([68771cf](https://github.com/Fdawgs/docsmith/commit/68771cf3a2f28b3b5ddfd758915bbf0b136a46ef))
+* **routes:** import cors options ([e784d08](https://github.com/Fdawgs/docsmith/commit/e784d0863d7527e9a6f52686ae0b81aeeff96d01))
+* update fastify links ([396f9e8](https://github.com/Fdawgs/docsmith/commit/396f9e8d7b870d9d7720628ff3d7d80d4b6c8bd3))
+
 ## [11.2.4](https://github.com/Fdawgs/docsmith/compare/v11.2.3...v11.2.4) (2024-06-18)
 
 
