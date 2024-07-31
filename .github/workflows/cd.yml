@@ -79,7 +79,7 @@ jobs:
                   .dockerignore .env.template .pm2.config.js
                   docker-compose.yml Dockerfile LICENSE
                   package.json package-lock.json README.md
-                  dist ocr_lang_data
+                  dist ocr_lang_data .npmrc
 
             - name: Upload release asset
               uses: actions/upload-release-asset@v1
