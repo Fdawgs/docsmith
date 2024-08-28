@@ -8,6 +8,7 @@ const { joinSafe } = require("upath");
 const accepts = require("@fastify/accepts");
 const bearer = require("@fastify/bearer-auth");
 const compress = require("@fastify/compress");
+const cors = require("@fastify/cors");
 const helmet = require("@fastify/helmet");
 const disableCache = require("fastify-disablecache");
 const flocOff = require("fastify-floc-off");
@@ -191,15 +192,23 @@ async function plugin(server, config) {
 				});
 		})
 
-		// Rate limit 404 responses
-		.setNotFoundHandler(
-			{
-				preHandler: server.rateLimit(),
-			},
-			(req, res) => {
-				res.notFound(`Route ${req.method}:${req.url} not found`);
-			}
-		)
+		/**
+		 * Encapsulate the 404 handler into a child context, so that CORS
+		 * headers can be set explicitly for 404 responses.
+		 */
+		.register(async (notFoundContext) => {
+			await notFoundContext.register(cors, config.cors);
+
+			notFoundContext.setNotFoundHandler(
+				{
+					// Rate limit 404 responses to prevent URL enumeration
+					preHandler: server.rateLimit(),
+				},
+				(req, res) => {
+					res.notFound(`Route ${req.method}:${req.url} not found`);
+				}
+			);
+		})
 
 		// Errors thrown by routes and plugins are caught here
 		// eslint-disable-next-line promise/prefer-await-to-callbacks -- False positive
