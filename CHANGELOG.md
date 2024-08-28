@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.2.6](https://github.com/Fdawgs/docsmith/compare/v11.2.5...v11.2.6) (2024-08-28)
+
+
+### Bug fixes
+
+* **server:** cors support for 404 responses ([#1912](https://github.com/Fdawgs/docsmith/issues/1912)) ([b059ec3](https://github.com/Fdawgs/docsmith/commit/b059ec379cece3f012c52061905e1c529182d4ab))
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild from 0.23.0 to 0.23.1 ([0e29c1c](https://github.com/Fdawgs/docsmith/commit/0e29c1c5ecb1f6dd4bc762ada64d302243b9de89))
+* **deps-dev:** bump husky from 9.1.4 to 9.1.5 ([#1919](https://github.com/Fdawgs/docsmith/issues/1919)) ([9bbdf5f](https://github.com/Fdawgs/docsmith/commit/9bbdf5fa0f8490b8707542f249a4a6fb02a5983f))
+* **deps-dev:** bump playwright from 1.45.3 to 1.46.1 ([#1920](https://github.com/Fdawgs/docsmith/issues/1920)) ([74b81aa](https://github.com/Fdawgs/docsmith/commit/74b81aac364077b7c7d5ff89c6aef4d0e9973765))
+* **deps-dev:** bump the commitlint group with 2 updates ([#1914](https://github.com/Fdawgs/docsmith/issues/1914)) ([d33cb58](https://github.com/Fdawgs/docsmith/commit/d33cb58236e2435697a81e7caa9cdd3c181b1a68))
+* **deps-dev:** bump the eslint group across 1 directory with 4 updates ([eb70497](https://github.com/Fdawgs/docsmith/commit/eb70497fabfe1e133c126032f3a899f072f547d2))
+* **deps:** bump jsdom from 24.1.1 to 25.0.0 ([#1918](https://github.com/Fdawgs/docsmith/issues/1918)) ([3e8af7a](https://github.com/Fdawgs/docsmith/commit/3e8af7a86a5fbd8b110517631349c2038a6e54ba))
+* **deps:** bump node-poppler from 7.2.1 to 7.2.2 ([#1917](https://github.com/Fdawgs/docsmith/issues/1917)) ([990a881](https://github.com/Fdawgs/docsmith/commit/990a8811fe0161e2aa8bb559e2ba8ee91d3a73df))
+* **deps:** bump node-unrtf from 5.0.3 to 5.0.4 ([#1921](https://github.com/Fdawgs/docsmith/issues/1921)) ([d241b95](https://github.com/Fdawgs/docsmith/commit/d241b9574bb926cf2f49a462b83097a71b304d65))
+* **deps:** bump tesseract.js from 5.1.0 to 5.1.1 ([#1916](https://github.com/Fdawgs/docsmith/issues/1916)) ([c75ad65](https://github.com/Fdawgs/docsmith/commit/c75ad6522fc196e600424a616816ae4ac50d99eb))
+* **deps:** bump transistive dependencies ([c779c57](https://github.com/Fdawgs/docsmith/commit/c779c579be3daa5d922871a2ef1c50f27046cb4a))
+
 ## [11.2.5](https://github.com/Fdawgs/docsmith/compare/v11.2.4...v11.2.5) (2024-07-31)
 
 
