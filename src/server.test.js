@@ -904,7 +904,7 @@ describe("Server deployment", () => {
 							delete expResHeadersCors["content-type"];
 
 							/**
-							 * Vary header should not be set if CORS_ORIGIN is a a single domain
+							 * Vary header should not be set if CORS_ORIGIN is a single domain
 							 * or wildcard.
 							 * @see {@link https://github.com/fastify/fastify-cors/issues/287}
 							 */
@@ -971,7 +971,9 @@ describe("Server deployment", () => {
 							statusCode: 404,
 						});
 						expect(response.headers).toStrictEqual(
-							expResHeaders404Errors
+							envVariables.CORS_ORIGIN
+								? expected.response.headers.json
+								: expResHeaders404Errors
 						);
 						expect(response.statusCode).toBe(404);
 					});
@@ -982,6 +984,7 @@ describe("Server deployment", () => {
 							url: "/invalid",
 							headers: {
 								accept: "application/xml",
+								origin: request.headers.origin,
 							},
 						});
 
@@ -989,7 +992,12 @@ describe("Server deployment", () => {
 							'<?xml version="1.0" encoding="UTF-8"?><response><statusCode>404</statusCode><error>Not Found</error><message>Route GET:/invalid not found</message></response>'
 						);
 						expect(response.headers).toStrictEqual(
-							expResHeaders404ErrorsXml
+							envVariables.CORS_ORIGIN
+								? {
+										...expected.response.headers.json,
+										...expResHeaders404ErrorsXml,
+									}
+								: expResHeaders404ErrorsXml
 						);
 						expect(response.statusCode).toBe(404);
 					});
