@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.2.7](https://github.com/Fdawgs/docsmith/compare/v11.2.6...v11.2.7) (2024-10-14)
+
+
+### Continuous integration
+
+* **cd:** migrate to manifest config ([b2510a7](https://github.com/Fdawgs/docsmith/commit/b2510a7b18a8e51b6a89a8c6238f187f7d5db176))
+* **deps:** bump peter-evans/create-pull-request from 6 to 7 ([#1934](https://github.com/Fdawgs/docsmith/issues/1934)) ([f21771d](https://github.com/Fdawgs/docsmith/commit/f21771dade0435719f73532871c59d00a9bb6750))
+
+
+### Dependencies
+
+* **deps-dev:** bump @types/jest from 29.5.12 to 29.5.13 ([#1931](https://github.com/Fdawgs/docsmith/issues/1931)) ([2b024ac](https://github.com/Fdawgs/docsmith/commit/2b024aca57fbea87d4a20c77358b459f4796f66c))
+* **deps-dev:** bump husky from 9.1.5 to 9.1.6 ([#1933](https://github.com/Fdawgs/docsmith/issues/1933)) ([574d41b](https://github.com/Fdawgs/docsmith/commit/574d41b9b54c6fea5c0e99fcd049969d9f4d99f0))
+* **deps-dev:** bump playwright from 1.46.1 to 1.47.2 ([#1930](https://github.com/Fdawgs/docsmith/issues/1930)) ([7a070f2](https://github.com/Fdawgs/docsmith/commit/7a070f2a35322a173fd31eb55632b749de2a6a78))
+* **deps-dev:** bump the commitlint group with 2 updates ([#1926](https://github.com/Fdawgs/docsmith/issues/1926)) ([a86ae0d](https://github.com/Fdawgs/docsmith/commit/a86ae0d07ad4dc52ec32c31f5e8159b3411580cd))
+* **deps:** bump find-my-way in the npm_and_yarn group ([#1925](https://github.com/Fdawgs/docsmith/issues/1925)) ([04dad15](https://github.com/Fdawgs/docsmith/commit/04dad15ef50b455aaae783277bc3e9919767a758))
+* **deps:** bump jsdom from 25.0.0 to 25.0.1 ([#1932](https://github.com/Fdawgs/docsmith/issues/1932)) ([1b7b2e0](https://github.com/Fdawgs/docsmith/commit/1b7b2e02db45aa9541188ef53c58225ba428232d))
+* **deps:** bump pino from 9.3.2 to 9.4.0 in the pino-core group ([#1929](https://github.com/Fdawgs/docsmith/issues/1929)) ([8228469](https://github.com/Fdawgs/docsmith/commit/822846970672cb7d866ffa35de9325402e2b1748))
+
 ## [11.2.6](https://github.com/Fdawgs/docsmith/compare/v11.2.5...v11.2.6) (2024-08-28)
 
 
