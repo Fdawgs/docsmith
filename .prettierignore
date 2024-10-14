@@ -138,6 +138,7 @@ dist
 # Auto generated files
 package.json
 CHANGELOG.md
+.github/release-please/manifest.json
 
 # lock files
 bun.lockb
