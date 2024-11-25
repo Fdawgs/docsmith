@@ -7,7 +7,7 @@ const { glob } = require("glob");
 const { joinSafe } = require("upath");
 const getConfig = require(".");
 
-const originalEnv = { ...process.env, NODE_ENV: "development" };
+const originalEnv = { ...process.env, NODE_ENV: "production" };
 const tempDir = joinSafe(__dirname, "../../temp");
 
 describe("Configuration", () => {
