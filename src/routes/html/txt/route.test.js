@@ -58,7 +58,7 @@ describe("HTML-to-TXT route", () => {
 				"content-type": "text/html",
 			},
 			query: {
-				extractHidden: "true",
+				extract_hidden: "true",
 			},
 		},
 		{
@@ -69,7 +69,7 @@ describe("HTML-to-TXT route", () => {
 				"content-type": "application/xhtml+xml",
 			},
 			query: {
-				extractHidden: "true",
+				extract_hidden: "true",
 			},
 		},
 	])("Returns $testName", async ({ filePath, headers, query }) => {
@@ -132,9 +132,6 @@ describe("HTML-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: Buffer.from("test"),
-			query: {
-				lastPageToConvert: "1",
-			},
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "text/html",

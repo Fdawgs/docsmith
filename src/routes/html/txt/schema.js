@@ -21,7 +21,7 @@ const htmlToTxtPostSchema = {
 	query: S.object()
 		.additionalProperties(false)
 		.prop(
-			"extractHidden",
+			"extract_hidden",
 			S.boolean().description("Force hidden text extraction")
 		),
 	response: {

@@ -4,6 +4,7 @@
 
 const { randomUUID } = require("node:crypto");
 const { mkdir, unlink } = require("node:fs/promises");
+const camelCase = require("camelcase");
 const { fixLatin1ToUtf8: fixUtf8 } = require("fix-latin1-to-utf8");
 const fp = require("fastify-plugin");
 const { glob } = require("glob");
@@ -111,10 +112,12 @@ async function plugin(server, options) {
 		 * Create copy of query string params and convert query string params to literal
 		 * values to allow Poppler module to use them, as some of the params may be used
 		 * in other plugins.
+		 * @type {Record<string, string | number | boolean>}
 		 */
-		const query = { ...req.query };
-		Object.keys(query).forEach((value) => {
-			query[value] = parseString(query[value]);
+		const query = {};
+		Object.keys(req.query).forEach((key) => {
+			const camelCaseKey = camelCase(key);
+			query[camelCaseKey] = parseString(req.query[key]);
 		});
 
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
@@ -126,9 +129,9 @@ async function plugin(server, options) {
 		 */
 		if (query.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
-			Object.keys(query).forEach((value) => {
-				if (!pdfToCairoAcceptedParams.has(value)) {
-					delete query[value];
+			Object.keys(query).forEach((key) => {
+				if (!pdfToCairoAcceptedParams.has(key)) {
+					delete query[key];
 				}
 			});
 
@@ -184,9 +187,9 @@ async function plugin(server, options) {
 			res.type("text/plain; charset=utf-8");
 		} else {
 			// Prune params that pdfToTxt cannot accept
-			Object.keys(query).forEach((value) => {
-				if (!pdfToTxtAcceptedParams.has(value)) {
-					delete query[value];
+			Object.keys(query).forEach((key) => {
+				if (!pdfToTxtAcceptedParams.has(key)) {
+					delete query[key];
 				}
 			});
 			Object.assign(config.pdfToTxtOptions, query);

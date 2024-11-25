@@ -349,7 +349,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: "1",
+						last_page_to_convert: "1",
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -371,7 +371,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: "1",
+						last_page_to_convert: "1",
 					},
 					headers: {
 						accept: "application/javascript",
@@ -398,7 +398,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: "1",
+						last_page_to_convert: "1",
 					},
 					headers: {
 						accept: "application/json, text/plain",
@@ -567,7 +567,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: "1",
+						last_page_to_convert: "1",
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -590,7 +590,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: "1",
+						last_page_to_convert: "1",
 					},
 					headers: {
 						accept: "application/json, text/html",
@@ -611,7 +611,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: "1",
+						last_page_to_convert: "1",
 					},
 					headers: {
 						accept: "application/javascript",
@@ -639,7 +639,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: "1",
+						last_page_to_convert: "1",
 						ocr: "true",
 					},
 					headers: {
@@ -663,7 +663,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: "1",
+						last_page_to_convert: "1",
 						ocr: "true",
 					},
 					headers: {
@@ -685,7 +685,7 @@ describe("Server deployment", () => {
 						"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
-						lastPageToConvert: "1",
+						last_page_to_convert: "1",
 						ocr: "true",
 					},
 					headers: {

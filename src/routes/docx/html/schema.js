@@ -26,7 +26,7 @@ const docxToHtmlPostSchema = {
 	query: S.object()
 		.additionalProperties(false)
 		.prop(
-			"backgroundColor",
+			"background_color",
 			S.string()
 				.description(
 					"HTML document background color; set or replace the `background-color` property value of `div` CSS selectors"
@@ -57,7 +57,7 @@ const docxToHtmlPostSchema = {
 				.default("en")
 		)
 		.prop(
-			"removeAlt",
+			"remove_alt",
 			S.boolean().description(
 				"Set the `alt` attribute in `<img>` tags to an empty string"
 			)

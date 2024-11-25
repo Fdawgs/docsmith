@@ -20,43 +20,43 @@ const pdfToTxtPostSchema = {
 	produces: ["application/json", "application/xml"],
 	query: S.object()
 		.prop(
-			"boundingBoxXhtml",
+			"bounding_box_xhtml",
 			S.boolean().description(
 				"Generate an XHTML file containing bounding box information for each word in the file"
 			)
 		)
 		.prop(
-			"boundingBoxXhtmlLayout",
+			"bounding_box_xhtml_layout",
 			S.boolean().description(
 				"Generate an XHTML file containing bounding box information for each block, line, and word in the file"
 			)
 		)
 		.prop(
-			"cropHeight",
+			"crop_height",
 			S.number().description(
 				"Specifies the height of crop area in pixels (image output) or points (vector output)"
 			)
 		)
 		.prop(
-			"cropWidth",
+			"crop_width",
 			S.number().description(
 				"Specifies the width of crop area in pixels (image output) or points (vector output)"
 			)
 		)
 		.prop(
-			"cropXAxis",
+			"crop_x_axis",
 			S.number().description(
 				"Specifies the x-coordinate of the crop area top left corner in pixels (image output) or points (vector output)"
 			)
 		)
 		.prop(
-			"cropYAxis",
+			"crop_y_axis",
 			S.number().description(
 				"Specifies the y-coordinate of the crop area top left corner in pixels (image output) or points (vector output)"
 			)
 		)
 		.prop(
-			"eolConvention",
+			"eol_convention",
 			S.string()
 				.description(
 					"Sets the end-of-line convention to use for text output"
@@ -64,43 +64,43 @@ const pdfToTxtPostSchema = {
 				.enum(["dos", "mac", "unix"])
 		)
 		.prop(
-			"firstPageToConvert",
+			"first_page_to_convert",
 			S.number().default(1).description("First page to convert")
 		)
 		.prop(
-			"fixedWidthLayout",
+			"fixed_width_layout",
 			S.number().description(
 				"Assume fixed-pitch (or tabular) text, with the specified character width (in points). This forces physical layout mode"
 			)
 		)
 		.prop(
-			"generateHtmlMetaFile",
+			"generate_html_meta_file",
 			S.boolean().description(
 				"Generate simple HTML file, including the meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers"
 			)
 		)
 		.prop(
-			"lastPageToConvert",
+			"last_page_to_convert",
 			S.number().description("Last page to convert")
 		)
 		.prop(
-			"maintainLayout",
+			"maintain_layout",
 			S.boolean().description(
 				"Maintain (as best as possible) the original physical layout of the text. The default is to undo physical layout (columns, hyphenation, etc.) and output the text in reading order"
 			)
 		)
 		.prop(
-			"noDiagonalText",
+			"no_diagonal_text",
 			S.boolean().description("Discard diagonal text")
 		)
 		.prop(
-			"noPageBreaks",
+			"no_page_breaks",
 			S.boolean().description(
 				"Do not insert page breaks (form feed characters) between pages"
 			)
 		)
 		.prop(
-			"ownerPassword",
+			"owner_password",
 			S.string()
 				.description("Owner password (for encrypted files)")
 				/**
@@ -110,13 +110,13 @@ const pdfToTxtPostSchema = {
 				.maxLength(127)
 		)
 		.prop(
-			"rawLayout",
+			"raw_layout",
 			S.boolean().description(
 				"Keep the text in content stream order. This is a hack which often 'undoes' column formatting, etc. Use of raw mode is no longer recommended"
 			)
 		)
 		.prop(
-			"userPassword",
+			"user_password",
 			S.string()
 				.description("User password (for encrypted files)")
 				/**

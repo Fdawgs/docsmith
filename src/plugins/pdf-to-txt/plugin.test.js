@@ -68,8 +68,8 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				firstPageToConvert: "2",
-				lastPageToConvert: "2",
+				first_page_to_convert: "2",
+				last_page_to_convert: "2",
 				...query,
 			},
 			headers: {
@@ -105,8 +105,8 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				firstPageToConvert: "1",
-				lastPageToConvert: "2",
+				first_page_to_convert: "1",
+				last_page_to_convert: "2",
 				...query,
 			},
 			headers: {
@@ -140,9 +140,9 @@ describe("PDF-to-TXT conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				firstPageToConvert: "2",
-				generateHtmlMetaFile: "true",
-				lastPageToConvert: "2",
+				first_page_to_convert: "2",
+				generate_html_meta_file: "true",
+				last_page_to_convert: "2",
 			},
 			headers: {
 				"content-type": "application/pdf",
@@ -188,7 +188,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 			testName: "is not a valid PDF file for OCR",
 			body: Buffer.from("test"),
 			query: {
-				lastPageToConvert: "1",
+				last_page_to_convert: "1",
 				ocr: "true",
 			},
 		},
@@ -241,7 +241,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 					"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 				),
 				query: {
-					lastPageToConvert: "1",
+					last_page_to_convert: "1",
 					...query,
 				},
 				headers: {

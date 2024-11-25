@@ -75,13 +75,13 @@ async function route(server, options) {
 				req.conversionResults.body,
 				{
 					language: req.query.language,
-					removeAlt: req.query.removeAlt,
+					removeAlt: req.query.remove_alt,
 				}
 			);
 
 			return server.tidyCss(tidiedHtml, {
 				fonts: req.query.fonts,
-				backgroundColor: req.query.backgroundColor,
+				backgroundColor: req.query.background_color,
 			});
 		},
 	});
