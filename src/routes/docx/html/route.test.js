@@ -73,7 +73,7 @@ describe("DOCX-to-HTML route", () => {
 			url: "/",
 			body: await readFile(filePath),
 			query: {
-				removeAlt: "true",
+				remove_alt: "true",
 			},
 			headers: {
 				accept: "application/json, text/html",

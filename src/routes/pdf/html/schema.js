@@ -103,7 +103,7 @@ const pdfToHtmlPostSchema = {
 				.maxLength(127)
 		)
 		.prop(
-			"removeAlt",
+			"remove_alt",
 			S.boolean().description(
 				"Set the `alt` attribute in `<img>` tags to an empty string"
 			)

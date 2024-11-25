@@ -73,7 +73,7 @@ async function route(server, options) {
 			const html = await server.docxToHtml(req.body);
 			const tidiedHtml = await server.tidyHtml(html, {
 				language: req.query.language,
-				removeAlt: req.query.removeAlt,
+				removeAlt: req.query.remove_alt,
 			});
 
 			res.type("text/html; charset=utf-8");

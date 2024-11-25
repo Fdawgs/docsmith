@@ -75,7 +75,7 @@ async function route(server, options) {
 				req.conversionResults.body,
 				{
 					language: req.query.language,
-					removeAlt: req.query.removeAlt,
+					removeAlt: req.query.remove_alt,
 				}
 			);
 

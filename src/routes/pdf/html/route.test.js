@@ -21,7 +21,7 @@ const queryStrings = generateCombos([
 	{ fonts: "Arial" },
 	{ ignoreImages: "true" },
 	{ noDrm: "true" },
-	{ removeAlt: "true" },
+	{ remove_alt: "true" },
 ]);
 
 describe("PDF-to-HTML route", () => {
