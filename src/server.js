@@ -234,4 +234,4 @@ async function plugin(server, config) {
 		});
 }
 
-module.exports = fp(plugin, { fastify: "4.x", name: "server" });
+module.exports = fp(plugin, { fastify: "5.x", name: "server" });

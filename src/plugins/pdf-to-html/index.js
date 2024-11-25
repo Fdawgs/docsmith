@@ -179,7 +179,7 @@ async function plugin(server, options) {
 }
 
 module.exports = fp(plugin, {
-	fastify: "4.x",
+	fastify: "5.x",
 	name: "pdf-to-html",
 	dependencies: ["@fastify/sensible"],
 });
