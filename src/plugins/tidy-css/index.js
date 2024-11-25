@@ -129,4 +129,4 @@ async function plugin(server) {
 	server.decorate("tidyCss", tidyCss);
 }
 
-module.exports = fp(plugin, { fastify: "4.x", name: "tidy-css" });
+module.exports = fp(plugin, { fastify: "5.x", name: "tidy-css" });

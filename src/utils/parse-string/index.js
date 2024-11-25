@@ -2,9 +2,8 @@
 
 /**
  * @author Frazer Smith
- * @description Converts string boolean to boolean
- * or string number to number.
- * @param {*} param - String to convert.
+ * @description Converts string boolean/number to their respective types.
+ * @param {*} param - Value to convert.
  * @returns {*} Parsed string, or original value
  * if unable to parse.
  */

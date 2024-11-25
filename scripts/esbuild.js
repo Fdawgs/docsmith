@@ -18,5 +18,5 @@ esbuild.build({
 	packages: "external",
 	platform: "node",
 	plugins: [globPlugin()],
-	target: "node18",
+	target: "node20",
 });

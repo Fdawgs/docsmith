@@ -22,19 +22,15 @@ async function route(server) {
 	// Register plugins
 	await server
 		// Allow for static files to be served from this dir via `sendFile`
-		.register(staticPlugin, { root: __dirname, serve: false })
+		.register(staticPlugin, {
+			root: __dirname,
+			serve: false,
+			cacheControl: false,
+		})
 
 		// Register redoc module to allow for standalone js and map to be used in docs.html
 		.register(staticPlugin, {
-			root: joinSafe(
-				__dirname,
-				"..",
-				"..",
-				"..",
-				"node_modules",
-				"redoc",
-				"bundles"
-			),
+			root: joinSafe(__dirname, "../../../node_modules/redoc/bundles"),
 			allowedPath: (pathName) => pathName.match(pathRegex) !== null,
 			decorateReply: false,
 			maxAge: "1 day",
@@ -58,7 +54,6 @@ async function route(server) {
 				.removeHeader("pragma")
 				.removeHeader("expires")
 				.removeHeader("surrogate-control")
-				.type("text/html; charset=utf-8")
 				.sendFile("index.html");
 		},
 	});

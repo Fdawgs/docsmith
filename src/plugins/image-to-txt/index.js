@@ -71,4 +71,4 @@ async function plugin(server, options) {
 	});
 }
 
-module.exports = fp(plugin, { fastify: "4.x", name: "image-to-txt" });
+module.exports = fp(plugin, { fastify: "5.x", name: "image-to-txt" });
