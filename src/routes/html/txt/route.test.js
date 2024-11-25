@@ -58,7 +58,7 @@ describe("HTML-to-TXT route", () => {
 				"content-type": "text/html",
 			},
 			query: {
-				extractHidden: "true",
+				extract_hidden: "true",
 			},
 		},
 		{
@@ -69,7 +69,7 @@ describe("HTML-to-TXT route", () => {
 				"content-type": "application/xhtml+xml",
 			},
 			query: {
-				extractHidden: "true",
+				extract_hidden: "true",
 			},
 		},
 	])("Returns $testName", async ({ filePath, headers, query }) => {
