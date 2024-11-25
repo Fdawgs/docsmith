@@ -16,7 +16,7 @@ const tidyHtml = require("../../../plugins/tidy-html");
 
 // Generates 64 different combinations
 const queryStrings = generateCombos([
-	{ backgroundColor: "white" },
+	{ background_color: "white" },
 	{ firstPageToConvert: "1" },
 	{ fonts: "Arial" },
 	{ ignoreImages: "true" },

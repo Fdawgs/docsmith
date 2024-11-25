@@ -81,7 +81,7 @@ async function route(server, options) {
 
 			return server.tidyCss(tidiedHtml, {
 				fonts: req.query.fonts,
-				backgroundColor: req.query.backgroundColor,
+				backgroundColor: req.query.background_color,
 			});
 		},
 	});

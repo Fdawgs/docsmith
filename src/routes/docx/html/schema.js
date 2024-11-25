@@ -26,7 +26,7 @@ const docxToHtmlPostSchema = {
 	query: S.object()
 		.additionalProperties(false)
 		.prop(
-			"backgroundColor",
+			"background_color",
 			S.string()
 				.description(
 					"HTML document background color; set or replace the `background-color` property value of `div` CSS selectors"
