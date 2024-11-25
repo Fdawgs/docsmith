@@ -63,8 +63,8 @@
 		"testTimeout": 60000
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.5.0",
-		"@commitlint/config-conventional": "^19.5.0",
+		"@commitlint/cli": "^19.6.0",
+		"@commitlint/config-conventional": "^19.6.0",
 		"@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
 		"@types/jest": "^29.5.14",
 		"autocannon": "^8.0.0",
