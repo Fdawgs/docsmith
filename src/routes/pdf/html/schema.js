@@ -35,15 +35,15 @@ const pdfToHtmlPostSchema = {
 				])
 		)
 		.prop(
-			"exchangePdfLinks",
+			"exchange_pdf_links",
 			S.boolean().description("Exchange `.pdf` links with `.html`")
 		)
 		.prop(
-			"extractHidden",
+			"extract_hidden",
 			S.boolean().description("Force hidden text extraction")
 		)
 		.prop(
-			"firstPageToConvert",
+			"first_page_to_convert",
 			S.number()
 				.description("First page to convert")
 				.default(1)
@@ -59,14 +59,14 @@ const pdfToHtmlPostSchema = {
 				.examples(["Arial", "Arial, Sans Serif"])
 		)
 		.prop(
-			"fontFullName",
+			"font_full_name",
 			S.boolean().description(
 				"Output the font name without any substitutions"
 			)
 		)
-		.prop("ignoreImages", S.boolean().description("Ignore images"))
+		.prop("ignore_images", S.boolean().description("Ignore images"))
 		.prop(
-			"imageFormat",
+			"image_format",
 			S.string()
 				.description("Image file format for Splash output")
 				.enum(["JPG", "PNG"])
@@ -81,19 +81,19 @@ const pdfToHtmlPostSchema = {
 				.default("en")
 		)
 		.prop(
-			"lastPageToConvert",
+			"last_page_to_convert",
 			S.number().description("Last page to convert")
 		)
 		.prop(
-			"noDrm",
+			"no_drm",
 			S.boolean().description("Override document DRM settings")
 		)
 		.prop(
-			"noMergeParagraph",
+			"no_merge_paragraph",
 			S.boolean().description("Do not merge paragraphs")
 		)
 		.prop(
-			"ownerPassword",
+			"owner_password",
 			S.string()
 				.description("Owner password (for encrypted files)")
 				/**
@@ -109,7 +109,7 @@ const pdfToHtmlPostSchema = {
 			)
 		)
 		.prop(
-			"userPassword",
+			"user_password",
 			S.string()
 				.description("User password (for encrypted files)")
 				/**
@@ -119,7 +119,7 @@ const pdfToHtmlPostSchema = {
 				.maxLength(127)
 		)
 		.prop(
-			"wordBreakThreshold",
+			"word_break_threshold",
 			S.number()
 				.default(10)
 				.description(

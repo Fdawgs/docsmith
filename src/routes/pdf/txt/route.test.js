@@ -15,11 +15,11 @@ const tidyHtml = require("../../../plugins/tidy-html");
 
 // Generates 32 different combinations
 const queryStrings = generateCombos([
-	{ firstPageToConvert: "1" },
-	{ eolConvention: "unix" },
-	{ maintainLayout: "true" },
-	{ noDiagonalText: "true" },
-	{ noPageBreaks: "true" },
+	{ first_page_to_convert: "1" },
+	{ eol_convention: "unix" },
+	{ maintain_layout: "true" },
+	{ no_diagonal_text: "true" },
+	{ no_page_breaks: "true" },
 ]);
 
 describe("PDF-to-TXT route", () => {
@@ -58,7 +58,7 @@ describe("PDF-to-TXT route", () => {
 						body: await readFile(
 							"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 						),
-						query: { ...queryString, lastPageToConvert: "1" },
+						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
 							accept: "application/json, text/plain",
 							"content-type": "application/pdf",
@@ -86,7 +86,7 @@ describe("PDF-to-TXT route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: "1",
+				last_page_to_convert: "1",
 				ocr: "true",
 			},
 			headers: {
@@ -111,8 +111,8 @@ describe("PDF-to-TXT route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				generateHtmlMetaFile: "true",
-				lastPageToConvert: "1",
+				generate_html_meta_file: "true",
+				last_page_to_convert: "1",
 			},
 			headers: {
 				accept: "application/json, text/html",
@@ -136,7 +136,7 @@ describe("PDF-to-TXT route", () => {
 					.inject({
 						method: "POST",
 						url: "/",
-						query: { ...queryString, lastPageToConvert: "1" },
+						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
 							accept: "application/json, text/plain",
 							"content-type": "application/pdf",
@@ -165,7 +165,7 @@ describe("PDF-to-TXT route", () => {
 						method: "POST",
 						url: "/",
 						body: Buffer.from("test"),
-						query: { ...queryString, lastPageToConvert: "1" },
+						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
 							accept: "application/json, text/plain",
 							"content-type": "application/pdf",
@@ -196,7 +196,7 @@ describe("PDF-to-TXT route", () => {
 						body: await readFile(
 							"./test_resources/test_files/html_valid_empty.html"
 						),
-						query: { ...queryString, lastPageToConvert: "1" },
+						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
 							accept: "application/json, text/plain",
 							"content-type": "application/html",
@@ -224,7 +224,7 @@ describe("PDF-to-TXT route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: "1",
+				last_page_to_convert: "1",
 			},
 			headers: {
 				accept: "application/javascript",

@@ -73,8 +73,8 @@ describe("PDF-to-HTML conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: "2",
-				ignoreImages: "false",
+				last_page_to_convert: "2",
+				ignore_images: "false",
 				...query,
 			},
 			headers: {
@@ -161,8 +161,8 @@ describe("PDF-to-HTML conversion plugin", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: "1",
-				ignoreImages: "false",
+				last_page_to_convert: "1",
+				ignore_images: "false",
 			},
 			headers: {
 				"content-type": "application/pdf",

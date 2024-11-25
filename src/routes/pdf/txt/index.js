@@ -71,9 +71,9 @@ async function route(server, options) {
 			}
 		},
 		handler: async (req) =>
-			req.query.boundingBoxXhtml ||
-			req.query.boundingBoxXhtmlLayout ||
-			req.query.generateHtmlMetaFile
+			req.query.bounding_box_xhtml ||
+			req.query.bounding_box_xhtml_layout ||
+			req.query.generate_html_meta_file
 				? server.tidyHtml(req.conversionResults.body)
 				: req.conversionResults.body,
 	});

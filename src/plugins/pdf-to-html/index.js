@@ -4,6 +4,7 @@
 
 const { randomUUID } = require("node:crypto");
 const { mkdir, readFile, unlink } = require("node:fs/promises");
+const camelCase = require("camelcase");
 const { fixLatin1ToUtf8: fixUtf8 } = require("fix-latin1-to-utf8");
 const fp = require("fastify-plugin");
 const { glob } = require("glob");
@@ -93,17 +94,18 @@ async function plugin(server, options) {
 		/**
 		 * Create copy of query string params and prune that,
 		 * as some of the params may be used in other plugins.
+		 * @type {Record<string, string | number | boolean>}
 		 */
-		const query = { ...req.query };
-		Object.keys(query).forEach((value) => {
-			if (!pdfToHtmlAcceptedParams.has(value)) {
-				delete query[value];
-			} else {
+		const query = {};
+		Object.keys(req.query).forEach((key) => {
+			const camelCaseKey = camelCase(key);
+
+			if (pdfToHtmlAcceptedParams.has(camelCaseKey)) {
 				/**
-				 * Convert query string params to literal values to
+				 * Convert query string params to literal keys to
 				 * allow Poppler module to use them.
 				 */
-				query[value] = parseString(query[value]);
+				query[camelCaseKey] = parseString(req.query[key]);
 			}
 		});
 		Object.assign(config.pdfToHtmlOptions, query);

@@ -41,6 +41,8 @@ updates:
           - dependency-name: esbuild-plugin-glob
           # Below are dependencies that have migrated to ESM
           # in their next major version so we can't use them
+          - dependency-name: camelcase
+            update-types: ["version-update:semver-major"]
           - dependency-name: file-type
             update-types: ["version-update:semver-major"]
           - dependency-name: is-html

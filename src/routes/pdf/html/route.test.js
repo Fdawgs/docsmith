@@ -17,10 +17,10 @@ const tidyHtml = require("../../../plugins/tidy-html");
 // Generates 64 different combinations
 const queryStrings = generateCombos([
 	{ background_color: "white" },
-	{ firstPageToConvert: "1" },
+	{ first_page_to_convert: "1" },
 	{ fonts: "Arial" },
-	{ ignoreImages: "true" },
-	{ noDrm: "true" },
+	{ ignore_images: "true" },
+	{ no_drm: "true" },
 	{ remove_alt: "true" },
 ]);
 
@@ -57,7 +57,7 @@ describe("PDF-to-HTML route", () => {
 						body: await readFile(
 							"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 						),
-						query: { ...queryString, lastPageToConvert: "1" },
+						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
 							accept: "application/json, text/html",
 							"content-type": "application/pdf",
@@ -85,7 +85,7 @@ describe("PDF-to-HTML route", () => {
 					.inject({
 						method: "POST",
 						url: "/",
-						query: { ...queryString, lastPageToConvert: "1" },
+						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
 							accept: "application/json, text/html",
 							"content-type": "application/pdf",
@@ -114,7 +114,7 @@ describe("PDF-to-HTML route", () => {
 						method: "POST",
 						url: "/",
 						body: Buffer.from("test"),
-						query: { ...queryString, lastPageToConvert: "1" },
+						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
 							accept: "application/json, text/html",
 							"content-type": "application/pdf",
@@ -145,7 +145,7 @@ describe("PDF-to-HTML route", () => {
 						body: await readFile(
 							"./test_resources/test_files/html_valid_empty.html"
 						),
-						query: { ...queryString, lastPageToConvert: "1" },
+						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
 							accept: "application/json, text/html",
 							"content-type": "application/html",
@@ -173,7 +173,7 @@ describe("PDF-to-HTML route", () => {
 				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
 			),
 			query: {
-				lastPageToConvert: "1",
+				last_page_to_convert: "1",
 			},
 			headers: {
 				accept: "application/javascript",

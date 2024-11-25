@@ -132,9 +132,6 @@ describe("HTML-to-TXT route", () => {
 			method: "POST",
 			url: "/",
 			body: Buffer.from("test"),
-			query: {
-				lastPageToConvert: "1",
-			},
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "text/html",
