@@ -2,6 +2,62 @@
 
 All notable changes to this project will be documented in this file.
 
+## [12.0.0](https://github.com/Fdawgs/docsmith/compare/v11.2.6...v12.0.0) (2024-11-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **routes:** all camelCase query string params renamed to snake_case
+* **deps:** dropped support for node 18
+
+### Continuous integration
+
+* **cd:** migrate to manifest config ([b2510a7](https://github.com/Fdawgs/docsmith/commit/b2510a7b18a8e51b6a89a8c6238f187f7d5db176))
+* **ci:** use major tag for coverallsapp/github-action ([fd17e85](https://github.com/Fdawgs/docsmith/commit/fd17e8538f95d856e7ed1ca06bc9066d52a2a27c))
+* **deps:** bump coverallsapp/github-action from 2.3.0 to 2.3.1 ([#1937](https://github.com/Fdawgs/docsmith/issues/1937)) ([00dc568](https://github.com/Fdawgs/docsmith/commit/00dc56860a2f30bb686b6630c37d8ce1ef7e04fa))
+* **deps:** bump coverallsapp/github-action from 2.3.1 to 2.3.4 ([#1946](https://github.com/Fdawgs/docsmith/issues/1946)) ([8a339f9](https://github.com/Fdawgs/docsmith/commit/8a339f99cb2b229ae7e6133e5f5cd0bfa723bda3))
+* **deps:** bump peter-evans/create-pull-request from 6 to 7 ([#1934](https://github.com/Fdawgs/docsmith/issues/1934)) ([f21771d](https://github.com/Fdawgs/docsmith/commit/f21771dade0435719f73532871c59d00a9bb6750))
+
+
+### Dependencies
+
+* **deps-dev:** bump @types/jest from 29.5.12 to 29.5.13 ([#1931](https://github.com/Fdawgs/docsmith/issues/1931)) ([2b024ac](https://github.com/Fdawgs/docsmith/commit/2b024aca57fbea87d4a20c77358b459f4796f66c))
+* **deps-dev:** bump @types/jest from 29.5.13 to 29.5.14 ([#1948](https://github.com/Fdawgs/docsmith/issues/1948)) ([105e1e1](https://github.com/Fdawgs/docsmith/commit/105e1e14096b2b81de880c8756d6af0f9418f914))
+* **deps-dev:** bump autocannon from 7.15.0 to 8.0.0 ([#1942](https://github.com/Fdawgs/docsmith/issues/1942)) ([9468f8a](https://github.com/Fdawgs/docsmith/commit/9468f8a359423fe4e2238643bd816c7af8e20b49))
+* **deps-dev:** bump esbuild from 0.23.1 to 0.24.0 ([c5dfd07](https://github.com/Fdawgs/docsmith/commit/c5dfd07f0edbfeeb0092b754735ee00e56c3ac93))
+* **deps-dev:** bump husky from 9.1.5 to 9.1.6 ([#1933](https://github.com/Fdawgs/docsmith/issues/1933)) ([574d41b](https://github.com/Fdawgs/docsmith/commit/574d41b9b54c6fea5c0e99fcd049969d9f4d99f0))
+* **deps-dev:** bump husky from 9.1.6 to 9.1.7 ([#1957](https://github.com/Fdawgs/docsmith/issues/1957)) ([1b45763](https://github.com/Fdawgs/docsmith/commit/1b45763f2fc239bf1be7379ca62e9fcb0cfa4daa))
+* **deps-dev:** bump pino-pretty in the pino-core group ([#1956](https://github.com/Fdawgs/docsmith/issues/1956)) ([7545e88](https://github.com/Fdawgs/docsmith/commit/7545e88ad3ba65d5419d44976d5511a5f5bd8303))
+* **deps-dev:** bump playwright from 1.46.1 to 1.47.2 ([#1930](https://github.com/Fdawgs/docsmith/issues/1930)) ([7a070f2](https://github.com/Fdawgs/docsmith/commit/7a070f2a35322a173fd31eb55632b749de2a6a78))
+* **deps-dev:** bump playwright from 1.47.2 to 1.48.0 ([#1941](https://github.com/Fdawgs/docsmith/issues/1941)) ([9b91dcd](https://github.com/Fdawgs/docsmith/commit/9b91dcd87b6cab325c17d53a0abcfe1a21be1d11))
+* **deps-dev:** bump playwright from 1.48.0 to 1.48.2 ([#1949](https://github.com/Fdawgs/docsmith/issues/1949)) ([ea7b412](https://github.com/Fdawgs/docsmith/commit/ea7b41262761473ece4e82df668fdf20b9dd5055))
+* **deps-dev:** bump playwright from 1.48.2 to 1.49.0 ([#1958](https://github.com/Fdawgs/docsmith/issues/1958)) ([819ee72](https://github.com/Fdawgs/docsmith/commit/819ee725d34995b49ad11ec38720df67469c3ea1))
+* **deps-dev:** bump the commitlint group with 2 updates ([#1926](https://github.com/Fdawgs/docsmith/issues/1926)) ([a86ae0d](https://github.com/Fdawgs/docsmith/commit/a86ae0d07ad4dc52ec32c31f5e8159b3411580cd))
+* **deps-dev:** bump the commitlint group with 2 updates ([#1955](https://github.com/Fdawgs/docsmith/issues/1955)) ([e6f59a7](https://github.com/Fdawgs/docsmith/commit/e6f59a711fe5e2caf5cba46adbf19710ad1d95be))
+* **deps-dev:** bump the eslint group across 1 directory with 5 updates ([1e53bd8](https://github.com/Fdawgs/docsmith/commit/1e53bd836bb0ecf8274e201b14b5538147130907))
+* **deps:** bump @fastify/helmet in the fastify-core group ([#1962](https://github.com/Fdawgs/docsmith/issues/1962)) ([116449d](https://github.com/Fdawgs/docsmith/commit/116449d202a42833b0da0c2c257edf37011cc395))
+* **deps:** bump cross-spawn in the npm_and_yarn group ([#1953](https://github.com/Fdawgs/docsmith/issues/1953)) ([37a1d38](https://github.com/Fdawgs/docsmith/commit/37a1d38ec76eaf096e89224394accffeae66c542))
+* **deps:** bump fastify from v4 to v5 ([36ee8a1](https://github.com/Fdawgs/docsmith/commit/36ee8a15ba58ac8fd33c91b98f9288619df1a943))
+* **deps:** bump find-my-way in the npm_and_yarn group ([#1925](https://github.com/Fdawgs/docsmith/issues/1925)) ([04dad15](https://github.com/Fdawgs/docsmith/commit/04dad15ef50b455aaae783277bc3e9919767a758))
+* **deps:** bump glob from 10.4.2 to 11.0.0 ([c9165c5](https://github.com/Fdawgs/docsmith/commit/c9165c51d862a072cbbf7f50d4d6dd9df758e769))
+* **deps:** bump jsdom from 25.0.0 to 25.0.1 ([#1932](https://github.com/Fdawgs/docsmith/issues/1932)) ([1b7b2e0](https://github.com/Fdawgs/docsmith/commit/1b7b2e02db45aa9541188ef53c58225ba428232d))
+* **deps:** bump pino from 9.3.2 to 9.4.0 in the pino-core group ([#1929](https://github.com/Fdawgs/docsmith/issues/1929)) ([8228469](https://github.com/Fdawgs/docsmith/commit/822846970672cb7d866ffa35de9325402e2b1748))
+* **deps:** bump redoc from 2.1.5 to 2.2.0 ([#1951](https://github.com/Fdawgs/docsmith/issues/1951)) ([1dd828e](https://github.com/Fdawgs/docsmith/commit/1dd828e1b56e9362d56ed549b89aef4232e59951))
+* **deps:** bump the npm_and_yarn group with 2 updates ([#1939](https://github.com/Fdawgs/docsmith/issues/1939)) ([8e1e9b9](https://github.com/Fdawgs/docsmith/commit/8e1e9b9e42f414e083217cc5ecfd38d1effd830f))
+* **deps:** bump the pino-core group with 2 updates ([#1947](https://github.com/Fdawgs/docsmith/issues/1947)) ([611bd23](https://github.com/Fdawgs/docsmith/commit/611bd2376cdd78ed41a3f8ad4a450cd83d5c098f))
+* **deps:** bump transistive dependencies ([35331c9](https://github.com/Fdawgs/docsmith/commit/35331c90807fd48b8a0e9e395b7c2cc27ecef9f1))
+
+
+### Improvements
+
+* **routes:** rename camelCase query string params to snake_case ([#1964](https://github.com/Fdawgs/docsmith/issues/1964)) ([46cedc7](https://github.com/Fdawgs/docsmith/commit/46cedc75b0da4713f8f69a5df037b80069de5f8d))
+
+
+### Miscellaneous
+
+* **.env.template:** change `NODE_ENV` default to "production" ([b19dd94](https://github.com/Fdawgs/docsmith/commit/b19dd94bccf17f0bf762208b988d9037c800d2ab))
+* **.env.template:** clarify on docker compose settings ([6f5f953](https://github.com/Fdawgs/docsmith/commit/6f5f953aeafe06bb3486ab9f73e32d7271041e07))
+
 ## [11.2.6](https://github.com/Fdawgs/docsmith/compare/v11.2.5...v11.2.6) (2024-08-28)
 
 
