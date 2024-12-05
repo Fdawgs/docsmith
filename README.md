@@ -3,7 +3,7 @@
 # Docsmith
 
 [![GitHub release](https://img.shields.io/github/release/Fdawgs/docsmith.svg)](https://github.com/Fdawgs/docsmith/releases/latest/)
-[![Build status](https://github.com/Fdawgs/docsmith/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Fdawgs/docsmith/actions/workflows/ci.yml)
+![CI](https://github.com/Fdawgs/docsmith/actions/workflows/ci.yml/badge.svg?branch=main)
 [![Coverage status](https://coveralls.io/repos/github/Fdawgs/docsmith/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/docsmith?branch=main)
 [![code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
