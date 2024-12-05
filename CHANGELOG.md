@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [12.0.1](https://github.com/Fdawgs/docsmith/compare/v12.0.0...v12.0.1) (2024-12-05)
+
+
+### Documentation
+
+* **readme:** use shorter ci badge syntax ([fabbb21](https://github.com/Fdawgs/docsmith/commit/fabbb21086542241f5d7f473b12af433a16ee9db))
+
 ## [12.0.0](https://github.com/Fdawgs/docsmith/compare/v11.2.6...v12.0.0) (2024-11-25)
 
 
