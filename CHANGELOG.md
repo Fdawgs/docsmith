@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [12.0.1](https://github.com/Fdawgs/docsmith/compare/v12.0.0...v12.0.1) (2024-12-05)
+
+
+### Documentation
+
+* **readme:** rename ci badge to reflect workflow ([23d85b4](https://github.com/Fdawgs/docsmith/commit/23d85b4e60f846c2e810669a13175255458d356e))
+
 ## [12.0.0](https://github.com/Fdawgs/docsmith/compare/v11.2.6...v12.0.0) (2024-11-25)
 
 
