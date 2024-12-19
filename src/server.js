@@ -134,11 +134,15 @@ async function plugin(server, config) {
 			if (config.bearerTokenAuthKeys) {
 				await securedContext.register(bearer, {
 					keys: config.bearerTokenAuthKeys,
-					errorResponse: (err) => ({
-						statusCode: 401,
-						error: "Unauthorized",
-						message: err.message,
-					}),
+					addHook: false,
+				});
+
+				// Auth not needed for OPTIONS requests
+				securedContext.addHook("onRequest", (req, res, done) => {
+					if (req.method === "OPTIONS") {
+						return done();
+					}
+					return securedContext.verifyBearerAuth(req, res, done);
 				});
 			}
 

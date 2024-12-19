@@ -760,6 +760,37 @@ describe("Server deployment", () => {
 				},
 			},
 			{
+				testName: "CORS and bearer token enabled",
+				envVariables: {
+					CORS_ORIGIN: true,
+					AUTH_BEARER_TOKEN_ARRAY:
+						'[{"service": "test", "value": "testtoken"}]',
+				},
+				request: {
+					headers: {
+						origin: "https://notreal.nhs.uk",
+					},
+				},
+				expected: {
+					response: {
+						headers: {
+							json: {
+								...expResHeadersJson,
+								"access-control-allow-origin":
+									"https://notreal.nhs.uk",
+								vary: "Origin",
+							},
+							text: {
+								...expResHeadersText,
+								"access-control-allow-origin":
+									"https://notreal.nhs.uk",
+								vary: "Origin",
+							},
+						},
+					},
+				},
+			},
+			{
 				testName: "CORS enabled and set to string",
 				envVariables: {
 					CORS_ORIGIN: "https://notreal.nhs.uk",
@@ -891,7 +922,7 @@ describe("Server deployment", () => {
 								...expResHeaders,
 								"access-control-allow-headers":
 									process.env.CORS_ALLOWED_HEADERS,
-								"access-control-allow-methods": "GET, HEAD",
+								"access-control-allow-methods": "POST",
 								"access-control-allow-origin":
 									envVariables.CORS_ORIGIN === "*"
 										? "*"
@@ -917,9 +948,9 @@ describe("Server deployment", () => {
 
 							const response = await server.inject({
 								method: "OPTIONS",
-								url: "/admin/healthcheck",
+								url: "/pdf/html",
 								headers: {
-									"access-control-request-method": "GET",
+									"access-control-request-method": "POST",
 									origin: request.headers.origin,
 								},
 							});
