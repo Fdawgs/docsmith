@@ -122,7 +122,7 @@
 		"is-html": "^2.0.0",
 		"jsdom": "^25.0.1",
 		"language-tags": "^1.0.9",
-		"mammoth": "^1.8.0",
+		"mammoth": "^1.9.0",
 		"node-poppler": "^7.2.2",
 		"node-unrtf": "^5.0.4",
 		"pino": "^9.5.0",
