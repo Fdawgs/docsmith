@@ -40,11 +40,11 @@ Docsmith enables a data processor to use a comprehensive, GDPR-compliant, open-s
 
 These are only required if running the API outside of Docker:
 
--   [Node.js](https://nodejs.org/en/) >=20.0.0
--   Linux only: `poppler-data` >=0.4.9
--   Linux only: `poppler-utils` >=20.12.0
--   macOS only: `poppler` >=20.12.0
--   Linux and macOS only: `unrtf` >=0.19.3
+- [Node.js](https://nodejs.org/en/) >=20.0.0
+- Linux only: `poppler-data` >=0.4.9
+- Linux only: `poppler-utils` >=20.12.0
+- macOS only: `poppler` >=20.12.0
+- Linux and macOS only: `unrtf` >=0.19.3
 
 ## Setup
 
@@ -59,9 +59,9 @@ Perform the following steps before deployment:
 > **Note**
 > Set the following environment variables in `.env` to meet NHS England's recommendation to retain six months' worth of logs:
 >
-> -   `LOG_ROTATION_DATE_FORMAT="YYYY-MM-DD"`
-> -   `LOG_ROTATION_FREQUENCY="daily"`
-> -   `LOG_ROTATION_MAX_LOGS="180d"`
+> - `LOG_ROTATION_DATE_FORMAT="YYYY-MM-DD"`
+> - `LOG_ROTATION_FREQUENCY="daily"`
+> - `LOG_ROTATION_MAX_LOGS="180d"`
 
 ## Deployment
 
