@@ -121,7 +121,7 @@
 		"htmltidy2": "^1.2.0",
 		"is-html": "^2.0.0",
 		"jsdom": "^26.0.0",
-		"language-tags": "^1.0.9",
+		"language-tags": "^2.0.1",
 		"mammoth": "^1.9.0",
 		"node-poppler": "^7.2.2",
 		"node-unrtf": "^5.0.4",
