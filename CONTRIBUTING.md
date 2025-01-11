@@ -9,9 +9,9 @@ When you submit pull requests, please make sure to fork from and submit back to 
 
 Other processes and specifications that are in use in this repository are:
 
--   [Semantic versioning](https://semver.org/)
--   [Conventional commits](https://conventionalcommits.org/en/v1.0.0/) following the [@commitlint/config-conventional config](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
--   [Prettier](https://prettier.io/) style guide
+- [Semantic versioning](https://semver.org/)
+- [Conventional commits](https://conventionalcommits.org/en/v1.0.0/) following the [@commitlint/config-conventional config](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
+- [Prettier](https://prettier.io/) style guide
 
 ## Getting started
 
@@ -24,16 +24,16 @@ Make a copy of `.env.template` in the root directory and rename it to `.env`, co
 
 After cloning the repository and installing all the dependencies, there are several commands available for local development:
 
--   `npm run build` - Runs esbuild to compile code into dist directory
--   `npm run lint` - Runs [ESLint](https://eslint.org) over all support file types
--   `npm run lint:prettier` - Runs [Prettier](https://prettier.io) over all supported file types
--   `npm run jest` - Runs [Jest](https://jestjs.io) tests in src directory
--   `npm test` - Runs all of the above linting and testing scripts together
--   `npm run start:dev` - Starts a development server with live reload
+- `npm run build` - Runs esbuild to compile code into dist directory
+- `npm run lint` - Runs [ESLint](https://eslint.org) over all support file types
+- `npm run lint:prettier` - Runs [Prettier](https://prettier.io) over all supported file types
+- `npm run jest` - Runs [Jest](https://jestjs.io) tests in src directory
+- `npm test` - Runs all of the above linting and testing scripts together
+- `npm run start:dev` - Starts a development server with live reload
 
 ### Production workflow
 
--   `npm start` - Runs a production version. No live reload
+- `npm start` - Runs a production version. No live reload
 
 ## Documentation style
 
