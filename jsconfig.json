@@ -1,4 +1,5 @@
 {
+	"$schema": "https://json.schemastore.org/jsconfig",
 	"compilerOptions": {
 		// Uncomment as and when needed
 		// "checkJs": true,
