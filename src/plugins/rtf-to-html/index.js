@@ -73,7 +73,7 @@ async function plugin(server, options) {
 				 * would overwrite the first request's image and that image would be embedded
 				 * into both HTML documents.
 				 *
-				 * We wouldn't want to add one patient's image to another patient's document.
+				 * Don't want to add one patient's image to another patient's document.
 				 */
 				noPictures: true,
 				outputHtml: true,

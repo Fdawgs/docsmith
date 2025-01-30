@@ -36,11 +36,11 @@ updates:
                   - "pino-pretty"
       ignore:
           # Tests do not cover these dependencies,
-          # so we don't want to update them automatically
+          # so shouldn't be updated automatically
           - dependency-name: esbuild
           - dependency-name: esbuild-plugin-glob
           # Below are dependencies that have migrated to ESM
-          # in their next major version so we can't use them
+          # in their next major version so they cannot be updated
           - dependency-name: camelcase
             update-types: ["version-update:semver-major"]
           - dependency-name: file-type

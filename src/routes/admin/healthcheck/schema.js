@@ -14,7 +14,7 @@ const healthcheckGetSchema = {
 	tags,
 	summary: "Ping",
 	description:
-		"This is a dummy endpoint you can use to test if the server is accessible.",
+		"This is a dummy endpoint used to test if the server is accessible.",
 	operationId: "getHealthcheck",
 	produces: ["application/json", "application/xml"],
 	response: {

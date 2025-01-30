@@ -5,7 +5,7 @@ Please take a moment to read the entire contributing guide.
 
 This repository uses the [Feature Branch Workflow](https://atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow),
 meaning that development should take place in `feat/` branches, with the `main` branch kept in a stable state.
-When you submit pull requests, please make sure to fork from and submit back to `main`.
+When submitting pull requests, please make sure to fork from and submit back to `main`.
 
 Other processes and specifications that are in use in this repository are:
 
@@ -15,9 +15,9 @@ Other processes and specifications that are in use in this repository are:
 
 ## Getting started
 
-Ensure you have all prerequisites installed (including any optional ones), as noted in the [prerequisites section of the readme file](./README.md#prerequisites).
+Ensure all prerequisites are installed (including any optional ones), as noted in the [prerequisites section of the readme file](./README.md#prerequisites).
 
-With those in place, you can fork the repository, clone it, and then run `npm ci` to install all dependencies.
+With those in place, fork the repository, clone it, and then run `npm ci` to install all dependencies.
 Make a copy of `.env.template` in the root directory and rename it to `.env`, configuring the environment variables in the file as required.
 
 ### Development workflow
@@ -43,10 +43,10 @@ Titles and headings should use sentence-style capitalisation, where only the fir
 
 ## Pull request checklist
 
-Before submitting a pull request back to the main repository, please make sure you have completed the following steps:
+Before submitting a pull request back to the main repository, please ensure the following steps have been taken:
 
 1. Pull request base branch is set to `main`. All pull requests should be forked from and merged back to `main`
-2. Run `npm test` to check the code adheres to the defined ESLint style and that it passes the Jest tests
+2. Run `npm test` to check the code adheres to the defined formatting style, and that it passes tests
 3. Run `npm run lint:fix` to automatically fix any ESLint errors
 4. Run `npm run lint:prettier:fix` to automatically fix any Prettier errors
 5. Run `npm run lint:licenses` if adding or updating production dependencies to check they use permissive licenses
@@ -55,4 +55,4 @@ Steps 2. and 5. are automatically run by a pre-commit hook added by [Husky](http
 
 ## Issues
 
-Please file your issues [here](https://github.com/Fdawgs/docsmith/issues) and try to provide as much information in the template as possible/relevant.
+Please file issues [here](https://github.com/Fdawgs/docsmith/issues) and try to provide as much information in the template as possible/relevant.
