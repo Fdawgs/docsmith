@@ -49,4 +49,4 @@ jobs:
               uses: JustinBeckwith/linkinator-action@v1
               with:
                   paths: "**/*.md"
-                  skip: "https://(?:www.|)github.com/Fdawgs/.*/(?:commit|issues|compare)/, http://0.0.0.0"
+                  skip: "https://(?:www.|)github.com/Fdawgs/.*/(?:commit|issues|compare)/, https://digital.nhs.uk, http://0.0.0.0"
