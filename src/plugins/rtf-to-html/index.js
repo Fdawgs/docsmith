@@ -95,6 +95,7 @@ async function plugin(server, options) {
 		// 0600 permissions (read/write for owner only)
 		await writeFile(tempFile, req.body, {
 			encoding: "utf8",
+			flush: true,
 			mode: 0o600,
 		});
 
