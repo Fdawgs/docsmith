@@ -133,6 +133,8 @@ async function plugin(server, config) {
 		.register(async (securedContext) => {
 			if (config.bearerTokenAuthKeys) {
 				await securedContext.register(bearer, {
+					// Ensure auth is after CORS onRequest hook to avoid authenticating preflight requests
+					addHook: "preParsing",
 					keys: config.bearerTokenAuthKeys,
 					errorResponse: (err) => ({
 						statusCode: 401,
