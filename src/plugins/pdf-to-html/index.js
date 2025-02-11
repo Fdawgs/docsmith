@@ -9,7 +9,7 @@ const { fixLatin1ToUtf8: fixUtf8 } = require("fix-latin1-to-utf8");
 const fp = require("fastify-plugin");
 const { glob } = require("glob");
 const { JSDOM } = require("jsdom");
-const { joinSafe, normalizeTrim } = require("upath");
+const { normalize, resolve } = require("node:path");
 const { Poppler } = require("node-poppler");
 
 // Import utils
@@ -47,7 +47,7 @@ const pdfToHtmlAcceptedParams = new Set([
  * Defaults to `docsmith_pdf-to-html`.
  */
 async function plugin(server, options) {
-	const directory = normalizeTrim(options.tempDir);
+	const directory = normalize(options.tempDir);
 	const poppler = new Poppler();
 
 	// Create temp directory if missing
@@ -67,10 +67,13 @@ async function plugin(server, options) {
 		if (req.conversionResults?.docLocation) {
 			// Remove files from temp directory after response sent
 			const files = await glob(
-				`${joinSafe(
+				`${resolve(
 					req.conversionResults.docLocation.directory,
 					req.conversionResults.docLocation.id
-				)}*`
+				)}*`,
+				{
+					windowsPathsNoEscape: true,
+				}
 			);
 
 			await Promise.all(files.map((file) => unlink(file)));
@@ -112,7 +115,7 @@ async function plugin(server, options) {
 
 		// Build temp file pattern for Poppler to use for output
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
-		const tempFile = joinSafe(directory, id);
+		const tempFile = resolve(directory, id);
 
 		/**
 		 * Create document location object for use by following plugins/hooks

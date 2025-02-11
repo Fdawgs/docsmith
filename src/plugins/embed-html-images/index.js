@@ -3,7 +3,7 @@
 const { readFile } = require("node:fs/promises");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
-const { joinSafe, normalizeTrim, parse } = require("upath");
+const { normalize, parse, resolve } = require("node:path");
 
 /**
  * @author Frazer Smith
@@ -15,7 +15,7 @@ const { joinSafe, normalizeTrim, parse } = require("upath");
  * files during conversion. Location of the images to embed.
  */
 async function plugin(server, options) {
-	const directory = normalizeTrim(options.tempDir);
+	const directory = normalize(options.tempDir);
 
 	/**
 	 * @author Frazer Smith
@@ -35,7 +35,7 @@ async function plugin(server, options) {
 				const imgForm = ext.slice(1);
 
 				// eslint-disable-next-line security/detect-non-literal-fs-filename -- imgSrc is not user-provided
-				return readFile(joinSafe(directory, base), "base64").then(
+				return readFile(resolve(directory, base), "base64").then(
 					(imageAsBase64) =>
 						image.setAttribute(
 							"src",

@@ -6,7 +6,7 @@ const { getStream } = require("file-stream-rotator");
 const S = require("fluent-json-schema").default;
 const { stdSerializers, stdTimeFunctions } = require("pino");
 const { parse: secureParse } = require("secure-json-parse");
-const { dirname, joinSafe, normalizeTrim } = require("upath");
+const { dirname, join, normalize, resolve } = require("node:path");
 
 const coreCount = require("../utils/core-count");
 const { description, license, version } = require("../../package.json");
@@ -58,7 +58,7 @@ function parseCorsParameter(param) {
  */
 async function getConfig() {
 	// Directory for temporarily storing files during conversion
-	const tempDir = joinSafe(__dirname, "../../temp");
+	const tempDir = join(__dirname, "../../temp");
 
 	// Validate env variables
 	const env = envSchema({
@@ -364,9 +364,9 @@ async function getConfig() {
 		try {
 			config.fastifyInit.https = {
 				// eslint-disable-next-line security/detect-non-literal-fs-filename -- Filename not user-provided
-				cert: await readFile(normalizeTrim(env.HTTPS_SSL_CERT_PATH)),
+				cert: await readFile(normalize(env.HTTPS_SSL_CERT_PATH)),
 				// eslint-disable-next-line security/detect-non-literal-fs-filename -- Filename not user-provided
-				key: await readFile(normalizeTrim(env.HTTPS_SSL_KEY_PATH)),
+				key: await readFile(normalize(env.HTTPS_SSL_KEY_PATH)),
 			};
 		} catch (err) {
 			throw new Error(
@@ -380,7 +380,7 @@ async function getConfig() {
 			config.fastifyInit.https = {
 				passphrase: env.HTTPS_PFX_PASSPHRASE,
 				// eslint-disable-next-line security/detect-non-literal-fs-filename -- Filename not user-provided
-				pfx: await readFile(normalizeTrim(env.HTTPS_PFX_FILE_PATH)),
+				pfx: await readFile(normalize(env.HTTPS_PFX_FILE_PATH)),
 			};
 		} catch (err) {
 			throw new Error(
@@ -396,11 +396,11 @@ async function getConfig() {
 
 	// Set Pino transport
 	if (env.LOG_ROTATION_FILENAME) {
-		const logFile = normalizeTrim(env.LOG_ROTATION_FILENAME);
+		const logFile = normalize(env.LOG_ROTATION_FILENAME);
 
 		/** @see {@link https://github.com/rogerc/file-stream-rotator/#options | File stream rotator options} */
 		config.fastifyInit.logger.stream = getStream({
-			audit_file: joinSafe(dirname(logFile), ".audit.json"),
+			audit_file: resolve(dirname(logFile), ".audit.json"),
 			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
 			filename: logFile,
 			frequency: env.LOG_ROTATION_FREQUENCY || "daily",
