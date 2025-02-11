@@ -23,15 +23,6 @@ const workerConfig = {
 };
 
 /**
- * Disable HOCR (HTML representation of OCR results) and TSV (tab-separated values)
- * in output, not needed.
- */
-const workerParams = {
-	tessjs_create_hocr: "0",
-	tessjs_create_tsv: "0",
-};
-
-/**
  * @author Frazer Smith
  * @description Decorator plugin that adds the `tesseract` function,
  * which exposes the Tesseract OCR scheduler to convert images to TXT.
@@ -55,7 +46,6 @@ async function plugin(server, options) {
 				1,
 				workerConfig
 			);
-			await worker.setParameters(workerParams);
 			return scheduler.addWorker(worker);
 		})
 	);
