@@ -102,7 +102,7 @@ async function plugin(server) {
 			/** @type {string[]} */
 			const selectorsToRemove = [];
 
-			styles.forEach((style) => {
+			for (const style of styles) {
 				const styleElement = style;
 				// @ts-ignore: textContent will never be null
 				const styleObj = cssomParse(styleElement.textContent);
@@ -124,14 +124,14 @@ async function plugin(server) {
 				}
 
 				styleElement.textContent = styleObj.toString();
-			});
+			}
 
 			// Remove all elements that match the selectors
-			selectorsToRemove.forEach((selector) => {
-				document.querySelectorAll(selector).forEach((element) => {
+			for (const selector of selectorsToRemove) {
+				for (const element of document.querySelectorAll(selector)) {
 					element.remove();
-				});
-			});
+				}
+			}
 
 			result = hidden.serialize();
 		}
