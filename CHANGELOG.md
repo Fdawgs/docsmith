@@ -2,6 +2,67 @@
 
 All notable changes to this project will be documented in this file.
 
+## [12.0.1](https://github.com/Fdawgs/docsmith/compare/v12.0.0...v12.0.1) (2025-02-11)
+
+
+### Bug fixes
+
+* **plugins/rtf-to-html:** flush file buffer to disk before reading file ([48bcb6f](https://github.com/Fdawgs/docsmith/commit/48bcb6fb03752b361107fe7a5fb9148229d28571))
+* **server:** disable auth for cors requests ([2dcda0d](https://github.com/Fdawgs/docsmith/commit/2dcda0d4258acd9a9e618436196d7a0687e5eb4a))
+
+
+### Continuous integration
+
+* **automerge:** flush buffer to disk ([d1b89d6](https://github.com/Fdawgs/docsmith/commit/d1b89d6e4f9632e1115d7614e10d200f7d000000))
+* **link-check:** skip mesh link ([65b0d41](https://github.com/Fdawgs/docsmith/commit/65b0d41d078a94d4852b60262dfccc1c2f853da1))
+* **release-please:** declare schema ([6e4ab76](https://github.com/Fdawgs/docsmith/commit/6e4ab7610db40c0e62e33c54802e9585688790b0))
+
+
+### Dependencies
+
+* **dependabot:** ignore language-tag major releases ([ce36640](https://github.com/Fdawgs/docsmith/commit/ce36640d80bfe6b1f30bccf918597a19efbce262))
+* **deps-dev:** bump @commitlint/cli in the commitlint group ([#1971](https://github.com/Fdawgs/docsmith/issues/1971)) ([3c2e321](https://github.com/Fdawgs/docsmith/commit/3c2e32191a20223e1dffb39d940f4964f2bd26f4))
+* **deps-dev:** bump playwright from 1.49.0 to 1.49.1 ([#1978](https://github.com/Fdawgs/docsmith/issues/1978)) ([4e2a3cd](https://github.com/Fdawgs/docsmith/commit/4e2a3cdc0170529d1509735b89afc7e39d549acf))
+* **deps-dev:** bump playwright from 1.49.1 to 1.50.0 ([#1994](https://github.com/Fdawgs/docsmith/issues/1994)) ([7b65432](https://github.com/Fdawgs/docsmith/commit/7b654322ef35d1f7a1c761bff50c550c8350c138))
+* **deps-dev:** bump playwright from 1.50.0 to 1.50.1 ([#1997](https://github.com/Fdawgs/docsmith/issues/1997)) ([2dc3263](https://github.com/Fdawgs/docsmith/commit/2dc326335bff098e44463e677a68d861dc6a15cd))
+* **deps-dev:** bump prettier from 3.3.3 to 3.4.2 ([#1976](https://github.com/Fdawgs/docsmith/issues/1976)) ([06f3cd4](https://github.com/Fdawgs/docsmith/commit/06f3cd44c185398cd1cfe40c555c79d8ce741f50))
+* **deps:** bump @fastify/swagger in the fastify-core group ([#1992](https://github.com/Fdawgs/docsmith/issues/1992)) ([771cfb6](https://github.com/Fdawgs/docsmith/commit/771cfb69021961015acc8c770586a8260bced475))
+* **deps:** bump fastify-disablecache from 4.0.0 to 4.0.1 ([#1986](https://github.com/Fdawgs/docsmith/issues/1986)) ([155ad69](https://github.com/Fdawgs/docsmith/commit/155ad69796f18bbfd5bb50b80f62d8cb2ecdc0fd))
+* **deps:** bump fastify-floc-off from 3.0.0 to 3.0.1 ([#1988](https://github.com/Fdawgs/docsmith/issues/1988)) ([f0491ef](https://github.com/Fdawgs/docsmith/commit/f0491ef426caf623c1535509eaa735f28cb08a2f))
+* **deps:** bump fastify-json-to-xml from 2.0.0 to 2.0.1 ([#1984](https://github.com/Fdawgs/docsmith/issues/1984)) ([9f220ed](https://github.com/Fdawgs/docsmith/commit/9f220ed44e246100d211bb8a98d8f5806d614e7d))
+* **deps:** bump fix-latin1-to-utf8 from 1.0.3 to 2.0.0 ([#1989](https://github.com/Fdawgs/docsmith/issues/1989)) ([2d112a3](https://github.com/Fdawgs/docsmith/commit/2d112a39c8f393986c2f5e73e653a7fd183a395d))
+* **deps:** bump glob from 11.0.0 to 11.0.1 ([#1981](https://github.com/Fdawgs/docsmith/issues/1981)) ([32f53b8](https://github.com/Fdawgs/docsmith/commit/32f53b82fa93c4ca698c48939246b18b81e7a1a9))
+* **deps:** bump jsdom from 25.0.1 to 26.0.0 ([#1983](https://github.com/Fdawgs/docsmith/issues/1983)) ([c31f614](https://github.com/Fdawgs/docsmith/commit/c31f614cf1fd51eac158a735e5f6113e3ab0e390))
+* **deps:** bump mammoth from 1.8.0 to 1.9.0 ([#1975](https://github.com/Fdawgs/docsmith/issues/1975)) ([1ab4f4b](https://github.com/Fdawgs/docsmith/commit/1ab4f4ba41c91113b6dc00e34da08dd175015982))
+* **deps:** bump nanoid from 3.3.7 to 3.3.8 in the npm_and_yarn group ([#1970](https://github.com/Fdawgs/docsmith/issues/1970)) ([be741f7](https://github.com/Fdawgs/docsmith/commit/be741f77cb3469e626568daed67fe8e7666f0c23))
+* **deps:** bump node-poppler from 7.2.2 to 7.2.3 ([#1985](https://github.com/Fdawgs/docsmith/issues/1985)) ([bdbd93c](https://github.com/Fdawgs/docsmith/commit/bdbd93cbddfc473acdbc68a763b0054ee6978c1e))
+* **deps:** bump pino from 9.5.0 to 9.6.0 in the pino-core group ([#1974](https://github.com/Fdawgs/docsmith/issues/1974)) ([baafd2a](https://github.com/Fdawgs/docsmith/commit/baafd2a6afd89199d36e28e34d9b6a95508713a6))
+* **deps:** bump redoc from 2.2.0 to 2.3.0 ([#1993](https://github.com/Fdawgs/docsmith/issues/1993)) ([0166304](https://github.com/Fdawgs/docsmith/commit/01663040a5ea470c837f3cd1080eba87448a1e99))
+* **deps:** bump tesseract.js from 5.1.1 to 6.0.0 ([#1982](https://github.com/Fdawgs/docsmith/issues/1982)) ([bb1c233](https://github.com/Fdawgs/docsmith/commit/bb1c23379f322b0088b2a79d5c24dee07117f239))
+* **deps:** bump the fastify-core group with 10 updates ([#1980](https://github.com/Fdawgs/docsmith/issues/1980)) ([aa46fec](https://github.com/Fdawgs/docsmith/commit/aa46fecb5541d95d7662033f15aad120b8938724))
+* **deps:** bump the fastify-core group with 2 updates ([#1996](https://github.com/Fdawgs/docsmith/issues/1996)) ([466b8fe](https://github.com/Fdawgs/docsmith/commit/466b8fe097adb121e6d5fcd00cd6ed44e1b98542))
+* **deps:** bump the fastify-core group with 5 updates ([#1973](https://github.com/Fdawgs/docsmith/issues/1973)) ([71517d5](https://github.com/Fdawgs/docsmith/commit/71517d52ae2272503c736332d9d5085cbd1b3b66))
+* **deps:** bump undici from 6.21.0 to 6.21.1 in the npm_and_yarn group ([#1990](https://github.com/Fdawgs/docsmith/issues/1990)) ([6617238](https://github.com/Fdawgs/docsmith/commit/661723890a3c2000970fc6801923a22b13d5cfd2))
+* **deps:** remove upath ([60e2eff](https://github.com/Fdawgs/docsmith/commit/60e2effb96f3a697f50a5a0bbc29a0fca130e170))
+
+
+### Documentation
+
+* **readme:** rename ci badge to reflect workflow ([23d85b4](https://github.com/Fdawgs/docsmith/commit/23d85b4e60f846c2e810669a13175255458d356e))
+
+
+### Improvements
+
+* **plugins/image-to-txt:** remove redundant config values ([2fa65ec](https://github.com/Fdawgs/docsmith/commit/2fa65ecfeca5ca0268c62dc40facf42841c2e374))
+* replace `Array.forEach()` with `for...of` ([5665437](https://github.com/Fdawgs/docsmith/commit/5665437307489732c533aaf68941d2814e30f3e2))
+
+
+### Miscellaneous
+
+* **jsconfig:** set schema ([5273c21](https://github.com/Fdawgs/docsmith/commit/5273c21b09fbb83a12aeae11e1d3604e0da07cf2))
+* **license:** update license year ([7d77cee](https://github.com/Fdawgs/docsmith/commit/7d77cee00bfa35f6fce6e53c51a20298f071a27b))
+* use impersonal language ([495f45d](https://github.com/Fdawgs/docsmith/commit/495f45d0dc2b9e30fb06a9423f054f4341c29089))
+
 ## [12.0.0](https://github.com/Fdawgs/docsmith/compare/v11.2.6...v12.0.0) (2024-11-25)
 
 
