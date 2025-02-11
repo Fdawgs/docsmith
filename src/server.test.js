@@ -76,11 +76,6 @@ const expResHeadersJson = {
 	),
 };
 
-const expResHeadersText = {
-	...expResHeaders,
-	"content-type": expect.stringMatching(/^text\/plain; charset=utf-8$/iu),
-};
-
 const expResHeaders404Errors = {
 	...expResHeadersJson,
 };
@@ -725,7 +720,7 @@ describe("Server deployment", () => {
 					response: {
 						headers: {
 							json: expResHeadersJson,
-							text: expResHeadersText,
+							text: expResHeaders,
 						},
 					},
 				},
@@ -750,7 +745,7 @@ describe("Server deployment", () => {
 								vary: "Origin",
 							},
 							text: {
-								...expResHeadersText,
+								...expResHeaders,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
 								vary: "Origin",
@@ -778,7 +773,7 @@ describe("Server deployment", () => {
 									"https://notreal.nhs.uk",
 							},
 							text: {
-								...expResHeadersText,
+								...expResHeaders,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
 							},
@@ -807,7 +802,7 @@ describe("Server deployment", () => {
 								vary: "Origin",
 							},
 							text: {
-								...expResHeadersText,
+								...expResHeaders,
 								"access-control-allow-origin":
 									"https://notreal.nhs.uk",
 								vary: "Origin",
@@ -834,7 +829,34 @@ describe("Server deployment", () => {
 								"access-control-allow-origin": "*",
 							},
 							text: {
-								...expResHeadersText,
+								...expResHeaders,
+								"access-control-allow-origin": "*",
+							},
+						},
+					},
+				},
+			},
+			{
+				testName: "CORS enabled and Bearer token enabled",
+				envVariables: {
+					CORS_ORIGIN: "*",
+					AUTH_BEARER_TOKEN_ARRAY:
+						'[{"service": "test", "value": "testtoken"}]',
+				},
+				request: {
+					headers: {
+						origin: "https://notreal.nhs.uk",
+					},
+				},
+				expected: {
+					response: {
+						headers: {
+							json: {
+								...expResHeadersJson,
+								"access-control-allow-origin": "*",
+							},
+							text: {
+								...expResHeaders,
 								"access-control-allow-origin": "*",
 							},
 						},
@@ -866,23 +888,33 @@ describe("Server deployment", () => {
 					await server.close();
 				});
 
-				describe("/admin/healthcheck route", () => {
-					it("Returns `ok`", async () => {
-						const response = await server.inject({
-							method: "GET",
-							url: "/admin/healthcheck",
-							headers: {
-								accept: "text/plain",
-								origin: request.headers.origin,
-							},
-						});
+				describe("/pdf/txt route", () => {
+					if (!envVariables.AUTH_BEARER_TOKEN_ARRAY) {
+						it("Returns `ok`", async () => {
+							const response = await server.inject({
+								method: "POST",
+								url: "/pdf/txt",
+								body: await readFile(
+									"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+								),
+								query: {
+									last_page_to_convert: "1",
+								},
+								headers: {
+									accept: "application/json, text/plain",
+									"content-type": "application/pdf",
+									origin: request.headers.origin,
+								},
+							});
 
-						expect(response.body).toBe("ok");
-						expect(response.headers).toStrictEqual(
-							expected.response.headers.text
-						);
-						expect(response.statusCode).toBe(200);
-					});
+							expect(response.body).toMatch("for England");
+							expect(isHtml(response.body)).toBe(false);
+							expect(response.headers).toStrictEqual(
+								expected.response.headers.text
+							);
+							expect(response.statusCode).toBe(200);
+						});
+					}
 
 					// Only applicable if CORS enabled
 					if (envVariables.CORS_ORIGIN) {
@@ -891,7 +923,7 @@ describe("Server deployment", () => {
 								...expResHeaders,
 								"access-control-allow-headers":
 									process.env.CORS_ALLOWED_HEADERS,
-								"access-control-allow-methods": "GET, HEAD",
+								"access-control-allow-methods": "POST",
 								"access-control-allow-origin":
 									envVariables.CORS_ORIGIN === "*"
 										? "*"
@@ -917,9 +949,9 @@ describe("Server deployment", () => {
 
 							const response = await server.inject({
 								method: "OPTIONS",
-								url: "/admin/healthcheck",
+								url: "/pdf/txt",
 								headers: {
-									"access-control-request-method": "GET",
+									"access-control-request-method": "POST",
 									origin: request.headers.origin,
 								},
 							});
@@ -934,8 +966,8 @@ describe("Server deployment", () => {
 
 					it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 						const response = await server.inject({
-							method: "GET",
-							url: "/admin/healthcheck",
+							method: "POST",
+							url: "/pdf/txt",
 							headers: {
 								accept: "application/javascript",
 								origin: request.headers.origin,
