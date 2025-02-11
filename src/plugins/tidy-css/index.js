@@ -48,16 +48,15 @@ async function plugin(server) {
 
 		// Combine style elements into single element
 		const combinedStyle = dom.window.document.createElement("style");
-		styles.forEach((style) => {
+		for (const style of styles) {
 			// @ts-ignore: textContent will never be null
 			combinedStyle.textContent += style.textContent;
 			style.remove();
-		});
+		}
 
 		// @ts-ignore: textContent will never be null
 		const styleObj = cssomParse(combinedStyle.textContent);
-
-		styleObj.cssRules.forEach((rule) => {
+		for (const rule of styleObj.cssRules) {
 			if (rule instanceof CSSStyleRule) {
 				// Replace default font
 				if (
@@ -108,7 +107,7 @@ async function plugin(server) {
 					}
 				}
 			}
-		});
+		}
 
 		/**
 		 * Minifies output whilst also removing HTML comment tags

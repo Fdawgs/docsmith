@@ -70,11 +70,11 @@ describe("Tidy-HTML plugin", () => {
 		).toBe(options?.language || "en");
 
 		// Check alt attributes are removed if options.removeAlt is true
-		dom.window.document.querySelectorAll("img").forEach((image) => {
+		for (const image of dom.window.document.querySelectorAll("img")) {
 			expect(image.alt).toBe(
 				options?.removeAlt ? "" : "background image"
 			);
-		});
+		}
 
 		// Check smart quotes and em dashes are replaced with ASCII equivalents
 		expect(dom.window.document.body.textContent).not.toMatch(/[—‘’“”]/u);

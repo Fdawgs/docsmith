@@ -100,7 +100,7 @@ async function plugin(server, options) {
 		 * @type {Record<string, string | number | boolean>}
 		 */
 		const query = {};
-		Object.keys(req.query).forEach((key) => {
+		for (const key of Object.keys(req.query)) {
 			const camelCaseKey = camelCase(key);
 
 			if (pdfToHtmlAcceptedParams.has(camelCaseKey)) {
@@ -110,7 +110,7 @@ async function plugin(server, options) {
 				 */
 				query[camelCaseKey] = parseString(req.query[key]);
 			}
-		});
+		}
 		Object.assign(config.pdfToHtmlOptions, query);
 
 		// Build temp file pattern for Poppler to use for output

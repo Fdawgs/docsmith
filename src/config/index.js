@@ -413,9 +413,9 @@ async function getConfig() {
 	// Bearer token auth
 	if (env.AUTH_BEARER_TOKEN_ARRAY) {
 		const keys = new Set();
-		secureParse(env.AUTH_BEARER_TOKEN_ARRAY).forEach((element) => {
+		for (const element of secureParse(env.AUTH_BEARER_TOKEN_ARRAY)) {
 			keys.add(element.value);
-		});
+		}
 		config.bearerTokenAuthKeys = keys;
 
 		config.swagger.openapi.components.securitySchemes.bearerToken = {

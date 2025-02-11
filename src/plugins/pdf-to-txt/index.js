@@ -118,10 +118,10 @@ async function plugin(server, options) {
 		 * @type {Record<string, string | number | boolean>}
 		 */
 		const query = {};
-		Object.keys(req.query).forEach((key) => {
+		for (const key of Object.keys(req.query)) {
 			const camelCaseKey = camelCase(key);
 			query[camelCaseKey] = parseString(req.query[key]);
-		});
+		}
 
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;
 
@@ -132,11 +132,11 @@ async function plugin(server, options) {
 		 */
 		if (query.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
-			Object.keys(query).forEach((key) => {
+			for (const key of Object.keys(query)) {
 				if (!pdfToCairoAcceptedParams.has(key)) {
 					delete query[key];
 				}
-			});
+			}
 
 			// Build temp file pattern for Poppler to use for output
 			const tempFile = resolve(directory, id);
@@ -192,11 +192,11 @@ async function plugin(server, options) {
 			res.type("text/plain; charset=utf-8");
 		} else {
 			// Prune params that pdfToTxt cannot accept
-			Object.keys(query).forEach((key) => {
+			for (const key of Object.keys(query)) {
 				if (!pdfToTxtAcceptedParams.has(key)) {
 					delete query[key];
 				}
-			});
+			}
 			Object.assign(config.pdfToTxtOptions, query);
 
 			try {
