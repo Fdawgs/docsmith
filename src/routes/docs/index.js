@@ -1,6 +1,6 @@
 "use strict";
 
-const { joinSafe } = require("upath");
+const { join } = require("node:path");
 
 // Import plugins
 const staticPlugin = require("@fastify/static");
@@ -30,7 +30,7 @@ async function route(server) {
 
 		// Register redoc module to allow for standalone js and map to be used in docs.html
 		.register(staticPlugin, {
-			root: joinSafe(__dirname, "../../../node_modules/redoc/bundles"),
+			root: join(__dirname, "../../../node_modules/redoc/bundles"),
 			allowedPath: (pathName) => pathName.match(pathRegex) !== null,
 			decorateReply: false,
 			maxAge: "1 day",

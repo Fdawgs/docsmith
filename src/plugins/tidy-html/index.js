@@ -17,7 +17,7 @@ const tidyP = promisify(tidy);
  * - clean (replace legacy HTML tags)
  * - dropProprietaryAttributes (remove proprietary attributes, such as Microsoft data binding attributes)
  * - escapeCdata (convert <![CDATA[]]> sections to normal text).
- * @see {@link https://api.html-tidy.org/tidy/tidylib_api_5.8.0/tidy_quickref.html | HTMLTidy2 options}
+ * @see {@link https://api.html-tidy.org/tidy/quickref_5.8.0.html | HTMLTidy2 options}
  */
 const htmlTidyConfig = {
 	bare: true,

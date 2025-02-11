@@ -2,7 +2,7 @@
 
 const fp = require("fastify-plugin");
 const { createScheduler, createWorker } = require("tesseract.js");
-const { joinSafe } = require("upath");
+const { join } = require("node:path");
 
 /**
  * Defining the cache as read-only, and specifying the cache, core, lang, and worker
@@ -13,10 +13,10 @@ const { joinSafe } = require("upath");
  */
 const workerConfig = {
 	cacheMethod: "readOnly",
-	cachePath: joinSafe(__dirname, "../../.."),
-	corePath: joinSafe(__dirname, "../../../node_modules/tesseract.js-core"),
-	langPath: joinSafe(__dirname, "../../../ocr_lang_data"),
-	workerPath: joinSafe(
+	cachePath: join(__dirname, "../../.."),
+	corePath: join(__dirname, "../../../node_modules/tesseract.js-core"),
+	langPath: join(__dirname, "../../../ocr_lang_data"),
+	workerPath: join(
 		__dirname,
 		"../../../node_modules/tesseract.js/src/worker-script/node/index.js"
 	),

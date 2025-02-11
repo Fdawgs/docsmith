@@ -129,7 +129,6 @@
 		"redoc": "^2.3.0",
 		"secure-json-parse": "^3.0.2",
 		"tesseract.js": "^6.0.0",
-		"upath": "^2.0.1",
 		"word-extractor": "^1.0.4"
 	}
 }

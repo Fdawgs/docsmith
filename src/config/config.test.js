@@ -4,11 +4,11 @@
 
 const { unlink } = require("node:fs/promises");
 const { glob } = require("glob");
-const { joinSafe } = require("upath");
+const { join } = require("node:path");
 const getConfig = require(".");
 
 const originalEnv = { ...process.env, NODE_ENV: "production" };
-const tempDir = joinSafe(__dirname, "../../temp");
+const tempDir = join(__dirname, "../../temp");
 
 describe("Configuration", () => {
 	afterEach(() => {
@@ -178,7 +178,7 @@ describe("Configuration", () => {
 			level: undefined,
 		});
 		expect(config.fastifyInit.logger.stream.config.options).toMatchObject({
-			filename: LOG_ROTATION_FILENAME,
+			filename: expect.stringMatching(/test-log-%DATE%.log/u),
 			date_format: "YYYY-MM-DD",
 			frequency: "daily",
 		});
@@ -265,7 +265,7 @@ describe("Configuration", () => {
 		});
 		expect(config.fastifyInit.logger.stream.config.options).toMatchObject({
 			date_format: LOG_ROTATION_DATE_FORMAT,
-			filename: LOG_ROTATION_FILENAME,
+			filename: expect.stringMatching(/test-log-%DATE%.log/u),
 			frequency: LOG_ROTATION_FREQUENCY,
 			max_logs: LOG_ROTATION_MAX_LOGS,
 			size: LOG_ROTATION_MAX_SIZE,
