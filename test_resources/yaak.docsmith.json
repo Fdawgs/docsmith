@@ -1,0 +1,426 @@
+{
+	"yaakVersion": "2025.1.2",
+	"yaakSchema": 3,
+	"timestamp": "2025-02-28T08:03:59.377059500",
+	"resources": {
+		"workspaces": [
+			{
+				"model": "workspace",
+				"id": "wk_xzouXRVyVd",
+				"createdAt": "2021-01-28T13:36:50.710",
+				"updatedAt": "2025-02-28T08:00:48",
+				"name": "Docsmith",
+				"description": "",
+				"settingValidateCertificates": true,
+				"settingFollowRedirects": true,
+				"settingRequestTimeout": 0
+			}
+		],
+		"environments": [],
+		"folders": [
+			{
+				"model": "folder",
+				"id": "fl_R5nRtBWxoe",
+				"createdAt": "2025-02-28T08:03:11.380720600",
+				"updatedAt": "2025-02-28T08:03:14.400860700",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": null,
+				"name": "doc",
+				"description": "",
+				"sortPriority": 937.5
+			},
+			{
+				"model": "folder",
+				"id": "fl_vZiK8pNPWv",
+				"createdAt": "2025-02-28T08:02:58.825002700",
+				"updatedAt": "2025-02-28T08:03:04.190239400",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": null,
+				"name": "html",
+				"description": "",
+				"sortPriority": 1250.0
+			},
+			{
+				"model": "folder",
+				"id": "fl_WRsLDejsN6",
+				"createdAt": "2025-02-28T08:02:36.747134900",
+				"updatedAt": "2025-02-28T08:02:43.481522",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": null,
+				"name": "rtf",
+				"description": "",
+				"sortPriority": 1750.0
+			},
+			{
+				"model": "folder",
+				"id": "fl_UUVT2EuiUs",
+				"createdAt": "2025-02-28T08:02:21.449685700",
+				"updatedAt": "2025-02-28T08:02:25.030448700",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": null,
+				"name": "pdf",
+				"description": "",
+				"sortPriority": 1500.0
+			},
+			{
+				"model": "folder",
+				"id": "fl_zXVGiCDuLS",
+				"createdAt": "2025-02-28T08:02:02.140607400",
+				"updatedAt": "2025-02-28T08:02:06.125385500",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": null,
+				"name": "docx",
+				"description": "",
+				"sortPriority": 1000.0
+			}
+		],
+		"httpRequests": [
+			{
+				"model": "http_request",
+				"id": "rq_dw364uhw6j",
+				"createdAt": "2023-05-16T16:45:31.376",
+				"updatedAt": "2025-02-28T08:03:06.993215200",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": null,
+				"authentication": {},
+				"authenticationType": null,
+				"body": {
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\html_valid.html"
+				},
+				"bodyType": "binary",
+				"description": "",
+				"headers": [
+					{
+						"enabled": true,
+						"name": "Accept-Encoding",
+						"value": "br, gzip, deflate",
+						"id": null
+					},
+					{
+						"enabled": true,
+						"name": "Content-Type",
+						"value": "text/html",
+						"id": null
+					}
+				],
+				"method": "POST",
+				"name": "html/txt",
+				"sortPriority": 1375.0,
+				"url": "http://localhost:3000/html/txt",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_Y6ZpVAz2Zk",
+				"createdAt": "2023-05-03T14:45:31.753",
+				"updatedAt": "2025-02-28T08:03:15.873499",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": "fl_R5nRtBWxoe",
+				"authentication": {},
+				"authenticationType": null,
+				"body": {
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\doc_valid.doc"
+				},
+				"bodyType": "binary",
+				"description": "",
+				"headers": [
+					{
+						"enabled": true,
+						"name": "Accept-Encoding",
+						"value": "br, gzip, deflate",
+						"id": null
+					},
+					{
+						"enabled": true,
+						"name": "Content-Type",
+						"value": "application/msword",
+						"id": null
+					}
+				],
+				"method": "POST",
+				"name": "doc/txt",
+				"sortPriority": 0.0,
+				"url": "http://localhost:3000/doc/txt",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_yL2kq86kj2",
+				"createdAt": "2022-04-04T09:48:52.023",
+				"updatedAt": "2025-02-28T08:02:53.686523700",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": null,
+				"authentication": {},
+				"authenticationType": null,
+				"body": {},
+				"bodyType": null,
+				"description": "",
+				"headers": [],
+				"method": "GET",
+				"name": "docs/openapi",
+				"sortPriority": 875.0,
+				"url": "http://localhost:3000/docs/openapi",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_uGiVA7knM4",
+				"createdAt": "2022-03-17T08:23:42.745",
+				"updatedAt": "2025-02-28T08:02:10.630640600",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": "fl_zXVGiCDuLS",
+				"authentication": {},
+				"authenticationType": null,
+				"body": {
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\docx_valid.docx"
+				},
+				"bodyType": "binary",
+				"description": "",
+				"headers": [
+					{
+						"enabled": true,
+						"name": "Accept-Encoding",
+						"value": "br, gzip, deflate",
+						"id": null
+					},
+					{
+						"enabled": true,
+						"name": "Content-Type",
+						"value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+						"id": null
+					}
+				],
+				"method": "POST",
+				"name": "docx/html",
+				"sortPriority": 0.0,
+				"url": "http://localhost:3000/docx/html",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_9XCq6c5XRs",
+				"createdAt": "2022-03-17T08:23:42.741",
+				"updatedAt": "2025-02-28T08:02:10.630980800",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": "fl_zXVGiCDuLS",
+				"authentication": {},
+				"authenticationType": null,
+				"body": {
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\docx_valid.docx"
+				},
+				"bodyType": "binary",
+				"description": "",
+				"headers": [
+					{
+						"enabled": true,
+						"name": "Accept-Encoding",
+						"value": "br, gzip, deflate",
+						"id": null
+					},
+					{
+						"enabled": true,
+						"name": "Content-Type",
+						"value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+						"id": null
+					}
+				],
+				"method": "POST",
+				"name": "docx/txt",
+				"sortPriority": 1000.0,
+				"url": "http://localhost:3000/docx/txt",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_him5tZfPNV",
+				"createdAt": "2022-03-17T08:23:42.738",
+				"updatedAt": "2025-02-28T08:02:33.318097",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": "fl_UUVT2EuiUs",
+				"authentication": {},
+				"authenticationType": null,
+				"body": {
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+				},
+				"bodyType": "binary",
+				"description": "",
+				"headers": [
+					{
+						"enabled": true,
+						"name": "Accept-Encoding",
+						"value": "br, gzip, deflate",
+						"id": null
+					},
+					{
+						"enabled": true,
+						"name": "Content-Type",
+						"value": "application/pdf",
+						"id": null
+					}
+				],
+				"method": "POST",
+				"name": "pdf/txt?ocr=true",
+				"sortPriority": 2000.0,
+				"url": "http://localhost:3000/pdf/txt",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_CWRJbyzwm7",
+				"createdAt": "2022-03-17T08:23:42.734",
+				"updatedAt": "2025-02-28T08:02:48.454827800",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": "fl_WRsLDejsN6",
+				"authentication": {},
+				"authenticationType": null,
+				"body": {
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\rtf_valid.rtf"
+				},
+				"bodyType": "binary",
+				"description": "",
+				"headers": [
+					{
+						"enabled": true,
+						"name": "Accept-Encoding",
+						"value": "br, gzip, deflate",
+						"id": null
+					},
+					{
+						"enabled": true,
+						"name": "Content-Type",
+						"value": "application/rtf",
+						"id": null
+					}
+				],
+				"method": "POST",
+				"name": "rtf/html",
+				"sortPriority": 0.0,
+				"url": "http://localhost:3000/rtf/html",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_UZgTk3HFeL",
+				"createdAt": "2022-03-17T08:23:42.726",
+				"updatedAt": "2025-02-28T08:02:49.857045800",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": null,
+				"authentication": {},
+				"authenticationType": null,
+				"body": {},
+				"bodyType": null,
+				"description": "",
+				"headers": [],
+				"method": "GET",
+				"name": "admin/healthcheck",
+				"sortPriority": 500.0,
+				"url": "http://localhost:3000/admin/healthcheck",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_9QvXYutnzg",
+				"createdAt": "2022-03-17T08:23:42.723",
+				"updatedAt": "2025-02-28T08:02:33.317955700",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": "fl_UUVT2EuiUs",
+				"authentication": {},
+				"authenticationType": null,
+				"body": {
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+				},
+				"bodyType": "binary",
+				"description": "",
+				"headers": [
+					{
+						"enabled": true,
+						"name": "Accept-Encoding",
+						"value": "br, gzip, deflate",
+						"id": null
+					},
+					{
+						"enabled": true,
+						"name": "Content-Type",
+						"value": "application/pdf",
+						"id": null
+					}
+				],
+				"method": "POST",
+				"name": "pdf/html",
+				"sortPriority": 0.0,
+				"url": "http://localhost:3000/pdf/html",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_mH5veH5EGa",
+				"createdAt": "2022-03-17T08:23:42.720",
+				"updatedAt": "2025-02-28T08:02:48.454963400",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": "fl_WRsLDejsN6",
+				"authentication": {},
+				"authenticationType": null,
+				"body": {
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\rtf_valid.rtf"
+				},
+				"bodyType": "binary",
+				"description": "",
+				"headers": [
+					{
+						"enabled": true,
+						"name": "Accept-Encoding",
+						"value": "br, gzip, deflate",
+						"id": null
+					},
+					{
+						"enabled": true,
+						"name": "Content-Type",
+						"value": "application/rtf",
+						"id": null
+					}
+				],
+				"method": "POST",
+				"name": "rtf/txt",
+				"sortPriority": 1000.0,
+				"url": "http://localhost:3000/rtf/txt",
+				"urlParameters": []
+			},
+			{
+				"model": "http_request",
+				"id": "rq_Vm56gJKJxH",
+				"createdAt": "2022-03-17T08:23:42.715",
+				"updatedAt": "2025-02-28T08:02:33.318025700",
+				"workspaceId": "wk_xzouXRVyVd",
+				"folderId": "fl_UUVT2EuiUs",
+				"authentication": {},
+				"authenticationType": null,
+				"body": {
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+				},
+				"bodyType": "binary",
+				"description": "",
+				"headers": [
+					{
+						"enabled": true,
+						"name": "Accept-Encoding",
+						"value": "br, gzip, deflate",
+						"id": null
+					},
+					{
+						"enabled": true,
+						"name": "Content-Type",
+						"value": "application/pdf",
+						"id": null
+					}
+				],
+				"method": "POST",
+				"name": "pdf/txt",
+				"sortPriority": 1000.0,
+				"url": "http://localhost:3000/pdf/txt",
+				"urlParameters": []
+			}
+		],
+		"grpcRequests": [],
+		"websocketRequests": []
+	}
+}
