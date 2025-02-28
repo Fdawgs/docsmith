@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [12.0.2](https://github.com/Fdawgs/docsmith/compare/v12.0.1...v12.0.2) (2025-02-28)
+
+
+### Miscellaneous
+
+* **test_resources:** replace insomnia example reqs with yaak ([751acfb](https://github.com/Fdawgs/docsmith/commit/751acfbb62a6ad7ddd3dafa582d1cedb072fa8c2))
+
 ## [12.0.1](https://github.com/Fdawgs/docsmith/compare/v12.0.0...v12.0.1) (2025-02-11)
 
 
