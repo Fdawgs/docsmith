@@ -126,7 +126,7 @@
 		"node-poppler": "^7.2.3",
 		"node-unrtf": "^5.0.4",
 		"pino": "^9.6.0",
-		"redoc": "^2.3.0",
+		"redoc": "^2.4.0",
 		"secure-json-parse": "^3.0.2",
 		"tesseract.js": "^6.0.0",
 		"word-extractor": "^1.0.4"
