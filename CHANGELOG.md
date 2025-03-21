@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [12.0.2](https://github.com/Fdawgs/docsmith/compare/v12.0.1...v12.0.2) (2025-03-21)
+
+
+### Continuous integration
+
+* **.github:** pin actions to commit-hash; set permissions at job level ([#2013](https://github.com/Fdawgs/docsmith/issues/2013)) ([b984415](https://github.com/Fdawgs/docsmith/commit/b984415537e33f0749595b40fa895ba33afe1214))
+* **codeql:** analyse github actions ([#2018](https://github.com/Fdawgs/docsmith/issues/2018)) ([d5e06d8](https://github.com/Fdawgs/docsmith/commit/d5e06d891caa2231a821762f56ef330642eb2203))
+* **codeql:** sort params ([8efe7e7](https://github.com/Fdawgs/docsmith/commit/8efe7e76efc7a8b29ba3edeeb0fad7ea8f7f1472))
+
+
+### Dependencies
+
+* **deps-dev:** bump playwright from 1.50.1 to 1.51.1 ([#2016](https://github.com/Fdawgs/docsmith/issues/2016)) ([366c706](https://github.com/Fdawgs/docsmith/commit/366c706b83e3bbf4ce8d456c1795a52607b661de))
+* **deps-dev:** bump prettier from 3.4.2 to 3.5.3 ([#2017](https://github.com/Fdawgs/docsmith/issues/2017)) ([90601eb](https://github.com/Fdawgs/docsmith/commit/90601eb9a489a62050400dd7d4ac18719fac0778))
+* **deps-dev:** bump the commitlint group with 2 updates ([#2005](https://github.com/Fdawgs/docsmith/issues/2005)) ([acc7e8e](https://github.com/Fdawgs/docsmith/commit/acc7e8e34063a2e4a4e02d27557a907103d91331))
+* **deps-dev:** bump the commitlint group with 2 updates ([#2014](https://github.com/Fdawgs/docsmith/issues/2014)) ([7f0f0c6](https://github.com/Fdawgs/docsmith/commit/7f0f0c6b7f30b4efaba66973b996d3016752de4c))
+* **deps:** bump fix-latin1-to-utf8 from 2.0.0 to 2.0.1 ([#2010](https://github.com/Fdawgs/docsmith/issues/2010)) ([afb1a8a](https://github.com/Fdawgs/docsmith/commit/afb1a8a258e8a1226849e2bc904cf182eb92367d))
+* **deps:** bump node-poppler from 7.2.3 to 7.2.4 ([#2012](https://github.com/Fdawgs/docsmith/issues/2012)) ([a42efd6](https://github.com/Fdawgs/docsmith/commit/a42efd60eb7a58efc205ed4b83a9f72e1c8fe801))
+* **deps:** bump node-unrtf from 5.0.4 to 5.0.5 ([#2011](https://github.com/Fdawgs/docsmith/issues/2011)) ([79bea31](https://github.com/Fdawgs/docsmith/commit/79bea3115858b674e16b2fe1410e531f1a9ceaa1))
+* **deps:** bump redoc from 2.3.0 to 2.4.0 ([#2009](https://github.com/Fdawgs/docsmith/issues/2009)) ([2554ea1](https://github.com/Fdawgs/docsmith/commit/2554ea1633ddaf924cce6b0defcbf19674a77a4f))
+* **deps:** bump the fastify-core group with 2 updates ([#2015](https://github.com/Fdawgs/docsmith/issues/2015)) ([131e49d](https://github.com/Fdawgs/docsmith/commit/131e49d45b232fc422a9620e1ca7c14c5d7edb7a))
+* **deps:** bump the fastify-core group with 3 updates ([#2007](https://github.com/Fdawgs/docsmith/issues/2007)) ([c2e3884](https://github.com/Fdawgs/docsmith/commit/c2e388494ed83c87cdfcb1a2f5eb0d0044035f11))
+
+
+### Miscellaneous
+
+* **test_resources:** replace insomnia example reqs with yaak ([751acfb](https://github.com/Fdawgs/docsmith/commit/751acfbb62a6ad7ddd3dafa582d1cedb072fa8c2))
+
 ## [12.0.1](https://github.com/Fdawgs/docsmith/compare/v12.0.0...v12.0.1) (2025-02-11)
 
 
