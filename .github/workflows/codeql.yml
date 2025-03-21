@@ -27,7 +27,7 @@ jobs:
         if: github.event.pull_request.draft == false
         strategy:
             matrix:
-                languages: ["javascript-typescript", "actions"]
+                languages: ["actions", "javascript-typescript"]
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -42,8 +42,8 @@ jobs:
             - name: Initialise CodeQL
               uses: github/codeql-action/init@5f8171a638ada777af81d42b55959a643bb29017 # v3.28.12
               with:
-                  languages: ${{ matrix.languages }}
                   config-file: ./.github/codeql-config.yml
+                  languages: ${{ matrix.languages }}
 
             - name: Perform CodeQL analysis
               uses: github/codeql-action/analyze@5f8171a638ada777af81d42b55959a643bb29017 # v3.28.12
