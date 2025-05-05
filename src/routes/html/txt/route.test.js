@@ -45,7 +45,7 @@ describe("HTML-to-TXT route", () => {
 			},
 		},
 		{
-			testName: "XHTML file file converted to TXT",
+			testName: "XHTML file converted to TXT",
 			filePath: "./test_resources/test_files/xhtml_valid.xhtml",
 			headers: {
 				"content-type": "application/xhtml+xml",
