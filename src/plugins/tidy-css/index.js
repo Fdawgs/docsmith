@@ -48,7 +48,9 @@ async function plugin(server) {
 
 		// Combine style elements into single element
 		const combinedStyle = dom.window.document.createElement("style");
-		for (const style of styles) {
+		const stylesLength = styles.length;
+		for (let i = 0; i < stylesLength; i += 1) {
+			const style = styles[i];
 			// @ts-ignore: textContent will never be null
 			combinedStyle.textContent += style.textContent;
 			style.remove();
@@ -56,7 +58,9 @@ async function plugin(server) {
 
 		// @ts-ignore: textContent will never be null
 		const styleObj = cssomParse(combinedStyle.textContent);
-		for (const rule of styleObj.cssRules) {
+		const cssRulesLength = styleObj.cssRules.length;
+		for (let i = 0; i < cssRulesLength; i += 1) {
+			const rule = styleObj.cssRules[i];
 			if (rule instanceof CSSStyleRule) {
 				// Replace default font
 				if (

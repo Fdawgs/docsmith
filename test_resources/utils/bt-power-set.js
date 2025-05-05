@@ -14,7 +14,8 @@ function btPowerSetRecursive(
 	currentSubSet = [],
 	startAt = 0
 ) {
-	for (let position = startAt; position < originalSet.length; position += 1) {
+	const originalSetLength = originalSet.length;
+	for (let position = startAt; position < originalSetLength; position += 1) {
 		currentSubSet.push(originalSet[position]);
 		allSubsets.push([...currentSubSet]);
 
