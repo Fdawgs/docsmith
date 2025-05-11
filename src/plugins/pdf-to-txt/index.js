@@ -118,7 +118,10 @@ async function plugin(server, options) {
 		 * @type {Record<string, string | number | boolean>}
 		 */
 		const query = {};
-		for (const key of Object.keys(req.query)) {
+		const keys = Object.keys(req.query);
+		const keysLength = keys.length;
+		for (let i = 0; i < keysLength; i += 1) {
+			const key = keys[i];
 			const camelCaseKey = camelCase(key);
 			query[camelCaseKey] = parseString(req.query[key]);
 		}
@@ -132,7 +135,8 @@ async function plugin(server, options) {
 		 */
 		if (query.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
-			for (const key of Object.keys(query)) {
+			for (let i = 0; i < keysLength; i += 1) {
+				const key = keys[i];
 				if (!pdfToCairoAcceptedParams.has(key)) {
 					delete query[key];
 				}
@@ -192,7 +196,8 @@ async function plugin(server, options) {
 			res.type("text/plain; charset=utf-8");
 		} else {
 			// Prune params that pdfToTxt cannot accept
-			for (const key of Object.keys(query)) {
+			for (let i = 0; i < keysLength; i += 1) {
+				const key = keys[i];
 				if (!pdfToTxtAcceptedParams.has(key)) {
 					delete query[key];
 				}

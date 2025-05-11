@@ -100,9 +100,11 @@ async function plugin(server, options) {
 		 * @type {Record<string, string | number | boolean>}
 		 */
 		const query = {};
-		for (const key of Object.keys(req.query)) {
+		const keys = Object.keys(req.query);
+		const keysLength = keys.length;
+		for (let i = 0; i < keysLength; i += 1) {
+			const key = keys[i];
 			const camelCaseKey = camelCase(key);
-
 			if (pdfToHtmlAcceptedParams.has(camelCaseKey)) {
 				/**
 				 * Convert query string params to literal keys to
@@ -154,11 +156,13 @@ async function plugin(server, options) {
 		 */
 		const dom = new JSDOM(await readFile(`${tempFile}-html.html`));
 		const titles = dom.window.document.querySelectorAll("title");
-		for (let i = 1; i < titles.length; i += 1) {
+		const titlesLength = titles.length;
+		for (let i = 1; i < titlesLength; i += 1) {
 			titles[i].remove();
 		}
 		const metas = dom.window.document.querySelectorAll("meta");
-		for (let i = 1; i < metas.length; i += 1) {
+		const metasLength = metas.length;
+		for (let i = 1; i < metasLength; i += 1) {
 			metas[i].remove();
 		}
 
