@@ -123,7 +123,7 @@
 		"jsdom": "^26.1.0",
 		"language-tags": "^1.0.9",
 		"mammoth": "^1.9.0",
-		"node-poppler": "^8.0.0",
+		"node-poppler": "^8.0.1",
 		"node-unrtf": "^6.0.0",
 		"pino": "^9.7.0",
 		"redoc": "^2.5.0",
