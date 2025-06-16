@@ -2,6 +2,65 @@
 
 All notable changes to this project will be documented in this file.
 
+## [12.0.2](https://github.com/Fdawgs/docsmith/compare/v12.0.1...v12.0.2) (2025-06-16)
+
+
+### Continuous integration
+
+* **.github:** pin actions to commit-hash; set permissions at job level ([#2013](https://github.com/Fdawgs/docsmith/issues/2013)) ([b984415](https://github.com/Fdawgs/docsmith/commit/b984415537e33f0749595b40fa895ba33afe1214))
+* add top-level workflow permissions ([#2019](https://github.com/Fdawgs/docsmith/issues/2019)) ([be368ec](https://github.com/Fdawgs/docsmith/commit/be368ec1c6cdeb12f442092ff159d243bd95151c))
+* **ci:** add node 24 to test matrix ([#2038](https://github.com/Fdawgs/docsmith/issues/2038)) ([18c49b5](https://github.com/Fdawgs/docsmith/commit/18c49b562bfe1c34ad35fc0bfbdfca6a4ede05c0))
+* **codeql:** analyse github actions ([#2018](https://github.com/Fdawgs/docsmith/issues/2018)) ([d5e06d8](https://github.com/Fdawgs/docsmith/commit/d5e06d891caa2231a821762f56ef330642eb2203))
+* **codeql:** sort params ([8efe7e7](https://github.com/Fdawgs/docsmith/commit/8efe7e76efc7a8b29ba3edeeb0fad7ea8f7f1472))
+* **deps:** bump actions/dependency-review-action from 4.5.0 to 4.6.0 ([#2022](https://github.com/Fdawgs/docsmith/issues/2022)) ([ab04989](https://github.com/Fdawgs/docsmith/commit/ab049897978d0afad63e1f689897a295232259b3))
+* **deps:** bump actions/dependency-review-action from 4.6.0 to 4.7.1 ([#2039](https://github.com/Fdawgs/docsmith/issues/2039)) ([4521051](https://github.com/Fdawgs/docsmith/commit/45210512f35111a5c0f56311c6ab8cf6fdf4c8d4))
+* **deps:** bump actions/setup-node from 4.3.0 to 4.4.0 ([#2024](https://github.com/Fdawgs/docsmith/issues/2024)) ([9863fbc](https://github.com/Fdawgs/docsmith/commit/9863fbc6ad468aaf190ba64399f1062a2d21b042))
+* **deps:** bump github/codeql-action from 3.28.12 to 3.28.13 ([#2020](https://github.com/Fdawgs/docsmith/issues/2020)) ([cb7f566](https://github.com/Fdawgs/docsmith/commit/cb7f566c45986de1759a34b29939849fddc8df22))
+* **deps:** bump github/codeql-action from 3.28.13 to 3.28.16 ([#2023](https://github.com/Fdawgs/docsmith/issues/2023)) ([8b4c0af](https://github.com/Fdawgs/docsmith/commit/8b4c0af472196196b20393f1b2f2ca1b7ac8d66a))
+* **deps:** bump github/codeql-action from 3.28.16 to 3.28.17 ([#2035](https://github.com/Fdawgs/docsmith/issues/2035)) ([53029ae](https://github.com/Fdawgs/docsmith/commit/53029ae40b01b9669355bc498513cbbdd30fb807))
+* **deps:** bump github/codeql-action from 3.28.17 to 3.28.18 ([#2040](https://github.com/Fdawgs/docsmith/issues/2040)) ([62cc298](https://github.com/Fdawgs/docsmith/commit/62cc298842705b4155fe406bd66411f77ef45137))
+* use tags for immutable github actions ([#2047](https://github.com/Fdawgs/docsmith/issues/2047)) ([ecc6434](https://github.com/Fdawgs/docsmith/commit/ecc6434e485fcf4ca0e6ce6a111208d803e27e51))
+
+
+### Dependencies
+
+* **deps-dev:** bump lockfile-lint from 4.14.0 to 4.14.1 ([#2030](https://github.com/Fdawgs/docsmith/issues/2030)) ([f93dfb3](https://github.com/Fdawgs/docsmith/commit/f93dfb3aea0cab867ac017ac736aa5e27bd6095b))
+* **deps-dev:** bump playwright from 1.50.1 to 1.51.1 ([#2016](https://github.com/Fdawgs/docsmith/issues/2016)) ([366c706](https://github.com/Fdawgs/docsmith/commit/366c706b83e3bbf4ce8d456c1795a52607b661de))
+* **deps-dev:** bump playwright from 1.51.1 to 1.52.0 ([#2028](https://github.com/Fdawgs/docsmith/issues/2028)) ([e7c4d6a](https://github.com/Fdawgs/docsmith/commit/e7c4d6a1253db8277e874ff50c9d65ab2e163187))
+* **deps-dev:** bump prettier from 3.4.2 to 3.5.3 ([#2017](https://github.com/Fdawgs/docsmith/issues/2017)) ([90601eb](https://github.com/Fdawgs/docsmith/commit/90601eb9a489a62050400dd7d4ac18719fac0778))
+* **deps-dev:** bump the commitlint group with 2 updates ([#2005](https://github.com/Fdawgs/docsmith/issues/2005)) ([acc7e8e](https://github.com/Fdawgs/docsmith/commit/acc7e8e34063a2e4a4e02d27557a907103d91331))
+* **deps-dev:** bump the commitlint group with 2 updates ([#2014](https://github.com/Fdawgs/docsmith/issues/2014)) ([7f0f0c6](https://github.com/Fdawgs/docsmith/commit/7f0f0c6b7f30b4efaba66973b996d3016752de4c))
+* **deps-dev:** bump the commitlint group with 2 updates ([#2041](https://github.com/Fdawgs/docsmith/issues/2041)) ([21a6d1f](https://github.com/Fdawgs/docsmith/commit/21a6d1ffec364c4dfa8dbf462a62408997d0ebe7))
+* **deps:** bump fix-latin1-to-utf8 from 2.0.0 to 2.0.1 ([#2010](https://github.com/Fdawgs/docsmith/issues/2010)) ([afb1a8a](https://github.com/Fdawgs/docsmith/commit/afb1a8a258e8a1226849e2bc904cf182eb92367d))
+* **deps:** bump glob from 11.0.1 to 11.0.2 ([#2029](https://github.com/Fdawgs/docsmith/issues/2029)) ([28d21f2](https://github.com/Fdawgs/docsmith/commit/28d21f224db8c3efb3f02118ace37a6f724c2522))
+* **deps:** bump jsdom from 26.0.0 to 26.1.0 ([#2031](https://github.com/Fdawgs/docsmith/issues/2031)) ([ffa888b](https://github.com/Fdawgs/docsmith/commit/ffa888b4be2e9f2d0f850f60869c5df33074fa41))
+* **deps:** bump mammoth from 1.9.0 to 1.9.1 ([#2046](https://github.com/Fdawgs/docsmith/issues/2046)) ([0233e42](https://github.com/Fdawgs/docsmith/commit/0233e42f7c9ad8bfac4ad99e45ffdcc743985ed6))
+* **deps:** bump node-poppler from 7.2.3 to 7.2.4 ([#2012](https://github.com/Fdawgs/docsmith/issues/2012)) ([a42efd6](https://github.com/Fdawgs/docsmith/commit/a42efd60eb7a58efc205ed4b83a9f72e1c8fe801))
+* **deps:** bump node-poppler from 7.2.4 to 8.0.0 ([#2037](https://github.com/Fdawgs/docsmith/issues/2037)) ([69ea558](https://github.com/Fdawgs/docsmith/commit/69ea5585b667524468012b4192cd6f28e409a1e3))
+* **deps:** bump node-poppler from 8.0.0 to 8.0.1 ([#2044](https://github.com/Fdawgs/docsmith/issues/2044)) ([34172c4](https://github.com/Fdawgs/docsmith/commit/34172c49256ec7d1ede244ba855423d1c17bd41d))
+* **deps:** bump node-unrtf from 5.0.4 to 5.0.5 ([#2011](https://github.com/Fdawgs/docsmith/issues/2011)) ([79bea31](https://github.com/Fdawgs/docsmith/commit/79bea3115858b674e16b2fe1410e531f1a9ceaa1))
+* **deps:** bump node-unrtf from 5.0.5 to 6.0.0 ([#2036](https://github.com/Fdawgs/docsmith/issues/2036)) ([16f546b](https://github.com/Fdawgs/docsmith/commit/16f546b7984492c6fb5b32106c5069bd16fd95d7))
+* **deps:** bump node-unrtf from 6.0.0 to 6.0.1 ([#2045](https://github.com/Fdawgs/docsmith/issues/2045)) ([32035a2](https://github.com/Fdawgs/docsmith/commit/32035a22d00607a3a210625537899a53fbc39f92))
+* **deps:** bump pino from 9.6.0 to 9.7.0 in the pino-core group ([#2043](https://github.com/Fdawgs/docsmith/issues/2043)) ([1e679b8](https://github.com/Fdawgs/docsmith/commit/1e679b8d594638dde4b405400583c695bf6d4042))
+* **deps:** bump redoc from 2.3.0 to 2.4.0 ([#2009](https://github.com/Fdawgs/docsmith/issues/2009)) ([2554ea1](https://github.com/Fdawgs/docsmith/commit/2554ea1633ddaf924cce6b0defcbf19674a77a4f))
+* **deps:** bump redoc from 2.4.0 to 2.5.0 ([#2026](https://github.com/Fdawgs/docsmith/issues/2026)) ([4bc0bb9](https://github.com/Fdawgs/docsmith/commit/4bc0bb94610810606cff31a7422f7078fe72dc74))
+* **deps:** bump tesseract.js from 6.0.0 to 6.0.1 ([#2027](https://github.com/Fdawgs/docsmith/issues/2027)) ([31fe4e5](https://github.com/Fdawgs/docsmith/commit/31fe4e566442454b342048e3e90d01b25e674c52))
+* **deps:** bump the fastify-core group with 2 updates ([#2015](https://github.com/Fdawgs/docsmith/issues/2015)) ([131e49d](https://github.com/Fdawgs/docsmith/commit/131e49d45b232fc422a9620e1ca7c14c5d7edb7a))
+* **deps:** bump the fastify-core group with 2 updates ([#2021](https://github.com/Fdawgs/docsmith/issues/2021)) ([3aa1680](https://github.com/Fdawgs/docsmith/commit/3aa16801390c67908a58da022524ac98766899bb))
+* **deps:** bump the fastify-core group with 3 updates ([#2007](https://github.com/Fdawgs/docsmith/issues/2007)) ([c2e3884](https://github.com/Fdawgs/docsmith/commit/c2e388494ed83c87cdfcb1a2f5eb0d0044035f11))
+* **deps:** bump the fastify-core group with 4 updates ([#2025](https://github.com/Fdawgs/docsmith/issues/2025)) ([e8e6eb4](https://github.com/Fdawgs/docsmith/commit/e8e6eb42b1aa5ea27f69c854bcc40d53f65fe4ae))
+* **deps:** bump the fastify-core group with 5 updates ([#2042](https://github.com/Fdawgs/docsmith/issues/2042)) ([19aa7af](https://github.com/Fdawgs/docsmith/commit/19aa7afca237cace2602f9730a7295fc31037201))
+
+
+### Miscellaneous
+
+* **test_resources:** replace insomnia example reqs with yaak ([751acfb](https://github.com/Fdawgs/docsmith/commit/751acfbb62a6ad7ddd3dafa582d1cedb072fa8c2))
+
+
+### Tests
+
+* **routes/html/txt:** fix test name ([#2034](https://github.com/Fdawgs/docsmith/issues/2034)) ([cb6d6b6](https://github.com/Fdawgs/docsmith/commit/cb6d6b64769d498161725ed0c502ee373d66a6cc))
+
 ## [12.0.1](https://github.com/Fdawgs/docsmith/compare/v12.0.0...v12.0.1) (2025-02-11)
 
 
