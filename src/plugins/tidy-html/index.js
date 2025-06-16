@@ -101,16 +101,16 @@ async function plugin(server) {
 
 			/** @type {string[]} */
 			const selectorsToRemove = [];
-
-			for (const style of styles) {
-				const styleElement = style;
+			const stylesLength = styles.length;
+			for (let i = 0; i < stylesLength; i += 1) {
+				const styleElement = styles[i];
 				// @ts-ignore: textContent will never be null
 				const styleObj = cssomParse(styleElement.textContent);
 				const cssRulesLength = styleObj.cssRules.length;
 
 				// Iterate over CSS rules in reverse to avoid index issues
-				for (let i = cssRulesLength - 1; i >= 0; i -= 1) {
-					const rule = styleObj.cssRules[i];
+				for (let j = cssRulesLength - 1; j >= 0; j -= 1) {
+					const rule = styleObj.cssRules[j];
 					if (rule instanceof CSSStyleRule) {
 						if (
 							rule.style.display === "none" ||
@@ -118,7 +118,7 @@ async function plugin(server) {
 						) {
 							selectorsToRemove.push(rule.selectorText);
 							// Remove rule from style tag
-							styleObj.deleteRule(i);
+							styleObj.deleteRule(j);
 						}
 					}
 				}
@@ -127,9 +127,14 @@ async function plugin(server) {
 			}
 
 			// Remove all elements that match the selectors
-			for (const selector of selectorsToRemove) {
-				for (const element of document.querySelectorAll(selector)) {
-					element.remove();
+			const selectorsLength = selectorsToRemove.length;
+			for (let i = 0; i < selectorsLength; i += 1) {
+				const elements = document.querySelectorAll(
+					selectorsToRemove[i]
+				);
+				const elementsLength = elements.length;
+				for (let j = 0; j < elementsLength; j += 1) {
+					elements[j].remove();
 				}
 			}
 
