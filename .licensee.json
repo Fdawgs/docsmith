@@ -1,0 +1,13 @@
+{
+	"licenses": {
+		"spdx": ["CC-BY-3.0"],
+		"blueOak": "bronze"
+	},
+	"ignore": [
+		{ "prefix": "decko" },
+		{ "prefix": "duck" },
+		{ "prefix": "stickyfill" },
+		{ "prefix": "url-template" }
+	],
+	"corrections": true
+}
