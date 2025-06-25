@@ -28,7 +28,7 @@ After cloning the repository and installing all the dependencies, there are seve
 - `npm run lint` - Runs [ESLint](https://eslint.org) over all support file types
 - `npm run lint:prettier` - Runs [Prettier](https://prettier.io) over all supported file types
 - `npm run test:unit` - Runs tests in src directory
-- `npm test` - Runs all of the above scripts together
+- `npm test` - Runs all of the above linting and testing scripts together
 - `npm run start:dev` - Starts a development server with live reload
 
 ### Production workflow
