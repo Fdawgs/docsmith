@@ -70,8 +70,10 @@ describe("Tidy-HTML plugin", () => {
 		).toBe(options?.language || "en");
 
 		// Check alt attributes are removed if options.removeAlt is true
-		for (const image of dom.window.document.querySelectorAll("img")) {
-			expect(image.alt).toBe(
+		const images = dom.window.document.querySelectorAll("img");
+		const imagesLength = images.length;
+		for (let i = 0; i < imagesLength; i += 1) {
+			expect(images[i].alt).toBe(
 				options?.removeAlt ? "" : "background image"
 			);
 		}

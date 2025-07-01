@@ -413,8 +413,10 @@ async function getConfig() {
 	// Bearer token auth
 	if (env.AUTH_BEARER_TOKEN_ARRAY) {
 		const keys = new Set();
-		for (const element of secureParse(env.AUTH_BEARER_TOKEN_ARRAY)) {
-			keys.add(element.value);
+		const parsedArray = secureParse(env.AUTH_BEARER_TOKEN_ARRAY);
+		const parsedArraylength = parsedArray.length;
+		for (let i = 0; i < parsedArraylength; i += 1) {
+			keys.add(parsedArray[i].value);
 		}
 		config.bearerTokenAuthKeys = keys;
 
