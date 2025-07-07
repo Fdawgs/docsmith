@@ -1,8 +1,8 @@
 "use strict";
 
+const { join } = require("node:path");
 const autoLoad = require("@fastify/autoload");
 const fp = require("fastify-plugin");
-const { join } = require("node:path");
 
 // Import plugins
 const accepts = require("@fastify/accepts");

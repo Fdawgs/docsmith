@@ -1,8 +1,8 @@
 "use strict";
 
+const { join } = require("node:path");
 const fp = require("fastify-plugin");
 const { createScheduler, createWorker } = require("tesseract.js");
-const { join } = require("node:path");
 
 /**
  * Defining the cache as read-only, and specifying the cache, core, lang, and worker

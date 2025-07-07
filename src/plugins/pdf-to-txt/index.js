@@ -4,12 +4,12 @@
 
 const { randomUUID } = require("node:crypto");
 const { mkdir, unlink } = require("node:fs/promises");
+const { normalize, resolve } = require("node:path");
 const camelCase = require("camelcase");
 const { fixLatin1ToUtf8: fixUtf8 } = require("fix-latin1-to-utf8");
 const fp = require("fastify-plugin");
 const { glob } = require("glob");
 const { JSDOM } = require("jsdom");
-const { normalize, resolve } = require("node:path");
 const { Poppler } = require("node-poppler");
 
 // Import utils

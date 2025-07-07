@@ -3,6 +3,14 @@
 "use strict";
 
 const { readFile, readdir, rm } = require("node:fs/promises");
+const {
+	afterAll,
+	beforeAll,
+	describe,
+	expect,
+	it,
+	jest,
+} = require("@jest/globals");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
