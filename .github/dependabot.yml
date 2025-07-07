@@ -20,7 +20,8 @@ updates:
                   - "@commitlint*"
           eslint:
               patterns:
-                  - "@eslint-community*"
+                  - "@eslint*"
+                  - "*eslint-config*"
                   - "eslint*"
           fastify-core:
               patterns:
