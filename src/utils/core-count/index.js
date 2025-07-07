@@ -6,7 +6,7 @@ const { promisify } = require("node:util");
 
 const exec = promisify(execCallback);
 // Ignore stdin and stderr, pipe stdout
-const config = { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] };
+const EXEC_OPTS = { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] };
 
 /**
  * @author Frazer Smith
@@ -23,20 +23,23 @@ async function coreCount() {
 
 	switch (platform()) {
 		case "darwin": {
-			const output = await exec("sysctl -n hw.physicalcpu_max", config);
+			const output = await exec(
+				"sysctl -n hw.physicalcpu_max",
+				EXEC_OPTS
+			);
 			result = Number.parseInt(output.stdout, 10);
 			break;
 		}
 		case "linux": {
 			const output = await exec(
 				'lscpu -p | egrep -v "^#" | sort -u -t, -k 2,4 | wc -l',
-				config
+				EXEC_OPTS
 			);
 			result = Number.parseInt(output.stdout, 10);
 			break;
 		}
 		case "win32": {
-			const output = await exec("WMIC CPU Get NumberOfCores", config);
+			const output = await exec("WMIC CPU Get NumberOfCores", EXEC_OPTS);
 			result = output.stdout
 				.split(EOL)
 				.map((line) => Number.parseInt(line, 10))

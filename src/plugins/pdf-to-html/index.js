@@ -15,7 +15,7 @@ const { Poppler } = require("node-poppler");
 // Import utils
 const parseString = require("../../utils/parse-string");
 
-const pdfToHtmlAcceptedParams = new Set([
+const POPPLER_PDF_TO_HTML_ACCEPTED_PARAMS = new Set([
 	"exchangePdfLinks",
 	"extractHidden",
 	"firstPageToConvert",
@@ -103,7 +103,7 @@ async function plugin(server, options) {
 		for (const key of Object.keys(req.query)) {
 			const camelCaseKey = camelCase(key);
 
-			if (pdfToHtmlAcceptedParams.has(camelCaseKey)) {
+			if (POPPLER_PDF_TO_HTML_ACCEPTED_PARAMS.has(camelCaseKey)) {
 				/**
 				 * Convert query string params to literal keys to
 				 * allow Poppler module to use them.

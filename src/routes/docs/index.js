@@ -7,11 +7,11 @@ const staticPlugin = require("@fastify/static");
 
 const { docsGetSchema } = require("./schema");
 
-// Cache supported media types so not having to navigate schema object each time
-const accepts = Object.keys(docsGetSchema.response[200].content);
+// Cache response media types so not having to navigate schema object each time
+const ACCEPTS = Object.keys(docsGetSchema.response[200].content);
 
 // Cache immutable regex as they are expensive to create and garbage collect
-const pathRegex = /\/redoc\.standalone\.js(?:.map)?/u;
+const PATH_REG = /\/redoc\.standalone\.js(?:.map)?/u;
 
 /**
  * @author Frazer Smith
@@ -31,7 +31,7 @@ async function route(server) {
 		// Register redoc module to allow for standalone js and map to be used in docs.html
 		.register(staticPlugin, {
 			root: join(__dirname, "../../../node_modules/redoc/bundles"),
-			allowedPath: (pathName) => pathName.match(pathRegex) !== null,
+			allowedPath: (pathName) => pathName.match(PATH_REG) !== null,
 			decorateReply: false,
 			maxAge: "1 day",
 			prefix: "/redoc/",
@@ -44,7 +44,7 @@ async function route(server) {
 		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
-				!req.accepts().type(accepts)
+				!req.accepts().type(ACCEPTS)
 			) {
 				throw server.httpErrors.notAcceptable();
 			}

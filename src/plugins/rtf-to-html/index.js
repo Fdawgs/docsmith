@@ -12,7 +12,7 @@ const { JSDOM } = require("jsdom");
 const { UnRTF } = require("node-unrtf");
 
 // Cache immutable regex as they are expensive to create and garbage collect
-const rtfHyperLinkRegex =
+const RTF_HYPERLINK_REG =
 	/\{\\field\{\\\*\\fldinst HYPERLINK ".*?" \}\{\\fldrslt (.*?)\}/gsu;
 
 /**
@@ -90,7 +90,7 @@ async function plugin(server, options) {
 		 * however older versions of UnRTF remove the hyperlink text entirely.
 		 * Remove RTF hyperlinks prior to conversion to ensure consistent results.
 		 */
-		req.body = req.body.toString().replace(rtfHyperLinkRegex, "$1");
+		req.body = req.body.toString().replace(RTF_HYPERLINK_REG, "$1");
 
 		// Build temp RTF file for UnRTF to read from
 		const id = `${config.tempFilePrefix}_${randomUUID()}`;

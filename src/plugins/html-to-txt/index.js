@@ -4,7 +4,7 @@ const fp = require("fastify-plugin");
 const { htmlToText } = require("html-to-text");
 const isHtml = require("is-html");
 
-const htmlToTextConfig = {
+const HTML_TO_TEXT_OPTS = {
 	selectors: [
 		{ selector: "a", options: { ignoreHref: true } },
 		{ selector: "h1", options: { uppercase: false } },
@@ -40,7 +40,7 @@ async function plugin(server) {
 			throw server.httpErrors.badRequest();
 		}
 
-		return htmlToText(html, htmlToTextConfig).trim();
+		return htmlToText(html, HTML_TO_TEXT_OPTS).trim();
 	}
 
 	server.decorate("htmlToTxt", htmlToTxt);
