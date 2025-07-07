@@ -1,6 +1,7 @@
 "use strict";
 
 const { readFile } = require("node:fs/promises");
+const { afterAll, beforeAll, describe, expect, it } = require("@jest/globals");
 const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const isHtml = require("is-html");

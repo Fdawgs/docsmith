@@ -1,5 +1,6 @@
 "use strict";
 
+const { describe, expect, it } = require("@jest/globals");
 const util = require(".");
 
 describe("Core-Count util", () => {

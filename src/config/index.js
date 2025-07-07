@@ -1,12 +1,12 @@
 "use strict";
 
 const { readFile } = require("node:fs/promises");
+const { dirname, join, normalize, resolve } = require("node:path");
 const envSchema = require("env-schema");
 const { getStream } = require("file-stream-rotator");
 const S = require("fluent-json-schema").default;
 const { stdSerializers, stdTimeFunctions } = require("pino");
 const { parse: secureParse } = require("secure-json-parse");
-const { dirname, join, normalize, resolve } = require("node:path");
 
 const coreCount = require("../utils/core-count");
 const { description, license, version } = require("../../package.json");

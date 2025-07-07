@@ -1,5 +1,6 @@
 "use strict";
 
+const { afterAll, beforeAll, describe, expect, it } = require("@jest/globals");
 const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const sensible = require("@fastify/sensible");

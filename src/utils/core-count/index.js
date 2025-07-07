@@ -1,8 +1,8 @@
 "use strict";
 
 const { exec: execCallback } = require("node:child_process");
-const { promisify } = require("node:util");
 const { cpus, EOL, platform } = require("node:os");
+const { promisify } = require("node:util");
 
 const exec = promisify(execCallback);
 // Ignore stdin and stderr, pipe stdout

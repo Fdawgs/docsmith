@@ -4,11 +4,11 @@
 
 const { randomUUID } = require("node:crypto");
 const { mkdir, rm, unlink, writeFile } = require("node:fs/promises");
+const { normalize, resolve } = require("node:path");
 const { fixLatin1ToUtf8: fixUtf8 } = require("fix-latin1-to-utf8");
 const fp = require("fastify-plugin");
 const { glob } = require("glob");
 const { JSDOM } = require("jsdom");
-const { normalize, resolve } = require("node:path");
 const { UnRTF } = require("node-unrtf");
 
 // Cache immutable regex as they are expensive to create and garbage collect

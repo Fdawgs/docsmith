@@ -1,9 +1,9 @@
 "use strict";
 
 const { readFile } = require("node:fs/promises");
+const { normalize, parse, resolve } = require("node:path");
 const fp = require("fastify-plugin");
 const { JSDOM } = require("jsdom");
-const { normalize, parse, resolve } = require("node:path");
 
 /**
  * @author Frazer Smith

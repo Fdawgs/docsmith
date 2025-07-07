@@ -1,6 +1,7 @@
 "use strict";
 
 const { readFile } = require("node:fs/promises");
+const { afterAll, beforeAll, describe, expect, it } = require("@jest/globals");
 const Fastify = require("fastify");
 const plugin = require(".");
 const getConfig = require("../../config");
