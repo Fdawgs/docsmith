@@ -19,7 +19,7 @@ const tidyP = promisify(tidy);
  * - escapeCdata (convert <![CDATA[]]> sections to normal text).
  * @see {@link https://api.html-tidy.org/tidy/quickref_5.8.0.html | HTMLTidy2 options}
  */
-const htmlTidyConfig = {
+const HTML_TIDY_OPTS = {
 	bare: true,
 	clean: true,
 	dropProprietaryAttributes: true,
@@ -27,7 +27,7 @@ const htmlTidyConfig = {
 };
 
 /** @see {@link https://github.com/terser/html-minifier-terser#options-quick-reference | HTMLMinifier options} */
-const htmlMinifyConfig = {
+const HTML_MINIFY_TERSER_OPTS = {
 	collapseWhitespace: true,
 	decodeEntities: true,
 	removeComments: true,
@@ -87,7 +87,7 @@ async function plugin(server) {
 		}
 
 		/** @type {string} */
-		let result = await tidyP(dom.serialize(), htmlTidyConfig);
+		let result = await tidyP(dom.serialize(), HTML_TIDY_OPTS);
 
 		if (options.removeHidden === true) {
 			/**
@@ -136,7 +136,7 @@ async function plugin(server) {
 			result = hidden.serialize();
 		}
 
-		return minify(result, htmlMinifyConfig);
+		return minify(result, HTML_MINIFY_TERSER_OPTS);
 	}
 
 	server.decorate("tidyHtml", tidyHtml);

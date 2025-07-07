@@ -11,7 +11,7 @@ const { createScheduler, createWorker } = require("tesseract.js");
  * This also stops synchronous read/writes of the trained data,
  * which corrupts the trained data.
  */
-const workerConfig = {
+const TESSERACT_WORKER_OPTS = {
 	cacheMethod: "readOnly",
 	cachePath: join(__dirname, "../../.."),
 	corePath: join(__dirname, "../../../node_modules/tesseract.js-core"),
@@ -44,7 +44,7 @@ async function plugin(server, options) {
 			const worker = await createWorker(
 				options.languages,
 				1,
-				workerConfig
+				TESSERACT_WORKER_OPTS
 			);
 			return scheduler.addWorker(worker);
 		})

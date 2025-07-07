@@ -9,8 +9,8 @@ const { JSDOM } = require("jsdom");
 const cssCleaner = new CleanCSS({ compatibility: "ie7" });
 
 // Cache immutable regex as they are expensive to create and garbage collect
-const fontRegex = /[^-A-Za-z]+/u;
-const styleRegex = /<\/style>/gu;
+const FONT_REG = /[^-A-Za-z]+/u;
+const STYLE_REG = /<\/style>/gu;
 
 /**
  * @author Frazer Smith
@@ -74,9 +74,9 @@ async function plugin(server) {
 				if (rule.style["font-family"]) {
 					const fonts = rule.style["font-family"].split(",");
 					const parsedFonts = fonts.map((font) => {
-						if (fontRegex.test(font.trim())) {
+						if (FONT_REG.test(font.trim())) {
 							// Stop escaping of <style> elements and code injection
-							return cssEsc(font.replace(styleRegex, "").trim(), {
+							return cssEsc(font.replace(STYLE_REG, "").trim(), {
 								quotes: "double",
 								wrap: true,
 							});

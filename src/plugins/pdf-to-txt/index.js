@@ -15,7 +15,7 @@ const { Poppler } = require("node-poppler");
 // Import utils
 const parseString = require("../../utils/parse-string");
 
-const pdfToCairoAcceptedParams = new Set([
+const POPPLER_PDF_TO_CAIRO_ACCEPTED_PARAMS = new Set([
 	"cropHeight",
 	"cropWidth",
 	"cropXAxis",
@@ -24,7 +24,7 @@ const pdfToCairoAcceptedParams = new Set([
 	"lastPageToConvert",
 ]);
 
-const pdfToTxtAcceptedParams = new Set([
+const POPPLER_PDF_TO_TXT_ACCEPTED_PARAMS = new Set([
 	"boundingBoxXhtml",
 	"boundingBoxXhtmlLayout",
 	"cropHeight",
@@ -133,7 +133,7 @@ async function plugin(server, options) {
 		if (query.ocr === true && server.tesseract) {
 			// Prune params that pdfToCairo cannot accept
 			for (const key of Object.keys(query)) {
-				if (!pdfToCairoAcceptedParams.has(key)) {
+				if (!POPPLER_PDF_TO_CAIRO_ACCEPTED_PARAMS.has(key)) {
 					delete query[key];
 				}
 			}
@@ -193,7 +193,7 @@ async function plugin(server, options) {
 		} else {
 			// Prune params that pdfToTxt cannot accept
 			for (const key of Object.keys(query)) {
-				if (!pdfToTxtAcceptedParams.has(key)) {
+				if (!POPPLER_PDF_TO_TXT_ACCEPTED_PARAMS.has(key)) {
 					delete query[key];
 				}
 			}

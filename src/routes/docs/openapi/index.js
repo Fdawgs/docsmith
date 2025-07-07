@@ -5,8 +5,8 @@ const cors = require("@fastify/cors");
 
 const { docsOpenapiGetSchema } = require("./schema");
 
-// Cache supported media types so not having to navigate schema object each time
-const accepts = docsOpenapiGetSchema.produces;
+// Cache response media types so not having to navigate schema object each time
+const ACCEPTS = docsOpenapiGetSchema.produces;
 
 /**
  * @author Frazer Smith
@@ -31,7 +31,7 @@ async function route(server, options) {
 		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
-				!req.accepts().type(accepts)
+				!req.accepts().type(ACCEPTS)
 			) {
 				throw server.httpErrors.notAcceptable();
 			}
