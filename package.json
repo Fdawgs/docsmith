@@ -119,7 +119,7 @@
 		"mammoth": "^1.10.0",
 		"node-poppler": "^8.0.4",
 		"node-unrtf": "^6.0.2",
-		"pino": "^9.7.0",
+		"pino": "^9.9.0",
 		"redoc": "^2.5.0",
 		"secure-json-parse": "^4.0.0",
 		"tesseract.js": "^6.0.1",
