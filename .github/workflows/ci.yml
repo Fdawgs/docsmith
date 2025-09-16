@@ -57,7 +57,7 @@ jobs:
                   persist-credentials: false
 
             - name: Setup Node
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v5
               with:
                   cache: npm
                   check-latest: true
@@ -118,7 +118,7 @@ jobs:
                   persist-credentials: false
 
             - name: Setup Node ${{ matrix.node-version }} on ${{ matrix.os }}
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v5
               with:
                   cache: npm
                   check-latest: true
@@ -178,7 +178,7 @@ jobs:
                   persist-credentials: false
 
             - name: Setup Node
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v5
               with:
                   cache: npm
                   check-latest: true
