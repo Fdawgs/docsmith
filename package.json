@@ -118,7 +118,7 @@
 		"language-tags": "^1.0.9",
 		"mammoth": "^1.10.0",
 		"node-poppler": "^8.0.4",
-		"node-unrtf": "^6.0.2",
+		"node-unrtf": "^6.0.6",
 		"pino": "^9.9.4",
 		"redoc": "^2.5.0",
 		"secure-json-parse": "^4.0.0",
