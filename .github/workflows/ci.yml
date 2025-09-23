@@ -29,9 +29,7 @@ permissions:
 jobs:
     dependency-review:
         name: Dependency Review
-        if: >
-            github.event.pull_request.draft == false &&
-            github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -46,7 +44,6 @@ jobs:
 
     lint:
         name: Lint Code
-        if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -84,8 +81,8 @@ jobs:
     commit-lint:
         name: Lint Commit Messages
         if: >
-            github.event.pull_request.draft == false &&
-            github.actor != 'dependabot[bot]'
+            github.event_name == 'push' ||
+            (github.event_name == 'pull_request' && github.event.pull_request.user.login != 'dependabot[bot]')
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -103,7 +100,6 @@ jobs:
 
     unit-tests:
         name: Unit Tests
-        if: github.event.pull_request.draft == false
         strategy:
             matrix:
                 node-version: [20, 22, 24]
@@ -167,7 +163,6 @@ jobs:
 
     build:
         name: Build
-        if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -192,7 +187,6 @@ jobs:
 
     lint-docker-file:
         name: Lint Dockerfile
-        if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -211,7 +205,6 @@ jobs:
     docker-compose-tests:
         name: Docker Compose Build Tests
         needs: lint-docker-file
-        if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -229,9 +222,7 @@ jobs:
     coverage:
         name: Aggregate Coverage Calculations
         needs: unit-tests
-        if: >
-            github.event.pull_request.draft == false &&
-            github.repository == 'Fdawgs/docsmith'
+        if: github.repository == 'Fdawgs/docsmith'
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -244,10 +235,10 @@ jobs:
 
     automerge:
         name: Automerge Dependabot PRs
-        needs: unit-tests
+        needs:
+            [build, dependency-review, docker-compose-tests, lint, unit-tests]
         if: >
             github.event_name == 'pull_request' &&
-            github.event.pull_request.draft == false &&
             github.event.pull_request.head.repo.full_name == github.repository &&
             github.event.pull_request.user.login == 'dependabot[bot]'
         runs-on: ubuntu-latest
