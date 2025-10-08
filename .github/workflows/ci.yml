@@ -58,7 +58,7 @@ jobs:
               with:
                   cache: npm
                   check-latest: true
-                  node-version: lts/*
+                  node-version-file: .nvmrc
 
             - name: Install
               run: npm ci --ignore-scripts
@@ -177,7 +177,7 @@ jobs:
               with:
                   cache: npm
                   check-latest: true
-                  node-version: lts/*
+                  node-version-file: .nvmrc
 
             - name: Install
               run: npm ci --ignore-scripts
