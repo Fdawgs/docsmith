@@ -1,7 +1,7 @@
 "use strict";
 
 const { exec: execCallback } = require("node:child_process");
-const { cpus, EOL, platform } = require("node:os");
+const { cpus, platform } = require("node:os");
 const { promisify } = require("node:util");
 
 const exec = promisify(execCallback);
@@ -23,28 +23,27 @@ async function coreCount() {
 
 	switch (platform()) {
 		case "darwin": {
-			const output = await exec(
+			const { stdout } = await exec(
 				"sysctl -n hw.physicalcpu_max",
 				EXEC_OPTS
 			);
-			result = Number.parseInt(output.stdout, 10);
+			result = Number.parseInt(stdout, 10);
 			break;
 		}
 		case "linux": {
-			const output = await exec(
+			const { stdout } = await exec(
 				'lscpu -p | egrep -v "^#" | sort -u -t, -k 2,4 | wc -l',
 				EXEC_OPTS
 			);
-			result = Number.parseInt(output.stdout, 10);
+			result = Number.parseInt(stdout, 10);
 			break;
 		}
 		case "win32": {
-			const output = await exec("WMIC CPU Get NumberOfCores", EXEC_OPTS);
-			result = output.stdout
-				.split(EOL)
-				.map((line) => Number.parseInt(line, 10))
-				.filter((value) => !Number.isNaN(Number(value)))
-				.reduce((sum, number) => sum + number, 0);
+			const { stdout } = await exec(
+				'powershell -NoProfile -Command "(Get-CimInstance Win32_Processor).NumberOfCores | Measure-Object -Sum | Select-Object -ExpandProperty Sum"',
+				EXEC_OPTS
+			);
+			result = Number.parseInt(stdout, 10);
 			break;
 		}
 		default: {
