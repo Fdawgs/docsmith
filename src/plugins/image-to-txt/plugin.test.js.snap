@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Image-to-TXT conversion plugin Reads text from image file 1`] = `
 "Super Test Hospital [7H
