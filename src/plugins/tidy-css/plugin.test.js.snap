@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Tidy-CSS plugin Continues if it cannot find any CSS in HTML to tidy 1`] = `
 "<!-- Used to test that empty HTML files are still parsed correctly. --><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head></head><body>

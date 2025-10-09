@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Tidy-HTML plugin Tidies HTML 1`] = `
 "<!DOCTYPE html><html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><title>C:\\\\doc-conversion-service\\\\test_files\\\\valid_bullet_issues_html.html</title><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><style type="text/css">/*<![CDATA[*/

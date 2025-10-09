@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DOC-to-TXT conversion plugin Converts DOC file to TXT 1`] = `
 "I am a header

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HTML-to-TXT route Returns HTML converted to TXT with hidden elements extracted 1`] = `
 "I am a header
