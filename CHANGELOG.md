@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+## [12.0.3](https://github.com/Fdawgs/docsmith/compare/v12.0.2...v12.0.3) (2025-11-15)
+
+
+### Continuous integration
+
+* **ci:** only send coverage to coveralls on main ([#2127](https://github.com/Fdawgs/docsmith/issues/2127)) ([452a80b](https://github.com/Fdawgs/docsmith/commit/452a80bb96d950c2426069cd07da242c84a0a166))
+* **deps:** bump actions/dependency-review-action from 4.8.0 to 4.8.1 ([#2118](https://github.com/Fdawgs/docsmith/issues/2118)) ([aab544d](https://github.com/Fdawgs/docsmith/commit/aab544d40a62dd8e783b8db6455eefdd57e8090f))
+* **deps:** bump actions/setup-node from 5 to 6 ([#2117](https://github.com/Fdawgs/docsmith/issues/2117)) ([21334af](https://github.com/Fdawgs/docsmith/commit/21334af1da235316e16a143c4f1a997513730eea))
+* **deps:** bump fastify/github-action-merge-dependabot ([#2119](https://github.com/Fdawgs/docsmith/issues/2119)) ([79a32e9](https://github.com/Fdawgs/docsmith/commit/79a32e9679683841f08bb53d3435b150b236411f))
+* **deps:** bump github/codeql-action from 3 to 4 ([#2116](https://github.com/Fdawgs/docsmith/issues/2116)) ([aefd7cd](https://github.com/Fdawgs/docsmith/commit/aefd7cdba875d5be92aaf7b2b9e61489a83960c6))
+* **deps:** bump googleapis/release-please-action from 4.3.0 to 4.4.0 ([#2120](https://github.com/Fdawgs/docsmith/issues/2120)) ([4eddf78](https://github.com/Fdawgs/docsmith/commit/4eddf78a457846500756b89d6582da7beca796e5))
+* **deps:** bump JustinBeckwith/linkinator-action from 1.11.0 to 2.3 ([#2121](https://github.com/Fdawgs/docsmith/issues/2121)) ([299fb26](https://github.com/Fdawgs/docsmith/commit/299fb26e33d8a62959ae40460ce28500e069df2f))
+* fix concurrency groups ([#2132](https://github.com/Fdawgs/docsmith/issues/2132)) ([fa3f689](https://github.com/Fdawgs/docsmith/commit/fa3f689d23d1685f3a977e30f8964296b85a37b7))
+* **link-check:** use reusable workflow ([#2134](https://github.com/Fdawgs/docsmith/issues/2134)) ([b9e2b31](https://github.com/Fdawgs/docsmith/commit/b9e2b31ba44ac9bc17929a4add87883a058b52f2))
+* **lock-threads:** set cron to every day ([#2133](https://github.com/Fdawgs/docsmith/issues/2133)) ([50e9fc2](https://github.com/Fdawgs/docsmith/commit/50e9fc24a071d05ba020378fcc8d20c0611d9b95))
+* **workflows:** add lock-threads workflow ([#2131](https://github.com/Fdawgs/docsmith/issues/2131)) ([d398ca9](https://github.com/Fdawgs/docsmith/commit/d398ca90a3660b7be2f58e1de3894afccc0f16b7))
+
+
+### Dependencies
+
+* **deps-dev:** bump pino-pretty in the pino-core group ([#2122](https://github.com/Fdawgs/docsmith/issues/2122)) ([bba78d0](https://github.com/Fdawgs/docsmith/commit/bba78d08cd253fd4d4bc893dff9cbe6b9892d247))
+* **deps-dev:** bump playwright from 1.56.0 to 1.56.1 ([#2123](https://github.com/Fdawgs/docsmith/issues/2123)) ([2b29659](https://github.com/Fdawgs/docsmith/commit/2b2965996deae6303d125b2a87ec1235075735ac))
+* **deps:** bump fix-latin1-to-utf8 from 2.0.3 to 2.0.4 ([#2126](https://github.com/Fdawgs/docsmith/issues/2126)) ([d47e04c](https://github.com/Fdawgs/docsmith/commit/d47e04c52a4c5e4db39a444a94477da5c394d46c))
+* **deps:** bump redoc from 2.5.1 to 2.5.2 ([#2124](https://github.com/Fdawgs/docsmith/issues/2124)) ([d214210](https://github.com/Fdawgs/docsmith/commit/d214210830bb395bf2a06d390f8711e0e988a550))
+
+
+### Miscellaneous
+
+* **.devcontainer:** add devcontainer ([#2113](https://github.com/Fdawgs/docsmith/issues/2113)) ([3b40bcb](https://github.com/Fdawgs/docsmith/commit/3b40bcbeb4c273fa2cafdcff5b87cfb0d6315718))
+* **.editorconfig:** add file to enforce consistent coding styles ([#2128](https://github.com/Fdawgs/docsmith/issues/2128)) ([215debc](https://github.com/Fdawgs/docsmith/commit/215debce5c288687a0e7659175352c8290be0c34))
+* **.editorconfig:** use spaces for yml file indentation ([#2130](https://github.com/Fdawgs/docsmith/issues/2130)) ([7d93764](https://github.com/Fdawgs/docsmith/commit/7d937641fc8a5420c57f413e3467c571cfb989fb))
+* **eslint.config:** stop applying to jsx files ([#2129](https://github.com/Fdawgs/docsmith/issues/2129)) ([f945723](https://github.com/Fdawgs/docsmith/commit/f9457238143957f32f5de8b3ed68309a5097de79))
+* rename lint scripts to reflect use ([#2115](https://github.com/Fdawgs/docsmith/issues/2115)) ([4d8039e](https://github.com/Fdawgs/docsmith/commit/4d8039e488b598465418d78f6bd16d1ed20a274c))
+
 ## [12.0.2](https://github.com/Fdawgs/docsmith/compare/v12.0.1...v12.0.2) (2025-10-09)
 
 
