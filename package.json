@@ -111,7 +111,7 @@
 		"file-type": "^16.5.4",
 		"fix-latin1-to-utf8": "^2.0.4",
 		"fluent-json-schema": "^6.0.0",
-		"glob": "^11.0.3",
+		"glob": "^11.1.0",
 		"html-minifier-terser": "^7.2.0",
 		"html-to-text": "^9.0.5",
 		"htmltidy2": "^1.2.0",
