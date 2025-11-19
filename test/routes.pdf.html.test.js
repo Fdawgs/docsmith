@@ -6,14 +6,14 @@ const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
-const generateCombos = require("../../../../test/utils/gen-combos");
-const route = require(".");
-const getConfig = require("../../../config");
-const sharedSchemas = require("../../../plugins/shared-schemas");
+const generateCombos = require("./utils/gen-combos");
+const route = require("../src/routes/pdf/html");
+const getConfig = require("../src/config");
+const sharedSchemas = require("../src/plugins/shared-schemas");
 
-const embedHtmlImages = require("../../../plugins/embed-html-images");
-const tidyCss = require("../../../plugins/tidy-css");
-const tidyHtml = require("../../../plugins/tidy-html");
+const embedHtmlImages = require("../src/plugins/embed-html-images");
+const tidyCss = require("../src/plugins/tidy-css");
+const tidyHtml = require("../src/plugins/tidy-html");
 
 // Generates 64 different combinations
 const queryStrings = generateCombos([

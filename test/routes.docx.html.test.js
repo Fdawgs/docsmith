@@ -7,12 +7,12 @@ const { afterAll, beforeAll, describe, expect, it } = require("@jest/globals");
 const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const sensible = require("@fastify/sensible");
-const route = require(".");
-const getConfig = require("../../../config");
-const sharedSchemas = require("../../../plugins/shared-schemas");
+const route = require("../src/routes/docx/html");
+const getConfig = require("../src/config");
+const sharedSchemas = require("../src/plugins/shared-schemas");
 
-const tidyCss = require("../../../plugins/tidy-css");
-const tidyHtml = require("../../../plugins/tidy-html");
+const tidyCss = require("../src/plugins/tidy-css");
+const tidyHtml = require("../src/plugins/tidy-html");
 
 describe("DOCX-to-HTML route", () => {
 	let config;

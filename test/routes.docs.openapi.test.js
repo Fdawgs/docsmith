@@ -5,9 +5,9 @@ const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const sensible = require("@fastify/sensible");
 const swagger = require("@fastify/swagger");
-const route = require(".");
-const getConfig = require("../../../config");
-const sharedSchemas = require("../../../plugins/shared-schemas");
+const route = require("../src/routes/docs/openapi");
+const getConfig = require("../src/config");
+const sharedSchemas = require("../src/plugins/shared-schemas");
 
 describe("OpenAPI route", () => {
 	describe("GET requests", () => {

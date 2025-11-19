@@ -7,15 +7,11 @@ const { afterAll, beforeAll, describe, expect, it } = require("@jest/globals");
 const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const sensible = require("@fastify/sensible");
-const route = require(".");
-const getConfig = require("../../../config");
-const sharedSchemas = require("../../../plugins/shared-schemas");
+const route = require("../src/routes/docx/txt");
+const getConfig = require("../src/config");
+const sharedSchemas = require("../src/plugins/shared-schemas");
 
-const htmlToTxt = require("../../../plugins/html-to-txt");
-const tidyCss = require("../../../plugins/tidy-css");
-const tidyHtml = require("../../../plugins/tidy-html");
-
-describe("HTML-to-TXT route", () => {
+describe("DOCX-to-TXT route", () => {
 	let config;
 	/** @type {Fastify.FastifyInstance} */
 	let server;
@@ -27,9 +23,6 @@ describe("HTML-to-TXT route", () => {
 		await server
 			.register(accepts)
 			.register(sensible)
-			.register(htmlToTxt)
-			.register(tidyCss)
-			.register(tidyHtml)
 			.register(sharedSchemas)
 			.register(route, config)
 			.ready();
@@ -39,48 +32,42 @@ describe("HTML-to-TXT route", () => {
 
 	it.each([
 		{
-			testName: "HTML file converted to TXT",
-			filePath: "./test/files/html_valid.html",
+			testName: "DOCM file",
+			filePath: "./test/files/docm_valid.docm",
 			headers: {
-				"content-type": "text/html",
+				"content-type":
+					"application/vnd.ms-word.document.macroEnabled.12",
 			},
 		},
 		{
-			testName: "XHTML file converted to TXT",
-			filePath: "./test/files/xhtml_valid.xhtml",
+			testName: "DOCX file",
+			filePath: "./test/files/docx_valid.docx",
 			headers: {
-				"content-type": "application/xhtml+xml",
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
 		},
 		{
-			testName: "HTML converted to TXT with hidden elements extracted",
-			filePath: "./test/files/html_valid.html",
+			testName: "DOTX file",
+			filePath: "./test/files/dotx_valid.dotx",
 			headers: {
-				"content-type": "text/html",
-			},
-			query: {
-				extract_hidden: "true",
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
 			},
 		},
 		{
-			testName:
-				"XHTML file converted to TXT with hidden elements extracted",
-			filePath: "./test/files/xhtml_valid.xhtml",
+			testName: "DOTM file",
+			filePath: "./test/files/dotm_valid.dotm",
 			headers: {
-				"content-type": "application/xhtml+xml",
-			},
-			query: {
-				extract_hidden: "true",
+				"content-type":
+					"application/vnd.ms-word.template.macroEnabled.12",
 			},
 		},
-	])("Returns $testName", async ({ filePath, headers, query }) => {
+	])("Returns $testName converted to TXT", async ({ filePath, headers }) => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
 			body: await readFile(filePath),
-			query: {
-				...query,
-			},
 			headers: {
 				accept: "application/json, text/plain",
 				...headers,
@@ -100,7 +87,8 @@ describe("HTML-to-TXT route", () => {
 			url: "/",
 			headers: {
 				accept: "application/json, text/plain",
-				"content-type": "text/html",
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
 		});
 
@@ -114,38 +102,58 @@ describe("HTML-to-TXT route", () => {
 
 	it.each([
 		{
-			testName: "is not a valid HTML file",
+			testName: "is not a valid DOCM file",
 			body: Buffer.from("test"),
 			headers: {
-				"content-type": "text/html",
+				"content-type":
+					"application/vnd.ms-word.document.macroEnabled.12",
 			},
 		},
 		{
-			testName: "is not a valid XHTML file",
+			testName: "is not a valid DOCX file",
 			body: Buffer.from("test"),
 			headers: {
-				"content-type": "aapplication/xhtml+xml",
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
 		},
-	]);
-	it("Returns HTTP status code 415 if body $testName", async () => {
-		const response = await server.inject({
-			method: "POST",
-			url: "/",
+		{
+			testName: "is not a valid DOTM file",
 			body: Buffer.from("test"),
 			headers: {
-				accept: "application/json, text/plain",
-				"content-type": "text/html",
+				"content-type":
+					"application/vnd.ms-word.template.macroEnabled.12",
 			},
-		});
+		},
+		{
+			testName: "is not a valid DOTX file",
+			body: Buffer.from("test"),
+			headers: {
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+			},
+		},
+	])(
+		"Returns HTTP status code 415 if body $testName",
+		async ({ body, headers }) => {
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				body,
+				headers: {
+					accept: "application/json, text/plain",
+					...headers,
+				},
+			});
 
-		expect(response.json()).toStrictEqual({
-			error: "Unsupported Media Type",
-			message: "Unsupported Media Type",
-			statusCode: 415,
-		});
-		expect(response.statusCode).toBe(415);
-	});
+			expect(response.json()).toStrictEqual({
+				error: "Unsupported Media Type",
+				message: "Unsupported Media Type",
+				statusCode: 415,
+			});
+			expect(response.statusCode).toBe(415);
+		}
+	);
 
 	it("Returns HTTP status code 415 if file media type is not supported by route", async () => {
 		const response = await server.inject({
@@ -170,10 +178,11 @@ describe("HTML-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/html_valid.html"),
+			body: await readFile("./test/files/docx_valid.docx"),
 			headers: {
 				accept: "application/javascript",
-				"content-type": "text/html",
+				"content-type":
+					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 			},
 		});
 

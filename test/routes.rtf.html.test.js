@@ -6,13 +6,13 @@ const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
-const generateCombos = require("../../../../test/utils/gen-combos");
-const route = require(".");
-const getConfig = require("../../../config");
-const sharedSchemas = require("../../../plugins/shared-schemas");
+const generateCombos = require("./utils/gen-combos");
+const route = require("../src/routes/rtf/html");
+const getConfig = require("../src/config");
+const sharedSchemas = require("../src/plugins/shared-schemas");
 
-const tidyCss = require("../../../plugins/tidy-css");
-const tidyHtml = require("../../../plugins/tidy-html");
+const tidyCss = require("../src/plugins/tidy-css");
+const tidyHtml = require("../src/plugins/tidy-html");
 
 // Generates 12 different combinations
 const queryStrings = generateCombos([
