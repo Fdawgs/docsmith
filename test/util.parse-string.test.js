@@ -1,7 +1,7 @@
 "use strict";
 
 const { describe, expect, it } = require("@jest/globals");
-const util = require(".");
+const util = require("../src/utils/parse-string");
 
 describe("Parse-String util", () => {
 	it("Converts string 'false' to boolean 'false'", () => {
