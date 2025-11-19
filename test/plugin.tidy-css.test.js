@@ -13,8 +13,8 @@ const {
 } = require("@jest/globals");
 const Fastify = require("fastify");
 const { JSDOM } = require("jsdom");
-const plugin = require(".");
-const getConfig = require("../../config");
+const plugin = require("../src/plugins/tidy-css");
+const getConfig = require("../src/config");
 
 describe("Tidy-CSS plugin", () => {
 	let config;

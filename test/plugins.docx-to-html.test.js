@@ -7,7 +7,7 @@ const { afterAll, beforeAll, describe, expect, it } = require("@jest/globals");
 const Fastify = require("fastify");
 const { JSDOM } = require("jsdom");
 const sensible = require("@fastify/sensible");
-const plugin = require(".");
+const plugin = require("../src/plugins/docx-to-html");
 
 describe("DOCX-to-HTML conversion plugin", () => {
 	/** @type {Fastify.FastifyInstance} */

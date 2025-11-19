@@ -11,8 +11,8 @@ const {
 } = require("@jest/globals");
 const Fastify = require("fastify");
 const { JSDOM } = require("jsdom");
-const plugin = require(".");
-const getConfig = require("../../config");
+const plugin = require("../src/plugins/embed-html-images");
+const getConfig = require("../src/config");
 
 describe("Embed-HTML-Images plugin", () => {
 	let config;

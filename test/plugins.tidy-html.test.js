@@ -11,7 +11,7 @@ const {
 const Fastify = require("fastify");
 const { JSDOM } = require("jsdom");
 const sensible = require("@fastify/sensible");
-const plugin = require(".");
+const plugin = require("../src/plugins/tidy-html");
 
 describe("Tidy-HTML plugin", () => {
 	/** @type {Fastify.FastifyInstance} */

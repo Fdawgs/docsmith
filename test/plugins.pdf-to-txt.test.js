@@ -16,9 +16,9 @@ const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
 const { Poppler } = require("node-poppler");
 const sensible = require("@fastify/sensible");
-const plugin = require(".");
-const getConfig = require("../../config");
-const imageToTxt = require("../image-to-txt");
+const plugin = require("../src/plugins/pdf-to-txt");
+const getConfig = require("../src/config");
+const imageToTxt = require("../src/plugins/image-to-txt");
 
 describe("PDF-to-TXT conversion plugin", () => {
 	let config;

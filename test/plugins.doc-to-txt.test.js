@@ -6,7 +6,7 @@ const { readFile } = require("node:fs/promises");
 const { afterAll, beforeAll, describe, expect, it } = require("@jest/globals");
 const Fastify = require("fastify");
 const sensible = require("@fastify/sensible");
-const plugin = require(".");
+const plugin = require("../src/plugins/doc-to-txt");
 
 describe("DOC-to-TXT conversion plugin", () => {
 	/** @type {Fastify.FastifyInstance} */

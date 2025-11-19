@@ -16,8 +16,8 @@ const isHtml = require("is-html");
 const { JSDOM } = require("jsdom");
 const { Poppler } = require("node-poppler");
 const sensible = require("@fastify/sensible");
-const plugin = require(".");
-const getConfig = require("../../config");
+const plugin = require("../src/plugins/pdf-to-html");
+const getConfig = require("../src/config");
 
 /**
  * Used to check that common incorrectly converted Windows-1252
