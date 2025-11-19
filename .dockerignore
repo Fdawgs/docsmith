@@ -120,13 +120,11 @@ out
 *.wmf
 *.emf
 temp*
-test_resources/
-**/*.test.*
+test/
 
 # Development files
 .git/
 .github/
-.husky/
 .vscode/
 docs/
 scripts/

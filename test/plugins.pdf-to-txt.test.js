@@ -1,0 +1,270 @@
+/* eslint-disable security/detect-non-literal-fs-filename -- Test filenames are not user-provided */
+
+"use strict";
+
+const { readFile, readdir, rm } = require("node:fs/promises");
+const {
+	afterAll,
+	beforeAll,
+	describe,
+	expect,
+	it,
+	jest,
+} = require("@jest/globals");
+const Fastify = require("fastify");
+const isHtml = require("is-html");
+const { JSDOM } = require("jsdom");
+const { Poppler } = require("node-poppler");
+const sensible = require("@fastify/sensible");
+const plugin = require("../src/plugins/pdf-to-txt");
+const getConfig = require("../src/config");
+const imageToTxt = require("../src/plugins/image-to-txt");
+
+describe("PDF-to-TXT conversion plugin", () => {
+	let config;
+	/** @type {Fastify.FastifyInstance} */
+	let server;
+
+	beforeAll(async () => {
+		config = await getConfig();
+		config.poppler.tempDir = "./temp-test-pdf-to-txt/";
+
+		server = Fastify({ pluginTimeout: 30000 });
+
+		server.addContentTypeParser(
+			"application/pdf",
+			{ parseAs: "buffer" },
+			async (_req, payload) => payload
+		);
+
+		await server
+			.register(imageToTxt, config.tesseract)
+			.register(sensible)
+			.register(plugin, config.poppler);
+
+		server.post("/", (req, res) => {
+			res.header("content-type", "application/json").send(
+				req.conversionResults
+			);
+		});
+
+		await server.ready();
+	});
+
+	afterAll(async () =>
+		Promise.all([
+			rm(config.poppler.tempDir, { recursive: true }),
+			server.close(),
+		])
+	);
+
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
+	it.each([
+		{ testName: "Converts PDF file to TXT" },
+		{
+			testName:
+				"Converts PDF file to TXT and ignore invalid `test` query string param",
+			query: {
+				test: "test",
+			},
+		},
+	])("$testName", async ({ query }) => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: await readFile(
+				"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				first_page_to_convert: "2",
+				last_page_to_convert: "2",
+				...query,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		const { body } = response.json();
+
+		expect(body).toMatch("The NHS belongs to the people");
+		expect(isHtml(body)).toBe(false);
+	});
+
+	/**
+	 * OCR tests that use pdftocairo and tesseract.
+	 * @todo Use `it.concurrent.each()` once it is no longer experimental.
+	 */
+	it.each([
+		{
+			testName: "Converts PDF file to TXT using OCR",
+			query: { ocr: "true" },
+		},
+		{
+			testName:
+				"Converts PDF file to TXT using OCR and ignore invalid `test` query string param ",
+			query: { ocr: "true", test: "test" },
+		},
+	])("$testName", async ({ query }) => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: await readFile(
+				"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				first_page_to_convert: "1",
+				last_page_to_convert: "2",
+				...query,
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		const { body, docLocation } = response.json();
+
+		expect(body).toMatch("The NHS belongs to the people");
+		// String found at end of second page
+		expect(body).toMatch(
+			/a full and transparent debate with the public, patients and staff.$/mu
+		);
+		expect(isHtml(body)).toBe(false);
+		// Check the docLocation object contains the expected properties
+		expect(docLocation).toMatchObject({
+			directory: expect.any(String),
+			id: expect.stringMatching(/^docsmith_pdf-to-txt_/u),
+		});
+		// Check the image files has been removed from the temp directory
+		await expect(readdir(config.poppler.tempDir)).resolves.toHaveLength(0);
+		expect(response.statusCode).toBe(200);
+	});
+
+	it("Converts PDF file to TXT wrapped in HTML", async () => {
+		const response = await server.inject({
+			method: "POST",
+			url: "/",
+			body: await readFile(
+				"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
+			),
+			query: {
+				first_page_to_convert: "2",
+				generate_html_meta_file: "true",
+				last_page_to_convert: "2",
+			},
+			headers: {
+				"content-type": "application/pdf",
+			},
+		});
+
+		const { body } = response.json();
+		const dom = new JSDOM(body);
+
+		expect(isHtml(body)).toBe(true);
+		// Check only one meta and title element exists
+		expect(dom.window.document.querySelectorAll("meta")).toHaveLength(1);
+		expect(dom.window.document.querySelectorAll("title")).toHaveLength(1);
+		// Check head element contains only a meta and title element in the correct order
+		expect(dom.window.document.head.children[0].tagName).toBe("META");
+		expect(dom.window.document.head.firstChild).toMatchObject({
+			content: expect.stringMatching(/^text\/html; charset=utf-8$/iu),
+			httpEquiv: expect.stringMatching(/^content-type$/iu),
+		});
+		expect(
+			dom.window.document.head.querySelector("title")?.textContent
+		).toMatch(/^docsmith_pdf-to-txt_/u);
+		// String found at the start of the HTML document
+		expect(dom.window.document.querySelector("pre")?.textContent).toMatch(
+			"The NHS belongs to the people"
+		);
+		// String found at the end of the HTML document
+		expect(dom.window.document.querySelector("pre")?.textContent).toMatch(
+			/a full and transparent debate with the public, patients and staff.$/mu
+		);
+		expect(response.statusCode).toBe(200);
+	});
+
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
+	it.each([
+		{ testName: "is missing" },
+		{ testName: "is empty", body: Buffer.alloc(0) },
+		{
+			testName: "is not a valid PDF file",
+			body: Buffer.from("test"),
+		},
+		{
+			testName: "is not a valid PDF file for OCR",
+			body: Buffer.from("test"),
+			query: {
+				last_page_to_convert: "1",
+				ocr: "true",
+			},
+		},
+	])(
+		"Returns HTTP status code 400 if body $testName",
+		async ({ body, query }) => {
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				body,
+				query,
+				headers: {
+					"content-type": "application/pdf",
+				},
+			});
+
+			expect(response.json()).toStrictEqual({
+				error: "Bad Request",
+				message: "Bad Request",
+				statusCode: 400,
+			});
+			expect(response.statusCode).toBe(400);
+		}
+	);
+
+	/** @todo Use `it.concurrent.each()` once it is no longer experimental. */
+	it.each([
+		{
+			testName: "poppler.pdfToText()",
+			funcName: "pdfToText",
+		},
+		{
+			testName: "poppler.pdfToCairo() for OCR",
+			funcName: "pdfToCairo",
+			query: {
+				ocr: "true",
+			},
+		},
+	])(
+		"Returns HTTP status code 400 if $testName throws an error",
+		async ({ funcName, query }) => {
+			const mockPoppler = jest
+				.spyOn(Poppler.prototype, funcName)
+				.mockRejectedValue(new Error("test error"));
+
+			const response = await server.inject({
+				method: "POST",
+				url: "/",
+				body: await readFile(
+					"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
+				),
+				query: {
+					last_page_to_convert: "1",
+					...query,
+				},
+				headers: {
+					"content-type": "application/pdf",
+				},
+			});
+
+			expect(response.json()).toStrictEqual({
+				error: "Internal Server Error",
+				message: "test error",
+				statusCode: 500,
+			});
+			expect(response.statusCode).toBe(500);
+
+			mockPoppler.mockRestore();
+		}
+	);
+});

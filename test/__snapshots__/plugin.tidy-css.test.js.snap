@@ -1,0 +1,967 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Tidy-CSS plugin Continues if it cannot find any CSS in HTML to tidy 1`] = `
+"<!-- Used to test that empty HTML files are still parsed correctly. --><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head></head><body>
+</body></html>"
+`;
+
+exports[`Tidy-CSS plugin Continues to parse style elements with no type attribute in HTML 1`] = `
+"<!-- Used to test that files with no style type are still parsed correctly. --><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+		
+	<style>p{margin:0;padding:0}div{margin:0;padding:0;page-break-inside:avoid}</style></head>
+<body>
+</body></html>"
+`;
+
+exports[`Tidy-CSS plugin Creates new style element if none exist in HTML but query string params passed 1`] = `
+"<!-- Used to test that empty HTML files are still parsed correctly. --><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head><style>div{font-family:Arial;page-break-inside:avoid;background-color:#fff}</style></head><body>
+</body></html>"
+`;
+
+exports[`Tidy-CSS plugin Tidies CSS in HTML 1`] = `
+"<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+
+		
+
+		
+	<style>p{margin:0;padding:0}.ft10{font-size:12px;font-family:Times;color:#000}.ft11{font-size:14px;font-family:Times;color:#000}.ft12{font-size:14px;font-family:Times;color:#000}.ft13{font-size:14px;font-family:Times;color:#00f}.ft14{font-size:14px;line-height:19px;font-family:Times;color:#000}@media print{.ft11{font-size:12px}.ft12{font-size:12px}.ft13{font-size:12px}.ft14{font-size:12px}}p{margin:0;padding:0}.ft20{font-size:14px;font-family:Times;color:#000}.ft21{font-size:12px;font-family:Times;color:#000}.ft22{font-size:14px;font-family:Times;color:#000}.ft23{font-size:14px;line-height:19px;font-family:Times;color:#000}.ft24{font-size:14px;line-height:19px;font-family:Times;color:#000}p.c72{position:absolute;top:719px;left:214px;white-space:nowrap}p.c71{position:absolute;top:701px;left:540px;white-space:nowrap}p.c70{position:absolute;top:680px;left:214px;white-space:nowrap}p.c69{position:absolute;top:680px;left:106px;white-space:nowrap}p.c68{position:absolute;top:604px;left:106px;white-space:nowrap}p.c67{position:absolute;top:568px;left:127px;white-space:nowrap}p.c66{position:absolute;top:530px;left:106px;white-space:nowrap}p.c65{position:absolute;top:453px;left:106px;white-space:nowrap}p.c64{position:absolute;top:377px;left:133px;white-space:nowrap}p.c63{position:absolute;top:358px;left:160px;white-space:nowrap}p.c62{position:absolute;top:339px;left:133px;white-space:nowrap}p.c61{position:absolute;top:320px;left:160px;white-space:nowrap}p.c60{position:absolute;top:263px;left:133px;white-space:nowrap}p.c59{position:absolute;top:224px;left:106px;white-space:nowrap}p.c58{position:absolute;top:129px;left:106px;white-space:nowrap}p.c57{position:absolute;top:72px;left:106px;white-space:nowrap}div.c56{position:relative;width:891px;height:1261px;page-break-inside:avoid}p.c55{position:absolute;top:1114px;left:106px;white-space:nowrap}p.c54{position:absolute;top:1076px;left:106px;white-space:nowrap}p.c53{position:absolute;top:1000px;left:106px;white-space:nowrap}p.c52{position:absolute;top:962px;left:160px;white-space:nowrap}p.c51{position:absolute;top:962px;left:133px;white-space:nowrap}p.c50{position:absolute;top:943px;left:160px;white-space:nowrap}p.c49{position:absolute;top:943px;left:133px;white-space:nowrap}p.c48{position:absolute;top:923px;left:160px;white-space:nowrap}p.c47{position:absolute;top:923px;left:133px;white-space:nowrap}p.c46{position:absolute;top:904px;left:160px;white-space:nowrap}p.c45{position:absolute;top:904px;left:133px;white-space:nowrap}p.c44{position:absolute;top:885px;left:160px;white-space:nowrap}p.c43{position:absolute;top:885px;left:133px;white-space:nowrap}p.c42{position:absolute;top:866px;left:160px;white-space:nowrap}p.c41{position:absolute;top:866px;left:133px;white-space:nowrap}p.c40{position:absolute;top:847px;left:160px;white-space:nowrap}p.c39{position:absolute;top:847px;left:133px;white-space:nowrap}p.c38{position:absolute;top:809px;left:106px;white-space:nowrap}p.c37{position:absolute;top:790px;left:133px;white-space:nowrap}p.c36{position:absolute;top:771px;left:160px;white-space:nowrap}p.c35{position:absolute;top:771px;left:133px;white-space:nowrap}p.c34{position:absolute;top:752px;left:160px;white-space:nowrap}p.c33{position:absolute;top:752px;left:133px;white-space:nowrap}p.c32{position:absolute;top:714px;left:160px;white-space:nowrap}p.c31{position:absolute;top:714px;left:133px;white-space:nowrap}p.c30{position:absolute;top:695px;left:160px;white-space:nowrap}p.c29{position:absolute;top:695px;left:133px;white-space:nowrap}p.c28{position:absolute;top:656px;left:160px;white-space:nowrap}p.c27{position:absolute;top:656px;left:133px;white-space:nowrap}p.c26{position:absolute;top:637px;left:160px;white-space:nowrap}p.c25{position:absolute;top:637px;left:133px;white-space:nowrap}p.c24{position:absolute;top:599px;left:160px;white-space:nowrap}p.c23{position:absolute;top:599px;left:133px;white-space:nowrap}p.c22{position:absolute;top:561px;left:106px;white-space:nowrap}p.c21{position:absolute;top:485px;left:106px;white-space:nowrap}p.c20{position:absolute;top:446px;left:106px;white-space:nowrap}p.c19{position:absolute;top:313px;left:591px;white-space:nowrap}p.c18{position:absolute;top:313px;left:540px;white-space:nowrap}p.c17{position:absolute;top:294px;left:636px;white-space:nowrap}p.c16{position:absolute;top:275px;left:602px;white-space:nowrap}p.c15{position:absolute;top:256px;left:577px;white-space:nowrap}p.c14{position:absolute;top:237px;left:710px;white-space:nowrap}p.c13{position:absolute;top:218px;left:714px;white-space:nowrap}p.c12{position:absolute;top:198px;left:742px;white-space:nowrap}p.c11{position:absolute;top:179px;left:667px;white-space:nowrap}p.c10{position:absolute;top:160px;left:622px;white-space:nowrap}p.c9{position:absolute;top:332px;left:106px;white-space:nowrap}p.c8{position:absolute;top:294px;left:106px;white-space:nowrap}p.c7{position:absolute;top:256px;left:276px;white-space:nowrap}p.c6{position:absolute;top:237px;left:106px;white-space:nowrap}p.c5{position:absolute;top:218px;left:276px;white-space:nowrap}p.c4{position:absolute;top:218px;left:106px;white-space:nowrap}p.c3{position:absolute;top:198px;left:276px;white-space:nowrap}p.c2{position:absolute;top:198px;left:106px;white-space:nowrap}p.c1{position:absolute;top:160px;left:106px;white-space:nowrap}</style></head>
+	<body>
+		<br>
+		<div id="page1-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues001.png" alt="background image">
+			<p class="ft11 c1">
+				<b>DEPARTMENT&nbsp;OF&nbsp;RESPIRATORY&nbsp;MEDICINE</b>
+			</p>
+			<p class="ft12 c2">Our&nbsp;Ref:</p>
+			<p class="ft12 c3">LX/nhs/hi/999999</p>
+			<p class="ft12 c4">NHS&nbsp;No:</p>
+			<p class="ft12 c5">999&nbsp;999&nbsp;9999</p>
+			<p class="ft14 c6">
+				Outpatient&nbsp;Clinic&nbsp;Date:&nbsp;31/12/3000<br>
+				Clinic&nbsp;Code:
+			</p>
+			<p class="ft12 c7">LOL/BE</p>
+			<p class="ft12 c8">Document&nbsp;Typed:&nbsp;31/12/3000</p>
+			<p class="ft14 c9">
+				Dr&nbsp;Dr&nbsp;Doctor<br>
+				Hogwarts&nbsp;Medical&nbsp;Centre<br>
+				Privet&nbsp;Drive<br>
+				Middle-Of-Nowhere<br>
+				Summerset&nbsp;ZZ99&nbsp;9ZZ
+			</p>
+			<p class="ft12 c10">Super&nbsp;Test&nbsp;Hospital</p>
+			<p class="ft12 c11">Higher&nbsp;Heights</p>
+			<p class="ft12 c12">Clouds</p>
+			<p class="ft12 c13">Summerset</p>
+			<p class="ft12 c14">ZZ99&nbsp;9ZZ</p>
+			<p class="ft12 c15">Switchboard:&nbsp;99999&nbsp;999999</p>
+			<p class="ft12 c16">Secretary:&nbsp;Jimmini&nbsp;Cricket</p>
+			<p class="ft12 c17">Direct&nbsp;Line:&nbsp;999999</p>
+			<p class="ft12 c18">Email:</p>
+			<p class="ft13 c19">
+				<a href="mailto:Jimmini.Cricket@nhs.uk">Jimmini.Cricket@nhs.uk</a>
+			</p>
+			<p class="ft12 c20">Dear&nbsp;Dr&nbsp;Doctor</p>
+			<p class="ft14 c21">
+				<b>Re:&nbsp;</b>Mr&nbsp;John&nbsp;Smith&nbsp;<b>DOB:&nbsp;</b>01/08/1944<br>
+
+				<b>Address:&nbsp;</b>Best&nbsp;Place,&nbsp;West&nbsp;Lane&nbsp;Charred,&nbsp;Middle-Of-Nowhere,&nbsp;Summerset&nbsp;ZZ99<br>
+
+				9ZZ
+			</p>
+			<p class="ft11 c22"><b>Diagnosis:</b></p>
+			<p class="ft12 c23">•</p>
+			<p class="ft14 c24">
+				Suspected&nbsp;ABPA&nbsp;(bilateral&nbsp;lung&nbsp;changes&nbsp;with&nbsp;positive&nbsp;aspergillus&nbsp;fumigatus&nbsp;7.26,<br>
+
+				specific&nbsp;IgE&nbsp;grade&nbsp;3)
+			</p>
+			<p class="ft12 c25">•</p>
+			<p class="ft12 c26">Previous&nbsp;exposure&nbsp;to&nbsp;mould&nbsp;in&nbsp;the&nbsp;house</p>
+			<p class="ft12 c27">•</p>
+			<p class="ft14 c28">
+				Small&nbsp;left&nbsp;apical&nbsp;pneumothorax&nbsp;after&nbsp;pleural&nbsp;tap&nbsp;on&nbsp;the&nbsp;ward,&nbsp;slowly&nbsp;resolving,&nbsp;chest<br>
+
+				x-ray&nbsp;done&nbsp;29&nbsp;November&nbsp;2018&nbsp;–&nbsp;waiting&nbsp;for&nbsp;report
+			</p>
+			<p class="ft12 c29">•</p>
+			<p class="ft12 c30">Ca&nbsp;prostate</p>
+			<p class="ft12 c31">•</p>
+			<p class="ft14 c32">
+				?&nbsp;pulmonary&nbsp;sarcoidosis&nbsp;diagnosed&nbsp;barely&nbsp;on&nbsp;chest&nbsp;x-ray&nbsp;findings&nbsp;around&nbsp;50&nbsp;years<br>
+
+				ago&nbsp;but&nbsp;no&nbsp;evidence&nbsp;in&nbsp;the&nbsp;notes
+			</p>
+			<p class="ft12 c33">•</p>
+			<p class="ft12 c34">Gout</p>
+			<p class="ft12 c35">•</p>
+			<p class="ft12 c36">AF</p>
+			<p class="ft12 c37">•</p>
+			<p class="ft11 c38"><b>Current&nbsp;Medications:</b></p>
+			<p class="ft12 c39">•</p>
+			<p class="ft12 c40">
+				Prednisolone&nbsp;25&nbsp;mg&nbsp;od,&nbsp;reducing&nbsp;at&nbsp;5&nbsp;mg&nbsp;every&nbsp;three&nbsp;days
+			</p>
+			<p class="ft12 c41">•</p>
+			<p class="ft12 c42">Apixaban</p>
+			<p class="ft12 c43">•</p>
+			<p class="ft12 c44">Aspirin</p>
+			<p class="ft12 c45">•</p>
+			<p class="ft12 c46">Digoxin</p>
+			<p class="ft12 c47">•</p>
+			<p class="ft12 c48">Allopurinol</p>
+			<p class="ft12 c49">•</p>
+			<p class="ft12 c50">Spiriva&nbsp;and&nbsp;DuoResp&nbsp;Spiromax</p>
+			<p class="ft12 c51">•</p>
+			<p class="ft12 c52">Bisoprolol</p>
+			<p class="ft14 c53">
+				I&nbsp;reviewed&nbsp;this&nbsp;pleasant&nbsp;gentleman&nbsp;in&nbsp;Clinic&nbsp;today.&nbsp;He&nbsp;is&nbsp;due&nbsp;to&nbsp;finish&nbsp;his&nbsp;six&nbsp;week&nbsp;course&nbsp;of<br>
+
+				voriconazole&nbsp;in&nbsp;the&nbsp;next&nbsp;couple&nbsp;of&nbsp;days.&nbsp;However,&nbsp;I&nbsp;am&nbsp;sorry&nbsp;to&nbsp;hear&nbsp;that&nbsp;he&nbsp;is&nbsp;not&nbsp;feeling<br>
+
+				great&nbsp;with&nbsp;more&nbsp;exertional&nbsp;breathlessness&nbsp;and&nbsp;tiredness&nbsp;for&nbsp;the&nbsp;last&nbsp;10&nbsp;days.
+			</p>
+			<p class="ft12 c54">
+				He&nbsp;denies&nbsp;any&nbsp;temperature&nbsp;but&nbsp;he&nbsp;is&nbsp;coughing&nbsp;again.
+			</p>
+			<p class="ft14 c55">
+				During&nbsp;his&nbsp;inpatient&nbsp;admission&nbsp;he&nbsp;was&nbsp;treated&nbsp;with&nbsp;steroids,&nbsp;antibiotics&nbsp;and&nbsp;then&nbsp;due&nbsp;to<br>
+
+				abnormal&nbsp;aspergillus&nbsp;serology&nbsp;he&nbsp;had&nbsp;around&nbsp;six&nbsp;weeks&nbsp;of&nbsp;voriconazole.
+			</p>
+		</div>
+		
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<br>
+		<div id="page2-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues002.png" alt="background image">
+			<p class="ft23 c57">
+				He&nbsp;also&nbsp;complained&nbsp;of&nbsp;palpitations&nbsp;on&nbsp;a&nbsp;couple&nbsp;of&nbsp;occasions&nbsp;but&nbsp;had&nbsp;ECG&nbsp;at&nbsp;GP&nbsp;surgery<br>
+
+				which&nbsp;was&nbsp;normal.
+			</p>
+			<p class="ft23 c58">
+				Here&nbsp;the&nbsp;deferential&nbsp;is&nbsp;really&nbsp;wide&nbsp;as&nbsp;he&nbsp;did&nbsp;have&nbsp;previous&nbsp;chest&nbsp;x-rays&nbsp;suggestive&nbsp;of<br>
+
+				ground&nbsp;glass&nbsp;shadows,&nbsp;hence&nbsp;this&nbsp;could&nbsp;be&nbsp;cough&nbsp;which&nbsp;is&nbsp;relapsing&nbsp;after&nbsp;weaning&nbsp;down<br>
+
+				the&nbsp;steroids.&nbsp;At&nbsp;the&nbsp;same&nbsp;time&nbsp;this&nbsp;could&nbsp;be&nbsp;an&nbsp;Addisonian&nbsp;picture&nbsp;because&nbsp;of&nbsp;low&nbsp;cortisol<br>
+
+				levels,&nbsp;three&nbsp;thirds.&nbsp;His&nbsp;recent&nbsp;sputum&nbsp;has&nbsp;grown&nbsp;mycobacterium&nbsp;avium.
+			</p>
+			<p class="ft20 c59">
+				Considering&nbsp;his&nbsp;abnormal&nbsp;radiology&nbsp;we&nbsp;need&nbsp;to&nbsp;make&nbsp;the&nbsp;following&nbsp;plan:
+			</p>
+			<p class="ft23 c60">
+				1.&nbsp;Urgent&nbsp;HRCT<br>
+				2.&nbsp;Bronchoscopy&nbsp;and&nbsp;washing&nbsp;for&nbsp;MC&amp;S,&nbsp;AFB&nbsp;and&nbsp;fungi.<br>
+
+				3.&nbsp;Steroids&nbsp;30mgs&nbsp;oral&nbsp;for&nbsp;two&nbsp;weeks&nbsp;and&nbsp;then&nbsp;wean&nbsp;down&nbsp;by&nbsp;5mgs&nbsp;every&nbsp;5&nbsp;days&nbsp;to
+			</p>
+			<p class="ft20 c61">zero.</p>
+			<p class="ft20 c62">
+				4.&nbsp;Bloods&nbsp;today&nbsp;for&nbsp;repeat&nbsp;aspergillus&nbsp;serology,&nbsp;cortisol&nbsp;levels,&nbsp;routine&nbsp;inflammatory
+			</p>
+			<p class="ft20 c63">markers,&nbsp;LFTs.</p>
+			<p class="ft23 c64">
+				5.&nbsp;Sputum&nbsp;samples.<br>
+				6.&nbsp;24hr&nbsp;tape.<br>
+				7.&nbsp;Follow&nbsp;up&nbsp;in&nbsp;around&nbsp;three&nbsp;weeks.
+			</p>
+			<p class="ft23 c65">
+				I&nbsp;have&nbsp;requested&nbsp;my&nbsp;nurse&nbsp;colleague,&nbsp;Daffy,&nbsp;to&nbsp;keep&nbsp;an&nbsp;eye&nbsp;on&nbsp;his&nbsp;cortisol&nbsp;levels&nbsp;and&nbsp;any<br>
+
+				other&nbsp;bloods&nbsp;and&nbsp;if&nbsp;they&nbsp;are&nbsp;abnormal&nbsp;to&nbsp;liaise&nbsp;with&nbsp;Doctor&nbsp;Raines&nbsp;for&nbsp;any&nbsp;further&nbsp;urgent<br>
+
+				action&nbsp;needed.
+			</p>
+			<p class="ft20 c66">Yours&nbsp;sincerely</p>
+			<p class="ft21 c67">Electronically&nbsp;scrutinised&nbsp;by</p>
+			<p class="ft24 c68">
+				<b>Dr&nbsp;Nelly&nbsp;Blank&nbsp;MCRP<br>
+					Locum&nbsp;Consultant&nbsp;in&nbsp;Respiratory&nbsp;Medicine</b>
+			</p>
+			<p class="ft20 c69">Copy&nbsp;to:</p>
+			<p class="ft23 c70">
+				Dr&nbsp;Mickey&nbsp;Mice,&nbsp;Consultant&nbsp;Respiratory&nbsp;Physician,&nbsp;STH<br>
+
+				Daffy&nbsp;Durp,&nbsp;Respiratory&nbsp;Nurse,&nbsp;STH&nbsp;(
+			</p>
+			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
+			<p class="ft20 c72">Notes</p>
+		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
+		</div>
+	
+
+</body></html>"
+`;
+
+exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new background color 1`] = `
+"<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+
+		
+
+		
+	<style>p{margin:0;padding:0}.ft10{font-size:12px;font-family:Times;color:#000}.ft11{font-size:14px;font-family:Times;color:#000}.ft12{font-size:14px;font-family:Times;color:#000}.ft13{font-size:14px;font-family:Times;color:#00f}.ft14{font-size:14px;line-height:19px;font-family:Times;color:#000}@media print{.ft11{font-size:12px}.ft12{font-size:12px}.ft13{font-size:12px}.ft14{font-size:12px}}p{margin:0;padding:0}.ft20{font-size:14px;font-family:Times;color:#000}.ft21{font-size:12px;font-family:Times;color:#000}.ft22{font-size:14px;font-family:Times;color:#000}.ft23{font-size:14px;line-height:19px;font-family:Times;color:#000}.ft24{font-size:14px;line-height:19px;font-family:Times;color:#000}p.c72{position:absolute;top:719px;left:214px;white-space:nowrap}p.c71{position:absolute;top:701px;left:540px;white-space:nowrap}p.c70{position:absolute;top:680px;left:214px;white-space:nowrap}p.c69{position:absolute;top:680px;left:106px;white-space:nowrap}p.c68{position:absolute;top:604px;left:106px;white-space:nowrap}p.c67{position:absolute;top:568px;left:127px;white-space:nowrap}p.c66{position:absolute;top:530px;left:106px;white-space:nowrap}p.c65{position:absolute;top:453px;left:106px;white-space:nowrap}p.c64{position:absolute;top:377px;left:133px;white-space:nowrap}p.c63{position:absolute;top:358px;left:160px;white-space:nowrap}p.c62{position:absolute;top:339px;left:133px;white-space:nowrap}p.c61{position:absolute;top:320px;left:160px;white-space:nowrap}p.c60{position:absolute;top:263px;left:133px;white-space:nowrap}p.c59{position:absolute;top:224px;left:106px;white-space:nowrap}p.c58{position:absolute;top:129px;left:106px;white-space:nowrap}p.c57{position:absolute;top:72px;left:106px;white-space:nowrap}div.c56{position:relative;width:891px;height:1261px;page-break-inside:avoid;background-color:#fff}p.c55{position:absolute;top:1114px;left:106px;white-space:nowrap}p.c54{position:absolute;top:1076px;left:106px;white-space:nowrap}p.c53{position:absolute;top:1000px;left:106px;white-space:nowrap}p.c52{position:absolute;top:962px;left:160px;white-space:nowrap}p.c51{position:absolute;top:962px;left:133px;white-space:nowrap}p.c50{position:absolute;top:943px;left:160px;white-space:nowrap}p.c49{position:absolute;top:943px;left:133px;white-space:nowrap}p.c48{position:absolute;top:923px;left:160px;white-space:nowrap}p.c47{position:absolute;top:923px;left:133px;white-space:nowrap}p.c46{position:absolute;top:904px;left:160px;white-space:nowrap}p.c45{position:absolute;top:904px;left:133px;white-space:nowrap}p.c44{position:absolute;top:885px;left:160px;white-space:nowrap}p.c43{position:absolute;top:885px;left:133px;white-space:nowrap}p.c42{position:absolute;top:866px;left:160px;white-space:nowrap}p.c41{position:absolute;top:866px;left:133px;white-space:nowrap}p.c40{position:absolute;top:847px;left:160px;white-space:nowrap}p.c39{position:absolute;top:847px;left:133px;white-space:nowrap}p.c38{position:absolute;top:809px;left:106px;white-space:nowrap}p.c37{position:absolute;top:790px;left:133px;white-space:nowrap}p.c36{position:absolute;top:771px;left:160px;white-space:nowrap}p.c35{position:absolute;top:771px;left:133px;white-space:nowrap}p.c34{position:absolute;top:752px;left:160px;white-space:nowrap}p.c33{position:absolute;top:752px;left:133px;white-space:nowrap}p.c32{position:absolute;top:714px;left:160px;white-space:nowrap}p.c31{position:absolute;top:714px;left:133px;white-space:nowrap}p.c30{position:absolute;top:695px;left:160px;white-space:nowrap}p.c29{position:absolute;top:695px;left:133px;white-space:nowrap}p.c28{position:absolute;top:656px;left:160px;white-space:nowrap}p.c27{position:absolute;top:656px;left:133px;white-space:nowrap}p.c26{position:absolute;top:637px;left:160px;white-space:nowrap}p.c25{position:absolute;top:637px;left:133px;white-space:nowrap}p.c24{position:absolute;top:599px;left:160px;white-space:nowrap}p.c23{position:absolute;top:599px;left:133px;white-space:nowrap}p.c22{position:absolute;top:561px;left:106px;white-space:nowrap}p.c21{position:absolute;top:485px;left:106px;white-space:nowrap}p.c20{position:absolute;top:446px;left:106px;white-space:nowrap}p.c19{position:absolute;top:313px;left:591px;white-space:nowrap}p.c18{position:absolute;top:313px;left:540px;white-space:nowrap}p.c17{position:absolute;top:294px;left:636px;white-space:nowrap}p.c16{position:absolute;top:275px;left:602px;white-space:nowrap}p.c15{position:absolute;top:256px;left:577px;white-space:nowrap}p.c14{position:absolute;top:237px;left:710px;white-space:nowrap}p.c13{position:absolute;top:218px;left:714px;white-space:nowrap}p.c12{position:absolute;top:198px;left:742px;white-space:nowrap}p.c11{position:absolute;top:179px;left:667px;white-space:nowrap}p.c10{position:absolute;top:160px;left:622px;white-space:nowrap}p.c9{position:absolute;top:332px;left:106px;white-space:nowrap}p.c8{position:absolute;top:294px;left:106px;white-space:nowrap}p.c7{position:absolute;top:256px;left:276px;white-space:nowrap}p.c6{position:absolute;top:237px;left:106px;white-space:nowrap}p.c5{position:absolute;top:218px;left:276px;white-space:nowrap}p.c4{position:absolute;top:218px;left:106px;white-space:nowrap}p.c3{position:absolute;top:198px;left:276px;white-space:nowrap}p.c2{position:absolute;top:198px;left:106px;white-space:nowrap}p.c1{position:absolute;top:160px;left:106px;white-space:nowrap}</style></head>
+	<body>
+		<br>
+		<div id="page1-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues001.png" alt="background image">
+			<p class="ft11 c1">
+				<b>DEPARTMENT&nbsp;OF&nbsp;RESPIRATORY&nbsp;MEDICINE</b>
+			</p>
+			<p class="ft12 c2">Our&nbsp;Ref:</p>
+			<p class="ft12 c3">LX/nhs/hi/999999</p>
+			<p class="ft12 c4">NHS&nbsp;No:</p>
+			<p class="ft12 c5">999&nbsp;999&nbsp;9999</p>
+			<p class="ft14 c6">
+				Outpatient&nbsp;Clinic&nbsp;Date:&nbsp;31/12/3000<br>
+				Clinic&nbsp;Code:
+			</p>
+			<p class="ft12 c7">LOL/BE</p>
+			<p class="ft12 c8">Document&nbsp;Typed:&nbsp;31/12/3000</p>
+			<p class="ft14 c9">
+				Dr&nbsp;Dr&nbsp;Doctor<br>
+				Hogwarts&nbsp;Medical&nbsp;Centre<br>
+				Privet&nbsp;Drive<br>
+				Middle-Of-Nowhere<br>
+				Summerset&nbsp;ZZ99&nbsp;9ZZ
+			</p>
+			<p class="ft12 c10">Super&nbsp;Test&nbsp;Hospital</p>
+			<p class="ft12 c11">Higher&nbsp;Heights</p>
+			<p class="ft12 c12">Clouds</p>
+			<p class="ft12 c13">Summerset</p>
+			<p class="ft12 c14">ZZ99&nbsp;9ZZ</p>
+			<p class="ft12 c15">Switchboard:&nbsp;99999&nbsp;999999</p>
+			<p class="ft12 c16">Secretary:&nbsp;Jimmini&nbsp;Cricket</p>
+			<p class="ft12 c17">Direct&nbsp;Line:&nbsp;999999</p>
+			<p class="ft12 c18">Email:</p>
+			<p class="ft13 c19">
+				<a href="mailto:Jimmini.Cricket@nhs.uk">Jimmini.Cricket@nhs.uk</a>
+			</p>
+			<p class="ft12 c20">Dear&nbsp;Dr&nbsp;Doctor</p>
+			<p class="ft14 c21">
+				<b>Re:&nbsp;</b>Mr&nbsp;John&nbsp;Smith&nbsp;<b>DOB:&nbsp;</b>01/08/1944<br>
+
+				<b>Address:&nbsp;</b>Best&nbsp;Place,&nbsp;West&nbsp;Lane&nbsp;Charred,&nbsp;Middle-Of-Nowhere,&nbsp;Summerset&nbsp;ZZ99<br>
+
+				9ZZ
+			</p>
+			<p class="ft11 c22"><b>Diagnosis:</b></p>
+			<p class="ft12 c23">•</p>
+			<p class="ft14 c24">
+				Suspected&nbsp;ABPA&nbsp;(bilateral&nbsp;lung&nbsp;changes&nbsp;with&nbsp;positive&nbsp;aspergillus&nbsp;fumigatus&nbsp;7.26,<br>
+
+				specific&nbsp;IgE&nbsp;grade&nbsp;3)
+			</p>
+			<p class="ft12 c25">•</p>
+			<p class="ft12 c26">Previous&nbsp;exposure&nbsp;to&nbsp;mould&nbsp;in&nbsp;the&nbsp;house</p>
+			<p class="ft12 c27">•</p>
+			<p class="ft14 c28">
+				Small&nbsp;left&nbsp;apical&nbsp;pneumothorax&nbsp;after&nbsp;pleural&nbsp;tap&nbsp;on&nbsp;the&nbsp;ward,&nbsp;slowly&nbsp;resolving,&nbsp;chest<br>
+
+				x-ray&nbsp;done&nbsp;29&nbsp;November&nbsp;2018&nbsp;–&nbsp;waiting&nbsp;for&nbsp;report
+			</p>
+			<p class="ft12 c29">•</p>
+			<p class="ft12 c30">Ca&nbsp;prostate</p>
+			<p class="ft12 c31">•</p>
+			<p class="ft14 c32">
+				?&nbsp;pulmonary&nbsp;sarcoidosis&nbsp;diagnosed&nbsp;barely&nbsp;on&nbsp;chest&nbsp;x-ray&nbsp;findings&nbsp;around&nbsp;50&nbsp;years<br>
+
+				ago&nbsp;but&nbsp;no&nbsp;evidence&nbsp;in&nbsp;the&nbsp;notes
+			</p>
+			<p class="ft12 c33">•</p>
+			<p class="ft12 c34">Gout</p>
+			<p class="ft12 c35">•</p>
+			<p class="ft12 c36">AF</p>
+			<p class="ft12 c37">•</p>
+			<p class="ft11 c38"><b>Current&nbsp;Medications:</b></p>
+			<p class="ft12 c39">•</p>
+			<p class="ft12 c40">
+				Prednisolone&nbsp;25&nbsp;mg&nbsp;od,&nbsp;reducing&nbsp;at&nbsp;5&nbsp;mg&nbsp;every&nbsp;three&nbsp;days
+			</p>
+			<p class="ft12 c41">•</p>
+			<p class="ft12 c42">Apixaban</p>
+			<p class="ft12 c43">•</p>
+			<p class="ft12 c44">Aspirin</p>
+			<p class="ft12 c45">•</p>
+			<p class="ft12 c46">Digoxin</p>
+			<p class="ft12 c47">•</p>
+			<p class="ft12 c48">Allopurinol</p>
+			<p class="ft12 c49">•</p>
+			<p class="ft12 c50">Spiriva&nbsp;and&nbsp;DuoResp&nbsp;Spiromax</p>
+			<p class="ft12 c51">•</p>
+			<p class="ft12 c52">Bisoprolol</p>
+			<p class="ft14 c53">
+				I&nbsp;reviewed&nbsp;this&nbsp;pleasant&nbsp;gentleman&nbsp;in&nbsp;Clinic&nbsp;today.&nbsp;He&nbsp;is&nbsp;due&nbsp;to&nbsp;finish&nbsp;his&nbsp;six&nbsp;week&nbsp;course&nbsp;of<br>
+
+				voriconazole&nbsp;in&nbsp;the&nbsp;next&nbsp;couple&nbsp;of&nbsp;days.&nbsp;However,&nbsp;I&nbsp;am&nbsp;sorry&nbsp;to&nbsp;hear&nbsp;that&nbsp;he&nbsp;is&nbsp;not&nbsp;feeling<br>
+
+				great&nbsp;with&nbsp;more&nbsp;exertional&nbsp;breathlessness&nbsp;and&nbsp;tiredness&nbsp;for&nbsp;the&nbsp;last&nbsp;10&nbsp;days.
+			</p>
+			<p class="ft12 c54">
+				He&nbsp;denies&nbsp;any&nbsp;temperature&nbsp;but&nbsp;he&nbsp;is&nbsp;coughing&nbsp;again.
+			</p>
+			<p class="ft14 c55">
+				During&nbsp;his&nbsp;inpatient&nbsp;admission&nbsp;he&nbsp;was&nbsp;treated&nbsp;with&nbsp;steroids,&nbsp;antibiotics&nbsp;and&nbsp;then&nbsp;due&nbsp;to<br>
+
+				abnormal&nbsp;aspergillus&nbsp;serology&nbsp;he&nbsp;had&nbsp;around&nbsp;six&nbsp;weeks&nbsp;of&nbsp;voriconazole.
+			</p>
+		</div>
+		
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<br>
+		<div id="page2-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues002.png" alt="background image">
+			<p class="ft23 c57">
+				He&nbsp;also&nbsp;complained&nbsp;of&nbsp;palpitations&nbsp;on&nbsp;a&nbsp;couple&nbsp;of&nbsp;occasions&nbsp;but&nbsp;had&nbsp;ECG&nbsp;at&nbsp;GP&nbsp;surgery<br>
+
+				which&nbsp;was&nbsp;normal.
+			</p>
+			<p class="ft23 c58">
+				Here&nbsp;the&nbsp;deferential&nbsp;is&nbsp;really&nbsp;wide&nbsp;as&nbsp;he&nbsp;did&nbsp;have&nbsp;previous&nbsp;chest&nbsp;x-rays&nbsp;suggestive&nbsp;of<br>
+
+				ground&nbsp;glass&nbsp;shadows,&nbsp;hence&nbsp;this&nbsp;could&nbsp;be&nbsp;cough&nbsp;which&nbsp;is&nbsp;relapsing&nbsp;after&nbsp;weaning&nbsp;down<br>
+
+				the&nbsp;steroids.&nbsp;At&nbsp;the&nbsp;same&nbsp;time&nbsp;this&nbsp;could&nbsp;be&nbsp;an&nbsp;Addisonian&nbsp;picture&nbsp;because&nbsp;of&nbsp;low&nbsp;cortisol<br>
+
+				levels,&nbsp;three&nbsp;thirds.&nbsp;His&nbsp;recent&nbsp;sputum&nbsp;has&nbsp;grown&nbsp;mycobacterium&nbsp;avium.
+			</p>
+			<p class="ft20 c59">
+				Considering&nbsp;his&nbsp;abnormal&nbsp;radiology&nbsp;we&nbsp;need&nbsp;to&nbsp;make&nbsp;the&nbsp;following&nbsp;plan:
+			</p>
+			<p class="ft23 c60">
+				1.&nbsp;Urgent&nbsp;HRCT<br>
+				2.&nbsp;Bronchoscopy&nbsp;and&nbsp;washing&nbsp;for&nbsp;MC&amp;S,&nbsp;AFB&nbsp;and&nbsp;fungi.<br>
+
+				3.&nbsp;Steroids&nbsp;30mgs&nbsp;oral&nbsp;for&nbsp;two&nbsp;weeks&nbsp;and&nbsp;then&nbsp;wean&nbsp;down&nbsp;by&nbsp;5mgs&nbsp;every&nbsp;5&nbsp;days&nbsp;to
+			</p>
+			<p class="ft20 c61">zero.</p>
+			<p class="ft20 c62">
+				4.&nbsp;Bloods&nbsp;today&nbsp;for&nbsp;repeat&nbsp;aspergillus&nbsp;serology,&nbsp;cortisol&nbsp;levels,&nbsp;routine&nbsp;inflammatory
+			</p>
+			<p class="ft20 c63">markers,&nbsp;LFTs.</p>
+			<p class="ft23 c64">
+				5.&nbsp;Sputum&nbsp;samples.<br>
+				6.&nbsp;24hr&nbsp;tape.<br>
+				7.&nbsp;Follow&nbsp;up&nbsp;in&nbsp;around&nbsp;three&nbsp;weeks.
+			</p>
+			<p class="ft23 c65">
+				I&nbsp;have&nbsp;requested&nbsp;my&nbsp;nurse&nbsp;colleague,&nbsp;Daffy,&nbsp;to&nbsp;keep&nbsp;an&nbsp;eye&nbsp;on&nbsp;his&nbsp;cortisol&nbsp;levels&nbsp;and&nbsp;any<br>
+
+				other&nbsp;bloods&nbsp;and&nbsp;if&nbsp;they&nbsp;are&nbsp;abnormal&nbsp;to&nbsp;liaise&nbsp;with&nbsp;Doctor&nbsp;Raines&nbsp;for&nbsp;any&nbsp;further&nbsp;urgent<br>
+
+				action&nbsp;needed.
+			</p>
+			<p class="ft20 c66">Yours&nbsp;sincerely</p>
+			<p class="ft21 c67">Electronically&nbsp;scrutinised&nbsp;by</p>
+			<p class="ft24 c68">
+				<b>Dr&nbsp;Nelly&nbsp;Blank&nbsp;MCRP<br>
+					Locum&nbsp;Consultant&nbsp;in&nbsp;Respiratory&nbsp;Medicine</b>
+			</p>
+			<p class="ft20 c69">Copy&nbsp;to:</p>
+			<p class="ft23 c70">
+				Dr&nbsp;Mickey&nbsp;Mice,&nbsp;Consultant&nbsp;Respiratory&nbsp;Physician,&nbsp;STH<br>
+
+				Daffy&nbsp;Durp,&nbsp;Respiratory&nbsp;Nurse,&nbsp;STH&nbsp;(
+			</p>
+			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
+			<p class="ft20 c72">Notes</p>
+		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
+		</div>
+	
+
+</body></html>"
+`;
+
+exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font 1`] = `
+"<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+
+		
+
+		
+	<style>p{margin:0;padding:0}.ft10{font-size:12px;font-family:Arial;color:#000}.ft11{font-size:14px;font-family:Arial;color:#000}.ft12{font-size:14px;font-family:Arial;color:#000}.ft13{font-size:14px;font-family:Arial;color:#00f}.ft14{font-size:14px;line-height:19px;font-family:Arial;color:#000}@media print{.ft11{font-size:12px}.ft12{font-size:12px}.ft13{font-size:12px}.ft14{font-size:12px}}p{margin:0;padding:0}.ft20{font-size:14px;font-family:Arial;color:#000}.ft21{font-size:12px;font-family:Arial;color:#000}.ft22{font-size:14px;font-family:Arial;color:#000}.ft23{font-size:14px;line-height:19px;font-family:Arial;color:#000}.ft24{font-size:14px;line-height:19px;font-family:Arial;color:#000}p.c72{position:absolute;top:719px;left:214px;white-space:nowrap}p.c71{position:absolute;top:701px;left:540px;white-space:nowrap}p.c70{position:absolute;top:680px;left:214px;white-space:nowrap}p.c69{position:absolute;top:680px;left:106px;white-space:nowrap}p.c68{position:absolute;top:604px;left:106px;white-space:nowrap}p.c67{position:absolute;top:568px;left:127px;white-space:nowrap}p.c66{position:absolute;top:530px;left:106px;white-space:nowrap}p.c65{position:absolute;top:453px;left:106px;white-space:nowrap}p.c64{position:absolute;top:377px;left:133px;white-space:nowrap}p.c63{position:absolute;top:358px;left:160px;white-space:nowrap}p.c62{position:absolute;top:339px;left:133px;white-space:nowrap}p.c61{position:absolute;top:320px;left:160px;white-space:nowrap}p.c60{position:absolute;top:263px;left:133px;white-space:nowrap}p.c59{position:absolute;top:224px;left:106px;white-space:nowrap}p.c58{position:absolute;top:129px;left:106px;white-space:nowrap}p.c57{position:absolute;top:72px;left:106px;white-space:nowrap}div.c56{position:relative;width:891px;height:1261px;page-break-inside:avoid}p.c55{position:absolute;top:1114px;left:106px;white-space:nowrap}p.c54{position:absolute;top:1076px;left:106px;white-space:nowrap}p.c53{position:absolute;top:1000px;left:106px;white-space:nowrap}p.c52{position:absolute;top:962px;left:160px;white-space:nowrap}p.c51{position:absolute;top:962px;left:133px;white-space:nowrap}p.c50{position:absolute;top:943px;left:160px;white-space:nowrap}p.c49{position:absolute;top:943px;left:133px;white-space:nowrap}p.c48{position:absolute;top:923px;left:160px;white-space:nowrap}p.c47{position:absolute;top:923px;left:133px;white-space:nowrap}p.c46{position:absolute;top:904px;left:160px;white-space:nowrap}p.c45{position:absolute;top:904px;left:133px;white-space:nowrap}p.c44{position:absolute;top:885px;left:160px;white-space:nowrap}p.c43{position:absolute;top:885px;left:133px;white-space:nowrap}p.c42{position:absolute;top:866px;left:160px;white-space:nowrap}p.c41{position:absolute;top:866px;left:133px;white-space:nowrap}p.c40{position:absolute;top:847px;left:160px;white-space:nowrap}p.c39{position:absolute;top:847px;left:133px;white-space:nowrap}p.c38{position:absolute;top:809px;left:106px;white-space:nowrap}p.c37{position:absolute;top:790px;left:133px;white-space:nowrap}p.c36{position:absolute;top:771px;left:160px;white-space:nowrap}p.c35{position:absolute;top:771px;left:133px;white-space:nowrap}p.c34{position:absolute;top:752px;left:160px;white-space:nowrap}p.c33{position:absolute;top:752px;left:133px;white-space:nowrap}p.c32{position:absolute;top:714px;left:160px;white-space:nowrap}p.c31{position:absolute;top:714px;left:133px;white-space:nowrap}p.c30{position:absolute;top:695px;left:160px;white-space:nowrap}p.c29{position:absolute;top:695px;left:133px;white-space:nowrap}p.c28{position:absolute;top:656px;left:160px;white-space:nowrap}p.c27{position:absolute;top:656px;left:133px;white-space:nowrap}p.c26{position:absolute;top:637px;left:160px;white-space:nowrap}p.c25{position:absolute;top:637px;left:133px;white-space:nowrap}p.c24{position:absolute;top:599px;left:160px;white-space:nowrap}p.c23{position:absolute;top:599px;left:133px;white-space:nowrap}p.c22{position:absolute;top:561px;left:106px;white-space:nowrap}p.c21{position:absolute;top:485px;left:106px;white-space:nowrap}p.c20{position:absolute;top:446px;left:106px;white-space:nowrap}p.c19{position:absolute;top:313px;left:591px;white-space:nowrap}p.c18{position:absolute;top:313px;left:540px;white-space:nowrap}p.c17{position:absolute;top:294px;left:636px;white-space:nowrap}p.c16{position:absolute;top:275px;left:602px;white-space:nowrap}p.c15{position:absolute;top:256px;left:577px;white-space:nowrap}p.c14{position:absolute;top:237px;left:710px;white-space:nowrap}p.c13{position:absolute;top:218px;left:714px;white-space:nowrap}p.c12{position:absolute;top:198px;left:742px;white-space:nowrap}p.c11{position:absolute;top:179px;left:667px;white-space:nowrap}p.c10{position:absolute;top:160px;left:622px;white-space:nowrap}p.c9{position:absolute;top:332px;left:106px;white-space:nowrap}p.c8{position:absolute;top:294px;left:106px;white-space:nowrap}p.c7{position:absolute;top:256px;left:276px;white-space:nowrap}p.c6{position:absolute;top:237px;left:106px;white-space:nowrap}p.c5{position:absolute;top:218px;left:276px;white-space:nowrap}p.c4{position:absolute;top:218px;left:106px;white-space:nowrap}p.c3{position:absolute;top:198px;left:276px;white-space:nowrap}p.c2{position:absolute;top:198px;left:106px;white-space:nowrap}p.c1{position:absolute;top:160px;left:106px;white-space:nowrap}</style></head>
+	<body>
+		<br>
+		<div id="page1-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues001.png" alt="background image">
+			<p class="ft11 c1">
+				<b>DEPARTMENT&nbsp;OF&nbsp;RESPIRATORY&nbsp;MEDICINE</b>
+			</p>
+			<p class="ft12 c2">Our&nbsp;Ref:</p>
+			<p class="ft12 c3">LX/nhs/hi/999999</p>
+			<p class="ft12 c4">NHS&nbsp;No:</p>
+			<p class="ft12 c5">999&nbsp;999&nbsp;9999</p>
+			<p class="ft14 c6">
+				Outpatient&nbsp;Clinic&nbsp;Date:&nbsp;31/12/3000<br>
+				Clinic&nbsp;Code:
+			</p>
+			<p class="ft12 c7">LOL/BE</p>
+			<p class="ft12 c8">Document&nbsp;Typed:&nbsp;31/12/3000</p>
+			<p class="ft14 c9">
+				Dr&nbsp;Dr&nbsp;Doctor<br>
+				Hogwarts&nbsp;Medical&nbsp;Centre<br>
+				Privet&nbsp;Drive<br>
+				Middle-Of-Nowhere<br>
+				Summerset&nbsp;ZZ99&nbsp;9ZZ
+			</p>
+			<p class="ft12 c10">Super&nbsp;Test&nbsp;Hospital</p>
+			<p class="ft12 c11">Higher&nbsp;Heights</p>
+			<p class="ft12 c12">Clouds</p>
+			<p class="ft12 c13">Summerset</p>
+			<p class="ft12 c14">ZZ99&nbsp;9ZZ</p>
+			<p class="ft12 c15">Switchboard:&nbsp;99999&nbsp;999999</p>
+			<p class="ft12 c16">Secretary:&nbsp;Jimmini&nbsp;Cricket</p>
+			<p class="ft12 c17">Direct&nbsp;Line:&nbsp;999999</p>
+			<p class="ft12 c18">Email:</p>
+			<p class="ft13 c19">
+				<a href="mailto:Jimmini.Cricket@nhs.uk">Jimmini.Cricket@nhs.uk</a>
+			</p>
+			<p class="ft12 c20">Dear&nbsp;Dr&nbsp;Doctor</p>
+			<p class="ft14 c21">
+				<b>Re:&nbsp;</b>Mr&nbsp;John&nbsp;Smith&nbsp;<b>DOB:&nbsp;</b>01/08/1944<br>
+
+				<b>Address:&nbsp;</b>Best&nbsp;Place,&nbsp;West&nbsp;Lane&nbsp;Charred,&nbsp;Middle-Of-Nowhere,&nbsp;Summerset&nbsp;ZZ99<br>
+
+				9ZZ
+			</p>
+			<p class="ft11 c22"><b>Diagnosis:</b></p>
+			<p class="ft12 c23">•</p>
+			<p class="ft14 c24">
+				Suspected&nbsp;ABPA&nbsp;(bilateral&nbsp;lung&nbsp;changes&nbsp;with&nbsp;positive&nbsp;aspergillus&nbsp;fumigatus&nbsp;7.26,<br>
+
+				specific&nbsp;IgE&nbsp;grade&nbsp;3)
+			</p>
+			<p class="ft12 c25">•</p>
+			<p class="ft12 c26">Previous&nbsp;exposure&nbsp;to&nbsp;mould&nbsp;in&nbsp;the&nbsp;house</p>
+			<p class="ft12 c27">•</p>
+			<p class="ft14 c28">
+				Small&nbsp;left&nbsp;apical&nbsp;pneumothorax&nbsp;after&nbsp;pleural&nbsp;tap&nbsp;on&nbsp;the&nbsp;ward,&nbsp;slowly&nbsp;resolving,&nbsp;chest<br>
+
+				x-ray&nbsp;done&nbsp;29&nbsp;November&nbsp;2018&nbsp;–&nbsp;waiting&nbsp;for&nbsp;report
+			</p>
+			<p class="ft12 c29">•</p>
+			<p class="ft12 c30">Ca&nbsp;prostate</p>
+			<p class="ft12 c31">•</p>
+			<p class="ft14 c32">
+				?&nbsp;pulmonary&nbsp;sarcoidosis&nbsp;diagnosed&nbsp;barely&nbsp;on&nbsp;chest&nbsp;x-ray&nbsp;findings&nbsp;around&nbsp;50&nbsp;years<br>
+
+				ago&nbsp;but&nbsp;no&nbsp;evidence&nbsp;in&nbsp;the&nbsp;notes
+			</p>
+			<p class="ft12 c33">•</p>
+			<p class="ft12 c34">Gout</p>
+			<p class="ft12 c35">•</p>
+			<p class="ft12 c36">AF</p>
+			<p class="ft12 c37">•</p>
+			<p class="ft11 c38"><b>Current&nbsp;Medications:</b></p>
+			<p class="ft12 c39">•</p>
+			<p class="ft12 c40">
+				Prednisolone&nbsp;25&nbsp;mg&nbsp;od,&nbsp;reducing&nbsp;at&nbsp;5&nbsp;mg&nbsp;every&nbsp;three&nbsp;days
+			</p>
+			<p class="ft12 c41">•</p>
+			<p class="ft12 c42">Apixaban</p>
+			<p class="ft12 c43">•</p>
+			<p class="ft12 c44">Aspirin</p>
+			<p class="ft12 c45">•</p>
+			<p class="ft12 c46">Digoxin</p>
+			<p class="ft12 c47">•</p>
+			<p class="ft12 c48">Allopurinol</p>
+			<p class="ft12 c49">•</p>
+			<p class="ft12 c50">Spiriva&nbsp;and&nbsp;DuoResp&nbsp;Spiromax</p>
+			<p class="ft12 c51">•</p>
+			<p class="ft12 c52">Bisoprolol</p>
+			<p class="ft14 c53">
+				I&nbsp;reviewed&nbsp;this&nbsp;pleasant&nbsp;gentleman&nbsp;in&nbsp;Clinic&nbsp;today.&nbsp;He&nbsp;is&nbsp;due&nbsp;to&nbsp;finish&nbsp;his&nbsp;six&nbsp;week&nbsp;course&nbsp;of<br>
+
+				voriconazole&nbsp;in&nbsp;the&nbsp;next&nbsp;couple&nbsp;of&nbsp;days.&nbsp;However,&nbsp;I&nbsp;am&nbsp;sorry&nbsp;to&nbsp;hear&nbsp;that&nbsp;he&nbsp;is&nbsp;not&nbsp;feeling<br>
+
+				great&nbsp;with&nbsp;more&nbsp;exertional&nbsp;breathlessness&nbsp;and&nbsp;tiredness&nbsp;for&nbsp;the&nbsp;last&nbsp;10&nbsp;days.
+			</p>
+			<p class="ft12 c54">
+				He&nbsp;denies&nbsp;any&nbsp;temperature&nbsp;but&nbsp;he&nbsp;is&nbsp;coughing&nbsp;again.
+			</p>
+			<p class="ft14 c55">
+				During&nbsp;his&nbsp;inpatient&nbsp;admission&nbsp;he&nbsp;was&nbsp;treated&nbsp;with&nbsp;steroids,&nbsp;antibiotics&nbsp;and&nbsp;then&nbsp;due&nbsp;to<br>
+
+				abnormal&nbsp;aspergillus&nbsp;serology&nbsp;he&nbsp;had&nbsp;around&nbsp;six&nbsp;weeks&nbsp;of&nbsp;voriconazole.
+			</p>
+		</div>
+		
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<br>
+		<div id="page2-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues002.png" alt="background image">
+			<p class="ft23 c57">
+				He&nbsp;also&nbsp;complained&nbsp;of&nbsp;palpitations&nbsp;on&nbsp;a&nbsp;couple&nbsp;of&nbsp;occasions&nbsp;but&nbsp;had&nbsp;ECG&nbsp;at&nbsp;GP&nbsp;surgery<br>
+
+				which&nbsp;was&nbsp;normal.
+			</p>
+			<p class="ft23 c58">
+				Here&nbsp;the&nbsp;deferential&nbsp;is&nbsp;really&nbsp;wide&nbsp;as&nbsp;he&nbsp;did&nbsp;have&nbsp;previous&nbsp;chest&nbsp;x-rays&nbsp;suggestive&nbsp;of<br>
+
+				ground&nbsp;glass&nbsp;shadows,&nbsp;hence&nbsp;this&nbsp;could&nbsp;be&nbsp;cough&nbsp;which&nbsp;is&nbsp;relapsing&nbsp;after&nbsp;weaning&nbsp;down<br>
+
+				the&nbsp;steroids.&nbsp;At&nbsp;the&nbsp;same&nbsp;time&nbsp;this&nbsp;could&nbsp;be&nbsp;an&nbsp;Addisonian&nbsp;picture&nbsp;because&nbsp;of&nbsp;low&nbsp;cortisol<br>
+
+				levels,&nbsp;three&nbsp;thirds.&nbsp;His&nbsp;recent&nbsp;sputum&nbsp;has&nbsp;grown&nbsp;mycobacterium&nbsp;avium.
+			</p>
+			<p class="ft20 c59">
+				Considering&nbsp;his&nbsp;abnormal&nbsp;radiology&nbsp;we&nbsp;need&nbsp;to&nbsp;make&nbsp;the&nbsp;following&nbsp;plan:
+			</p>
+			<p class="ft23 c60">
+				1.&nbsp;Urgent&nbsp;HRCT<br>
+				2.&nbsp;Bronchoscopy&nbsp;and&nbsp;washing&nbsp;for&nbsp;MC&amp;S,&nbsp;AFB&nbsp;and&nbsp;fungi.<br>
+
+				3.&nbsp;Steroids&nbsp;30mgs&nbsp;oral&nbsp;for&nbsp;two&nbsp;weeks&nbsp;and&nbsp;then&nbsp;wean&nbsp;down&nbsp;by&nbsp;5mgs&nbsp;every&nbsp;5&nbsp;days&nbsp;to
+			</p>
+			<p class="ft20 c61">zero.</p>
+			<p class="ft20 c62">
+				4.&nbsp;Bloods&nbsp;today&nbsp;for&nbsp;repeat&nbsp;aspergillus&nbsp;serology,&nbsp;cortisol&nbsp;levels,&nbsp;routine&nbsp;inflammatory
+			</p>
+			<p class="ft20 c63">markers,&nbsp;LFTs.</p>
+			<p class="ft23 c64">
+				5.&nbsp;Sputum&nbsp;samples.<br>
+				6.&nbsp;24hr&nbsp;tape.<br>
+				7.&nbsp;Follow&nbsp;up&nbsp;in&nbsp;around&nbsp;three&nbsp;weeks.
+			</p>
+			<p class="ft23 c65">
+				I&nbsp;have&nbsp;requested&nbsp;my&nbsp;nurse&nbsp;colleague,&nbsp;Daffy,&nbsp;to&nbsp;keep&nbsp;an&nbsp;eye&nbsp;on&nbsp;his&nbsp;cortisol&nbsp;levels&nbsp;and&nbsp;any<br>
+
+				other&nbsp;bloods&nbsp;and&nbsp;if&nbsp;they&nbsp;are&nbsp;abnormal&nbsp;to&nbsp;liaise&nbsp;with&nbsp;Doctor&nbsp;Raines&nbsp;for&nbsp;any&nbsp;further&nbsp;urgent<br>
+
+				action&nbsp;needed.
+			</p>
+			<p class="ft20 c66">Yours&nbsp;sincerely</p>
+			<p class="ft21 c67">Electronically&nbsp;scrutinised&nbsp;by</p>
+			<p class="ft24 c68">
+				<b>Dr&nbsp;Nelly&nbsp;Blank&nbsp;MCRP<br>
+					Locum&nbsp;Consultant&nbsp;in&nbsp;Respiratory&nbsp;Medicine</b>
+			</p>
+			<p class="ft20 c69">Copy&nbsp;to:</p>
+			<p class="ft23 c70">
+				Dr&nbsp;Mickey&nbsp;Mice,&nbsp;Consultant&nbsp;Respiratory&nbsp;Physician,&nbsp;STH<br>
+
+				Daffy&nbsp;Durp,&nbsp;Respiratory&nbsp;Nurse,&nbsp;STH&nbsp;(
+			</p>
+			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
+			<p class="ft20 c72">Notes</p>
+		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
+		</div>
+	
+
+</body></html>"
+`;
+
+exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font in quotation marks 1`] = `
+"<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+
+		
+
+		
+	<style>p{margin:0;padding:0}.ft10{font-size:12px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#000}.ft11{font-size:14px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#000}.ft12{font-size:14px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#000}.ft13{font-size:14px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#00f}.ft14{font-size:14px;line-height:19px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#000}@media print{.ft11{font-size:12px}.ft12{font-size:12px}.ft13{font-size:12px}.ft14{font-size:12px}}p{margin:0;padding:0}.ft20{font-size:14px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#000}.ft21{font-size:12px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#000}.ft22{font-size:14px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#000}.ft23{font-size:14px;line-height:19px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#000}.ft24{font-size:14px;line-height:19px;font-family:"Sans Serif","\\"Gill Sans\\"";color:#000}p.c72{position:absolute;top:719px;left:214px;white-space:nowrap}p.c71{position:absolute;top:701px;left:540px;white-space:nowrap}p.c70{position:absolute;top:680px;left:214px;white-space:nowrap}p.c69{position:absolute;top:680px;left:106px;white-space:nowrap}p.c68{position:absolute;top:604px;left:106px;white-space:nowrap}p.c67{position:absolute;top:568px;left:127px;white-space:nowrap}p.c66{position:absolute;top:530px;left:106px;white-space:nowrap}p.c65{position:absolute;top:453px;left:106px;white-space:nowrap}p.c64{position:absolute;top:377px;left:133px;white-space:nowrap}p.c63{position:absolute;top:358px;left:160px;white-space:nowrap}p.c62{position:absolute;top:339px;left:133px;white-space:nowrap}p.c61{position:absolute;top:320px;left:160px;white-space:nowrap}p.c60{position:absolute;top:263px;left:133px;white-space:nowrap}p.c59{position:absolute;top:224px;left:106px;white-space:nowrap}p.c58{position:absolute;top:129px;left:106px;white-space:nowrap}p.c57{position:absolute;top:72px;left:106px;white-space:nowrap}div.c56{position:relative;width:891px;height:1261px;page-break-inside:avoid}p.c55{position:absolute;top:1114px;left:106px;white-space:nowrap}p.c54{position:absolute;top:1076px;left:106px;white-space:nowrap}p.c53{position:absolute;top:1000px;left:106px;white-space:nowrap}p.c52{position:absolute;top:962px;left:160px;white-space:nowrap}p.c51{position:absolute;top:962px;left:133px;white-space:nowrap}p.c50{position:absolute;top:943px;left:160px;white-space:nowrap}p.c49{position:absolute;top:943px;left:133px;white-space:nowrap}p.c48{position:absolute;top:923px;left:160px;white-space:nowrap}p.c47{position:absolute;top:923px;left:133px;white-space:nowrap}p.c46{position:absolute;top:904px;left:160px;white-space:nowrap}p.c45{position:absolute;top:904px;left:133px;white-space:nowrap}p.c44{position:absolute;top:885px;left:160px;white-space:nowrap}p.c43{position:absolute;top:885px;left:133px;white-space:nowrap}p.c42{position:absolute;top:866px;left:160px;white-space:nowrap}p.c41{position:absolute;top:866px;left:133px;white-space:nowrap}p.c40{position:absolute;top:847px;left:160px;white-space:nowrap}p.c39{position:absolute;top:847px;left:133px;white-space:nowrap}p.c38{position:absolute;top:809px;left:106px;white-space:nowrap}p.c37{position:absolute;top:790px;left:133px;white-space:nowrap}p.c36{position:absolute;top:771px;left:160px;white-space:nowrap}p.c35{position:absolute;top:771px;left:133px;white-space:nowrap}p.c34{position:absolute;top:752px;left:160px;white-space:nowrap}p.c33{position:absolute;top:752px;left:133px;white-space:nowrap}p.c32{position:absolute;top:714px;left:160px;white-space:nowrap}p.c31{position:absolute;top:714px;left:133px;white-space:nowrap}p.c30{position:absolute;top:695px;left:160px;white-space:nowrap}p.c29{position:absolute;top:695px;left:133px;white-space:nowrap}p.c28{position:absolute;top:656px;left:160px;white-space:nowrap}p.c27{position:absolute;top:656px;left:133px;white-space:nowrap}p.c26{position:absolute;top:637px;left:160px;white-space:nowrap}p.c25{position:absolute;top:637px;left:133px;white-space:nowrap}p.c24{position:absolute;top:599px;left:160px;white-space:nowrap}p.c23{position:absolute;top:599px;left:133px;white-space:nowrap}p.c22{position:absolute;top:561px;left:106px;white-space:nowrap}p.c21{position:absolute;top:485px;left:106px;white-space:nowrap}p.c20{position:absolute;top:446px;left:106px;white-space:nowrap}p.c19{position:absolute;top:313px;left:591px;white-space:nowrap}p.c18{position:absolute;top:313px;left:540px;white-space:nowrap}p.c17{position:absolute;top:294px;left:636px;white-space:nowrap}p.c16{position:absolute;top:275px;left:602px;white-space:nowrap}p.c15{position:absolute;top:256px;left:577px;white-space:nowrap}p.c14{position:absolute;top:237px;left:710px;white-space:nowrap}p.c13{position:absolute;top:218px;left:714px;white-space:nowrap}p.c12{position:absolute;top:198px;left:742px;white-space:nowrap}p.c11{position:absolute;top:179px;left:667px;white-space:nowrap}p.c10{position:absolute;top:160px;left:622px;white-space:nowrap}p.c9{position:absolute;top:332px;left:106px;white-space:nowrap}p.c8{position:absolute;top:294px;left:106px;white-space:nowrap}p.c7{position:absolute;top:256px;left:276px;white-space:nowrap}p.c6{position:absolute;top:237px;left:106px;white-space:nowrap}p.c5{position:absolute;top:218px;left:276px;white-space:nowrap}p.c4{position:absolute;top:218px;left:106px;white-space:nowrap}p.c3{position:absolute;top:198px;left:276px;white-space:nowrap}p.c2{position:absolute;top:198px;left:106px;white-space:nowrap}p.c1{position:absolute;top:160px;left:106px;white-space:nowrap}</style></head>
+	<body>
+		<br>
+		<div id="page1-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues001.png" alt="background image">
+			<p class="ft11 c1">
+				<b>DEPARTMENT&nbsp;OF&nbsp;RESPIRATORY&nbsp;MEDICINE</b>
+			</p>
+			<p class="ft12 c2">Our&nbsp;Ref:</p>
+			<p class="ft12 c3">LX/nhs/hi/999999</p>
+			<p class="ft12 c4">NHS&nbsp;No:</p>
+			<p class="ft12 c5">999&nbsp;999&nbsp;9999</p>
+			<p class="ft14 c6">
+				Outpatient&nbsp;Clinic&nbsp;Date:&nbsp;31/12/3000<br>
+				Clinic&nbsp;Code:
+			</p>
+			<p class="ft12 c7">LOL/BE</p>
+			<p class="ft12 c8">Document&nbsp;Typed:&nbsp;31/12/3000</p>
+			<p class="ft14 c9">
+				Dr&nbsp;Dr&nbsp;Doctor<br>
+				Hogwarts&nbsp;Medical&nbsp;Centre<br>
+				Privet&nbsp;Drive<br>
+				Middle-Of-Nowhere<br>
+				Summerset&nbsp;ZZ99&nbsp;9ZZ
+			</p>
+			<p class="ft12 c10">Super&nbsp;Test&nbsp;Hospital</p>
+			<p class="ft12 c11">Higher&nbsp;Heights</p>
+			<p class="ft12 c12">Clouds</p>
+			<p class="ft12 c13">Summerset</p>
+			<p class="ft12 c14">ZZ99&nbsp;9ZZ</p>
+			<p class="ft12 c15">Switchboard:&nbsp;99999&nbsp;999999</p>
+			<p class="ft12 c16">Secretary:&nbsp;Jimmini&nbsp;Cricket</p>
+			<p class="ft12 c17">Direct&nbsp;Line:&nbsp;999999</p>
+			<p class="ft12 c18">Email:</p>
+			<p class="ft13 c19">
+				<a href="mailto:Jimmini.Cricket@nhs.uk">Jimmini.Cricket@nhs.uk</a>
+			</p>
+			<p class="ft12 c20">Dear&nbsp;Dr&nbsp;Doctor</p>
+			<p class="ft14 c21">
+				<b>Re:&nbsp;</b>Mr&nbsp;John&nbsp;Smith&nbsp;<b>DOB:&nbsp;</b>01/08/1944<br>
+
+				<b>Address:&nbsp;</b>Best&nbsp;Place,&nbsp;West&nbsp;Lane&nbsp;Charred,&nbsp;Middle-Of-Nowhere,&nbsp;Summerset&nbsp;ZZ99<br>
+
+				9ZZ
+			</p>
+			<p class="ft11 c22"><b>Diagnosis:</b></p>
+			<p class="ft12 c23">•</p>
+			<p class="ft14 c24">
+				Suspected&nbsp;ABPA&nbsp;(bilateral&nbsp;lung&nbsp;changes&nbsp;with&nbsp;positive&nbsp;aspergillus&nbsp;fumigatus&nbsp;7.26,<br>
+
+				specific&nbsp;IgE&nbsp;grade&nbsp;3)
+			</p>
+			<p class="ft12 c25">•</p>
+			<p class="ft12 c26">Previous&nbsp;exposure&nbsp;to&nbsp;mould&nbsp;in&nbsp;the&nbsp;house</p>
+			<p class="ft12 c27">•</p>
+			<p class="ft14 c28">
+				Small&nbsp;left&nbsp;apical&nbsp;pneumothorax&nbsp;after&nbsp;pleural&nbsp;tap&nbsp;on&nbsp;the&nbsp;ward,&nbsp;slowly&nbsp;resolving,&nbsp;chest<br>
+
+				x-ray&nbsp;done&nbsp;29&nbsp;November&nbsp;2018&nbsp;–&nbsp;waiting&nbsp;for&nbsp;report
+			</p>
+			<p class="ft12 c29">•</p>
+			<p class="ft12 c30">Ca&nbsp;prostate</p>
+			<p class="ft12 c31">•</p>
+			<p class="ft14 c32">
+				?&nbsp;pulmonary&nbsp;sarcoidosis&nbsp;diagnosed&nbsp;barely&nbsp;on&nbsp;chest&nbsp;x-ray&nbsp;findings&nbsp;around&nbsp;50&nbsp;years<br>
+
+				ago&nbsp;but&nbsp;no&nbsp;evidence&nbsp;in&nbsp;the&nbsp;notes
+			</p>
+			<p class="ft12 c33">•</p>
+			<p class="ft12 c34">Gout</p>
+			<p class="ft12 c35">•</p>
+			<p class="ft12 c36">AF</p>
+			<p class="ft12 c37">•</p>
+			<p class="ft11 c38"><b>Current&nbsp;Medications:</b></p>
+			<p class="ft12 c39">•</p>
+			<p class="ft12 c40">
+				Prednisolone&nbsp;25&nbsp;mg&nbsp;od,&nbsp;reducing&nbsp;at&nbsp;5&nbsp;mg&nbsp;every&nbsp;three&nbsp;days
+			</p>
+			<p class="ft12 c41">•</p>
+			<p class="ft12 c42">Apixaban</p>
+			<p class="ft12 c43">•</p>
+			<p class="ft12 c44">Aspirin</p>
+			<p class="ft12 c45">•</p>
+			<p class="ft12 c46">Digoxin</p>
+			<p class="ft12 c47">•</p>
+			<p class="ft12 c48">Allopurinol</p>
+			<p class="ft12 c49">•</p>
+			<p class="ft12 c50">Spiriva&nbsp;and&nbsp;DuoResp&nbsp;Spiromax</p>
+			<p class="ft12 c51">•</p>
+			<p class="ft12 c52">Bisoprolol</p>
+			<p class="ft14 c53">
+				I&nbsp;reviewed&nbsp;this&nbsp;pleasant&nbsp;gentleman&nbsp;in&nbsp;Clinic&nbsp;today.&nbsp;He&nbsp;is&nbsp;due&nbsp;to&nbsp;finish&nbsp;his&nbsp;six&nbsp;week&nbsp;course&nbsp;of<br>
+
+				voriconazole&nbsp;in&nbsp;the&nbsp;next&nbsp;couple&nbsp;of&nbsp;days.&nbsp;However,&nbsp;I&nbsp;am&nbsp;sorry&nbsp;to&nbsp;hear&nbsp;that&nbsp;he&nbsp;is&nbsp;not&nbsp;feeling<br>
+
+				great&nbsp;with&nbsp;more&nbsp;exertional&nbsp;breathlessness&nbsp;and&nbsp;tiredness&nbsp;for&nbsp;the&nbsp;last&nbsp;10&nbsp;days.
+			</p>
+			<p class="ft12 c54">
+				He&nbsp;denies&nbsp;any&nbsp;temperature&nbsp;but&nbsp;he&nbsp;is&nbsp;coughing&nbsp;again.
+			</p>
+			<p class="ft14 c55">
+				During&nbsp;his&nbsp;inpatient&nbsp;admission&nbsp;he&nbsp;was&nbsp;treated&nbsp;with&nbsp;steroids,&nbsp;antibiotics&nbsp;and&nbsp;then&nbsp;due&nbsp;to<br>
+
+				abnormal&nbsp;aspergillus&nbsp;serology&nbsp;he&nbsp;had&nbsp;around&nbsp;six&nbsp;weeks&nbsp;of&nbsp;voriconazole.
+			</p>
+		</div>
+		
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<br>
+		<div id="page2-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues002.png" alt="background image">
+			<p class="ft23 c57">
+				He&nbsp;also&nbsp;complained&nbsp;of&nbsp;palpitations&nbsp;on&nbsp;a&nbsp;couple&nbsp;of&nbsp;occasions&nbsp;but&nbsp;had&nbsp;ECG&nbsp;at&nbsp;GP&nbsp;surgery<br>
+
+				which&nbsp;was&nbsp;normal.
+			</p>
+			<p class="ft23 c58">
+				Here&nbsp;the&nbsp;deferential&nbsp;is&nbsp;really&nbsp;wide&nbsp;as&nbsp;he&nbsp;did&nbsp;have&nbsp;previous&nbsp;chest&nbsp;x-rays&nbsp;suggestive&nbsp;of<br>
+
+				ground&nbsp;glass&nbsp;shadows,&nbsp;hence&nbsp;this&nbsp;could&nbsp;be&nbsp;cough&nbsp;which&nbsp;is&nbsp;relapsing&nbsp;after&nbsp;weaning&nbsp;down<br>
+
+				the&nbsp;steroids.&nbsp;At&nbsp;the&nbsp;same&nbsp;time&nbsp;this&nbsp;could&nbsp;be&nbsp;an&nbsp;Addisonian&nbsp;picture&nbsp;because&nbsp;of&nbsp;low&nbsp;cortisol<br>
+
+				levels,&nbsp;three&nbsp;thirds.&nbsp;His&nbsp;recent&nbsp;sputum&nbsp;has&nbsp;grown&nbsp;mycobacterium&nbsp;avium.
+			</p>
+			<p class="ft20 c59">
+				Considering&nbsp;his&nbsp;abnormal&nbsp;radiology&nbsp;we&nbsp;need&nbsp;to&nbsp;make&nbsp;the&nbsp;following&nbsp;plan:
+			</p>
+			<p class="ft23 c60">
+				1.&nbsp;Urgent&nbsp;HRCT<br>
+				2.&nbsp;Bronchoscopy&nbsp;and&nbsp;washing&nbsp;for&nbsp;MC&amp;S,&nbsp;AFB&nbsp;and&nbsp;fungi.<br>
+
+				3.&nbsp;Steroids&nbsp;30mgs&nbsp;oral&nbsp;for&nbsp;two&nbsp;weeks&nbsp;and&nbsp;then&nbsp;wean&nbsp;down&nbsp;by&nbsp;5mgs&nbsp;every&nbsp;5&nbsp;days&nbsp;to
+			</p>
+			<p class="ft20 c61">zero.</p>
+			<p class="ft20 c62">
+				4.&nbsp;Bloods&nbsp;today&nbsp;for&nbsp;repeat&nbsp;aspergillus&nbsp;serology,&nbsp;cortisol&nbsp;levels,&nbsp;routine&nbsp;inflammatory
+			</p>
+			<p class="ft20 c63">markers,&nbsp;LFTs.</p>
+			<p class="ft23 c64">
+				5.&nbsp;Sputum&nbsp;samples.<br>
+				6.&nbsp;24hr&nbsp;tape.<br>
+				7.&nbsp;Follow&nbsp;up&nbsp;in&nbsp;around&nbsp;three&nbsp;weeks.
+			</p>
+			<p class="ft23 c65">
+				I&nbsp;have&nbsp;requested&nbsp;my&nbsp;nurse&nbsp;colleague,&nbsp;Daffy,&nbsp;to&nbsp;keep&nbsp;an&nbsp;eye&nbsp;on&nbsp;his&nbsp;cortisol&nbsp;levels&nbsp;and&nbsp;any<br>
+
+				other&nbsp;bloods&nbsp;and&nbsp;if&nbsp;they&nbsp;are&nbsp;abnormal&nbsp;to&nbsp;liaise&nbsp;with&nbsp;Doctor&nbsp;Raines&nbsp;for&nbsp;any&nbsp;further&nbsp;urgent<br>
+
+				action&nbsp;needed.
+			</p>
+			<p class="ft20 c66">Yours&nbsp;sincerely</p>
+			<p class="ft21 c67">Electronically&nbsp;scrutinised&nbsp;by</p>
+			<p class="ft24 c68">
+				<b>Dr&nbsp;Nelly&nbsp;Blank&nbsp;MCRP<br>
+					Locum&nbsp;Consultant&nbsp;in&nbsp;Respiratory&nbsp;Medicine</b>
+			</p>
+			<p class="ft20 c69">Copy&nbsp;to:</p>
+			<p class="ft23 c70">
+				Dr&nbsp;Mickey&nbsp;Mice,&nbsp;Consultant&nbsp;Respiratory&nbsp;Physician,&nbsp;STH<br>
+
+				Daffy&nbsp;Durp,&nbsp;Respiratory&nbsp;Nurse,&nbsp;STH&nbsp;(
+			</p>
+			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
+			<p class="ft20 c72">Notes</p>
+		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
+		</div>
+	
+
+</body></html>"
+`;
+
+exports[`Tidy-CSS plugin Tidies CSS in HTML that uses @ rules 1`] = `
+"<!-- Used to test that the CSS @ rules are not modified or removed. --><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+		
+	<style>@font-face{font-family:Test;src:url("test.ttf")}@page{margin:0;padding:0}</style></head>
+<body>
+</body></html>"
+`;
+
+exports[`Tidy-CSS plugin Tidies CSS in HTML, sets new background color, and sets new font 1`] = `
+"<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+
+		
+
+		
+	<style>p{margin:0;padding:0}.ft10{font-size:12px;font-family:Arial;color:#000}.ft11{font-size:14px;font-family:Arial;color:#000}.ft12{font-size:14px;font-family:Arial;color:#000}.ft13{font-size:14px;font-family:Arial;color:#00f}.ft14{font-size:14px;line-height:19px;font-family:Arial;color:#000}@media print{.ft11{font-size:12px}.ft12{font-size:12px}.ft13{font-size:12px}.ft14{font-size:12px}}p{margin:0;padding:0}.ft20{font-size:14px;font-family:Arial;color:#000}.ft21{font-size:12px;font-family:Arial;color:#000}.ft22{font-size:14px;font-family:Arial;color:#000}.ft23{font-size:14px;line-height:19px;font-family:Arial;color:#000}.ft24{font-size:14px;line-height:19px;font-family:Arial;color:#000}p.c72{position:absolute;top:719px;left:214px;white-space:nowrap}p.c71{position:absolute;top:701px;left:540px;white-space:nowrap}p.c70{position:absolute;top:680px;left:214px;white-space:nowrap}p.c69{position:absolute;top:680px;left:106px;white-space:nowrap}p.c68{position:absolute;top:604px;left:106px;white-space:nowrap}p.c67{position:absolute;top:568px;left:127px;white-space:nowrap}p.c66{position:absolute;top:530px;left:106px;white-space:nowrap}p.c65{position:absolute;top:453px;left:106px;white-space:nowrap}p.c64{position:absolute;top:377px;left:133px;white-space:nowrap}p.c63{position:absolute;top:358px;left:160px;white-space:nowrap}p.c62{position:absolute;top:339px;left:133px;white-space:nowrap}p.c61{position:absolute;top:320px;left:160px;white-space:nowrap}p.c60{position:absolute;top:263px;left:133px;white-space:nowrap}p.c59{position:absolute;top:224px;left:106px;white-space:nowrap}p.c58{position:absolute;top:129px;left:106px;white-space:nowrap}p.c57{position:absolute;top:72px;left:106px;white-space:nowrap}div.c56{position:relative;width:891px;height:1261px;page-break-inside:avoid;background-color:#fff}p.c55{position:absolute;top:1114px;left:106px;white-space:nowrap}p.c54{position:absolute;top:1076px;left:106px;white-space:nowrap}p.c53{position:absolute;top:1000px;left:106px;white-space:nowrap}p.c52{position:absolute;top:962px;left:160px;white-space:nowrap}p.c51{position:absolute;top:962px;left:133px;white-space:nowrap}p.c50{position:absolute;top:943px;left:160px;white-space:nowrap}p.c49{position:absolute;top:943px;left:133px;white-space:nowrap}p.c48{position:absolute;top:923px;left:160px;white-space:nowrap}p.c47{position:absolute;top:923px;left:133px;white-space:nowrap}p.c46{position:absolute;top:904px;left:160px;white-space:nowrap}p.c45{position:absolute;top:904px;left:133px;white-space:nowrap}p.c44{position:absolute;top:885px;left:160px;white-space:nowrap}p.c43{position:absolute;top:885px;left:133px;white-space:nowrap}p.c42{position:absolute;top:866px;left:160px;white-space:nowrap}p.c41{position:absolute;top:866px;left:133px;white-space:nowrap}p.c40{position:absolute;top:847px;left:160px;white-space:nowrap}p.c39{position:absolute;top:847px;left:133px;white-space:nowrap}p.c38{position:absolute;top:809px;left:106px;white-space:nowrap}p.c37{position:absolute;top:790px;left:133px;white-space:nowrap}p.c36{position:absolute;top:771px;left:160px;white-space:nowrap}p.c35{position:absolute;top:771px;left:133px;white-space:nowrap}p.c34{position:absolute;top:752px;left:160px;white-space:nowrap}p.c33{position:absolute;top:752px;left:133px;white-space:nowrap}p.c32{position:absolute;top:714px;left:160px;white-space:nowrap}p.c31{position:absolute;top:714px;left:133px;white-space:nowrap}p.c30{position:absolute;top:695px;left:160px;white-space:nowrap}p.c29{position:absolute;top:695px;left:133px;white-space:nowrap}p.c28{position:absolute;top:656px;left:160px;white-space:nowrap}p.c27{position:absolute;top:656px;left:133px;white-space:nowrap}p.c26{position:absolute;top:637px;left:160px;white-space:nowrap}p.c25{position:absolute;top:637px;left:133px;white-space:nowrap}p.c24{position:absolute;top:599px;left:160px;white-space:nowrap}p.c23{position:absolute;top:599px;left:133px;white-space:nowrap}p.c22{position:absolute;top:561px;left:106px;white-space:nowrap}p.c21{position:absolute;top:485px;left:106px;white-space:nowrap}p.c20{position:absolute;top:446px;left:106px;white-space:nowrap}p.c19{position:absolute;top:313px;left:591px;white-space:nowrap}p.c18{position:absolute;top:313px;left:540px;white-space:nowrap}p.c17{position:absolute;top:294px;left:636px;white-space:nowrap}p.c16{position:absolute;top:275px;left:602px;white-space:nowrap}p.c15{position:absolute;top:256px;left:577px;white-space:nowrap}p.c14{position:absolute;top:237px;left:710px;white-space:nowrap}p.c13{position:absolute;top:218px;left:714px;white-space:nowrap}p.c12{position:absolute;top:198px;left:742px;white-space:nowrap}p.c11{position:absolute;top:179px;left:667px;white-space:nowrap}p.c10{position:absolute;top:160px;left:622px;white-space:nowrap}p.c9{position:absolute;top:332px;left:106px;white-space:nowrap}p.c8{position:absolute;top:294px;left:106px;white-space:nowrap}p.c7{position:absolute;top:256px;left:276px;white-space:nowrap}p.c6{position:absolute;top:237px;left:106px;white-space:nowrap}p.c5{position:absolute;top:218px;left:276px;white-space:nowrap}p.c4{position:absolute;top:218px;left:106px;white-space:nowrap}p.c3{position:absolute;top:198px;left:276px;white-space:nowrap}p.c2{position:absolute;top:198px;left:106px;white-space:nowrap}p.c1{position:absolute;top:160px;left:106px;white-space:nowrap}</style></head>
+	<body>
+		<br>
+		<div id="page1-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues001.png" alt="background image">
+			<p class="ft11 c1">
+				<b>DEPARTMENT&nbsp;OF&nbsp;RESPIRATORY&nbsp;MEDICINE</b>
+			</p>
+			<p class="ft12 c2">Our&nbsp;Ref:</p>
+			<p class="ft12 c3">LX/nhs/hi/999999</p>
+			<p class="ft12 c4">NHS&nbsp;No:</p>
+			<p class="ft12 c5">999&nbsp;999&nbsp;9999</p>
+			<p class="ft14 c6">
+				Outpatient&nbsp;Clinic&nbsp;Date:&nbsp;31/12/3000<br>
+				Clinic&nbsp;Code:
+			</p>
+			<p class="ft12 c7">LOL/BE</p>
+			<p class="ft12 c8">Document&nbsp;Typed:&nbsp;31/12/3000</p>
+			<p class="ft14 c9">
+				Dr&nbsp;Dr&nbsp;Doctor<br>
+				Hogwarts&nbsp;Medical&nbsp;Centre<br>
+				Privet&nbsp;Drive<br>
+				Middle-Of-Nowhere<br>
+				Summerset&nbsp;ZZ99&nbsp;9ZZ
+			</p>
+			<p class="ft12 c10">Super&nbsp;Test&nbsp;Hospital</p>
+			<p class="ft12 c11">Higher&nbsp;Heights</p>
+			<p class="ft12 c12">Clouds</p>
+			<p class="ft12 c13">Summerset</p>
+			<p class="ft12 c14">ZZ99&nbsp;9ZZ</p>
+			<p class="ft12 c15">Switchboard:&nbsp;99999&nbsp;999999</p>
+			<p class="ft12 c16">Secretary:&nbsp;Jimmini&nbsp;Cricket</p>
+			<p class="ft12 c17">Direct&nbsp;Line:&nbsp;999999</p>
+			<p class="ft12 c18">Email:</p>
+			<p class="ft13 c19">
+				<a href="mailto:Jimmini.Cricket@nhs.uk">Jimmini.Cricket@nhs.uk</a>
+			</p>
+			<p class="ft12 c20">Dear&nbsp;Dr&nbsp;Doctor</p>
+			<p class="ft14 c21">
+				<b>Re:&nbsp;</b>Mr&nbsp;John&nbsp;Smith&nbsp;<b>DOB:&nbsp;</b>01/08/1944<br>
+
+				<b>Address:&nbsp;</b>Best&nbsp;Place,&nbsp;West&nbsp;Lane&nbsp;Charred,&nbsp;Middle-Of-Nowhere,&nbsp;Summerset&nbsp;ZZ99<br>
+
+				9ZZ
+			</p>
+			<p class="ft11 c22"><b>Diagnosis:</b></p>
+			<p class="ft12 c23">•</p>
+			<p class="ft14 c24">
+				Suspected&nbsp;ABPA&nbsp;(bilateral&nbsp;lung&nbsp;changes&nbsp;with&nbsp;positive&nbsp;aspergillus&nbsp;fumigatus&nbsp;7.26,<br>
+
+				specific&nbsp;IgE&nbsp;grade&nbsp;3)
+			</p>
+			<p class="ft12 c25">•</p>
+			<p class="ft12 c26">Previous&nbsp;exposure&nbsp;to&nbsp;mould&nbsp;in&nbsp;the&nbsp;house</p>
+			<p class="ft12 c27">•</p>
+			<p class="ft14 c28">
+				Small&nbsp;left&nbsp;apical&nbsp;pneumothorax&nbsp;after&nbsp;pleural&nbsp;tap&nbsp;on&nbsp;the&nbsp;ward,&nbsp;slowly&nbsp;resolving,&nbsp;chest<br>
+
+				x-ray&nbsp;done&nbsp;29&nbsp;November&nbsp;2018&nbsp;–&nbsp;waiting&nbsp;for&nbsp;report
+			</p>
+			<p class="ft12 c29">•</p>
+			<p class="ft12 c30">Ca&nbsp;prostate</p>
+			<p class="ft12 c31">•</p>
+			<p class="ft14 c32">
+				?&nbsp;pulmonary&nbsp;sarcoidosis&nbsp;diagnosed&nbsp;barely&nbsp;on&nbsp;chest&nbsp;x-ray&nbsp;findings&nbsp;around&nbsp;50&nbsp;years<br>
+
+				ago&nbsp;but&nbsp;no&nbsp;evidence&nbsp;in&nbsp;the&nbsp;notes
+			</p>
+			<p class="ft12 c33">•</p>
+			<p class="ft12 c34">Gout</p>
+			<p class="ft12 c35">•</p>
+			<p class="ft12 c36">AF</p>
+			<p class="ft12 c37">•</p>
+			<p class="ft11 c38"><b>Current&nbsp;Medications:</b></p>
+			<p class="ft12 c39">•</p>
+			<p class="ft12 c40">
+				Prednisolone&nbsp;25&nbsp;mg&nbsp;od,&nbsp;reducing&nbsp;at&nbsp;5&nbsp;mg&nbsp;every&nbsp;three&nbsp;days
+			</p>
+			<p class="ft12 c41">•</p>
+			<p class="ft12 c42">Apixaban</p>
+			<p class="ft12 c43">•</p>
+			<p class="ft12 c44">Aspirin</p>
+			<p class="ft12 c45">•</p>
+			<p class="ft12 c46">Digoxin</p>
+			<p class="ft12 c47">•</p>
+			<p class="ft12 c48">Allopurinol</p>
+			<p class="ft12 c49">•</p>
+			<p class="ft12 c50">Spiriva&nbsp;and&nbsp;DuoResp&nbsp;Spiromax</p>
+			<p class="ft12 c51">•</p>
+			<p class="ft12 c52">Bisoprolol</p>
+			<p class="ft14 c53">
+				I&nbsp;reviewed&nbsp;this&nbsp;pleasant&nbsp;gentleman&nbsp;in&nbsp;Clinic&nbsp;today.&nbsp;He&nbsp;is&nbsp;due&nbsp;to&nbsp;finish&nbsp;his&nbsp;six&nbsp;week&nbsp;course&nbsp;of<br>
+
+				voriconazole&nbsp;in&nbsp;the&nbsp;next&nbsp;couple&nbsp;of&nbsp;days.&nbsp;However,&nbsp;I&nbsp;am&nbsp;sorry&nbsp;to&nbsp;hear&nbsp;that&nbsp;he&nbsp;is&nbsp;not&nbsp;feeling<br>
+
+				great&nbsp;with&nbsp;more&nbsp;exertional&nbsp;breathlessness&nbsp;and&nbsp;tiredness&nbsp;for&nbsp;the&nbsp;last&nbsp;10&nbsp;days.
+			</p>
+			<p class="ft12 c54">
+				He&nbsp;denies&nbsp;any&nbsp;temperature&nbsp;but&nbsp;he&nbsp;is&nbsp;coughing&nbsp;again.
+			</p>
+			<p class="ft14 c55">
+				During&nbsp;his&nbsp;inpatient&nbsp;admission&nbsp;he&nbsp;was&nbsp;treated&nbsp;with&nbsp;steroids,&nbsp;antibiotics&nbsp;and&nbsp;then&nbsp;due&nbsp;to<br>
+
+				abnormal&nbsp;aspergillus&nbsp;serology&nbsp;he&nbsp;had&nbsp;around&nbsp;six&nbsp;weeks&nbsp;of&nbsp;voriconazole.
+			</p>
+		</div>
+		
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<br>
+		<div id="page2-div" class="c56">
+			<img width="891" height="1261" src="png_valid_bullet_issues002.png" alt="background image">
+			<p class="ft23 c57">
+				He&nbsp;also&nbsp;complained&nbsp;of&nbsp;palpitations&nbsp;on&nbsp;a&nbsp;couple&nbsp;of&nbsp;occasions&nbsp;but&nbsp;had&nbsp;ECG&nbsp;at&nbsp;GP&nbsp;surgery<br>
+
+				which&nbsp;was&nbsp;normal.
+			</p>
+			<p class="ft23 c58">
+				Here&nbsp;the&nbsp;deferential&nbsp;is&nbsp;really&nbsp;wide&nbsp;as&nbsp;he&nbsp;did&nbsp;have&nbsp;previous&nbsp;chest&nbsp;x-rays&nbsp;suggestive&nbsp;of<br>
+
+				ground&nbsp;glass&nbsp;shadows,&nbsp;hence&nbsp;this&nbsp;could&nbsp;be&nbsp;cough&nbsp;which&nbsp;is&nbsp;relapsing&nbsp;after&nbsp;weaning&nbsp;down<br>
+
+				the&nbsp;steroids.&nbsp;At&nbsp;the&nbsp;same&nbsp;time&nbsp;this&nbsp;could&nbsp;be&nbsp;an&nbsp;Addisonian&nbsp;picture&nbsp;because&nbsp;of&nbsp;low&nbsp;cortisol<br>
+
+				levels,&nbsp;three&nbsp;thirds.&nbsp;His&nbsp;recent&nbsp;sputum&nbsp;has&nbsp;grown&nbsp;mycobacterium&nbsp;avium.
+			</p>
+			<p class="ft20 c59">
+				Considering&nbsp;his&nbsp;abnormal&nbsp;radiology&nbsp;we&nbsp;need&nbsp;to&nbsp;make&nbsp;the&nbsp;following&nbsp;plan:
+			</p>
+			<p class="ft23 c60">
+				1.&nbsp;Urgent&nbsp;HRCT<br>
+				2.&nbsp;Bronchoscopy&nbsp;and&nbsp;washing&nbsp;for&nbsp;MC&amp;S,&nbsp;AFB&nbsp;and&nbsp;fungi.<br>
+
+				3.&nbsp;Steroids&nbsp;30mgs&nbsp;oral&nbsp;for&nbsp;two&nbsp;weeks&nbsp;and&nbsp;then&nbsp;wean&nbsp;down&nbsp;by&nbsp;5mgs&nbsp;every&nbsp;5&nbsp;days&nbsp;to
+			</p>
+			<p class="ft20 c61">zero.</p>
+			<p class="ft20 c62">
+				4.&nbsp;Bloods&nbsp;today&nbsp;for&nbsp;repeat&nbsp;aspergillus&nbsp;serology,&nbsp;cortisol&nbsp;levels,&nbsp;routine&nbsp;inflammatory
+			</p>
+			<p class="ft20 c63">markers,&nbsp;LFTs.</p>
+			<p class="ft23 c64">
+				5.&nbsp;Sputum&nbsp;samples.<br>
+				6.&nbsp;24hr&nbsp;tape.<br>
+				7.&nbsp;Follow&nbsp;up&nbsp;in&nbsp;around&nbsp;three&nbsp;weeks.
+			</p>
+			<p class="ft23 c65">
+				I&nbsp;have&nbsp;requested&nbsp;my&nbsp;nurse&nbsp;colleague,&nbsp;Daffy,&nbsp;to&nbsp;keep&nbsp;an&nbsp;eye&nbsp;on&nbsp;his&nbsp;cortisol&nbsp;levels&nbsp;and&nbsp;any<br>
+
+				other&nbsp;bloods&nbsp;and&nbsp;if&nbsp;they&nbsp;are&nbsp;abnormal&nbsp;to&nbsp;liaise&nbsp;with&nbsp;Doctor&nbsp;Raines&nbsp;for&nbsp;any&nbsp;further&nbsp;urgent<br>
+
+				action&nbsp;needed.
+			</p>
+			<p class="ft20 c66">Yours&nbsp;sincerely</p>
+			<p class="ft21 c67">Electronically&nbsp;scrutinised&nbsp;by</p>
+			<p class="ft24 c68">
+				<b>Dr&nbsp;Nelly&nbsp;Blank&nbsp;MCRP<br>
+					Locum&nbsp;Consultant&nbsp;in&nbsp;Respiratory&nbsp;Medicine</b>
+			</p>
+			<p class="ft20 c69">Copy&nbsp;to:</p>
+			<p class="ft23 c70">
+				Dr&nbsp;Mickey&nbsp;Mice,&nbsp;Consultant&nbsp;Respiratory&nbsp;Physician,&nbsp;STH<br>
+
+				Daffy&nbsp;Durp,&nbsp;Respiratory&nbsp;Nurse,&nbsp;STH&nbsp;(
+			</p>
+			<p class="ft21 c71">sent&nbsp;via&nbsp;email&nbsp;before&nbsp;approval)</p>
+			<p class="ft20 c72">Notes</p>
+		</div>
+		<div style="display: none">
+			<p>This paragraph should not be displayed.</p>
+		</div>
+		<div style="visibility: hidden">
+			<p>This paragraph should not be visible.</p>
+		</div>
+	
+
+</body></html>"
+`;
