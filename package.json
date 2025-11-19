@@ -61,7 +61,6 @@
 			}
 		},
 		"injectGlobals": false,
-		"snapshotResolver": "./.jest.snapshot-resolver.js",
 		"testEnvironment": "node",
 		"testTimeout": 60000
 	},

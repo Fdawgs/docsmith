@@ -6,10 +6,10 @@ const { unlink } = require("node:fs/promises");
 const { join } = require("node:path");
 const { afterEach, afterAll, describe, expect, it } = require("@jest/globals");
 const { glob } = require("glob");
-const getConfig = require(".");
+const getConfig = require("../src/config");
 
 const originalEnv = { ...process.env, NODE_ENV: "production" };
-const tempDir = join(__dirname, "../../temp");
+const tempDir = join(__dirname, "../temp");
 
 describe("Configuration", () => {
 	afterEach(() => {

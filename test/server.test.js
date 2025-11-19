@@ -7,8 +7,8 @@ const { afterAll, beforeAll, describe, expect, it } = require("@jest/globals");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const { firefox } = require("playwright");
-const startServer = require("./server");
-const getConfig = require("./config");
+const startServer = require("../src/server");
+const getConfig = require("../src/config");
 
 const originalEnv = { ...process.env };
 
