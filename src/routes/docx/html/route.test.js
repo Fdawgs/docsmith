@@ -38,7 +38,7 @@ describe("DOCX-to-HTML route", () => {
 	it.each([
 		{
 			testName: "DOCM file",
-			filePath: "./test_resources/test_files/docm_valid.docm",
+			filePath: "./test/files/docm_valid.docm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
@@ -46,7 +46,7 @@ describe("DOCX-to-HTML route", () => {
 		},
 		{
 			testName: "DOCX file",
-			filePath: "./test_resources/test_files/docx_valid.docx",
+			filePath: "./test/files/docx_valid.docx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -54,7 +54,7 @@ describe("DOCX-to-HTML route", () => {
 		},
 		{
 			testName: "DOTX file",
-			filePath: "./test_resources/test_files/dotx_valid.dotx",
+			filePath: "./test/files/dotx_valid.dotx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
@@ -62,7 +62,7 @@ describe("DOCX-to-HTML route", () => {
 		},
 		{
 			testName: "DOTM file",
-			filePath: "./test_resources/test_files/dotm_valid.dotm",
+			filePath: "./test/files/dotm_valid.dotm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.template.macroEnabled.12",
@@ -171,9 +171,7 @@ describe("DOCX-to-HTML route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/html_valid_empty.html"
-			),
+			body: await readFile("./test/files/html_valid_empty.html"),
 			headers: {
 				accept: "application/json, text/html",
 				"content-type": "application/html",
@@ -192,7 +190,7 @@ describe("DOCX-to-HTML route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/docx_valid.docx"),
+			body: await readFile("./test/files/docx_valid.docx"),
 			headers: {
 				accept: "application/javascript",
 				"content-type":

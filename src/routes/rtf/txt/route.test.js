@@ -40,7 +40,7 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/rtf_valid.rtf"),
+			body: await readFile("./test/files/rtf_valid.rtf"),
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "application/rtf",
@@ -98,9 +98,7 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/html_valid_empty.html"
-			),
+			body: await readFile("./test/files/html_valid_empty.html"),
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "application/html",
@@ -119,7 +117,7 @@ describe("RTF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/rtf_valid.rtf"),
+			body: await readFile("./test/files/rtf_valid.rtf"),
 			headers: {
 				accept: "application/javascript",
 				"content-type": "application/rtf",

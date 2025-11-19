@@ -72,9 +72,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-			),
+			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
 			query: {
 				first_page_to_convert: "2",
 				last_page_to_convert: "2",
@@ -109,9 +107,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-			),
+			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
 			query: {
 				first_page_to_convert: "1",
 				last_page_to_convert: "2",
@@ -144,9 +140,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-			),
+			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
 			query: {
 				first_page_to_convert: "2",
 				generate_html_meta_file: "true",
@@ -246,7 +240,7 @@ describe("PDF-to-TXT conversion plugin", () => {
 				method: "POST",
 				url: "/",
 				body: await readFile(
-					"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+					"./test/files/pdf_1.3_NHS_Constitution.pdf"
 				),
 				query: {
 					last_page_to_convert: "1",

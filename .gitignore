@@ -144,8 +144,8 @@ yarn.lock
 *.wmf
 *.emf
 temp*
-test_resources/test-log*
-test_resources/.audit.json
+test/test-log*
+test/.audit.json
 
 # Tesseract trained data
 ocr_lang_data/*.gz

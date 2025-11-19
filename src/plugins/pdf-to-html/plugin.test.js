@@ -77,9 +77,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-			),
+			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
 			query: {
 				last_page_to_convert: "2",
 				ignore_images: "false",
@@ -165,9 +163,7 @@ describe("PDF-to-HTML conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-			),
+			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
 			query: {
 				last_page_to_convert: "1",
 				ignore_images: "false",

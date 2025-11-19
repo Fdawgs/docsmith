@@ -40,21 +40,21 @@ describe("DOC-to-TXT conversion plugin", () => {
 	it.each([
 		{
 			testName: "DOC file",
-			filePath: "./test_resources/test_files/doc_valid.doc",
+			filePath: "./test/files/doc_valid.doc",
 			headers: {
 				"content-type": "application/msword",
 			},
 		},
 		{
 			testName: "DOT file",
-			filePath: "./test_resources/test_files/dot_valid.dot",
+			filePath: "./test/files/dot_valid.dot",
 			headers: {
 				"content-type": "application/msword",
 			},
 		},
 		{
 			testName: "DOCM file",
-			filePath: "./test_resources/test_files/docm_valid.docm",
+			filePath: "./test/files/docm_valid.docm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
@@ -62,7 +62,7 @@ describe("DOC-to-TXT conversion plugin", () => {
 		},
 		{
 			testName: "DOCX file",
-			filePath: "./test_resources/test_files/docx_valid.docx",
+			filePath: "./test/files/docx_valid.docx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",

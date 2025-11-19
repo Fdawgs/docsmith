@@ -85,7 +85,7 @@
 				"authentication": {},
 				"authenticationType": null,
 				"body": {
-					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\html_valid.html"
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test\\files\\html_valid.html"
 				},
 				"bodyType": "binary",
 				"description": "",
@@ -119,7 +119,7 @@
 				"authentication": {},
 				"authenticationType": null,
 				"body": {
-					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\doc_valid.doc"
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test\\files\\doc_valid.doc"
 				},
 				"bodyType": "binary",
 				"description": "",
@@ -172,7 +172,7 @@
 				"authentication": {},
 				"authenticationType": null,
 				"body": {
-					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\docx_valid.docx"
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test\\files\\docx_valid.docx"
 				},
 				"bodyType": "binary",
 				"description": "",
@@ -206,7 +206,7 @@
 				"authentication": {},
 				"authenticationType": null,
 				"body": {
-					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\docx_valid.docx"
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test\\files\\docx_valid.docx"
 				},
 				"bodyType": "binary",
 				"description": "",
@@ -240,7 +240,7 @@
 				"authentication": {},
 				"authenticationType": null,
 				"body": {
-					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test\\files\\pdf_1.3_NHS_Constitution.pdf"
 				},
 				"bodyType": "binary",
 				"description": "",
@@ -274,7 +274,7 @@
 				"authentication": {},
 				"authenticationType": null,
 				"body": {
-					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\rtf_valid.rtf"
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test\\files\\rtf_valid.rtf"
 				},
 				"bodyType": "binary",
 				"description": "",
@@ -327,7 +327,7 @@
 				"authentication": {},
 				"authenticationType": null,
 				"body": {
-					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test\\files\\pdf_1.3_NHS_Constitution.pdf"
 				},
 				"bodyType": "binary",
 				"description": "",
@@ -361,7 +361,7 @@
 				"authentication": {},
 				"authenticationType": null,
 				"body": {
-					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\rtf_valid.rtf"
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test\\files\\rtf_valid.rtf"
 				},
 				"bodyType": "binary",
 				"description": "",
@@ -395,7 +395,7 @@
 				"authentication": {},
 				"authenticationType": null,
 				"body": {
-					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test_resources\\test_files\\pdf_1.3_NHS_Constitution.pdf"
+					"filePath": "C:\\Users\\fraze\\Documents\\git-repos\\applications\\docsmith\\test\\files\\pdf_1.3_NHS_Constitution.pdf"
 				},
 				"bodyType": "binary",
 				"description": "",

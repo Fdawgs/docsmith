@@ -6,7 +6,7 @@ const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
-const generateCombos = require("../../../../test_resources/utils/gen-combos");
+const generateCombos = require("../../../../test/utils/gen-combos");
 const route = require(".");
 const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
@@ -51,9 +51,7 @@ describe("RTF-to-HTML route", () => {
 					.inject({
 						method: "POST",
 						url: "/",
-						body: await readFile(
-							"./test_resources/test_files/rtf_valid.rtf"
-						),
+						body: await readFile("./test/files/rtf_valid.rtf"),
 						query,
 						headers: {
 							accept: "application/json, text/html",
@@ -142,7 +140,7 @@ describe("RTF-to-HTML route", () => {
 						method: "POST",
 						url: "/",
 						body: await readFile(
-							"./test_resources/test_files/html_valid_empty.html"
+							"./test/files/html_valid_empty.html"
 						),
 						query,
 						headers: {
@@ -168,7 +166,7 @@ describe("RTF-to-HTML route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/rtf_valid.rtf"),
+			body: await readFile("./test/files/rtf_valid.rtf"),
 			headers: {
 				accept: "application/javascript",
 				"content-type": "application/rtf",

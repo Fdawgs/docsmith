@@ -33,11 +33,11 @@ describe("DOC-to-TXT route", () => {
 	it.each([
 		{
 			testName: "DOC file",
-			filePath: "./test_resources/test_files/doc_valid.doc",
+			filePath: "./test/files/doc_valid.doc",
 		},
 		{
 			testName: "DOT file",
-			filePath: "./test_resources/test_files/dot_valid.dot",
+			filePath: "./test/files/dot_valid.dot",
 		},
 	])("Returns $testName converted to TXT", async ({ filePath }) => {
 		const response = await server.inject({
@@ -78,15 +78,15 @@ describe("DOC-to-TXT route", () => {
 	it.each([
 		{
 			testName: "is not a valid DOC file",
-			filePath: "./test_resources/test_files/doc_invalid.doc",
+			filePath: "./test/files/doc_invalid.doc",
 		},
 		{
 			testName: "is not a valid DOT file",
-			filePath: "./test_resources/test_files/dot_invalid.dot",
+			filePath: "./test/files/dot_invalid.dot",
 		},
 		{
 			testName: "is a valid CFBF file but is not a Microsoft Word file",
-			filePath: "./test_resources/test_files/xls_valid.xls",
+			filePath: "./test/files/xls_valid.xls",
 		},
 	])(
 		"Returns HTTP status code 415 if body $testName",
@@ -114,9 +114,7 @@ describe("DOC-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/html_valid_empty.html"
-			),
+			body: await readFile("./test/files/html_valid_empty.html"),
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "application/html",
@@ -135,7 +133,7 @@ describe("DOC-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/doc_valid.doc"),
+			body: await readFile("./test/files/doc_valid.doc"),
 			headers: {
 				accept: "application/javascript",
 				"content-type": "application/msword",

@@ -36,7 +36,7 @@ describe("HTML-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/html_valid.html"),
+			body: await readFile("./test/files/html_valid.html"),
 			headers: {
 				"content-type": "text/html",
 			},

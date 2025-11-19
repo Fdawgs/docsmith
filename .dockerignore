@@ -120,7 +120,7 @@ out
 *.wmf
 *.emf
 temp*
-test_resources/
+test/
 **/*.test.*
 
 # Development files

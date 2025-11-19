@@ -107,7 +107,7 @@ describe("Tidy-CSS plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(`./test_resources/test_files/${file}`),
+			body: await readFile(`./test/files/${file}`),
 			headers: {
 				"content-type": "text/html",
 			},
@@ -139,9 +139,7 @@ describe("Tidy-CSS plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/html_valid_css_at_rules.html"
-			),
+			body: await readFile("./test/files/html_valid_css_at_rules.html"),
 			headers: {
 				"content-type": "text/html",
 			},
@@ -167,9 +165,7 @@ describe("Tidy-CSS plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/html_valid_empty.html"
-			),
+			body: await readFile("./test/files/html_valid_empty.html"),
 			headers: {
 				"content-type": "text/html",
 			},

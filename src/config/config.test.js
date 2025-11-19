@@ -19,7 +19,7 @@ describe("Configuration", () => {
 	});
 
 	afterAll(async () => {
-		const files = await glob("./test_resources/+(test-log*|.audit.json)", {
+		const files = await glob("./test/+(test-log*|.audit.json)", {
 			dot: true,
 		});
 
@@ -152,7 +152,7 @@ describe("Configuration", () => {
 	it("Uses defaults logging values if values missing", async () => {
 		const LOG_LEVEL = "";
 		const LOG_ROTATION_DATE_FORMAT = "";
-		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
+		const LOG_ROTATION_FILENAME = "./test/test-log-%DATE%.log";
 		const LOG_ROTATION_FREQUENCY = "";
 
 		Object.assign(process.env, {
@@ -190,13 +190,12 @@ describe("Configuration", () => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
 		const REQ_BODY_MAX_BYTES = 100000000;
-		const HTTPS_SSL_CERT_PATH =
-			"./test_resources/test_ssl_cert/server.cert";
-		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
+		const HTTPS_SSL_CERT_PATH = "./test/ssl_cert/server.cert";
+		const HTTPS_SSL_KEY_PATH = "./test/ssl_cert/server.key";
 		const HTTPS_HTTP2_ENABLED = true;
 		const LOG_LEVEL = "trace";
 		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
-		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
+		const LOG_ROTATION_FILENAME = "./test/test-log-%DATE%.log";
 		const LOG_ROTATION_FREQUENCY = "date";
 		const LOG_ROTATION_MAX_LOGS = "10";
 		const LOG_ROTATION_MAX_SIZE = "150k";
@@ -314,8 +313,7 @@ describe("Configuration", () => {
 	it("Returns values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
-		const HTTPS_PFX_FILE_PATH =
-			"./test_resources/test_ssl_cert/server.cert"; // Not an actual PFX file
+		const HTTPS_PFX_FILE_PATH = "./test/ssl_cert/server.cert"; // Not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = "TestPassphrase";
 		const HTTPS_HTTP2_ENABLED = true;
 		const LOG_LEVEL = "trace";
@@ -435,16 +433,15 @@ describe("Configuration", () => {
 		{
 			testName: "invalid PFX file path",
 			envVariables: {
-				HTTPS_PFX_FILE_PATH: "./test_resources/test_ssl_cert/error.pfx",
+				HTTPS_PFX_FILE_PATH: "./test/ssl_cert/error.pfx",
 				HTTPS_PFX_PASSPHRASE: "TestPassphrase",
 			},
 		},
 		{
 			testName: "invalid SSL cert file path",
 			envVariables: {
-				HTTPS_SSL_CERT_PATH:
-					"./test_resources/test_ssl_cert/error.cert",
-				HTTPS_SSL_KEY_PATH: "./test_resources/test_ssl_cert/error.key",
+				HTTPS_SSL_CERT_PATH: "./test/ssl_cert/error.cert",
+				HTTPS_SSL_KEY_PATH: "./test/ssl_cert/error.key",
 			},
 		},
 	])("Throws an error if $testName", async ({ envVariables }) => {

@@ -40,21 +40,21 @@ describe("HTML-to-TXT route", () => {
 	it.each([
 		{
 			testName: "HTML file converted to TXT",
-			filePath: "./test_resources/test_files/html_valid.html",
+			filePath: "./test/files/html_valid.html",
 			headers: {
 				"content-type": "text/html",
 			},
 		},
 		{
 			testName: "XHTML file converted to TXT",
-			filePath: "./test_resources/test_files/xhtml_valid.xhtml",
+			filePath: "./test/files/xhtml_valid.xhtml",
 			headers: {
 				"content-type": "application/xhtml+xml",
 			},
 		},
 		{
 			testName: "HTML converted to TXT with hidden elements extracted",
-			filePath: "./test_resources/test_files/html_valid.html",
+			filePath: "./test/files/html_valid.html",
 			headers: {
 				"content-type": "text/html",
 			},
@@ -65,7 +65,7 @@ describe("HTML-to-TXT route", () => {
 		{
 			testName:
 				"XHTML file converted to TXT with hidden elements extracted",
-			filePath: "./test_resources/test_files/xhtml_valid.xhtml",
+			filePath: "./test/files/xhtml_valid.xhtml",
 			headers: {
 				"content-type": "application/xhtml+xml",
 			},
@@ -151,9 +151,7 @@ describe("HTML-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/html_valid_empty.html"
-			),
+			body: await readFile("./test/files/html_valid_empty.html"),
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "application/html",
@@ -172,7 +170,7 @@ describe("HTML-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/html_valid.html"),
+			body: await readFile("./test/files/html_valid.html"),
 			headers: {
 				accept: "application/javascript",
 				"content-type": "text/html",

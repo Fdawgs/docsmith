@@ -6,7 +6,7 @@ const accepts = require("@fastify/accepts");
 const Fastify = require("fastify");
 const isHtml = require("is-html");
 const sensible = require("@fastify/sensible");
-const generateCombos = require("../../../../test_resources/utils/gen-combos");
+const generateCombos = require("../../../../test/utils/gen-combos");
 const route = require(".");
 const getConfig = require("../../../config");
 const sharedSchemas = require("../../../plugins/shared-schemas");
@@ -57,7 +57,7 @@ describe("PDF-to-TXT route", () => {
 						method: "POST",
 						url: "/",
 						body: await readFile(
-							"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
+							"./test/files/pdf_1.3_NHS_Constitution.pdf"
 						),
 						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
@@ -83,9 +83,7 @@ describe("PDF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-			),
+			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
 			query: {
 				last_page_to_convert: "1",
 				ocr: "true",
@@ -108,9 +106,7 @@ describe("PDF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-			),
+			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
 			query: {
 				generate_html_meta_file: "true",
 				last_page_to_convert: "1",
@@ -195,7 +191,7 @@ describe("PDF-to-TXT route", () => {
 						method: "POST",
 						url: "/",
 						body: await readFile(
-							"./test_resources/test_files/html_valid_empty.html"
+							"./test/files/html_valid_empty.html"
 						),
 						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
@@ -221,9 +217,7 @@ describe("PDF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile(
-				"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf"
-			),
+			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
 			query: {
 				last_page_to_convert: "1",
 			},

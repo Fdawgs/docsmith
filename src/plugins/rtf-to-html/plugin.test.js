@@ -66,7 +66,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/rtf_valid.rtf"),
+			body: await readFile("./test/files/rtf_valid.rtf"),
 			headers: {
 				"content-type": "application/rtf",
 			},
@@ -153,7 +153,7 @@ describe("RTF-to-HTML conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test_resources/test_files/rtf_valid.rtf"),
+			body: await readFile("./test/files/rtf_valid.rtf"),
 			headers: {
 				"content-type": "application/rtf",
 			},

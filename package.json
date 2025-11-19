@@ -19,8 +19,8 @@
 		"node": ">=20"
 	},
 	"scripts": {
-		"benchmark:html": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:3000/pdf/html?lastPageToConvert=1\"",
-		"benchmark:txt": "autocannon -a 100 -m POST -i \"./test_resources/test_files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:3000/pdf/txt?lastPageToConvert=1\"",
+		"benchmark:html": "autocannon -a 100 -m POST -i \"./test/files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:3000/pdf/html?lastPageToConvert=1\"",
+		"benchmark:txt": "autocannon -a 100 -m POST -i \"./test/files/pdf_1.3_NHS_Constitution.pdf\" -H \"Content-Type:application/pdf\" \"http://0.0.0.0:3000/pdf/txt?lastPageToConvert=1\"",
 		"build": "node scripts/esbuild.js",
 		"lint:eslint:fix": "npm run lint:eslint -- --fix",
 		"lint:eslint": "eslint . --cache",
