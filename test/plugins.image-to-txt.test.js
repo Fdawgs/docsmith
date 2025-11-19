@@ -44,7 +44,9 @@ describe("Image-to-TXT conversion plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/png_valid_bullet_issues001.png"),
+			body: await readFile(
+				"./test/fixtures/png_valid_bullet_issues001.png"
+			),
 			headers: {
 				"content-type": "image/png",
 			},

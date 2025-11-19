@@ -37,14 +37,16 @@ describe("Embed-HTML-Images plugin", () => {
 
 	it("Embeds images into HTML", async () => {
 		const altConfig = await getConfig();
-		altConfig.poppler.tempDir = "./test/files/";
+		altConfig.poppler.tempDir = "./test/fixtures/";
 		server.post("/", async (req) => server.embedHtmlImages(req.body));
 		await server.register(plugin, altConfig.poppler).ready();
 
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/html_valid_bullet_issues.html"),
+			body: await readFile(
+				"./test/fixtures/html_valid_bullet_issues.html"
+			),
 			headers: {
 				"content-type": "text/html",
 			},
@@ -66,7 +68,9 @@ describe("Embed-HTML-Images plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/html_valid_bullet_issues.html"),
+			body: await readFile(
+				"./test/fixtures/html_valid_bullet_issues.html"
+			),
 			headers: {
 				"content-type": "text/html",
 			},

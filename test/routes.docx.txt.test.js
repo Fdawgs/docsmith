@@ -33,7 +33,7 @@ describe("DOCX-to-TXT route", () => {
 	it.each([
 		{
 			testName: "DOCM file",
-			filePath: "./test/files/docm_valid.docm",
+			filePath: "./test/fixtures/docm_valid.docm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
@@ -41,7 +41,7 @@ describe("DOCX-to-TXT route", () => {
 		},
 		{
 			testName: "DOCX file",
-			filePath: "./test/files/docx_valid.docx",
+			filePath: "./test/fixtures/docx_valid.docx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -49,7 +49,7 @@ describe("DOCX-to-TXT route", () => {
 		},
 		{
 			testName: "DOTX file",
-			filePath: "./test/files/dotx_valid.dotx",
+			filePath: "./test/fixtures/dotx_valid.dotx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
@@ -57,7 +57,7 @@ describe("DOCX-to-TXT route", () => {
 		},
 		{
 			testName: "DOTM file",
-			filePath: "./test/files/dotm_valid.dotm",
+			filePath: "./test/fixtures/dotm_valid.dotm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.template.macroEnabled.12",
@@ -159,7 +159,7 @@ describe("DOCX-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/html_valid_empty.html"),
+			body: await readFile("./test/fixtures/html_valid_empty.html"),
 			headers: {
 				accept: "application/json, text/plain",
 				"content-type": "application/html",
@@ -178,7 +178,7 @@ describe("DOCX-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/docx_valid.docx"),
+			body: await readFile("./test/fixtures/docx_valid.docx"),
 			headers: {
 				accept: "application/javascript",
 				"content-type":

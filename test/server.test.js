@@ -197,11 +197,11 @@ describe("Server deployment", () => {
 			it.each([
 				{
 					testName: "DOC file",
-					filePath: "./test/files/doc_valid.doc",
+					filePath: "./test/fixtures/doc_valid.doc",
 				},
 				{
 					testName: "DOT file",
-					filePath: "./test/files/dot_valid.dot",
+					filePath: "./test/fixtures/dot_valid.dot",
 				},
 			])(
 				"Returns $testName converted to TXT, with expected headers set",
@@ -227,7 +227,7 @@ describe("Server deployment", () => {
 			it.each([
 				{
 					testName: "DOCM file",
-					filePath: "./test/files/docm_valid.docm",
+					filePath: "./test/fixtures/docm_valid.docm",
 					headers: {
 						"content-type":
 							"application/vnd.ms-word.document.macroEnabled.12",
@@ -235,7 +235,7 @@ describe("Server deployment", () => {
 				},
 				{
 					testName: "DOCX file",
-					filePath: "./test/files/docx_valid.docx",
+					filePath: "./test/fixtures/docx_valid.docx",
 					headers: {
 						"content-type":
 							"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -243,7 +243,7 @@ describe("Server deployment", () => {
 				},
 				{
 					testName: "DOTX file",
-					filePath: "./test/files/dotx_valid.dotx",
+					filePath: "./test/fixtures/dotx_valid.dotx",
 					headers: {
 						"content-type":
 							"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
@@ -251,7 +251,7 @@ describe("Server deployment", () => {
 				},
 				{
 					testName: "DOTM file",
-					filePath: "./test/files/dotm_valid.dotm",
+					filePath: "./test/fixtures/dotm_valid.dotm",
 					headers: {
 						"content-type":
 							"application/vnd.ms-word.template.macroEnabled.12",
@@ -286,7 +286,7 @@ describe("Server deployment", () => {
 			it.each([
 				{
 					testName: "DOCM file",
-					filePath: "./test/files/docm_valid.docm",
+					filePath: "./test/fixtures/docm_valid.docm",
 					headers: {
 						"content-type":
 							"application/vnd.ms-word.document.macroEnabled.12",
@@ -294,7 +294,7 @@ describe("Server deployment", () => {
 				},
 				{
 					testName: "DOCX file",
-					filePath: "./test/files/docx_valid.docx",
+					filePath: "./test/fixtures/docx_valid.docx",
 					headers: {
 						"content-type":
 							"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -302,7 +302,7 @@ describe("Server deployment", () => {
 				},
 				{
 					testName: "DOTX file",
-					filePath: "./test/files/dotx_valid.dotx",
+					filePath: "./test/fixtures/dotx_valid.dotx",
 					headers: {
 						"content-type":
 							"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
@@ -310,7 +310,7 @@ describe("Server deployment", () => {
 				},
 				{
 					testName: "DOTM file",
-					filePath: "./test/files/dotm_valid.dotm",
+					filePath: "./test/fixtures/dotm_valid.dotm",
 					headers: {
 						"content-type":
 							"application/vnd.ms-word.template.macroEnabled.12",
@@ -342,7 +342,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/pdf/html",
 					body: await readFile(
-						"./test/files/pdf_1.3_NHS_Constitution.pdf"
+						"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
 						last_page_to_convert: "1",
@@ -364,7 +364,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/pdf/html",
 					body: await readFile(
-						"./test/files/pdf_1.3_NHS_Constitution.pdf"
+						"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
 						last_page_to_convert: "1",
@@ -391,7 +391,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/pdf/txt",
 					body: await readFile(
-						"./test/files/pdf_1.3_NHS_Constitution.pdf"
+						"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
 						last_page_to_convert: "1",
@@ -414,7 +414,7 @@ describe("Server deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/rtf/html",
-					body: await readFile("./test/files/rtf_valid.rtf"),
+					body: await readFile("./test/fixtures/rtf_valid.rtf"),
 					headers: {
 						accept: "application/json, text/html",
 						"content-type": "application/rtf",
@@ -435,7 +435,7 @@ describe("Server deployment", () => {
 				const response = await server.inject({
 					method: "POST",
 					url: "/rtf/txt",
-					body: await readFile("./test/files/rtf_valid.rtf"),
+					body: await readFile("./test/fixtures/rtf_valid.rtf"),
 					headers: {
 						accept: "application/json, text/plain",
 						"content-type": "application/rtf",
@@ -556,7 +556,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/pdf/html",
 					body: await readFile(
-						"./test/files/pdf_1.3_NHS_Constitution.pdf"
+						"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
 						last_page_to_convert: "1",
@@ -579,7 +579,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/pdf/html",
 					body: await readFile(
-						"./test/files/pdf_1.3_NHS_Constitution.pdf"
+						"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
 						last_page_to_convert: "1",
@@ -600,7 +600,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/pdf/html",
 					body: await readFile(
-						"./test/files/pdf_1.3_NHS_Constitution.pdf"
+						"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
 						last_page_to_convert: "1",
@@ -628,7 +628,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/pdf/txt",
 					body: await readFile(
-						"./test/files/pdf_1.3_NHS_Constitution.pdf"
+						"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
 						last_page_to_convert: "1",
@@ -652,7 +652,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/pdf/txt",
 					body: await readFile(
-						"./test/files/pdf_1.3_NHS_Constitution.pdf"
+						"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
 						last_page_to_convert: "1",
@@ -674,7 +674,7 @@ describe("Server deployment", () => {
 					method: "POST",
 					url: "/pdf/txt",
 					body: await readFile(
-						"./test/files/pdf_1.3_NHS_Constitution.pdf"
+						"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 					),
 					query: {
 						last_page_to_convert: "1",
@@ -892,7 +892,7 @@ describe("Server deployment", () => {
 								method: "POST",
 								url: "/pdf/txt",
 								body: await readFile(
-									"./test/files/pdf_1.3_NHS_Constitution.pdf"
+									"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 								),
 								query: {
 									last_page_to_convert: "1",

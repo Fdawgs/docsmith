@@ -57,7 +57,9 @@ describe("Tidy-HTML plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/html_valid_bullet_issues.html"),
+			body: await readFile(
+				"./test/fixtures/html_valid_bullet_issues.html"
+			),
 			headers: {
 				"content-type": "text/html",
 			},
@@ -110,7 +112,9 @@ describe("Tidy-HTML plugin", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/html_valid_bullet_issues.html"),
+			body: await readFile(
+				"./test/fixtures/html_valid_bullet_issues.html"
+			),
 			headers: {
 				"content-type": "text/html",
 			},

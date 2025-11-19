@@ -190,8 +190,8 @@ describe("Configuration", () => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
 		const REQ_BODY_MAX_BYTES = 100000000;
-		const HTTPS_SSL_CERT_PATH = "./test/ssl_cert/server.cert";
-		const HTTPS_SSL_KEY_PATH = "./test/ssl_cert/server.key";
+		const HTTPS_SSL_CERT_PATH = "./test/fixtures/server.cert";
+		const HTTPS_SSL_KEY_PATH = "./test/fixtures/server.key";
 		const HTTPS_HTTP2_ENABLED = true;
 		const LOG_LEVEL = "trace";
 		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
@@ -313,7 +313,7 @@ describe("Configuration", () => {
 	it("Returns values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
-		const HTTPS_PFX_FILE_PATH = "./test/ssl_cert/server.cert"; // Not an actual PFX file
+		const HTTPS_PFX_FILE_PATH = "./test/fixtures/server.cert"; // Not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = "TestPassphrase";
 		const HTTPS_HTTP2_ENABLED = true;
 		const LOG_LEVEL = "trace";
@@ -433,15 +433,15 @@ describe("Configuration", () => {
 		{
 			testName: "invalid PFX file path",
 			envVariables: {
-				HTTPS_PFX_FILE_PATH: "./test/ssl_cert/error.pfx",
+				HTTPS_PFX_FILE_PATH: "./test/fixtures/error.pfx",
 				HTTPS_PFX_PASSPHRASE: "TestPassphrase",
 			},
 		},
 		{
 			testName: "invalid SSL cert file path",
 			envVariables: {
-				HTTPS_SSL_CERT_PATH: "./test/ssl_cert/error.cert",
-				HTTPS_SSL_KEY_PATH: "./test/ssl_cert/error.key",
+				HTTPS_SSL_CERT_PATH: "./test/fixtures/error.cert",
+				HTTPS_SSL_KEY_PATH: "./test/fixtures/error.key",
 			},
 		},
 	])("Throws an error if $testName", async ({ envVariables }) => {

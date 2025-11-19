@@ -42,7 +42,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 	it.each([
 		{
 			testName: "DOCM file",
-			filePath: "./test/files/docm_valid.docm",
+			filePath: "./test/fixtures/docm_valid.docm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.document.macroEnabled.12",
@@ -50,7 +50,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		},
 		{
 			testName: "DOCX file",
-			filePath: "./test/files/docx_valid.docx",
+			filePath: "./test/fixtures/docx_valid.docx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -58,7 +58,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		},
 		{
 			testName: "DOTX file",
-			filePath: "./test/files/dotx_valid.dotx",
+			filePath: "./test/fixtures/dotx_valid.dotx",
 			headers: {
 				"content-type":
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.template",
@@ -66,7 +66,7 @@ describe("DOCX-to-HTML conversion plugin", () => {
 		},
 		{
 			testName: "DOTM file",
-			filePath: "./test/files/dotm_valid.dotm",
+			filePath: "./test/fixtures/dotm_valid.dotm",
 			headers: {
 				"content-type":
 					"application/vnd.ms-word.template.macroEnabled.12",

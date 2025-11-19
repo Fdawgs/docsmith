@@ -51,7 +51,7 @@ describe("RTF-to-HTML route", () => {
 					.inject({
 						method: "POST",
 						url: "/",
-						body: await readFile("./test/files/rtf_valid.rtf"),
+						body: await readFile("./test/fixtures/rtf_valid.rtf"),
 						query,
 						headers: {
 							accept: "application/json, text/html",
@@ -140,7 +140,7 @@ describe("RTF-to-HTML route", () => {
 						method: "POST",
 						url: "/",
 						body: await readFile(
-							"./test/files/html_valid_empty.html"
+							"./test/fixtures/html_valid_empty.html"
 						),
 						query,
 						headers: {
@@ -166,7 +166,7 @@ describe("RTF-to-HTML route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/rtf_valid.rtf"),
+			body: await readFile("./test/fixtures/rtf_valid.rtf"),
 			headers: {
 				accept: "application/javascript",
 				"content-type": "application/rtf",

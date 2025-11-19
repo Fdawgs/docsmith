@@ -20,7 +20,7 @@ exports[`Tidy-CSS plugin Creates new style element if none exist in HTML but que
 
 exports[`Tidy-CSS plugin Tidies CSS in HTML 1`] = `
 "<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
-		<title>C:\\\\doc-conversion-service\\\\files\\\\valid_bullet_issues_html.html</title>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		
 
@@ -134,7 +134,7 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML 1`] = `
 			</p>
 		</div>
 		
-			<title>Z:\\\\docsmith\\\\test\\\\files\\\\valid_bullet_issues_html.html</title>
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		
 		<br>
@@ -208,7 +208,7 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML 1`] = `
 
 exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new background color 1`] = `
 "<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
-		<title>C:\\\\doc-conversion-service\\\\files\\\\valid_bullet_issues_html.html</title>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		
 
@@ -322,7 +322,7 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new background color 1`] = 
 			</p>
 		</div>
 		
-			<title>Z:\\\\docsmith\\\\test\\\\files\\\\valid_bullet_issues_html.html</title>
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		
 		<br>
@@ -396,7 +396,7 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new background color 1`] = 
 
 exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font 1`] = `
 "<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
-		<title>C:\\\\doc-conversion-service\\\\files\\\\valid_bullet_issues_html.html</title>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		
 
@@ -510,7 +510,7 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font 1`] = `
 			</p>
 		</div>
 		
-			<title>Z:\\\\docsmith\\\\test\\\\files\\\\valid_bullet_issues_html.html</title>
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		
 		<br>
@@ -584,7 +584,7 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font 1`] = `
 
 exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font in quotation marks 1`] = `
 "<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
-		<title>C:\\\\doc-conversion-service\\\\files\\\\valid_bullet_issues_html.html</title>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		
 
@@ -698,7 +698,7 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML and sets new font in quotation marks
 			</p>
 		</div>
 		
-			<title>Z:\\\\docsmith\\\\test\\\\files\\\\valid_bullet_issues_html.html</title>
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		
 		<br>
@@ -780,7 +780,7 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML that uses @ rules 1`] = `
 
 exports[`Tidy-CSS plugin Tidies CSS in HTML, sets new background color, and sets new font 1`] = `
 "<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
-		<title>C:\\\\doc-conversion-service\\\\files\\\\valid_bullet_issues_html.html</title>
+		<title>C:\\\\doc-conversion-service\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		
 
@@ -894,7 +894,7 @@ exports[`Tidy-CSS plugin Tidies CSS in HTML, sets new background color, and sets
 			</p>
 		</div>
 		
-			<title>Z:\\\\docsmith\\\\test\\\\files\\\\valid_bullet_issues_html.html</title>
+			<title>Z:\\\\docsmith\\\\test\\\\fixtures\\\\valid_bullet_issues_html.html</title>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		
 		<br>

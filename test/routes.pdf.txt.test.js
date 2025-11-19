@@ -57,7 +57,7 @@ describe("PDF-to-TXT route", () => {
 						method: "POST",
 						url: "/",
 						body: await readFile(
-							"./test/files/pdf_1.3_NHS_Constitution.pdf"
+							"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
 						),
 						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
@@ -83,7 +83,9 @@ describe("PDF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
+			body: await readFile(
+				"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
+			),
 			query: {
 				last_page_to_convert: "1",
 				ocr: "true",
@@ -106,7 +108,9 @@ describe("PDF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
+			body: await readFile(
+				"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
+			),
 			query: {
 				generate_html_meta_file: "true",
 				last_page_to_convert: "1",
@@ -191,7 +195,7 @@ describe("PDF-to-TXT route", () => {
 						method: "POST",
 						url: "/",
 						body: await readFile(
-							"./test/files/html_valid_empty.html"
+							"./test/fixtures/html_valid_empty.html"
 						),
 						query: { ...queryString, last_page_to_convert: "1" },
 						headers: {
@@ -217,7 +221,9 @@ describe("PDF-to-TXT route", () => {
 		const response = await server.inject({
 			method: "POST",
 			url: "/",
-			body: await readFile("./test/files/pdf_1.3_NHS_Constitution.pdf"),
+			body: await readFile(
+				"./test/fixtures/pdf_1.3_NHS_Constitution.pdf"
+			),
 			query: {
 				last_page_to_convert: "1",
 			},

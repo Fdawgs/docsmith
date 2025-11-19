@@ -121,12 +121,10 @@ out
 *.emf
 temp*
 test/
-**/*.test.*
 
 # Development files
 .git/
 .github/
-.husky/
 .vscode/
 docs/
 scripts/
