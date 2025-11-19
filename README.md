@@ -82,7 +82,7 @@ The service should be up and running on the port set in the config. Output simil
 }
 ```
 
-To test it, use [Yaak](https://yaak.app/) and import the example requests from `./test/yaak.docsmith.json`.
+To test it, use [Yaak](https://yaak.app/) and import the example requests from `./test/utils/yaak.docsmith.json`.
 
 ### Deploying using Docker
 
