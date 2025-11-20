@@ -3,11 +3,10 @@
 	"ignore": [
 		{ "prefix": "decko" },
 		{ "prefix": "duck" },
+		{ "prefix": "node-unrtf-win32" },
+		{ "prefix": "node-poppler-win32" },
 		{ "prefix": "stickyfill" },
 		{ "prefix": "url-template" }
 	],
-	"licenses": {
-		"blueOak": "bronze",
-		"spdx": ["CC-BY-3.0"]
-	}
+	"licenses": { "blueOak": "bronze", "spdx": ["CC-BY-3.0"] }
 }

@@ -46,11 +46,6 @@ Titles and headings should use sentence-style capitalisation, where only the fir
 Before submitting a pull request back to the main repository, please ensure the following steps have been taken:
 
 1. Pull request base branch is set to `main`. All pull requests should be forked from and merged back to `main`
-1. Run `npm test` to check the code adheres to the defined formatting style, and that it passes tests
-1. Run `npm run lint:fix` to automatically fix any ESLint and Prettier errors
-1. Run `npm run lint` to check that there are no linting errors
-
-Step 4. is automatically ran by a pre-commit hook added by [Husky](https://typicode.github.io/husky/#/).
 
 ## Issues
 
