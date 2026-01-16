@@ -113,7 +113,7 @@
 		"html-to-text": "^9.0.5",
 		"htmltidy2": "^1.2.0",
 		"is-html": "^2.0.0",
-		"jsdom": "^27.0.0",
+		"jsdom": "^27.3.0",
 		"language-tags": "^1.0.9",
 		"mammoth": "^1.11.0",
 		"node-poppler": "^9.0.1",
