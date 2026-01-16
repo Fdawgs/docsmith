@@ -135,7 +135,7 @@ dist
 # Clinic.js
 .clinic
 
-# lock files
+# Lockfiles
 bun.lockb
 pnpm-lock.yaml
 yarn.lock

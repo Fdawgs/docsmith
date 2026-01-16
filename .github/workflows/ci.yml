@@ -35,12 +35,12 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
               with:
                   persist-credentials: false
 
             - name: Dependency review
-              uses: actions/dependency-review-action@40c09b7dc99638e5ddb0bfd91c1673effc064d8a # v4.8.1
+              uses: actions/dependency-review-action@3c4e3dcb1aa7874d2c16be7d79418e9b7efd6261 # v4.8.2
 
     lint:
         name: Lint Code
@@ -49,7 +49,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
               with:
                   persist-credentials: false
 
@@ -88,7 +88,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
               with:
                   fetch-depth: 0
                   persist-credentials: false
@@ -109,7 +109,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
               with:
                   persist-credentials: false
 
@@ -155,7 +155,7 @@ jobs:
 
             - name: Coveralls parallel
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-              uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
+              uses: coverallsapp/github-action@5cbfd81b66ca5d10c19b062c04de0199c215fb6e # v2.3.7
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel: true
@@ -168,7 +168,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
               with:
                   persist-credentials: false
 
@@ -192,7 +192,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
               with:
                   persist-credentials: false
 
@@ -210,7 +210,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
               with:
                   persist-credentials: false
 
@@ -228,7 +228,7 @@ jobs:
             contents: read
         steps:
             - name: Coveralls finished
-              uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
+              uses: coverallsapp/github-action@5cbfd81b66ca5d10c19b062c04de0199c215fb6e # v2.3.7
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel-finished: true

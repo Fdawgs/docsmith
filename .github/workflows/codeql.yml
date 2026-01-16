@@ -11,8 +11,11 @@ on:
         branches:
             - main
         paths:
+            - "**/*.cjs"
             - "**/*.html"
             - "**/*.js"
+            - "**/*.mjs"
+            - "**/*.ts"
             - "**/*.yml"
         types: [opened, ready_for_review, reopened, synchronize]
 
@@ -36,7 +39,7 @@ jobs:
             security-events: write
         steps:
             - name: Check out repo
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
               with:
                   persist-credentials: false
 

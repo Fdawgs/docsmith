@@ -14,12 +14,7 @@ COPY package-lock.json .
 RUN npm ci --ignore-scripts --omit=dev && \
     npm pkg delete commitlint devDependencies jest scripts && \
     npm cache clean --force && \
-    chmod 100 ./node_modules/htmltidy2/bin/linux64/tidy && \
-    # Remove included Windows and macOS binaries
-    rm -rf ./node_modules/node-poppler/src/lib/* && \
-    rm -rf ./node_modules/node-unrtf/src/lib/* && \
-    rm -rf ./node_modules/htmltidy2/bin/win64 && \
-    rm -rf ./node_modules/htmltidy2/bin/darwin
+    chmod 100 ./node_modules/htmltidy2/bin/linux64/tidy
 
 # Copy source
 COPY . .
