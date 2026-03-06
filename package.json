@@ -99,7 +99,7 @@
 		"cssesc": "^3.0.0",
 		"cssom": "^0.5.0",
 		"env-schema": "^7.0.0",
-		"fastify": "^5.6.2",
+		"fastify": "^5.8.1",
 		"fastify-disablecache": "^5.0.0",
 		"fastify-floc-off": "^4.0.0",
 		"fastify-json-to-xml": "^3.0.0",
