@@ -246,7 +246,7 @@ jobs:
             pull-requests: write
             contents: write
         steps:
-            - uses: fastify/github-action-merge-dependabot@1b2ed42db8f9d81a46bac83adedfc03eb5149dff # v3.11.2
+            - uses: fastify/github-action-merge-dependabot@4ed43935e3bd362966dfb1e0829f9a35638fe6eb # v3.13.0
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   merge-method: squash
