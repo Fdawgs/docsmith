@@ -135,6 +135,9 @@ dist
 # Clinic.js
 .clinic
 
+# Built/generated files
+types/
+
 # Lockfiles
 bun.lockb
 pnpm-lock.yaml

@@ -1,7 +1,7 @@
-# Auto-generated files
+# Built/generated files
 .github/release-please/manifest.json
 CHANGELOG.md
-package.json
+dist/
 package-lock.json
 types/
 
