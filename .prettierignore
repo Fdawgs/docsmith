@@ -1,4 +1,5 @@
 # Built/generated files
+.devcontainer/devcontainer-lock.json
 .github/release-please/manifest.json
 CHANGELOG.md
 dist/
