@@ -56,7 +56,7 @@ async function plugin(server, config) {
 
 		/**
 		 * Use Helmet to set response security headers.
-		 * @see {@link https://helmetjs.github.io | Helmet}
+		 * @see {@link https://helmet.js.org | Helmet}
 		 */
 		.register(helmet, config.helmet)
 
@@ -128,7 +128,7 @@ async function plugin(server, config) {
 		/**
 		 * Encapsulate plugins and routes into a secured child context, so that admin and
 		 * docs routes do not inherit the bearer token auth plugin.
-		 * @see {@link https://fastify.dev/docs/latest/Reference/Encapsulation | Fastify Encapsulation}
+		 * @see {@link https://fastify.dev/docs/latest/Reference/Encapsulation/ | Fastify Encapsulation}
 		 */
 		.register(async (securedContext) => {
 			if (config.bearerTokenAuthKeys) {

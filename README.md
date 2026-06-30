@@ -2,17 +2,17 @@
 
 # Docsmith
 
-[![GitHub release](https://img.shields.io/github/release/Fdawgs/docsmith.svg)](https://github.com/Fdawgs/docsmith/releases/latest/)
+[![GitHub release](https://img.shields.io/github/v/release/Fdawgs/docsmith)](https://github.com/Fdawgs/docsmith/releases/latest)
 [![CI](https://github.com/Fdawgs/docsmith/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Fdawgs/docsmith/actions/workflows/ci.yml)
 [![Coverage status](https://coveralls.io/repos/github/Fdawgs/docsmith/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/docsmith?branch=main)
-[![code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
+[![code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4?style=flat)](https://github.com/prettier/prettier)
 [![OSSF Scorecard](https://api.scorecard.dev/projects/github.com/Fdawgs/docsmith/badge)](https://scorecard.dev/viewer/?uri=github.com/Fdawgs/docsmith)
 
 > RESTful API for converting clinical documents and files
 
 ## Overview
 
-Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify.dev/) web framework, that can convert a range of files:
+Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify.dev) web framework, that can convert a range of files:
 
 | Input | Output | Notes                                        |
 | ----- | ------ | -------------------------------------------- |
@@ -29,7 +29,7 @@ Docsmith is a RESTful API, built using Node.js and the [Fastify](https://fastify
 
 ### Why Docsmith?
 
-Docsmith was created in my spare time outside of work after identifying the need for an open-source document conversion service at Yeovil Hospital (ran by [Somerset NHS Foundation Trust](https://www.somersetft.nhs.uk/)).
+Docsmith was created in my spare time outside of work after identifying the need for an open-source document conversion service at Yeovil Hospital (ran by [Somerset NHS Foundation Trust](https://www.somersetft.nhs.uk)).
 
 Being open-source, with the ability to be self-hosted, enables a data processor (i.e. an NHS trust) to confirm that a service is not storing and logging files with confidential patient identifiable data (PID) in them, which is essential for preventing potential GDPR breaches. This is something that the majority of existing closed-source document conversion services cannot offer. Docsmith was built to remedy this.
 
@@ -41,7 +41,7 @@ Docsmith enables a data processor to use a comprehensive, GDPR-compliant, open-s
 
 These are only required if running the API outside of Docker:
 
-- [Node.js](https://nodejs.org/en/) >=20.0.0
+- [Node.js](https://nodejs.org/en) >=20.0.0
 - Linux only: `poppler-data` >=0.4.9
 - Linux only: `poppler-utils` >=20.12.0
 - macOS only: `poppler` >=20.12.0
@@ -83,17 +83,17 @@ The service should be up and running on the port set in the config. Output simil
 }
 ```
 
-To test it, use [Yaak](https://yaak.app/) and import the example requests from `./test/utils/yaak.docsmith.json`.
+To test it, use [Yaak](https://yaak.app) and import the example requests from `./test/utils/yaak.docsmith.json`.
 
 ### Deploying using Docker
 
-This requires [Docker](https://docker.com) installed.
+This requires [Docker](https://www.docker.com) installed.
 
 1. Run `docker compose up` (or `docker compose up -d` to run in the background)
 
 ### Deploying using PM2
 
-If this cannot be deployed into production using Docker, use a process manager such as [PM2](https://pm2.keymetrics.io/).
+If this cannot be deployed into production using Docker, use a process manager such as [PM2](https://pm2.keymetrics.io).
 
 1. Run `npm ci --ignore-scripts --omit=dev` to install dependencies
 2. Run `npm i -g pm2` to install pm2 globally

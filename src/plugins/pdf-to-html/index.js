@@ -39,7 +39,7 @@ const POPPLER_PDF_TO_HTML_ACCEPTED_PARAMS = new Set([
  * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {object} [options.pdfToHtmlOptions] - Refer to
- * https://github.com/Fdawgs/node-poppler/blob/main/API.md#Poppler+pdfToHtml
+ * https://github.com/Fdawgs/node-poppler/blob/main/src/options/pdftohtml.js
  * for options.
  * @param {string} options.tempDir - Directory for temporarily storing
  * files during conversion.
