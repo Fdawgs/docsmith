@@ -3,15 +3,15 @@
 Contributions are welcome and any help that can be offered is greatly appreciated.
 Please take a moment to read the entire contributing guide.
 
-This repository uses the [Feature Branch Workflow](https://atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow),
+This repository uses the [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow),
 meaning that development should take place in `feat/` branches, with the `main` branch kept in a stable state.
 When submitting pull requests, please make sure to fork from and submit back to `main`.
 
 Other processes and specifications that are in use in this repository are:
 
-- [Semantic versioning](https://semver.org/)
-- [Conventional commits](https://conventionalcommits.org/en/v1.0.0/) following the [@commitlint/config-conventional config](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
-- [Prettier](https://prettier.io/) style guide
+- [Semantic versioning](https://semver.org)
+- [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) following the [@commitlint/config-conventional config](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
+- [Prettier](https://prettier.io) style guide
 
 ## Getting started
 
