@@ -16,5 +16,5 @@ esbuild.build({
 	outdir: "dist",
 	packages: "external",
 	platform: "node",
-	target: "node20",
+	target: "node22",
 });
