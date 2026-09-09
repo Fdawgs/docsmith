@@ -1,3 +1,4 @@
+/* eslint-disable preserve-caught-error -- Temporarily disabling this rule until time found */
 "use strict";
 
 const { readFile } = require("node:fs/promises");

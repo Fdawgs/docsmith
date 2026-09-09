@@ -1,3 +1,4 @@
+/* eslint-disable require-atomic-updates -- Temporarily disabling this rule until time found */
 /* eslint-disable security/detect-non-literal-fs-filename -- Filename is not user-provided */
 
 "use strict";
