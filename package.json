@@ -67,7 +67,6 @@
 	"devDependencies": {
 		"@commitlint/cli": "^21.2.2",
 		"@commitlint/config-conventional": "^21.2.2",
-		"@eslint/compat": "^2.1.0",
 		"@fdawgs/eslint-config": "^3.0.3",
 		"@jest/globals": "^30.5.1",
 		"autocannon": "^8.0.0",
