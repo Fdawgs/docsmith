@@ -1,7 +1,7 @@
 # ------------------
 # Temp image
 # ------------------
-FROM node:20-bullseye-slim AS tmp
+FROM node:22-bookworm-slim AS tmp
 
 # Workdir
 WORKDIR /usr/app/tmp
@@ -25,7 +25,7 @@ RUN mkdir -p ./temp/
 # ------------------
 # Final image
 # ------------------
-FROM node:20-bullseye-slim AS main
+FROM node:22-bookworm-slim AS main
 
 # Workdir
 WORKDIR /usr/app

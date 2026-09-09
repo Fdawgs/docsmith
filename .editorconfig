@@ -27,6 +27,7 @@ insert_final_newline = unset
 max_line_length = unset
 trim_trailing_whitespace = unset
 
+# Test files
 [test/{fixtures,__snapshots__}/**]
 charset = unset
 end_of_line = unset
