@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [13.0.2](https://github.com/Fdawgs/docsmith/compare/v13.0.1...v13.0.2) (2026-09-10)
+
+
+### Continuous integration
+
+* **cd:** create tags immediately for draft releases ([#2313](https://github.com/Fdawgs/docsmith/issues/2313)) ([2fee396](https://github.com/Fdawgs/docsmith/commit/2fee3965bb80ca3ec428028ff776103c211686e8))
+
 ## [13.0.1](https://github.com/Fdawgs/docsmith/compare/v13.0.0...v13.0.1) (2026-09-10)
 
 
