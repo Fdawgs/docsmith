@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [13.0.1](https://github.com/Fdawgs/docsmith/compare/v13.0.0...v13.0.1) (2026-09-10)
+
+
+### Continuous integration
+
+* **cd:** upload release assets before publishing immutable releases ([#2310](https://github.com/Fdawgs/docsmith/issues/2310)) ([686c591](https://github.com/Fdawgs/docsmith/commit/686c591d181a53541db3acb3751a7e19bcd10836))
+
 ## [13.0.0](https://github.com/Fdawgs/docsmith/compare/v12.0.2...v13.0.0) (2026-09-10)
 
 
