@@ -82,3 +82,10 @@ jobs:
                   asset_path: ./${{ github.event.repository.name }}-${{ needs.release.outputs.tag_name }}.zip
                   asset_name: ${{ github.event.repository.name }}-${{ needs.release.outputs.tag_name }}.zip
                   asset_content_type: application/zip
+
+            - name: Publish release
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GH_REPO: ${{ github.repository }}
+                  RELEASE_TAG: ${{ needs.release.outputs.tag_name }}
+              run: gh release edit "$RELEASE_TAG" --draft=false
