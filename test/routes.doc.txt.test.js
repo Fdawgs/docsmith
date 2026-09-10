@@ -123,7 +123,7 @@ describe("DOC-to-TXT route", () => {
 
 		expect(response.json()).toStrictEqual({
 			error: "Unsupported Media Type",
-			message: "Unsupported Media Type: application/html",
+			message: "Unsupported Media Type",
 			statusCode: 415,
 		});
 		expect(response.statusCode).toBe(415);
