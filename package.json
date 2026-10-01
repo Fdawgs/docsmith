@@ -73,7 +73,7 @@
 		"esbuild": "^0.25.10",
 		"eslint": "^10.10.0",
 		"eslint-plugin-jest": "^29.16.6",
-		"jest": "^30.5.1",
+		"jest": "^30.5.2",
 		"licensee": "^12.0.2",
 		"lockfile-lint": "^5.0.1",
 		"pino-pretty": "^13.1.3",
