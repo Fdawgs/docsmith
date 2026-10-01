@@ -105,7 +105,7 @@
 		"fastify-plugin": "^6.0.0",
 		"file-stream-rotator": "^1.0.0",
 		"file-type": "^16.5.4",
-		"fix-latin1-to-utf8": "^2.0.5",
+		"fix-latin1-to-utf8": "^2.0.7",
 		"fluent-json-schema": "^6.0.1",
 		"glob": "^13.0.6",
 		"html-minifier-terser": "^7.2.0",
