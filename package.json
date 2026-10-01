@@ -68,7 +68,7 @@
 		"@commitlint/cli": "^21.2.3",
 		"@commitlint/config-conventional": "^21.2.2",
 		"@fdawgs/eslint-config": "^3.0.3",
-		"@jest/globals": "^30.5.1",
+		"@jest/globals": "^30.5.2",
 		"autocannon": "^8.0.0",
 		"esbuild": "^0.25.10",
 		"eslint": "^10.10.0",
