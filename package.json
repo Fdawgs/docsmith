@@ -109,7 +109,7 @@
 		"fluent-json-schema": "^6.0.1",
 		"glob": "^13.0.6",
 		"html-minifier-terser": "^7.2.0",
-		"html-to-text": "^9.0.5",
+		"html-to-text": "^10.0.0",
 		"htmltidy2": "^1.2.0",
 		"is-html": "^2.0.0",
 		"jsdom": "^27.0.0",
