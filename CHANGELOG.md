@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [13.0.2](https://github.com/Fdawgs/docsmith/compare/v13.0.1...v13.0.2) (2026-10-04)
+
+
+### Continuous integration
+
+* **cd:** create tags immediately for draft releases ([#2313](https://github.com/Fdawgs/docsmith/issues/2313)) ([2fee396](https://github.com/Fdawgs/docsmith/commit/2fee3965bb80ca3ec428028ff776103c211686e8))
+* **deps:** bump the github-owned group with 2 updates ([#2333](https://github.com/Fdawgs/docsmith/issues/2333)) ([1e7608d](https://github.com/Fdawgs/docsmith/commit/1e7608d2adff2243c629f78b50030a0d063f5c45))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 10.9.1 to 10.10.0 in the eslint group ([#2322](https://github.com/Fdawgs/docsmith/issues/2322)) ([8208117](https://github.com/Fdawgs/docsmith/commit/82081170d45ce59dc21c490bf1af755dd7aebf01))
+* **deps-dev:** bump ip-address from 10.7.0 to 10.7.2 ([#2318](https://github.com/Fdawgs/docsmith/issues/2318)) ([bbe2ab2](https://github.com/Fdawgs/docsmith/commit/bbe2ab26dccdd05496019e50e5081e6f404f5088))
+* **deps-dev:** bump jest from 30.5.1 to 30.5.2 ([#2327](https://github.com/Fdawgs/docsmith/issues/2327)) ([8704dfe](https://github.com/Fdawgs/docsmith/commit/8704dfed6ad1c2ff4c6a758e0a0c690650b12c6b))
+* **deps-dev:** bump playwright from 1.62.1 to 1.63.0 ([#2331](https://github.com/Fdawgs/docsmith/issues/2331)) ([0b8858a](https://github.com/Fdawgs/docsmith/commit/0b8858a641ffcec6694072f3b48a406890d50b9a))
+* **deps-dev:** bump prettier from 3.9.6 to 3.9.9 ([#2334](https://github.com/Fdawgs/docsmith/issues/2334)) ([a06f16b](https://github.com/Fdawgs/docsmith/commit/a06f16b95c855ba01d02b18a845c4aa37212e3ca))
+* **deps-dev:** bump the commitlint group with 2 updates ([#2321](https://github.com/Fdawgs/docsmith/issues/2321)) ([0598197](https://github.com/Fdawgs/docsmith/commit/0598197cfbc076cf7c26115404ca99ede81107ce))
+* **deps-dev:** bump undici from 6.28.0 to 6.29.0 ([#2316](https://github.com/Fdawgs/docsmith/issues/2316)) ([99685ee](https://github.com/Fdawgs/docsmith/commit/99685ee9d40e2f21d15fbcb5944662e3677a14b3))
+* **deps:** bump brace-expansion ([#2315](https://github.com/Fdawgs/docsmith/issues/2315)) ([14037cf](https://github.com/Fdawgs/docsmith/commit/14037cf402bf06873d82dcb090314b1649786bdd))
+* **deps:** bump dompurify from 3.4.15 to 3.4.16 ([#2320](https://github.com/Fdawgs/docsmith/issues/2320)) ([04fd199](https://github.com/Fdawgs/docsmith/commit/04fd1990f7f80d898483062aa3008be007e6757d))
+* **deps:** bump fast-uri ([#2319](https://github.com/Fdawgs/docsmith/issues/2319)) ([3bef9d3](https://github.com/Fdawgs/docsmith/commit/3bef9d33ef60eb8052bcc59cfc4a6b9034a10a8f))
+* **deps:** bump fastify from 5.12.1 to 5.12.5 ([#2317](https://github.com/Fdawgs/docsmith/issues/2317)) ([8dc667c](https://github.com/Fdawgs/docsmith/commit/8dc667c1429666b4386f47f06f7c80f7850a49e6))
+* **deps:** bump fix-latin1-to-utf8 from 2.0.5 to 2.0.7 ([#2330](https://github.com/Fdawgs/docsmith/issues/2330)) ([f5ecdf2](https://github.com/Fdawgs/docsmith/commit/f5ecdf2f1cd39b46efc2969707086a84b4f759eb))
+* **deps:** bump mammoth from 1.11.0 to 1.12.2 ([#2332](https://github.com/Fdawgs/docsmith/issues/2332)) ([df8c95e](https://github.com/Fdawgs/docsmith/commit/df8c95e7bfb26ac9c6bb38f43f2a9f9f8c5509f2))
+* **deps:** bump node-poppler from 9.1.2 to 10.0.1 ([#2329](https://github.com/Fdawgs/docsmith/issues/2329)) ([2871e9d](https://github.com/Fdawgs/docsmith/commit/2871e9dab66f33a7dce54059989b314a474d7307))
+* **deps:** bump redoc from 2.5.2 to 2.5.4 ([#2324](https://github.com/Fdawgs/docsmith/issues/2324)) ([47a8f55](https://github.com/Fdawgs/docsmith/commit/47a8f55aeb61ddd5317bb5b08bd0c4371775ef90))
+* **deps:** bump the devcontainers group with 2 updates ([#2336](https://github.com/Fdawgs/docsmith/issues/2336)) ([edd2b32](https://github.com/Fdawgs/docsmith/commit/edd2b3270126b706dc4790f8cc44c0b2733b9db8))
+
 ## [13.0.1](https://github.com/Fdawgs/docsmith/compare/v13.0.0...v13.0.1) (2026-09-10)
 
 
