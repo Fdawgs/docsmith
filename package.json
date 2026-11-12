@@ -107,7 +107,7 @@
 		"file-type": "^16.5.4",
 		"fix-latin1-to-utf8": "^3.0.3",
 		"fluent-json-schema": "^6.0.1",
-		"glob": "^14.0.2",
+		"glob": "^14.0.3",
 		"html-minifier-terser": "^7.2.0",
 		"html-to-text": "^10.0.1",
 		"htmltidy2": "^1.2.0",
